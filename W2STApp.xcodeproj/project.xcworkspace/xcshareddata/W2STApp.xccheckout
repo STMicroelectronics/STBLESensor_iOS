@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>9AC391ED-7571-441F-A1FC-82C7FEE3C307</string>
+	<key>IDESourceControlProjectName</key>
+	<string>W2STApp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>A477EB6F56C152BDB17FBF8DD3D7459F778C5BF5</key>
+		<string>ssh://codex.cro.st.com/bluemesh/BlueSTSDK_iOS.git</string>
+		<key>DEEB33513799C090033480A8E62FA9A6581A35A8</key>
+		<string>ssh://codex.cro.st.com/bluemesh/BlueMS_iOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>W2STApp.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>A477EB6F56C152BDB17FBF8DD3D7459F778C5BF5</key>
+		<string>../..BlueSTSDK</string>
+		<key>DEEB33513799C090033480A8E62FA9A6581A35A8</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://codex.cro.st.com/bluemesh/BlueMS_iOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DEEB33513799C090033480A8E62FA9A6581A35A8</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DEEB33513799C090033480A8E62FA9A6581A35A8</string>
+			<key>IDESourceControlWCCName</key>
+			<string>BlueMS_iOS</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>A477EB6F56C152BDB17FBF8DD3D7459F778C5BF5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>BlueMS_iOSBlueSTSDK</string>
+		</dict>
+	</array>
+</dict>
+</plist>

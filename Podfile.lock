@@ -1,0 +1,22 @@
+PODS:
+  - CorePlot (2.2)
+  - MQTTClient (0.8.7):
+    - MQTTClient/Core (= 0.8.7)
+  - MQTTClient/Core (0.8.7):
+    - MQTTClient/Manager
+    - MQTTClient/Min
+  - MQTTClient/Manager (0.8.7):
+    - MQTTClient/Min
+  - MQTTClient/Min (0.8.7)
+
+DEPENDENCIES:
+  - CorePlot (~> 2.2)
+  - MQTTClient
+
+SPEC CHECKSUMS:
+  CorePlot: cbe0c6e14220705e32e06a89c7d6a5a908b7d7d8
+  MQTTClient: 2842bdeab5a65eec75e0fcbbbd2a300946690fee
+
+PODFILE CHECKSUM: 908601ef1db99d785636347313a2d1051f7e53fb
+
+COCOAPODS: 1.1.1

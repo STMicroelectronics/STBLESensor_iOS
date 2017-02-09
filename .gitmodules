@@ -1,0 +1,9 @@
+[submodule "W2STApp/MainApp/BlueSTSDKCommonGui"]
+	path = W2STApp/MainApp/BlueSTSDKCommonGui
+	url = ssh://gitolite@codex.cro.st.com/bluemesh/BlueSTSDK_Gui_iOS.git
+[submodule "BlueSTSDK"]
+	path = BlueSTSDK
+	url = https://github.com/STMicroelectronics-CentralLabs/BlueSTSDK_iOS
+[submodule "BlueSTSDK_Gui"]
+	path = BlueSTSDK_Gui
+	url = https://github.com/STMicroelectronics-CentralLabs/BlueSTSDK_GUI_iOS

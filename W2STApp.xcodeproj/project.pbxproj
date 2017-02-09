@@ -1,0 +1,1256 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 47;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4EDA2ACD09B8CC11808D5CE1 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4EDA2F517475F30AF7B07075 /* LICENSE.txt */; };
+		4EDA2DBC1607AEC7917D2383 /* BlueVoiceGoogleAsrRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA2C05E874041EC2F0FEA3 /* BlueVoiceGoogleAsrRequest.m */; };
+		6602184E1B903EBF006246E9 /* W2STCarryPositionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6602184C1B903EBF006246E9 /* W2STCarryPositionViewController.m */; };
+		661090481DB5FD94009839D9 /* CloudDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 661090471DB5FD94009839D9 /* CloudDemo.storyboard */; };
+		6614D37C1B0249A60053E5B1 /* W2STBoardStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6614D37B1B0249A60053E5B1 /* W2STBoardStatusViewController.m */; };
+		6632CC1A1AD6602D0011F81A /* BlueMSDemosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6632CC191AD6602D0011F81A /* BlueMSDemosViewController.m */; };
+		6632CC1D1AD664230011F81A /* W2STFeatureDebugTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6632CC1C1AD664230011F81A /* W2STFeatureDebugTableViewController.m */; };
+		6637414D1DA7923500D9262F /* W2STCloudFeatureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6637414C1DA7923500D9262F /* W2STCloudFeatureTableViewCell.m */; };
+		6637DAD51E30D656007C0B82 /* AccEventDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6637DAD41E30D656007C0B82 /* AccEventDemo.storyboard */; };
+		6637DAD91E30D6CB007C0B82 /* PlotDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6637DAD61E30D6CB007C0B82 /* PlotDemo.storyboard */; };
+		6637DADA1E30D6CB007C0B82 /* W2STPlotFeatureDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6637DAD71E30D6CB007C0B82 /* W2STPlotFeatureDemoViewController.m */; };
+		664015F61B38377C00E9E7B1 /* W2STSimpleDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 664015F51B38377C00E9E7B1 /* W2STSimpleDialogViewController.m */; };
+		6649110E1CF82D69009623B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6649110D1CF82D69009623B3 /* Main.storyboard */; };
+		664911121CF82E46009623B3 /* BlueMSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 664911111CF82E46009623B3 /* BlueMSMainViewController.m */; };
+		6649E0391AEE1CF900002FF7 /* W2STFeatureSensorFusionDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6649E0381AEE1CF900002FF7 /* W2STFeatureSensorFusionDemoViewController.m */; };
+		664E095C1E49F9FD00C6EA07 /* nucleo_reset_position.png in Resources */ = {isa = PBXBuildFile; fileRef = 664E09521E49F9FD00C6EA07 /* nucleo_reset_position.png */; };
+		664E095D1E49F9FD00C6EA07 /* calibrated.png in Resources */ = {isa = PBXBuildFile; fileRef = 664E09541E49F9FD00C6EA07 /* calibrated.png */; };
+		664E095E1E49F9FD00C6EA07 /* ProximityOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 664E09551E49F9FD00C6EA07 /* ProximityOff.png */; };
+		664E095F1E49F9FD00C6EA07 /* ProximityOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 664E09561E49F9FD00C6EA07 /* ProximityOn.png */; };
+		664E09601E49F9FD00C6EA07 /* uncalibrated.png in Resources */ = {isa = PBXBuildFile; fileRef = 664E09571E49F9FD00C6EA07 /* uncalibrated.png */; };
+		664E09611E49F9FD00C6EA07 /* steval_wesu1_reset_position.png in Resources */ = {isa = PBXBuildFile; fileRef = 664E09581E49F9FD00C6EA07 /* steval_wesu1_reset_position.png */; };
+		664E09621E49F9FD00C6EA07 /* tile_reset_position.png in Resources */ = {isa = PBXBuildFile; fileRef = 664E09591E49F9FD00C6EA07 /* tile_reset_position.png */; };
+		664E09631E49F9FD00C6EA07 /* press_contact.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 664E095A1E49F9FD00C6EA07 /* press_contact.jpg */; };
+		664E09641E49F9FD00C6EA07 /* text.html in Resources */ = {isa = PBXBuildFile; fileRef = 664E095B1E49F9FD00C6EA07 /* text.html */; };
+		664E098E1E4A028200C6EA07 /* st_images_LanchScreen.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 664E098D1E4A028200C6EA07 /* st_images_LanchScreen.xcassets */; };
+		665CB5461C6DCDD5003118BC /* W2STSelectAccEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 665CB5451C6DCDD5003118BC /* W2STSelectAccEventViewController.m */; };
+		666847B61DE84854001064A3 /* BlueMSDemosViewController+WesuFwVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 666847B51DE84854001064A3 /* BlueMSDemosViewController+WesuFwVersion.m */; };
+		666C41431D0817780021D9D3 /* W2STBlueVoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 666C41421D0817780021D9D3 /* W2STBlueVoiceViewController.m */; };
+		666C41491D085AA10021D9D3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 666C41481D085AA10021D9D3 /* AudioToolbox.framework */; };
+		666C414A1D085B620021D9D3 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 666C41461D085A2D0021D9D3 /* CoreAudio.framework */; };
+		6670ED051DB0D294003D6185 /* W2STCloudDataPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6670ED041DB0D294003D6185 /* W2STCloudDataPageViewController.m */; };
+		6670ED0C1DB0D5F7003D6185 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6670ED0B1DB0D5F7003D6185 /* WebKit.framework */; };
+		667817EE1D40B61500AAC0D7 /* W2STHeartRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667817ED1D40B61500AAC0D7 /* W2STHeartRateViewController.m */; };
+		667BAAB51B8CAEAD00CADD2E /* W2STActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667BAAB41B8CAEAD00CADD2E /* W2STActivityViewController.m */; };
+		667D27411E09671800B6968E /* STWeSUFeatureSettingDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D273E1E09671800B6968E /* STWeSUFeatureSettingDialogViewController.m */; };
+		667D27421E09671800B6968E /* STWesUFeatureSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D27401E09671800B6968E /* STWesUFeatureSettingViewController.m */; };
+		6680E77A1E2F6F0F00C39C5E /* BlueSTSDK_Gui.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6680E7791E2F6F0700C39C5E /* BlueSTSDK_Gui.framework */; };
+		6680E77B1E2F6F0F00C39C5E /* BlueSTSDK_Gui.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6680E7791E2F6F0700C39C5E /* BlueSTSDK_Gui.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		668212931B022788004D5A9E /* UIViewController+W2STDemoTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 668212921B022788004D5A9E /* UIViewController+W2STDemoTab.m */; };
+		6693B8EC1C898B9200F24E33 /* W2STSwitchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6693B8EB1C898B9200F24E33 /* W2STSwitchViewController.m */; };
+		66A917811D7DA5130004A4DC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66A917801D7DA5130004A4DC /* MediaPlayer.framework */; };
+		66A98DF61C0D9E7B00904CB3 /* W2STProximityGestureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A98DF51C0D9E7B00904CB3 /* W2STProximityGestureViewController.m */; };
+		66AE69F91E2CF4B7008CB6AA /* W2STAccEventSingleEventDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66AE69F81E2CF4B7008CB6AA /* W2STAccEventSingleEventDisplayViewController.m */; };
+		66AE69FC1E2CF521008CB6AA /* W2STAccEventMultipleEventDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66AE69FB1E2CF521008CB6AA /* W2STAccEventMultipleEventDisplayViewController.m */; };
+		66AE69FF1E2D249A008CB6AA /* W2STAccEventIconUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 66AE69FE1E2D249A008CB6AA /* W2STAccEventIconUtil.m */; };
+		66B081801DB8C6F40041090A /* W2STIBMWatsonIOTConnectionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B081751DB8C6F40041090A /* W2STIBMWatsonIOTConnectionFactory.m */; };
+		66B081811DB8C6F40041090A /* W2STCloudIBMWatsonIOTConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B081771DB8C6F40041090A /* W2STCloudIBMWatsonIOTConfigViewController.m */; };
+		66B081821DB8C6F40041090A /* W2STIBMWatsonQuickStartConnectionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B0817A1DB8C6F40041090A /* W2STIBMWatsonQuickStartConnectionFactory.m */; };
+		66B081831DB8C6F40041090A /* W2STCloudIBMWatsonQuickStartConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B0817C1DB8C6F40041090A /* W2STCloudIBMWatsonQuickStartConfigViewController.m */; };
+		66B081841DB8C6F40041090A /* W2STCloudConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B0817E1DB8C6F40041090A /* W2STCloudConfigViewController.m */; };
+		66B92C6F1D2BABCA008CEC03 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B92C6E1D2BABCA008CEC03 /* Reachability.m */; };
+		66B92C731D2BABE7008CEC03 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66B92C721D2BABE7008CEC03 /* SystemConfiguration.framework */; };
+		66B92C7E1D2BB3DA008CEC03 /* BlueVoiceInsertAsrKeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B92C7D1D2BB3DA008CEC03 /* BlueVoiceInsertAsrKeyViewController.m */; };
+		66B92C821D2C02E2008CEC03 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66B92C811D2C02E2008CEC03 /* AVFoundation.framework */; };
+		66BBAA581DEDCE3B009213BA /* UIViewController+WesuLicenseCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BBAA571DEDCE3B009213BA /* UIViewController+WesuLicenseCheck.m */; };
+		66CAC1F31B4D6F6F001B0BA1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66CAC1F21B4D6F6F001B0BA1 /* Images.xcassets */; };
+		66CB69031DB8CDD500F21ED6 /* W2STCloudProviderSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CB69021DB8CDD500F21ED6 /* W2STCloudProviderSelectViewController.m */; };
+		66CB69091DB8CE0B00F21ED6 /* W2STCloudJsonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CB69061DB8CE0B00F21ED6 /* W2STCloudJsonUtil.m */; };
+		66CB690A1DB8CE0B00F21ED6 /* W2STIBMWatsonIOTFeatureListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CB69081DB8CE0B00F21ED6 /* W2STIBMWatsonIOTFeatureListener.m */; };
+		66CB6F541B0A1E6900BDF9AC /* W2STSelectFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CB6F531B0A1E6900BDF9AC /* W2STSelectFeatureViewController.m */; };
+		66CB6F581B0A39C700BDF9AC /* W2STBoardBatteryStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CB6F571B0A39C700BDF9AC /* W2STBoardBatteryStatusViewController.m */; };
+		66CB6F5B1B0A3B8000BDF9AC /* W2STBoardRssiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CB6F5A1B0A3B8000BDF9AC /* W2STBoardRssiViewController.m */; };
+		66CCBBA61B0209E500907D59 /* W2STDemoSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CCBBA51B0209E500907D59 /* W2STDemoSubViewController.m */; };
+		66CFCD591B9F265200B9A096 /* BlueSTSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 66CFCD561B9F264900B9A096 /* BlueSTSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		66D85E831E3A33F3003E4543 /* st_images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66D85E821E3A33F3003E4543 /* st_images.xcassets */; };
+		66D9FBB81DB50A8900D0EEF1 /* W2STCloudConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D9FBB71DB50A8900D0EEF1 /* W2STCloudConnectionViewController.m */; };
+		66E6915A1AFA393000BD44C1 /* W2STPressureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E691591AFA393000BD44C1 /* W2STPressureViewController.m */; };
+		66E6915D1AFA3F7900BD44C1 /* W2STHumidityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E6915C1AFA3F7900BD44C1 /* W2STHumidityViewController.m */; };
+		66E691601AFA5A8800BD44C1 /* W2STLuminosityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E6915F1AFA5A8800BD44C1 /* W2STLuminosityViewController.m */; };
+		66E6D3501DF1AC9000D1FBBA /* WeSUSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66E6D34F1DF1AC9000D1FBBA /* WeSUSettings.storyboard */; };
+		66E6D3571DF1ADF800D1FBBA /* STWeSUSettingsAdvancedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E6D3521DF1ADF800D1FBBA /* STWeSUSettingsAdvancedTableViewController.m */; };
+		66E6D3581DF1ADF800D1FBBA /* STWeSUSettingsDataReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E6D3541DF1ADF800D1FBBA /* STWeSUSettingsDataReadViewController.m */; };
+		66E6D3591DF1ADF800D1FBBA /* STWeSUSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E6D3561DF1ADF800D1FBBA /* STWeSUSettingsTableViewController.m */; };
+		66E6D35E1DF1AEB700D1FBBA /* STWeSUSettingsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E6D35B1DF1AEB700D1FBBA /* STWeSUSettingsItem.m */; };
+		66E6D35F1DF1AEB700D1FBBA /* STWeSUTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E6D35D1DF1AEB700D1FBBA /* STWeSUTools.m */; };
+		66E6D3621DF1AF5300D1FBBA /* STWeSUNodeExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E6D3611DF1AF5300D1FBBA /* STWeSUNodeExtension.m */; };
+		66EDA78A1AF9F4B30049C793 /* W2STEnviromentalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EDA7891AF9F4B30049C793 /* W2STEnviromentalViewController.m */; };
+		66EDA7DE1AF9F94F0049C793 /* W2STTemperatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EDA7DD1AF9F94F0049C793 /* W2STTemperatureViewController.m */; };
+		66F1BB811BFC8FE800BCB0D7 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F1BB801BFC8FE800BCB0D7 /* Accelerate.framework */; };
+		66F5DD321DC9D5A000FD3FA2 /* W2STBMWatsonQuickStartFeatureListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F5DD311DC9D5A000FD3FA2 /* W2STBMWatsonQuickStartFeatureListener.m */; };
+		66FC1DEE1C19D57A0015F7A2 /* W2STMemsGestureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FC1DED1C19D57A0015F7A2 /* W2STMemsGestureViewController.m */; };
+		66FF61921C3E949B00642010 /* W2STPedometerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FF61911C3E949B00642010 /* W2STPedometerViewController.m */; };
+		66FF61971C3E950300642010 /* W2STAccEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FF61961C3E950300642010 /* W2STAccEventViewController.m */; };
+		EA0DC47219EE71C7008AD681 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0DC47119EE71C7008AD681 /* QuartzCore.framework */; };
+		EA68CFAE18D0CB75003B774E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA68CFAD18D0CB75003B774E /* Foundation.framework */; };
+		EA68CFB018D0CB75003B774E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA68CFAF18D0CB75003B774E /* CoreGraphics.framework */; };
+		EA68CFB218D0CB75003B774E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA68CFB118D0CB75003B774E /* UIKit.framework */; };
+		EA8344DC19D956AE0027E447 /* BlueMS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAD77DA61982A62500CCD0BE /* BlueMS.storyboard */; };
+		EAB8D88B19D4164F007D3A37 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB8D88A19D4164F007D3A37 /* OpenGLES.framework */; };
+		EACE369719DDA7BF007E2A2D /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = EACE369619DDA7BF007E2A2D /* art.scnassets */; };
+		EAD77E8A1982A62500CCD0BE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EAD77DA81982A62500CCD0BE /* InfoPlist.strings */; };
+		EAD77E8C1982A62500CCD0BE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD77DAB1982A62500CCD0BE /* main.m */; };
+		EAD77EA71982A62500CCD0BE /* BlueMSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD77DDA1982A62500CCD0BE /* BlueMSAppDelegate.m */; };
+		F4C1BE4C738C4F30F0B5FA88 /* libPods-W2STApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D54F3260077799066EAB08F /* libPods-W2STApp.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6680E7781E2F6F0700C39C5E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6680E7731E2F6F0700C39C5E /* BlueSTSDK_Gui.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 663979141E2E5D0000FBF696;
+			remoteInfo = BlueSTSDK_Gui;
+		};
+		6680E77C1E2F6F0F00C39C5E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6680E7731E2F6F0700C39C5E /* BlueSTSDK_Gui.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 663979131E2E5D0000FBF696;
+			remoteInfo = BlueSTSDK_Gui;
+		};
+		66BC48DC1DA7E3E500C196B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0BAFBE783BE34DADCC499AD3C1315903;
+			remoteInfo = CorePlot;
+		};
+		66BC48DE1DA7E3E500C196B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 143F51EE1DB03FC330AF9629C634F2A8;
+			remoteInfo = MQTTClient;
+		};
+		66BC48E01DA7E3E500C196B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F4DB7112640687A3204691772827D515;
+			remoteInfo = "Pods-W2STApp";
+		};
+		66CFCD551B9F264900B9A096 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66CFCD501B9F264900B9A096 /* BlueSTSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 665241F01B0B1BB100931F93;
+			remoteInfo = BlueSTSDK;
+		};
+		66CFCD571B9F264900B9A096 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66CFCD501B9F264900B9A096 /* BlueSTSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 665241FB1B0B1BB100931F93;
+			remoteInfo = BlueSTSDKTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		669A37071B0B2DF0003FD4F7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6680E77B1E2F6F0F00C39C5E /* BlueSTSDK_Gui.framework in Embed Frameworks */,
+				66CFCD591B9F265200B9A096 /* BlueSTSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3D54F3260077799066EAB08F /* libPods-W2STApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-W2STApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EDA21898F7ECC5CE6AF7FD8 /* BlueVoiceGoogleAsrRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueVoiceGoogleAsrRequest.h; sourceTree = "<group>"; };
+		4EDA2C05E874041EC2F0FEA3 /* BlueVoiceGoogleAsrRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueVoiceGoogleAsrRequest.m; sourceTree = "<group>"; };
+		4EDA2F517475F30AF7B07075 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		6602184C1B903EBF006246E9 /* W2STCarryPositionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STCarryPositionViewController.m; sourceTree = "<group>"; };
+		6602184D1B903EBF006246E9 /* W2STCarryPositionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STCarryPositionViewController.h; sourceTree = "<group>"; };
+		661090471DB5FD94009839D9 /* CloudDemo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CloudDemo.storyboard; sourceTree = "<group>"; };
+		6614D37A1B0249A60053E5B1 /* W2STBoardStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STBoardStatusViewController.h; sourceTree = "<group>"; };
+		6614D37B1B0249A60053E5B1 /* W2STBoardStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STBoardStatusViewController.m; sourceTree = "<group>"; };
+		6632CC181AD6602D0011F81A /* BlueMSDemosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueMSDemosViewController.h; sourceTree = "<group>"; };
+		6632CC191AD6602D0011F81A /* BlueMSDemosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueMSDemosViewController.m; sourceTree = "<group>"; };
+		6632CC1B1AD664230011F81A /* W2STFeatureDebugTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STFeatureDebugTableViewController.h; sourceTree = "<group>"; };
+		6632CC1C1AD664230011F81A /* W2STFeatureDebugTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STFeatureDebugTableViewController.m; sourceTree = "<group>"; };
+		6637414B1DA7923500D9262F /* W2STCloudFeatureTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STCloudFeatureTableViewCell.h; sourceTree = "<group>"; };
+		6637414C1DA7923500D9262F /* W2STCloudFeatureTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STCloudFeatureTableViewCell.m; sourceTree = "<group>"; };
+		6637DAD41E30D656007C0B82 /* AccEventDemo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AccEventDemo.storyboard; path = AccEventViewController/AccEventDemo.storyboard; sourceTree = "<group>"; };
+		6637DAD61E30D6CB007C0B82 /* PlotDemo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = PlotDemo.storyboard; path = PlotViewController/PlotDemo.storyboard; sourceTree = "<group>"; };
+		6637DAD71E30D6CB007C0B82 /* W2STPlotFeatureDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STPlotFeatureDemoViewController.m; path = PlotViewController/W2STPlotFeatureDemoViewController.m; sourceTree = "<group>"; };
+		6637DAD81E30D6CB007C0B82 /* W2STPlotFeatureDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STPlotFeatureDemoViewController.h; path = PlotViewController/W2STPlotFeatureDemoViewController.h; sourceTree = "<group>"; };
+		6637DADB1E30D6FB007C0B82 /* W2STAccEventDisplayDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STAccEventDisplayDelegate.h; path = AccEventViewController/W2STAccEventDisplayDelegate.h; sourceTree = "<group>"; };
+		6637DADC1E30D6FB007C0B82 /* W2STAccEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STAccEventViewController.h; path = AccEventViewController/W2STAccEventViewController.h; sourceTree = "<group>"; };
+		664015F41B38377C00E9E7B1 /* W2STSimpleDialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STSimpleDialogViewController.h; path = MemsSensorFusionController/W2STSimpleDialogViewController.h; sourceTree = "<group>"; };
+		664015F51B38377C00E9E7B1 /* W2STSimpleDialogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STSimpleDialogViewController.m; path = MemsSensorFusionController/W2STSimpleDialogViewController.m; sourceTree = "<group>"; };
+		6649110D1CF82D69009623B3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
+		664911101CF82E46009623B3 /* BlueMSMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueMSMainViewController.h; sourceTree = "<group>"; };
+		664911111CF82E46009623B3 /* BlueMSMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueMSMainViewController.m; sourceTree = "<group>"; };
+		6649E0371AEE1CF900002FF7 /* W2STFeatureSensorFusionDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STFeatureSensorFusionDemoViewController.h; sourceTree = "<group>"; };
+		6649E0381AEE1CF900002FF7 /* W2STFeatureSensorFusionDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STFeatureSensorFusionDemoViewController.m; sourceTree = "<group>"; };
+		664E09521E49F9FD00C6EA07 /* nucleo_reset_position.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nucleo_reset_position.png; sourceTree = "<group>"; };
+		664E09541E49F9FD00C6EA07 /* calibrated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calibrated.png; sourceTree = "<group>"; };
+		664E09551E49F9FD00C6EA07 /* ProximityOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProximityOff.png; sourceTree = "<group>"; };
+		664E09561E49F9FD00C6EA07 /* ProximityOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProximityOn.png; sourceTree = "<group>"; };
+		664E09571E49F9FD00C6EA07 /* uncalibrated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uncalibrated.png; sourceTree = "<group>"; };
+		664E09581E49F9FD00C6EA07 /* steval_wesu1_reset_position.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = steval_wesu1_reset_position.png; sourceTree = "<group>"; };
+		664E09591E49F9FD00C6EA07 /* tile_reset_position.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile_reset_position.png; sourceTree = "<group>"; };
+		664E095A1E49F9FD00C6EA07 /* press_contact.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = press_contact.jpg; sourceTree = "<group>"; };
+		664E095B1E49F9FD00C6EA07 /* text.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = text.html; sourceTree = "<group>"; };
+		664E098D1E4A028200C6EA07 /* st_images_LanchScreen.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = st_images_LanchScreen.xcassets; path = BlueSTSDK_Gui/BlueSTSDK_Gui/st_images_LanchScreen.xcassets; sourceTree = SOURCE_ROOT; };
+		665CB5441C6DCDD5003118BC /* W2STSelectAccEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STSelectAccEventViewController.h; path = AccEventViewController/W2STSelectAccEventViewController.h; sourceTree = "<group>"; };
+		665CB5451C6DCDD5003118BC /* W2STSelectAccEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STSelectAccEventViewController.m; path = AccEventViewController/W2STSelectAccEventViewController.m; sourceTree = "<group>"; };
+		666847B41DE84854001064A3 /* BlueMSDemosViewController+WesuFwVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BlueMSDemosViewController+WesuFwVersion.h"; sourceTree = "<group>"; };
+		666847B51DE84854001064A3 /* BlueMSDemosViewController+WesuFwVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BlueMSDemosViewController+WesuFwVersion.m"; sourceTree = "<group>"; };
+		666C41411D0817780021D9D3 /* W2STBlueVoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STBlueVoiceViewController.h; sourceTree = "<group>"; };
+		666C41421D0817780021D9D3 /* W2STBlueVoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STBlueVoiceViewController.m; sourceTree = "<group>"; };
+		666C41461D085A2D0021D9D3 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		666C41481D085AA10021D9D3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		6670ED031DB0D294003D6185 /* W2STCloudDataPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STCloudDataPageViewController.h; sourceTree = "<group>"; };
+		6670ED041DB0D294003D6185 /* W2STCloudDataPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STCloudDataPageViewController.m; sourceTree = "<group>"; };
+		6670ED0B1DB0D5F7003D6185 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		667817EC1D40B61500AAC0D7 /* W2STHeartRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STHeartRateViewController.h; sourceTree = "<group>"; };
+		667817ED1D40B61500AAC0D7 /* W2STHeartRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STHeartRateViewController.m; sourceTree = "<group>"; };
+		667BAAB31B8CAEAD00CADD2E /* W2STActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STActivityViewController.h; sourceTree = "<group>"; };
+		667BAAB41B8CAEAD00CADD2E /* W2STActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STActivityViewController.m; sourceTree = "<group>"; };
+		667D273D1E09671800B6968E /* STWeSUFeatureSettingDialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWeSUFeatureSettingDialogViewController.h; sourceTree = "<group>"; };
+		667D273E1E09671800B6968E /* STWeSUFeatureSettingDialogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWeSUFeatureSettingDialogViewController.m; sourceTree = "<group>"; };
+		667D273F1E09671800B6968E /* STWesUFeatureSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWesUFeatureSettingViewController.h; sourceTree = "<group>"; };
+		667D27401E09671800B6968E /* STWesUFeatureSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWesUFeatureSettingViewController.m; sourceTree = "<group>"; };
+		6680E7731E2F6F0700C39C5E /* BlueSTSDK_Gui.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlueSTSDK_Gui.xcodeproj; path = BlueSTSDK_Gui/BlueSTSDK_Gui.xcodeproj; sourceTree = "<group>"; };
+		668212911B022788004D5A9E /* UIViewController+W2STDemoTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+W2STDemoTab.h"; sourceTree = "<group>"; };
+		668212921B022788004D5A9E /* UIViewController+W2STDemoTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+W2STDemoTab.m"; sourceTree = "<group>"; };
+		6685AD301BF1F75A00553EF8 /* CorePlot.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CorePlot.framework; path = W2STApp/CorePlot.framework; sourceTree = "<group>"; };
+		6693B8EA1C898B9200F24E33 /* W2STSwitchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STSwitchViewController.h; sourceTree = "<group>"; };
+		6693B8EB1C898B9200F24E33 /* W2STSwitchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STSwitchViewController.m; sourceTree = "<group>"; };
+		66A917801D7DA5130004A4DC /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		66A98DF41C0D9E7B00904CB3 /* W2STProximityGestureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STProximityGestureViewController.h; sourceTree = "<group>"; };
+		66A98DF51C0D9E7B00904CB3 /* W2STProximityGestureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STProximityGestureViewController.m; sourceTree = "<group>"; };
+		66AE69F71E2CF4B7008CB6AA /* W2STAccEventSingleEventDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STAccEventSingleEventDisplayViewController.h; path = AccEventViewController/W2STAccEventSingleEventDisplayViewController.h; sourceTree = "<group>"; };
+		66AE69F81E2CF4B7008CB6AA /* W2STAccEventSingleEventDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STAccEventSingleEventDisplayViewController.m; path = AccEventViewController/W2STAccEventSingleEventDisplayViewController.m; sourceTree = "<group>"; };
+		66AE69FA1E2CF521008CB6AA /* W2STAccEventMultipleEventDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STAccEventMultipleEventDisplayViewController.h; path = AccEventViewController/W2STAccEventMultipleEventDisplayViewController.h; sourceTree = "<group>"; };
+		66AE69FB1E2CF521008CB6AA /* W2STAccEventMultipleEventDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STAccEventMultipleEventDisplayViewController.m; path = AccEventViewController/W2STAccEventMultipleEventDisplayViewController.m; sourceTree = "<group>"; };
+		66AE69FD1E2D246C008CB6AA /* W2STAccEventIconUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = W2STAccEventIconUtil.h; path = AccEventViewController/W2STAccEventIconUtil.h; sourceTree = "<group>"; };
+		66AE69FE1E2D249A008CB6AA /* W2STAccEventIconUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STAccEventIconUtil.m; path = AccEventViewController/W2STAccEventIconUtil.m; sourceTree = "<group>"; };
+		66B081741DB8C6F40041090A /* W2STIBMWatsonIOTConnectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STIBMWatsonIOTConnectionFactory.h; sourceTree = "<group>"; };
+		66B081751DB8C6F40041090A /* W2STIBMWatsonIOTConnectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STIBMWatsonIOTConnectionFactory.m; sourceTree = "<group>"; };
+		66B081761DB8C6F40041090A /* W2STCloudIBMWatsonIOTConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STCloudIBMWatsonIOTConfigViewController.h; sourceTree = "<group>"; };
+		66B081771DB8C6F40041090A /* W2STCloudIBMWatsonIOTConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STCloudIBMWatsonIOTConfigViewController.m; sourceTree = "<group>"; };
+		66B081791DB8C6F40041090A /* W2STIBMWatsonQuickStartConnectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STIBMWatsonQuickStartConnectionFactory.h; sourceTree = "<group>"; };
+		66B0817A1DB8C6F40041090A /* W2STIBMWatsonQuickStartConnectionFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STIBMWatsonQuickStartConnectionFactory.m; sourceTree = "<group>"; };
+		66B0817B1DB8C6F40041090A /* W2STCloudIBMWatsonQuickStartConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STCloudIBMWatsonQuickStartConfigViewController.h; sourceTree = "<group>"; };
+		66B0817C1DB8C6F40041090A /* W2STCloudIBMWatsonQuickStartConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STCloudIBMWatsonQuickStartConfigViewController.m; sourceTree = "<group>"; };
+		66B0817D1DB8C6F40041090A /* W2STCloudConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STCloudConfigViewController.h; sourceTree = "<group>"; };
+		66B0817E1DB8C6F40041090A /* W2STCloudConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STCloudConfigViewController.m; sourceTree = "<group>"; };
+		66B0817F1DB8C6F40041090A /* W2STMQTTConnectionFactoryProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STMQTTConnectionFactoryProtocol.h; sourceTree = "<group>"; };
+		66B92C6D1D2BABCA008CEC03 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		66B92C6E1D2BABCA008CEC03 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		66B92C721D2BABE7008CEC03 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		66B92C7C1D2BB3DA008CEC03 /* BlueVoiceInsertAsrKeyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueVoiceInsertAsrKeyViewController.h; sourceTree = "<group>"; };
+		66B92C7D1D2BB3DA008CEC03 /* BlueVoiceInsertAsrKeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueVoiceInsertAsrKeyViewController.m; sourceTree = "<group>"; };
+		66B92C811D2C02E2008CEC03 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		66BBAA561DEDCE3B009213BA /* UIViewController+WesuLicenseCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+WesuLicenseCheck.h"; sourceTree = "<group>"; };
+		66BBAA571DEDCE3B009213BA /* UIViewController+WesuLicenseCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+WesuLicenseCheck.m"; sourceTree = "<group>"; };
+		66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
+		66CAC1F21B4D6F6F001B0BA1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		66CB69011DB8CDD500F21ED6 /* W2STCloudProviderSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STCloudProviderSelectViewController.h; sourceTree = "<group>"; };
+		66CB69021DB8CDD500F21ED6 /* W2STCloudProviderSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STCloudProviderSelectViewController.m; sourceTree = "<group>"; };
+		66CB69051DB8CE0B00F21ED6 /* W2STCloudJsonUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STCloudJsonUtil.h; sourceTree = "<group>"; };
+		66CB69061DB8CE0B00F21ED6 /* W2STCloudJsonUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STCloudJsonUtil.m; sourceTree = "<group>"; };
+		66CB69071DB8CE0B00F21ED6 /* W2STIBMWatsonIOTFeatureListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STIBMWatsonIOTFeatureListener.h; path = ../../Util/W2STIBMWatsonIOTFeatureListener.h; sourceTree = "<group>"; };
+		66CB69081DB8CE0B00F21ED6 /* W2STIBMWatsonIOTFeatureListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STIBMWatsonIOTFeatureListener.m; path = ../../Util/W2STIBMWatsonIOTFeatureListener.m; sourceTree = "<group>"; };
+		66CB6F521B0A1E6900BDF9AC /* W2STSelectFeatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STSelectFeatureViewController.h; path = PlotViewController/W2STSelectFeatureViewController.h; sourceTree = "<group>"; };
+		66CB6F531B0A1E6900BDF9AC /* W2STSelectFeatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STSelectFeatureViewController.m; path = PlotViewController/W2STSelectFeatureViewController.m; sourceTree = "<group>"; };
+		66CB6F561B0A39C700BDF9AC /* W2STBoardBatteryStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STBoardBatteryStatusViewController.h; path = BoardStatusViewController/W2STBoardBatteryStatusViewController.h; sourceTree = "<group>"; };
+		66CB6F571B0A39C700BDF9AC /* W2STBoardBatteryStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STBoardBatteryStatusViewController.m; path = BoardStatusViewController/W2STBoardBatteryStatusViewController.m; sourceTree = "<group>"; };
+		66CB6F591B0A3B8000BDF9AC /* W2STBoardRssiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STBoardRssiViewController.h; path = BoardStatusViewController/W2STBoardRssiViewController.h; sourceTree = "<group>"; };
+		66CB6F5A1B0A3B8000BDF9AC /* W2STBoardRssiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STBoardRssiViewController.m; path = BoardStatusViewController/W2STBoardRssiViewController.m; sourceTree = "<group>"; };
+		66CCBB9D1B0201A600907D59 /* W2STDemoSubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STDemoSubViewController.h; path = EnviromentalViewController/W2STDemoSubViewController.h; sourceTree = "<group>"; };
+		66CCBBA51B0209E500907D59 /* W2STDemoSubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STDemoSubViewController.m; path = EnviromentalViewController/W2STDemoSubViewController.m; sourceTree = "<group>"; };
+		66CFCD501B9F264900B9A096 /* BlueSTSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlueSTSDK.xcodeproj; path = BlueSTSDK/BlueSTSDK/BlueSTSDK.xcodeproj; sourceTree = "<group>"; };
+		66D85E821E3A33F3003E4543 /* st_images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = st_images.xcassets; sourceTree = "<group>"; };
+		66D9FBB61DB50A8900D0EEF1 /* W2STCloudConnectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STCloudConnectionViewController.h; sourceTree = "<group>"; };
+		66D9FBB71DB50A8900D0EEF1 /* W2STCloudConnectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STCloudConnectionViewController.m; sourceTree = "<group>"; };
+		66E691581AFA393000BD44C1 /* W2STPressureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STPressureViewController.h; path = EnviromentalViewController/W2STPressureViewController.h; sourceTree = "<group>"; };
+		66E691591AFA393000BD44C1 /* W2STPressureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STPressureViewController.m; path = EnviromentalViewController/W2STPressureViewController.m; sourceTree = "<group>"; };
+		66E6915B1AFA3F7900BD44C1 /* W2STHumidityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STHumidityViewController.h; path = EnviromentalViewController/W2STHumidityViewController.h; sourceTree = "<group>"; };
+		66E6915C1AFA3F7900BD44C1 /* W2STHumidityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STHumidityViewController.m; path = EnviromentalViewController/W2STHumidityViewController.m; sourceTree = "<group>"; };
+		66E6915E1AFA5A8800BD44C1 /* W2STLuminosityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STLuminosityViewController.h; path = EnviromentalViewController/W2STLuminosityViewController.h; sourceTree = "<group>"; };
+		66E6915F1AFA5A8800BD44C1 /* W2STLuminosityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STLuminosityViewController.m; path = EnviromentalViewController/W2STLuminosityViewController.m; sourceTree = "<group>"; };
+		66E6D34F1DF1AC9000D1FBBA /* WeSUSettings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WeSUSettings.storyboard; sourceTree = "<group>"; };
+		66E6D3511DF1ADF800D1FBBA /* STWeSUSettingsAdvancedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWeSUSettingsAdvancedTableViewController.h; sourceTree = "<group>"; };
+		66E6D3521DF1ADF800D1FBBA /* STWeSUSettingsAdvancedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWeSUSettingsAdvancedTableViewController.m; sourceTree = "<group>"; };
+		66E6D3531DF1ADF800D1FBBA /* STWeSUSettingsDataReadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWeSUSettingsDataReadViewController.h; sourceTree = "<group>"; };
+		66E6D3541DF1ADF800D1FBBA /* STWeSUSettingsDataReadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWeSUSettingsDataReadViewController.m; sourceTree = "<group>"; };
+		66E6D3551DF1ADF800D1FBBA /* STWeSUSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWeSUSettingsTableViewController.h; sourceTree = "<group>"; };
+		66E6D3561DF1ADF800D1FBBA /* STWeSUSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWeSUSettingsTableViewController.m; sourceTree = "<group>"; };
+		66E6D35A1DF1AEB700D1FBBA /* STWeSUSettingsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWeSUSettingsItem.h; sourceTree = "<group>"; };
+		66E6D35B1DF1AEB700D1FBBA /* STWeSUSettingsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWeSUSettingsItem.m; sourceTree = "<group>"; };
+		66E6D35C1DF1AEB700D1FBBA /* STWeSUTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWeSUTools.h; sourceTree = "<group>"; };
+		66E6D35D1DF1AEB700D1FBBA /* STWeSUTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWeSUTools.m; sourceTree = "<group>"; };
+		66E6D3601DF1AF5300D1FBBA /* STWeSUNodeExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWeSUNodeExtension.h; sourceTree = "<group>"; };
+		66E6D3611DF1AF5300D1FBBA /* STWeSUNodeExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWeSUNodeExtension.m; sourceTree = "<group>"; };
+		66EDA7881AF9F4B30049C793 /* W2STEnviromentalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STEnviromentalViewController.h; sourceTree = "<group>"; };
+		66EDA7891AF9F4B30049C793 /* W2STEnviromentalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STEnviromentalViewController.m; sourceTree = "<group>"; };
+		66EDA7DC1AF9F94F0049C793 /* W2STTemperatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STTemperatureViewController.h; path = EnviromentalViewController/W2STTemperatureViewController.h; sourceTree = "<group>"; };
+		66EDA7DD1AF9F94F0049C793 /* W2STTemperatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STTemperatureViewController.m; path = EnviromentalViewController/W2STTemperatureViewController.m; sourceTree = "<group>"; };
+		66F1BB801BFC8FE800BCB0D7 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		66F5DD301DC9D5A000FD3FA2 /* W2STBMWatsonQuickStartFeatureListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STBMWatsonQuickStartFeatureListener.h; sourceTree = "<group>"; };
+		66F5DD311DC9D5A000FD3FA2 /* W2STBMWatsonQuickStartFeatureListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STBMWatsonQuickStartFeatureListener.m; sourceTree = "<group>"; };
+		66F7730B1D2E2DD400D37ED4 /* ST BlueMS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "ST BlueMS.entitlements"; sourceTree = "<group>"; };
+		66FC1DEC1C19D57A0015F7A2 /* W2STMemsGestureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STMemsGestureViewController.h; sourceTree = "<group>"; };
+		66FC1DED1C19D57A0015F7A2 /* W2STMemsGestureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STMemsGestureViewController.m; sourceTree = "<group>"; };
+		66FF61901C3E949B00642010 /* W2STPedometerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STPedometerViewController.h; sourceTree = "<group>"; };
+		66FF61911C3E949B00642010 /* W2STPedometerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STPedometerViewController.m; sourceTree = "<group>"; };
+		66FF61961C3E950300642010 /* W2STAccEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STAccEventViewController.m; sourceTree = "<group>"; };
+		70FF83E0AF6F99AEEBD55B3E /* Pods-W2STApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-W2STApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-W2STApp/Pods-W2STApp.debug.xcconfig"; sourceTree = "<group>"; };
+		847BB1FBC708E3F6745FFF9D /* Pods-W2STApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-W2STApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-W2STApp/Pods-W2STApp.release.xcconfig"; sourceTree = "<group>"; };
+		EA0DC47119EE71C7008AD681 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		EA68CFAA18D0CB75003B774E /* ST BlueMS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ST BlueMS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA68CFAD18D0CB75003B774E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		EA68CFAF18D0CB75003B774E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		EA68CFB118D0CB75003B774E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		EAB8D88A19D4164F007D3A37 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		EACE369619DDA7BF007E2A2D /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		EAD77DA71982A62500CCD0BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/BlueMS.storyboard; sourceTree = "<group>"; };
+		EAD77DA91982A62500CCD0BE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EAD77DAB1982A62500CCD0BE /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EAD77DD91982A62500CCD0BE /* BlueMSAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueMSAppDelegate.h; sourceTree = "<group>"; };
+		EAD77DDA1982A62500CCD0BE /* BlueMSAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueMSAppDelegate.m; sourceTree = "<group>"; };
+		EAD77E771982A62500CCD0BE /* W2STApp-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "W2STApp-Prefix.pch"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EA68CFA718D0CB75003B774E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6670ED0C1DB0D5F7003D6185 /* WebKit.framework in Frameworks */,
+				66A917811D7DA5130004A4DC /* MediaPlayer.framework in Frameworks */,
+				66B92C821D2C02E2008CEC03 /* AVFoundation.framework in Frameworks */,
+				66B92C731D2BABE7008CEC03 /* SystemConfiguration.framework in Frameworks */,
+				666C414A1D085B620021D9D3 /* CoreAudio.framework in Frameworks */,
+				666C41491D085AA10021D9D3 /* AudioToolbox.framework in Frameworks */,
+				66F1BB811BFC8FE800BCB0D7 /* Accelerate.framework in Frameworks */,
+				EA0DC47219EE71C7008AD681 /* QuartzCore.framework in Frameworks */,
+				6680E77A1E2F6F0F00C39C5E /* BlueSTSDK_Gui.framework in Frameworks */,
+				EAB8D88B19D4164F007D3A37 /* OpenGLES.framework in Frameworks */,
+				EA68CFB018D0CB75003B774E /* CoreGraphics.framework in Frameworks */,
+				EA68CFB218D0CB75003B774E /* UIKit.framework in Frameworks */,
+				EA68CFAE18D0CB75003B774E /* Foundation.framework in Frameworks */,
+				F4C1BE4C738C4F30F0B5FA88 /* libPods-W2STApp.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		259CF9C0FB5C6A17BD1F6D45 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				70FF83E0AF6F99AEEBD55B3E /* Pods-W2STApp.debug.xcconfig */,
+				847BB1FBC708E3F6745FFF9D /* Pods-W2STApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6637414A1DA7923500D9262F /* Cloud */ = {
+			isa = PBXGroup;
+			children = (
+				66CB69041DB8CE0B00F21ED6 /* Util */,
+				66B081721DB8C6F40041090A /* Provider */,
+				66CB69011DB8CDD500F21ED6 /* W2STCloudProviderSelectViewController.h */,
+				66CB69021DB8CDD500F21ED6 /* W2STCloudProviderSelectViewController.m */,
+				6637414B1DA7923500D9262F /* W2STCloudFeatureTableViewCell.h */,
+				6637414C1DA7923500D9262F /* W2STCloudFeatureTableViewCell.m */,
+				6670ED031DB0D294003D6185 /* W2STCloudDataPageViewController.h */,
+				6670ED041DB0D294003D6185 /* W2STCloudDataPageViewController.m */,
+				66D9FBB61DB50A8900D0EEF1 /* W2STCloudConnectionViewController.h */,
+				66D9FBB71DB50A8900D0EEF1 /* W2STCloudConnectionViewController.m */,
+				661090471DB5FD94009839D9 /* CloudDemo.storyboard */,
+			);
+			path = Cloud;
+			sourceTree = "<group>";
+		};
+		664015F31B38370F00E9E7B1 /* MemsSensorFusionController */ = {
+			isa = PBXGroup;
+			children = (
+				664015F41B38377C00E9E7B1 /* W2STSimpleDialogViewController.h */,
+				664015F51B38377C00E9E7B1 /* W2STSimpleDialogViewController.m */,
+			);
+			name = MemsSensorFusionController;
+			sourceTree = "<group>";
+		};
+		664E09501E49F9FD00C6EA07 /* st_image_Resources */ = {
+			isa = PBXGroup;
+			children = (
+				664E09511E49F9FD00C6EA07 /* Graphics */,
+				664E095A1E49F9FD00C6EA07 /* press_contact.jpg */,
+				664E095B1E49F9FD00C6EA07 /* text.html */,
+			);
+			path = st_image_Resources;
+			sourceTree = "<group>";
+		};
+		664E09511E49F9FD00C6EA07 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				664E09521E49F9FD00C6EA07 /* nucleo_reset_position.png */,
+				664E09531E49F9FD00C6EA07 /* SensorFusion */,
+				664E09581E49F9FD00C6EA07 /* steval_wesu1_reset_position.png */,
+				664E09591E49F9FD00C6EA07 /* tile_reset_position.png */,
+			);
+			path = Graphics;
+			sourceTree = "<group>";
+		};
+		664E09531E49F9FD00C6EA07 /* SensorFusion */ = {
+			isa = PBXGroup;
+			children = (
+				664E09541E49F9FD00C6EA07 /* calibrated.png */,
+				664E09551E49F9FD00C6EA07 /* ProximityOff.png */,
+				664E09561E49F9FD00C6EA07 /* ProximityOn.png */,
+				664E09571E49F9FD00C6EA07 /* uncalibrated.png */,
+			);
+			path = SensorFusion;
+			sourceTree = "<group>";
+		};
+		665CB5491C6DCDE3003118BC /* AccEventViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6637DADB1E30D6FB007C0B82 /* W2STAccEventDisplayDelegate.h */,
+				6637DADC1E30D6FB007C0B82 /* W2STAccEventViewController.h */,
+				66FF61961C3E950300642010 /* W2STAccEventViewController.m */,
+				665CB5441C6DCDD5003118BC /* W2STSelectAccEventViewController.h */,
+				665CB5451C6DCDD5003118BC /* W2STSelectAccEventViewController.m */,
+				66AE69F71E2CF4B7008CB6AA /* W2STAccEventSingleEventDisplayViewController.h */,
+				66AE69F81E2CF4B7008CB6AA /* W2STAccEventSingleEventDisplayViewController.m */,
+				66AE69FA1E2CF521008CB6AA /* W2STAccEventMultipleEventDisplayViewController.h */,
+				66AE69FB1E2CF521008CB6AA /* W2STAccEventMultipleEventDisplayViewController.m */,
+				66AE69FD1E2D246C008CB6AA /* W2STAccEventIconUtil.h */,
+				66AE69FE1E2D249A008CB6AA /* W2STAccEventIconUtil.m */,
+				6637DAD41E30D656007C0B82 /* AccEventDemo.storyboard */,
+			);
+			name = AccEventViewController;
+			sourceTree = "<group>";
+		};
+		667D273C1E09671800B6968E /* FeatureSettings */ = {
+			isa = PBXGroup;
+			children = (
+				667D273D1E09671800B6968E /* STWeSUFeatureSettingDialogViewController.h */,
+				667D273E1E09671800B6968E /* STWeSUFeatureSettingDialogViewController.m */,
+				667D273F1E09671800B6968E /* STWesUFeatureSettingViewController.h */,
+				667D27401E09671800B6968E /* STWesUFeatureSettingViewController.m */,
+			);
+			path = FeatureSettings;
+			sourceTree = "<group>";
+		};
+		6680E7741E2F6F0700C39C5E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6680E7791E2F6F0700C39C5E /* BlueSTSDK_Gui.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		66B081721DB8C6F40041090A /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				66B081731DB8C6F40041090A /* IBMWatson */,
+				66B081781DB8C6F40041090A /* IBMWatsonQuickstart */,
+				66B0817D1DB8C6F40041090A /* W2STCloudConfigViewController.h */,
+				66B0817E1DB8C6F40041090A /* W2STCloudConfigViewController.m */,
+				66B0817F1DB8C6F40041090A /* W2STMQTTConnectionFactoryProtocol.h */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		66B081731DB8C6F40041090A /* IBMWatson */ = {
+			isa = PBXGroup;
+			children = (
+				66CB69071DB8CE0B00F21ED6 /* W2STIBMWatsonIOTFeatureListener.h */,
+				66CB69081DB8CE0B00F21ED6 /* W2STIBMWatsonIOTFeatureListener.m */,
+				66B081741DB8C6F40041090A /* W2STIBMWatsonIOTConnectionFactory.h */,
+				66B081751DB8C6F40041090A /* W2STIBMWatsonIOTConnectionFactory.m */,
+				66B081761DB8C6F40041090A /* W2STCloudIBMWatsonIOTConfigViewController.h */,
+				66B081771DB8C6F40041090A /* W2STCloudIBMWatsonIOTConfigViewController.m */,
+			);
+			path = IBMWatson;
+			sourceTree = "<group>";
+		};
+		66B081781DB8C6F40041090A /* IBMWatsonQuickstart */ = {
+			isa = PBXGroup;
+			children = (
+				66B081791DB8C6F40041090A /* W2STIBMWatsonQuickStartConnectionFactory.h */,
+				66B0817A1DB8C6F40041090A /* W2STIBMWatsonQuickStartConnectionFactory.m */,
+				66B0817B1DB8C6F40041090A /* W2STCloudIBMWatsonQuickStartConfigViewController.h */,
+				66B0817C1DB8C6F40041090A /* W2STCloudIBMWatsonQuickStartConfigViewController.m */,
+				66F5DD301DC9D5A000FD3FA2 /* W2STBMWatsonQuickStartFeatureListener.h */,
+				66F5DD311DC9D5A000FD3FA2 /* W2STBMWatsonQuickStartFeatureListener.m */,
+			);
+			path = IBMWatsonQuickstart;
+			sourceTree = "<group>";
+		};
+		66B92C6B1D2BABCA008CEC03 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				66B92C6C1D2BABCA008CEC03 /* Reachability */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		66B92C6C1D2BABCA008CEC03 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				66B92C6D1D2BABCA008CEC03 /* Reachability.h */,
+				66B92C6E1D2BABCA008CEC03 /* Reachability.m */,
+				4EDA2F517475F30AF7B07075 /* LICENSE.txt */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		66B92C7B1D2BB3DA008CEC03 /* BlueVoice */ = {
+			isa = PBXGroup;
+			children = (
+				66B92C7C1D2BB3DA008CEC03 /* BlueVoiceInsertAsrKeyViewController.h */,
+				66B92C7D1D2BB3DA008CEC03 /* BlueVoiceInsertAsrKeyViewController.m */,
+				4EDA2C05E874041EC2F0FEA3 /* BlueVoiceGoogleAsrRequest.m */,
+				4EDA21898F7ECC5CE6AF7FD8 /* BlueVoiceGoogleAsrRequest.h */,
+			);
+			path = BlueVoice;
+			sourceTree = "<group>";
+		};
+		66BC48D51DA7E3E400C196B1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				66BC48DD1DA7E3E500C196B1 /* libCorePlot.a */,
+				66BC48DF1DA7E3E500C196B1 /* libMQTTClient.a */,
+				66BC48E11DA7E3E500C196B1 /* libPods-W2STApp.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		66CB69041DB8CE0B00F21ED6 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				66CB69051DB8CE0B00F21ED6 /* W2STCloudJsonUtil.h */,
+				66CB69061DB8CE0B00F21ED6 /* W2STCloudJsonUtil.m */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		66CB6F511B0A1E2E00BDF9AC /* PlotViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6637DAD61E30D6CB007C0B82 /* PlotDemo.storyboard */,
+				6637DAD71E30D6CB007C0B82 /* W2STPlotFeatureDemoViewController.m */,
+				6637DAD81E30D6CB007C0B82 /* W2STPlotFeatureDemoViewController.h */,
+				66CB6F521B0A1E6900BDF9AC /* W2STSelectFeatureViewController.h */,
+				66CB6F531B0A1E6900BDF9AC /* W2STSelectFeatureViewController.m */,
+			);
+			name = PlotViewController;
+			sourceTree = "<group>";
+		};
+		66CB6F551B0A368C00BDF9AC /* BoardStatusViewController */ = {
+			isa = PBXGroup;
+			children = (
+				66CB6F561B0A39C700BDF9AC /* W2STBoardBatteryStatusViewController.h */,
+				66CB6F571B0A39C700BDF9AC /* W2STBoardBatteryStatusViewController.m */,
+				66CB6F591B0A3B8000BDF9AC /* W2STBoardRssiViewController.h */,
+				66CB6F5A1B0A3B8000BDF9AC /* W2STBoardRssiViewController.m */,
+			);
+			name = BoardStatusViewController;
+			sourceTree = "<group>";
+		};
+		66CFCD511B9F264900B9A096 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				66CFCD561B9F264900B9A096 /* BlueSTSDK.framework */,
+				66CFCD581B9F264900B9A096 /* BlueSTSDKTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		66E6D34E1DF1AC9000D1FBBA /* WesuSettings */ = {
+			isa = PBXGroup;
+			children = (
+				667D273C1E09671800B6968E /* FeatureSettings */,
+				66E6D3601DF1AF5300D1FBBA /* STWeSUNodeExtension.h */,
+				66E6D3611DF1AF5300D1FBBA /* STWeSUNodeExtension.m */,
+				66E6D35A1DF1AEB700D1FBBA /* STWeSUSettingsItem.h */,
+				66E6D35B1DF1AEB700D1FBBA /* STWeSUSettingsItem.m */,
+				66E6D35C1DF1AEB700D1FBBA /* STWeSUTools.h */,
+				66E6D35D1DF1AEB700D1FBBA /* STWeSUTools.m */,
+				66E6D3511DF1ADF800D1FBBA /* STWeSUSettingsAdvancedTableViewController.h */,
+				66E6D3521DF1ADF800D1FBBA /* STWeSUSettingsAdvancedTableViewController.m */,
+				66E6D3531DF1ADF800D1FBBA /* STWeSUSettingsDataReadViewController.h */,
+				66E6D3541DF1ADF800D1FBBA /* STWeSUSettingsDataReadViewController.m */,
+				66E6D3551DF1ADF800D1FBBA /* STWeSUSettingsTableViewController.h */,
+				66E6D3561DF1ADF800D1FBBA /* STWeSUSettingsTableViewController.m */,
+				66E6D34F1DF1AC9000D1FBBA /* WeSUSettings.storyboard */,
+			);
+			path = WesuSettings;
+			sourceTree = "<group>";
+		};
+		66EDA7DB1AF9F9250049C793 /* EnviromentalViewController */ = {
+			isa = PBXGroup;
+			children = (
+				66EDA7DC1AF9F94F0049C793 /* W2STTemperatureViewController.h */,
+				66EDA7DD1AF9F94F0049C793 /* W2STTemperatureViewController.m */,
+				66E691581AFA393000BD44C1 /* W2STPressureViewController.h */,
+				66E691591AFA393000BD44C1 /* W2STPressureViewController.m */,
+				66E6915B1AFA3F7900BD44C1 /* W2STHumidityViewController.h */,
+				66E6915C1AFA3F7900BD44C1 /* W2STHumidityViewController.m */,
+				66E6915E1AFA5A8800BD44C1 /* W2STLuminosityViewController.h */,
+				66E6915F1AFA5A8800BD44C1 /* W2STLuminosityViewController.m */,
+			);
+			name = EnviromentalViewController;
+			sourceTree = "<group>";
+		};
+		EA68CFA118D0CB75003B774E = {
+			isa = PBXGroup;
+			children = (
+				66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */,
+				6680E7731E2F6F0700C39C5E /* BlueSTSDK_Gui.xcodeproj */,
+				66CFCD501B9F264900B9A096 /* BlueSTSDK.xcodeproj */,
+				EAD77DA51982A62500CCD0BE /* W2STApp */,
+				EA68CFAC18D0CB75003B774E /* Frameworks */,
+				EA68CFAB18D0CB75003B774E /* Products */,
+				259CF9C0FB5C6A17BD1F6D45 /* Pods */,
+			);
+			sourceTree = "<group>";
+			usesTabs = 0;
+		};
+		EA68CFAB18D0CB75003B774E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EA68CFAA18D0CB75003B774E /* ST BlueMS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EA68CFAC18D0CB75003B774E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6670ED0B1DB0D5F7003D6185 /* WebKit.framework */,
+				66A917801D7DA5130004A4DC /* MediaPlayer.framework */,
+				66B92C811D2C02E2008CEC03 /* AVFoundation.framework */,
+				66B92C721D2BABE7008CEC03 /* SystemConfiguration.framework */,
+				666C41481D085AA10021D9D3 /* AudioToolbox.framework */,
+				666C41461D085A2D0021D9D3 /* CoreAudio.framework */,
+				66F1BB801BFC8FE800BCB0D7 /* Accelerate.framework */,
+				6685AD301BF1F75A00553EF8 /* CorePlot.framework */,
+				EA0DC47119EE71C7008AD681 /* QuartzCore.framework */,
+				EAB8D88A19D4164F007D3A37 /* OpenGLES.framework */,
+				EA68CFAD18D0CB75003B774E /* Foundation.framework */,
+				EA68CFAF18D0CB75003B774E /* CoreGraphics.framework */,
+				EA68CFB118D0CB75003B774E /* UIKit.framework */,
+				3D54F3260077799066EAB08F /* libPods-W2STApp.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EAD77DA51982A62500CCD0BE /* W2STApp */ = {
+			isa = PBXGroup;
+			children = (
+				664E098D1E4A028200C6EA07 /* st_images_LanchScreen.xcassets */,
+				66F7730B1D2E2DD400D37ED4 /* ST BlueMS.entitlements */,
+				EAD77DA61982A62500CCD0BE /* BlueMS.storyboard */,
+				EAD77DA81982A62500CCD0BE /* InfoPlist.strings */,
+				66D85E821E3A33F3003E4543 /* st_images.xcassets */,
+				66CAC1F21B4D6F6F001B0BA1 /* Images.xcassets */,
+				EACE369619DDA7BF007E2A2D /* art.scnassets */,
+				EAD77DAB1982A62500CCD0BE /* main.m */,
+				EAD77DAC1982A62500CCD0BE /* MainApp */,
+				EAD77E771982A62500CCD0BE /* W2STApp-Prefix.pch */,
+				664E09501E49F9FD00C6EA07 /* st_image_Resources */,
+				66B92C6B1D2BABCA008CEC03 /* ThirdParty */,
+			);
+			path = W2STApp;
+			sourceTree = "<group>";
+		};
+		EAD77DAC1982A62500CCD0BE /* MainApp */ = {
+			isa = PBXGroup;
+			children = (
+				EAD77DAD1982A62500CCD0BE /* Demo */,
+				6649110D1CF82D69009623B3 /* Main.storyboard */,
+				664911101CF82E46009623B3 /* BlueMSMainViewController.h */,
+				664911111CF82E46009623B3 /* BlueMSMainViewController.m */,
+				EAD77DD91982A62500CCD0BE /* BlueMSAppDelegate.h */,
+				EAD77DDA1982A62500CCD0BE /* BlueMSAppDelegate.m */,
+				6632CC181AD6602D0011F81A /* BlueMSDemosViewController.h */,
+				6632CC191AD6602D0011F81A /* BlueMSDemosViewController.m */,
+				666847B41DE84854001064A3 /* BlueMSDemosViewController+WesuFwVersion.h */,
+				666847B51DE84854001064A3 /* BlueMSDemosViewController+WesuFwVersion.m */,
+			);
+			path = MainApp;
+			sourceTree = "<group>";
+		};
+		EAD77DAD1982A62500CCD0BE /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				66E6D34E1DF1AC9000D1FBBA /* WesuSettings */,
+				6637414A1DA7923500D9262F /* Cloud */,
+				66B92C7B1D2BB3DA008CEC03 /* BlueVoice */,
+				665CB5491C6DCDE3003118BC /* AccEventViewController */,
+				664015F31B38370F00E9E7B1 /* MemsSensorFusionController */,
+				66CB6F551B0A368C00BDF9AC /* BoardStatusViewController */,
+				66CB6F511B0A1E2E00BDF9AC /* PlotViewController */,
+				66EDA7DB1AF9F9250049C793 /* EnviromentalViewController */,
+				6632CC1B1AD664230011F81A /* W2STFeatureDebugTableViewController.h */,
+				6632CC1C1AD664230011F81A /* W2STFeatureDebugTableViewController.m */,
+				6649E0371AEE1CF900002FF7 /* W2STFeatureSensorFusionDemoViewController.h */,
+				6649E0381AEE1CF900002FF7 /* W2STFeatureSensorFusionDemoViewController.m */,
+				66EDA7881AF9F4B30049C793 /* W2STEnviromentalViewController.h */,
+				66EDA7891AF9F4B30049C793 /* W2STEnviromentalViewController.m */,
+				667BAAB31B8CAEAD00CADD2E /* W2STActivityViewController.h */,
+				667BAAB41B8CAEAD00CADD2E /* W2STActivityViewController.m */,
+				6602184C1B903EBF006246E9 /* W2STCarryPositionViewController.m */,
+				6602184D1B903EBF006246E9 /* W2STCarryPositionViewController.h */,
+				6614D37A1B0249A60053E5B1 /* W2STBoardStatusViewController.h */,
+				6614D37B1B0249A60053E5B1 /* W2STBoardStatusViewController.m */,
+				668212911B022788004D5A9E /* UIViewController+W2STDemoTab.h */,
+				668212921B022788004D5A9E /* UIViewController+W2STDemoTab.m */,
+				66BBAA561DEDCE3B009213BA /* UIViewController+WesuLicenseCheck.h */,
+				66BBAA571DEDCE3B009213BA /* UIViewController+WesuLicenseCheck.m */,
+				66CCBB9D1B0201A600907D59 /* W2STDemoSubViewController.h */,
+				66CCBBA51B0209E500907D59 /* W2STDemoSubViewController.m */,
+				66A98DF41C0D9E7B00904CB3 /* W2STProximityGestureViewController.h */,
+				66A98DF51C0D9E7B00904CB3 /* W2STProximityGestureViewController.m */,
+				66FC1DEC1C19D57A0015F7A2 /* W2STMemsGestureViewController.h */,
+				66FC1DED1C19D57A0015F7A2 /* W2STMemsGestureViewController.m */,
+				66FF61901C3E949B00642010 /* W2STPedometerViewController.h */,
+				66FF61911C3E949B00642010 /* W2STPedometerViewController.m */,
+				6693B8EA1C898B9200F24E33 /* W2STSwitchViewController.h */,
+				6693B8EB1C898B9200F24E33 /* W2STSwitchViewController.m */,
+				666C41411D0817780021D9D3 /* W2STBlueVoiceViewController.h */,
+				666C41421D0817780021D9D3 /* W2STBlueVoiceViewController.m */,
+				667817EC1D40B61500AAC0D7 /* W2STHeartRateViewController.h */,
+				667817ED1D40B61500AAC0D7 /* W2STHeartRateViewController.m */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EA68CFA918D0CB75003B774E /* W2STApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA68CFDC18D0CB75003B774E /* Build configuration list for PBXNativeTarget "W2STApp" */;
+			buildPhases = (
+				FE9F6BA25815755057B2B519 /* [CP] Check Pods Manifest.lock */,
+				EA68CFA618D0CB75003B774E /* Sources */,
+				EA68CFA718D0CB75003B774E /* Frameworks */,
+				EA68CFA818D0CB75003B774E /* Resources */,
+				669A37071B0B2DF0003FD4F7 /* Embed Frameworks */,
+				660311CA1BF3713700BA3198 /* Run Script */,
+				1FC7E21963687662778CABD6 /* [CP] Embed Pods Frameworks */,
+				C6D71AF95984693D50A2F260 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6680E77D1E2F6F0F00C39C5E /* PBXTargetDependency */,
+			);
+			name = W2STApp;
+			productName = BLETest01;
+			productReference = EA68CFAA18D0CB75003B774E /* ST BlueMS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EA68CFA218D0CB75003B774E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = W2ST;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = STMicroelectronics;
+				TargetAttributes = {
+					EA68CFA918D0CB75003B774E = {
+						DevelopmentTeam = 9L4QA9SNQK;
+						DevelopmentTeamName = "STMICROELECTRONICS, INC";
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = EA68CFA518D0CB75003B774E /* Build configuration list for PBXProject "W2STApp" */;
+			compatibilityVersion = "Xcode 6.3";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EA68CFA118D0CB75003B774E;
+			productRefGroup = EA68CFAB18D0CB75003B774E /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 66CFCD511B9F264900B9A096 /* Products */;
+					ProjectRef = 66CFCD501B9F264900B9A096 /* BlueSTSDK.xcodeproj */;
+				},
+				{
+					ProductGroup = 6680E7741E2F6F0700C39C5E /* Products */;
+					ProjectRef = 6680E7731E2F6F0700C39C5E /* BlueSTSDK_Gui.xcodeproj */;
+				},
+				{
+					ProductGroup = 66BC48D51DA7E3E400C196B1 /* Products */;
+					ProjectRef = 66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				EA68CFA918D0CB75003B774E /* W2STApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		6680E7791E2F6F0700C39C5E /* BlueSTSDK_Gui.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = BlueSTSDK_Gui.framework;
+			remoteRef = 6680E7781E2F6F0700C39C5E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		66BC48DD1DA7E3E500C196B1 /* libCorePlot.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCorePlot.a;
+			remoteRef = 66BC48DC1DA7E3E500C196B1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		66BC48DF1DA7E3E500C196B1 /* libMQTTClient.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMQTTClient.a;
+			remoteRef = 66BC48DE1DA7E3E500C196B1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		66BC48E11DA7E3E500C196B1 /* libPods-W2STApp.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libPods-W2STApp.a";
+			remoteRef = 66BC48E01DA7E3E500C196B1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		66CFCD561B9F264900B9A096 /* BlueSTSDK.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = BlueSTSDK.framework;
+			remoteRef = 66CFCD551B9F264900B9A096 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		66CFCD581B9F264900B9A096 /* BlueSTSDKTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = BlueSTSDKTests.xctest;
+			remoteRef = 66CFCD571B9F264900B9A096 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EA68CFA818D0CB75003B774E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6637DAD51E30D656007C0B82 /* AccEventDemo.storyboard in Resources */,
+				EA8344DC19D956AE0027E447 /* BlueMS.storyboard in Resources */,
+				661090481DB5FD94009839D9 /* CloudDemo.storyboard in Resources */,
+				66E6D3501DF1AC9000D1FBBA /* WeSUSettings.storyboard in Resources */,
+				664E09611E49F9FD00C6EA07 /* steval_wesu1_reset_position.png in Resources */,
+				6649110E1CF82D69009623B3 /* Main.storyboard in Resources */,
+				664E095F1E49F9FD00C6EA07 /* ProximityOn.png in Resources */,
+				EACE369719DDA7BF007E2A2D /* art.scnassets in Resources */,
+				664E095D1E49F9FD00C6EA07 /* calibrated.png in Resources */,
+				6637DAD91E30D6CB007C0B82 /* PlotDemo.storyboard in Resources */,
+				664E09621E49F9FD00C6EA07 /* tile_reset_position.png in Resources */,
+				EAD77E8A1982A62500CCD0BE /* InfoPlist.strings in Resources */,
+				66CAC1F31B4D6F6F001B0BA1 /* Images.xcassets in Resources */,
+				664E09631E49F9FD00C6EA07 /* press_contact.jpg in Resources */,
+				664E09601E49F9FD00C6EA07 /* uncalibrated.png in Resources */,
+				664E09641E49F9FD00C6EA07 /* text.html in Resources */,
+				664E095E1E49F9FD00C6EA07 /* ProximityOff.png in Resources */,
+				4EDA2ACD09B8CC11808D5CE1 /* LICENSE.txt in Resources */,
+				664E095C1E49F9FD00C6EA07 /* nucleo_reset_position.png in Resources */,
+				66D85E831E3A33F3003E4543 /* st_images.xcassets in Resources */,
+				664E098E1E4A028200C6EA07 /* st_images_LanchScreen.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1FC7E21963687662778CABD6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-W2STApp/Pods-W2STApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		660311CA1BF3713700BA3198 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+		C6D71AF95984693D50A2F260 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-W2STApp/Pods-W2STApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE9F6BA25815755057B2B519 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EA68CFA618D0CB75003B774E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66D9FBB81DB50A8900D0EEF1 /* W2STCloudConnectionViewController.m in Sources */,
+				6670ED051DB0D294003D6185 /* W2STCloudDataPageViewController.m in Sources */,
+				66B081801DB8C6F40041090A /* W2STIBMWatsonIOTConnectionFactory.m in Sources */,
+				664911121CF82E46009623B3 /* BlueMSMainViewController.m in Sources */,
+				66CB690A1DB8CE0B00F21ED6 /* W2STIBMWatsonIOTFeatureListener.m in Sources */,
+				66CB6F541B0A1E6900BDF9AC /* W2STSelectFeatureViewController.m in Sources */,
+				66AE69FF1E2D249A008CB6AA /* W2STAccEventIconUtil.m in Sources */,
+				66CB69031DB8CDD500F21ED6 /* W2STCloudProviderSelectViewController.m in Sources */,
+				66E6D35E1DF1AEB700D1FBBA /* STWeSUSettingsItem.m in Sources */,
+				EAD77E8C1982A62500CCD0BE /* main.m in Sources */,
+				66BBAA581DEDCE3B009213BA /* UIViewController+WesuLicenseCheck.m in Sources */,
+				6632CC1D1AD664230011F81A /* W2STFeatureDebugTableViewController.m in Sources */,
+				66B081821DB8C6F40041090A /* W2STIBMWatsonQuickStartConnectionFactory.m in Sources */,
+				66B081841DB8C6F40041090A /* W2STCloudConfigViewController.m in Sources */,
+				66B92C6F1D2BABCA008CEC03 /* Reachability.m in Sources */,
+				6637DADA1E30D6CB007C0B82 /* W2STPlotFeatureDemoViewController.m in Sources */,
+				66E6D3571DF1ADF800D1FBBA /* STWeSUSettingsAdvancedTableViewController.m in Sources */,
+				66AE69FC1E2CF521008CB6AA /* W2STAccEventMultipleEventDisplayViewController.m in Sources */,
+				66FC1DEE1C19D57A0015F7A2 /* W2STMemsGestureViewController.m in Sources */,
+				66CCBBA61B0209E500907D59 /* W2STDemoSubViewController.m in Sources */,
+				666C41431D0817780021D9D3 /* W2STBlueVoiceViewController.m in Sources */,
+				66E6915D1AFA3F7900BD44C1 /* W2STHumidityViewController.m in Sources */,
+				66E691601AFA5A8800BD44C1 /* W2STLuminosityViewController.m in Sources */,
+				6649E0391AEE1CF900002FF7 /* W2STFeatureSensorFusionDemoViewController.m in Sources */,
+				665CB5461C6DCDD5003118BC /* W2STSelectAccEventViewController.m in Sources */,
+				66FF61971C3E950300642010 /* W2STAccEventViewController.m in Sources */,
+				66F5DD321DC9D5A000FD3FA2 /* W2STBMWatsonQuickStartFeatureListener.m in Sources */,
+				66CB6F5B1B0A3B8000BDF9AC /* W2STBoardRssiViewController.m in Sources */,
+				66B081831DB8C6F40041090A /* W2STCloudIBMWatsonQuickStartConfigViewController.m in Sources */,
+				66E6D35F1DF1AEB700D1FBBA /* STWeSUTools.m in Sources */,
+				66E6915A1AFA393000BD44C1 /* W2STPressureViewController.m in Sources */,
+				6602184E1B903EBF006246E9 /* W2STCarryPositionViewController.m in Sources */,
+				66E6D3621DF1AF5300D1FBBA /* STWeSUNodeExtension.m in Sources */,
+				667D27421E09671800B6968E /* STWesUFeatureSettingViewController.m in Sources */,
+				66B081811DB8C6F40041090A /* W2STCloudIBMWatsonIOTConfigViewController.m in Sources */,
+				6614D37C1B0249A60053E5B1 /* W2STBoardStatusViewController.m in Sources */,
+				667817EE1D40B61500AAC0D7 /* W2STHeartRateViewController.m in Sources */,
+				66A98DF61C0D9E7B00904CB3 /* W2STProximityGestureViewController.m in Sources */,
+				66E6D3581DF1ADF800D1FBBA /* STWeSUSettingsDataReadViewController.m in Sources */,
+				66CB69091DB8CE0B00F21ED6 /* W2STCloudJsonUtil.m in Sources */,
+				66EDA7DE1AF9F94F0049C793 /* W2STTemperatureViewController.m in Sources */,
+				6693B8EC1C898B9200F24E33 /* W2STSwitchViewController.m in Sources */,
+				66B92C7E1D2BB3DA008CEC03 /* BlueVoiceInsertAsrKeyViewController.m in Sources */,
+				66EDA78A1AF9F4B30049C793 /* W2STEnviromentalViewController.m in Sources */,
+				66FF61921C3E949B00642010 /* W2STPedometerViewController.m in Sources */,
+				66CB6F581B0A39C700BDF9AC /* W2STBoardBatteryStatusViewController.m in Sources */,
+				664015F61B38377C00E9E7B1 /* W2STSimpleDialogViewController.m in Sources */,
+				66AE69F91E2CF4B7008CB6AA /* W2STAccEventSingleEventDisplayViewController.m in Sources */,
+				EAD77EA71982A62500CCD0BE /* BlueMSAppDelegate.m in Sources */,
+				668212931B022788004D5A9E /* UIViewController+W2STDemoTab.m in Sources */,
+				667BAAB51B8CAEAD00CADD2E /* W2STActivityViewController.m in Sources */,
+				667D27411E09671800B6968E /* STWeSUFeatureSettingDialogViewController.m in Sources */,
+				6632CC1A1AD6602D0011F81A /* BlueMSDemosViewController.m in Sources */,
+				6637414D1DA7923500D9262F /* W2STCloudFeatureTableViewCell.m in Sources */,
+				66E6D3591DF1ADF800D1FBBA /* STWeSUSettingsTableViewController.m in Sources */,
+				666847B61DE84854001064A3 /* BlueMSDemosViewController+WesuFwVersion.m in Sources */,
+				4EDA2DBC1607AEC7917D2383 /* BlueVoiceGoogleAsrRequest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6680E77D1E2F6F0F00C39C5E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BlueSTSDK_Gui;
+			targetProxy = 6680E77C1E2F6F0F00C39C5E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EAD77DA61982A62500CCD0BE /* BlueMS.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EAD77DA71982A62500CCD0BE /* Base */,
+			);
+			name = BlueMS.storyboard;
+			sourceTree = "<group>";
+		};
+		EAD77DA81982A62500CCD0BE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EAD77DA91982A62500CCD0BE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EA68CFDA18D0CB75003B774E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7s armv7 armv64";
+			};
+			name = Debug;
+		};
+		EA68CFDB18D0CB75003B774E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = YES;
+				ENABLE_NS_ASSERTIONS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7s armv7 armv64";
+			};
+			name = Release;
+		};
+		EA68CFDD18D0CB75003B774E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70FF83E0AF6F99AEEBD55B3E /* Pods-W2STApp.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = "W2STApp/ST BlueMS.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 9L4QA9SNQK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/W2STApp",
+				);
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_VERSION = "";
+				INFOPLIST_FILE = "$(SRCROOT)/W2STApp/W2STApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.st.clab.CloudTest;
+				PRODUCT_NAME = "ST BlueMS";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "W2STApp/MainApp/Demo/Cloud/Gui/W2STApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 armv7 armv7s";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		EA68CFDE18D0CB75003B774E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 847BB1FBC708E3F6745FFF9D /* Pods-W2STApp.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = "W2STApp/ST BlueMS.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 9L4QA9SNQK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/W2STApp",
+				);
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_VERSION = "";
+				INFOPLIST_FILE = "$(SRCROOT)/W2STApp/W2STApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.st.clab.CloudTest;
+				PRODUCT_NAME = "ST BlueMS";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "W2STApp/MainApp/Demo/Cloud/Gui/W2STApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 armv7 armv7s";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EA68CFA518D0CB75003B774E /* Build configuration list for PBXProject "W2STApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA68CFDA18D0CB75003B774E /* Debug */,
+				EA68CFDB18D0CB75003B774E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA68CFDC18D0CB75003B774E /* Build configuration list for PBXNativeTarget "W2STApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA68CFDD18D0CB75003B774E /* Debug */,
+				EA68CFDE18D0CB75003B774E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EA68CFA218D0CB75003B774E /* Project object */;
+}

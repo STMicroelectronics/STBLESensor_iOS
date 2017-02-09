@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Z8B-7N-umq">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Plot Feature-->
+        <scene sceneID="GYS-vh-E9Y">
+            <objects>
+                <viewController id="Z8B-7N-umq" userLabel="Plot Feature" customClass="W2STPlotFeatureDemoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iNd-Ah-nXT"/>
+                        <viewControllerLayoutGuide type="bottom" id="axd-27-Fsv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oQW-Qc-02i">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uNz-fk-HcR">
+                                <rect key="frame" x="138" y="28" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="hpI-Sl-Zgj"/>
+                                </constraints>
+                                <state key="normal" title="Select Feature"/>
+                                <connections>
+                                    <action selector="showSelectFeature:" destination="Z8B-7N-umq" eventType="touchUpInside" id="Ma0-fn-ZVa"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nxz-iq-gng" userLabel="plot" customClass="CPTGraphHostingView">
+                                <rect key="frame" x="32" y="58" width="311" height="609"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ew6-We-hqm">
+                                <rect key="frame" x="16" y="667" width="343" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ew6-We-hqm" secondAttribute="trailing" id="0BI-Hn-CRy"/>
+                            <constraint firstItem="Ew6-We-hqm" firstAttribute="top" secondItem="Nxz-iq-gng" secondAttribute="bottom" id="69k-cN-sON"/>
+                            <constraint firstItem="Nxz-iq-gng" firstAttribute="top" secondItem="uNz-fk-HcR" secondAttribute="bottom" id="9Nq-iA-nER"/>
+                            <constraint firstItem="Ew6-We-hqm" firstAttribute="leading" secondItem="oQW-Qc-02i" secondAttribute="leadingMargin" id="CW6-DS-5ti"/>
+                            <constraint firstItem="Nxz-iq-gng" firstAttribute="leading" secondItem="oQW-Qc-02i" secondAttribute="leadingMargin" constant="16" id="Kp3-ny-2fz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uNz-fk-HcR" secondAttribute="trailing" id="SNr-EY-ymM"/>
+                            <constraint firstItem="uNz-fk-HcR" firstAttribute="top" secondItem="iNd-Ah-nXT" secondAttribute="bottom" constant="8" id="YsL-XD-kPx"/>
+                            <constraint firstItem="axd-27-Fsv" firstAttribute="top" secondItem="Ew6-We-hqm" secondAttribute="bottom" id="c9x-dt-mVA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Nxz-iq-gng" secondAttribute="trailing" constant="16" id="djb-iU-8Qm"/>
+                            <constraint firstAttribute="centerX" secondItem="uNz-fk-HcR" secondAttribute="centerX" id="fV8-sY-3hH"/>
+                            <constraint firstItem="uNz-fk-HcR" firstAttribute="leading" secondItem="oQW-Qc-02i" secondAttribute="leadingMargin" id="yfd-pL-3XI"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="SNr-EY-ymM"/>
+                                <exclude reference="yfd-pL-3XI"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Plot Feature" image="chartIcon.png" selectedImage="chartIcon.png" id="VnW-MK-67B">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="chartIcon.png"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                    <navigationItem key="navigationItem" title="Plot Feature" id="Pcx-Kk-a1U"/>
+                    <connections>
+                        <outlet property="featureDataLabel" destination="Ew6-We-hqm" id="N2Z-WH-d1P"/>
+                        <outlet property="plotView" destination="Nxz-iq-gng" id="0Kx-T6-kuf"/>
+                        <outlet property="selectFeatureButton" destination="uNz-fk-HcR" id="uBq-Qm-bJa"/>
+                        <segue destination="RFz-3e-Kt5" kind="popoverPresentation" identifier="SelectFeaturePlotPopover" popoverAnchorView="uNz-fk-HcR" id="Bl7-ti-G7c">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="88q-eE-FzP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6419" y="-2353"/>
+        </scene>
+        <!--Select Feature View Controller-->
+        <scene sceneID="Iwp-Ds-air">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="pageSheet" id="RFz-3e-Kt5" customClass="W2STSelectFeatureViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VQM-F6-Brc"/>
+                        <viewControllerLayoutGuide type="bottom" id="yKm-Nd-2Lk"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="PCT-uR-MmL">
+                        <rect key="frame" x="0.0" y="0.0" width="360" height="360"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5c-tr-AbL">
+                                <rect key="frame" x="155.5" y="278" width="49" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Select">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="plotAction:" destination="RFz-3e-Kt5" eventType="touchUpInside" id="NVv-fJ-sFT"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select the feature to plot" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ysX-dT-PGx">
+                                <rect key="frame" x="70" y="16" width="220" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Plq-hw-24W">
+                                <rect key="frame" x="16" y="72" width="328" height="216"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnF-ZQ-40Y">
+                                <rect key="frame" x="152.5" y="319" width="55" height="33"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cencelAction:" destination="RFz-3e-Kt5" eventType="touchUpInside" id="JPz-jR-YaJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="f5c-tr-AbL" firstAttribute="centerX" secondItem="PCT-uR-MmL" secondAttribute="centerX" id="1QZ-AV-im9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Plq-hw-24W" secondAttribute="trailing" id="MUp-1U-GzG"/>
+                            <constraint firstItem="ysX-dT-PGx" firstAttribute="trailing" secondItem="hnF-ZQ-40Y" secondAttribute="trailing" id="RxG-SN-XUp"/>
+                            <constraint firstItem="yKm-Nd-2Lk" firstAttribute="top" secondItem="hnF-ZQ-40Y" secondAttribute="bottom" constant="8" id="ddb-bU-zwx"/>
+                            <constraint firstItem="Plq-hw-24W" firstAttribute="leading" secondItem="PCT-uR-MmL" secondAttribute="leadingMargin" id="ix1-1O-vh8"/>
+                            <constraint firstItem="hnF-ZQ-40Y" firstAttribute="centerX" secondItem="PCT-uR-MmL" secondAttribute="centerX" id="jP9-wr-eHj"/>
+                            <constraint firstItem="hnF-ZQ-40Y" firstAttribute="top" secondItem="f5c-tr-AbL" secondAttribute="bottom" constant="8" id="k2n-v1-otq"/>
+                            <constraint firstAttribute="centerX" secondItem="ysX-dT-PGx" secondAttribute="centerX" id="m8a-yN-mKn"/>
+                            <constraint firstItem="ysX-dT-PGx" firstAttribute="top" secondItem="VQM-F6-Brc" secondAttribute="bottom" constant="16" id="nP8-2R-W1V"/>
+                            <constraint firstItem="Plq-hw-24W" firstAttribute="centerY" secondItem="PCT-uR-MmL" secondAttribute="centerY" id="zgY-Hq-ZBB"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="RxG-SN-XUp"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <toolbarItems/>
+                    <value key="contentSizeForViewInPopover" type="size" width="360" height="360"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="360" height="360"/>
+                    <connections>
+                        <outlet property="dataSelector" destination="Plq-hw-24W" id="6MG-Mw-feO"/>
+                        <outlet property="titleLabel" destination="ysX-dT-PGx" id="neG-9c-oCe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7aY-0s-qda" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7198" y="-2354"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chartIcon.png" width="16" height="16"/>
+    </resources>
+</document>

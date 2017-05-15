@@ -36,9 +36,9 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "UIViewController+W2STDemoTab.h"
+#import "BlueMSDemoTabViewController.h"
 
-@interface W2STAccEventViewController : UIViewController
+@interface W2STAccEventViewController : BlueMSDemoTabViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *selectEventButton;
 

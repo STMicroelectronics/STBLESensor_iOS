@@ -45,7 +45,7 @@
 #define DISCONNECT_BUTTON_LABEL @"Disconnect"
 #define CONNECT_BUTTON_LABEL @"Connect"
 #define MISSING_PARA_DIALOG_TITLE @"Error"
-#define MISSING_PARA_DIALOG_MSG @"missing data"
+#define MISSING_PARA_DIALOG_MSG @"Missing data"
 
 @interface W2STCloudConnectionViewController ()
     <UITableViewDataSource,MQTTSessionDelegate,W2STCloudFeatureTableViewCellDelegate>
@@ -93,13 +93,14 @@
 -(void)extractEnabledFeature{
     mEnabledFeature = [NSMutableArray array];
     for(BlueSTSDKFeature * f in [self.node getFeatures]){
-        if (f.enabled){
+        if (f.enabled && [mConnectionFactory isSupportedFeature:f]){
             [mEnabledFeature addObject:f];
         }
     }
 }
 
 -(void)viewDidLoad{
+    [super viewDidLoad];
     _mListFeature.dataSource=self;
 }
 
@@ -113,6 +114,7 @@
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     if(mSession!=nil && !mKeepConnectionOpen)
         if(mSession.status==MQTTSessionStatusConnected)
             [mSession disconnect];
@@ -186,7 +188,7 @@
         [_mConnectButton setTitle:DISCONNECT_BUTTON_LABEL forState:UIControlStateNormal];
         [_mConnectButton setEnabled:true];
         [_mListFeature reloadData];
-        _mShowDataButton.hidden=false;
+        _mShowDataButton.hidden=[mConnectionFactory getDataUrl]==nil;
         _mListFeature.hidden=false;
     });
 }

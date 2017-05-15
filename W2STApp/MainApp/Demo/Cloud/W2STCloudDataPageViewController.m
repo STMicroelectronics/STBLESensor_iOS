@@ -57,6 +57,7 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     NSURLRequest *nsrequest=[NSURLRequest requestWithURL:_cloudDataPageUrl];
     [mWebPage loadRequest:nsrequest];
 }

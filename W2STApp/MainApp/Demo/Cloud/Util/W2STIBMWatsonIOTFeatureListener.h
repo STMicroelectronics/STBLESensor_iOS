@@ -36,8 +36,8 @@
  */
 
 #import <Foundation/Foundation.h>
-#include <BlueSTSDK/BlueSTSDKFeature.h>
-#include <MQTTSession.h>
+#import <BlueSTSDK/BlueSTSDKFeature.h>
+#import <MQTTSession.h>
 
 /**
  * Class that send the data from the feature to the IBM Watson IOT Cloud

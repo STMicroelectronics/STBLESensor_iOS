@@ -36,7 +36,7 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "UIViewController+W2STDemoTab.h"
+#import "BlueMSDemoTabViewController.h"
 
 #import <BlueSTSDK/BlueSTSDKFeature.h>
 #import <BlueSTSDK/BlueSTSDKFeatureAutoConfigurable.h>

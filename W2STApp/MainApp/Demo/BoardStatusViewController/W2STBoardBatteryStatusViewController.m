@@ -39,21 +39,47 @@
 
 #import "W2STBoardBatteryStatusViewController.h"
 
-@interface W2STBoardBatteryStatusViewController () <BlueSTSDKFeatureDelegate>
-
+@interface W2STBoardBatteryStatusViewController () <BlueSTSDKFeatureDelegate,
+    BlueSTSDKFeatureBatteryDelegate>
+    @property (weak, nonatomic) IBOutlet UIImageView *batteryImage;
+    @property (weak, nonatomic) IBOutlet UILabel *levelLabel;
+    @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+    @property (weak, nonatomic) IBOutlet UILabel *voltageLabel;
+    @property (weak, nonatomic) IBOutlet UILabel *currentLabel;
+    @property (weak, nonatomic) IBOutlet UILabel *remainingTimeLabel;
 @end
 
 @implementation W2STBoardBatteryStatusViewController{
-    BlueSTSDKFeature *batteryFeature;
+    BlueSTSDKFeatureBattery *batteryFeature;
+    float mBatteryCapacity;
 }
 
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    mBatteryCapacity=NAN;
+}
+
+-(void)loadBatteryCapacity{
+    if(!isnan(mBatteryCapacity)) //already load
+        return;
+    //else
+    [batteryFeature readBatteryCapacity];
+}
+
+-(void)loadMaxAssorbedCurrent{
+    [batteryFeature readMaxAbsorbedCurrent];
+}
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    batteryFeature = [self.delegate extractFeatureType: BlueSTSDKFeatureBattery.class];
+    batteryFeature = (BlueSTSDKFeatureBattery*)
+        [self.delegate extractFeatureType: BlueSTSDKFeatureBattery.class];
     if(batteryFeature!=nil){
         [batteryFeature addFeatureDelegate:self];
+        [batteryFeature addBatteryDelegate:self];
         [self.delegate enableNotificationForFeature:batteryFeature];
+        [self loadBatteryCapacity];
+        [self loadMaxAssorbedCurrent];
     }
 }
 
@@ -61,6 +87,7 @@
     [super viewWillDisappear:animated];
     if(batteryFeature!=nil){
         [batteryFeature removeFeatureDelegate:self];
+        [batteryFeature removeBatteryDelegate:self];
         [self.delegate disableNotificationForFeature:batteryFeature];
     }
 }
@@ -77,19 +104,33 @@
                 [NSString stringWithFormat:@"battery_%dc",levelInt]];
 }
 
+static float getRemainingMinute(float current, float batteryCapacity){
+    if(current>0)
+        return NAN;
+    return (batteryCapacity/(-current))*(60);
+}
+
+bool displayRemainingTime(BlueSTSDKFeatureBatteryStatus batteryStatus){
+    return batteryStatus != BlueSTSDKFeatureBatteryStatusCharging;
+}
+
 #pragma mark - BlueSTSDKFeatureDelegate
 - (void)didUpdateFeature:(BlueSTSDKFeature *)feature sample:(BlueSTSDKFeatureSample *)sample{
     float chargeValue = [BlueSTSDKFeatureBattery getBatteryLevel:sample];
+    float currentValue = [BlueSTSDKFeatureBattery getBatteryCurrent:sample];
     BlueSTSDKFeatureBatteryStatus batteryStatus = [BlueSTSDKFeatureBattery getBatteryStatus:sample ];
-    NSString *current = [NSString stringWithFormat:@"Current: %.1f mA",
-                         [BlueSTSDKFeatureBattery getBatteryCurrent:sample]];
+    NSString *current = [NSString stringWithFormat:@"Current: %.1f mA",currentValue];
     NSString *voltage = [NSString stringWithFormat:@"Voltage: %.3f V",
                          [BlueSTSDKFeatureBattery getBatteryVoltage:sample]];
-    NSString *charge = [NSString stringWithFormat:@"Level: %.1f %%",chargeValue ];
+    NSString *charge = [NSString stringWithFormat:@"Charge: %.1f %%",chargeValue ];
 //    NSString *status = [NSString stringWithFormat:@"Status: %@",  ];
     NSString *status =[BlueSTSDKFeatureBattery getBatteryStatusStr:sample ];
     UIImage *batteryImage = [self getBatteryStatusImageWithLevel:chargeValue
                                                           status:batteryStatus];
+    float remainingBattery = mBatteryCapacity* (chargeValue/100.0f);
+    
+    float remainingTime = getRemainingMinute(currentValue, remainingBattery);
+    NSString *remainingTimeStr = isnan(remainingTime) ? nil : [NSString stringWithFormat:@"Autonomy: %.1f m",remainingTime];
     
     dispatch_sync(dispatch_get_main_queue(),^{
         self.levelLabel.text=charge;
@@ -97,8 +138,23 @@
         self.voltageLabel.text=voltage;
         self.statusLabel.text=status;
         self.batteryImage.image = batteryImage;
+        if(displayRemainingTime(batteryStatus)){
+            self.remainingTimeLabel.text = remainingTimeStr;
+        }else{
+            self.remainingTimeLabel.text=nil;
+        }
     });
     
 }
+
+#pragma mark - BlueSTSDKFeatureBatteryDelegate
+
+-(void)didCapacityRead:(BlueSTSDKFeatureBattery *)feature
+              capacity:(uint16_t)capacity{
+    mBatteryCapacity = capacity;
+}
+
+-(void)didMaxAssorbedCurrentRead:(BlueSTSDKFeatureBattery *)feature
+                         current:(float)current{ }
 
 @end

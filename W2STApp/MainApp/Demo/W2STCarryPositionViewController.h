@@ -36,9 +36,9 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "UIViewController+W2STDemoTab.h"
+#import "BlueMSDemoTabViewController.h"
 
-@interface W2STCarryPositionViewController : UIViewController
+@interface W2STCarryPositionViewController : BlueMSDemoTabViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *handImage;
 @property (weak, nonatomic) IBOutlet UIImageView *headImage;

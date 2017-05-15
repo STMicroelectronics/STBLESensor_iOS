@@ -37,9 +37,9 @@
 
 
 #import <UIKit/UIKit.h>
-#import "UIViewController+W2STDemoTab.h"
+#import "BlueMSDemoTabViewController.h"
 
-@interface W2STSwitchViewController : UIViewController
+@interface W2STSwitchViewController : BlueMSDemoTabViewController
 @property (weak, nonatomic) IBOutlet UIImageView *mLedImage;
 
 @end

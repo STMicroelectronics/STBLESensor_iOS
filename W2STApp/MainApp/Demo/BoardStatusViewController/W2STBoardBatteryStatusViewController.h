@@ -39,10 +39,6 @@
 #import "W2STDemoSubViewController.h"
 
 @interface W2STBoardBatteryStatusViewController : W2STDemoSubViewController
-@property (weak, nonatomic) IBOutlet UIImageView *batteryImage;
-@property (weak, nonatomic) IBOutlet UILabel *levelLabel;
-@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
-@property (weak, nonatomic) IBOutlet UILabel *voltageLabel;
-@property (weak, nonatomic) IBOutlet UILabel *currentLabel;
+
 
 @end

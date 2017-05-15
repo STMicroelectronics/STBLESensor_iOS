@@ -112,6 +112,7 @@
     [self performSelector:@selector(refreshAction) withObject:nil afterDelay:0.1];
 }
 - (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     if (self.node.configControl) {
         [self.node.configControl addConfigDelegate:self];
     }
@@ -124,6 +125,7 @@
     }
 }
 -(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     [super viewDidAppear:animated];
 }
 

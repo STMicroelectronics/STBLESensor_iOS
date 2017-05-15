@@ -36,8 +36,7 @@
  */
 
 #import "W2STIBMWatsonIOTFeatureListener.h"
-#include "W2STCloudJsonUtil.h"
-#include "MQTTSessionSynchron.h"
+#import "W2STCloudJsonUtil.h"
 
 @interface W2STIBMWatsonIOTFeatureListener ()<MQTTSessionDelegate>
 @end
@@ -72,10 +71,10 @@
     
     NSString *topic = [NSString stringWithFormat:@"iot-2/evt/%@/fmt/json",feature.name];
     
-    [mSession publishAndWaitData:serialize
-                        onTopic:topic
-                         retain:NO
-                            qos:MQTTQosLevelAtMostOnce];
+    [mSession publishData:serialize
+                  onTopic:topic
+                   retain:NO
+                      qos:MQTTQosLevelAtMostOnce];
     
 }
 

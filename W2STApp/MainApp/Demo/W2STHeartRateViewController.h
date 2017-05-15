@@ -37,8 +37,8 @@
 
 
 #import <UIKit/UIKit.h>
-#import "UIViewController+W2STDemoTab.h"
+#import "BlueMSDemoTabViewController.h"
 
-@interface W2STHeartRateViewController : UIViewController
+@interface W2STHeartRateViewController : BlueMSDemoTabViewController
 
 @end

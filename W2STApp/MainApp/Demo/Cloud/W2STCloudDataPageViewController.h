@@ -37,11 +37,12 @@
 
 #import <UIKit/UIKit.h>
 
+#import "BlueMSDemoTabViewController.h"
 
 /**
  *View controller that will show the webpage with the cloud data
  */
-@interface W2STCloudDataPageViewController : UIViewController
+@interface W2STCloudDataPageViewController : BlueMSDemoTabViewController
 /**
  * page to display
  */

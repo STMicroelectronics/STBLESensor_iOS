@@ -3,7 +3,7 @@
 	url = ssh://gitolite@codex.cro.st.com/bluemesh/BlueSTSDK_Gui_iOS.git
 [submodule "BlueSTSDK"]
 	path = BlueSTSDK
-	url = https://github.com/STMicroelectronics-CentralLabs/BlueSTSDK_iOS
+	url = https://github.com/STMicroelectronics-CentralLabs/BlueSTSDK_iOS.git
 [submodule "BlueSTSDK_Gui"]
 	path = BlueSTSDK_Gui
-	url = https://github.com/STMicroelectronics-CentralLabs/BlueSTSDK_GUI_iOS
+	url = https://github.com/STMicroelectronics-CentralLabs/BlueSTSDK_GUI_iOS.git

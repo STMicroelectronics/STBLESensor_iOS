@@ -50,6 +50,7 @@
 }
 
 -(void)viewDidLoad{
+    [super viewDidLoad];
     self.view.layer.borderWidth=1.0f;
 }
 

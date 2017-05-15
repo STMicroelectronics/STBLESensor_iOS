@@ -36,7 +36,7 @@
  */
 
 #import <UIKit/UIKit.h>
-#include "W2STCloudConfigViewController.h"
+#import "W2STCloudConfigViewController.h"
 
 /**
  * View Controller that manage the IBM Watson IOT Quickstart parameters for the connection

@@ -36,9 +36,9 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "UIViewController+W2STDemoTab.h"
+#import "BlueMSDemoTabViewController.h"
 
-@interface W2STMemsGestureViewController : UIViewController
+@interface W2STMemsGestureViewController : BlueMSDemoTabViewController
 @property (weak, nonatomic) IBOutlet UIImageView *glanceIcon;
 @property (weak, nonatomic) IBOutlet UIImageView *pickUpIcon;
 @property (weak, nonatomic) IBOutlet UIImageView *wakeUpIcon;

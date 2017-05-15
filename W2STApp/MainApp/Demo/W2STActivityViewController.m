@@ -46,7 +46,7 @@
 #import "BlueMSDemosViewController.h"
 #import "W2STActivityViewController.h"
 
-#import "UIViewController+WesuLicenseCheck.h"
+#import "BlueMSDemoTabViewController+WesuLicenseCheck.h"
 
 #define DEFAULT_ALPHA 0.3f
 #define SELECTED_ALPHA 1.0f

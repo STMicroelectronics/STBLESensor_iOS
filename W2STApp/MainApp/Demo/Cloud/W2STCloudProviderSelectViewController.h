@@ -36,10 +36,11 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "BlueMSDemoTabViewController.h"
 
 /**
  * View controller that will show the list of available cloud provider
  */
-@interface W2STCloudProviderSelectViewController : UIViewController
+@interface W2STCloudProviderSelectViewController : BlueMSDemoTabViewController
 
 @end

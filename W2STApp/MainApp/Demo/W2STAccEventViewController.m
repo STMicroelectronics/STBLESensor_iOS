@@ -111,6 +111,7 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_Nucleo[] ={
 }
 
 -(void)viewDidLoad{
+    [super viewDidLoad];
     mCurrentEventTypeIndex=-1;
 }
 

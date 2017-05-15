@@ -46,14 +46,19 @@
 
 @interface W2STCloudIBMWatsonIOTConfigViewController () <UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet UIView *mDetailsView;
     @property (weak, nonatomic) IBOutlet UITextField *mOrganization;
     @property (weak, nonatomic) IBOutlet UITextField *mAuthTocken;
     @property (weak, nonatomic) IBOutlet UITextField *mDeviceType;
     @property (weak, nonatomic) IBOutlet UITextField *mDeviceId;
+@property (weak, nonatomic) IBOutlet UIButton *mShowDetailsButton;
 
 @end
 
 @implementation W2STCloudIBMWatsonIOTConfigViewController
+- (IBAction)onDetailsButtonPressed:(UIButton *)sender {
+    _mDetailsView.hidden=!_mDetailsView.hidden;
+}
 
 -(void)storeSettings{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -96,6 +101,11 @@
     
 }
 
+-(void)showDetailsButton{
+    _mShowDetailsButton.hidden=false;
+    _mDetailsView.hidden=true;
+}
+
 -(nullable id<W2STMQTTConnectionFactory>) buildConnectionFactory{
     if( _mOrganization.text.length==0  ||
        _mDeviceType.text.length==0  ||
@@ -104,6 +114,7 @@
         return nil;
     }
     [self storeSettings];
+    [self showDetailsButton];
     return [W2STIBMWatsonIOTConnectionFactory createWithOrganization:_mOrganization.text
                                                     deviceType:_mDeviceType.text
                                                       deviceId:_mDeviceId.text

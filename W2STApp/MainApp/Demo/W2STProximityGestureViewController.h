@@ -37,9 +37,9 @@
 
 
 #import <UIKit/UIKit.h>
-#import "UIViewController+W2STDemoTab.h"
+#import "BlueMSDemoTabViewController.h"
 
-@interface W2STProximityGestureViewController : UIViewController
+@interface W2STProximityGestureViewController : BlueMSDemoTabViewController
 @property (weak, nonatomic) IBOutlet UIImageView *gestureLeftIcon;
 @property (weak, nonatomic) IBOutlet UIImageView *gestureTagIcon;
 @property (weak, nonatomic) IBOutlet UIImageView *gestureRightIcon;

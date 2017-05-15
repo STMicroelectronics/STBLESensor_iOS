@@ -93,13 +93,12 @@
 
 
 - (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     if (self.node) {
         self.navigationItem.title = self.node.friendlyName;
     }
 }
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-}
+
 
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];

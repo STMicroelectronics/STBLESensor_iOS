@@ -45,6 +45,7 @@
 #import <BlueSTSDK/BlueSTSDKFeatureField.h>
 
 #import <BlueSTSDK/BlueSTSDKFeatureMagnetometer.h>
+#import <BlueSTSDK/BlueSTSDKFeatureCompass.h>
 #import <BlueSTSDK/BlueSTSDKFeatureAcceleration.h>
 #import <BlueSTSDK/BlueSTSDKFeatureActivity.h>
 #import <BlueSTSDK/BlueSTSDKFeatureCarryPosition.h>
@@ -157,10 +158,10 @@ static NSNumber *sZero;
        [f isKindOfClass:[BlueSTSDKFeatureAcceleration class]] ||
        [f isKindOfClass:[BlueSTSDKFeatureGyroscope class]] ||
        [f isKindOfClass:[BlueSTSDKFeatureHumidity class]] ||
+       [f isKindOfClass:[BlueSTSDKFeatureCompass class]] ||
        [f isKindOfClass:[BlueSTSDKFeatureLuminosity class]] ||
        [f isKindOfClass:[BlueSTSDKFeatureMemsSensorFusion class]] ||
        [f isKindOfClass:[BlueSTSDKFeatureMemsSensorFusionCompact class]] ||
-       [f isKindOfClass:[BlueSTSDKFeatureProximity class]] ||
        [f isKindOfClass:[BlueSTSDKFeatureDirectionOfArrival class]] ){
         return true;
     }else if ([f isKindOfClass:[BlueSTSDKFeaturePressure class]]){
@@ -515,8 +516,13 @@ static NSNumber *sZero;
             
         }//if
         
-        
-        [mPlotDataY addObject:sample.data];
+        //if is a proximity out of range value we add a 0 instad of the big value
+        if([mFeature isKindOfClass:BlueSTSDKFeatureProximity.class] &&
+            [BlueSTSDKFeatureProximity isOutOfRangeSample:sample]){
+                [mPlotDataY addObject:@[@(0)]];
+        }else{
+            [mPlotDataY addObject:sample.data];
+        }
 
         NSNumber *lastXValue = @(xValue);
         [mPlotDataX addObject:lastXValue];

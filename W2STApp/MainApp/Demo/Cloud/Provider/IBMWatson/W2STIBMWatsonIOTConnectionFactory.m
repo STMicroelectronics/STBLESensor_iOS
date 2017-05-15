@@ -100,4 +100,8 @@
     return [[W2STIBMWatsonIOTFeatureListener alloc]initWithSession:session];
 }
 
+-(BOOL)isSupportedFeature:(BlueSTSDKFeature*)feature{
+    return true;
+}
+
 @end

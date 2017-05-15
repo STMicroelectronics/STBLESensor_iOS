@@ -37,7 +37,7 @@
 
 #import <UIKit/UIKit.h>
 
-#include "W2STCloudConfigViewController.h"
+#import "W2STCloudConfigViewController.h"
 
 
 /**

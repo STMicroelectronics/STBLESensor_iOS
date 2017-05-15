@@ -36,7 +36,7 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "UIViewController+W2STDemoTab.h"
+#import "BlueMSDemoTabViewController.h"
 
 
 #import <BlueSTSDK/BlueSTSDKNode.h>
@@ -45,7 +45,7 @@
 #import "W2STDemoTabViewController.h"
 #import "W2STDemoSubViewController.h"
 
-@interface W2STEnviromentalViewController : UIViewController
+@interface W2STEnviromentalViewController : BlueMSDemoTabViewController
     <W2STFeatureDemoManager>
 
 

@@ -85,4 +85,8 @@
                                                   minUpdateInterval:MIN_UPDATE_INTERVAL];
 }
 
+-(BOOL)isSupportedFeature:(BlueSTSDKFeature*)feature{
+    return true;
+}
+
 @end

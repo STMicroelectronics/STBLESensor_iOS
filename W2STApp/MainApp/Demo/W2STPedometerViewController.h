@@ -37,9 +37,9 @@
 
 
 #import <UIKit/UIKit.h>
-#import "UIViewController+W2STDemoTab.h"
+#import "BlueMSDemoTabViewController.h"
 
-@interface W2STPedometerViewController : UIViewController
+@interface W2STPedometerViewController : BlueMSDemoTabViewController
 @property (weak, nonatomic) IBOutlet UIImageView *pedometerIcon;
 @property (weak, nonatomic) IBOutlet UILabel *nStepsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *frequencyLabel;

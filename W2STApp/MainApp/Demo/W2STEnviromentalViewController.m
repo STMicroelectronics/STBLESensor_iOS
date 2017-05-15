@@ -35,8 +35,6 @@
  * OF SUCH DAMAGE.
  */
 
-#import "UIViewController+W2STDemoTab.h"
-
 #import "W2STEnviromentalViewController.h"
 
 #import "W2STTemperatureViewController.h"

@@ -36,9 +36,9 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "UIViewController+W2STDemoTab.h"
+#import "BlueMSDemoTabViewController.h"
 
-@interface W2STActivityViewController : UIViewController
+@interface W2STActivityViewController : BlueMSDemoTabViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *standingImage;
 @property (weak, nonatomic) IBOutlet UIImageView *walkingImage;

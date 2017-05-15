@@ -71,6 +71,8 @@
  */
 -(id<BlueSTSDKFeatureDelegate>)getFeatureDelegateWithSession:(MQTTSession*)session;
 
+-(BOOL)isSupportedFeature:(BlueSTSDKFeature*)feature;
+
 @end
 
 #endif /* W2STMQTTConnectionFactoryProtocol_h */

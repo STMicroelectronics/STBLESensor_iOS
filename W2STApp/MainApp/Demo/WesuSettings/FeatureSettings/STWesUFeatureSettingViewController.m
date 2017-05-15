@@ -111,6 +111,7 @@
 
 
 -(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
     [_configControl removeConfigDelegate:self];
 }
 

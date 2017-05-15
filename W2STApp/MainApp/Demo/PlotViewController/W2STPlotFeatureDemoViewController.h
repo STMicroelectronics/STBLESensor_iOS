@@ -38,12 +38,11 @@
 #import <UIKit/UIKit.h>
 #import <BlueSTSDK/BlueSTSDKFeature.h>
 
-#import "UIViewController+W2STDemoTab.h"
-#import <CorePlot/CorePlot.h>
+#import <CorePlot-CocoaTouch.h>
 
+#import "BlueMSDemoTabViewController.h"
 
-
-@interface W2STPlotFeatureDemoViewController : UIViewController
+@interface W2STPlotFeatureDemoViewController : BlueMSDemoTabViewController
 @property (weak, nonatomic) IBOutlet UIButton *selectFeatureButton;
 
 @property (weak, nonatomic) IBOutlet CPTGraphHostingView *plotView;

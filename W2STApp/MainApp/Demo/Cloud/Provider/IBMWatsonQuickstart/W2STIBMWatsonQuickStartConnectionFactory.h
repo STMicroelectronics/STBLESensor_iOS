@@ -37,7 +37,7 @@
 
 #import <Foundation/Foundation.h>
 
-#include "W2STMQTTConnectionFactoryProtocol.h"
+#import "W2STMQTTConnectionFactoryProtocol.h"
 
 /**
  * Class that implement the W2STMQTTConnectionFactory protocol for the 

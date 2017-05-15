@@ -53,10 +53,14 @@
 #import <BlueSTSDK/BlueSTSDKFeatureAudioADPCM.h>
 #import <BlueSTSDK/BlueSTSDKFeatureAudioADPCMSync.h>
 #import <BlueSTSDK/BlueSTSDKFeatureHeartRate.h>
+#import <BlueSTSDK/BlueSTSDKFeatureCompass.h>
+#import <BlueSTSDK/BlueSTSDKFeatureMotionIntensity.h>
 
 
 #import "BlueMSDemosViewController.h"
 #import "BlueMSDemosViewController+WesuFwVersion.h"
+
+#import "BlueMSDemoTabViewController.h"
 
 #import "W2STFeatureSensorFusionDemoViewController.h"
 
@@ -72,9 +76,11 @@
 #define SWITCH_DEMO_POSITION 9
 #define BLUEVOICE_DEMO_POSITION 10
 #define HEART_RATE_DEMO_POSITION 11
-#define RSSI_DEMO_POSITION 12
-#define CLOUD_DEMO_POSITION 13
-#define NUMBER_OF_DEMOS 14
+#define CLOUD_DEMO_POSITION 12
+#define MOTIONID_DEMO_POSITION 13
+#define COMPASS_DEMO_POSITION 14
+#define RSSI_DEMO_POSITION 15
+#define NUMBER_OF_DEMOS 16
 
 @interface BlueMSDemosViewController () <UITabBarControllerDelegate>
 
@@ -158,6 +164,12 @@
     if( [node getFeatureOfType:BlueSTSDKFeatureHeartRate.class]==nil){
         [removeItem addIndex:HEART_RATE_DEMO_POSITION];
     }
+    if( [node getFeatureOfType:BlueSTSDKFeatureMotionIntensity.class]==nil){
+        [removeItem addIndex:MOTIONID_DEMO_POSITION];
+    }
+    if( [node getFeatureOfType:BlueSTSDKFeatureCompass.class]==nil){
+        [removeItem addIndex:COMPASS_DEMO_POSITION];
+    }
 
     [availableDemos removeObjectsAtIndexes:removeItem];
     self.viewControllers = availableDemos;
@@ -176,7 +188,10 @@
     [self removeOptionalDemo];
 
     for (UIViewController *c in self.viewControllers){
-        c.node = self.node;
+        if( [c isKindOfClass:[BlueMSDemoTabViewController class]]){
+            BlueMSDemosViewController *temp = (BlueMSDemosViewController*)c;
+            temp.node = self.node;
+        }
     }
     
     if(self.node.type == BlueSTSDKNodeTypeSTEVAL_WESU1 ){

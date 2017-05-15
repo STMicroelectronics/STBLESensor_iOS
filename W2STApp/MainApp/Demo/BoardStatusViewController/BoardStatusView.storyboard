@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="l0g-WL-d7v">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Board Status-->
+        <scene sceneID="ARe-m8-NzI">
+            <objects>
+                <viewController title="Board Status" id="l0g-WL-d7v" customClass="W2STBoardStatusViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dEy-xt-CiA"/>
+                        <viewControllerLayoutGuide type="bottom" id="ctG-TQ-X1h"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gdX-0l-gNR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0G9-Or-IME">
+                                <rect key="frame" x="16" y="28" width="343" height="631"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ncl-7A-dbL">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="311.5"/>
+                                        <connections>
+                                            <segue destination="7Hv-0D-fSy" kind="embed" id="09d-gl-s1f"/>
+                                        </connections>
+                                    </containerView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7S-y8-OrX">
+                                        <rect key="frame" x="0.0" y="319.5" width="343" height="311.5"/>
+                                        <connections>
+                                            <segue destination="XfM-Mq-Xt5" kind="embed" id="zfE-J1-tQx"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="0G9-Or-IME" secondAttribute="leading" id="UbX-yR-FNi"/>
+                            <constraint firstItem="ctG-TQ-X1h" firstAttribute="top" secondItem="0G9-Or-IME" secondAttribute="bottom" constant="8" id="dRn-ag-sFC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0G9-Or-IME" secondAttribute="trailing" id="lvL-pT-AoJ"/>
+                            <constraint firstItem="0G9-Or-IME" firstAttribute="top" secondItem="dEy-xt-CiA" secondAttribute="bottom" constant="8" id="pQc-Xu-Cpw"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Rssi &amp; Battery" image="statusIcon.png" selectedImage="statusIcon.png" id="hYX-P5-Lmq" userLabel="Board Status">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="statusIcon.png"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                    <navigationItem key="navigationItem" title="Rssi &amp; Battery" id="VFS-Ve-K9y"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FP9-Zx-NIo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="14283" y="14"/>
+        </scene>
+        <!--Board Rssi View Controller-->
+        <scene sceneID="Hlo-7s-4QE">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="7Hv-0D-fSy" customClass="W2STBoardRssiViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wK8-jR-rwB"/>
+                        <viewControllerLayoutGuide type="bottom" id="hvH-Ri-ND8"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="bYw-8P-Le5">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="311.5"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4h6-gq-2uJ">
+                                <rect key="frame" x="8" y="8" width="311" height="296"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signal" translatesAutoresizingMaskIntoConstraints="NO" id="ns8-cg-aco">
+                                        <rect key="frame" x="0.0" y="28" width="156" height="240"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Rssi: Updating.." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AaB-wf-Arl">
+                                        <rect key="frame" x="156" y="137" width="155" height="22"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="hvH-Ri-ND8" firstAttribute="top" secondItem="4h6-gq-2uJ" secondAttribute="bottom" constant="8" id="8gR-pL-Dt2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4h6-gq-2uJ" secondAttribute="trailing" constant="8" id="F6d-PM-oLY"/>
+                            <constraint firstItem="4h6-gq-2uJ" firstAttribute="top" secondItem="wK8-jR-rwB" secondAttribute="bottom" constant="8" id="ehT-0T-drd"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="4h6-gq-2uJ" secondAttribute="leading" constant="8" id="ipV-Xi-A6V"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <connections>
+                        <outlet property="rssiLabel" destination="AaB-wf-Arl" id="c2U-Zb-HsE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZoV-7Q-p5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="14610" y="1132"/>
+        </scene>
+        <!--Board Battery Status View Controller-->
+        <scene sceneID="5lh-zd-Iir">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="XfM-Mq-Xt5" customClass="W2STBoardBatteryStatusViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YtI-5f-q6U"/>
+                        <viewControllerLayoutGuide type="bottom" id="aeA-T1-loO"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="xgc-5a-brk">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="311.5"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="QrR-25-O6O">
+                                <rect key="frame" x="8" y="8" width="311" height="296"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="battery_missing" translatesAutoresizingMaskIntoConstraints="NO" id="ANk-Un-UAp">
+                                        <rect key="frame" x="0.0" y="0.0" width="155.5" height="296"/>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="QiY-SC-gVB">
+                                        <rect key="frame" x="155.5" y="0.0" width="155.5" height="296"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQG-2V-RwZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="155.5" height="59"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGI-Jh-bpV">
+                                                <rect key="frame" x="0.0" y="59" width="155.5" height="59.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucI-RL-VmY">
+                                                <rect key="frame" x="0.0" y="118.5" width="155.5" height="59"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9lu-di-p8n">
+                                                <rect key="frame" x="0.0" y="177.5" width="155.5" height="59.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WT6-kK-4hS">
+                                                <rect key="frame" x="0.0" y="237" width="155.5" height="59"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="QrR-25-O6O" secondAttribute="leading" constant="8" id="7Uh-zX-Tdd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QrR-25-O6O" secondAttribute="trailing" constant="8" id="d48-uw-rpA"/>
+                            <constraint firstItem="QrR-25-O6O" firstAttribute="top" secondItem="YtI-5f-q6U" secondAttribute="bottom" constant="8" id="obA-PC-Ptu"/>
+                            <constraint firstItem="aeA-T1-loO" firstAttribute="top" secondItem="QrR-25-O6O" secondAttribute="bottom" constant="8" id="uyn-Zg-x2U"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <connections>
+                        <outlet property="batteryImage" destination="ANk-Un-UAp" id="fAQ-uw-AVm"/>
+                        <outlet property="currentLabel" destination="9lu-di-p8n" id="ZKB-Y5-BV6"/>
+                        <outlet property="levelLabel" destination="kQG-2V-RwZ" id="4ya-ZU-nDN"/>
+                        <outlet property="remainingTimeLabel" destination="WT6-kK-4hS" id="ePC-Li-5xT"/>
+                        <outlet property="statusLabel" destination="zGI-Jh-bpV" id="xGd-dC-1ji"/>
+                        <outlet property="voltageLabel" destination="ucI-RL-VmY" id="Caj-FB-t85"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kOo-T8-cGW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="13919" y="1132"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="battery_missing" width="240" height="240"/>
+        <image name="signal" width="240" height="240"/>
+        <image name="statusIcon.png" width="16" height="16"/>
+    </resources>
+</document>

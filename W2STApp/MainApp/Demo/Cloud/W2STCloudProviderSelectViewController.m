@@ -40,8 +40,6 @@
 
 #include "Provider/W2STCloudConfigViewController.h"
 #import "W2STCloudProviderSelectViewController.h"
-#import "UIViewController+W2STDemoTab.h"
-
 
 /**
  * Class that contains the name and the seguie for each supported cloud provider
@@ -85,8 +83,10 @@ static NSArray<CloudProvider*> *sCloudProvider;
                            [CloudProvider providerWithName:@"IBM Watson IoT - Quickstart"
                                                      segue:@"BlueMxQuickStart_segue"],
                            [CloudProvider providerWithName:@"IBM Watson IoT"
-                                                     segue:@"BlueMx_segue"]
-                           ];
+                                                     segue:@"BlueMx_segue"],
+                           [CloudProvider providerWithName:@"Generic Mqtt"
+                                                     segue:@"GenericMqtt_segue"],
+                        ];
         
     }
     
@@ -103,6 +103,7 @@ static NSArray<CloudProvider*> *sCloudProvider;
 }
 
 -(void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     mCloudProviderList.dataSource=self;
     mCloudProviderList.delegate=self;
     [mCloudProviderList reloadData];

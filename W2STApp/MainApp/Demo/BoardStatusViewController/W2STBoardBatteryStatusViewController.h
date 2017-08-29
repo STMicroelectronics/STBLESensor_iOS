@@ -36,9 +36,9 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "W2STDemoSubViewController.h"
+#import "BlueMSDemoTabViewController.h"
 
-@interface W2STBoardBatteryStatusViewController : W2STDemoSubViewController
+@interface W2STBoardBatteryStatusViewController : BlueMSDemoTabViewController
 
 
 @end

@@ -67,22 +67,25 @@
 
     //enable the notification
     mfeature =(BlueSTSDKFeatureSwitch*)[self.node getFeatureOfType:BlueSTSDKFeatureSwitch.class];
-    if(mfeature!=nil){
-        [mfeature addFeatureDelegate:self];
-        [self.node enableNotification:mfeature];
-    }//if
+    if(mfeature==nil)
+        return;
+    
+    [mfeature addFeatureDelegate:self];
+    [self.node enableNotification:mfeature];
+        
+    //[self logDemoStart];
 }//viewDidAppear
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    //if we are ploting something stop it
-    if(mfeature!=nil){
-        [mfeature removeFeatureDelegate:self];
-        [self.node disableNotification:mfeature];
-        mfeature=nil;
-    }//if
+    if(mfeature == nil)
+        return;
+    
+   [mfeature removeFeatureDelegate:self];
+   [self.node disableNotification:mfeature];
+   mfeature=nil;
+    //[self logDemoStop];
 }
-
 
 #pragma mark - BlueSTSDKFeatureDelegate
 - (void)didUpdateFeature:(BlueSTSDKFeature *)feature sample:(BlueSTSDKFeatureSample *)sample{

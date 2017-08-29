@@ -42,12 +42,13 @@
 #import "STWeSUSettingsAdvancedTableViewController.h"
 #import "STWeSUSettingsDataReadViewController.h"
 #import "STWesUFeatureSettingViewController.h"
+#import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
 
 
-#define FEATURES_SETTINGS_NAME @"Feature Settings"
+#define FEATURES_SETTINGS_NAME BLUESTSDK_LOCALIZE(@"Feature Settings",nil)
 #define SHOW_FEATURE_SETTINGS_VIEW_SEGUE_NAME @"showFeatureSettingsViewSegue"
 
-#define ADVENCED_MEMS_SETTINGS_ITEM_MAME @"Advanced MEMS Settings"
+#define ADVENCED_MEMS_SETTINGS_ITEM_MAME BLUESTSDK_LOCALIZE(@"Advanced MEMS Settings",nil)
 #define SHOW_SETTINGS_ADV_VIEW_SEGUE_NAME @"showSettingsAdvancedViewSegue"
 #define SHOW_SETTINGS_DATAREAD_SEGUE_NAME @"datareadsegue"
 
@@ -69,35 +70,47 @@
     _nodeExt = [STWeSUNodeExtension nodeExtWithNode:self.node];
     
     mSettings = @[
-                [STWeSUSettingsSection sectionWithTitle:@"Device general settings" items:@[
-                    MAKE_ITEMN(@10, BlueSTSDK_REGISTER_TARGET_PERSISTENT, BlueSTSDK_REGISTER_NAME_BLE_LOC_NAME, @"Local Name", @"WeSU1"),
-                    MAKE_ITEMN(@11, BlueSTSDK_REGISTER_TARGET_PERSISTENT, BlueSTSDK_REGISTER_NAME_BLE_PUB_ADDR, @"Pubblic Address", @"BLE Address"),
-                    MAKE_ITEMN(@12, BlueSTSDK_REGISTER_TARGET_PERSISTENT, BlueSTSDK_REGISTER_NAME_FW_VER, @"Firmware Version", @"-"),
-                    MAKE_ITEMN(@13, BlueSTSDK_REGISTER_TARGET_SESSION, BlueSTSDK_REGISTER_NAME_BLUENRG_INFO, @"BlueNRG Info", @"-"),
-                                                                                            ]],
-                [STWeSUSettingsSection sectionWithTitle:@"Session settings" items:@[
-                    MAKE_ITEMN(@30, BlueSTSDK_REGISTER_TARGET_SESSION, BlueSTSDK_REGISTER_NAME_LED_CONFIG, @"Led Configuration", @"Set led configuration"),
-                    MAKE_ITEMN(@31, BlueSTSDK_REGISTER_TARGET_SESSION, BlueSTSDK_REGISTER_NAME_TIMER_FREQ, @"Timer (Hz)", @"Frequency of sampling"),
-                    MAKE_ITEMSH(@32, BlueSTSDK_REGISTER_TARGET_SESSION, BlueSTSDK_REGISTER_NAME_GROUP_A_FEATURES_MAP, @"Data Read Group A", @"Feature mapping of the group A", HEIGHT_MAP),
-                    MAKE_ITEMSH(@33, BlueSTSDK_REGISTER_TARGET_SESSION, BlueSTSDK_REGISTER_NAME_GROUP_B_FEATURES_MAP, @"Data Read Group B", @"Feature mapping of the group B", HEIGHT_MAP),
-                    MAKE_ITEMF(@34, BlueSTSDK_REGISTER_TARGET_SESSION, FEATURES_SETTINGS_NAME, @"Control Configuration for available features"),
-                    MAKE_ITEMN(@35, BlueSTSDK_REGISTER_TARGET_SESSION, BlueSTSDK_REGISTER_NAME_PWR_MODE_CONFIG, @"Power Mode", @"Specify the power mode"),
+                [STWeSUSettingsSection sectionWithTitle:BLUESTSDK_LOCALIZE(@"Device general settings",nil) items:@[
+                    MAKE_ITEMN(@10, BlueSTSDK_REGISTER_TARGET_PERSISTENT, BlueSTSDK_REGISTER_NAME_BLE_LOC_NAME, BLUESTSDK_LOCALIZE(@"Local Name",nil), @"WeSU1"),
+                    MAKE_ITEMN(@11, BlueSTSDK_REGISTER_TARGET_PERSISTENT, BlueSTSDK_REGISTER_NAME_BLE_PUB_ADDR, BLUESTSDK_LOCALIZE(@"Pubblic Address",nil),
+                               BLUESTSDK_LOCALIZE(@"BLE Address",nil)),
+                    MAKE_ITEMN(@12, BlueSTSDK_REGISTER_TARGET_PERSISTENT, BlueSTSDK_REGISTER_NAME_FW_VER, BLUESTSDK_LOCALIZE(@"Firmware Version",nil), @"-"),
+                    MAKE_ITEMN(@13, BlueSTSDK_REGISTER_TARGET_SESSION, BlueSTSDK_REGISTER_NAME_BLUENRG_INFO, BLUESTSDK_LOCALIZE(@"BlueNRG Info",nil), @"-")                                                                                           ]],
+                [STWeSUSettingsSection sectionWithTitle:BLUESTSDK_LOCALIZE(@"Session settings",nil) items:@[
+                    MAKE_ITEMN(@30, BlueSTSDK_REGISTER_TARGET_SESSION, BlueSTSDK_REGISTER_NAME_LED_CONFIG, BLUESTSDK_LOCALIZE(@"Led Configuration",nil)
+                               , BLUESTSDK_LOCALIZE(@"Set led configuration",nil)),
+                    MAKE_ITEMN(@31, BlueSTSDK_REGISTER_TARGET_SESSION, BlueSTSDK_REGISTER_NAME_TIMER_FREQ, BLUESTSDK_LOCALIZE(@"Timer (Hz)",nil),
+                               BLUESTSDK_LOCALIZE(@"Frequency of sampling",nil)),
+                    MAKE_ITEMSH(@32, BlueSTSDK_REGISTER_TARGET_SESSION, BlueSTSDK_REGISTER_NAME_GROUP_A_FEATURES_MAP, BLUESTSDK_LOCALIZE(@"Data Read Group A",nil),
+                                BLUESTSDK_LOCALIZE( @"Feature mapping of the group A",nil), HEIGHT_MAP),
+                    MAKE_ITEMSH(@33, BlueSTSDK_REGISTER_TARGET_SESSION, BlueSTSDK_REGISTER_NAME_GROUP_B_FEATURES_MAP, BLUESTSDK_LOCALIZE(@"Data Read Group B",nil), BLUESTSDK_LOCALIZE(@"Feature mapping of the group B",nil), HEIGHT_MAP),
+                    MAKE_ITEMF(@34, BlueSTSDK_REGISTER_TARGET_SESSION, FEATURES_SETTINGS_NAME, BLUESTSDK_LOCALIZE(@"Control Configuration for available features",nil)),
+                    MAKE_ITEMN(@35, BlueSTSDK_REGISTER_TARGET_SESSION, BlueSTSDK_REGISTER_NAME_PWR_MODE_CONFIG, BLUESTSDK_LOCALIZE(@"Power Mode",nil),
+                               BLUESTSDK_LOCALIZE(@"Specify the power mode",nil)),
 
                  ]],
-                [STWeSUSettingsSection sectionWithTitle:@"Persistent settings" items:@[
-                    MAKE_ITEMN(@50, BlueSTSDK_REGISTER_TARGET_PERSISTENT, BlueSTSDK_REGISTER_NAME_LED_CONFIG, @"Led Configuration", @"Set led configuration"),
-                    MAKE_ITEMN(@51, BlueSTSDK_REGISTER_TARGET_PERSISTENT, BlueSTSDK_REGISTER_NAME_TIMER_FREQ, @"Timer (Hz)", @"Frequency of sampling"),
-                    MAKE_ITEMSH(@52, BlueSTSDK_REGISTER_TARGET_PERSISTENT, BlueSTSDK_REGISTER_NAME_GROUP_A_FEATURES_MAP, @"Data Read Group A", @"Feature mapping of the group A", HEIGHT_MAP),
-                    MAKE_ITEMSH(@53, BlueSTSDK_REGISTER_TARGET_PERSISTENT, BlueSTSDK_REGISTER_NAME_GROUP_B_FEATURES_MAP, @"Data Read Group B", @"Feature mapping of the group B", HEIGHT_MAP),
-                    MAKE_ITEMF(@54, BlueSTSDK_REGISTER_TARGET_PERSISTENT,FEATURES_SETTINGS_NAME, @"Control Configuration for available features"),
-                    MAKE_ITEMF(@55, BlueSTSDK_REGISTER_TARGET_PERSISTENT,ADVENCED_MEMS_SETTINGS_ITEM_MAME, @"Expert settings for node MEMS sensor"),
-                    MAKE_ITEMN(@56, BlueSTSDK_REGISTER_TARGET_PERSISTENT, BlueSTSDK_REGISTER_NAME_PWR_MODE_CONFIG, @"Power Mode", @"Specify the power mode"),
-                    MAKE_ITEMN(@57, BlueSTSDK_REGISTER_TARGET_PERSISTENT, BlueSTSDK_REGISTER_NAME_RADIO_TXPWR_CONFIG, @"BLE Output Power", @"Specify the output power"),
+                [STWeSUSettingsSection sectionWithTitle:BLUESTSDK_LOCALIZE(@"Persistent settings",nil) items:@[
+                    MAKE_ITEMN(@50, BlueSTSDK_REGISTER_TARGET_PERSISTENT, BlueSTSDK_REGISTER_NAME_LED_CONFIG, BLUESTSDK_LOCALIZE(@"Led Configuration",nil),
+                               BLUESTSDK_LOCALIZE( @"Set led configuration",nil)),
+                    MAKE_ITEMN(@51, BlueSTSDK_REGISTER_TARGET_PERSISTENT, BlueSTSDK_REGISTER_NAME_TIMER_FREQ, BLUESTSDK_LOCALIZE(@"Timer (Hz)",nil),
+                               BLUESTSDK_LOCALIZE( @"Frequency of sampling",nil)),
+                    MAKE_ITEMSH(@52, BlueSTSDK_REGISTER_TARGET_PERSISTENT, BlueSTSDK_REGISTER_NAME_GROUP_A_FEATURES_MAP, BLUESTSDK_LOCALIZE(@"Data Read Group A",nil),BLUESTSDK_LOCALIZE( @"Feature mapping of the group A",nil), HEIGHT_MAP),
+                    MAKE_ITEMSH(@53, BlueSTSDK_REGISTER_TARGET_PERSISTENT, BlueSTSDK_REGISTER_NAME_GROUP_B_FEATURES_MAP, BLUESTSDK_LOCALIZE(@"Data Read Group B",nil),
+                                BLUESTSDK_LOCALIZE(@"Feature mapping of the group B",nil), HEIGHT_MAP),
+                    MAKE_ITEMF(@54, BlueSTSDK_REGISTER_TARGET_PERSISTENT,FEATURES_SETTINGS_NAME, BLUESTSDK_LOCALIZE(@"Control Configuration for available features",nil)),
+                    MAKE_ITEMF(@55, BlueSTSDK_REGISTER_TARGET_PERSISTENT,ADVENCED_MEMS_SETTINGS_ITEM_MAME, BLUESTSDK_LOCALIZE(@"Expert settings for node MEMS sensor",nil)),
+                    MAKE_ITEMN(@56, BlueSTSDK_REGISTER_TARGET_PERSISTENT, BlueSTSDK_REGISTER_NAME_PWR_MODE_CONFIG, BLUESTSDK_LOCALIZE(@"Power Mode",nil),
+                               BLUESTSDK_LOCALIZE( @"Specify the power mode",nil)),
+                    MAKE_ITEMN(@57, BlueSTSDK_REGISTER_TARGET_PERSISTENT, BlueSTSDK_REGISTER_NAME_RADIO_TXPWR_CONFIG, BLUESTSDK_LOCALIZE(@"BLE Output Power",nil),
+                               BLUESTSDK_LOCALIZE( @"Specify the output power",nil)),
                  ]],
-                [STWeSUSettingsSection sectionWithTitle:@"System" items:@[
-                    MAKE_ITEMN(@70, BlueSTSDK_REGISTER_TARGET_SESSION, BlueSTSDK_REGISTER_NAME_RTC_DATE_TIME, @"RTC Timer", @"Set the internal timer"),
-                    MAKE_ITEMN(@71, BlueSTSDK_REGISTER_TARGET_SESSION, BlueSTSDK_REGISTER_NAME_DFU_REBOOT, @"Node Firmware Upgrade", @"Restart node for DFU USB or OTA"),
-                    MAKE_ITEMN(@71, BlueSTSDK_REGISTER_TARGET_SESSION, BlueSTSDK_REGISTER_NAME_POWER_OFF, @"Power-OFF Node", @"Power-OFF or Restart node"),
+                [STWeSUSettingsSection sectionWithTitle:BLUESTSDK_LOCALIZE(@"System",nil) items:@[
+                    MAKE_ITEMN(@70, BlueSTSDK_REGISTER_TARGET_SESSION, BlueSTSDK_REGISTER_NAME_RTC_DATE_TIME,BLUESTSDK_LOCALIZE( @"RTC Timer",nil),
+                               BLUESTSDK_LOCALIZE(@"Set the internal timer",nil)),
+                    MAKE_ITEMN(@71, BlueSTSDK_REGISTER_TARGET_SESSION, BlueSTSDK_REGISTER_NAME_DFU_REBOOT, BLUESTSDK_LOCALIZE(@"Node Firmware Upgrade",nil),
+                               BLUESTSDK_LOCALIZE(@"Restart node for DFU USB or OTA",nil)),
+                    MAKE_ITEMN(@71, BlueSTSDK_REGISTER_TARGET_SESSION, BlueSTSDK_REGISTER_NAME_POWER_OFF, BLUESTSDK_LOCALIZE(@"Power-OFF Node",nil),
+                               BLUESTSDK_LOCALIZE(@"Power-OFF or Restart node",nil)),
                  ]],
            ];
     
@@ -208,7 +221,8 @@
         }else if ([item.title isEqualToString:FEATURES_SETTINGS_NAME]) {
             [self performSegueWithIdentifier:SHOW_FEATURE_SETTINGS_VIEW_SEGUE_NAME sender:item];
         }
-        else if([item.title isEqualToString:@"Data Read Group A"] || [item.title isEqualToString:@"Data Read Group B"]) {
+        else if([item.title isEqualToString:BLUESTSDK_LOCALIZE(@"Data Read Group A",nil)] ||
+                [item.title isEqualToString:BLUESTSDK_LOCALIZE(@"Data Read Group B",nil)]) {
             [self performSegueWithIdentifier:SHOW_SETTINGS_DATAREAD_SEGUE_NAME sender:item];
         }
     }
@@ -228,12 +242,13 @@
         {
             case BlueSTSDK_REGISTER_NAME_BLE_LOC_NAME: //local name
             {
-                [alert setMessage:[NSString stringWithFormat:@"Specify the node name (max %d chars)\nOnly first %d chars will be used in the advertisement", (int)LOCALNAME_MAX, (int)LOCALNAME_MAX_ADV]];
+                [alert setMessage:[NSString stringWithFormat:BLUESTSDK_LOCALIZE(@"Specify the node name (max %d chars)\nOnly first %d chars will be used in the advertisement",nil),
+                                   (int)LOCALNAME_MAX, (int)LOCALNAME_MAX_ADV]];
                 [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
                     textField.placeholder = item.title;
                     textField.text = item.valueA ? item.valueA : @"";
                 }];
-                ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                ok = [UIAlertAction actionWithTitle:BLUESTSDK_LOCALIZE(@"OK",nil) style:UIAlertActionStyleDefault
                                             handler:^(UIAlertAction * action) {
                                                 NSString *value = ((UITextField*)alert.textFields[0]).text;
                                                 if (value.length <= LOCALNAME_MAX)
@@ -242,7 +257,7 @@
                                                     if (!res) [self notifyErrorMessage:nil];
                                                 }
                                                 else {
-                                                    [self notifyErrorMessage:[NSString stringWithFormat:@"The node name must be max %d chars", (int)LOCALNAME_MAX]];
+                                                    [self notifyErrorMessage:[NSString stringWithFormat:BLUESTSDK_LOCALIZE(@"The node name must be max %d chars",nil), (int)LOCALNAME_MAX]];
                                                 }
                                             }];
             }
@@ -250,16 +265,16 @@
             case BlueSTSDK_REGISTER_NAME_BLE_PUB_ADDR: //public address
             {
                 
-                [alert setMessage:@"Specify the pubblic address\n(format XX:XX:XX:XX:XX:XX)"];
+                [alert setMessage:BLUESTSDK_LOCALIZE(@"Specify the pubblic address\n(format XX:XX:XX:XX:XX:XX)",nil)];
                 [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
                     textField.placeholder = item.title;
                     textField.text = item.valueA ? item.valueA : @"";
                 }];
-                ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                ok = [UIAlertAction actionWithTitle:BLUESTSDK_LOCALIZE(@"OK",nil) style:UIAlertActionStyleDefault
                                             handler:^(UIAlertAction * action) {
                                                 NSString *value = ((UITextField*)alert.textFields[0]).text;
                                                 BOOL res = [self.nodeExt writePubblicAddress:value];
-                                                NSString *message = [NSString stringWithFormat:@"Invalid address\n%@\n(format XX:XX:XX:XX:XX:XX)", [value uppercaseString]];
+                                                NSString *message = [NSString stringWithFormat:BLUESTSDK_LOCALIZE(@"Invalid address\n%@\n(format XX:XX:XX:XX:XX:XX)",nil), [value uppercaseString]];
                                                 if (!res) [self notifyErrorMessage:message];
                                             }];
             }
@@ -267,13 +282,13 @@
             case BlueSTSDK_REGISTER_NAME_FW_VER: //fw version
             {
                 readonly = YES;
-                [alert setMessage:[NSString stringWithFormat:@"Version: %@", (item.text ? item.text : @"not available")]];
+                [alert setMessage:[NSString stringWithFormat:BLUESTSDK_LOCALIZE(@"Version: %@",nil), (item.text ? item.text : BLUESTSDK_LOCALIZE(@"not available",nil))]];
                 
                 //[self.nodeExt asyncReadWithRegName:BlueSTSDK_REGISTER_NAME_FW_VER target:BlueSTSDK_REGISTER_BlueSTSDK_REGISTER_TARGET_PERSISTENTERSISTENT];
             }
                 break;
             case BlueSTSDK_REGISTER_NAME_LED_CONFIG: //led configuration
-                [alert setMessage:@"Select the led configuration"];
+                [alert setMessage:BLUESTSDK_LOCALIZE(@"Select the led configuration",nil)];
                 for(NSString *key in self.nodeExt.ledConfigOrderedKeys) {
                     action = [UIAlertAction actionWithTitle:self.nodeExt.ledConfig[key] style:UIAlertActionStyleDefault
                                                     handler:^(UIAlertAction * action) {
@@ -286,7 +301,7 @@
                 updateauto = YES;
                 break;
             case BlueSTSDK_REGISTER_NAME_PWR_MODE_CONFIG: //power mode
-                [alert setMessage:@"Select the power mode"];
+                [alert setMessage:BLUESTSDK_LOCALIZE(@"Select the power mode",nil)];
                 for(NSString *key in self.nodeExt.powerModeOrderedKeys) {
                     action = [UIAlertAction actionWithTitle:self.nodeExt.powerMode[key] style:UIAlertActionStyleDefault
                                                     handler:^(UIAlertAction * action) {
@@ -300,7 +315,7 @@
             case BlueSTSDK_REGISTER_NAME_TIMER_FREQ: //public address
             {
                 
-                [alert setMessage:@"Specify the timer frequency (Hz)"];
+                [alert setMessage:BLUESTSDK_LOCALIZE(@"Specify the timer frequency (Hz)",nil)];
                 [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
                     textField.placeholder = item.title;
                     textField.text = item.valueA ? item.valueA : @"";
@@ -339,7 +354,7 @@
             }
                 break;
             case BlueSTSDK_REGISTER_NAME_RADIO_TXPWR_CONFIG: //output power
-                [alert setMessage:@"Select the output power from the available values"];
+                [alert setMessage:BLUESTSDK_LOCALIZE(@"Select the output power from the available values",nil)];
                 for(NSString *key in self.nodeExt.bleOutputPowerMapOrderedKeys) {
                     action = [UIAlertAction actionWithTitle:self.nodeExt.bleOutputPowerMap[key] style:UIAlertActionStyleDefault
                                                     handler:^(UIAlertAction * action) {
@@ -353,8 +368,8 @@
                 break;
             case BlueSTSDK_REGISTER_NAME_RTC_DATE_TIME: //RTC Timer
             {
-                [alert setMessage:@"Do you want to set the current date and time in the device?"];
-                ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                [alert setMessage:BLUESTSDK_LOCALIZE(@"Do you want to set the current date and time in the device?",nil)];
+                ok = [UIAlertAction actionWithTitle:BLUESTSDK_LOCALIZE(@"OK",nil) style:UIAlertActionStyleDefault
                                             handler:^(UIAlertAction * action) {
                                                 BOOL res = [self.nodeExt writeRTCDateTime:nil];
                                                 if (!res) {
@@ -365,7 +380,7 @@
             }
                 break;
             case BlueSTSDK_REGISTER_NAME_DFU_REBOOT: //dfu mode
-                [alert setMessage:@"Set the DFU mode"];
+                [alert setMessage:BLUESTSDK_LOCALIZE(@"Set the DFU mode",nil)];
                 for(NSString *key in self.nodeExt.dfuReboot) {
                     action = [UIAlertAction actionWithTitle:self.nodeExt.dfuReboot[key] style:UIAlertActionStyleDefault
                                                     handler:^(UIAlertAction * action) {
@@ -394,7 +409,7 @@
                 }
                 break;
             default:
-                [alert setMessage:@"Data not available"];
+                [alert setMessage:BLUESTSDK_LOCALIZE(@"Data not available",nil)];
                 readonly = YES;
         }
 //        cancel = [UIAlertAction actionWithTitle:(readonly ? @"Ok" : @"Cancel") style:UIAlertActionStyleDefault
@@ -402,10 +417,10 @@
 //                                            //nothing
 //                                            [alert dismissViewControllerAnimated:YES completion:nil];
 //                                        }];
-        cancel = [UIAlertAction actionWithTitle:(readonly ? @"Ok" : @"Cancel") style:UIAlertActionStyleCancel
+        cancel = [UIAlertAction actionWithTitle:(readonly ? BLUESTSDK_LOCALIZE(@"OK",nil) : BLUESTSDK_LOCALIZE(@"Cancel",nil)) style:UIAlertActionStyleCancel
                                         handler:nil];
         if (updateauto) {
-            update = [UIAlertAction actionWithTitle:@"Reload" style:UIAlertActionStyleDefault
+            update = [UIAlertAction actionWithTitle:BLUESTSDK_LOCALIZE(@"Reload",nil) style:UIAlertActionStyleDefault
                                             handler:^(UIAlertAction * action) {
                                                 //nothing
                                                 [self.nodeExt asyncReadWithRegName:item.regName target:item.target];
@@ -462,7 +477,7 @@ NSString* macToString(unsigned char *buffer, NSInteger lenght){
             case BlueSTSDK_REGISTER_NAME_LED_CONFIG: //led config
                 key = [NSString stringWithFormat:@"%02X",(int)(value & 0xFF)];
                 item.valueA = key;
-                item.text = self.nodeExt.ledConfig[key] ? self.nodeExt.ledConfig[key] : [NSString stringWithFormat:@"Unknown config 0x%@", key];
+                item.text = self.nodeExt.ledConfig[key] ? self.nodeExt.ledConfig[key] : [NSString stringWithFormat:BLUESTSDK_LOCALIZE(@"Unknown config 0x%@",nil), key];
                 break;
             //local name
             case BlueSTSDK_REGISTER_NAME_BLE_LOC_NAME:
@@ -483,7 +498,7 @@ NSString* macToString(unsigned char *buffer, NSInteger lenght){
             case BlueSTSDK_REGISTER_NAME_RADIO_TXPWR_CONFIG:
                 key = [NSString stringWithFormat:@"%04X",(int)value];
                 item.valueA = key;
-                item.text = self.nodeExt.bleOutputPowerMap[key] ? self.nodeExt.bleOutputPowerMap[key] : [NSString stringWithFormat:@"Unknown option 0x%@", key];
+                item.text = self.nodeExt.bleOutputPowerMap[key] ? self.nodeExt.bleOutputPowerMap[key] : [NSString stringWithFormat:BLUESTSDK_LOCALIZE(@"Unknown option 0x%@",nil), key];
                 break;
             //timer frequency
             case BlueSTSDK_REGISTER_NAME_TIMER_FREQ:
@@ -494,7 +509,7 @@ NSString* macToString(unsigned char *buffer, NSInteger lenght){
             case BlueSTSDK_REGISTER_NAME_PWR_MODE_CONFIG:
                 key = [NSString stringWithFormat:@"%02X",(int)(value & 0xFF)];
                 item.valueA = key;
-                item.text = self.nodeExt.powerMode[key] ? self.nodeExt.powerMode[key] : [NSString stringWithFormat:@"Low power - code 0x%@", key];
+                item.text = self.nodeExt.powerMode[key] ? self.nodeExt.powerMode[key] : [NSString stringWithFormat:BLUESTSDK_LOCALIZE(@"Low power - code 0x%@",nil), key];
                 break;
             //feature map group A and B
             case BlueSTSDK_REGISTER_NAME_GROUP_A_FEATURES_MAP:
@@ -516,7 +531,7 @@ NSString* macToString(unsigned char *buffer, NSInteger lenght){
                     }
                 }
                 else {
-                    [str appendString:@"No feature "];
+                    [str appendString:BLUESTSDK_LOCALIZE(@"No feature ",nil)];
                 }
                 [str appendFormat:@"(0x%04X)", (int)value];
                 item.valueA = [NSString stringWithFormat:@"%04X", (int)value];
@@ -526,7 +541,7 @@ NSString* macToString(unsigned char *buffer, NSInteger lenght){
                 //power mode
             case BlueSTSDK_REGISTER_NAME_RTC_DATE_TIME:
                 {
-                    NSString *strDevTimer = @"Not Valid";
+                    NSString *strDevTimer = BLUESTSDK_LOCALIZE(@"Not Valid",nil);
                     NSString *strRtcConfig = @"-";
                 
                     if (len >= 8) {
@@ -536,7 +551,7 @@ NSString* macToString(unsigned char *buffer, NSInteger lenght){
                             strDevTimer = [NSString stringWithFormat:@"%02d/%02d/%02d - %02d:%02d", buffer[3], buffer[4], buffer[5], buffer[0], buffer[1]];
                             
                             key = [NSString stringWithFormat:@"%02X", buffer[7] & 0xFF];
-                            strRtcConfig = self.nodeExt.rtcTimer[key] ? self.nodeExt.rtcTimer[key] : [NSString stringWithFormat:@"Code %@", key];
+                            strRtcConfig = self.nodeExt.rtcTimer[key] ? self.nodeExt.rtcTimer[key] : [NSString stringWithFormat:BLUESTSDK_LOCALIZE(@"Code %@",nil), key];
                         }
                 
                     }
@@ -617,18 +632,18 @@ NSString* macToString(unsigned char *buffer, NSInteger lenght){
     return item_res;
 }
 -(void)needRestart {
-    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"Warning"
-                                                                              message:@"Need a restart to apply change!\n Do you want to restart now?"
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:BLUESTSDK_LOCALIZE(@"Warning",nil)
+                                                                              message:BLUESTSDK_LOCALIZE(@"Need a restart to apply change!\n Do you want to restart now?",nil)
                                                                        preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* ok = nil;
     UIAlertAction* cancel = nil;
     
-    ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+    ok = [UIAlertAction actionWithTitle:BLUESTSDK_LOCALIZE(@"OK",nil) style:UIAlertActionStyleDefault
                                 handler:^(UIAlertAction * action) {
                                     //perform a reboot
                                     [self.nodeExt writePowerOff:PWR_OFF_REBOOT];
                                 }];
-    cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
+    cancel = [UIAlertAction actionWithTitle:BLUESTSDK_LOCALIZE(@"Cancel",nil) style:UIAlertActionStyleDefault
                                     handler:^(UIAlertAction * action) {
                                         //nothing
                                         [alertController dismissViewControllerAnimated:YES completion:nil];
@@ -638,13 +653,13 @@ NSString* macToString(unsigned char *buffer, NSInteger lenght){
     [self presentViewController:alertController animated:YES completion:nil];
 }
 -(void)notifyErrorMessage:(NSString *)message {
-    NSString * msg = message && ![message isEqualToString:@""] ? message : @"Register writing failed!";
-    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"Error"
+    NSString * msg = message && ![message isEqualToString:@""] ? message : BLUESTSDK_LOCALIZE(@"Register writing failed!",nil);
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:BLUESTSDK_LOCALIZE(@"Error",nil)
                                                                               message:msg
                                                                        preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* ok = nil;
     
-    ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+    ok = [UIAlertAction actionWithTitle:BLUESTSDK_LOCALIZE(@"OK",nil) style:UIAlertActionStyleDefault
                                 handler:^(UIAlertAction * action) {
                                     [alertController dismissViewControllerAnimated:YES completion:nil];
                                 }];
@@ -676,19 +691,19 @@ NSString* macToString(unsigned char *buffer, NSInteger lenght){
 
         dest.options = item.regName == BlueSTSDK_REGISTER_NAME_GROUP_A_FEATURES_MAP ?
         @[ //group A
-          @[@(0x0080), @"Accelerometer"],
-          @[@(0x0040), @"Gyroscope"],
-          @[@(0x0020), @"Magnetometer"],
-          @[@(0x0010), @"Pressure"],
-          @[@(0x0004), @"Temperature"],
-          @[@(0x0002), @"Battery"],
+          @[@(0x0080), BLUESTSDK_LOCALIZE(@"Accelerometer",nil)],
+          @[@(0x0040), BLUESTSDK_LOCALIZE(@"Gyroscope",nil)],
+          @[@(0x0020), BLUESTSDK_LOCALIZE(@"Magnetometer",nil)],
+          @[@(0x0010), BLUESTSDK_LOCALIZE(@"Pressure",nil)],
+          @[@(0x0004), BLUESTSDK_LOCALIZE(@"Temperature",nil)],
+          @[@(0x0002), BLUESTSDK_LOCALIZE(@"Battery",nil)],
           ]:
         @[ //group B
-          @[@(0x0001), @"Pedometer"],
-          @[@(0x0080), @"SensFusion AHRS Mems"],
-          @[@(0x0200), @"FreeFall"],
-          @[@(0x0010), @"Activity Recognition"],
-          @[@(0x0008), @"Carry Position"],
+          @[@(0x0001), BLUESTSDK_LOCALIZE(@"Pedometer",nil)],
+          @[@(0x0080), BLUESTSDK_LOCALIZE(@"SensFusion AHRS Mems",nil)],
+          @[@(0x0200), BLUESTSDK_LOCALIZE(@"FreeFall",nil)],
+          @[@(0x0010), BLUESTSDK_LOCALIZE(@"Activity Recognition",nil)],
+          @[@(0x0008), BLUESTSDK_LOCALIZE(@"Carry Position",nil)],
         ];
         dest.delegate = self;
     }//if

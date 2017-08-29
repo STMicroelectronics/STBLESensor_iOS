@@ -37,7 +37,6 @@
 
 #import "W2STLuminosityViewController.h"
 
-#import <BlueSTSDK/BlueSTSDKFeatureField.h>
 #import <BlueSTSDK/BlueSTSDKFeatureLuminosity.h>
 
 @interface W2STLuminosityViewController () <BlueSTSDKFeatureDelegate>
@@ -51,12 +50,12 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    mLuminosityFeatures = [self.delegate extractFeaturesType:BlueSTSDKFeatureLuminosity.class];
+    mLuminosityFeatures = [self.node getFeaturesOfType:BlueSTSDKFeatureLuminosity.class];
     
     if(mLuminosityFeatures.count != 0){
         for (BlueSTSDKFeature *f in mLuminosityFeatures){
             [f addFeatureDelegate:self];
-            [self.delegate enableNotificationForFeature:f];
+            [self.node enableNotification:f];
         }//for
         _luminosityImage.image=[UIImage imageNamed:@"led_on"];
     }//if
@@ -68,19 +67,19 @@
     if(mLuminosityFeatures.count != 0){
         for (BlueSTSDKFeature *f in mLuminosityFeatures){
             [f removeFeatureDelegate:self];
-            [self.delegate disableNotificationForFeature:f];
+            [self.node disableNotification:f];
         }//for
     }//if
 }
 
 #pragma mark - BlueSTSDKFeatureDelegate
 - (void)didUpdateFeature:(BlueSTSDKFeature *)feature sample:(BlueSTSDKFeatureSample *)sample{
-    BlueSTSDKFeatureField *lumDesc = [feature.getFieldsDesc objectAtIndex:0];
+    BlueSTSDKFeatureField *lumDesc = feature.getFieldsDesc[0];
 
     
     NSMutableString *luminosityLabel = [NSMutableString stringWithCapacity:32];
-    for (int i=0; i<mLuminosityFeatures.count ; i++){
-        BlueSTSDKFeatureSample *s = [[mLuminosityFeatures objectAtIndex:i] lastSample];
+    for (NSUInteger i=0; i<mLuminosityFeatures.count ; i++){
+        BlueSTSDKFeatureSample *s = [mLuminosityFeatures[i] lastSample];
         float luminosity = [BlueSTSDKFeatureLuminosity getLuminosity:s];
         [luminosityLabel appendFormat: @"%.2f %@\n", luminosity, lumDesc.unit];
     }//for

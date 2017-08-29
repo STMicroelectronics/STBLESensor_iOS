@@ -34,6 +34,7 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
  * OF SUCH DAMAGE.
  */
+#import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
 
 #import "W2STAccEventMultipleEventDisplayViewController.h"
 #import "W2STAccEventIconUtil.h"
@@ -75,7 +76,7 @@ static BOOL hasEvent(BlueSTSDKFeatureAccelerometerEventType eventSet,
     }
     if(hasEvent(event, BlueSTSDKFeatureAccelerometerPedometer) && eventData!=mNSteps){
         shakeImage(mPedomiterIcon);
-        mPedomiterLabel.text = [NSString stringWithFormat:@"Number Steps: %d",eventData];
+        mPedomiterLabel.text = [NSString stringWithFormat:BLUESTSDK_LOCALIZE(@"Number Steps: %d",nil),eventData];
         mNSteps=eventData;
     }
     if(hasEvent(event, BlueSTSDKFeatureAccelerometerSingleTap) ||

@@ -37,7 +37,7 @@
 
 #import "STWeSUTools.h"
 #import <AudioToolbox/AudioServices.h>
-//#import <AVFoundation/AVFoundation.h>
+#import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
 #import <QuartzCore/QuartzCore.h>
 
 #define TAG_NAME_CHAR_NUM 6
@@ -54,7 +54,7 @@
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title
                                                                              message:message
                                                                       preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:BLUESTSDK_LOCALIZE(@"OK",nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [alertController dismissViewControllerAnimated:YES completion:nil];
     }];
     [alertController addAction:ok];
@@ -87,7 +87,7 @@
             [alertController addAction:item];
         }
     }
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:BLUESTSDK_LOCALIZE(@"Cancel",nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         handler(OPTION_CANCEL);
         [alertController dismissViewControllerAnimated:YES completion:nil];
     }];

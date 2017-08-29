@@ -38,9 +38,8 @@
 #import <UIKit/UIKit.h>
 
 #import "W2STEnviromentalViewController.h"
-#import "W2STDemoSubViewController.h"
 
-@interface W2STLuminosityViewController : W2STDemoSubViewController
+@interface W2STLuminosityViewController : BlueMSDemoTabViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *luminosityLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *luminosityImage;

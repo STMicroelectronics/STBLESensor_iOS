@@ -51,24 +51,6 @@
     return temp;
 }
 
-+(NSString*) getDeviceType:(BlueSTSDKNodeType)type{
-    
-    switch (type) {
-        case BlueSTSDKNodeTypeNucleo:
-            return @"NUCLEO";
-        case BlueSTSDKNodeTypeSensor_Tile:
-            return @"SENSOR_TILE";
-        case BlueSTSDKNodeTypeBlue_Coin:
-            return @"BLUE_COIN";
-        case BlueSTSDKNodeTypeSTEVAL_WESU1:
-            return @"STEVAL_WESU1";
-        case BlueSTSDKNodeTypeGeneric:
-        default:
-            return @"GENERIC";
-    }
-    
-}
-
 /**
  * hide the keyboard when the user touch something outside the UITextField
  */
@@ -92,7 +74,7 @@
 
 -(nullable id<W2STMQTTConnectionFactory>) buildConnectionFactory{
     @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                   reason:[NSString stringWithFormat:@"You must overwrite %@ in a subclass]",
+                                   reason:[NSString stringWithFormat:@"You must overwrite %@ in a subclass",
                                            NSStringFromSelector(_cmd)]
                                  userInfo:nil];
     return nil;

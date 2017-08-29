@@ -37,6 +37,7 @@
 
 
 #import <BlueSTSDK/BlueSTSDKFeatureHeartRate.h>
+#import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
 
 #import "W2STHeartRateViewController.h"
 
@@ -109,9 +110,9 @@
 }
 
 #define RATE_STRING @"%d %@"
-#define ENERGY_STRING @"Energy: %d %@"
-#define RRINTERVAL_STRING @"RR Interval: %.2f %@"
-#define PULSE_ANIMATION_KEY @"Pulse"
+#define ENERGY_STRING BLUESTSDK_LOCALIZE(@"Energy: %d %@",nil)
+#define RRINTERVAL_STRING BLUESTSDK_LOCALIZE(@"RR Interval: %.2f %@",nil)
+#define PULSE_ANIMATION_KEY BLUESTSDK_LOCALIZE(@"Pulse",nil)
 #define HEART_IMAGE @"heart"
 #define HEART_GRAY_IMAGE @"heart_gray"
 

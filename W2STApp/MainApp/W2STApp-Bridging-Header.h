@@ -40,6 +40,7 @@
 
 #import "BlueMSDemoTabViewController.h"
 #import "Reachability.h"
+#import <CorePlot-CocoaTouch.h>
 
 
 #endif /* W2STApp_Bridging_Header_h */

@@ -36,16 +36,17 @@
  */
 
 #import <BlueSTSDK_Gui/UIViewController+BlueSTSDK.h>
+#import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
 
 #include "W2STCloudConnectionViewController.h"
 #include "W2STCloudFeatureTableViewCell.h"
 #include "W2STCloudDataPageViewController.h"
 
 
-#define DISCONNECT_BUTTON_LABEL @"Disconnect"
-#define CONNECT_BUTTON_LABEL @"Connect"
-#define MISSING_PARA_DIALOG_TITLE @"Error"
-#define MISSING_PARA_DIALOG_MSG @"Missing data"
+#define DISCONNECT_BUTTON_LABEL BLUESTSDK_LOCALIZE(@"Disconnect",nil)
+#define CONNECT_BUTTON_LABEL BLUESTSDK_LOCALIZE(@"Connect",nil)
+#define MISSING_PARA_DIALOG_TITLE BLUESTSDK_LOCALIZE(@"Error",nil)
+#define MISSING_PARA_DIALOG_MSG BLUESTSDK_LOCALIZE(@"Missing data",nil)
 
 @interface W2STCloudConnectionViewController ()
     <UITableViewDataSource,MQTTSessionDelegate,W2STCloudFeatureTableViewCellDelegate>
@@ -147,8 +148,9 @@
     }
     
     cell.delegate = self;
-    cell.feature = [mEnabledFeature objectAtIndex:indexPath.row];
-    
+    BlueSTSDKFeature *f = mEnabledFeature[indexPath.row];
+    [cell setFeature:f enabled: [self.node isEnableNotification:f]];
+        
     return cell;
 }
 
@@ -206,15 +208,20 @@
 }
 
 -(void)connectionError:(MQTTSession *)session error:(NSError *)error{
-    [self showErrorMsg:@"Connection Error"
+    [self showErrorMsg:BLUESTSDK_LOCALIZE(@"Connection Error",nil)
                  title:[error localizedDescription]
        closeController:false];
 }
 
 - (void)connectionRefused:(MQTTSession *)session error:(NSError *)error{
-    [self showErrorMsg:@"Connection Refused"
+    [self showErrorMsg:BLUESTSDK_LOCALIZE(@"Connection Refused",nil)
                  title:[error localizedDescription]
        closeController:false];
+}
+
+- (IBAction)onViewDataButtonClick:(id)sender {
+    //we esplicity do the segue otherwise the new view controller will not be inserted in the navigation stack
+    [self performSegueWithIdentifier:@"cloudShowCloudData" sender:self];
 }
 
 @end

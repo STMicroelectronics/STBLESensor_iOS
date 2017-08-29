@@ -36,6 +36,7 @@
  */
 
 #import <BlueSTSDK/BlueSTSDKFeatureAccelerometerEvent.h>
+#import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
 
 #import "W2STAccEventViewController.h"
 #import "W2STAccEventSingleEventDisplayViewController.h"
@@ -60,8 +61,8 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_Nucleo[] ={
     BlueSTSDKFeatureEventTypePedometer
 };
 
-#define TITLE_FORMAT @"Event Enabled: %@"
-#define DEFAULT_TITLE @"Select event"
+#define TITLE_FORMAT BLUESTSDK_LOCALIZE(@"Event Enabled: %@",nil)
+#define DEFAULT_TITLE BLUESTSDK_LOCALIZE(@"Select event",nil)
 
 @interface W2STAccEventViewController ()< UIPickerViewDataSource,
     UIPickerViewDelegate,

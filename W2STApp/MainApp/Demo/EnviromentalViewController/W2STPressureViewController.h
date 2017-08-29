@@ -37,9 +37,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "W2STDemoSubViewController.h"
+#import "BlueMSDemoTabViewController.h"
 
-@interface W2STPressureViewController : W2STDemoSubViewController
+@interface W2STPressureViewController : BlueMSDemoTabViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *pressureImage;
 @property (weak, nonatomic) IBOutlet UILabel *pressureLabel;

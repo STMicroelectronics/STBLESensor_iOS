@@ -37,9 +37,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "W2STDemoSubViewController.h"
+#import "BlueMSDemoTabViewController.h"
 
-@interface W2STTemperatureViewController : W2STDemoSubViewController
+@interface W2STTemperatureViewController : BlueMSDemoTabViewController
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *temperatureImage;

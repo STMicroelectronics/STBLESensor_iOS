@@ -37,12 +37,13 @@
 
 
 #import <BlueSTSDK/BlueSTSDKFeatureCarryPosition.h>
+#import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
 
 #import <BlueSTSDK_Gui/MBProgressHUD.h>
 
-#define START_MESSAGE @"Carry detection started"
+#define START_MESSAGE BLUESTSDK_LOCALIZE(@"Carry detection started",nil)
 #define START_MESSAGE_DISPLAY_TIME 1.0f
-#define LICENSE_NOT_VALID_MSG @"Check the license"
+#define LICENSE_NOT_VALID_MSG BLUESTSDK_LOCALIZE(@"Check the license",nil)
 
 #import "BlueMSDemosViewController.h"
 #import "W2STCarryPositionViewController.h"
@@ -82,8 +83,8 @@
     MBProgressHUD *message = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     message.mode = MBProgressHUDModeText;
     message.removeFromSuperViewOnHide = YES;
-    message.labelText = START_MESSAGE;
-    [message hide:true afterDelay:START_MESSAGE_DISPLAY_TIME];
+    message.label.text = START_MESSAGE;
+    [message hideAnimated:true afterDelay:START_MESSAGE_DISPLAY_TIME];
 }
 
 -(void)viewDidAppear:(BOOL)animated{

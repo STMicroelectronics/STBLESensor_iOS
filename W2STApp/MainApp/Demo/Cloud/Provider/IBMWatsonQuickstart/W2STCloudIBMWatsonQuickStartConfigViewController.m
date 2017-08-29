@@ -73,7 +73,7 @@
         _mDeviceIdText.text = [W2STCloudConfigViewController getDeviceIdForNode:self.node];
     }
     
-    mNodeType = [W2STCloudConfigViewController getDeviceType:self.node.type];
+    mNodeType = [BlueSTSDKNode nodeTypeToString:self.node.type];
 }
 
 -(nullable id<W2STMQTTConnectionFactory>) buildConnectionFactory{

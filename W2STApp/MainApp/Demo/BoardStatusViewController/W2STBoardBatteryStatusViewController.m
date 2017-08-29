@@ -36,6 +36,7 @@
  */
 
 #import <BlueSTSDK/BlueSTSDKFeatureBattery.h>
+#import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
 
 #import "W2STBoardBatteryStatusViewController.h"
 
@@ -52,12 +53,30 @@
 @implementation W2STBoardBatteryStatusViewController{
     BlueSTSDKFeatureBattery *batteryFeature;
     float mBatteryCapacity;
+
+    UIAlertAction *mShowBatteryInfo;
+
 }
 
 -(void)viewDidLoad{
     [super viewDidLoad];
     mBatteryCapacity=NAN;
+
+    mShowBatteryInfo = [UIAlertAction actionWithTitle:@"Battery Info"
+                                                style:UIAlertActionStyleDefault
+                                              handler:^(UIAlertAction *action) {
+          [self performSegueWithIdentifier:@"BlueMS_showBatteryInfo" sender:self];
+    }];
 }
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+    [BlueMSDemoTabViewController setViewControllerProperty:segue.destinationViewController
+                                                      node:self.node
+                                              menuDelegate:self.menuDelegate];
+}
+
 
 -(void)loadBatteryCapacity{
     if(!isnan(mBatteryCapacity)) //already load
@@ -73,11 +92,12 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     batteryFeature = (BlueSTSDKFeatureBattery*)
-        [self.delegate extractFeatureType: BlueSTSDKFeatureBattery.class];
+        [self.node getFeatureOfType: BlueSTSDKFeatureBattery.class];
     if(batteryFeature!=nil){
         [batteryFeature addFeatureDelegate:self];
         [batteryFeature addBatteryDelegate:self];
-        [self.delegate enableNotificationForFeature:batteryFeature];
+        [self.menuDelegate addMenuAction:mShowBatteryInfo];
+        [self.node enableNotification:batteryFeature];
         [self loadBatteryCapacity];
         [self loadMaxAssorbedCurrent];
     }
@@ -88,7 +108,8 @@
     if(batteryFeature!=nil){
         [batteryFeature removeFeatureDelegate:self];
         [batteryFeature removeBatteryDelegate:self];
-        [self.delegate disableNotificationForFeature:batteryFeature];
+        [self.node disableNotification:batteryFeature];
+        [self.menuDelegate removeMenuAction:mShowBatteryInfo];
     }
 }
 
@@ -119,10 +140,10 @@ bool displayRemainingTime(BlueSTSDKFeatureBatteryStatus batteryStatus){
     float chargeValue = [BlueSTSDKFeatureBattery getBatteryLevel:sample];
     float currentValue = [BlueSTSDKFeatureBattery getBatteryCurrent:sample];
     BlueSTSDKFeatureBatteryStatus batteryStatus = [BlueSTSDKFeatureBattery getBatteryStatus:sample ];
-    NSString *current = [NSString stringWithFormat:@"Current: %.1f mA",currentValue];
-    NSString *voltage = [NSString stringWithFormat:@"Voltage: %.3f V",
+    NSString *current = [NSString stringWithFormat:BLUESTSDK_LOCALIZE(@"Current: %.1f mA",nil),currentValue];
+    NSString *voltage = [NSString stringWithFormat:BLUESTSDK_LOCALIZE(@"Voltage: %.3f V",nil),
                          [BlueSTSDKFeatureBattery getBatteryVoltage:sample]];
-    NSString *charge = [NSString stringWithFormat:@"Charge: %.1f %%",chargeValue ];
+    NSString *charge = [NSString stringWithFormat:BLUESTSDK_LOCALIZE(@"Charge: %.1f %%",nil),chargeValue ];
 //    NSString *status = [NSString stringWithFormat:@"Status: %@",  ];
     NSString *status =[BlueSTSDKFeatureBattery getBatteryStatusStr:sample ];
     UIImage *batteryImage = [self getBatteryStatusImageWithLevel:chargeValue
@@ -130,7 +151,7 @@ bool displayRemainingTime(BlueSTSDKFeatureBatteryStatus batteryStatus){
     float remainingBattery = mBatteryCapacity* (chargeValue/100.0f);
     
     float remainingTime = getRemainingMinute(currentValue, remainingBattery);
-    NSString *remainingTimeStr = isnan(remainingTime) ? nil : [NSString stringWithFormat:@"Autonomy: %.1f m",remainingTime];
+    NSString *remainingTimeStr = isnan(remainingTime) ? nil : [NSString stringWithFormat:BLUESTSDK_LOCALIZE(@"Autonomy: %.1f m",nil),remainingTime];
     
     dispatch_sync(dispatch_get_main_queue(),^{
         self.levelLabel.text=charge;
@@ -156,5 +177,6 @@ bool displayRemainingTime(BlueSTSDKFeatureBatteryStatus batteryStatus){
 
 -(void)didMaxAssorbedCurrentRead:(BlueSTSDKFeatureBattery *)feature
                          current:(float)current{ }
+
 
 @end

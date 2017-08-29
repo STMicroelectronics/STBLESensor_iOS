@@ -37,6 +37,7 @@
 
 #import "STWesUFeatureSettingViewController.h"
 #import "STWeSUFeatureSettingDialogViewController.h"
+#import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
 
 #import <BlueSTSDK/BlueSTSDKWeSURegisterDefines.h>
 
@@ -79,23 +80,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     mRegisters = @[
-                   [FeatureSettingsData createWithName:@"Accelerometer, Gyroscope, Magnetometer"
+                   [FeatureSettingsData createWithName:BLUESTSDK_LOCALIZE(@"Accelerometer, Gyroscope, Magnetometer",nil)
                                                    reg:BlueSTSDK_REGISTER_NAME_GROUP_A_FEATURE_CTRLS_0080],
-                   [FeatureSettingsData createWithName:@"Pressure"
+                   [FeatureSettingsData createWithName:BLUESTSDK_LOCALIZE(@"Pressure",nil)
                                                    reg:BlueSTSDK_REGISTER_NAME_GROUP_A_FEATURE_CTRLS_0010],
-                   [FeatureSettingsData createWithName:@"Temperature"
+                   [FeatureSettingsData createWithName:BLUESTSDK_LOCALIZE(@"Temperature",nil)
                                                    reg:BlueSTSDK_REGISTER_NAME_GROUP_A_FEATURE_CTRLS_0004],
-                   [FeatureSettingsData createWithName:@"Battery"
+                   [FeatureSettingsData createWithName:BLUESTSDK_LOCALIZE(@"Battery",nil)
                                                    reg:BlueSTSDK_REGISTER_NAME_GROUP_A_FEATURE_CTRLS_0002],
-                   [FeatureSettingsData createWithName:@"Motion FX"
+                   [FeatureSettingsData createWithName:BLUESTSDK_LOCALIZE(@"Motion FX",nil)
                                                    reg:BlueSTSDK_REGISTER_NAME_GROUP_B_FEATURE_CTRLS_0100],
-                   [FeatureSettingsData createWithName:@"FreeFall (deprecated)"
+                   [FeatureSettingsData createWithName:BLUESTSDK_LOCALIZE(@"FreeFall (deprecated)",nil)
                                                    reg:BlueSTSDK_REGISTER_NAME_GROUP_B_FEATURE_CTRLS_0200],
-                   [FeatureSettingsData createWithName:@"Accelerometer Events"
+                   [FeatureSettingsData createWithName:BLUESTSDK_LOCALIZE(@"Accelerometer Events",nil)
                                                    reg:BlueSTSDK_REGISTER_NAME_GROUP_B_FEATURE_CTRLS_0400],
-                   [FeatureSettingsData createWithName:@"Activity Recognition"
+                   [FeatureSettingsData createWithName:BLUESTSDK_LOCALIZE(@"Activity Recognition",nil)
                                                    reg:BlueSTSDK_REGISTER_NAME_GROUP_B_FEATURE_CTRLS_0010],
-                   [FeatureSettingsData createWithName:@"Carry Position"
+                   [FeatureSettingsData createWithName:BLUESTSDK_LOCALIZE(@"Carry Position",nil)
                                                    reg:BlueSTSDK_REGISTER_NAME_GROUP_B_FEATURE_CTRLS_0008],
                    ];
         mFeatureTable.dataSource=self;

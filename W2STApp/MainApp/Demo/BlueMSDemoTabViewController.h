@@ -39,9 +39,14 @@
 #import <UIKit/UIKit.h>
 #import <BlueSTSDK/BlueSTSDKNode.h>
 #import <BlueSTSDK_Gui/UIViewController+BlueSTSDK.h>
+#include <BlueSTSDK_Gui/BlueSTSDKViewControllerMenuDelegate.h>
 
 @interface BlueMSDemoTabViewController : UIViewController
 
++(void)setViewControllerProperty:(UIViewController*)viewController  node:(BlueSTSDKNode *)node menuDelegate:(id<BlueSTSDKViewControllerMenuDelegate>) menuDelegate;
+
 @property (weak,nonatomic) BlueSTSDKNode *node;
+@property (weak, nonatomic) id<BlueSTSDKViewControllerMenuDelegate> menuDelegate;
+
 
 @end

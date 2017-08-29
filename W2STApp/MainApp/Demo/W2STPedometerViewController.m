@@ -37,12 +37,13 @@
 
 
 #import <BlueSTSDK/BlueSTSDKFeaturePedometer.h>
+#import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
 
 #import "BlueMSDemosViewController.h"
 #import "W2STPedometerViewController.h"
 
-#define NSTEPS_STRING @"Steps: %lu"
-#define FREQ_STRING @"Frequency: %u %@"
+#define NSTEPS_STRING BLUESTSDK_LOCALIZE(@"Steps: %lu",nil)
+#define FREQ_STRING BLUESTSDK_LOCALIZE(@"Frequency: %u %@",nil)
 
 @interface W2STPedometerViewController ()<BlueSTSDKFeatureDelegate>
 /**

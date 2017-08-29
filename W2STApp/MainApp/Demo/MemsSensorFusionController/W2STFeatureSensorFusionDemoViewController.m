@@ -37,19 +37,19 @@
 #import <GLKit/GLKit.h>
 #import <AudioToolbox/AudioServices.h>
 #import <BlueSTSDK_Gui/MBProgressHUD.h>
+#import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
 
 #import "W2STFeatureSensorFusionDemoViewController.h"
 
-#import "BlueMSDemosViewController.h"
 #import "W2STSimpleDialogViewController.h"
 #import "BlueMSDemoTabViewController+WesuLicenseCheck.h"
 
 #import <BlueSTSDK/BlueSTSDKFeatureAccelerometerEvent.h>
 #import <BlueSTSDK/BlueSTSDKFeatureMemsSensorFusionCompact.h>
-#import <BlueSTSDK/BlueSTSDKFeatureMemsSensorFusion.h>
 
 #import <BlueSTSDK/BlueSTSDKFeatureProximity.h>
-#import <BlueSTSDK/BlueSTSDKFeatureField.h>
+
+#import "ST_BlueMS-Swift.h"
 
 #define SCENE_MODEL_FILE @"art.scnassets/cubeModel.dae"
 #define SCENE_MODEL_NAME @"Cube"
@@ -59,18 +59,18 @@
 
 #define RESET_POSITION_ID 0
 #define RESET_POSITION_STORYBOARD_ID @"ResetPositionDialogID"
-#define RESET_POSITION_MESSAGE_NUCLEO @"Keep the board as shown in the image"
-#define RESET_POSITION_MESSAGE_STEVAL_WESU1 @"Keep the board as shown in the image"
-#define RESET_POSITION_MESSAGE_GENERIC @"Keep the board horizontaly"
+#define RESET_POSITION_MESSAGE_NUCLEO BLUESTSDK_LOCALIZE(@"Keep the board as shown in the image",nil)
+#define RESET_POSITION_MESSAGE_STEVAL_WESU1 BLUESTSDK_LOCALIZE(@"Keep the board as shown in the image",nil)
+#define RESET_POSITION_MESSAGE_GENERIC BLUESTSDK_LOCALIZE(@"Keep the board horizontaly",nil)
 
 #define RESET_CALIB_ID 1
 #define RESET_CALIB_STORYBOARD_ID @"ResetCalibDialogID"
 
-#define FREE_FALL_MESSAGE @"Free fall detected!"
+#define FREE_FALL_MESSAGE BLUESTSDK_LOCALIZE(@"Free fall detected!",nil)
 #define FREE_FALL_DIALOG_DURATION_S 2.0f
 
 
-#define LICENSE_NOT_VALID_MSG @"Check the license"
+#define LICENSE_NOT_VALID_MSG BLUESTSDK_LOCALIZE(@"Check the license",nil)
 
 
 @interface W2STFeatureSensorFusionDemoViewController ()
@@ -87,9 +87,6 @@
     GLKQuaternion mQuatReset;
     SCNScene *mScene;
     SCNNode *mObjectNode;
-    SCNNode *mCameraNode;
-    SCNNode *mLightNode;
-    SCNNode *mAmbientLightNode;
     bool mShowResetMessage;
     bool mShowCalibMessage;
 }
@@ -100,7 +97,7 @@
     mObjectNode = [mScene.rootNode childNodeWithName:SCENE_MODEL_NAME recursively:YES];
     mObjectNode.scale = SCNVector3Make(CUBE_DEFAULT_SCALE, CUBE_DEFAULT_SCALE,
                                        CUBE_DEFAULT_SCALE);
-    [self.sceneView prepareObjects:[NSArray arrayWithObject:mObjectNode] withCompletionHandler:nil];
+    [self.sceneView prepareObjects:@[mObjectNode] withCompletionHandler:nil];
     self.sceneView.scene = mScene;
 
 }
@@ -298,8 +295,8 @@
             MBProgressHUD *message = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             message.mode = MBProgressHUDModeText;
             message.removeFromSuperViewOnHide = YES;
-            message.labelText = FREE_FALL_MESSAGE;
-            [message hide:true afterDelay:FREE_FALL_DIALOG_DURATION_S];
+            message.label.text = FREE_FALL_MESSAGE;
+            [message hideAnimated:true afterDelay:FREE_FALL_DIALOG_DURATION_S];
             AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
         });
     }//if
@@ -334,21 +331,20 @@
 }
 
 -(void)prepareResetDialogForNode{
+
+    mResetPositionDialogController.image.image = [self.node getImage];
+
     switch (self.node.type) {
         case BlueSTSDKNodeTypeNucleo:
-            mResetPositionDialogController.image.image = [UIImage imageNamed:@"nucleo_reset_position.png"];
             mResetPositionDialogController.message.text = RESET_POSITION_MESSAGE_NUCLEO;
             break;
         case BlueSTSDKNodeTypeSTEVAL_WESU1:
-            mResetPositionDialogController.image.image = [UIImage imageNamed:@"steval_wesu1_reset_position.png"];
             mResetPositionDialogController.message.text = RESET_POSITION_MESSAGE_STEVAL_WESU1;
             break;
         case BlueSTSDKNodeTypeSensor_Tile:
-            mResetPositionDialogController.image.image = [UIImage imageNamed:@"tile_reset_position.png"];
             mResetPositionDialogController.message.text = RESET_POSITION_MESSAGE_NUCLEO;
             break;
         default:
-            mResetPositionDialogController.image.image = [UIImage imageNamed:@"board_generic.png"];
             mResetPositionDialogController.message.text = RESET_POSITION_MESSAGE_GENERIC;
             break;
     }//if

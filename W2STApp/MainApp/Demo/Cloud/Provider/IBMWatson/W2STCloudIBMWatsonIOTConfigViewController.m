@@ -96,7 +96,7 @@
     }
     
     if(_mDeviceType.text==nil || _mDeviceType.text.length==0){
-        _mDeviceType.text = [W2STCloudConfigViewController getDeviceType:self.node.type];
+        _mDeviceType.text = [BlueSTSDKNode nodeTypeToString:self.node.type];
     }
     
 }

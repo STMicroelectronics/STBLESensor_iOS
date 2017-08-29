@@ -71,11 +71,4 @@
  */
 +(nonnull NSString*) getDeviceIdForNode:(nonnull BlueSTSDKNode*)node;
 
-
-/**
- * string rappresentation of type enum
- * @param type to transform in string
- * @return string rappresentation of type enum
- */
-+(nonnull NSString*) getDeviceType:(BlueSTSDKNodeType)type;
 @end

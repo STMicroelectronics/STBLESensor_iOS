@@ -7,22 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4EDA21712D8FE55C67924854 /* W2STBoardBatteryStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA2A160681BC86DA87BC3E /* W2STBoardBatteryStatusViewController.m */; };
+		4EDA2AB2A5A955D1CBF0994D /* BlueMSConsoleCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA2952228B042395759553 /* BlueMSConsoleCommand.swift */; };
 		4EDA2ACD09B8CC11808D5CE1 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4EDA2F517475F30AF7B07075 /* LICENSE.txt */; };
 		6602184E1B903EBF006246E9 /* W2STCarryPositionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6602184C1B903EBF006246E9 /* W2STCarryPositionViewController.m */; };
-		661090481DB5FD94009839D9 /* CloudDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 661090471DB5FD94009839D9 /* CloudDemo.storyboard */; };
-		662E423D1E5C313800D6927D /* nucleo_reset_position.png in Resources */ = {isa = PBXBuildFile; fileRef = 662E423A1E5C313800D6927D /* nucleo_reset_position.png */; };
+		6606AB481EB0A06F00FFBEFF /* W2STBoardStatusBatteryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6606AB471EB0A06F00FFBEFF /* W2STBoardStatusBatteryInfo.swift */; };
+		6606AB4F1EB0D8DF00FFBEFF /* W2STBoardRssiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6606AB4E1EB0D8DF00FFBEFF /* W2STBoardRssiViewController.swift */; };
+		662000EB1F1628A5007F947E /* W2STBoardStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 662000EA1F1628A5007F947E /* W2STBoardStatusViewController.m */; };
 		662E423E1E5C313800D6927D /* steval_wesu1_reset_position.png in Resources */ = {isa = PBXBuildFile; fileRef = 662E423B1E5C313800D6927D /* steval_wesu1_reset_position.png */; };
-		662E423F1E5C313800D6927D /* tile_reset_position.png in Resources */ = {isa = PBXBuildFile; fileRef = 662E423C1E5C313800D6927D /* tile_reset_position.png */; };
 		662E42461E5C328900D6927D /* W2STFeatureSensorFusionDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 662E42411E5C328900D6927D /* W2STFeatureSensorFusionDemoViewController.m */; };
 		662E42481E5C328900D6927D /* W2STCompassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 662E42451E5C328900D6927D /* W2STCompassViewController.m */; };
+		6630C9F21ED323B2008D955D /* CorePlot.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6630C9EE1ED323B2008D955D /* CorePlot.txt */; };
+		6630C9F31ED323B2008D955D /* MBProgressHUD.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6630C9EF1ED323B2008D955D /* MBProgressHUD.txt */; };
+		6630C9F41ED323B2008D955D /* MQTTClient.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6630C9F01ED323B2008D955D /* MQTTClient.txt */; };
+		6630C9F51ED323B2008D955D /* Reachability.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6630C9F11ED323B2008D955D /* Reachability.txt */; };
+		6630C9FD1ED33355008D955D /* BlueSTSDK_Gui.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6630C9FB1ED33355008D955D /* BlueSTSDK_Gui.txt */; };
+		6630C9FE1ED33355008D955D /* BlueSTSDK.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6630C9FC1ED33355008D955D /* BlueSTSDK.txt */; };
 		6632CC1A1AD6602D0011F81A /* BlueMSDemosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6632CC191AD6602D0011F81A /* BlueMSDemosViewController.m */; };
 		6633EC0E1E55D323008DA4BC /* BlueMSDemoTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6633EC0D1E55D323008DA4BC /* BlueMSDemoTabViewController.m */; };
+		6633EC2A1E55E3E1008DA4BC /* BlueMSDemosViewController+WesuFwVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 666847B51DE84854001064A3 /* BlueMSDemosViewController+WesuFwVersion.m */; };
 		6637414D1DA7923500D9262F /* W2STCloudFeatureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6637414C1DA7923500D9262F /* W2STCloudFeatureTableViewCell.m */; };
-		6637DAD51E30D656007C0B82 /* AccEventDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6637DAD41E30D656007C0B82 /* AccEventDemo.storyboard */; };
-		6637DAD91E30D6CB007C0B82 /* PlotDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6637DAD61E30D6CB007C0B82 /* PlotDemo.storyboard */; };
 		6637DADA1E30D6CB007C0B82 /* W2STPlotFeatureDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6637DAD71E30D6CB007C0B82 /* W2STPlotFeatureDemoViewController.m */; };
+		6638AF721F160CA1009D64A0 /* BeamForming.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6638AF591F160CA1009D64A0 /* BeamForming.storyboard */; };
+		6638AF731F160CA1009D64A0 /* W2STBeamFormingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6638AF5A1F160CA1009D64A0 /* W2STBeamFormingViewController.swift */; };
+		6638AF741F160CA1009D64A0 /* BlueVoiceASREngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6638AF5D1F160CA1009D64A0 /* BlueVoiceASREngine.swift */; };
+		6638AF751F160CA1009D64A0 /* BlueVoiceGoogleASREngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6638AF5F1F160CA1009D64A0 /* BlueVoiceGoogleASREngine.swift */; };
+		6638AF761F160CA1009D64A0 /* BlueVoiceGoogleAsrKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6638AF601F160CA1009D64A0 /* BlueVoiceGoogleAsrKeyViewController.swift */; };
+		6638AF781F160CA1009D64A0 /* BlueVoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6638AF631F160CA1009D64A0 /* BlueVoice.storyboard */; };
+		6638AF791F160CA1009D64A0 /* BlueVoiceSelectLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6638AF651F160CA1009D64A0 /* BlueVoiceSelectLanguageViewController.swift */; };
+		6638AF7A1F160CA1009D64A0 /* W2STBlueVoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6638AF661F160CA1009D64A0 /* W2STBlueVoiceViewController.swift */; };
+		6638AF7B1F160CA1009D64A0 /* DirectionOfArrival.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6638AF681F160CA1009D64A0 /* DirectionOfArrival.storyboard */; };
+		6638AF7C1F160CA1009D64A0 /* W2STDirectionOfArrivalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6638AF691F160CA1009D64A0 /* W2STDirectionOfArrivalViewController.swift */; };
+		6638AF7D1F160CA1009D64A0 /* BlueVoiceSyncQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6638AF6B1F160CA1009D64A0 /* BlueVoiceSyncQueue.swift */; };
+		6638AF7E1F160CA1009D64A0 /* W2STAudioDumpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6638AF6C1F160CA1009D64A0 /* W2STAudioDumpController.swift */; };
+		6638AF7F1F160CA1009D64A0 /* W2STAudioPlaybackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6638AF6D1F160CA1009D64A0 /* W2STAudioPlaybackController.swift */; };
+		6638AF801F160CA1009D64A0 /* W2STAudioPlotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6638AF6E1F160CA1009D64A0 /* W2STAudioPlotViewController.swift */; };
+		6638AF811F160CA1009D64A0 /* W2STAudioStreamConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6638AF6F1F160CA1009D64A0 /* W2STAudioStreamConfig.swift */; };
+		6638AF821F160CA1009D64A0 /* W2STCircularBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6638AF701F160CA1009D64A0 /* W2STCircularBuffer.swift */; };
+		6638AF831F160CA1009D64A0 /* W2STWaveFileDump.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6638AF711F160CA1009D64A0 /* W2STWaveFileDump.swift */; };
 		664015F61B38377C00E9E7B1 /* W2STSimpleDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 664015F51B38377C00E9E7B1 /* W2STSimpleDialogViewController.m */; };
-		6649110E1CF82D69009623B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6649110D1CF82D69009623B3 /* Main.storyboard */; };
 		664911121CF82E46009623B3 /* BlueMSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 664911111CF82E46009623B3 /* BlueMSMainViewController.m */; };
 		664E095D1E49F9FD00C6EA07 /* calibrated.png in Resources */ = {isa = PBXBuildFile; fileRef = 664E09541E49F9FD00C6EA07 /* calibrated.png */; };
 		664E095E1E49F9FD00C6EA07 /* ProximityOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 664E09551E49F9FD00C6EA07 /* ProximityOff.png */; };
@@ -31,7 +54,6 @@
 		664E09631E49F9FD00C6EA07 /* press_contact.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 664E095A1E49F9FD00C6EA07 /* press_contact.jpg */; };
 		664E09641E49F9FD00C6EA07 /* text.html in Resources */ = {isa = PBXBuildFile; fileRef = 664E095B1E49F9FD00C6EA07 /* text.html */; };
 		665CB5461C6DCDD5003118BC /* W2STSelectAccEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 665CB5451C6DCDD5003118BC /* W2STSelectAccEventViewController.m */; };
-		666847B61DE84854001064A3 /* BlueMSDemosViewController+WesuFwVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 666847B51DE84854001064A3 /* BlueMSDemosViewController+WesuFwVersion.m */; };
 		666C41491D085AA10021D9D3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 666C41481D085AA10021D9D3 /* AudioToolbox.framework */; };
 		666C414A1D085B620021D9D3 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 666C41461D085A2D0021D9D3 /* CoreAudio.framework */; };
 		6670ED051DB0D294003D6185 /* W2STCloudDataPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6670ED041DB0D294003D6185 /* W2STCloudDataPageViewController.m */; };
@@ -44,12 +66,8 @@
 		6680E77B1E2F6F0F00C39C5E /* BlueSTSDK_Gui.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6680E7791E2F6F0700C39C5E /* BlueSTSDK_Gui.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		668A127F1E3A4E0F00D99490 /* W2STMotionIntensityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 668A127E1E3A4E0F00D99490 /* W2STMotionIntensityViewController.m */; };
 		6693B8EC1C898B9200F24E33 /* W2STSwitchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6693B8EB1C898B9200F24E33 /* W2STSwitchViewController.m */; };
-		669570901E8E890F00A8CFFD /* BlueVoiceSyncQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669570851E8E890F00A8CFFD /* BlueVoiceSyncQueue.swift */; };
-		669570911E8E890F00A8CFFD /* BlueVoiceASREngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669570871E8E890F00A8CFFD /* BlueVoiceASREngine.swift */; };
-		669570921E8E890F00A8CFFD /* BlueVoiceGoogleASREngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669570891E8E890F00A8CFFD /* BlueVoiceGoogleASREngine.swift */; };
-		669570931E8E890F00A8CFFD /* BlueVoiceGoogleAsrKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6695708A1E8E890F00A8CFFD /* BlueVoiceGoogleAsrKeyViewController.swift */; };
-		669570961E8E890F00A8CFFD /* BlueVoiceSelectLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6695708E1E8E890F00A8CFFD /* BlueVoiceSelectLanguageViewController.swift */; };
-		669570971E8E890F00A8CFFD /* W2STBlueVoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6695708F1E8E890F00A8CFFD /* W2STBlueVoiceViewController.swift */; };
+		669E39B11EAA428100E96C02 /* W2STBatteryInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669E39B01EAA428100E96C02 /* W2STBatteryInfoViewController.swift */; };
+		66A0D4E01EDD6DE000D9CDA7 /* BlueSTDKNode+image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A0D4DF1EDD6DE000D9CDA7 /* BlueSTDKNode+image.swift */; };
 		66A917811D7DA5130004A4DC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66A917801D7DA5130004A4DC /* MediaPlayer.framework */; };
 		66A98DF61C0D9E7B00904CB3 /* W2STProximityGestureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A98DF51C0D9E7B00904CB3 /* W2STProximityGestureViewController.m */; };
 		66AE69F91E2CF4B7008CB6AA /* W2STAccEventSingleEventDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66AE69F81E2CF4B7008CB6AA /* W2STAccEventSingleEventDisplayViewController.m */; };
@@ -60,15 +78,12 @@
 		66B081821DB8C6F40041090A /* W2STIBMWatsonQuickStartConnectionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B0817A1DB8C6F40041090A /* W2STIBMWatsonQuickStartConnectionFactory.m */; };
 		66B081831DB8C6F40041090A /* W2STCloudIBMWatsonQuickStartConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B0817C1DB8C6F40041090A /* W2STCloudIBMWatsonQuickStartConfigViewController.m */; };
 		66B081841DB8C6F40041090A /* W2STCloudConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B0817E1DB8C6F40041090A /* W2STCloudConfigViewController.m */; };
-		66B3B2941E5AFCBA00373718 /* motionFXDemos.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66B3B2931E5AFCBA00373718 /* motionFXDemos.storyboard */; };
+		66B881E01F334C2700529A39 /* BlueMSDemoTabViewController+WesuLicenseCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BBAA571DEDCE3B009213BA /* BlueMSDemoTabViewController+WesuLicenseCheck.m */; };
 		66B92C6F1D2BABCA008CEC03 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B92C6E1D2BABCA008CEC03 /* Reachability.m */; };
 		66B92C731D2BABE7008CEC03 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66B92C721D2BABE7008CEC03 /* SystemConfiguration.framework */; };
 		66B92C821D2C02E2008CEC03 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66B92C811D2C02E2008CEC03 /* AVFoundation.framework */; };
-		66BBAA581DEDCE3B009213BA /* BlueMSDemoTabViewController+WesuLicenseCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BBAA571DEDCE3B009213BA /* BlueMSDemoTabViewController+WesuLicenseCheck.m */; };
 		66C491371E530F4B008CB166 /* st_images_LanchScreen.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66C491361E530F4B008CB166 /* st_images_LanchScreen.xcassets */; };
 		66C491391E530F9F008CB166 /* st_images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66C491381E530F9F008CB166 /* st_images.xcassets */; };
-		66C4913C1E531003008CB166 /* W2STBoardStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C4913B1E531003008CB166 /* W2STBoardStatusViewController.m */; };
-		66C4913E1E531010008CB166 /* BoardStatusView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66C4913D1E531010008CB166 /* BoardStatusView.storyboard */; };
 		66C9D9CD1E5D9C57003F727C /* W2STGenericMqttConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C9D9CC1E5D9C57003F727C /* W2STGenericMqttConfigurationViewController.m */; };
 		66C9D9D11E5DA072003F727C /* W2STGenricMqttConnectionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C9D9D01E5DA072003F727C /* W2STGenricMqttConnectionFactory.m */; };
 		66C9D9D41E5DD9F2003F727C /* W2STGenericMqttFeatureListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C9D9D31E5DD9F2003F727C /* W2STGenericMqttFeatureListener.m */; };
@@ -77,10 +92,14 @@
 		66CB69091DB8CE0B00F21ED6 /* W2STCloudJsonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CB69061DB8CE0B00F21ED6 /* W2STCloudJsonUtil.m */; };
 		66CB690A1DB8CE0B00F21ED6 /* W2STIBMWatsonIOTFeatureListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CB69081DB8CE0B00F21ED6 /* W2STIBMWatsonIOTFeatureListener.m */; };
 		66CB6F541B0A1E6900BDF9AC /* W2STSelectFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CB6F531B0A1E6900BDF9AC /* W2STSelectFeatureViewController.m */; };
-		66CB6F581B0A39C700BDF9AC /* W2STBoardBatteryStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CB6F571B0A39C700BDF9AC /* W2STBoardBatteryStatusViewController.m */; };
-		66CB6F5B1B0A3B8000BDF9AC /* W2STBoardRssiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CB6F5A1B0A3B8000BDF9AC /* W2STBoardRssiViewController.m */; };
-		66CCBBA61B0209E500907D59 /* W2STDemoSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CCBBA51B0209E500907D59 /* W2STDemoSubViewController.m */; };
 		66CFCD591B9F265200B9A096 /* BlueSTSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 66CFCD561B9F264900B9A096 /* BlueSTSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		66D5FDDF1EA7863C005D8AE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D5FDE11EA7863C005D8AE9 /* Main.storyboard */; };
+		66D5FDE41EA788EC005D8AE9 /* PlotDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D5FDE61EA788EC005D8AE9 /* PlotDemo.storyboard */; };
+		66D5FDE71EA7899A005D8AE9 /* BoardStatusView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D5FDE91EA7899A005D8AE9 /* BoardStatusView.storyboard */; };
+		66D5FDEA1EA78A20005D8AE9 /* motionFXDemos.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D5FDEC1EA78A20005D8AE9 /* motionFXDemos.storyboard */; };
+		66D5FDED1EA78AFE005D8AE9 /* AccEventDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D5FDEF1EA78AFE005D8AE9 /* AccEventDemo.storyboard */; };
+		66D5FDF01EA78BEB005D8AE9 /* CloudDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D5FDF21EA78BEB005D8AE9 /* CloudDemo.storyboard */; };
+		66D5FDF31EA79C5E005D8AE9 /* WeSUSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D5FDF51EA79C5E005D8AE9 /* WeSUSettings.storyboard */; };
 		66D9FBB81DB50A8900D0EEF1 /* W2STCloudConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D9FBB71DB50A8900D0EEF1 /* W2STCloudConnectionViewController.m */; };
 		66E1303F1E8A4FAB00D26A0E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E1303E1E8A4FAB00D26A0E /* CoreLocation.framework */; };
 		66E130461E8A4FCC00D26A0E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E130451E8A4FCC00D26A0E /* CoreTelephony.framework */; };
@@ -88,7 +107,6 @@
 		66E6915A1AFA393000BD44C1 /* W2STPressureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E691591AFA393000BD44C1 /* W2STPressureViewController.m */; };
 		66E6915D1AFA3F7900BD44C1 /* W2STHumidityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E6915C1AFA3F7900BD44C1 /* W2STHumidityViewController.m */; };
 		66E691601AFA5A8800BD44C1 /* W2STLuminosityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E6915F1AFA5A8800BD44C1 /* W2STLuminosityViewController.m */; };
-		66E6D3501DF1AC9000D1FBBA /* WeSUSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66E6D34F1DF1AC9000D1FBBA /* WeSUSettings.storyboard */; };
 		66E6D3571DF1ADF800D1FBBA /* STWeSUSettingsAdvancedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E6D3521DF1ADF800D1FBBA /* STWeSUSettingsAdvancedTableViewController.m */; };
 		66E6D3581DF1ADF800D1FBBA /* STWeSUSettingsDataReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E6D3541DF1ADF800D1FBBA /* STWeSUSettingsDataReadViewController.m */; };
 		66E6D3591DF1ADF800D1FBBA /* STWeSUSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E6D3561DF1ADF800D1FBBA /* STWeSUSettingsTableViewController.m */; };
@@ -98,8 +116,8 @@
 		66EDA78A1AF9F4B30049C793 /* W2STEnviromentalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EDA7891AF9F4B30049C793 /* W2STEnviromentalViewController.m */; };
 		66EDA7DE1AF9F94F0049C793 /* W2STTemperatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EDA7DD1AF9F94F0049C793 /* W2STTemperatureViewController.m */; };
 		66F1BB811BFC8FE800BCB0D7 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F1BB801BFC8FE800BCB0D7 /* Accelerate.framework */; };
+		66F375F11EB9C309005D16F7 /* BatteryInfoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F375F01EB9C309005D16F7 /* BatteryInfoTest.swift */; };
 		66F5DD321DC9D5A000FD3FA2 /* W2STBMWatsonQuickStartFeatureListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F5DD311DC9D5A000FD3FA2 /* W2STBMWatsonQuickStartFeatureListener.m */; };
-		66FB400F1E802EA400901A06 /* BlueVoice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66FB400E1E802EA400901A06 /* BlueVoice.storyboard */; };
 		66FC1DEE1C19D57A0015F7A2 /* W2STMemsGestureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FC1DED1C19D57A0015F7A2 /* W2STMemsGestureViewController.m */; };
 		66FF61921C3E949B00642010 /* W2STPedometerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FF61911C3E949B00642010 /* W2STPedometerViewController.m */; };
 		66FF61971C3E950300642010 /* W2STAccEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FF61961C3E950300642010 /* W2STAccEventViewController.m */; };
@@ -110,7 +128,6 @@
 		EA8344DC19D956AE0027E447 /* BlueMS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAD77DA61982A62500CCD0BE /* BlueMS.storyboard */; };
 		EAB8D88B19D4164F007D3A37 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB8D88A19D4164F007D3A37 /* OpenGLES.framework */; };
 		EACE369719DDA7BF007E2A2D /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = EACE369619DDA7BF007E2A2D /* art.scnassets */; };
-		EAD77E8A1982A62500CCD0BE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EAD77DA81982A62500CCD0BE /* InfoPlist.strings */; };
 		EAD77E8C1982A62500CCD0BE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD77DAB1982A62500CCD0BE /* main.m */; };
 		EAD77EA71982A62500CCD0BE /* BlueMSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD77DDA1982A62500CCD0BE /* BlueMSAppDelegate.m */; };
 		F4C1BE4C738C4F30F0B5FA88 /* libPods-W2STApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D54F3260077799066EAB08F /* libPods-W2STApp.a */; };
@@ -152,6 +169,20 @@
 			remoteGlobalIDString = F4DB7112640687A3204691772827D515;
 			remoteInfo = "Pods-W2STApp";
 		};
+		66C4914D1E5335E6008CB166 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 77C828F9BCFA9FC0473077401AA3B54E;
+			remoteInfo = AWSCore;
+		};
+		66C4914F1E5335E6008CB166 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D8C9D0A2B23C4BCA3259084B47FEE33D;
+			remoteInfo = AWSMobileAnalytics;
+		};
 		66CFCD551B9F264900B9A096 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 66CFCD501B9F264900B9A096 /* BlueSTSDK.xcodeproj */;
@@ -165,6 +196,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 665241FB1B0B1BB100931F93;
 			remoteInfo = BlueSTSDKTests;
+		};
+		66F375E61EB9C2AA005D16F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA68CFA218D0CB75003B774E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA68CFA918D0CB75003B774E;
+			remoteInfo = W2STApp;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -185,33 +223,57 @@
 
 /* Begin PBXFileReference section */
 		3D54F3260077799066EAB08F /* libPods-W2STApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-W2STApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EDA2910E97D5C3F17ACF8BE /* W2STBoardBatteryStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STBoardBatteryStatusViewController.h; path = BoardStatusViewController/W2STBoardBatteryStatusViewController.h; sourceTree = "<group>"; };
+		4EDA2952228B042395759553 /* BlueMSConsoleCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlueMSConsoleCommand.swift; path = BoardStatusViewController/BlueMSConsoleCommand.swift; sourceTree = "<group>"; };
+		4EDA2A160681BC86DA87BC3E /* W2STBoardBatteryStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STBoardBatteryStatusViewController.m; path = BoardStatusViewController/W2STBoardBatteryStatusViewController.m; sourceTree = "<group>"; };
 		4EDA2F517475F30AF7B07075 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		6602184C1B903EBF006246E9 /* W2STCarryPositionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STCarryPositionViewController.m; sourceTree = "<group>"; };
 		6602184D1B903EBF006246E9 /* W2STCarryPositionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STCarryPositionViewController.h; sourceTree = "<group>"; };
-		661090471DB5FD94009839D9 /* CloudDemo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CloudDemo.storyboard; sourceTree = "<group>"; };
+		6606AB471EB0A06F00FFBEFF /* W2STBoardStatusBatteryInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = W2STBoardStatusBatteryInfo.swift; path = BoardStatusViewController/W2STBoardStatusBatteryInfo.swift; sourceTree = "<group>"; };
+		6606AB4E1EB0D8DF00FFBEFF /* W2STBoardRssiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = W2STBoardRssiViewController.swift; path = BoardStatusViewController/W2STBoardRssiViewController.swift; sourceTree = "<group>"; };
+		662000E91F1628A5007F947E /* W2STBoardStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STBoardStatusViewController.h; path = BoardStatusViewController/W2STBoardStatusViewController.h; sourceTree = "<group>"; };
+		662000EA1F1628A5007F947E /* W2STBoardStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STBoardStatusViewController.m; path = BoardStatusViewController/W2STBoardStatusViewController.m; sourceTree = "<group>"; };
 		662A2DBD1E82687300F3451A /* W2STApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "W2STApp-Bridging-Header.h"; sourceTree = "<group>"; };
-		662E423A1E5C313800D6927D /* nucleo_reset_position.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nucleo_reset_position.png; sourceTree = "<group>"; };
 		662E423B1E5C313800D6927D /* steval_wesu1_reset_position.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = steval_wesu1_reset_position.png; sourceTree = "<group>"; };
-		662E423C1E5C313800D6927D /* tile_reset_position.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile_reset_position.png; sourceTree = "<group>"; };
 		662E42401E5C328900D6927D /* W2STFeatureSensorFusionDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STFeatureSensorFusionDemoViewController.h; path = MemsSensorFusionController/W2STFeatureSensorFusionDemoViewController.h; sourceTree = "<group>"; };
 		662E42411E5C328900D6927D /* W2STFeatureSensorFusionDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STFeatureSensorFusionDemoViewController.m; path = MemsSensorFusionController/W2STFeatureSensorFusionDemoViewController.m; sourceTree = "<group>"; };
 		662E42441E5C328900D6927D /* W2STCompassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STCompassViewController.h; path = MemsSensorFusionController/W2STCompassViewController.h; sourceTree = "<group>"; };
 		662E42451E5C328900D6927D /* W2STCompassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STCompassViewController.m; path = MemsSensorFusionController/W2STCompassViewController.m; sourceTree = "<group>"; };
+		6630C9EE1ED323B2008D955D /* CorePlot.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CorePlot.txt; sourceTree = "<group>"; };
+		6630C9EF1ED323B2008D955D /* MBProgressHUD.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MBProgressHUD.txt; sourceTree = "<group>"; };
+		6630C9F01ED323B2008D955D /* MQTTClient.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MQTTClient.txt; sourceTree = "<group>"; };
+		6630C9F11ED323B2008D955D /* Reachability.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Reachability.txt; sourceTree = "<group>"; };
+		6630C9FB1ED33355008D955D /* BlueSTSDK_Gui.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BlueSTSDK_Gui.txt; sourceTree = "<group>"; };
+		6630C9FC1ED33355008D955D /* BlueSTSDK.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BlueSTSDK.txt; sourceTree = "<group>"; };
 		6632CC181AD6602D0011F81A /* BlueMSDemosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueMSDemosViewController.h; sourceTree = "<group>"; };
 		6632CC191AD6602D0011F81A /* BlueMSDemosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueMSDemosViewController.m; sourceTree = "<group>"; };
 		6633EC0C1E55D323008DA4BC /* BlueMSDemoTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueMSDemoTabViewController.h; sourceTree = "<group>"; };
 		6633EC0D1E55D323008DA4BC /* BlueMSDemoTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueMSDemoTabViewController.m; sourceTree = "<group>"; };
 		6637414B1DA7923500D9262F /* W2STCloudFeatureTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STCloudFeatureTableViewCell.h; sourceTree = "<group>"; };
 		6637414C1DA7923500D9262F /* W2STCloudFeatureTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STCloudFeatureTableViewCell.m; sourceTree = "<group>"; };
-		6637DAD41E30D656007C0B82 /* AccEventDemo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AccEventDemo.storyboard; path = AccEventViewController/AccEventDemo.storyboard; sourceTree = "<group>"; };
-		6637DAD61E30D6CB007C0B82 /* PlotDemo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = PlotDemo.storyboard; path = PlotViewController/PlotDemo.storyboard; sourceTree = "<group>"; };
 		6637DAD71E30D6CB007C0B82 /* W2STPlotFeatureDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STPlotFeatureDemoViewController.m; path = PlotViewController/W2STPlotFeatureDemoViewController.m; sourceTree = "<group>"; };
 		6637DAD81E30D6CB007C0B82 /* W2STPlotFeatureDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STPlotFeatureDemoViewController.h; path = PlotViewController/W2STPlotFeatureDemoViewController.h; sourceTree = "<group>"; };
 		6637DADB1E30D6FB007C0B82 /* W2STAccEventDisplayDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STAccEventDisplayDelegate.h; path = AccEventViewController/W2STAccEventDisplayDelegate.h; sourceTree = "<group>"; };
 		6637DADC1E30D6FB007C0B82 /* W2STAccEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STAccEventViewController.h; path = AccEventViewController/W2STAccEventViewController.h; sourceTree = "<group>"; };
+		6638AF591F160CA1009D64A0 /* BeamForming.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BeamForming.storyboard; sourceTree = "<group>"; };
+		6638AF5A1F160CA1009D64A0 /* W2STBeamFormingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = W2STBeamFormingViewController.swift; sourceTree = "<group>"; };
+		6638AF5D1F160CA1009D64A0 /* BlueVoiceASREngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueVoiceASREngine.swift; sourceTree = "<group>"; };
+		6638AF5F1F160CA1009D64A0 /* BlueVoiceGoogleASREngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueVoiceGoogleASREngine.swift; sourceTree = "<group>"; };
+		6638AF601F160CA1009D64A0 /* BlueVoiceGoogleAsrKeyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueVoiceGoogleAsrKeyViewController.swift; sourceTree = "<group>"; };
+		6638AF641F160CA1009D64A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/BlueVoice.storyboard; sourceTree = "<group>"; };
+		6638AF651F160CA1009D64A0 /* BlueVoiceSelectLanguageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueVoiceSelectLanguageViewController.swift; sourceTree = "<group>"; };
+		6638AF661F160CA1009D64A0 /* W2STBlueVoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = W2STBlueVoiceViewController.swift; sourceTree = "<group>"; };
+		6638AF681F160CA1009D64A0 /* DirectionOfArrival.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DirectionOfArrival.storyboard; sourceTree = "<group>"; };
+		6638AF691F160CA1009D64A0 /* W2STDirectionOfArrivalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = W2STDirectionOfArrivalViewController.swift; sourceTree = "<group>"; };
+		6638AF6B1F160CA1009D64A0 /* BlueVoiceSyncQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueVoiceSyncQueue.swift; sourceTree = "<group>"; };
+		6638AF6C1F160CA1009D64A0 /* W2STAudioDumpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = W2STAudioDumpController.swift; sourceTree = "<group>"; };
+		6638AF6D1F160CA1009D64A0 /* W2STAudioPlaybackController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = W2STAudioPlaybackController.swift; sourceTree = "<group>"; };
+		6638AF6E1F160CA1009D64A0 /* W2STAudioPlotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = W2STAudioPlotViewController.swift; sourceTree = "<group>"; };
+		6638AF6F1F160CA1009D64A0 /* W2STAudioStreamConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = W2STAudioStreamConfig.swift; sourceTree = "<group>"; };
+		6638AF701F160CA1009D64A0 /* W2STCircularBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = W2STCircularBuffer.swift; sourceTree = "<group>"; };
+		6638AF711F160CA1009D64A0 /* W2STWaveFileDump.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = W2STWaveFileDump.swift; sourceTree = "<group>"; };
 		664015F41B38377C00E9E7B1 /* W2STSimpleDialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STSimpleDialogViewController.h; path = MemsSensorFusionController/W2STSimpleDialogViewController.h; sourceTree = "<group>"; };
 		664015F51B38377C00E9E7B1 /* W2STSimpleDialogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STSimpleDialogViewController.m; path = MemsSensorFusionController/W2STSimpleDialogViewController.m; sourceTree = "<group>"; };
-		6649110D1CF82D69009623B3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
 		664911101CF82E46009623B3 /* BlueMSMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueMSMainViewController.h; sourceTree = "<group>"; };
 		664911111CF82E46009623B3 /* BlueMSMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueMSMainViewController.m; sourceTree = "<group>"; };
 		664E09541E49F9FD00C6EA07 /* calibrated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calibrated.png; sourceTree = "<group>"; };
@@ -242,12 +304,8 @@
 		668A127E1E3A4E0F00D99490 /* W2STMotionIntensityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STMotionIntensityViewController.m; sourceTree = "<group>"; };
 		6693B8EA1C898B9200F24E33 /* W2STSwitchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STSwitchViewController.h; sourceTree = "<group>"; };
 		6693B8EB1C898B9200F24E33 /* W2STSwitchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STSwitchViewController.m; sourceTree = "<group>"; };
-		669570851E8E890F00A8CFFD /* BlueVoiceSyncQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueVoiceSyncQueue.swift; sourceTree = "<group>"; };
-		669570871E8E890F00A8CFFD /* BlueVoiceASREngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueVoiceASREngine.swift; sourceTree = "<group>"; };
-		669570891E8E890F00A8CFFD /* BlueVoiceGoogleASREngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueVoiceGoogleASREngine.swift; sourceTree = "<group>"; };
-		6695708A1E8E890F00A8CFFD /* BlueVoiceGoogleAsrKeyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueVoiceGoogleAsrKeyViewController.swift; sourceTree = "<group>"; };
-		6695708E1E8E890F00A8CFFD /* BlueVoiceSelectLanguageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueVoiceSelectLanguageViewController.swift; sourceTree = "<group>"; };
-		6695708F1E8E890F00A8CFFD /* W2STBlueVoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = W2STBlueVoiceViewController.swift; sourceTree = "<group>"; };
+		669E39B01EAA428100E96C02 /* W2STBatteryInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = W2STBatteryInfoViewController.swift; path = BoardStatusViewController/W2STBatteryInfoViewController.swift; sourceTree = "<group>"; };
+		66A0D4DF1EDD6DE000D9CDA7 /* BlueSTDKNode+image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlueSTDKNode+image.swift"; sourceTree = "<group>"; };
 		66A917801D7DA5130004A4DC /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		66A98DF41C0D9E7B00904CB3 /* W2STProximityGestureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STProximityGestureViewController.h; sourceTree = "<group>"; };
 		66A98DF51C0D9E7B00904CB3 /* W2STProximityGestureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STProximityGestureViewController.m; sourceTree = "<group>"; };
@@ -268,7 +326,6 @@
 		66B0817D1DB8C6F40041090A /* W2STCloudConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STCloudConfigViewController.h; sourceTree = "<group>"; };
 		66B0817E1DB8C6F40041090A /* W2STCloudConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STCloudConfigViewController.m; sourceTree = "<group>"; };
 		66B0817F1DB8C6F40041090A /* W2STMQTTConnectionFactoryProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STMQTTConnectionFactoryProtocol.h; sourceTree = "<group>"; };
-		66B3B2931E5AFCBA00373718 /* motionFXDemos.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = motionFXDemos.storyboard; path = MemsSensorFusionController/motionFXDemos.storyboard; sourceTree = "<group>"; };
 		66B92C6D1D2BABCA008CEC03 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		66B92C6E1D2BABCA008CEC03 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		66B92C721D2BABE7008CEC03 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -278,9 +335,6 @@
 		66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		66C491361E530F4B008CB166 /* st_images_LanchScreen.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = st_images_LanchScreen.xcassets; path = ../BlueSTSDK_Gui/BlueSTSDK_Gui/st_images_LanchScreen.xcassets; sourceTree = "<group>"; };
 		66C491381E530F9F008CB166 /* st_images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = st_images.xcassets; sourceTree = "<group>"; };
-		66C4913A1E530FF6008CB166 /* W2STBoardStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STBoardStatusViewController.h; path = BoardStatusViewController/W2STBoardStatusViewController.h; sourceTree = "<group>"; };
-		66C4913B1E531003008CB166 /* W2STBoardStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STBoardStatusViewController.m; path = BoardStatusViewController/W2STBoardStatusViewController.m; sourceTree = "<group>"; };
-		66C4913D1E531010008CB166 /* BoardStatusView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BoardStatusView.storyboard; path = BoardStatusViewController/BoardStatusView.storyboard; sourceTree = "<group>"; };
 		66C9D9CB1E5D9C57003F727C /* W2STGenericMqttConfigurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STGenericMqttConfigurationViewController.h; path = GenericMqtt/W2STGenericMqttConfigurationViewController.h; sourceTree = "<group>"; };
 		66C9D9CC1E5D9C57003F727C /* W2STGenericMqttConfigurationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STGenericMqttConfigurationViewController.m; path = GenericMqtt/W2STGenericMqttConfigurationViewController.m; sourceTree = "<group>"; };
 		66C9D9CF1E5DA072003F727C /* W2STGenricMqttConnectionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STGenricMqttConnectionFactory.h; path = GenericMqtt/W2STGenricMqttConnectionFactory.h; sourceTree = "<group>"; };
@@ -296,28 +350,28 @@
 		66CB69081DB8CE0B00F21ED6 /* W2STIBMWatsonIOTFeatureListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STIBMWatsonIOTFeatureListener.m; path = ../../Util/W2STIBMWatsonIOTFeatureListener.m; sourceTree = "<group>"; };
 		66CB6F521B0A1E6900BDF9AC /* W2STSelectFeatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STSelectFeatureViewController.h; path = PlotViewController/W2STSelectFeatureViewController.h; sourceTree = "<group>"; };
 		66CB6F531B0A1E6900BDF9AC /* W2STSelectFeatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STSelectFeatureViewController.m; path = PlotViewController/W2STSelectFeatureViewController.m; sourceTree = "<group>"; };
-		66CB6F561B0A39C700BDF9AC /* W2STBoardBatteryStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STBoardBatteryStatusViewController.h; path = BoardStatusViewController/W2STBoardBatteryStatusViewController.h; sourceTree = "<group>"; };
-		66CB6F571B0A39C700BDF9AC /* W2STBoardBatteryStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STBoardBatteryStatusViewController.m; path = BoardStatusViewController/W2STBoardBatteryStatusViewController.m; sourceTree = "<group>"; };
-		66CB6F591B0A3B8000BDF9AC /* W2STBoardRssiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STBoardRssiViewController.h; path = BoardStatusViewController/W2STBoardRssiViewController.h; sourceTree = "<group>"; };
-		66CB6F5A1B0A3B8000BDF9AC /* W2STBoardRssiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STBoardRssiViewController.m; path = BoardStatusViewController/W2STBoardRssiViewController.m; sourceTree = "<group>"; };
-		66CCBB9D1B0201A600907D59 /* W2STDemoSubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STDemoSubViewController.h; path = EnviromentalViewController/W2STDemoSubViewController.h; sourceTree = "<group>"; };
-		66CCBBA51B0209E500907D59 /* W2STDemoSubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STDemoSubViewController.m; path = EnviromentalViewController/W2STDemoSubViewController.m; sourceTree = "<group>"; };
 		66CFCD501B9F264900B9A096 /* BlueSTSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlueSTSDK.xcodeproj; path = BlueSTSDK/BlueSTSDK/BlueSTSDK.xcodeproj; sourceTree = "<group>"; };
+		66D5FDDE1EA7862D005D8AE9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/BlueMS.strings"; sourceTree = "<group>"; };
+		66D5FDE01EA7863C005D8AE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		66D5FDE21EA78645005D8AE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/BlueMS.storyboard; sourceTree = "<group>"; };
+		66D5FDE31EA78650005D8AE9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BlueMS.strings; sourceTree = "<group>"; };
+		66D5FDE51EA788EC005D8AE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PlotDemo.storyboard; sourceTree = "<group>"; };
+		66D5FDE81EA7899A005D8AE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/BoardStatusView.storyboard; sourceTree = "<group>"; };
+		66D5FDEB1EA78A20005D8AE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/motionFXDemos.storyboard; sourceTree = "<group>"; };
+		66D5FDEE1EA78AFE005D8AE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AccEventDemo.storyboard; sourceTree = "<group>"; };
+		66D5FDF11EA78BEB005D8AE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CloudDemo.storyboard; sourceTree = "<group>"; };
+		66D5FDF41EA79C5E005D8AE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/WeSUSettings.storyboard; sourceTree = "<group>"; };
 		66D9FBB61DB50A8900D0EEF1 /* W2STCloudConnectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STCloudConnectionViewController.h; sourceTree = "<group>"; };
 		66D9FBB71DB50A8900D0EEF1 /* W2STCloudConnectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STCloudConnectionViewController.m; sourceTree = "<group>"; };
-		66E024CF1E8A42FC00BA2CD4 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iflyMSC.framework; path = iOS_voice_1156_58d1e68b/lib/iflyMSC.framework; sourceTree = "<group>"; };
 		66E1303E1E8A4FAB00D26A0E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		66E130451E8A4FCC00D26A0E /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		66E130471E8A4FD700D26A0E /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
-		66E130491E8A50AD00D26A0E /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		66E1304B1E8A50D900D26A0E /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		66E691581AFA393000BD44C1 /* W2STPressureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STPressureViewController.h; path = EnviromentalViewController/W2STPressureViewController.h; sourceTree = "<group>"; };
 		66E691591AFA393000BD44C1 /* W2STPressureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STPressureViewController.m; path = EnviromentalViewController/W2STPressureViewController.m; sourceTree = "<group>"; };
 		66E6915B1AFA3F7900BD44C1 /* W2STHumidityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STHumidityViewController.h; path = EnviromentalViewController/W2STHumidityViewController.h; sourceTree = "<group>"; };
 		66E6915C1AFA3F7900BD44C1 /* W2STHumidityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STHumidityViewController.m; path = EnviromentalViewController/W2STHumidityViewController.m; sourceTree = "<group>"; };
 		66E6915E1AFA5A8800BD44C1 /* W2STLuminosityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STLuminosityViewController.h; path = EnviromentalViewController/W2STLuminosityViewController.h; sourceTree = "<group>"; };
 		66E6915F1AFA5A8800BD44C1 /* W2STLuminosityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STLuminosityViewController.m; path = EnviromentalViewController/W2STLuminosityViewController.m; sourceTree = "<group>"; };
-		66E6D34F1DF1AC9000D1FBBA /* WeSUSettings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WeSUSettings.storyboard; sourceTree = "<group>"; };
 		66E6D3511DF1ADF800D1FBBA /* STWeSUSettingsAdvancedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWeSUSettingsAdvancedTableViewController.h; sourceTree = "<group>"; };
 		66E6D3521DF1ADF800D1FBBA /* STWeSUSettingsAdvancedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWeSUSettingsAdvancedTableViewController.m; sourceTree = "<group>"; };
 		66E6D3531DF1ADF800D1FBBA /* STWeSUSettingsDataReadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWeSUSettingsDataReadViewController.h; sourceTree = "<group>"; };
@@ -330,16 +384,17 @@
 		66E6D35D1DF1AEB700D1FBBA /* STWeSUTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWeSUTools.m; sourceTree = "<group>"; };
 		66E6D3601DF1AF5300D1FBBA /* STWeSUNodeExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWeSUNodeExtension.h; sourceTree = "<group>"; };
 		66E6D3611DF1AF5300D1FBBA /* STWeSUNodeExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWeSUNodeExtension.m; sourceTree = "<group>"; };
-		66E8A8A61E9FA8D00040DF9B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/BlueMS.storyboard; sourceTree = "<group>"; };
 		66EDA7881AF9F4B30049C793 /* W2STEnviromentalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STEnviromentalViewController.h; sourceTree = "<group>"; };
 		66EDA7891AF9F4B30049C793 /* W2STEnviromentalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STEnviromentalViewController.m; sourceTree = "<group>"; };
 		66EDA7DC1AF9F94F0049C793 /* W2STTemperatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = W2STTemperatureViewController.h; path = EnviromentalViewController/W2STTemperatureViewController.h; sourceTree = "<group>"; };
 		66EDA7DD1AF9F94F0049C793 /* W2STTemperatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = W2STTemperatureViewController.m; path = EnviromentalViewController/W2STTemperatureViewController.m; sourceTree = "<group>"; };
 		66F1BB801BFC8FE800BCB0D7 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		66F375E11EB9C2AA005D16F7 /* ST BlueMSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ST BlueMSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		66F375E51EB9C2AA005D16F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66F375F01EB9C309005D16F7 /* BatteryInfoTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatteryInfoTest.swift; sourceTree = "<group>"; };
 		66F5DD301DC9D5A000FD3FA2 /* W2STBMWatsonQuickStartFeatureListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STBMWatsonQuickStartFeatureListener.h; sourceTree = "<group>"; };
 		66F5DD311DC9D5A000FD3FA2 /* W2STBMWatsonQuickStartFeatureListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STBMWatsonQuickStartFeatureListener.m; sourceTree = "<group>"; };
 		66F7730B1D2E2DD400D37ED4 /* ST BlueMS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "ST BlueMS.entitlements"; sourceTree = "<group>"; };
-		66FB400E1E802EA400901A06 /* BlueVoice.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BlueVoice.storyboard; sourceTree = "<group>"; };
 		66FC1DEC1C19D57A0015F7A2 /* W2STMemsGestureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STMemsGestureViewController.h; sourceTree = "<group>"; };
 		66FC1DED1C19D57A0015F7A2 /* W2STMemsGestureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STMemsGestureViewController.m; sourceTree = "<group>"; };
 		66FF61901C3E949B00642010 /* W2STPedometerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = W2STPedometerViewController.h; sourceTree = "<group>"; };
@@ -354,7 +409,6 @@
 		EA68CFB118D0CB75003B774E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EAB8D88A19D4164F007D3A37 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		EACE369619DDA7BF007E2A2D /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		EAD77DA91982A62500CCD0BE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EAD77DAB1982A62500CCD0BE /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EAD77DD91982A62500CCD0BE /* BlueMSAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueMSAppDelegate.h; sourceTree = "<group>"; };
 		EAD77DDA1982A62500CCD0BE /* BlueMSAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueMSAppDelegate.m; sourceTree = "<group>"; };
@@ -362,6 +416,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		66F375DE1EB9C2AA005D16F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EA68CFA718D0CB75003B774E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -398,9 +459,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6630C9ED1ED323B2008D955D /* ThirdPartyLibLicenses */ = {
+			isa = PBXGroup;
+			children = (
+				6630C9FB1ED33355008D955D /* BlueSTSDK_Gui.txt */,
+				6630C9FC1ED33355008D955D /* BlueSTSDK.txt */,
+				6630C9EE1ED323B2008D955D /* CorePlot.txt */,
+				6630C9EF1ED323B2008D955D /* MBProgressHUD.txt */,
+				6630C9F01ED323B2008D955D /* MQTTClient.txt */,
+				6630C9F11ED323B2008D955D /* Reachability.txt */,
+			);
+			path = ThirdPartyLibLicenses;
+			sourceTree = "<group>";
+		};
 		6637414A1DA7923500D9262F /* Cloud */ = {
 			isa = PBXGroup;
 			children = (
+				66D5FDF21EA78BEB005D8AE9 /* CloudDemo.storyboard */,
 				66CB69041DB8CE0B00F21ED6 /* Util */,
 				66B081721DB8C6F40041090A /* Provider */,
 				66CB69011DB8CDD500F21ED6 /* W2STCloudProviderSelectViewController.h */,
@@ -411,21 +486,92 @@
 				6670ED041DB0D294003D6185 /* W2STCloudDataPageViewController.m */,
 				66D9FBB61DB50A8900D0EEF1 /* W2STCloudConnectionViewController.h */,
 				66D9FBB71DB50A8900D0EEF1 /* W2STCloudConnectionViewController.m */,
-				661090471DB5FD94009839D9 /* CloudDemo.storyboard */,
 			);
 			path = Cloud;
+			sourceTree = "<group>";
+		};
+		6638AF571F160CA1009D64A0 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				6638AF581F160CA1009D64A0 /* BeamForming */,
+				6638AF5B1F160CA1009D64A0 /* BlueVoice */,
+				6638AF671F160CA1009D64A0 /* DirectionOfArrival */,
+				6638AF6A1F160CA1009D64A0 /* Util */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		6638AF581F160CA1009D64A0 /* BeamForming */ = {
+			isa = PBXGroup;
+			children = (
+				6638AF591F160CA1009D64A0 /* BeamForming.storyboard */,
+				6638AF5A1F160CA1009D64A0 /* W2STBeamFormingViewController.swift */,
+			);
+			path = BeamForming;
+			sourceTree = "<group>";
+		};
+		6638AF5B1F160CA1009D64A0 /* BlueVoice */ = {
+			isa = PBXGroup;
+			children = (
+				6638AF5C1F160CA1009D64A0 /* ASREngine */,
+				6638AF631F160CA1009D64A0 /* BlueVoice.storyboard */,
+				6638AF651F160CA1009D64A0 /* BlueVoiceSelectLanguageViewController.swift */,
+				6638AF661F160CA1009D64A0 /* W2STBlueVoiceViewController.swift */,
+			);
+			path = BlueVoice;
+			sourceTree = "<group>";
+		};
+		6638AF5C1F160CA1009D64A0 /* ASREngine */ = {
+			isa = PBXGroup;
+			children = (
+				6638AF5D1F160CA1009D64A0 /* BlueVoiceASREngine.swift */,
+				6638AF5E1F160CA1009D64A0 /* Google */,
+			);
+			path = ASREngine;
+			sourceTree = "<group>";
+		};
+		6638AF5E1F160CA1009D64A0 /* Google */ = {
+			isa = PBXGroup;
+			children = (
+				6638AF5F1F160CA1009D64A0 /* BlueVoiceGoogleASREngine.swift */,
+				6638AF601F160CA1009D64A0 /* BlueVoiceGoogleAsrKeyViewController.swift */,
+			);
+			path = Google;
+			sourceTree = "<group>";
+		};
+		6638AF671F160CA1009D64A0 /* DirectionOfArrival */ = {
+			isa = PBXGroup;
+			children = (
+				6638AF681F160CA1009D64A0 /* DirectionOfArrival.storyboard */,
+				6638AF691F160CA1009D64A0 /* W2STDirectionOfArrivalViewController.swift */,
+			);
+			path = DirectionOfArrival;
+			sourceTree = "<group>";
+		};
+		6638AF6A1F160CA1009D64A0 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				6638AF6B1F160CA1009D64A0 /* BlueVoiceSyncQueue.swift */,
+				6638AF6C1F160CA1009D64A0 /* W2STAudioDumpController.swift */,
+				6638AF6D1F160CA1009D64A0 /* W2STAudioPlaybackController.swift */,
+				6638AF6E1F160CA1009D64A0 /* W2STAudioPlotViewController.swift */,
+				6638AF6F1F160CA1009D64A0 /* W2STAudioStreamConfig.swift */,
+				6638AF701F160CA1009D64A0 /* W2STCircularBuffer.swift */,
+				6638AF711F160CA1009D64A0 /* W2STWaveFileDump.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		664015F31B38370F00E9E7B1 /* MemsSensorFusionController */ = {
 			isa = PBXGroup;
 			children = (
+				66D5FDEC1EA78A20005D8AE9 /* motionFXDemos.storyboard */,
 				662E42401E5C328900D6927D /* W2STFeatureSensorFusionDemoViewController.h */,
 				662E42411E5C328900D6927D /* W2STFeatureSensorFusionDemoViewController.m */,
 				662E42441E5C328900D6927D /* W2STCompassViewController.h */,
 				662E42451E5C328900D6927D /* W2STCompassViewController.m */,
 				664015F41B38377C00E9E7B1 /* W2STSimpleDialogViewController.h */,
 				664015F51B38377C00E9E7B1 /* W2STSimpleDialogViewController.m */,
-				66B3B2931E5AFCBA00373718 /* motionFXDemos.storyboard */,
 			);
 			name = MemsSensorFusionController;
 			sourceTree = "<group>";
@@ -451,9 +597,7 @@
 		664E09531E49F9FD00C6EA07 /* SensorFusion */ = {
 			isa = PBXGroup;
 			children = (
-				662E423A1E5C313800D6927D /* nucleo_reset_position.png */,
 				662E423B1E5C313800D6927D /* steval_wesu1_reset_position.png */,
-				662E423C1E5C313800D6927D /* tile_reset_position.png */,
 				664E09541E49F9FD00C6EA07 /* calibrated.png */,
 				664E09551E49F9FD00C6EA07 /* ProximityOff.png */,
 				664E09561E49F9FD00C6EA07 /* ProximityOn.png */,
@@ -476,7 +620,7 @@
 				66AE69FB1E2CF521008CB6AA /* W2STAccEventMultipleEventDisplayViewController.m */,
 				66AE69FD1E2D246C008CB6AA /* W2STAccEventIconUtil.h */,
 				66AE69FE1E2D249A008CB6AA /* W2STAccEventIconUtil.m */,
-				6637DAD41E30D656007C0B82 /* AccEventDemo.storyboard */,
+				66D5FDEF1EA78AFE005D8AE9 /* AccEventDemo.storyboard */,
 			);
 			name = AccEventViewController;
 			sourceTree = "<group>";
@@ -498,24 +642,6 @@
 				6680E7791E2F6F0700C39C5E /* BlueSTSDK_Gui.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		669570861E8E890F00A8CFFD /* ASREngine */ = {
-			isa = PBXGroup;
-			children = (
-				669570871E8E890F00A8CFFD /* BlueVoiceASREngine.swift */,
-				669570881E8E890F00A8CFFD /* Google */,
-			);
-			path = ASREngine;
-			sourceTree = "<group>";
-		};
-		669570881E8E890F00A8CFFD /* Google */ = {
-			isa = PBXGroup;
-			children = (
-				669570891E8E890F00A8CFFD /* BlueVoiceGoogleASREngine.swift */,
-				6695708A1E8E890F00A8CFFD /* BlueVoiceGoogleAsrKeyViewController.swift */,
-			);
-			path = Google;
 			sourceTree = "<group>";
 		};
 		66B081721DB8C6F40041090A /* Provider */ = {
@@ -575,21 +701,11 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
-		66B92C7B1D2BB3DA008CEC03 /* BlueVoice */ = {
-			isa = PBXGroup;
-			children = (
-				669570861E8E890F00A8CFFD /* ASREngine */,
-				66FB400E1E802EA400901A06 /* BlueVoice.storyboard */,
-				6695708F1E8E890F00A8CFFD /* W2STBlueVoiceViewController.swift */,
-				6695708E1E8E890F00A8CFFD /* BlueVoiceSelectLanguageViewController.swift */,
-				669570851E8E890F00A8CFFD /* BlueVoiceSyncQueue.swift */,
-			);
-			path = BlueVoice;
-			sourceTree = "<group>";
-		};
 		66BC48D51DA7E3E400C196B1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				66C4914E1E5335E6008CB166 /* libAWSCore.a */,
+				66C491501E5335E6008CB166 /* libAWSMobileAnalytics.a */,
 				66BC48DD1DA7E3E500C196B1 /* libCorePlot.a */,
 				66BC48DF1DA7E3E500C196B1 /* libMQTTClient.a */,
 				66BC48E11DA7E3E500C196B1 /* libPods-W2STApp.a */,
@@ -622,9 +738,9 @@
 		66CB6F511B0A1E2E00BDF9AC /* PlotViewController */ = {
 			isa = PBXGroup;
 			children = (
-				6637DAD61E30D6CB007C0B82 /* PlotDemo.storyboard */,
-				6637DAD71E30D6CB007C0B82 /* W2STPlotFeatureDemoViewController.m */,
+				66D5FDE61EA788EC005D8AE9 /* PlotDemo.storyboard */,
 				6637DAD81E30D6CB007C0B82 /* W2STPlotFeatureDemoViewController.h */,
+				6637DAD71E30D6CB007C0B82 /* W2STPlotFeatureDemoViewController.m */,
 				66CB6F521B0A1E6900BDF9AC /* W2STSelectFeatureViewController.h */,
 				66CB6F531B0A1E6900BDF9AC /* W2STSelectFeatureViewController.m */,
 			);
@@ -634,13 +750,15 @@
 		66CB6F551B0A368C00BDF9AC /* BoardStatusViewController */ = {
 			isa = PBXGroup;
 			children = (
-				66C4913D1E531010008CB166 /* BoardStatusView.storyboard */,
-				66C4913B1E531003008CB166 /* W2STBoardStatusViewController.m */,
-				66C4913A1E530FF6008CB166 /* W2STBoardStatusViewController.h */,
-				66CB6F561B0A39C700BDF9AC /* W2STBoardBatteryStatusViewController.h */,
-				66CB6F571B0A39C700BDF9AC /* W2STBoardBatteryStatusViewController.m */,
-				66CB6F591B0A3B8000BDF9AC /* W2STBoardRssiViewController.h */,
-				66CB6F5A1B0A3B8000BDF9AC /* W2STBoardRssiViewController.m */,
+				662000E91F1628A5007F947E /* W2STBoardStatusViewController.h */,
+				662000EA1F1628A5007F947E /* W2STBoardStatusViewController.m */,
+				66D5FDE91EA7899A005D8AE9 /* BoardStatusView.storyboard */,
+				669E39B01EAA428100E96C02 /* W2STBatteryInfoViewController.swift */,
+				6606AB471EB0A06F00FFBEFF /* W2STBoardStatusBatteryInfo.swift */,
+				6606AB4E1EB0D8DF00FFBEFF /* W2STBoardRssiViewController.swift */,
+				4EDA2952228B042395759553 /* BlueMSConsoleCommand.swift */,
+				4EDA2910E97D5C3F17ACF8BE /* W2STBoardBatteryStatusViewController.h */,
+				4EDA2A160681BC86DA87BC3E /* W2STBoardBatteryStatusViewController.m */,
 			);
 			name = BoardStatusViewController;
 			sourceTree = "<group>";
@@ -670,7 +788,7 @@
 				66E6D3541DF1ADF800D1FBBA /* STWeSUSettingsDataReadViewController.m */,
 				66E6D3551DF1ADF800D1FBBA /* STWeSUSettingsTableViewController.h */,
 				66E6D3561DF1ADF800D1FBBA /* STWeSUSettingsTableViewController.m */,
-				66E6D34F1DF1AC9000D1FBBA /* WeSUSettings.storyboard */,
+				66D5FDF51EA79C5E005D8AE9 /* WeSUSettings.storyboard */,
 			);
 			path = WesuSettings;
 			sourceTree = "<group>";
@@ -690,13 +808,24 @@
 			name = EnviromentalViewController;
 			sourceTree = "<group>";
 		};
+		66F375E21EB9C2AA005D16F7 /* ST BlueMSTests */ = {
+			isa = PBXGroup;
+			children = (
+				66F375F01EB9C309005D16F7 /* BatteryInfoTest.swift */,
+				66F375E51EB9C2AA005D16F7 /* Info.plist */,
+			);
+			path = "ST BlueMSTests";
+			sourceTree = "<group>";
+		};
 		EA68CFA118D0CB75003B774E = {
 			isa = PBXGroup;
 			children = (
+				6630C9ED1ED323B2008D955D /* ThirdPartyLibLicenses */,
 				66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */,
 				6680E7731E2F6F0700C39C5E /* BlueSTSDK_Gui.xcodeproj */,
 				66CFCD501B9F264900B9A096 /* BlueSTSDK.xcodeproj */,
 				EAD77DA51982A62500CCD0BE /* W2STApp */,
+				66F375E21EB9C2AA005D16F7 /* ST BlueMSTests */,
 				EA68CFAC18D0CB75003B774E /* Frameworks */,
 				EA68CFAB18D0CB75003B774E /* Products */,
 				259CF9C0FB5C6A17BD1F6D45 /* Pods */,
@@ -708,6 +837,7 @@
 			isa = PBXGroup;
 			children = (
 				EA68CFAA18D0CB75003B774E /* ST BlueMS.app */,
+				66F375E11EB9C2AA005D16F7 /* ST BlueMSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -715,12 +845,9 @@
 		EA68CFAC18D0CB75003B774E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				66E1304B1E8A50D900D26A0E /* Contacts.framework */,
-				66E130491E8A50AD00D26A0E /* libz.tbd */,
 				66E130471E8A4FD700D26A0E /* AddressBook.framework */,
 				66E130451E8A4FCC00D26A0E /* CoreTelephony.framework */,
 				66E1303E1E8A4FAB00D26A0E /* CoreLocation.framework */,
-				66E024CF1E8A42FC00BA2CD4 /* iflyMSC.framework */,
 				6670ED0B1DB0D5F7003D6185 /* WebKit.framework */,
 				66A917801D7DA5130004A4DC /* MediaPlayer.framework */,
 				66B92C811D2C02E2008CEC03 /* AVFoundation.framework */,
@@ -745,7 +872,6 @@
 				66C491381E530F9F008CB166 /* st_images.xcassets */,
 				66F7730B1D2E2DD400D37ED4 /* ST BlueMS.entitlements */,
 				EAD77DA61982A62500CCD0BE /* BlueMS.storyboard */,
-				EAD77DA81982A62500CCD0BE /* InfoPlist.strings */,
 				66CAC1F21B4D6F6F001B0BA1 /* Images.xcassets */,
 				EACE369619DDA7BF007E2A2D /* art.scnassets */,
 				EAD77DAB1982A62500CCD0BE /* main.m */,
@@ -761,7 +887,7 @@
 			isa = PBXGroup;
 			children = (
 				EAD77DAD1982A62500CCD0BE /* Demo */,
-				6649110D1CF82D69009623B3 /* Main.storyboard */,
+				66D5FDE11EA7863C005D8AE9 /* Main.storyboard */,
 				664911101CF82E46009623B3 /* BlueMSMainViewController.h */,
 				664911111CF82E46009623B3 /* BlueMSMainViewController.m */,
 				EAD77DD91982A62500CCD0BE /* BlueMSAppDelegate.h */,
@@ -771,6 +897,7 @@
 				666847B41DE84854001064A3 /* BlueMSDemosViewController+WesuFwVersion.h */,
 				666847B51DE84854001064A3 /* BlueMSDemosViewController+WesuFwVersion.m */,
 				662A2DBD1E82687300F3451A /* W2STApp-Bridging-Header.h */,
+				66A0D4DF1EDD6DE000D9CDA7 /* BlueSTDKNode+image.swift */,
 			);
 			path = MainApp;
 			sourceTree = "<group>";
@@ -778,9 +905,9 @@
 		EAD77DAD1982A62500CCD0BE /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				6638AF571F160CA1009D64A0 /* Audio */,
 				66E6D34E1DF1AC9000D1FBBA /* WesuSettings */,
 				6637414A1DA7923500D9262F /* Cloud */,
-				66B92C7B1D2BB3DA008CEC03 /* BlueVoice */,
 				665CB5491C6DCDE3003118BC /* AccEventViewController */,
 				664015F31B38370F00E9E7B1 /* MemsSensorFusionController */,
 				66CB6F551B0A368C00BDF9AC /* BoardStatusViewController */,
@@ -794,8 +921,6 @@
 				6602184D1B903EBF006246E9 /* W2STCarryPositionViewController.h */,
 				66BBAA561DEDCE3B009213BA /* BlueMSDemoTabViewController+WesuLicenseCheck.h */,
 				66BBAA571DEDCE3B009213BA /* BlueMSDemoTabViewController+WesuLicenseCheck.m */,
-				66CCBB9D1B0201A600907D59 /* W2STDemoSubViewController.h */,
-				66CCBBA51B0209E500907D59 /* W2STDemoSubViewController.m */,
 				66A98DF41C0D9E7B00904CB3 /* W2STProximityGestureViewController.h */,
 				66A98DF51C0D9E7B00904CB3 /* W2STProximityGestureViewController.m */,
 				66FC1DEC1C19D57A0015F7A2 /* W2STMemsGestureViewController.h */,
@@ -817,6 +942,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		66F375E01EB9C2AA005D16F7 /* ST BlueMSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66F375EF1EB9C2AA005D16F7 /* Build configuration list for PBXNativeTarget "ST BlueMSTests" */;
+			buildPhases = (
+				66F375DD1EB9C2AA005D16F7 /* Sources */,
+				66F375DE1EB9C2AA005D16F7 /* Frameworks */,
+				66F375DF1EB9C2AA005D16F7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				66F375E71EB9C2AA005D16F7 /* PBXTargetDependency */,
+			);
+			name = "ST BlueMSTests";
+			productName = "ST BlueMSTests";
+			productReference = 66F375E11EB9C2AA005D16F7 /* ST BlueMSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		EA68CFA918D0CB75003B774E /* W2STApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA68CFDC18D0CB75003B774E /* Build configuration list for PBXNativeTarget "W2STApp" */;
@@ -847,15 +990,25 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = W2ST;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = STMicroelectronics;
 				TargetAttributes = {
+					66F375E01EB9C2AA005D16F7 = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = 9L4QA9SNQK;
+						ProvisioningStyle = Automatic;
+						TestTargetID = EA68CFA918D0CB75003B774E;
+					};
 					EA68CFA918D0CB75003B774E = {
 						DevelopmentTeam = 9L4QA9SNQK;
 						DevelopmentTeamName = "STMICROELECTRONICS, INC";
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
@@ -870,6 +1023,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = EA68CFA118D0CB75003B774E;
 			productRefGroup = EA68CFAB18D0CB75003B774E /* Products */;
@@ -891,6 +1045,7 @@
 			projectRoot = "";
 			targets = (
 				EA68CFA918D0CB75003B774E /* W2STApp */,
+				66F375E01EB9C2AA005D16F7 /* ST BlueMSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -924,6 +1079,20 @@
 			remoteRef = 66BC48E01DA7E3E500C196B1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		66C4914E1E5335E6008CB166 /* libAWSCore.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAWSCore.a;
+			remoteRef = 66C4914D1E5335E6008CB166 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		66C491501E5335E6008CB166 /* libAWSMobileAnalytics.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAWSMobileAnalytics.a;
+			remoteRef = 66C4914F1E5335E6008CB166 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		66CFCD561B9F264900B9A096 /* BlueSTSDK.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -941,34 +1110,46 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		66F375DF1EB9C2AA005D16F7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EA68CFA818D0CB75003B774E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6637DAD51E30D656007C0B82 /* AccEventDemo.storyboard in Resources */,
+				6630C9FD1ED33355008D955D /* BlueSTSDK_Gui.txt in Resources */,
+				66D5FDED1EA78AFE005D8AE9 /* AccEventDemo.storyboard in Resources */,
 				EA8344DC19D956AE0027E447 /* BlueMS.storyboard in Resources */,
-				661090481DB5FD94009839D9 /* CloudDemo.storyboard in Resources */,
-				66E6D3501DF1AC9000D1FBBA /* WeSUSettings.storyboard in Resources */,
-				6649110E1CF82D69009623B3 /* Main.storyboard in Resources */,
+				6630C9F31ED323B2008D955D /* MBProgressHUD.txt in Resources */,
+				66D5FDF01EA78BEB005D8AE9 /* CloudDemo.storyboard in Resources */,
+				6638AF781F160CA1009D64A0 /* BlueVoice.storyboard in Resources */,
+				66D5FDF31EA79C5E005D8AE9 /* WeSUSettings.storyboard in Resources */,
+				66D5FDDF1EA7863C005D8AE9 /* Main.storyboard in Resources */,
 				664E095F1E49F9FD00C6EA07 /* ProximityOn.png in Resources */,
 				662E423E1E5C313800D6927D /* steval_wesu1_reset_position.png in Resources */,
 				EACE369719DDA7BF007E2A2D /* art.scnassets in Resources */,
-				66B3B2941E5AFCBA00373718 /* motionFXDemos.storyboard in Resources */,
+				66D5FDEA1EA78A20005D8AE9 /* motionFXDemos.storyboard in Resources */,
+				6630C9F51ED323B2008D955D /* Reachability.txt in Resources */,
+				6638AF7B1F160CA1009D64A0 /* DirectionOfArrival.storyboard in Resources */,
 				664E095D1E49F9FD00C6EA07 /* calibrated.png in Resources */,
-				6637DAD91E30D6CB007C0B82 /* PlotDemo.storyboard in Resources */,
-				EAD77E8A1982A62500CCD0BE /* InfoPlist.strings in Resources */,
+				6630C9F21ED323B2008D955D /* CorePlot.txt in Resources */,
+				66D5FDE41EA788EC005D8AE9 /* PlotDemo.storyboard in Resources */,
 				66C491371E530F4B008CB166 /* st_images_LanchScreen.xcassets in Resources */,
-				66FB400F1E802EA400901A06 /* BlueVoice.storyboard in Resources */,
+				6630C9F41ED323B2008D955D /* MQTTClient.txt in Resources */,
 				66CAC1F31B4D6F6F001B0BA1 /* Images.xcassets in Resources */,
 				664E09631E49F9FD00C6EA07 /* press_contact.jpg in Resources */,
 				664E09601E49F9FD00C6EA07 /* uncalibrated.png in Resources */,
 				664E09641E49F9FD00C6EA07 /* text.html in Resources */,
 				664E095E1E49F9FD00C6EA07 /* ProximityOff.png in Resources */,
 				4EDA2ACD09B8CC11808D5CE1 /* LICENSE.txt in Resources */,
-				66C4913E1E531010008CB166 /* BoardStatusView.storyboard in Resources */,
-				662E423D1E5C313800D6927D /* nucleo_reset_position.png in Resources */,
-				662E423F1E5C313800D6927D /* tile_reset_position.png in Resources */,
+				66D5FDE71EA7899A005D8AE9 /* BoardStatusView.storyboard in Resources */,
+				6630C9FE1ED33355008D955D /* BlueSTSDK.txt in Resources */,
 				66C491391E530F9F008CB166 /* st_images.xcassets in Resources */,
+				6638AF721F160CA1009D64A0 /* BeamForming.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1037,10 +1218,21 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		66F375DD1EB9C2AA005D16F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66F375F11EB9C309005D16F7 /* BatteryInfoTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EA68CFA618D0CB75003B774E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66B881E01F334C2700529A39 /* BlueMSDemoTabViewController+WesuLicenseCheck.m in Sources */,
+				6633EC2A1E55E3E1008DA4BC /* BlueMSDemosViewController+WesuFwVersion.m in Sources */,
+				6638AF821F160CA1009D64A0 /* W2STCircularBuffer.swift in Sources */,
 				66D9FBB81DB50A8900D0EEF1 /* W2STCloudConnectionViewController.m in Sources */,
 				6670ED051DB0D294003D6185 /* W2STCloudDataPageViewController.m in Sources */,
 				66B081801DB8C6F40041090A /* W2STIBMWatsonIOTConnectionFactory.m in Sources */,
@@ -1048,63 +1240,71 @@
 				66C9D9CD1E5D9C57003F727C /* W2STGenericMqttConfigurationViewController.m in Sources */,
 				66CB690A1DB8CE0B00F21ED6 /* W2STIBMWatsonIOTFeatureListener.m in Sources */,
 				66CB6F541B0A1E6900BDF9AC /* W2STSelectFeatureViewController.m in Sources */,
-				669570961E8E890F00A8CFFD /* BlueVoiceSelectLanguageViewController.swift in Sources */,
+				6638AF7D1F160CA1009D64A0 /* BlueVoiceSyncQueue.swift in Sources */,
 				66AE69FF1E2D249A008CB6AA /* W2STAccEventIconUtil.m in Sources */,
+				6606AB481EB0A06F00FFBEFF /* W2STBoardStatusBatteryInfo.swift in Sources */,
 				66CB69031DB8CDD500F21ED6 /* W2STCloudProviderSelectViewController.m in Sources */,
-				669570931E8E890F00A8CFFD /* BlueVoiceGoogleAsrKeyViewController.swift in Sources */,
 				66C9D9D41E5DD9F2003F727C /* W2STGenericMqttFeatureListener.m in Sources */,
 				66E6D35E1DF1AEB700D1FBBA /* STWeSUSettingsItem.m in Sources */,
 				EAD77E8C1982A62500CCD0BE /* main.m in Sources */,
-				66BBAA581DEDCE3B009213BA /* BlueMSDemoTabViewController+WesuLicenseCheck.m in Sources */,
-				66C4913C1E531003008CB166 /* W2STBoardStatusViewController.m in Sources */,
 				66B081821DB8C6F40041090A /* W2STIBMWatsonQuickStartConnectionFactory.m in Sources */,
+				6638AF801F160CA1009D64A0 /* W2STAudioPlotViewController.swift in Sources */,
 				66B081841DB8C6F40041090A /* W2STCloudConfigViewController.m in Sources */,
-				669570911E8E890F00A8CFFD /* BlueVoiceASREngine.swift in Sources */,
-				669570971E8E890F00A8CFFD /* W2STBlueVoiceViewController.swift in Sources */,
 				66B92C6F1D2BABCA008CEC03 /* Reachability.m in Sources */,
 				6637DADA1E30D6CB007C0B82 /* W2STPlotFeatureDemoViewController.m in Sources */,
 				66E6D3571DF1ADF800D1FBBA /* STWeSUSettingsAdvancedTableViewController.m in Sources */,
 				66AE69FC1E2CF521008CB6AA /* W2STAccEventMultipleEventDisplayViewController.m in Sources */,
 				66FC1DEE1C19D57A0015F7A2 /* W2STMemsGestureViewController.m in Sources */,
-				66CCBBA61B0209E500907D59 /* W2STDemoSubViewController.m in Sources */,
+				6638AF741F160CA1009D64A0 /* BlueVoiceASREngine.swift in Sources */,
+				6638AF7E1F160CA1009D64A0 /* W2STAudioDumpController.swift in Sources */,
+				6638AF791F160CA1009D64A0 /* BlueVoiceSelectLanguageViewController.swift in Sources */,
 				668A127F1E3A4E0F00D99490 /* W2STMotionIntensityViewController.m in Sources */,
 				66E6915D1AFA3F7900BD44C1 /* W2STHumidityViewController.m in Sources */,
 				66E691601AFA5A8800BD44C1 /* W2STLuminosityViewController.m in Sources */,
 				665CB5461C6DCDD5003118BC /* W2STSelectAccEventViewController.m in Sources */,
+				6638AF7C1F160CA1009D64A0 /* W2STDirectionOfArrivalViewController.swift in Sources */,
 				66FF61971C3E950300642010 /* W2STAccEventViewController.m in Sources */,
 				66F5DD321DC9D5A000FD3FA2 /* W2STBMWatsonQuickStartFeatureListener.m in Sources */,
-				66CB6F5B1B0A3B8000BDF9AC /* W2STBoardRssiViewController.m in Sources */,
 				66B081831DB8C6F40041090A /* W2STCloudIBMWatsonQuickStartConfigViewController.m in Sources */,
+				66A0D4E01EDD6DE000D9CDA7 /* BlueSTDKNode+image.swift in Sources */,
+				6638AF811F160CA1009D64A0 /* W2STAudioStreamConfig.swift in Sources */,
 				66E6D35F1DF1AEB700D1FBBA /* STWeSUTools.m in Sources */,
+				6638AF7F1F160CA1009D64A0 /* W2STAudioPlaybackController.swift in Sources */,
 				66E6915A1AFA393000BD44C1 /* W2STPressureViewController.m in Sources */,
 				6602184E1B903EBF006246E9 /* W2STCarryPositionViewController.m in Sources */,
 				6633EC0E1E55D323008DA4BC /* BlueMSDemoTabViewController.m in Sources */,
 				66E6D3621DF1AF5300D1FBBA /* STWeSUNodeExtension.m in Sources */,
+				6638AF751F160CA1009D64A0 /* BlueVoiceGoogleASREngine.swift in Sources */,
 				667D27421E09671800B6968E /* STWesUFeatureSettingViewController.m in Sources */,
 				66B081811DB8C6F40041090A /* W2STCloudIBMWatsonIOTConfigViewController.m in Sources */,
+				6638AF761F160CA1009D64A0 /* BlueVoiceGoogleAsrKeyViewController.swift in Sources */,
 				667817EE1D40B61500AAC0D7 /* W2STHeartRateViewController.m in Sources */,
 				66A98DF61C0D9E7B00904CB3 /* W2STProximityGestureViewController.m in Sources */,
 				66E6D3581DF1ADF800D1FBBA /* STWeSUSettingsDataReadViewController.m in Sources */,
 				66CB69091DB8CE0B00F21ED6 /* W2STCloudJsonUtil.m in Sources */,
 				66EDA7DE1AF9F94F0049C793 /* W2STTemperatureViewController.m in Sources */,
+				669E39B11EAA428100E96C02 /* W2STBatteryInfoViewController.swift in Sources */,
 				6693B8EC1C898B9200F24E33 /* W2STSwitchViewController.m in Sources */,
+				6606AB4F1EB0D8DF00FFBEFF /* W2STBoardRssiViewController.swift in Sources */,
 				66EDA78A1AF9F4B30049C793 /* W2STEnviromentalViewController.m in Sources */,
-				669570921E8E890F00A8CFFD /* BlueVoiceGoogleASREngine.swift in Sources */,
-				669570901E8E890F00A8CFFD /* BlueVoiceSyncQueue.swift in Sources */,
 				66FF61921C3E949B00642010 /* W2STPedometerViewController.m in Sources */,
 				66C9D9D11E5DA072003F727C /* W2STGenricMqttConnectionFactory.m in Sources */,
-				66CB6F581B0A39C700BDF9AC /* W2STBoardBatteryStatusViewController.m in Sources */,
+				6638AF7A1F160CA1009D64A0 /* W2STBlueVoiceViewController.swift in Sources */,
 				664015F61B38377C00E9E7B1 /* W2STSimpleDialogViewController.m in Sources */,
 				66AE69F91E2CF4B7008CB6AA /* W2STAccEventSingleEventDisplayViewController.m in Sources */,
 				EAD77EA71982A62500CCD0BE /* BlueMSAppDelegate.m in Sources */,
+				662000EB1F1628A5007F947E /* W2STBoardStatusViewController.m in Sources */,
 				667BAAB51B8CAEAD00CADD2E /* W2STActivityViewController.m in Sources */,
 				667D27411E09671800B6968E /* STWeSUFeatureSettingDialogViewController.m in Sources */,
 				6632CC1A1AD6602D0011F81A /* BlueMSDemosViewController.m in Sources */,
+				6638AF731F160CA1009D64A0 /* W2STBeamFormingViewController.swift in Sources */,
 				6637414D1DA7923500D9262F /* W2STCloudFeatureTableViewCell.m in Sources */,
 				66E6D3591DF1ADF800D1FBBA /* STWeSUSettingsTableViewController.m in Sources */,
 				662E42461E5C328900D6927D /* W2STFeatureSensorFusionDemoViewController.m in Sources */,
-				666847B61DE84854001064A3 /* BlueMSDemosViewController+WesuFwVersion.m in Sources */,
 				662E42481E5C328900D6927D /* W2STCompassViewController.m in Sources */,
+				4EDA2AB2A5A955D1CBF0994D /* BlueMSConsoleCommand.swift in Sources */,
+				6638AF831F160CA1009D64A0 /* W2STWaveFileDump.swift in Sources */,
+				4EDA21712D8FE55C67924854 /* W2STBoardBatteryStatusViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1116,32 +1316,149 @@
 			name = BlueSTSDK_Gui;
 			targetProxy = 6680E77C1E2F6F0F00C39C5E /* PBXContainerItemProxy */;
 		};
+		66F375E71EB9C2AA005D16F7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA68CFA918D0CB75003B774E /* W2STApp */;
+			targetProxy = 66F375E61EB9C2AA005D16F7 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		6638AF631F160CA1009D64A0 /* BlueVoice.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6638AF641F160CA1009D64A0 /* Base */,
+			);
+			name = BlueVoice.storyboard;
+			sourceTree = "<group>";
+		};
+		66D5FDE11EA7863C005D8AE9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				66D5FDE01EA7863C005D8AE9 /* Base */,
+			);
+			name = Main.storyboard;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		66D5FDE61EA788EC005D8AE9 /* PlotDemo.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				66D5FDE51EA788EC005D8AE9 /* Base */,
+			);
+			name = PlotDemo.storyboard;
+			path = PlotViewController;
+			sourceTree = "<group>";
+		};
+		66D5FDE91EA7899A005D8AE9 /* BoardStatusView.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				66D5FDE81EA7899A005D8AE9 /* Base */,
+			);
+			name = BoardStatusView.storyboard;
+			path = BoardStatusViewController;
+			sourceTree = "<group>";
+		};
+		66D5FDEC1EA78A20005D8AE9 /* motionFXDemos.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				66D5FDEB1EA78A20005D8AE9 /* Base */,
+			);
+			name = motionFXDemos.storyboard;
+			path = MemsSensorFusionController;
+			sourceTree = "<group>";
+		};
+		66D5FDEF1EA78AFE005D8AE9 /* AccEventDemo.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				66D5FDEE1EA78AFE005D8AE9 /* Base */,
+			);
+			name = AccEventDemo.storyboard;
+			path = AccEventViewController;
+			sourceTree = "<group>";
+		};
+		66D5FDF21EA78BEB005D8AE9 /* CloudDemo.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				66D5FDF11EA78BEB005D8AE9 /* Base */,
+			);
+			name = CloudDemo.storyboard;
+			sourceTree = "<group>";
+		};
+		66D5FDF51EA79C5E005D8AE9 /* WeSUSettings.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				66D5FDF41EA79C5E005D8AE9 /* Base */,
+			);
+			name = WeSUSettings.storyboard;
+			sourceTree = "<group>";
+		};
 		EAD77DA61982A62500CCD0BE /* BlueMS.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				66E8A8A61E9FA8D00040DF9B /* en */,
+				66D5FDDE1EA7862D005D8AE9 /* zh-Hans */,
+				66D5FDE21EA78645005D8AE9 /* Base */,
+				66D5FDE31EA78650005D8AE9 /* en */,
 			);
 			name = BlueMS.storyboard;
-			sourceTree = "<group>";
-		};
-		EAD77DA81982A62500CCD0BE /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EAD77DA91982A62500CCD0BE /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		66F375E81EB9C2AA005D16F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 9L4QA9SNQK;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "ST BlueMSTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.st.clab.ST-BlueMSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ST BlueMS.app/ST BlueMS";
+				VALID_ARCHS = "armv7s armv7 arm64";
+			};
+			name = Debug;
+		};
+		66F375E91EB9C2AA005D16F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 9L4QA9SNQK;
+				ENABLE_BITCODE = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				INFOPLIST_FILE = "ST BlueMSTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.st.clab.ST-BlueMSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ST BlueMS.app/ST BlueMS";
+				VALID_ARCHS = "armv7s armv7 arm64";
+			};
+			name = Release;
+		};
 		EA68CFDA18D0CB75003B774E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1160,6 +1477,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1185,14 +1503,15 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "armv7s armv7 armv64";
+				VALID_ARCHS = "armv7s armv7 arm64";
 			};
 			name = Debug;
 		};
 		EA68CFDB18D0CB75003B774E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1211,6 +1530,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1230,7 +1550,7 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = "armv7s armv7 armv64";
+				VALID_ARCHS = "armv7s armv7 arm64";
 			};
 			name = Release;
 		};
@@ -1238,7 +1558,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 70FF83E0AF6F99AEEBD55B3E /* Pods-W2STApp.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = "$(inherit)";
+				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1259,7 +1579,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				GCC_VERSION = "";
-				INFOPLIST_FILE = "$(SRCROOT)/W2STApp/W2STApp-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/W2STApp/W2STAppDebug-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
@@ -1281,7 +1601,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 847BB1FBC708E3F6745FFF9D /* Pods-W2STApp.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = "$(inherit)";
+				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -1302,7 +1622,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				GCC_VERSION = "";
-				INFOPLIST_FILE = "$(SRCROOT)/W2STApp/W2STApp-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/W2STApp/W2STAppRelease-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
@@ -1322,6 +1642,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		66F375EF1EB9C2AA005D16F7 /* Build configuration list for PBXNativeTarget "ST BlueMSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66F375E81EB9C2AA005D16F7 /* Debug */,
+				66F375E91EB9C2AA005D16F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EA68CFA518D0CB75003B774E /* Build configuration list for PBXProject "W2STApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

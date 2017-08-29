@@ -40,6 +40,8 @@
 #import "STWeSUTools.h"
 #import "STWeSUNodeExtension.h"
 #import "BlueSTSDK/BlueSTSDK.h"
+#import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
+
 
 @interface STWeSUSettingsAdvancedTableViewController ()
 @property (retain, readonly) STWeSUNodeExtension *nodeExt;
@@ -55,20 +57,27 @@
     _nodeExt = [STWeSUNodeExtension nodeExtWithNode:self.node];
     
     mSettings = @[
-                  [STWeSUSettingsSection sectionWithTitle:@"Accelerometer" items:@[
-                       MAKE_ITEMN(@50, TARGET_P, BlueSTSDK_REGISTER_NAME_ACCELEROMETER_CONFIG_FS, @"Full Scale (g)", @"Accelerometer Full scale (g)"),
-                       MAKE_ITEMN(@50, TARGET_P, BlueSTSDK_REGISTER_NAME_ACCELEROMETER_CONFIG_ODR, @"Output Data Rate (Hz)", @"Accelerometer Output Data Rate (Hz)"),
+                  [STWeSUSettingsSection sectionWithTitle:BLUESTSDK_LOCALIZE(@"Accelerometer",nil) items:@[
+                       MAKE_ITEMN(@50, TARGET_P, BlueSTSDK_REGISTER_NAME_ACCELEROMETER_CONFIG_FS, BLUESTSDK_LOCALIZE(@"Full Scale (g)",nil),
+                                  BLUESTSDK_LOCALIZE( @"Accelerometer Full scale (g)",nil)),
+                       MAKE_ITEMN(@50, TARGET_P, BlueSTSDK_REGISTER_NAME_ACCELEROMETER_CONFIG_ODR, BLUESTSDK_LOCALIZE(@"Output Data Rate (Hz)",nil),
+                                  BLUESTSDK_LOCALIZE( @"Accelerometer Output Data Rate (Hz)",nil)),
                   ]],
-                  [STWeSUSettingsSection sectionWithTitle:@"Gyroscope" items:@[
-                       MAKE_ITEMN(@50, TARGET_P, BlueSTSDK_REGISTER_NAME_GYROSCOPE_CONFIG_FS, @"Full Scale (dps)", @"Gyroscope Full scale (dps)"),
-                       MAKE_ITEMN(@50, TARGET_P, BlueSTSDK_REGISTER_NAME_GYROSCOPE_CONFIG_ODR, @"Output Data Rate (Hz)", @"Gyroscope Output Data Rate (Hz)"),
+                  [STWeSUSettingsSection sectionWithTitle:BLUESTSDK_LOCALIZE(@"Gyroscope",nil) items:@[
+                       MAKE_ITEMN(@50, TARGET_P, BlueSTSDK_REGISTER_NAME_GYROSCOPE_CONFIG_FS, BLUESTSDK_LOCALIZE(@"Full Scale (dps)",nil),
+                                  BLUESTSDK_LOCALIZE( @"Gyroscope Full scale (dps)",nil)),
+                       MAKE_ITEMN(@50, TARGET_P, BlueSTSDK_REGISTER_NAME_GYROSCOPE_CONFIG_ODR, BLUESTSDK_LOCALIZE(@"Output Data Rate (Hz)",nil),
+                                  BLUESTSDK_LOCALIZE( @"Gyroscope Output Data Rate (Hz)",nil)),
                   ]],
-                  [STWeSUSettingsSection sectionWithTitle:@"Magnetometer" items:@[
-                       MAKE_ITEMN(@50, TARGET_P, BlueSTSDK_REGISTER_NAME_MAGNETOMETER_CONFIG_FS, @"Full Scale (gauss)", @"Magnetometer Full scale (gauss)"),
-                       MAKE_ITEMN(@50, TARGET_P, BlueSTSDK_REGISTER_NAME_MAGNETOMETER_CONFIG_ODR, @"Output Data Rate (Hz)", @"Magnetometer Output Data Rate (Hz)"),
+                  [STWeSUSettingsSection sectionWithTitle:BLUESTSDK_LOCALIZE(@"Magnetometer",nil) items:@[
+                       MAKE_ITEMN(@50, TARGET_P, BlueSTSDK_REGISTER_NAME_MAGNETOMETER_CONFIG_FS, BLUESTSDK_LOCALIZE(@"Full Scale (gauss)",nil),
+                                  BLUESTSDK_LOCALIZE( @"Magnetometer Full scale (gauss)",nil)),
+                       MAKE_ITEMN(@50, TARGET_P, BlueSTSDK_REGISTER_NAME_MAGNETOMETER_CONFIG_ODR, BLUESTSDK_LOCALIZE(@"Output Data Rate (Hz)",nil),
+                                  BLUESTSDK_LOCALIZE( @"Magnetometer Output Data Rate (Hz)",nil)),
                   ]],
-                  [STWeSUSettingsSection sectionWithTitle:@"Pressure" items:@[
-                       MAKE_ITEMN(@50, TARGET_P, BlueSTSDK_REGISTER_NAME_PRESSURE_CONFIG_ODR, @"Output Data Rate (Hz)", @"Pressure Output Data Rate (Hz)"),
+                  [STWeSUSettingsSection sectionWithTitle:BLUESTSDK_LOCALIZE(@"Pressure",nil) items:@[
+                       MAKE_ITEMN(@50, TARGET_P, BlueSTSDK_REGISTER_NAME_PRESSURE_CONFIG_ODR, BLUESTSDK_LOCALIZE(@"Output Data Rate (Hz)",nil),
+                                  BLUESTSDK_LOCALIZE( @"Pressure Output Data Rate (Hz)",nil)),
                   ]],
                  ];
     
@@ -195,7 +204,7 @@
                 textField.placeholder = item.title;
                 textField.text = item.valueA ? item.valueA : @"";
             }];
-            ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+            ok = [UIAlertAction actionWithTitle:BLUESTSDK_LOCALIZE( @"OK",nil) style:UIAlertActionStyleDefault
                                         handler:^(UIAlertAction * action) {
                                             NSString *value = ((UITextField*)alert.textFields[0]).text;
                                             BOOL res = [self.nodeExt writeSingleRegFromDec:value regName:item.regName target:item.target autosync:YES];
@@ -205,16 +214,16 @@
         }
             break;
         default:
-            [alert setMessage:@"Data not available"];
+            [alert setMessage:BLUESTSDK_LOCALIZE(@"Data not available",nil)];
             readonly = YES;
     }
-    cancel = [UIAlertAction actionWithTitle:(readonly ? @"Ok" : @"Cancel") style:UIAlertActionStyleDefault
+    cancel = [UIAlertAction actionWithTitle:(readonly ? BLUESTSDK_LOCALIZE( @"Ok",nil) : BLUESTSDK_LOCALIZE( @"Cancel",nil)) style:UIAlertActionStyleDefault
                                     handler:^(UIAlertAction * action) {
                                         //nothing
                                         [alert dismissViewControllerAnimated:YES completion:nil];
                                     }];
     if (updateauto) {
-        update = [UIAlertAction actionWithTitle:@"Reload" style:UIAlertActionStyleDefault
+        update = [UIAlertAction actionWithTitle:BLUESTSDK_LOCALIZE( @"Reload",nil) style:UIAlertActionStyleDefault
                                         handler:^(UIAlertAction * action) {
                                             //nothing
                                             [self.nodeExt asyncReadWithRegName:item.regName target:item.target];
@@ -319,13 +328,13 @@
     return item_res;
 }
 -(void)notifyErrorMessage:(NSString *)message {
-    NSString * msg = message && ![message isEqualToString:@""] ? message : @"Register writing failed!";
-    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"Error"
+    NSString * msg = message && ![message isEqualToString:@""] ? message : BLUESTSDK_LOCALIZE(@"Register writing failed!",nil);
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:BLUESTSDK_LOCALIZE(@"Error",nil)
                                                                               message:msg
                                                                        preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* ok = nil;
     
-    ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+    ok = [UIAlertAction actionWithTitle:BLUESTSDK_LOCALIZE(@"OK",nil) style:UIAlertActionStyleDefault
                                 handler:^(UIAlertAction * action) {
                                     [alertController dismissViewControllerAnimated:YES completion:nil];
                                 }];

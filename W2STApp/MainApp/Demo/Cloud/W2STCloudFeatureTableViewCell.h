@@ -46,6 +46,7 @@
 
 @interface W2STCloudFeatureTableViewCell : UITableViewCell
 @property (weak, nonatomic) id<W2STCloudFeatureTableViewCellDelegate> delegate;
-@property (nonatomic) BlueSTSDKFeature *feature;
+
+-(void)setFeature:(BlueSTSDKFeature *)feature enabled:(BOOL)enabled;
 
 @end

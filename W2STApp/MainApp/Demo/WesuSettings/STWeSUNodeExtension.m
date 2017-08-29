@@ -36,6 +36,7 @@
  */
 
 #import "STWeSUNodeExtension.h"
+#import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
 
 @implementation STWeSUNodeExtension
 
@@ -62,36 +63,36 @@
     self = [super init];
     
     _ledConfig = @{
-                   LED_INTMNG : @"Internally managed",
-                   LED_ON     : @"User On",
-                   LED_OFF    : @"User Off",
+                   LED_INTMNG : BLUESTSDK_LOCALIZE(@"Internally managed",nil),
+                   LED_ON     : BLUESTSDK_LOCALIZE(@"User On",nil),
+                   LED_OFF    : BLUESTSDK_LOCALIZE(@"User Off",nil),
                    };
     _ledConfigOrderedKeys = @[@"00",@"11",@"12"];
     
     _powerMode = @{
-                   @"00" : @"Full run",
-                   @"01" : @"Low power run",
-                   @"10" : @"Low power",
+                   @"00" : BLUESTSDK_LOCALIZE(@"Full run",nil),
+                   @"01" : BLUESTSDK_LOCALIZE(@"Low power run",nil),
+                   @"10" : BLUESTSDK_LOCALIZE(@"Low power",nil),
                    };
     _powerModeOrderedKeys = @[@"00",@"01",@"10"];
     
     _featureMapGroupA = @{
                           //group A
-                          @"0080" : @"Accelerometer",
-                          @"0040" : @"Gyroscope",
-                          @"0020" : @"Magnetometer",
-                          @"0010" : @"Pressure",
-                          @"0004" : @"Temperature",
-                          @"0002" : @"Battery",
+                          @"0080" : BLUESTSDK_LOCALIZE(@"Accelerometer",nil),
+                          @"0040" : BLUESTSDK_LOCALIZE(@"Gyroscope",nil),
+                          @"0020" : BLUESTSDK_LOCALIZE(@"Magnetometer",nil),
+                          @"0010" : BLUESTSDK_LOCALIZE(@"Pressure",nil),
+                          @"0004" : BLUESTSDK_LOCALIZE(@"Temperature",nil),
+                          @"0002" : BLUESTSDK_LOCALIZE(@"Battery",nil),
                           };
     _featureMapGroupAOrderedKeys = @[@"0080",@"0040",@"0020",@"0010",@"0004",@"0002"];
     _featureMapGroupB = @{
                           //group B
-                          @"0001" : @"Pedometer",
-                          @"0080" : @"Sensor Fusion AHRS Mems",
-                          @"0200" : @"FreeFall",
-                          @"0010" : @"Activity Recognition",
-                          @"0008" : @"Carry Position",
+                          @"0001" : BLUESTSDK_LOCALIZE(@"Pedometer",nil),
+                          @"0080" : BLUESTSDK_LOCALIZE(@"Sensor Fusion AHRS Mems",nil),
+                          @"0200" : BLUESTSDK_LOCALIZE(@"FreeFall",nil),
+                          @"0010" : BLUESTSDK_LOCALIZE(@"Activity Recognition",nil),
+                          @"0008" : BLUESTSDK_LOCALIZE(@"Carry Position",nil),
                           };
     _featureMapGroupBOrderedKeys = @[@"0001",@"0080",@"0200",@"0010",@"0008"];
     _bleOutputPowerMap = @{
@@ -115,14 +116,14 @@
     _bleOutputPowerMapOrderedKeys = @[@"090F",@"090E",@"090D",@"090C",@"090B",@"090A",@"0909",@"0908",@"080F",@"080E",@"080D",@"080C",@"080B",@"080A",@"0809",@"0808"];
     
     _rtcTimer = @{
-                  RTC_TIMER_INVALID          : @"Invalid",
-                  RTC_TIMER_DEFAULT          : @"Default",
-                  RTC_TIMER_DEFAULT_RUNNING  : @"Default Running",
-                  RTC_TIMER_RESTORED         : @"Restored",
-                  RTC_TIMER_RESTORED_RUNNING : @"Restored Running",
-                  RTC_TIMER_USER             : @"User",
-                  RTC_TIMER_USER_RUNNING     : @"User Running",
-                  RTC_TIMER_FORCED           : @"Forced",
+                  RTC_TIMER_INVALID          : BLUESTSDK_LOCALIZE(@"Invalid",nil),
+                  RTC_TIMER_DEFAULT          : BLUESTSDK_LOCALIZE(@"Default",nil),
+                  RTC_TIMER_DEFAULT_RUNNING  : BLUESTSDK_LOCALIZE(@"Default Running",nil),
+                  RTC_TIMER_RESTORED         : BLUESTSDK_LOCALIZE(@"Restored",nil),
+                  RTC_TIMER_RESTORED_RUNNING : BLUESTSDK_LOCALIZE(@"Restored Running",nil),
+                  RTC_TIMER_USER             : BLUESTSDK_LOCALIZE(@"User",nil),
+                  RTC_TIMER_USER_RUNNING     : BLUESTSDK_LOCALIZE(@"User Running",nil),
+                  RTC_TIMER_FORCED           : BLUESTSDK_LOCALIZE(@"Forced",nil),
                   };
     _rtcTimerOrderedKeys = @[
                              RTC_TIMER_INVALID,
@@ -136,18 +137,18 @@
                              ];
     
     _dfuReboot = @{
-                   DFU_REBOOT_APPL      : @"Application Mode",
-                   DFU_REBOOT_USBDFU    : @"USB DFU",
-                   DFU_REBOOT_OTABLEDFU : @"OTA BLE DFU",
+                   DFU_REBOOT_APPL      : BLUESTSDK_LOCALIZE(@"Application Mode",nil),
+                   DFU_REBOOT_USBDFU    : BLUESTSDK_LOCALIZE(@"USB DFU",nil),
+                   DFU_REBOOT_OTABLEDFU : BLUESTSDK_LOCALIZE(@"OTA BLE DFU",nil),
                    };
     _dfuRebootOrderedKeys = @[DFU_REBOOT_APPL, DFU_REBOOT_USBDFU, DFU_REBOOT_OTABLEDFU];
     
     _powerOff = @{
-                  PWR_OFF_STANDBY_BLE  : @"Stand-by (BLE)",
-                  PWR_OFF_STANDBY      : @"Stand-by",
-                  PWR_OFF_REBOOT       : @"Reboot",
-                  PWR_OFF_REBOOT_DEF   : @"Reboot with defaults",
-                  PWR_OFF_SHUTDOWN     : @"Shutdown",
+                  PWR_OFF_STANDBY_BLE  : BLUESTSDK_LOCALIZE(@"Stand-by (BLE)",nil),
+                  PWR_OFF_STANDBY      : BLUESTSDK_LOCALIZE(@"Stand-by",nil),
+                  PWR_OFF_REBOOT       : BLUESTSDK_LOCALIZE(@"Reboot",nil),
+                  PWR_OFF_REBOOT_DEF   : BLUESTSDK_LOCALIZE(@"Reboot with defaults",nil),
+                  PWR_OFF_SHUTDOWN     : BLUESTSDK_LOCALIZE(@"Shutdown",nil),
                   };
     _powerOffOrderedKeys = @[PWR_OFF_STANDBY_BLE, PWR_OFF_STANDBY, PWR_OFF_REBOOT, PWR_OFF_REBOOT_DEF, PWR_OFF_SHUTDOWN];
     

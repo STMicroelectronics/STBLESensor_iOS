@@ -36,8 +36,6 @@
  */
 #import "W2STHumidityViewController.h"
 
-
-#import <BlueSTSDK/BlueSTSDKFeatureField.h>
 #import <BlueSTSDK/BlueSTSDKFeatureHumidity.h>
 
 @interface W2STHumidityViewController () <BlueSTSDKFeatureDelegate>
@@ -51,11 +49,11 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    mHumidityFeature = [self.delegate extractFeaturesType: BlueSTSDKFeatureHumidity.class];
+    mHumidityFeature = [self.node getFeaturesOfType: BlueSTSDKFeatureHumidity.class];
     if(mHumidityFeature.count != 0){
         for (BlueSTSDKFeature *f in mHumidityFeature){
             [f addFeatureDelegate:self];
-            [self.delegate enableNotificationForFeature:f];
+            [self.node enableNotification:f];
         }//for
         _humidityImage.image = [UIImage imageNamed:@"humidity"];
     }//if
@@ -66,7 +64,7 @@
     if(mHumidityFeature.count != 0){
         for (BlueSTSDKFeature *f in mHumidityFeature){
             [f removeFeatureDelegate:self];
-            [self.delegate disableNotificationForFeature:f];
+            [self.node disableNotification:f];
         }//for
     }//if
 }

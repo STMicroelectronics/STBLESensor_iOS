@@ -36,6 +36,8 @@
  */
 
 #import "W2STSelectFeatureViewController.h"
+#import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
+
 
 @interface W2STSelectFeatureViewController ()<UIPickerViewDataSource,
 UIPickerViewDelegate>
@@ -73,7 +75,7 @@ static NSArray *sPossibleSamplingVal;
     mSelectedSample = -1;
     mFeatureSelected=false;
     [self.dataSelector reloadAllComponents];
-    self.titleLabel.text=@"Select the feature to plot";
+    self.titleLabel.text=BLUESTSDK_LOCALIZE(@"Select the feature to plot",nil);
     mSelectedFeature =0;
     [self.dataSelector selectRow:mSelectedFeature
                      inComponent:0
@@ -100,7 +102,7 @@ static NSArray *sPossibleSamplingVal;
         [self dismissViewControllerAnimated:YES completion:nil];
     }else if(mSelectedFeature>=0){
         mFeatureSelected=true;
-        self.titleLabel.text=@"Select the time scale";
+        self.titleLabel.text=BLUESTSDK_LOCALIZE(@"Select the time scale",nil);
         [self.dataSelector reloadAllComponents];
         mSelectedSample =sPossibleSamplingVal.count/2;
         [self.dataSelector selectRow:mSelectedSample

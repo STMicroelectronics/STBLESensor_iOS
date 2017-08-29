@@ -6,4 +6,4 @@
 	url = https://github.com/STMicroelectronics-CentralLabs/BlueSTSDK_iOS.git
 [submodule "BlueSTSDK_Gui"]
 	path = BlueSTSDK_Gui
-	url = https://github.com/STMicroelectronics-CentralLabs/BlueSTSDK_GUI_iOS.git
+	url = https://github.com/STMicroelectronics-CentralLabs/BlueSTSDK_GUI_iOS

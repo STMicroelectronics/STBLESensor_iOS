@@ -56,28 +56,21 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([segue.destinationViewController isKindOfClass:W2STDemoSubViewController.class]){
-        W2STDemoSubViewController *temp = (W2STDemoSubViewController *)segue.destinationViewController;
-        temp.delegate = self;
-    }
+
+    [BlueMSDemoTabViewController setViewControllerProperty:segue.destinationViewController
+                                                      node:self.node
+                                              menuDelegate:self.menuDelegate];
 }
 
-#pragma mark - W2STFeatureDemoManager
 
--(BlueSTSDKFeature*) extractFeatureType:(Class)type{
-    return [self.node getFeatureOfType: type];
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    //[self logDemoStart];
 }
 
--(NSArray*) extractFeaturesType:(Class)type{
-    return [self.node getFeaturesOfType: type];
-}
-
--(BOOL) enableNotificationForFeature:(BlueSTSDKFeature*)f{
-    return [self.node enableNotification:f];
-}
-
--(BOOL) disableNotificationForFeature:(BlueSTSDKFeature*)f{
-    return [self.node disableNotification:f];
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    //[self logDemoStop];
 }
 
 @end

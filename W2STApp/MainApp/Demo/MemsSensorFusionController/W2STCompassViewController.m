@@ -39,12 +39,12 @@
 
 #import "W2STSimpleDialogViewController.h"
 #import <BlueSTSDK/BlueSTSDKFeatureCompass.h>
-
+#import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
 #define RESET_CALIB_ID 1
 #define RESET_CALIB_STORYBOARD_ID @"ResetCalibDialogID"
 
-#define ANGLE_FORMAT_STRING @"Angle: %2.2f"
-#define ORIENTATION_FORMAT_STRING @"Orientation: %@"
+#define ANGLE_FORMAT_STRING BLUESTSDK_LOCALIZE(@"Angle: %2.2f",nil)
+#define ORIENTATION_FORMAT_STRING BLUESTSDK_LOCALIZE(@"Orientation: %@",nil)
 
 @interface W2STCompassViewController ()<
     BlueSTSDKFeatureDelegate,

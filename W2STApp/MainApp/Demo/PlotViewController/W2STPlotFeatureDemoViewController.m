@@ -41,15 +41,11 @@
 #import "W2STPlotFeatureDemoViewController.h"
 #import "W2STSelectFeatureViewController.h"
 #import "BlueMSDemosViewController.h"
-#import <BlueSTSDK/BlueSTSDKFeature.h>
-#import <BlueSTSDK/BlueSTSDKFeatureField.h>
 
 #import <BlueSTSDK/BlueSTSDKFeatureMagnetometer.h>
 #import <BlueSTSDK/BlueSTSDKFeatureCompass.h>
 #import <BlueSTSDK/BlueSTSDKFeatureAcceleration.h>
 #import <BlueSTSDK/BlueSTSDKFeatureActivity.h>
-#import <BlueSTSDK/BlueSTSDKFeatureCarryPosition.h>
-#import <BlueSTSDK/BlueSTSDKFeatureBattery.h>
 #import <BlueSTSDK/BlueSTSDKFeatureGyroscope.h>
 #import <BlueSTSDK/BlueSTSDKFeatureHumidity.h>
 #import <BlueSTSDK/BlueSTSDKFeatureLuminosity.h>
@@ -59,14 +55,15 @@
 #import <BlueSTSDK/BlueSTSDKFeatureProximity.h>
 #import <BlueSTSDK/BlueSTSDKFeaturePressure.h>
 #import <BlueSTSDK/BlueSTSDKFeatureTemperature.h>
-#import <BlueSTSDK/BlueSTSDKFeatureAccelerometerEvent.h>
 #import <BlueSTSDK/BlueSTSDKFeatureDirectionOfArrival.h>
-#import <BlueSTSDK/BlueSTSDKFeatureAudioADPCM.h>
-#import <BlueSTSDK/BlueSTSDKFeatureAudioADPCMSync.h>
+#import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
+#import <BlueSTSDK/BlueSTSDKFeatureMicLevel.h>
+#import <BlueSTSDK/BlueSTSDKFeatureMotionIntensity.h>
+#import <BlueSTSDK/BlueSTSDKFeaturePedometer.h>
 
 #define Y_AXIS_BORDER 0.1f
-#define X_NAME @"Time (ms)"
-#define SELECT_FEATURE_BUTTON_TITLE @"Select Feature"
+#define X_NAME BLUESTSDK_LOCALIZE(@"Time (ms)",nil)
+#define SELECT_FEATURE_BUTTON_TITLE BLUESTSDK_LOCALIZE(@"Select Feature",nil)
 #define MS_TO_TIMESTAMP_SCALE 10
 #define MAX_PLOT_UPDATE_DIFF_MS 500
 
@@ -116,8 +113,10 @@
 
 //color used for plot the data lines
 static NSArray *sLineColor;
-static NSSet *sSkipFeature;
 static NSNumber *sZero;
+static NSSet<Class> *sSupportedFeatureClass;
+
+
 +(void)initialize{
     if(self == [W2STPlotFeatureDemoViewController class]){
         sLineColor = @[ [CPTColor greenColor],
@@ -128,16 +127,23 @@ static NSNumber *sZero;
                         [CPTColor purpleColor],
                       ];
         sZero =[NSDecimalNumber zero];
-        sSkipFeature = [NSSet setWithObjects:
-                          [BlueSTSDKFeatureCarryPosition class],
-                          [BlueSTSDKFeatureFreeFall class],
-                          [BlueSTSDKFeatureActivity class],
-                          [BlueSTSDKFeatureBattery class],
-                          [BlueSTSDKFeatureAccelerometerEvent class],
-                          [BlueSTSDKFeatureAudioADPCM class],
-                          [BlueSTSDKFeatureAudioADPCMSync class],
-                        nil];
-
+        sSupportedFeatureClass = [NSSet setWithObjects:
+            [BlueSTSDKFeatureAcceleration class],
+                [BlueSTSDKFeatureCompass class],
+                [BlueSTSDKFeatureDirectionOfArrival class],
+                [BlueSTSDKFeatureGyroscope class],
+                [BlueSTSDKFeatureHumidity class],
+                [BlueSTSDKFeatureLuminosity class],
+                [BlueSTSDKFeatureMagnetometer class],
+                [BlueSTSDKFeatureMemsSensorFusionCompact class],
+                [BlueSTSDKFeatureMemsSensorFusion class],
+                [BlueSTSDKFeatureMicLevel class],
+                [BlueSTSDKFeatureMotionIntensity class],
+                [BlueSTSDKFeaturePedometer class],
+                [BlueSTSDKFeatureProximity class],
+                [BlueSTSDKFeaturePressure class],
+                [BlueSTSDKFeatureTemperature class],
+                 nil ];
     }//if
 }//initialize
 
@@ -209,11 +215,11 @@ static NSNumber *sZero;
     NSArray *allFeature = [mNode getFeatures];
     mFeatureArray = [allFeature objectsAtIndexes:
                      [allFeature indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-        for(Class c in sSkipFeature){
+        for(Class c in sSupportedFeatureClass){
             if([obj isKindOfClass:c])
-                return false;
+                return true;
         }//for
-        return true;
+        return false;
     }//block
     ]];
     
@@ -314,7 +320,7 @@ static NSNumber *sZero;
 }
 
 -(void)setUpPlotViewForFeature:(BlueSTSDKFeature*)feature{
-    NSString *newButtonTitle = [NSString stringWithFormat:@"Stop plotting %@",feature.name];
+    NSString *newButtonTitle = [NSString stringWithFormat:BLUESTSDK_LOCALIZE(@"Stop plotting %@",nil),feature.name];
     [self.selectFeatureButton setTitle:newButtonTitle forState:UIControlStateNormal];
     //before add new plot, remove the old one
     NSArray *oldPlots = [mGraph allPlots];
@@ -649,6 +655,15 @@ static NSNumber *sZero;
         [self performSegueWithIdentifier:@"SelectFeaturePlotPopover" sender:sender];
 }
 
++ (BOOL)canPlotFeatureForNode:(BlueSTSDKNode *)node {
+    for (Class feature in sSupportedFeatureClass){
+      if([node getFeatureOfType:feature]!=nil)
+          return true;
+    }
+    return false;
+}
+
+
 #pragma mark - W2STSelectFeatureDelegate
 
 -(NSUInteger) getNumberFeature{
@@ -656,13 +671,13 @@ static NSNumber *sZero;
 }
 
 -(NSString*) getNameOfFeatureAtIndex:(NSUInteger)idx{
-    BlueSTSDKFeature *f = [mFeatureArray objectAtIndex:idx];
+    BlueSTSDKFeature *f = mFeatureArray[idx];
     return f.name;
 }
 
 -(void) selectFeatureAtIndex:(NSUInteger)idx withNSample:(NSUInteger)nSample{
     if(idx<mFeatureArray.count){
-        BlueSTSDKFeature *f = [mFeatureArray objectAtIndex:idx];
+        BlueSTSDKFeature *f = mFeatureArray[idx];
         [self startPlotFeature:f withNSample: nSample];
     }
 }

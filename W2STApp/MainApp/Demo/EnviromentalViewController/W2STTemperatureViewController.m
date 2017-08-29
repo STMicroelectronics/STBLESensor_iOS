@@ -52,11 +52,11 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    mTemperatureFeature = [self.delegate extractFeaturesType: BlueSTSDKFeatureTemperature.class];
+    mTemperatureFeature = [self.node getFeaturesOfType: BlueSTSDKFeatureTemperature.class];
     if(mTemperatureFeature.count != 0){
         for (BlueSTSDKFeature *f in mTemperatureFeature){
             [f addFeatureDelegate:self];
-            [self.delegate enableNotificationForFeature:f];
+            [self.node enableNotification:f];
             _temperatureImage.image = [UIImage imageNamed:@"temperature_icon"];
         }
     }
@@ -67,7 +67,7 @@
     if(mTemperatureFeature.count != 0){
         for (BlueSTSDKFeature *f in mTemperatureFeature){
             [f removeFeatureDelegate:self];
-            [self.delegate disableNotificationForFeature:f];
+            [self.node disableNotification:f];
         }
     }
 }
@@ -75,11 +75,11 @@
 #pragma mark - BlueSTSDKFeatureDelegate
 - (void)didUpdateFeature:(BlueSTSDKFeature *)feature sample:(BlueSTSDKFeatureSample *)sample{
     
-    BlueSTSDKFeatureField *tempDesc = [feature.getFieldsDesc objectAtIndex:0];
+    BlueSTSDKFeatureField *tempDesc = feature.getFieldsDesc[0];
     
     NSMutableString *temperatureLabel = [NSMutableString stringWithCapacity:32];
-    for (int i=0; i<mTemperatureFeature.count ; i++){
-        BlueSTSDKFeatureSample *s = [[mTemperatureFeature objectAtIndex:i] lastSample];
+    for (NSUInteger i=0; i<mTemperatureFeature.count ; i++){
+        BlueSTSDKFeatureSample *s = [mTemperatureFeature[i] lastSample];
         float temperature = [BlueSTSDKFeatureTemperature getTemperature:s];
         [temperatureLabel appendFormat: @"%.2f %@\n",
                                         temperature,tempDesc.unit];

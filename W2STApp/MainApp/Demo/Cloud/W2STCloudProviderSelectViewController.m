@@ -36,6 +36,8 @@
  */
 
 #include <BlueSTSDK/BlueSTSDKFeature.h>
+#import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
+
 #import <MQTTClient.h>
 
 #include "Provider/W2STCloudConfigViewController.h"
@@ -80,14 +82,12 @@ static NSArray<CloudProvider*> *sCloudProvider;
 +(void)initialize{
     if(self == [W2STCloudProviderSelectViewController class]){
         sCloudProvider = @[
-                           [CloudProvider providerWithName:@"IBM Watson IoT - Quickstart"
+                           [CloudProvider providerWithName:BLUESTSDK_LOCALIZE(@"IBM Watson IoT - Quickstart",nil)
                                                      segue:@"BlueMxQuickStart_segue"],
-                           [CloudProvider providerWithName:@"IBM Watson IoT"
+                           [CloudProvider providerWithName:BLUESTSDK_LOCALIZE(@"IBM Watson IoT",nil)
                                                      segue:@"BlueMx_segue"],
-                           [CloudProvider providerWithName:@"Generic Mqtt"
-                                                     segue:@"GenericMqtt_segue"],
-                        ];
-        
+                           [CloudProvider providerWithName:BLUESTSDK_LOCALIZE(@"Generic Mqtt",nil)
+                                                     segue:@"GenericMqtt_segue"]];
     }
     
 }

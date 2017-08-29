@@ -40,20 +40,21 @@
 
 
 @implementation W2STCloudFeatureTableViewCell{
+    BlueSTSDKFeature *mFeature;
     __weak IBOutlet UILabel *mFeatureName;
     __weak IBOutlet UISwitch *mEnableFeature;
 }
 
 - (IBAction)onSwitchChange:(UISwitch *)sender {
     if(_delegate!=nil){
-        [_delegate onFeatureIsSelected:_feature newStatus:sender.on];
+        [_delegate onFeatureIsSelected: mFeature newStatus:sender.on];
     }
 }
 
--(void)setFeature:(BlueSTSDKFeature *)feature{
+-(void)setFeature:(BlueSTSDKFeature *)feature enabled:(BOOL)enabled{
     mFeatureName.text=feature.name;
-    mEnableFeature.on=false;
-    _feature=feature;
+    mEnableFeature.on=enabled;
+    mFeature=feature;
     
 }
 

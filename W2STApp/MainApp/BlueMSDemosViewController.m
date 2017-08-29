@@ -55,14 +55,15 @@
 #import <BlueSTSDK/BlueSTSDKFeatureHeartRate.h>
 #import <BlueSTSDK/BlueSTSDKFeatureCompass.h>
 #import <BlueSTSDK/BlueSTSDKFeatureMotionIntensity.h>
+#import <BlueSTSDK/BlueSTSDKFeatureDirectionOfArrival.h>
+#import <BlueSTSDK/BlueSTSDKFeatureBeamForming.h>
 
 
 #import "BlueMSDemosViewController.h"
 #import "BlueMSDemosViewController+WesuFwVersion.h"
 
 #import "BlueMSDemoTabViewController.h"
-
-#import "W2STFeatureSensorFusionDemoViewController.h"
+#import "W2STPlotFeatureDemoViewController.h"
 
 #define ENVIROMENTAL_DEMO_POSITION 0
 #define SENSOR_FUSION_DEMO_POSITION 1
@@ -75,12 +76,15 @@
 #define ACC_EVENT_DEMO_POSITION 8
 #define SWITCH_DEMO_POSITION 9
 #define BLUEVOICE_DEMO_POSITION 10
-#define HEART_RATE_DEMO_POSITION 11
-#define CLOUD_DEMO_POSITION 12
-#define MOTIONID_DEMO_POSITION 13
-#define COMPASS_DEMO_POSITION 14
-#define RSSI_DEMO_POSITION 15
-#define NUMBER_OF_DEMOS 16
+#define BEAM_FORMING_DEMO_POSITION 11
+#define DIRECTION_OF_ARRIVAL_DEMO_POSITION 12
+#define HEART_RATE_DEMO_POSITION 13
+#define CLOUD_DEMO_POSITION 14
+#define MOTIONID_DEMO_POSITION 15
+#define COMPASS_DEMO_POSITION 16
+#define RSSI_DEMO_POSITION 17
+
+#define NUMBER_OF_DEMOS 18
 
 @interface BlueMSDemosViewController () <UITabBarControllerDelegate>
 
@@ -170,30 +174,37 @@
     if( [node getFeatureOfType:BlueSTSDKFeatureCompass.class]==nil){
         [removeItem addIndex:COMPASS_DEMO_POSITION];
     }
+    if( [node getFeatureOfType:BlueSTSDKFeatureDirectionOfArrival.class]==nil){
+        [removeItem addIndex:DIRECTION_OF_ARRIVAL_DEMO_POSITION];
+    }
+    if([node getFeatureOfType:BlueSTSDKFeatureAudioADPCM.class]==nil ||
+       [node getFeatureOfType:BlueSTSDKFeatureAudioADPCMSync.class]==nil ||
+       [node getFeatureOfType:BlueSTSDKFeatureBeamForming.class]==nil){
 
+        [removeItem addIndex:BEAM_FORMING_DEMO_POSITION];
+    }
+    if(![W2STPlotFeatureDemoViewController canPlotFeatureForNode:node]){
+        [removeItem addIndex:PLOT_DEMO_POSITION];
+    }
     [availableDemos removeObjectsAtIndexes:removeItem];
     self.viewControllers = availableDemos;
 
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+
     self.delegate=self;
     
     //hide the navigation bar in case of more than 5 demos,
     // in this way the user can't edit the item in the tabbar and we have more
     // space for the demo
     self.moreNavigationController.navigationBarHidden=true;
-    
+
+    [self initializeDemos];
+    //remove is after the initialization to permit to correctly initialize the demo that have some internal view controller
+    //to pass the valid node also to the subview
     [self removeOptionalDemo];
 
-    for (UIViewController *c in self.viewControllers){
-        if( [c isKindOfClass:[BlueMSDemoTabViewController class]]){
-            BlueMSDemosViewController *temp = (BlueMSDemosViewController*)c;
-            temp.node = self.node;
-        }
-    }
-    
     if(self.node.type == BlueSTSDKNodeTypeSTEVAL_WESU1 ){
         if(!mFwVarningDisplayed){
             [self checkFwVersion];
@@ -202,9 +213,20 @@
     }else{
         [self.menuDelegate removeMenuAction:registerSettings];
     }
-    
+    [super viewWillAppear:animated];
 }
 
+- (void)initializeDemos {
+    for (UIViewController *c in self.viewControllers){
+        [BlueMSDemoTabViewController setViewControllerProperty:c
+                                                          node:self.node
+                                                  menuDelegate:self.menuDelegate];
+    }
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+}
 
 //swipe left -> change the current demo with the next one
 - (void)leftSwipeGesture:(UISwipeGestureRecognizer *)sender {

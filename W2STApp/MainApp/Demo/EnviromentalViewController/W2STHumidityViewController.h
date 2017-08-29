@@ -37,9 +37,8 @@
 
 #import <UIKit/UIKit.h>
 #import "W2STEnviromentalViewController.h"
-#import "W2STDemoSubViewController.h"
 
-@interface W2STHumidityViewController : W2STDemoSubViewController
+@interface W2STHumidityViewController : BlueMSDemoTabViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *humidityImage;
 @property (weak, nonatomic) IBOutlet UILabel *humidityLabel;

@@ -37,11 +37,12 @@
 
 
 #import <BlueSTSDK/BlueSTSDKStdCharToFeatureMap.h>
-#import <BlueSTSDK_Gui/BlueSTSDKMainViewController.h>
+#import <BlueSTSDK_Gui/BlueSTSDK_Gui-Swift.h>
+#import <BlueSTSDK_Gui/BlueSTSDKNodeListViewController.h>
 
 #import "BlueMSMainViewController.h"
-#include "BlueMSDemosViewController.h"
-
+#import "BlueMSDemosViewController.h"
+#import "BlueMSAppDelegate.h"
 
 
 @interface BlueMSMainViewController ()<BlueSTSDKAboutViewControllerDelegate,
@@ -59,18 +60,18 @@ BlueSTSDKNodeListViewControllerDelegate>
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"BlueSTSDKMainView"
                                                          bundle:[NSBundle bundleForClass:BlueSTSDKMainViewController.class]
                                 ];
-    
+
     BlueSTSDKMainViewController *mainView = [storyBoard instantiateInitialViewController];
     mainView.delegateMain=nil;
     mainView.delegateAbout=self;
     mainView.delegateNodeList=self;
-    
+
     [self pushViewController:mainView animated:TRUE];
 }
 
 #pragma mark - BlueSTSDKAboutViewControllerDelegate
 
-- (NSString*) htmlFile{
+- (NSString*) abaoutHtmlPagePath{
     NSBundle *bundle = [NSBundle mainBundle];
     return [bundle pathForResource:@"text" ofType:@"html"];
 }
@@ -78,6 +79,23 @@ BlueSTSDKNodeListViewControllerDelegate>
 - (UIImage*) headImage{
     return [UIImage imageNamed:@"press_contact.jpg"];
 }
+
+-(NSURL*) privacyInfoUrl{
+    return NULL;
+}
+
+-(NSArray<BlueSTSDKLibLicense*>*) libLicenseInfo{
+    NSBundle *bounle = [NSBundle mainBundle];
+    return @[[[BlueSTSDKLibLicense alloc] initWithLicenseFile:[bounle pathForResource:@"BlueSTSDK" ofType:@"txt"]],
+             [[BlueSTSDKLibLicense alloc] initWithLicenseFile:[bounle pathForResource:@"BlueSTSDK_Gui" ofType:@"txt"]],
+             [[BlueSTSDKLibLicense alloc] initWithLicenseFile:[bounle pathForResource:@"CorePlot" ofType:@"txt"]],
+             [[BlueSTSDKLibLicense alloc] initWithLicenseFile:[bounle pathForResource:@"MBProgressHUD" ofType:@"txt"]],
+             [[BlueSTSDKLibLicense alloc] initWithLicenseFile:[bounle pathForResource:@"MQTTClient" ofType:@"txt"]],
+             [[BlueSTSDKLibLicense alloc] initWithLicenseFile:[bounle pathForResource:@"Reachability" ofType:@"txt"]] ];
+}
+
+
+
 
 #pragma mark - BlueSTSDKNodeListViewControllerDelegate
 
@@ -107,7 +125,7 @@ BlueSTSDKNodeListViewControllerDelegate>
     BlueMSDemosViewController *mainView = [storyBoard instantiateInitialViewController];
     mainView.node=node;
     mainView.menuDelegate = menuManager;
-    
+
     return mainView;
 }
 

@@ -55,11 +55,12 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    mPressureFeatures = [self.delegate extractFeaturesType: BlueSTSDKFeaturePressure.class];
+
+    mPressureFeatures = [self.node getFeaturesOfType: BlueSTSDKFeaturePressure.class];
     if(mPressureFeatures.count != 0){
         for (BlueSTSDKFeature *f in mPressureFeatures){
             [f addFeatureDelegate:self];
-            [self.delegate enableNotificationForFeature:f];
+            [self.node enableNotification:f];
         }
         _pressureImage.image=[UIImage imageNamed:@"pressure"];
     }
@@ -70,7 +71,7 @@
     if(mPressureFeatures.count != 0){
         for (BlueSTSDKFeature *f in mPressureFeatures){
             [f removeFeatureDelegate:self];
-            [self.delegate disableNotificationForFeature:f];
+            [self.node disableNotification:f];
         }
     }
 }
@@ -79,11 +80,11 @@
 #pragma mark - BlueSTSDKFeatureDelegate
 - (void)didUpdateFeature:(BlueSTSDKFeature *)feature sample:(BlueSTSDKFeatureSample *)sample{
     
-    BlueSTSDKFeatureField *pressDesc = [feature.getFieldsDesc objectAtIndex:0];
+    BlueSTSDKFeatureField *pressDesc = feature.getFieldsDesc[0];
     
     NSMutableString *pressureLabel = [NSMutableString stringWithCapacity:32];
-    for (int i=0; i<mPressureFeatures.count ; i++){
-        BlueSTSDKFeatureSample *s = [[mPressureFeatures objectAtIndex:i] lastSample];
+    for (NSUInteger i=0; i<mPressureFeatures.count ; i++){
+        BlueSTSDKFeatureSample *s = [mPressureFeatures[i] lastSample];
         float pressure = [BlueSTSDKFeaturePressure getPressure:s];
         [pressureLabel appendFormat: @"%.2f %@\n", pressure, pressDesc.unit];
     }//for

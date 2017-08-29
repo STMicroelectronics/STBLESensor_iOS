@@ -40,6 +40,7 @@
 #import <BlueSTSDK/BlueSTSDKCommand.h>
 #import <BlueSTSDK/BlueSTSDKWeSURegisterDefines.h>
 #import <BlueSTSDK/BlueSTSDKFwVersion.h>
+#import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
 
 #import <BlueSTSDK_Gui/UIViewController+BlueSTSDK.h>
 
@@ -53,12 +54,12 @@
 #define LAST_FW_VERSION_PATCH 0
 #define DFU_APP_URL @"itms://itunes.apple.com/it/app/st-bluedfu/id1187882971?mt=8"
 
-#define WESU_SETTINGS_ITEM @"Register Settings"
+#define WESU_SETTINGS_ITEM BLUESTSDK_LOCALIZE(@"Register Settings",nil)
 
-#define UPDATE_FW_TITLE @"New Firmware available"
-#define UPDATE_FW_MESSAGE @"Please update the firmware before continue"
-#define UPDATE_FW_CONTINUE @"Continue"
-#define UPDATE_FW_UPDATE @"Update"
+#define UPDATE_FW_TITLE BLUESTSDK_LOCALIZE(@"New Firmware available",nil)
+#define UPDATE_FW_MESSAGE BLUESTSDK_LOCALIZE(@"Please update the firmware before continue",nil)
+#define UPDATE_FW_CONTINUE BLUESTSDK_LOCALIZE(@"Continue",nil)
+#define UPDATE_FW_UPDATE BLUESTSDK_LOCALIZE(@"Update",nil)
 
 @interface BlueMSDemosViewController (WesuFwVersion)<BlueSTSDKConfigControlDelegate,
 BlueSTSDKNodeStateDelegate>

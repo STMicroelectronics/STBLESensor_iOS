@@ -77,8 +77,8 @@
     MBProgressHUD *message = [MBProgressHUD showHUDAddedTo:view animated:YES];
     message.mode = MBProgressHUDModeText;
     message.removeFromSuperViewOnHide = YES;
-    message.labelText = msg;
-    [message hide:true afterDelay:START_MESSAGE_DISPLAY_TIME];
+    message.label.text = msg;
+    [message hideAnimated:true afterDelay:START_MESSAGE_DISPLAY_TIME];
 }
 
 -(void) configControl:(BlueSTSDKConfigControl *)configControl

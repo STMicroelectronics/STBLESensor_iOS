@@ -42,13 +42,7 @@
 #import <BlueSTSDK/BlueSTSDKNode.h>
 #import <BlueSTSDK/BlueSTSDKFeature.h>
 
-#import "W2STDemoTabViewController.h"
-#import "W2STDemoSubViewController.h"
-
 @interface W2STEnviromentalViewController : BlueMSDemoTabViewController
-    <W2STFeatureDemoManager>
-
-
 
 @end
 

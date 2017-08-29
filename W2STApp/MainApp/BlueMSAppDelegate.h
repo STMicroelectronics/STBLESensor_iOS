@@ -38,8 +38,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BlueMSAppDelegate : UIResponder <UIApplicationDelegate>
 
+@interface BlueMSAppDelegate : UIResponder <UIApplicationDelegate>
 @property (strong, nonatomic) UIWindow *window;
 
 @end

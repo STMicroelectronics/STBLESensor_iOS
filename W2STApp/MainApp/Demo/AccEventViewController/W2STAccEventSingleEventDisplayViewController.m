@@ -34,6 +34,7 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
  * OF SUCH DAMAGE.
  */
+#import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
 
 #import "W2STAccEventSingleEventDisplayViewController.h"
 #import "W2STAccEventIconUtil.h"
@@ -62,7 +63,7 @@
     if(event != BlueSTSDKFeatureAccelerometerPedometer)
         eventDetails=@"";
     else
-        eventDetails = [NSString stringWithFormat:@"Number Steps: %d",eventData];
+        eventDetails = [NSString stringWithFormat:BLUESTSDK_LOCALIZE(@"Number Steps: %d",nil),eventData];
     //if-else
     
     dispatch_async(dispatch_get_main_queue(), ^{

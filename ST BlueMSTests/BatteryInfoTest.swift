@@ -14,7 +14,7 @@ class BatteryInfoTest : XCTestCase {
     
     
     func testEmptyStringReturnEmptyArray(){
-        let infos = W2STBoardStatusBoardInfo.parse("")
+        let infos = BlueMSBoardStatusBoardInfo.parse("")
         XCTAssertTrue(infos.isEmpty)
     }
     

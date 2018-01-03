@@ -37,13 +37,13 @@
 
 #import <Foundation/Foundation.h>
 
-#import "W2STMQTTConnectionFactoryProtocol.h"
+#import "BlueMSCloudIotConnectionFactory.h"
 
 
 /**
  * Factory that create an mqtt connectio with a generic mqtt provider
  */
-@interface W2STGenricMqttConnectionFactory : NSObject<W2STMQTTConnectionFactory>
+@interface W2STGenricMqttConnectionFactory : NSObject<BlueMSCloudIotConnectionFactory>
 
 
 /**

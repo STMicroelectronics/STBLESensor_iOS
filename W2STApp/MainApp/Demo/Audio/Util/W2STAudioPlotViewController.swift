@@ -36,6 +36,7 @@
  */
 
 import Foundation
+import CorePlot
 
 /// Manage a plot view that show an audio signal
 public class W2STAudioPlotViewController: NSObject, CPTPlotDataSource{
@@ -75,8 +76,8 @@ public class W2STAudioPlotViewController: NSObject, CPTPlotDataSource{
 
         mDataToPlot = Array<W2STCircularBuffer.ScaleSample>(repeating: 0, count: Int(plotWidth))
 
-        NSLog("buffer: \(mAudioData.count) win: \(view.bounds.width)")
-        NSLog("plotWidth: \(plotWidth)")
+   //     NSLog("buffer: \(mAudioData.count) win: \(view.bounds.width)")
+   //     NSLog("plotWidth: \(plotWidth)")
 
         super.init();
         view.allowPinchScaling = false;

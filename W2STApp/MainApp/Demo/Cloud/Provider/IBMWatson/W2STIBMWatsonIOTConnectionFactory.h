@@ -35,14 +35,14 @@
  * OF SUCH DAMAGE.
  */
 
-#include "W2STMQTTConnectionFactoryProtocol.h"
+#include "BlueMSCloudIotConnectionFactory.h"
 
 
 /**
  * class that implement the W2STMQTTConnectionFactory protocol for connect to the
  * IBM Watson IOT service
  */
-@interface W2STIBMWatsonIOTConnectionFactory : NSObject<W2STMQTTConnectionFactory>
+@interface W2STIBMWatsonIOTConnectionFactory : NSObject<BlueMSCloudIotConnectionFactory>
 
 
 /**

@@ -37,14 +37,14 @@
 
 #import "W2STCloudDataPageViewController.h"
 #import <WebKit/WebKit.h>
-
+#import <BlueSTSDK_Gui/MBProgressHUD.h>
 
 @interface W2STCloudDataPageViewController ()<WKNavigationDelegate>
 
 @end
 
 @implementation W2STCloudDataPageViewController{
-    
+    MBProgressHUD *waitingDialog;
     WKWebView *mWebPage;
 }
 
@@ -60,27 +60,12 @@
     [super viewDidAppear:animated];
     NSURLRequest *nsrequest=[NSURLRequest requestWithURL:_cloudDataPageUrl];
     [mWebPage loadRequest:nsrequest];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    waitingDialog = [MBProgressHUD showHUDAddedTo:self.view animated:false];
 }
 
 - (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler {
-    
     completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
 }
-
--(void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error{
-    NSLog(@	"didFailNavigation %@",[error localizedDescription]);
-}
-
-- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error{
-    NSLog(@	"didFailProvisionalNavigation %@",[error localizedDescription]);
-
-}
-
 
 -(void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction
 decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
@@ -89,6 +74,14 @@ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler{
     decisionHandler(WKNavigationResponsePolicyAllow);
+}
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
+    [waitingDialog hideAnimated:true];
+}
+
+- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error{
+    [waitingDialog hideAnimated:true];
 }
 
 @end

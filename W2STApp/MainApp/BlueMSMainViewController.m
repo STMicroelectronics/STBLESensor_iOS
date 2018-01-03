@@ -86,12 +86,18 @@ BlueSTSDKNodeListViewControllerDelegate>
 
 -(NSArray<BlueSTSDKLibLicense*>*) libLicenseInfo{
     NSBundle *bounle = [NSBundle mainBundle];
-    return @[[[BlueSTSDKLibLicense alloc] initWithLicenseFile:[bounle pathForResource:@"BlueSTSDK" ofType:@"txt"]],
+    
+    
+    return @[[[BlueSTSDKLibLicense alloc] initWithLicenseFile:[bounle pathForResource:@"AWSMobileSDK" ofType:@"txt"]],
+             [[BlueSTSDKLibLicense alloc] initWithLicenseFile:[bounle pathForResource:@"BlueSTSDK" ofType:@"txt"]],
              [[BlueSTSDKLibLicense alloc] initWithLicenseFile:[bounle pathForResource:@"BlueSTSDK_Gui" ofType:@"txt"]],
              [[BlueSTSDKLibLicense alloc] initWithLicenseFile:[bounle pathForResource:@"CorePlot" ofType:@"txt"]],
+             [[BlueSTSDKLibLicense alloc] initWithLicenseFile:[bounle pathForResource:@"IBMWatson" ofType:@"txt"]],
              [[BlueSTSDKLibLicense alloc] initWithLicenseFile:[bounle pathForResource:@"MBProgressHUD" ofType:@"txt"]],
              [[BlueSTSDKLibLicense alloc] initWithLicenseFile:[bounle pathForResource:@"MQTTClient" ofType:@"txt"]],
-             [[BlueSTSDKLibLicense alloc] initWithLicenseFile:[bounle pathForResource:@"Reachability" ofType:@"txt"]] ];
+             [[BlueSTSDKLibLicense alloc] initWithLicenseFile:[bounle pathForResource:@"Reachability" ofType:@"txt"]],
+             [[BlueSTSDKLibLicense alloc] initWithLicenseFile:[bounle pathForResource:@"SwiftyJSON" ofType:@"txt"]] ];
+
 }
 
 

@@ -106,7 +106,7 @@
     _mDetailsView.hidden=true;
 }
 
--(nullable id<W2STMQTTConnectionFactory>) buildConnectionFactory{
+-(nullable id<BlueMSCloudIotConnectionFactory>) buildConnectionFactory{
     if( _mOrganization.text.length==0  ||
        _mDeviceType.text.length==0  ||
        _mDeviceId.text.length==0  ||

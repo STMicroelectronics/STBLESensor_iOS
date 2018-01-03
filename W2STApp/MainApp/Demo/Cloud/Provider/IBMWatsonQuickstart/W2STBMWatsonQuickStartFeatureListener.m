@@ -42,7 +42,7 @@
 }
 
 
--(instancetype)initWithSession:(MQTTSession *)session minUpdateInterval:(NSTimeInterval)minUpdateInterval{
+-(instancetype)initWithSession:(MCMQTTSession *)session minUpdateInterval:(NSTimeInterval)minUpdateInterval{
     self = [super initWithSession:session];
     mMinUpdateInterval = minUpdateInterval;
     mLastFeatureUpdate = [NSMutableDictionary dictionary];

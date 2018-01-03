@@ -35,8 +35,10 @@
  * OF SUCH DAMAGE.
  */
 
+#import "ST_BlueMS-Swift.h"
 #import "W2STIBMWatsonQuickStartConnectionFactory.h"
 #import "W2STBMWatsonQuickStartFeatureListener.h"
+#import <MQTTFramework/MQTTFramework.h>
 
 #define DATA_URL_FORMAT @"https://quickstart.internetofthings.ibmcloud.com/#/device/%@/sensor/"
 
@@ -46,7 +48,7 @@
 
 @implementation W2STIBMWatsonQuickStartConnectionFactory{
     NSString *mType;
-    NSString *mDeviceId;
+    NSString *mDeviceId;    
 }
 
 +(instancetype)createWithDeviceType:(NSString*)type deviceId:(NSString*)deviceId{
@@ -62,17 +64,16 @@
 }
 
 
--(MQTTSession*) getSession{
-    MQTTCFSocketTransport *transport = [[MQTTCFSocketTransport alloc] init];
+-(id<BlueMSCloudIotClient>) getSession{
+    MCMQTTCFSocketTransport *transport = [[MCMQTTCFSocketTransport alloc] init];
     transport.host = MQTT_BROKER;
     transport.port = MQTT_BROKER_PORT;
     transport.tls=YES;
     
-    MQTTSession *session = [[MQTTSession alloc] init];
+    MCMQTTSession *session = [[MCMQTTSession alloc] init];
     session.transport = transport;
     session.clientId= [NSString stringWithFormat:@"d:quickstart:%@:%@",mType,mDeviceId ];
-    
-    return session;
+    return [[BlueMSCloudIotMQTTClient alloc]init:session];
 }
 
 -(NSURL*) getDataUrl{
@@ -80,13 +81,20 @@
     return [NSURL URLWithString:url];
 }
 
--(id<BlueSTSDKFeatureDelegate>)getFeatureDelegateWithSession:(MQTTSession*)session{
-    return [[W2STBMWatsonQuickStartFeatureListener alloc]initWithSession:session
+-(id<BlueSTSDKFeatureDelegate>)getFeatureDelegateWithSession:(id<BlueMSCloudIotClient>)session{
+    BlueMSCloudIotMQTTClient *connection = (BlueMSCloudIotMQTTClient*)session;
+    return [[W2STBMWatsonQuickStartFeatureListener alloc]initWithSession:connection.connection
                                                   minUpdateInterval:MIN_UPDATE_INTERVAL];
 }
 
 -(BOOL)isSupportedFeature:(BlueSTSDKFeature*)feature{
     return true;
+}
+
+-(BOOL)enableCloudFwUpgradeForNode:(nonnull BlueSTSDKNode *)node
+                        connection:(nonnull id<BlueMSCloudIotClient>)cloudConnection
+                          callback:(nonnull OnFwUpgradeAvailableCallback)callback{
+    return false;
 }
 
 @end

@@ -72,7 +72,7 @@
     
 }
 
--(nullable id<W2STMQTTConnectionFactory>) buildConnectionFactory{
+-(nullable id<BlueMSCloudIotConnectionFactory>) buildConnectionFactory{
     @throw [NSException exceptionWithName:NSInternalInconsistencyException
                                    reason:[NSString stringWithFormat:@"You must overwrite %@ in a subclass",
                                            NSStringFromSelector(_cmd)]

@@ -111,7 +111,7 @@
     mDetailsView.hidden=true;
 }
 
--(nullable id<W2STMQTTConnectionFactory>) buildConnectionFactory{
+-(nullable id<BlueMSCloudIotConnectionFactory>) buildConnectionFactory{
     if( mBrokerText.text.length==0  ||
        mPortText.text.length==0 ){
         return nil;

@@ -38,14 +38,11 @@
 #import "W2STIBMWatsonIOTFeatureListener.h"
 #import "W2STCloudJsonUtil.h"
 
-@interface W2STIBMWatsonIOTFeatureListener ()<MQTTSessionDelegate>
-@end
-
 @implementation W2STIBMWatsonIOTFeatureListener{
-    MQTTSession *mSession;
+    MCMQTTSession *mSession;
 }
 
--(instancetype)initWithSession:(MQTTSession *)session{
+-(instancetype)initWithSession:(MCMQTTSession *)session{
     self = [super init];
     mSession = session;
     return self;
@@ -54,7 +51,7 @@
 
 - (void)didUpdateFeature:(BlueSTSDKFeature *)feature sample:(BlueSTSDKFeatureSample*) sample{
     
-    if(mSession.status!=MQTTSessionStatusConnected)
+    if(mSession.status!=MCMQTTSessionStatusConnected)
         return;
     
     NSDictionary *json = [W2STCloudJsonUtil sampleToJsonObject:sample

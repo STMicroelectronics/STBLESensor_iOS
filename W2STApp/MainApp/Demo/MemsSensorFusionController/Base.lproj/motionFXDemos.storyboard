@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -14,7 +14,7 @@
         <!--Sensor Fusion-->
         <scene sceneID="g9E-Hq-3qW">
             <objects>
-                <viewController storyboardIdentifier="MemsSensorFusion" id="6Yn-jc-wi4" customClass="W2STFeatureSensorFusionDemoViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemsSensorFusion" id="6Yn-jc-wi4" customClass="BlueMSMemsSensorFusionViewController" customModule="ST_BlueMS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8tY-vu-aeY"/>
                         <viewControllerLayoutGuide type="bottom" id="Sgs-Ud-lrB"/>
@@ -30,7 +30,7 @@
                                 </constraints>
                                 <state key="normal" image="uncalibrated.png"/>
                                 <connections>
-                                    <action selector="askCalibration:" destination="6Yn-jc-wi4" eventType="touchUpInside" id="nae-rU-I3L"/>
+                                    <action selector="onCalibrationButtonClicked:" destination="6Yn-jc-wi4" eventType="touchUpInside" id="mda-ug-A50"/>
                                 </connections>
                             </button>
                             <sceneKitView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pBP-vg-d5V">
@@ -45,28 +45,15 @@
                                 </state>
                                 <state key="selected" image="ProximityOn.png"/>
                                 <connections>
-                                    <action selector="enableProximity:" destination="6Yn-jc-wi4" eventType="touchUpInside" id="Evr-6i-UPT"/>
+                                    <action selector="onProximityButtonClicked:" destination="6Yn-jc-wi4" eventType="touchUpInside" id="Xce-18-9Da"/>
                                 </connections>
                             </button>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qfa-RJ-NMp" userLabel="ResetHelpDialog">
-                                <rect key="frame" x="37.5" y="213.5" width="300" height="240"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="240" id="5Vu-e5-HfE"/>
-                                    <constraint firstAttribute="width" constant="300" id="zjg-xf-CDR"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="iyb-o4-TnF" kind="embed" id="n0Y-U3-5tB"/>
-                                </connections>
-                            </containerView>
                             <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GY7-ga-6qQ" userLabel="CalibrateHelpDialog">
                                 <rect key="frame" x="37.5" y="213.5" width="300" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="62Q-p6-uZC"/>
                                     <constraint firstAttribute="height" constant="240" id="YH4-ra-u7f"/>
                                 </constraints>
-                                <connections>
-                                    <segue destination="SyH-GB-jrr" kind="embed" id="abL-CJ-vcq"/>
-                                </connections>
                             </containerView>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FQq-Cu-LSq" userLabel="Reset">
                                 <rect key="frame" x="16" y="642.5" width="46" height="16.5"/>
@@ -75,18 +62,16 @@
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="resetPositionAction:" destination="6Yn-jc-wi4" eventType="touchUpInside" id="r7J-Gm-XzV"/>
+                                    <action selector="onResetPositionClick:" destination="6Yn-jc-wi4" eventType="touchUpInside" id="2SB-fI-DCf"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="KzW-AN-Dip" secondAttribute="centerX" id="0rt-Na-QtX"/>
-                            <constraint firstAttribute="centerY" secondItem="qfa-RJ-NMp" secondAttribute="centerY" id="4EZ-s1-EAn"/>
                             <constraint firstItem="FQq-Cu-LSq" firstAttribute="top" secondItem="pBP-vg-d5V" secondAttribute="bottom" constant="8" id="AB2-bF-SR3"/>
                             <constraint firstItem="KzW-AN-Dip" firstAttribute="top" secondItem="pBP-vg-d5V" secondAttribute="bottom" constant="8" id="BM9-an-Chh"/>
                             <constraint firstItem="pBP-vg-d5V" firstAttribute="top" secondItem="8tY-vu-aeY" secondAttribute="bottom" constant="8" id="Gfo-L2-bvU"/>
-                            <constraint firstAttribute="centerX" secondItem="qfa-RJ-NMp" secondAttribute="centerX" id="IFM-Px-L8d"/>
                             <constraint firstItem="dr3-og-A6W" firstAttribute="trailing" secondItem="psz-eq-cFH" secondAttribute="trailingMargin" id="LZ6-Qv-51R"/>
                             <constraint firstItem="FQq-Cu-LSq" firstAttribute="leading" secondItem="psz-eq-cFH" secondAttribute="leadingMargin" id="NJ0-6v-3GQ"/>
                             <constraint firstItem="pBP-vg-d5V" firstAttribute="leading" secondItem="psz-eq-cFH" secondAttribute="leadingMargin" constant="8" id="VuU-0Z-Oiz"/>
@@ -107,37 +92,42 @@
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="Sensor Fusion" id="Cxc-W8-5lQ"/>
                     <connections>
-                        <outlet property="calibrateResetMessage" destination="GY7-ga-6qQ" id="yVj-Kp-uj1"/>
-                        <outlet property="calibrationButton" destination="dr3-og-A6W" id="UrY-O8-cVb"/>
-                        <outlet property="positionResetMessage" destination="qfa-RJ-NMp" id="yAY-Ao-tai"/>
-                        <outlet property="proximityButton" destination="KzW-AN-Dip" id="btR-D2-tHR"/>
-                        <outlet property="sceneView" destination="pBP-vg-d5V" id="8R4-ot-Yrn"/>
+                        <outlet property="m3DCubeView" destination="pBP-vg-d5V" id="MrP-2S-xZ2"/>
+                        <outlet property="mCalibButton" destination="dr3-og-A6W" id="tAi-jA-VNj"/>
+                        <outlet property="mDialogViewPlaceHolder" destination="GY7-ga-6qQ" id="zXS-nX-GPq"/>
+                        <outlet property="mProximityButton" destination="KzW-AN-Dip" id="gnL-dX-FCE"/>
+                        <segue destination="SyH-GB-jrr" kind="popoverPresentation" identifier="ResetCalibDialogID" popoverAnchorView="psz-eq-cFH" id="36m-Fn-zub">
+                            <popoverArrowDirection key="popoverArrowDirection"/>
+                        </segue>
+                        <segue destination="iyb-o4-TnF" kind="popoverPresentation" identifier="ResetPositionDialogID" popoverAnchorView="psz-eq-cFH" id="NEk-c9-amh">
+                            <popoverArrowDirection key="popoverArrowDirection"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A6H-Re-jiZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7000" y="14"/>
         </scene>
-        <!--Simple Dialog View Controller-->
+        <!--BlueMS Simple Dialog View Controller-->
         <scene sceneID="jKs-cX-6Dv">
             <objects>
-                <viewController storyboardIdentifier="ResetPositionDialogID" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iyb-o4-TnF" customClass="W2STSimpleDialogViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResetPositionDialogID" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iyb-o4-TnF" customClass="BlueMSSimpleDialogViewController" customModule="ST_BlueMS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BgG-Uz-Wpo"/>
                         <viewControllerLayoutGuide type="bottom" id="u71-u6-XzG"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="kG0-Qu-yHg">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="240"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOK-72-4vN">
-                                <rect key="frame" x="132" y="8" width="144" height="195"/>
+                                <rect key="frame" x="132" y="28" width="219" height="602"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OFJ-A1-0VM">
-                                <rect key="frame" x="135" y="211" width="30" height="21"/>
+                                <rect key="frame" x="172.5" y="638" width="30" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="xw0-em-GEC"/>
                                 </constraints>
@@ -145,11 +135,11 @@
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="hideDialog:" destination="iyb-o4-TnF" eventType="touchUpInside" id="Xhx-cD-sbx"/>
+                                    <action selector="onButtonPressed:" destination="iyb-o4-TnF" eventType="touchUpInside" id="4iV-Cd-Gyy"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="VHk-Gd-xQ6">
-                                <rect key="frame" x="24" y="60" width="100" height="120"/>
+                                <rect key="frame" x="24" y="273.5" width="100" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="VHk-Gd-xQ6" secondAttribute="height" multiplier="220:281" id="0i7-Z1-TgR"/>
                                     <constraint firstAttribute="height" constant="120" id="sdP-z5-5Vl"/>
@@ -176,18 +166,18 @@
                     </view>
                     <toolbarItems/>
                     <connections>
-                        <outlet property="image" destination="VHk-Gd-xQ6" id="JZB-TT-iMa"/>
-                        <outlet property="message" destination="LOK-72-4vN" id="Xn6-vI-4lL"/>
+                        <outlet property="image" destination="VHk-Gd-xQ6" id="SU1-D3-4d4"/>
+                        <outlet property="message" destination="LOK-72-4vN" id="4QI-aC-Ebw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WfU-FH-Lkm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8132" y="53"/>
+            <point key="canvasLocation" x="8111" y="-199"/>
         </scene>
-        <!--Simple Dialog View Controller-->
+        <!--BlueMS Simple Dialog View Controller-->
         <scene sceneID="Yen-t7-bgb">
             <objects>
-                <viewController storyboardIdentifier="ResetCalibDialogID" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SyH-GB-jrr" customClass="W2STSimpleDialogViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResetCalibDialogID" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SyH-GB-jrr" customClass="BlueMSSimpleDialogViewController" customModule="ST_BlueMS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="W8h-1F-yrI"/>
                         <viewControllerLayoutGuide type="bottom" id="Xh4-oj-wmX"/>
@@ -197,13 +187,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="To calibrate, move the board as shown in the image" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52K-F3-YAj">
-                                <rect key="frame" x="24" y="136" width="252" height="76"/>
+                                <rect key="frame" x="24" y="156" width="252" height="56"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="uncalibrated.png" translatesAutoresizingMaskIntoConstraints="NO" id="R4e-8t-tlM">
-                                <rect key="frame" x="9" y="8" width="282" height="120"/>
+                                <rect key="frame" x="9" y="28" width="282" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="R4e-8t-tlM" secondAttribute="height" multiplier="331:141" id="CjK-Tn-KTT"/>
                                     <constraint firstAttribute="height" constant="120" id="FYd-kd-N7b"/>
@@ -224,7 +214,7 @@
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="hideDialog:" destination="SyH-GB-jrr" eventType="touchUpInside" id="M2x-Af-ib3"/>
+                                    <action selector="onButtonPressed:" destination="SyH-GB-jrr" eventType="touchUpInside" id="Pg1-PA-jFg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -250,8 +240,8 @@
                     </view>
                     <toolbarItems/>
                     <connections>
-                        <outlet property="image" destination="R4e-8t-tlM" id="5Dr-fi-p1j"/>
-                        <outlet property="message" destination="52K-F3-YAj" id="FJU-jb-R4P"/>
+                        <outlet property="image" destination="R4e-8t-tlM" id="ykI-k0-afi"/>
+                        <outlet property="message" destination="52K-F3-YAj" id="alh-fy-z26"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SHZ-XM-7vN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -261,7 +251,7 @@
         <!--Compass-->
         <scene sceneID="8fW-hb-Edu">
             <objects>
-                <viewController storyboardIdentifier="memsCompass" id="voN-nX-FwK" customClass="W2STCompassViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="memsCompass" id="voN-nX-FwK" customClass="BlueMSCompassViewController" customModule="ST_BlueMS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Twh-qD-em5"/>
                         <viewControllerLayoutGuide type="bottom" id="1eu-hP-ISJ"/>
@@ -295,8 +285,7 @@
                                 </constraints>
                                 <state key="normal" image="uncalibrated.png"/>
                                 <connections>
-                                    <action selector="askCalibration:" destination="6Yn-jc-wi4" eventType="touchUpInside" id="IkJ-vL-RPU"/>
-                                    <action selector="askCalibration:" destination="voN-nX-FwK" eventType="touchUpInside" id="sSG-UZ-g3s"/>
+                                    <action selector="onCalibrationButtonClicked:" destination="voN-nX-FwK" eventType="touchUpInside" id="llh-F7-uHv"/>
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c15-5k-N0T">
@@ -305,9 +294,6 @@
                                     <constraint firstAttribute="width" constant="300" id="u1h-tR-ltU"/>
                                     <constraint firstAttribute="height" constant="249" id="zbK-1w-4QD"/>
                                 </constraints>
-                                <connections>
-                                    <segue destination="SyH-GB-jrr" kind="embed" id="r6N-Vf-d1L"/>
-                                </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -337,11 +323,14 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Compass" image="compass_demo_icon" id="c2T-dS-p3E"/>
                     <connections>
-                        <outlet property="mAngleLabel" destination="6do-r8-br1" id="fEc-mF-uag"/>
-                        <outlet property="mCalibButton" destination="xrB-2c-XTf" id="dw9-o8-0BC"/>
-                        <outlet property="mCalibrateMessageView" destination="c15-5k-N0T" id="4wf-U7-ijx"/>
-                        <outlet property="mNeedleImage" destination="AJq-wU-T1r" id="aex-S9-ZKW"/>
-                        <outlet property="mOrientationLabel" destination="9LX-G4-kR3" id="1Nm-JF-I28"/>
+                        <outlet property="mAngleLabel" destination="6do-r8-br1" id="w6u-sM-L3V"/>
+                        <outlet property="mCalibButton" destination="xrB-2c-XTf" id="2Im-bZ-TuO"/>
+                        <outlet property="mDialogViewPlaceHolder" destination="c15-5k-N0T" id="gwp-9c-UDE"/>
+                        <outlet property="mNeedleImage" destination="AJq-wU-T1r" id="thC-cJ-FGC"/>
+                        <outlet property="mOrientaitonLable" destination="9LX-G4-kR3" id="sSy-h6-O6E"/>
+                        <segue destination="SyH-GB-jrr" kind="popoverPresentation" identifier="ResetCalibDialogID" popoverAnchorView="Kpz-TF-wOg" id="t4j-eZ-8BC">
+                            <popoverArrowDirection key="popoverArrowDirection"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ymd-oN-R10" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -359,6 +348,6 @@
         <image name="uncalibrated.png" width="331" height="141"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="r6N-Vf-d1L"/>
+        <segue reference="36m-Fn-zub"/>
     </inferredMetricsTieBreakers>
 </document>

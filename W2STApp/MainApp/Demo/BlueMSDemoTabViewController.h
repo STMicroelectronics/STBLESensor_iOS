@@ -39,7 +39,7 @@
 #import <UIKit/UIKit.h>
 #import <BlueSTSDK/BlueSTSDKNode.h>
 #import <BlueSTSDK_Gui/UIViewController+BlueSTSDK.h>
-#include <BlueSTSDK_Gui/BlueSTSDKViewControllerMenuDelegate.h>
+#import <BlueSTSDK_Gui/BlueSTSDKViewControllerMenuDelegate.h>
 
 @interface BlueMSDemoTabViewController : UIViewController
 

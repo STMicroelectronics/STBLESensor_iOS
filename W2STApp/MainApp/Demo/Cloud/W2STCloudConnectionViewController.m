@@ -35,6 +35,8 @@
  * OF SUCH DAMAGE.
  */
 
+@import BlueSTSDK_Gui;
+
 #import <BlueSTSDK_Gui/UIViewController+BlueSTSDK.h>
 #import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
 
@@ -42,14 +44,21 @@
 #include "W2STCloudFeatureTableViewCell.h"
 #include "W2STCloudDataPageViewController.h"
 
+#define START_FW_UPGRADE_SEGUE @"cloudStartFwUpgrade"
+#define SHOW_CLOUD_DATA_SEGUE @"cloudShowCloudData"
 
 #define DISCONNECT_BUTTON_LABEL BLUESTSDK_LOCALIZE(@"Disconnect",nil)
 #define CONNECT_BUTTON_LABEL BLUESTSDK_LOCALIZE(@"Connect",nil)
 #define MISSING_PARA_DIALOG_TITLE BLUESTSDK_LOCALIZE(@"Error",nil)
 #define MISSING_PARA_DIALOG_MSG BLUESTSDK_LOCALIZE(@"Missing data",nil)
 
+#define NEW_FW_ALERT_TITLE BLUESTSDK_LOCALIZE(@"New Firmware",nil)
+#define NEW_FW_ALERT_MESSAGE_FORMAT BLUESTSDK_LOCALIZE(@"New firmware available.\nUpgrade to %@?",nil)
+#define NEW_FW_ALERT_YES BLUESTSDK_LOCALIZE(@"Yes",nil)
+#define NEW_FW_ALERT_NO BLUESTSDK_LOCALIZE(@"No",nil)
+
 @interface W2STCloudConnectionViewController ()
-    <UITableViewDataSource,MQTTSessionDelegate,W2STCloudFeatureTableViewCellDelegate>
+    <UITableViewDataSource,W2STCloudFeatureTableViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *mShowDataButton;
 @property (weak, nonatomic) IBOutlet UIButton *mConnectButton;
@@ -60,20 +69,18 @@
 @implementation W2STCloudConnectionViewController{
     NSMutableArray<BlueSTSDKFeature*> *mEnabledFeature;
     id<BlueSTSDKFeatureDelegate> mFeatureListener;
-    id<W2STMQTTConnectionFactory> mConnectionFactory;
-    MQTTSession *mSession;
+    id<BlueMSCloudIotConnectionFactory> mConnectionFactory;
+    id<BlueMSCloudIotClient> mSession;
     BOOL mKeepConnectionOpen;
 }
 
 -(BOOL)isConnected{
-    if(mSession!=nil)
-        if(mSession.status==MQTTSessionStatusConnected)
-            return true;
-    return false;
+    //return mSession.status == MQTTSessionStatusConnected;
+    return [mSession isConnected];
 }
 
 - (IBAction)onConnectButtonPress:(UIButton *)sender {
-    mConnectionFactory = [self.connectionFactoryBuilder buildConnectionFactory];
+     mConnectionFactory = [self.connectionFactoryBuilder buildConnectionFactory];
     if(mConnectionFactory==nil){
         [self showErrorMsg:MISSING_PARA_DIALOG_MSG
                      title:MISSING_PARA_DIALOG_TITLE
@@ -84,10 +91,19 @@
     [_mConnectButton setEnabled:false];
     if(![self isConnected]){
         mSession = [mConnectionFactory getSession];
-        mSession.delegate =self;
-        [mSession connect];
+        [mSession connect:^(NSError *error) {
+            if(error==nil)
+                [self onConnectionDone];
+            else
+                [self connectionError:error];
+        }];
     }else{
-        [mSession disconnect];
+        [mSession disconnect:^(NSError *error) {
+            if(error==nil)
+                [self onConnectionClosed];
+            else
+                [self connectionError:error];
+        }];
     }
 }
 
@@ -117,8 +133,9 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     if(mSession!=nil && !mKeepConnectionOpen)
-        if(mSession.status==MQTTSessionStatusConnected)
-            [mSession disconnect];
+        if([self isConnected])
+            //[mSession disconnect];
+            [mSession disconnect:nil];
     //next time close the conneciton
     mKeepConnectionOpen=false;
 }
@@ -178,14 +195,28 @@
         mKeepConnectionOpen=true;
         return;
     }
+    if([segue.destinationViewController isKindOfClass:[BlueSTSDKFwUpgradeManagerViewController class]]){
+        BlueSTSDKFwUpgradeManagerViewController *controller =
+            (BlueSTSDKFwUpgradeManagerViewController*)segue.destinationViewController;
+        
+        controller.node=self.node;
+        controller.fwRemoteUrl=(NSURL*)sender;
+        return;
+    }
 }
 
-#pragma mark - MQTTSessionDelegate
 
-- (void)connected:(MQTTSession *)session{
+
+- (void)onConnectionDone{
     mFeatureListener = [mConnectionFactory getFeatureDelegateWithSession:mSession];
     [self extractEnabledFeature];
-    
+
+    [mConnectionFactory enableCloudFwUpgradeForNode:self.node connection:mSession callback:^(NSURL *_Nonnull url) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self askForFwUpgrade:url];
+        });
+    }];
+  
     dispatch_async(dispatch_get_main_queue(), ^{
         [_mConnectButton setTitle:DISCONNECT_BUTTON_LABEL forState:UIControlStateNormal];
         [_mConnectButton setEnabled:true];
@@ -195,7 +226,7 @@
     });
 }
 
--(void)connectionClosed:(MQTTSession *)session{
+-(void)onConnectionClosed{
     [self disableAllNotification];
     dispatch_async(dispatch_get_main_queue(), ^{
         [_mConnectButton setTitle:CONNECT_BUTTON_LABEL forState:UIControlStateNormal];
@@ -207,21 +238,37 @@
     });
 }
 
--(void)connectionError:(MQTTSession *)session error:(NSError *)error{
-    [self showErrorMsg:BLUESTSDK_LOCALIZE(@"Connection Error",nil)
-                 title:[error localizedDescription]
-       closeController:false];
-}
-
-- (void)connectionRefused:(MQTTSession *)session error:(NSError *)error{
-    [self showErrorMsg:BLUESTSDK_LOCALIZE(@"Connection Refused",nil)
-                 title:[error localizedDescription]
-       closeController:false];
+-(void)connectionError:(NSError *)error{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self showErrorMsg:BLUESTSDK_LOCALIZE(@"Connection Error",nil)
+                     title:[error localizedDescription]
+           closeController:false];
+    });
 }
 
 - (IBAction)onViewDataButtonClick:(id)sender {
     //we esplicity do the segue otherwise the new view controller will not be inserted in the navigation stack
-    [self performSegueWithIdentifier:@"cloudShowCloudData" sender:self];
+    [self performSegueWithIdentifier:SHOW_CLOUD_DATA_SEGUE sender:self];
+}
+
+-(void) askForFwUpgrade:(nonnull NSURL* )url{
+    NSString * message = [NSString stringWithFormat:NEW_FW_ALERT_MESSAGE_FORMAT,url.lastPathComponent ];
+    UIAlertController *question = [UIAlertController alertControllerWithTitle:NEW_FW_ALERT_TITLE
+                                                                      message:message
+                                                               preferredStyle:UIAlertControllerStyleAlert ];
+    
+    UIAlertAction *upgrade = [UIAlertAction actionWithTitle:NEW_FW_ALERT_YES
+                                                      style:UIAlertActionStyleDefault
+                                                    handler:^(UIAlertAction * _Nonnull action) {
+        [self performSegueWithIdentifier:START_FW_UPGRADE_SEGUE sender:url];
+    } ];
+    
+    [question addAction: upgrade];
+    
+    [question addAction: [UIAlertAction actionWithTitle:NEW_FW_ALERT_NO style:UIAlertActionStyleCancel handler:nil]];
+    
+    [self presentViewController:question animated:true completion:nil];
+    
 }
 
 @end

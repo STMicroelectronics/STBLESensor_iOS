@@ -35,7 +35,7 @@
  * OF SUCH DAMAGE.
  */
 #import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
-
+#import <BlueSTSDK/BlueSTSDKNode.h>
 #import "W2STAccEventMultipleEventDisplayViewController.h"
 #import "W2STAccEventIconUtil.h"
 
@@ -49,7 +49,8 @@
     __weak IBOutlet UIImageView *mSingleTapIcon;
     __weak IBOutlet UIImageView *mFreeFallIcon;
     __weak IBOutlet UIImageView *mTiltIcon;
-    __weak IBOutlet UIImageView *mWakeUpIcon;
+    __weak IBOutlet UIImageView *mWakeUpOrDobuleTapIcon;
+    __weak IBOutlet UILabel *mWakeUpOrDobuleTapLabel;
     
     __weak IBOutlet UIImageView *mPedomiterIcon;
     __weak IBOutlet UILabel *mPedomiterLabel;
@@ -79,15 +80,15 @@ static BOOL hasEvent(BlueSTSDKFeatureAccelerometerEventType eventSet,
         mPedomiterLabel.text = [NSString stringWithFormat:BLUESTSDK_LOCALIZE(@"Number Steps: %d",nil),eventData];
         mNSteps=eventData;
     }
-    if(hasEvent(event, BlueSTSDKFeatureAccelerometerSingleTap) ||
-       hasEvent(event, BlueSTSDKFeatureAccelerometerDoubleTap)){
+    if(hasEvent(event, BlueSTSDKFeatureAccelerometerSingleTap)){
         shakeImage(mSingleTapIcon);
     }
     if(hasEvent(event, BlueSTSDKFeatureAccelerometerFreeFall)){
         shakeImage(mFreeFallIcon);
     }
-    if(hasEvent(event, BlueSTSDKFeatureAccelerometerWakeUp)){
-        shakeImage(mWakeUpIcon);
+       if(hasEvent(event, BlueSTSDKFeatureAccelerometerWakeUp) ||
+          hasEvent(event, BlueSTSDKFeatureAccelerometerDoubleTap)){
+        shakeImage(mWakeUpOrDobuleTapIcon);
     }
     if(hasEvent(event, BlueSTSDKFeatureAccelerometerTilt)){
         shakeImage(mTiltIcon);
@@ -95,8 +96,15 @@ static BOOL hasEvent(BlueSTSDKFeatureAccelerometerEventType eventSet,
     
 }
 
--(void)enableEventType:(BlueSTSDKFeatureAccelerationDetectableEventType) event{
-    
+-(void)enableEventType:(BlueSTSDKFeatureAccelerationDetectableEventType) event forBoardType:(BlueSTSDKNodeType) boardType{
+
+    if(boardType == BlueSTSDKNodeTypeSTEVAL_WESU1){
+        mWakeUpOrDobuleTapIcon.image = getEventImage(BlueSTSDKFeatureAccelerometerWakeUp);
+        mWakeUpOrDobuleTapLabel.text = [BlueSTSDKFeatureAccelerometerEvent detectableEventTypeToString:BlueSTSDKFeatureEventTypeWakeUp];
+    }else{
+        mWakeUpOrDobuleTapIcon.image = getEventImage(BlueSTSDKFeatureAccelerometerDoubleTap);
+        mWakeUpOrDobuleTapLabel.text = [BlueSTSDKFeatureAccelerometerEvent detectableEventTypeToString:BlueSTSDKFeatureEventTypeDoubleTap];
+    }
 }
 
 @end

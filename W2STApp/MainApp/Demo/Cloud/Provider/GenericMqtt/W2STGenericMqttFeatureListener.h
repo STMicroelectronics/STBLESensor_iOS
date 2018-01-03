@@ -37,7 +37,7 @@
 
 #import <Foundation/Foundation.h>
 #import <BlueSTSDK/BlueSTSDKFeature.h>
-#import <MQTTSession.h>
+#import <MQTTFramework/MQTTFramework.h>
 
 
 /**
@@ -55,6 +55,6 @@
  @param deviceId deviceId that is sending the data
  @return listener that publish the data on the mqtt brocker
  */
--(instancetype)initWithSession:(MQTTSession *)session clientId:(NSString*)deviceId;
+-(instancetype)initWithSession:(MCMQTTSession *)session clientId:(NSString*)deviceId;
 
 @end

@@ -35,12 +35,12 @@
  * OF SUCH DAMAGE.
  */
 
-#include <BlueSTSDK/BlueSTSDKFeature.h>
+#import <BlueSTSDK/BlueSTSDKFeature.h>
 #import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
 
-#import <MQTTClient.h>
+#import <MQTTFramework/MQTTFramework.h>
 
-#include "Provider/W2STCloudConfigViewController.h"
+#import "Provider/W2STCloudConfigViewController.h"
 #import "W2STCloudProviderSelectViewController.h"
 
 /**
@@ -86,8 +86,14 @@ static NSArray<CloudProvider*> *sCloudProvider;
                                                      segue:@"BlueMxQuickStart_segue"],
                            [CloudProvider providerWithName:BLUESTSDK_LOCALIZE(@"IBM Watson IoT",nil)
                                                      segue:@"BlueMx_segue"],
-                           [CloudProvider providerWithName:BLUESTSDK_LOCALIZE(@"Generic Mqtt",nil)
-                                                     segue:@"GenericMqtt_segue"]];
+                           [CloudProvider providerWithName:BLUESTSDK_LOCALIZE(@"Azure IoT",nil)
+                                                     segue:@"AzureIot_segue"],
+                           [CloudProvider providerWithName:BLUESTSDK_LOCALIZE(@"Generic MQTT",nil)
+                                                     segue:@"GenericMqtt_segue"],
+                           [CloudProvider providerWithName:BLUESTSDK_LOCALIZE(@"Aws IoT",nil)
+                                                     segue:@"AwsIoT_Segue"]
+                           ];
+        
     }
     
 }
@@ -137,7 +143,6 @@ static NSArray<CloudProvider*> *sCloudProvider;
     
     [self performSegueWithIdentifier:sCloudProvider[indexPath.row].segue
                               sender:self];
-    
 }
 
 @end

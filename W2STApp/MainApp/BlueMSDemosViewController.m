@@ -58,7 +58,7 @@
 #import <BlueSTSDK/BlueSTSDKFeatureDirectionOfArrival.h>
 #import <BlueSTSDK/BlueSTSDKFeatureBeamForming.h>
 
-
+#import "ST_BlueMS-Swift.h"
 #import "BlueMSDemosViewController.h"
 #import "BlueMSDemosViewController+WesuFwVersion.h"
 
@@ -68,23 +68,24 @@
 #define ENVIROMENTAL_DEMO_POSITION 0
 #define SENSOR_FUSION_DEMO_POSITION 1
 #define PLOT_DEMO_POSITION 2
-#define ACTIVITY_RECOGNITION_DEMO_POSITION 3
-#define CARRY_POSITION_RECOGNITION_DEMO_POSITION 4
-#define PROXIMITY_GESTURE_RECOGNITION_DEMO_POSITION 5
-#define MEMS_GESTURE_RECOGNITION_DEMO_POSITION 6
-#define PEDOMEMETER_DEMO_POSITION 7
-#define ACC_EVENT_DEMO_POSITION 8
-#define SWITCH_DEMO_POSITION 9
-#define BLUEVOICE_DEMO_POSITION 10
-#define BEAM_FORMING_DEMO_POSITION 11
-#define DIRECTION_OF_ARRIVAL_DEMO_POSITION 12
-#define HEART_RATE_DEMO_POSITION 13
-#define CLOUD_DEMO_POSITION 14
-#define MOTIONID_DEMO_POSITION 15
-#define COMPASS_DEMO_POSITION 16
-#define RSSI_DEMO_POSITION 17
+#define CLOUD_DEMO_POSITION 3
+#define SD_LOGGING_POSITION 4
+#define ACTIVITY_RECOGNITION_DEMO_POSITION 5
+#define CARRY_POSITION_RECOGNITION_DEMO_POSITION 6
+#define PROXIMITY_GESTURE_RECOGNITION_DEMO_POSITION 7
+#define MEMS_GESTURE_RECOGNITION_DEMO_POSITION 8
+#define PEDOMEMETER_DEMO_POSITION 9
+#define ACC_EVENT_DEMO_POSITION 10
+#define SWITCH_DEMO_POSITION 11
+#define BLUEVOICE_DEMO_POSITION 12
+#define BEAM_FORMING_DEMO_POSITION 13
+#define DIRECTION_OF_ARRIVAL_DEMO_POSITION 14
+#define HEART_RATE_DEMO_POSITION 15
+#define MOTIONID_DEMO_POSITION 16
+#define COMPASS_DEMO_POSITION 17
+#define RSSI_DEMO_POSITION 18
 
-#define NUMBER_OF_DEMOS 18
+#define NUMBER_OF_DEMOS 19
 
 @interface BlueMSDemosViewController () <UITabBarControllerDelegate>
 
@@ -94,6 +95,7 @@
     UISwipeGestureRecognizer *leftGesture;
     UISwipeGestureRecognizer *rightGesture;
     UIAlertAction *registerSettings;
+    UIAlertAction *nucleoSettings;
     bool mFwVarningDisplayed;
 }
 
@@ -113,6 +115,9 @@
     registerSettings = [self createRegisterSettings];
     [self.menuDelegate addMenuAction:registerSettings];
 
+    
+    nucleoSettings = [self createNucleoSettings];
+    [self.menuDelegate addMenuAction:nucleoSettings];
     
     mFwVarningDisplayed=false;
     
@@ -183,6 +188,9 @@
 
         [removeItem addIndex:BEAM_FORMING_DEMO_POSITION];
     }
+    if([node getFeatureOfType:BlueSTSDKFeatureSDLogging.class]==nil){
+        [removeItem addIndex:SD_LOGGING_POSITION];
+    }
     if(![W2STPlotFeatureDemoViewController canPlotFeatureForNode:node]){
         [removeItem addIndex:PLOT_DEMO_POSITION];
     }
@@ -210,6 +218,7 @@
             [self checkFwVersion];
             mFwVarningDisplayed=true;
         }
+        [self.menuDelegate removeMenuAction:nucleoSettings];
     }else{
         [self.menuDelegate removeMenuAction:registerSettings];
     }
@@ -221,6 +230,10 @@
         [BlueMSDemoTabViewController setViewControllerProperty:c
                                                           node:self.node
                                                   menuDelegate:self.menuDelegate];
+        
+        [BlueSTDemoNestedNavigationViewController setViewControllerProperty:c
+                                                                     node:self.node
+                                                             menuDelegate:self.menuDelegate];
     }
 }
 
@@ -243,6 +256,26 @@
         self.selectedIndex=current-1;
     }
 }
+
+-(UIAlertAction*)createNucleoSettings{
+    return [UIAlertAction actionWithTitle:@"Settings"
+                                    style:UIAlertActionStyleDefault
+                                  handler:^(UIAlertAction *action) {
+                                      [self moveToNucleoSettingsViewController];
+                                  }];
+}
+
+
+-(void)moveToNucleoSettingsViewController{
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"BlueMSNucleoPreferences" bundle:nil];
+    
+    BlueMSNucleoPrefViewController *settingsControlView = [storyBoard instantiateInitialViewController];
+    
+    settingsControlView.node=self.node;
+    
+    [self changeViewController:settingsControlView];
+}
+
 
 #pragma mark - UITabBarControllerDelegate
 - (void)tabBarController:(UITabBarController *)tabBarController

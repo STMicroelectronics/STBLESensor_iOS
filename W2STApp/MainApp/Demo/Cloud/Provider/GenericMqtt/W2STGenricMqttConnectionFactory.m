@@ -34,9 +34,11 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
  * OF SUCH DAMAGE.
  */
+#import "ST_BlueMS-Swift.h"
 #import "W2STGenricMqttConnectionFactory.h"
 #import "W2STIBMWatsonIOTFeatureListener.h"
 #import "W2STGenericMqttFeatureListener.h"
+#import <MQTTFramework/MQTTFramework.h>
 
 @implementation W2STGenricMqttConnectionFactory{
     NSString *mBrocker;
@@ -79,13 +81,14 @@
     return self;
 }
 
--(MQTTSession*) getSession{
-    MQTTCFSocketTransport *transport = [[MQTTCFSocketTransport alloc] init];
+
+-(id<BlueMSCloudIotClient>) getSession{
+    MCMQTTCFSocketTransport *transport = [[MCMQTTCFSocketTransport alloc] init];
     transport.host = mBrocker;
     transport.port = [mPort intValue];
     transport.tls=mUseTls;
     
-    MQTTSession *session = [[MQTTSession alloc] init];
+    MCMQTTSession *session = [[MCMQTTSession alloc] init];
     session.transport = transport;
     if(mUser!=nil && mUser.length!=0)
         session.userName=mUser;
@@ -93,7 +96,7 @@
         session.password=mPassword;
     
     session.clientId= mClientId;
-    return session;
+    return [[BlueMSCloudIotMQTTClient alloc]init:session];
 }
 
 
@@ -113,13 +116,19 @@
  *@param session connection to user to publish the data
  *@return feature listern taht will publish the data
  */
--(id<BlueSTSDKFeatureDelegate>)getFeatureDelegateWithSession:(MQTTSession*)session{
-    return [[W2STGenericMqttFeatureListener alloc]initWithSession:session clientId:mClientId];
+-(id<BlueSTSDKFeatureDelegate>)getFeatureDelegateWithSession:(id<BlueMSCloudIotClient>)session{
+    BlueMSCloudIotMQTTClient *connection = (BlueMSCloudIotMQTTClient*)session;
+    return [[W2STGenericMqttFeatureListener alloc]initWithSession:connection.connection clientId:mClientId];
 }
 
 -(BOOL)isSupportedFeature:(BlueSTSDKFeature*)feature{
     return true;
 }
 
+-(BOOL)enableCloudFwUpgradeForNode:(nonnull BlueSTSDKNode *)node
+                        connection:(nonnull MCMQTTSession *)cloudConnection
+                          callback:(nonnull OnFwUpgradeAvailableCallback)callback{
+    return false;
+}
 
 @end

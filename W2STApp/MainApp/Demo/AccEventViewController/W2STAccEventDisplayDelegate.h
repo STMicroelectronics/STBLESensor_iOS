@@ -40,11 +40,10 @@
 
 #import <BlueSTSDK/BlueSTSDKFeatureAccelerometerEvent.h>
 
-
 @protocol W2STAccEventDisplayDelegate <NSObject>
 
 -(void)displayEventType:(BlueSTSDKFeatureAccelerometerEventType) event data:(int32_t)eventData;
--(void)enableEventType:(BlueSTSDKFeatureAccelerationDetectableEventType) event;
+-(void)enableEventType:(BlueSTSDKFeatureAccelerationDetectableEventType) event forBoardType:(BlueSTSDKNodeType) boardType;
 
 @end
 

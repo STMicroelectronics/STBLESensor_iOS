@@ -37,7 +37,7 @@
 
 #import <Foundation/Foundation.h>
 #import <BlueSTSDK/BlueSTSDKFeature.h>
-#import <MQTTSession.h>
+#import <MQTTFramework/MQTTFramework.h>
 
 /**
  * Class that send the data from the feature to the IBM Watson IOT Cloud
@@ -52,5 +52,5 @@
  * @return object that receve the notificaiton from the feature and send the
  * data to the cloud
  */
--(instancetype)initWithSession:(MQTTSession *)session;
+-(instancetype)initWithSession:(MCMQTTSession *)session;
 @end

@@ -79,6 +79,7 @@
 
 }
 
+
 -(void)displayStartMessage{
     MBProgressHUD *message = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     message.mode = MBProgressHUDModeText;

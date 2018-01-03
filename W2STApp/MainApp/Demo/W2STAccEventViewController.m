@@ -53,6 +53,7 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_Wesu[] ={
 static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_Nucleo[] ={
     BlueSTSDKFeatureEventTypeNone,
     BlueSTSDKFeatureEventTypeOrientation,
+    BlueSTSDKFeatureEventTypeMultiple,
     BlueSTSDKFeatureEventTypeFreeFall,
     BlueSTSDKFeatureEventTypeSingleTap,
     BlueSTSDKFeatureEventTypeDoubleTap,
@@ -66,7 +67,8 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_Nucleo[] ={
 
 @interface W2STAccEventViewController ()< UIPickerViewDataSource,
     UIPickerViewDelegate,
-    W2STSelectAccEventDelegate, BlueSTSDKFeatureDelegate,
+    W2STSelectAccEventDelegate,
+    BlueSTSDKFeatureDelegate,
     BlueSTSDKFeatureAccelerationEnableTypeDelegate>
 
 @end
@@ -93,7 +95,7 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_Nucleo[] ={
         newButtonTitle=[NSString stringWithFormat:TITLE_FORMAT,
                                [BlueSTSDKFeatureAccelerometerEvent detectableEventTypeToString:event]];
     }else{
-        newButtonTitle =DEFAULT_TITLE;
+        newButtonTitle = DEFAULT_TITLE;
     }//if-else
     
     [_selectEventButton setTitle:newButtonTitle forState:UIControlStateNormal];
@@ -116,27 +118,37 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_Nucleo[] ={
     mCurrentEventTypeIndex=-1;
 }
 
+-(void)forceEventAtIndex:(NSInteger)index{
+    //force the new event
+    NSInteger temp = mCurrentEventTypeIndex;
+    mCurrentEventTypeIndex=-1;
+    [self selectEventAtIndex:temp];
+}
+
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     //enable the notification
     mAccEventFeature = (BlueSTSDKFeatureAccelerometerEvent*)
         [self.node getFeatureOfType:BlueSTSDKFeatureAccelerometerEvent.class];
-    [self setEventTitleLabel:BlueSTSDKFeatureEventTypeNone];
     [self setSupportedEventTypeForNode:self.node.type];
     if(mAccEventFeature!=nil){
         [mAccEventFeature addFeatureDelegate:self];
         [mAccEventFeature addFeatureAccelerationEnableTypeDelegate:self];
         [self.node enableNotification:mAccEventFeature];
-        if(mCurrentEventTypeIndex<0) // if it is the first time, set the default demo
-            [self selectEventAtIndex:DEFAULT_EVENT_INDEX];
-        else{
-            //force the new event
-            NSInteger temp = mCurrentEventTypeIndex;
-            mCurrentEventTypeIndex=-1;
-            [self selectEventAtIndex:temp];
+        if(mCurrentEventTypeIndex<0){ // if it is the first time, set the default demo
+            mCurrentEventTypeIndex = DEFAULT_EVENT_INDEX;
+            if(mSupportedEventType[mCurrentEventTypeIndex] == mAccEventFeature.DEFAULT_ENABLED_EVENT){
+                //since the default event is already enabled change only the button
+                //without send the message to the node
+                [self setEventTitleLabel:mSupportedEventType[mCurrentEventTypeIndex]];
+                [self enableEventType:mSupportedEventType[mCurrentEventTypeIndex] forBoardType:self.node.type];
+            }else{
+                [self forceEventAtIndex:mCurrentEventTypeIndex];
+            }
+        }else{
+            [self forceEventAtIndex:mCurrentEventTypeIndex];
         }
         //[self.node readFeature:mAccEventFeature];
-    }else{
     }
 }
 
@@ -204,7 +216,10 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_Nucleo[] ={
         selectEvent= mSupportedEventType[row];
     
     if(mCurrentEventTypeIndex!=row){ // the user select the something new
+        //disable the prevous one
+        [mAccEventFeature enableEvent:mSupportedEventType[mCurrentEventTypeIndex] enable:false];
         mCurrentEventTypeIndex=row;
+        //enable the new one
         [mAccEventFeature enableEvent:selectEvent enable:true];
         [self setEventTitleLabel:mSupportedEventType[row]];
         if(selectEvent==BlueSTSDKFeatureEventTypeMultiple){
@@ -214,27 +229,28 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_Nucleo[] ={
             mMultipleEventView.view.hidden=YES;
             mSingleEventView.view.hidden=NO;
         }
-        [self enableEventType:selectEvent];
+
+        [self enableEventType:selectEvent forBoardType:self.node.type];
     }
     
 }
 
 
 -(void)displayEventType:(BlueSTSDKFeatureAccelerometerEventType) event data:(int32_t)eventData{
-    if(mSingleEventView.view.hidden==NO){
+    if(!mSingleEventView.view.hidden){
         [mSingleEventView displayEventType:event data:eventData];
     }
-    if(mMultipleEventView.view.hidden==NO){
+    if(!mMultipleEventView.view.hidden){
         [mMultipleEventView displayEventType:event data:eventData];
     }
 }
 
--(void)enableEventType:(BlueSTSDKFeatureAccelerationDetectableEventType) event{
-    if(mSingleEventView.view.hidden==NO){
-        [mSingleEventView enableEventType:event];
+-(void)enableEventType:(BlueSTSDKFeatureAccelerationDetectableEventType) event forBoardType:(BlueSTSDKNodeType)boardType{
+    if(!mSingleEventView.view.hidden){
+        [mSingleEventView enableEventType:event forBoardType:boardType];
     }
-    if(mMultipleEventView.view.hidden==NO){
-        [mMultipleEventView enableEventType:event];
+    if(!mMultipleEventView.view.hidden){
+        [mMultipleEventView enableEventType:event forBoardType:boardType];
     }
         
 }

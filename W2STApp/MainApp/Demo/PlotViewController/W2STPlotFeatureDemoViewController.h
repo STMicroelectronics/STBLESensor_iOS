@@ -36,7 +36,7 @@
  */
 
 #import <UIKit/UIKit.h>
-#import <CorePlot-CocoaTouch.h>
+#import <CorePlot/CorePlot-CocoaTouch.h>
 
 #import <BlueSTSDK/BlueSTSDKFeature.h>
 

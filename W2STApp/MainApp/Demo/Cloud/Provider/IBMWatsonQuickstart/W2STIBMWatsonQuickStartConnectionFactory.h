@@ -37,13 +37,13 @@
 
 #import <Foundation/Foundation.h>
 
-#import "W2STMQTTConnectionFactoryProtocol.h"
+#import "BlueMSCloudIotConnectionFactory.h"
 
 /**
  * Class that implement the W2STMQTTConnectionFactory protocol for the 
  * IBM Watson IOT QuickStart service
  */
-@interface W2STIBMWatsonQuickStartConnectionFactory : NSObject<W2STMQTTConnectionFactory>
+@interface W2STIBMWatsonQuickStartConnectionFactory : NSObject<BlueMSCloudIotConnectionFactory>
 
 /**
  * create a class for manage the QuickStart service

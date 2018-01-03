@@ -35,8 +35,10 @@
  * OF SUCH DAMAGE.
  */
 
+#import "ST_BlueMS-Swift.h"
 #import "W2STIBMWatsonIOTFeatureListener.h"
 #import "W2STIBMWatsonIOTConnectionFactory.h"
+#import <MQTTFramework/MQTTFramework.h>
 
 #define BLUEMX_PAGE_DATA @"https://%@.internetofthings.ibmcloud.com/dashboard/"
 #define BLUEMX_BROKER @"%@.messaging.internetofthings.ibmcloud.com"
@@ -76,32 +78,40 @@
     return self;
 }
 
--(MQTTSession*) getSession{
-    MQTTCFSocketTransport *transport = [[MQTTCFSocketTransport alloc] init];
+-(id<BlueMSCloudIotClient>) getSession{
+    MCMQTTCFSocketTransport *transport = [[MCMQTTCFSocketTransport alloc] init];
     transport.host = [NSString stringWithFormat:BLUEMX_BROKER,mOrganization];
     transport.port = BLUEMX_BROKER_PORT;
     transport.tls=YES;
     
-    MQTTSession *session = [[MQTTSession alloc] init];
+    MCMQTTSession *session = [[MCMQTTSession alloc] init];
     session.transport = transport;
     session.userName=BLUEMX_USERNAME;
     session.password=mAuth;
     session.clientId= [NSString stringWithFormat:@"d:%@:%@:%@",mOrganization,
                        mType,mDeviceId ];
-    return session;
+    return [[BlueMSCloudIotMQTTClient alloc]init:session];
 }
+
 
 -(NSURL*) getDataUrl{
     NSString *url = [NSString stringWithFormat:BLUEMX_PAGE_DATA,mOrganization ];
     return [NSURL URLWithString:url];
 }
 
--(id<BlueSTSDKFeatureDelegate>)getFeatureDelegateWithSession:(MQTTSession*)session{
-    return [[W2STIBMWatsonIOTFeatureListener alloc]initWithSession:session];
+-(id<BlueSTSDKFeatureDelegate>)getFeatureDelegateWithSession:(id<BlueMSCloudIotClient>)session{
+    BlueMSCloudIotMQTTClient *connection = (BlueMSCloudIotMQTTClient*)session;
+    return [[W2STIBMWatsonIOTFeatureListener alloc]initWithSession:connection.connection];
 }
 
 -(BOOL)isSupportedFeature:(BlueSTSDKFeature*)feature{
     return true;
+}
+
+-(BOOL)enableCloudFwUpgradeForNode:(nonnull BlueSTSDKNode *)node
+                        connection:(nonnull id<BlueMSCloudIotClient>)cloudConnection
+                          callback:(nonnull OnFwUpgradeAvailableCallback)callback{
+    return false;
 }
 
 @end

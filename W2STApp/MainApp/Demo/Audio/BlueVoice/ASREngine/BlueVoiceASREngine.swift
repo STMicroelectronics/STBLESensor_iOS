@@ -54,21 +54,6 @@ enum BlueVoiceAsrRequestError:Int8 {
     case NOT_RECOGNIZED = 5;
     /// impossible to use the network
     case NETWORK_PROBLEM = 6;
-
-    /*
-    var description : String {
-        
-        switch self {
-            case .NO_ERROR: return "Success";
-            case .IO_CONNECTION_ERROR: return "I/O Error";
-            case .RESPONSE_ERROR: return "Invalid Response";
-            case .REQUEST_FAILED: return "Invalid Request";
-            case .LOW_CONFIDENCE: return "Low Confidence Response";
-            case .NOT_RECOGNIZED: return "Not Recognizer";
-            case .NETWORK_PROBLEM: return "Network Error";
-        }
-    }
- */
     
 }
 
@@ -89,7 +74,14 @@ protocol BlueVoiceAsrRequestCallback{
     
 }
 
-protocol BlueVoiceASREngine{
+protocol BlueVoiceASRDescription{
+
+
+    /// engine name
+    var name:String{get};
+
+    /// list of supported value
+    var supportedLanguages:[BlueVoiceLanguage]{get};
     
     /// It reveals if this engine needs an authentication key or not.
     var needAuthKey:Bool{get};
@@ -97,15 +89,30 @@ protocol BlueVoiceASREngine{
     /// It reveals if this engine has a continuous recognizer or not.
     var hasContinuousRecognizer:Bool{get};
 
-    
-    /// Engine name
-    var name:String{get}
-    
-   
-    /**
-     *
-     * @return
-     */
+    /// instanziate the engine
+    ///
+    /// - Parameters:
+    ///   - lang: speech language
+    ///   - samplingRateHz: audio sampling rate
+    /// - Returns: engine to do the speech to text or nil if it didn't support the parameters
+    func build(withLanguage lang: BlueVoiceLanguage,samplingRateHz:UInt)->BlueVoiceASREngine?;
+}
+
+extension BlueVoiceASRDescription{
+
+    /// tell if the engine support a specific language
+    ///
+    /// - Parameter lang: lanquage to query
+    /// - Returns: true if the engine support that language
+    func supportLanguage(_ lang:BlueVoiceLanguage)->Bool{
+        return supportedLanguages.contains(lang);
+    }
+}
+
+protocol BlueVoiceASREngine{
+
+    // Engine description
+    static var engineDescription:BlueVoiceASRDescription{get};
     
     /// It provide a dialog for ASR key insertion.
     ///
@@ -113,16 +120,17 @@ protocol BlueVoiceASREngine{
     /// ASR service activation key. It return null if the service doesn't need any key.
     func getAuthKeyDialog()->UIViewController?;
     
-    /// Start the recognizer listener
-    func startListener();
+    /// the engine start listen to the sample data
+    ///
+    /// - Parameter onConnect: callback called when the initialization is completed
+    func startListener(onConnect:@escaping (Error?)->Void);
     
     /// Stop the recognizer listener
     func stopListener();
     
     /// Destroy the recognizer listener
     func destroyListener();
-    
-    
+
     /// tell if the engine has a valid key inserted
     ///
     /// - Returns: if the engine has a valid key, or if it doesn't need one
@@ -138,17 +146,14 @@ protocol BlueVoiceASREngine{
     
 }
 
-/// utility object wuse to build an ASR Engine
-public class BlueVoiceASREngineUtil{
+extension BlueVoiceASREngine{
     
-    /// build the best ASR engine availbe for that language and sampling rate
-    ///
-    /// - Parameters:
-    ///   - samplingRateHz: audio sampling rate, in Hz
-    ///   - language: voice language
-    /// - Returns: best available ASR engine for that languaga and sampling rate
-    static func getEngine(samplingRateHz:UInt , language: BlueVoiceLangauge)->BlueVoiceASREngine{
-        return BlueVoiceGoogleASREngine(language:language,samplingRateHz:samplingRateHz);
-        
+
+    /// default implementation that will retrun the engine description as instance property
+    /// also if it is a class property
+    var engineDesc:BlueVoiceASRDescription{
+        get{
+            return type(of: self).engineDescription;
+        }
     }
 }

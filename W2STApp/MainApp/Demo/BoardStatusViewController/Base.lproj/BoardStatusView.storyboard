@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="l0g-WL-d7v">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="l0g-WL-d7v">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,7 +12,7 @@
         <!--Board Status-->
         <scene sceneID="ARe-m8-NzI">
             <objects>
-                <viewController title="Board Status" id="l0g-WL-d7v" customClass="W2STBoardStatusViewController" sceneMemberID="viewController">
+                <viewController title="Board Status" id="l0g-WL-d7v" customClass="BlueMSBoardStatusViewController" customModule="ST_BlueMS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dEy-xt-CiA"/>
                         <viewControllerLayoutGuide type="bottom" id="ctG-TQ-X1h"/>
@@ -61,7 +61,7 @@
         <!--Battery Info View Controller-->
         <scene sceneID="dNO-iZ-AJg">
             <objects>
-                <viewController id="mli-fp-vzz" customClass="W2STBatteryInfoViewController" customModule="ST_BlueMS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mli-fp-vzz" customClass="BlueMSBatteryInfoViewController" customModule="ST_BlueMS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ju1-ST-khl"/>
                         <viewControllerLayoutGuide type="bottom" id="eN1-2p-EE6"/>
@@ -139,7 +139,7 @@
         <!--Board Rssi View Controller-->
         <scene sceneID="Hlo-7s-4QE">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="7Hv-0D-fSy" customClass="W2STBoardRssiViewController" customModule="ST_BlueMS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="7Hv-0D-fSy" customClass="BlueMSBoardRssiViewController" customModule="ST_BlueMS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wK8-jR-rwB"/>
                         <viewControllerLayoutGuide type="bottom" id="hvH-Ri-ND8"/>
@@ -180,10 +180,10 @@
             </objects>
             <point key="canvasLocation" x="14610" y="1132"/>
         </scene>
-        <!--Board Battery Status View Controller-->
+        <!--Board Battery Status View Controller2-->
         <scene sceneID="5lh-zd-Iir">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="XfM-Mq-Xt5" customClass="W2STBoardBatteryStatusViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="XfM-Mq-Xt5" customClass="BlueMSBoardBatteryStatusViewController" customModule="ST_BlueMS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YtI-5f-q6U"/>
                         <viewControllerLayoutGuide type="bottom" id="aeA-T1-loO"/>
@@ -246,7 +246,7 @@
                     </view>
                     <toolbarItems/>
                     <connections>
-                        <outlet property="batteryImage" destination="ANk-Un-UAp" id="fAQ-uw-AVm"/>
+                        <outlet property="batteryImage" destination="ANk-Un-UAp" id="wF2-ea-HfJ"/>
                         <outlet property="currentLabel" destination="9lu-di-p8n" id="ZKB-Y5-BV6"/>
                         <outlet property="levelLabel" destination="kQG-2V-RwZ" id="4ya-ZU-nDN"/>
                         <outlet property="remainingTimeLabel" destination="WT6-kK-4hS" id="ePC-Li-5xT"/>

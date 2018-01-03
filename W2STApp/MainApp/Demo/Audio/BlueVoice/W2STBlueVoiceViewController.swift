@@ -36,20 +36,30 @@
  */
 
 import Foundation
+import CorePlot
 import MediaPlayer
+import CorePlot
 import BlueSTSDK
+import BlueSTSDK_Gui
 
 public class W2STBlueVoiceViewController: BlueMSDemoTabViewController,
-    BlueVoiceSelectDelegate, BlueSTSDKFeatureDelegate, BlueVoiceAsrRequestCallback,
-    UITableViewDataSource{
+    BlueVoiceSelectEngineDelegate, BlueSTSDKFeatureDelegate, BlueVoiceAsrRequestCallback,
+UITableViewDataSource{
 
     private static let DEFAULT_DIRECTION = BlueSTSDKFeatureBeamFormingDirection.RIGHT;
     private static let ASR_LANG_PREF="W2STBlueVoiceViewController.AsrLangValue"
-    private static let DEFAULT_ASR_LANG=BlueVoiceLangauge.ENGLISH
+    private static let DEFAULT_ASR_LANG=BlueVoiceLanguage.ENGLISH_US
+    private static let ASR_ENGINE_PREF="W2STBlueVoiceViewController.AsrEngineValue"
+    private static let DEFAULT_ASR_ENGINE=BlueVoiceGoogleASREngine.engineDescription
     private static let CODEC="ADPCM"
 
     private static let PLOT_AUDIO_BUFFER_SIZE = 100*40;
     private static let PLOT_AUDIO_SCALE_FACTOR = 1.0/32768.0;
+
+    private static let AVAILABLE_ENGINE_DESC = [
+        BlueVoiceGoogleASREngine.engineDescription,
+        BlueVoiceIBMWatsonASREngine.engineDescription
+    ]
 
     /** object used to check if the use has an internet connection */
     private var mInternetReachability: Reachability?;
@@ -82,6 +92,9 @@ public class W2STBlueVoiceViewController: BlueMSDemoTabViewController,
     private var mFeatureBeamForming:BlueSTSDKFeatureBeamForming?;
     private var mAsrResults:[String] = [];
     
+    private var waitingDialog:MBProgressHUD?;
+
+
     /////////////////// AUDIO //////////////////////////////////////////////////
 
     //variable where store the audio before send to an speech to text service
@@ -101,11 +114,9 @@ public class W2STBlueVoiceViewController: BlueMSDemoTabViewController,
         //set the constant string
         mCodecLabel.text = mCodecLabel.text!+W2STBlueVoiceViewController.CODEC
         mSampligFreqLabel.text = mSampligFreqLabel.text!+String(mAudioConf.sampleRate/1000)+" kHz"
-        
-        newLanguageSelected(getDefaultLanguage());
         mAsrResultsTableView.dataSource=self;
 
-
+        onEngineSelected(engine: getDefaultEngine(), language: getDefaultLanguage())
     }
 
     override public func viewWillAppear(_ animated: Bool) {
@@ -187,7 +198,7 @@ public class W2STBlueVoiceViewController: BlueMSDemoTabViewController,
                 mRecordButton.isEnabled=false;
             }else{
                 mRecordButton.isEnabled=true;
-                loadAsrEngine(getDefaultLanguage());
+                loadAsrEngine(getDefaultEngine(),getDefaultLanguage());
             }
         }
         
@@ -217,38 +228,43 @@ public class W2STBlueVoiceViewController: BlueMSDemoTabViewController,
     private func deInitRecability(){
         mInternetReachability?.stopNotifier();
     }
-    
 
-    
     /// get the selected language for the asr engine
     ///
-    /// - Returns: <#return value description#>
-    public func getDefaultLanguage()->BlueVoiceLangauge{
+    /// - Returns:
+    public func getDefaultLanguage()->BlueVoiceLanguage{
         let lang = loadAsrLanguage();
         return lang ?? W2STBlueVoiceViewController.DEFAULT_ASR_LANG;
-        
+    }
+
+    private func loadAsrEngineDesc()->BlueVoiceASRDescription?{
+        let userPref = UserDefaults.standard;
+        let engineName = userPref.string(forKey: W2STBlueVoiceViewController.ASR_ENGINE_PREF);
+        if let str = engineName{
+            return W2STBlueVoiceViewController.AVAILABLE_ENGINE_DESC.filter({desc in desc.name==str}).first;
+        }
+        return nil;
     }
     
-    
-    /// called when the user select a new language for the asr
-    /// it store this information an reload the engine
-    ///
-    /// - Parameter language: language selected
-    public func newLanguageSelected(_ language:BlueVoiceLangauge){
-        loadAsrEngine(language);
-        storeAsrLanguage(language);
-        mSelectLanguageButton.setTitle(language.rawValue, for:UIControlState.normal)
+    private func storeAsrEngine(engineDesc:BlueVoiceASRDescription){
+        let userPref = UserDefaults.standard;
+        userPref.setValue(engineDesc.name,forKey:W2STBlueVoiceViewController.ASR_ENGINE_PREF);
+    }
+
+    private func getDefaultEngine()->BlueVoiceASRDescription{
+        let desc = loadAsrEngineDesc();
+        return desc ?? W2STBlueVoiceViewController.DEFAULT_ASR_ENGINE;
     }
     
     
     /// load the langiage from the user preference
     ///
     /// - Returns: language stored in the preference or the default one
-    private func loadAsrLanguage()->BlueVoiceLangauge?{
+    private func loadAsrLanguage()->BlueVoiceLanguage?{
         let userPref = UserDefaults.standard;
         let langString = userPref.string(forKey: W2STBlueVoiceViewController.ASR_LANG_PREF);
         if let str = langString{
-            return BlueVoiceLangauge(rawValue: str);
+            return BlueVoiceLanguage(rawValue: str);
         }
         return nil;
     }
@@ -257,7 +273,7 @@ public class W2STBlueVoiceViewController: BlueMSDemoTabViewController,
     /// store in the preference the selected language
     ///
     /// - Parameter language: language to store
-    private func storeAsrLanguage(_ language:BlueVoiceLangauge){
+    private func storeAsrLanguage(_ language:BlueVoiceLanguage){
         let userPref = UserDefaults.standard;
         userPref.setValue(language.rawValue, forKey:W2STBlueVoiceViewController.ASR_LANG_PREF);
     }
@@ -269,7 +285,7 @@ public class W2STBlueVoiceViewController: BlueMSDemoTabViewController,
     ///   - segue: segue to prepare
     ///   - sender: object that start the segue
     override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let dest = segue.destination as? BlueVoiceSelectLanguageViewController;
+        let dest = segue.destination as? BlueVoiceSelectEngineViewController;
         if let dialog = dest{
             dialog.delegate=self;
         }
@@ -309,7 +325,7 @@ public class W2STBlueVoiceViewController: BlueMSDemoTabViewController,
     /// false otherwise
     private func checkAsrKey() -> Bool{
         if let engine = engine{
-            if(engine.needAuthKey && !engine.hasLoadedAuthKey()){
+            if(engine.engineDesc.needAuthKey && !engine.hasLoadedAuthKey()){
                 let msg = NSLocalizedString("Please add the engine key",
                                             tableName: nil,
                                             bundle: mBundle,
@@ -352,19 +368,23 @@ public class W2STBlueVoiceViewController: BlueMSDemoTabViewController,
         guard checkAsrKey() else{
             return;
         }
-        let title =  NSLocalizedString("Stop recongition",
-                                       tableName: nil,
-                                       bundle: mBundle,
-                                       value: "Stop recongition",
-                                       comment: "Stop recongition");
-        mRecordButton.setTitle(title, for: .normal);
-        mutePlaybackIfNeeded();
 
-        engine?.startListener();
-        mIsRecording=true;
+        mutePlaybackIfNeeded();
+        waitingDialog = MBProgressHUD.showAdded(to: self.view, animated: false)
+        engine?.startListener(onConnect: self.onConnectionDone);
     }
     
-    
+    private func onConnectionDone( _ error:Error?){
+        mIsRecording=error==nil;
+        DispatchQueue.main.async {
+            if error != nil{
+                self.showErrorMsg("ASR Engine Error", title: error!.localizedDescription, closeController: false)
+            }
+            self.waitingDialog?.hide(animated: true);
+            self.setRecordButtonTitle(self.engine); //reset the button name
+        }
+    }
+
     /// Stop a continuos recognition
     private func onContinuousRecognizerStop(){
         mIsRecording=false;
@@ -383,8 +403,7 @@ public class W2STBlueVoiceViewController: BlueMSDemoTabViewController,
         }
         mutePlaybackIfNeeded();
         mRecordData = Data();
-        engine?.startListener();
-        mIsRecording=true;
+        engine?.startListener(onConnect: self.onConnectionDone);
     }
     
     /// Stop a non continuos voice to text service, and send the recorded data 
@@ -408,19 +427,28 @@ public class W2STBlueVoiceViewController: BlueMSDemoTabViewController,
     ///
     /// - Parameter asrEngine: voice to text engine that will be used
     private func setRecordButtonTitle(_ asrEngine: BlueVoiceASREngine!){
+        if(mIsRecording){
+            let title =  NSLocalizedString("Stop recongition",
+                                       tableName: nil,
+                                       bundle: mBundle,
+                                       value: "Stop recongition",
+                                       comment: "Stop recongition");
 
-        let startRec = NSLocalizedString("Start recongition",
+            mRecordButton.setTitle(title, for: .normal);
+        }else{
+            let startRec = NSLocalizedString("Start recongition",
                                          tableName: nil,
                                          bundle: mBundle,
                                          value: "Start recongition",
                                          comment: "Start recongition");
-        let keepPress = NSLocalizedString("Keep press to record",
+            let keepPress = NSLocalizedString("Keep press to record",
                                           tableName: nil,
                                           bundle: mBundle,
                                           value: "Keep press to record",
                                           comment: "Keep press to record");
-        let recorTitle = asrEngine.hasContinuousRecognizer ? startRec : keepPress;
-        mRecordButton.setTitle(recorTitle, for: .normal);
+            let recorTitle = asrEngine.engineDesc.hasContinuousRecognizer ? startRec : keepPress;
+            mRecordButton.setTitle(recorTitle, for: .normal);
+        }
     }
     
     
@@ -429,10 +457,9 @@ public class W2STBlueVoiceViewController: BlueMSDemoTabViewController,
     ///
     /// - Parameter sender: button released
     @IBAction func onRecordButtonRelease(_ sender: UIButton) {
-        if (engine?.hasContinuousRecognizer == false){
+        if (engine?.engineDesc.hasContinuousRecognizer == false){
             onRecognizerStop();
         }
-        
     }
     
     
@@ -441,7 +468,7 @@ public class W2STBlueVoiceViewController: BlueMSDemoTabViewController,
     ///
     /// - Parameter sender: button pressed
     @IBAction func onRecordButtonPressed(_ sender: UIButton) {
-        if let hasContinuousRecognizer = engine?.hasContinuousRecognizer{
+        if let hasContinuousRecognizer = engine?.engineDesc.hasContinuousRecognizer{
             if (hasContinuousRecognizer){
                 if(mIsRecording){
                     onContinuousRecognizerStop();
@@ -478,15 +505,14 @@ public class W2STBlueVoiceViewController: BlueMSDemoTabViewController,
     /// create a new voice to text service that works with the selected language
     ///
     /// - Parameter language: voice language
-    private func loadAsrEngine(_ language:BlueVoiceLangauge){
+    private func loadAsrEngine(_ engineDesc:BlueVoiceASRDescription ,_ language:BlueVoiceLanguage){
         if(engine != nil){
             engine!.destroyListener();
         }
         let samplingRateHz = UInt(mAudioConf.sampleRate)
-        engine = BlueVoiceASREngineUtil.getEngine(samplingRateHz:samplingRateHz,language: language);
+        engine = engineDesc.build(withLanguage: language, samplingRateHz: samplingRateHz);
         if let asrEngine = engine{
-            mAsrStatusLabel.text = asrEngine.name;
-            mAddAsrKeyButton.isHidden = !asrEngine.needAuthKey;
+            mAddAsrKeyButton.isHidden = !asrEngine.engineDesc.needAuthKey;
 
             let changeService = NSLocalizedString("Change Service Key",
                                                   tableName: nil,
@@ -506,6 +532,18 @@ public class W2STBlueVoiceViewController: BlueMSDemoTabViewController,
         }
     }
     
+    /////////////////////// BlueVoiceSelectEngineViewController //////////////////////////
+    func onEngineSelected(engine: BlueVoiceASRDescription, language: BlueVoiceLanguage) {
+        storeAsrLanguage(language)
+        storeAsrEngine(engineDesc: engine);
+        loadAsrEngine(engine, language);
+        mAsrStatusLabel.text = String(format:"%@ - %@",engine.name,language.rawValue);
+    }
+
+    func getAvailableEngine() -> [BlueVoiceASRDescription] {
+        return W2STBlueVoiceViewController.AVAILABLE_ENGINE_DESC;
+    }
+
     /////////////////////// BlueSTSDKFeatureDelegate ///////////////////////////
     
     
@@ -521,20 +559,19 @@ public class W2STBlueVoiceViewController: BlueMSDemoTabViewController,
             mAudioPlayBack?.playSample(sample: data);
             mRecordController.dumpAudioSample(sample: data);
             if(mIsRecording){
-                if(engine!.hasContinuousRecognizer){
+                if(engine!.engineDesc.hasContinuousRecognizer){
                     _ = engine!.sendASRRequest(audio: data, callback: self);
                 }else{
                     if(mRecordData != nil){
-                        objc_sync_enter(mRecordData);
+                        objc_sync_enter(mRecordData!);
                             mRecordData?.append(data);
-                        objc_sync_exit(mRecordData);
+                        objc_sync_exit(mRecordData!);
                     }// mRecordData!=null
                 }
             }//if is Recording
 
             updateAudioPlot(data);
-            
-            
+
         }//if data!=null
     }
 
@@ -650,7 +687,7 @@ public class W2STBlueVoiceViewController: BlueMSDemoTabViewController,
             self.mAsrRequestStatusLabel.text = errorDesc;
             self.mAsrRequestStatusLabel.isHidden=false;
             if(self.mIsRecording){ //if an error happen during the recording, stop it
-                if(self.engine!.hasContinuousRecognizer){
+                if(self.engine!.engineDesc.hasContinuousRecognizer){
                     self.onContinuousRecognizerStop();
                 }else{
                     self.onRecognizerStop();

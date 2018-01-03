@@ -37,11 +37,27 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON;
 
+class GoogleDescription : BlueVoiceASRDescription{
+    func build(withLanguage lang: BlueVoiceLanguage, samplingRateHz: UInt) -> BlueVoiceASREngine? {
+        return BlueVoiceGoogleASREngine(lang,samplingRateHz);
+    }
+    
+    public let needAuthKey = true;
+    public let hasContinuousRecognizer = false;
+    public let name = "Google™";
+    public let supportedLanguages = [BlueVoiceLanguage.ENGLISH_US,BlueVoiceLanguage.ITALIAN,
+                                     BlueVoiceLanguage.FRENCH,BlueVoiceLanguage.SPANISH,
+                                     BlueVoiceLanguage.GERMAN,BlueVoiceLanguage.PORTUGUESE];
+}
 
 /// Use the Google speech API to translate the voice to text
-public class BlueVoiceGoogleASREngine: BlueVoiceASREngine,
-    BlueVoiceGoogleKeyDelegate{
+class BlueVoiceGoogleASREngine: BlueVoiceASREngine,
+BlueVoiceGoogleKeyDelegate{
+    
+    public static let engineDescription = GoogleDescription() as BlueVoiceASRDescription;
+    
     
     private static let ASR_KEY_PREFERENCE = "BlueVoiceGoogleASREngine.ASR_KEY";
     private static let ASR_KEY_LENGHT = 39;
@@ -59,7 +75,7 @@ public class BlueVoiceGoogleASREngine: BlueVoiceASREngine,
     private var mAsrKey:String?;
     
     /// voice language
-    private let mLanguage:BlueVoiceLangauge;
+    private let mLanguage:BlueVoiceLanguage;
     
     
     /// Check that the string has a valid format to be an api key,
@@ -68,7 +84,7 @@ public class BlueVoiceGoogleASREngine: BlueVoiceASREngine,
     /// - Parameter asrKey: key to test
     /// - Returns: nil if is not a valid key, otherwise the valid key
     private static func synitizeAsrKey(_ asrKey:String?) -> String?{
-        if(asrKey?.characters.count==ASR_KEY_LENGHT){
+        if(asrKey?.count==ASR_KEY_LENGHT){
             return asrKey;
         }else{
             return nil;
@@ -81,10 +97,12 @@ public class BlueVoiceGoogleASREngine: BlueVoiceASREngine,
     ///
     /// - Parameter lang: voice language
     /// - Returns: string to use in the request url
-    private static func getLanguageParamiter(lang: BlueVoiceLangauge)-> String{
+    private static func getLanguageParamiter(lang: BlueVoiceLanguage)-> String{
         switch lang {
-        case .ENGLISH:
+        case .ENGLISH_US:
             return "en-US";
+        case .ENGLISH_UK:
+            return "en-UK";
         case .ITALIAN:
             return "it-IT";
         case .FRENCH:
@@ -108,12 +126,18 @@ public class BlueVoiceGoogleASREngine: BlueVoiceASREngine,
     ///   - language: voice language
     ///   - key: user key
     /// - Returns: url where send the audio data
-    private static func getRequestUrl(_ language:BlueVoiceLangauge, _ key:String)->URL?{
+    private static func getRequestUrl(_ language:BlueVoiceLanguage, _ key:String)->URL?{
         let langStr = getLanguageParamiter(lang: language);
         return URL(string:"https://www.google.com/speech-api/v2/recognize?xjerr=1&client=chromium&lang="+langStr+"&key="+key);
     }
     
-    init(language:BlueVoiceLangauge, samplingRateHz:UInt){
+    init?(_ language:BlueVoiceLanguage,_ samplingRateHz:UInt){
+        guard samplingRateHz == 8000 || samplingRateHz == 16000 else{
+            return nil;
+        }
+        guard (BlueVoiceGoogleASREngine.engineDescription.supportLanguage(language)) else{
+            return nil;
+        }
         mLanguage=language;
         mSamplingRateHz=samplingRateHz;
         mAsrKey=loadAsrKey()
@@ -133,7 +157,9 @@ public class BlueVoiceGoogleASREngine: BlueVoiceASREngine,
         return viewController;
     }
     
-    func startListener(){}
+    func startListener(onConnect :@escaping (Error?)->Void){
+        onConnect(nil)
+    }
     
     func stopListener(){}
     
@@ -222,37 +248,28 @@ public class BlueVoiceGoogleASREngine: BlueVoiceASREngine,
     /// - Returns: list of confidence and string or nil if the parse fail
     private func extractResults(data:Data?)->[(Float,String)]?{
         var retValue:[(Float,String)] = Array();
-        do{
-            
+        
             var respStr = String(data: data!, encoding: .utf8);
             //the fist line of the response is an empty json.. remove it to parse
             //the real response
             respStr = respStr?.replacingOccurrences(of: "{\"result\":[]}", with:"")
             respStr = respStr?.trimmingCharacters(in: .controlCharacters);
-            print(respStr!)
             let respStrData = respStr?.data(using: .utf8);
             
             if(respStr == nil){
                 return nil;
             }
             
-            let json = try JSONSerialization.jsonObject(with: respStrData!) as? [String: Any];
-            let retult = json?["result"] as? [[String:Any]];
-            let alternative = retult?.first?["alternative"] as? [[String:Any]];
-            if(alternative == nil){
-                return nil;
+            let json = JSON(data: respStrData!);
+            let results = json["result"][0]["alternative"];
+            for (_,transcript) in results {
+                let text = transcript["transcript"].string;
+                let confidence = transcript["confidence"].float ?? Float(0.0);
+                if(text != nil){
+                    retValue.append((confidence,text!));
+                }
             }
-            for transcript in alternative!{
-                let text = transcript["transcript"] as! String;
-                let confidence = transcript["confidence"] as! Float;
-                retValue.append((confidence,text));
-            }
-            
-        }catch let error as NSError{
-            print (error.debugDescription)
-            print (error.description);
-            return nil;
-        }
+        
         return retValue;
     }
     

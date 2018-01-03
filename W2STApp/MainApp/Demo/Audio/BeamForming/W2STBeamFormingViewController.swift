@@ -36,6 +36,7 @@
  */
 
 import Foundation
+import CorePlot
 import BlueSTSDK
 
 public class W2STBeamFormingViewController: BlueMSDemoTabViewController,BlueSTSDKFeatureDelegate{

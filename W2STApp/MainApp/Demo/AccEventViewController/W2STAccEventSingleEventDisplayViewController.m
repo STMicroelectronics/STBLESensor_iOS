@@ -35,13 +35,16 @@
  * OF SUCH DAMAGE.
  */
 #import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
-
+#import <BlueSTSDK/BlueSTSDKNode.h>
 #import "W2STAccEventSingleEventDisplayViewController.h"
 #import "W2STAccEventIconUtil.h"
 
 @interface W2STAccEventSingleEventDisplayViewController ()
     @property (weak, nonatomic) IBOutlet UILabel *eventDetailsLabel;
     @property (weak, nonatomic) IBOutlet UIImageView *eventIcon;
+
+
+
 @end
 
 @implementation W2STAccEventSingleEventDisplayViewController{
@@ -51,36 +54,47 @@
 
 
 
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     mCurrentEventType = BlueSTSDKFeatureEventTypeNone;
     mPrevEvent = BlueSTSDKFeatureAccelerometerNoEvent;
 }
 
-
--(void)displayEventType:(BlueSTSDKFeatureAccelerometerEventType) event data:(int32_t)eventData{
-    NSString *eventDetails;
-    if(event != BlueSTSDKFeatureAccelerometerPedometer)
-        eventDetails=@"";
-    else
-        eventDetails = [NSString stringWithFormat:BLUESTSDK_LOCALIZE(@"Number Steps: %d",nil),eventData];
-    //if-else
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        _eventDetailsLabel.text=eventDetails;
-        
+-(void)changeOrientationIcon:(BlueSTSDKFeatureAccelerometerEventType) event{
+    dispatch_async(dispatch_get_main_queue(), ^{        
         if(mPrevEvent!=event){
             _eventIcon.image = getEventImage(event);
             mPrevEvent = event;
-        }
-        
-        if (!hasOrientationEvent(event))
+        }else{
             shakeImage(_eventIcon);
+        }
     });
-
 }
 
--(void)enableEventType:(BlueSTSDKFeatureAccelerationDetectableEventType) selectEvent{
+-(void)displayEventType:(BlueSTSDKFeatureAccelerometerEventType) event data:(int32_t)eventData{
+    
+    if(mCurrentEventType == BlueSTSDKFeatureEventTypeOrientation && hasOrientationEvent(event)){
+        [self changeOrientationIcon:event];
+    }else{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            shakeImage(_eventIcon);
+        });
+    }
+    
+    if(mCurrentEventType == BlueSTSDKFeatureEventTypePedometer &&
+       event == BlueSTSDKFeatureAccelerometerPedometer &&
+       eventData >=0){
+       NSString *eventDetails =
+            [NSString stringWithFormat:BLUESTSDK_LOCALIZE(@"Number Steps: %d",nil),eventData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _eventDetailsLabel.text=eventDetails;
+        });
+    }
+}
+
+-(void)enableEventType:(BlueSTSDKFeatureAccelerationDetectableEventType) selectEvent
+          forBoardType:(BlueSTSDKNodeType) boardType{
+    mCurrentEventType = selectEvent;
     _eventIcon.image= getDefaultIconForEvent(selectEvent);
     _eventDetailsLabel.text=@"";
 }

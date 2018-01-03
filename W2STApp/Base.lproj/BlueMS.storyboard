@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Gq3-wN-lCv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Gq3-wN-lCv">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -14,7 +15,7 @@
         <!--Switch-->
         <scene sceneID="bQY-i9-S6S">
             <objects>
-                <viewController title="Switch" id="FBo-WD-Swi" customClass="W2STSwitchViewController" sceneMemberID="viewController">
+                <viewController title="Switch" id="FBo-WD-Swi" customClass="BlueMSSwitchViewController" customModule="ST_BlueMS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IIw-ma-7Lj"/>
                         <viewControllerLayoutGuide type="bottom" id="jQv-FE-N4U"/>
@@ -53,7 +54,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Switch" image="switch_demo_icon" id="gqj-r0-qly"/>
                     <connections>
-                        <outlet property="mLedImage" destination="HTf-Jo-UgS" id="L7F-Ky-6Vn"/>
+                        <outlet property="mLedImage" destination="HTf-Jo-UgS" id="UnZ-Hu-4DT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7hp-hv-gCD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -79,6 +80,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DxE-RU-jq0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7238" y="-854"/>
+        </scene>
+        <!--SDLogging-->
+        <scene sceneID="dln-bH-i0v">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SDLogging" id="s0u-ua-usk" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" id="2HS-IM-6dl"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lZE-po-OgS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7241" y="-686"/>
         </scene>
         <!--BeamForming-->
         <scene sceneID="sal-nv-iIl">
@@ -193,7 +204,7 @@
         <!--Activity Recognition-->
         <scene sceneID="kcc-bb-ot3">
             <objects>
-                <viewController id="o20-cb-u5F" customClass="W2STActivityViewController" sceneMemberID="viewController">
+                <viewController id="o20-cb-u5F" customClass="BlueMSActivityViewController" customModule="ST_BlueMS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xHQ-3O-Bug"/>
                         <viewControllerLayoutGuide type="bottom" id="n8w-AT-Q3t"/>
@@ -209,7 +220,7 @@
                                 <rect key="frame" x="4" y="242.33333333333331" width="203" height="222.33333333333331"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity_biking" translatesAutoresizingMaskIntoConstraints="NO" id="p5M-w1-0CC">
-                                <rect key="frame" x="4" y="464.66666666666674" width="203" height="222.33333333333326"/>
+                                <rect key="frame" x="4" y="464.66666666666669" width="203" height="222.33333333333331"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity_walking" translatesAutoresizingMaskIntoConstraints="NO" id="1eQ-n8-zOg">
                                 <rect key="frame" x="207" y="20.000000000000014" width="203" height="222.33333333333337"/>
@@ -218,7 +229,7 @@
                                 <rect key="frame" x="207" y="242.33333333333331" width="203" height="222.33333333333331"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity_driving" translatesAutoresizingMaskIntoConstraints="NO" id="FdP-WN-lUk">
-                                <rect key="frame" x="207" y="464.66666666666674" width="203" height="222.33333333333326"/>
+                                <rect key="frame" x="207" y="464.66666666666669" width="203" height="222.33333333333331"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -252,12 +263,12 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Activity Recognition" image="activity_demo_icon" id="eeh-FS-Ghs"/>
                     <connections>
-                        <outlet property="bikingImage" destination="p5M-w1-0CC" id="ctI-Xf-nYo"/>
-                        <outlet property="drivingImage" destination="FdP-WN-lUk" id="hWX-Uq-isZ"/>
-                        <outlet property="fastWalkingImage" destination="55e-nn-Agd" id="ucb-kZ-9px"/>
-                        <outlet property="joggingImage" destination="iWv-s4-8LZ" id="hxa-oh-Qmg"/>
-                        <outlet property="standingImage" destination="aEH-AW-BGp" id="NGX-0X-hMG"/>
-                        <outlet property="walkingImage" destination="1eQ-n8-zOg" id="FKF-0z-QYj"/>
+                        <outlet property="bikingImage" destination="p5M-w1-0CC" id="ZbE-Df-Ib5"/>
+                        <outlet property="drivingImage" destination="FdP-WN-lUk" id="zWV-Ek-Ke6"/>
+                        <outlet property="fastWalkingImage" destination="55e-nn-Agd" id="zSZ-ti-LQG"/>
+                        <outlet property="joggingImage" destination="iWv-s4-8LZ" id="0O2-RW-K2x"/>
+                        <outlet property="standingImage" destination="aEH-AW-BGp" id="Tcz-e5-Vsw"/>
+                        <outlet property="walkingImage" destination="1eQ-n8-zOg" id="A4p-yK-hAP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qg2-FX-fbc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -289,6 +300,8 @@
                         <segue destination="Ype-N3-ske" kind="relationship" relationship="viewControllers" id="GdU-nn-ish"/>
                         <segue destination="e2w-B9-g5d" kind="relationship" relationship="viewControllers" id="x1B-go-Ci5"/>
                         <segue destination="ow9-h3-a8X" kind="relationship" relationship="viewControllers" id="G6I-Y3-H6r"/>
+                        <segue destination="sAT-33-1Mm" kind="relationship" relationship="viewControllers" id="WH8-Zj-ZHB"/>
+                        <segue destination="s0u-ua-usk" kind="relationship" relationship="viewControllers" id="fqc-8f-17O"/>
                         <segue destination="o20-cb-u5F" kind="relationship" relationship="viewControllers" id="EPW-iS-y5g"/>
                         <segue destination="xLQ-Gm-dqE" kind="relationship" relationship="viewControllers" id="OI0-3k-Ji3"/>
                         <segue destination="3cg-CN-zER" kind="relationship" relationship="viewControllers" id="xKV-8H-S9h"/>
@@ -300,7 +313,6 @@
                         <segue destination="rou-KP-VFk" kind="relationship" relationship="viewControllers" id="xyu-tI-6cB"/>
                         <segue destination="ame-Kc-uhT" kind="relationship" relationship="viewControllers" id="6r8-jF-gDH"/>
                         <segue destination="a8A-yM-bqk" kind="relationship" relationship="viewControllers" id="sgR-PQ-XEG"/>
-                        <segue destination="sAT-33-1Mm" kind="relationship" relationship="viewControllers" id="WH8-Zj-ZHB"/>
                         <segue destination="Ad0-kO-Yml" kind="relationship" relationship="viewControllers" id="eQV-wP-ncO"/>
                         <segue destination="DKm-pN-xeF" kind="relationship" relationship="viewControllers" id="taA-zI-aKi"/>
                         <segue destination="e49-gA-b4i" kind="relationship" relationship="viewControllers" id="uw9-fM-VIu"/>
@@ -343,7 +355,7 @@
         <!--Pedometer-->
         <scene sceneID="tkL-fN-Ph3">
             <objects>
-                <viewController id="4cX-hO-gpM" customClass="W2STPedometerViewController" sceneMemberID="viewController">
+                <viewController id="4cX-hO-gpM" customClass="BlueMSPedometerViewController" customModule="ST_BlueMS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HBO-gb-kpw"/>
                         <viewControllerLayoutGuide type="bottom" id="wIe-Ol-7Zd"/>
@@ -353,16 +365,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pedometer_icon" translatesAutoresizingMaskIntoConstraints="NO" id="2zN-0I-sra">
-                                <rect key="frame" x="20" y="20" width="374" height="328"/>
+                                <rect key="frame" x="20" y="20" width="374" height="340"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKM-2h-EVd">
-                                <rect key="frame" x="181" y="356" width="53" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKM-2h-EVd">
+                                <rect key="frame" x="207.66666666666666" y="368" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVN-c2-EqU">
-                                <rect key="frame" x="186" y="388" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVN-c2-EqU">
+                                <rect key="frame" x="207" y="376" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -382,9 +394,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Pedometer" image="pedometer_demo_icon" id="K0M-wV-7kU"/>
                     <connections>
-                        <outlet property="frequencyLabel" destination="YVN-c2-EqU" id="kro-Af-07J"/>
-                        <outlet property="nStepsLabel" destination="TKM-2h-EVd" id="KjL-AM-kiw"/>
-                        <outlet property="pedometerIcon" destination="2zN-0I-sra" id="M57-oQ-u2z"/>
+                        <outlet property="mFrequencyLabel" destination="YVN-c2-EqU" id="rnM-K8-mgM"/>
+                        <outlet property="mNStepsLabel" destination="TKM-2h-EVd" id="Dge-D3-WvD"/>
+                        <outlet property="mPedometerIcon" destination="2zN-0I-sra" id="B3f-Iy-2bR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nJi-50-HXf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -667,7 +679,7 @@
         <!--Motion Intensity-->
         <scene sceneID="5ze-fa-3lU">
             <objects>
-                <viewController id="Ad0-kO-Yml" customClass="W2STMotionIntensityViewController" sceneMemberID="viewController">
+                <viewController id="Ad0-kO-Yml" customClass="BlueMSMotionIntensityViewController" customModule="ST_BlueMS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cTp-XY-xSQ"/>
                         <viewControllerLayoutGuide type="bottom" id="ZRw-t3-ens"/>
@@ -716,8 +728,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Motion Intensity" image="activity_demo_icon" id="k6G-g2-sbJ"/>
                     <connections>
-                        <outlet property="mMotionIntensityNeedle" destination="YEX-k2-DTK" id="Vl6-4K-e6h"/>
-                        <outlet property="mMotionIntensityValue" destination="lWG-Zd-Grh" id="Yqf-1W-HVQ"/>
+                        <outlet property="mIntensityLabel" destination="lWG-Zd-Grh" id="cZK-p1-c1L"/>
+                        <outlet property="mIntensityNeedle" destination="YEX-k2-DTK" id="oBd-3h-ONv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="egW-gc-W0X" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -743,13 +755,13 @@
                                 <rect key="frame" x="4" y="242.33333333333331" width="203" height="222.33333333333331"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carry_trousers" translatesAutoresizingMaskIntoConstraints="NO" id="9Yw-5t-2KE">
-                                <rect key="frame" x="207" y="242.00000000000003" width="203" height="222.66666666666671"/>
+                                <rect key="frame" x="207" y="242" width="203" height="222.66666666666663"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carry_arm" translatesAutoresizingMaskIntoConstraints="NO" id="5H9-e9-anG">
-                                <rect key="frame" x="207" y="464.66666666666674" width="203" height="222.33333333333326"/>
+                                <rect key="frame" x="207" y="464.66666666666669" width="203" height="222.33333333333331"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carry_desk" translatesAutoresizingMaskIntoConstraints="NO" id="9se-Ai-0Ac">
-                                <rect key="frame" x="4" y="464.66666666666674" width="203" height="222.33333333333326"/>
+                                <rect key="frame" x="4" y="464.66666666666669" width="203" height="222.33333333333331"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="carry_head" translatesAutoresizingMaskIntoConstraints="NO" id="eRo-Kt-mT7">
                                 <rect key="frame" x="4" y="28" width="203" height="222"/>
@@ -880,7 +892,7 @@
                                 </variation>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mems_wakeUp" translatesAutoresizingMaskIntoConstraints="NO" id="JtB-5Q-vbc">
-                                <rect key="frame" x="28" y="467.33333333333326" width="358" height="211.66666666666674"/>
+                                <rect key="frame" x="28" y="467.33333333333331" width="358" height="211.66666666666669"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="JtB-5Q-vbc" secondAttribute="height" multiplier="63:47" id="Zrl-R2-STQ"/>
                                 </constraints>

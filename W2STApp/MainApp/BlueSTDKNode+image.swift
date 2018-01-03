@@ -40,7 +40,11 @@ import BlueSTSDK
 
 public extension BlueSTSDKNode {
     
-    public func getImage()->UIImage?{
+    
+    /// get node board image, in function of its type
+    ///
+    /// - Returns: node board type log, or null if unknown
+    @objc public func getImage()->UIImage?{
         let bundle = Bundle.main;
         
         switch (self.type){

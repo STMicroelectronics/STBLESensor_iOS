@@ -39,8 +39,19 @@
 #define W2STApp_Bridging_Header_h
 
 #import "BlueMSDemoTabViewController.h"
+#import "BlueMSDemoTabViewController+WesuLicenseCheck.h"
 #import "Reachability.h"
-#import <CorePlot-CocoaTouch.h>
+//core plot lib
+#import <CorePlot/CorePlot-CocoaTouch.h>
 
+#import <CommonCrypto/CommonHMAC.h>
+#import "BlueMSCloudIotConnectionFactory.h"
+#import "W2STCloudConfigViewController.h"
+//openssl for aws iot
+#import <openssl/bio.h>
+#import <openssl/pem.h>
+#import <openssl/opensslv.h>
+#import <openssl/pkcs12.h>
+#import <openssl/err.h>
 
 #endif /* W2STApp_Bridging_Header_h */

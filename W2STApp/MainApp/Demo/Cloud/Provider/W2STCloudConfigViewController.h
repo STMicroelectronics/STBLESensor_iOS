@@ -37,7 +37,7 @@
 
 #import <UIKit/UIKit.h>
 #import <BlueSTSDK/BlueSTSDKNode.h>
-#import "W2STMQTTConnectionFactoryProtocol.h"
+#import "BlueMSCloudIotConnectionFactory.h"
 
 /**
  *
@@ -50,7 +50,7 @@
  *
  * @return object that can be used to create a connection with the cloud service
  */
--(nullable id<W2STMQTTConnectionFactory>) buildConnectionFactory;
+-(nullable id<BlueMSCloudIotConnectionFactory>) buildConnectionFactory;
 
 @end
 

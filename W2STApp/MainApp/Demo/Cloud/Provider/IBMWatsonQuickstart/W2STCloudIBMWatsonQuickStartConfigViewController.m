@@ -76,7 +76,7 @@
     mNodeType = [BlueSTSDKNode nodeTypeToString:self.node.type];
 }
 
--(nullable id<W2STMQTTConnectionFactory>) buildConnectionFactory{
+-(nullable id<BlueMSCloudIotConnectionFactory>) buildConnectionFactory{
     if(_mDeviceIdText.text.length==0)
         return nil;
     [self storeSettings];

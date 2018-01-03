@@ -37,15 +37,12 @@
 
 #import "W2STGenericMqttFeatureListener.h"
 
-@interface W2STGenericMqttFeatureListener ()<MQTTSessionDelegate>
-@end
-
 @implementation W2STGenericMqttFeatureListener{
-    MQTTSession *mSession;
+    MCMQTTSession *mSession;
     NSString *mDeviceId;
 }
 
--(instancetype)initWithSession:(MQTTSession *)session clientId:(NSString*)deviceId{
+-(instancetype)initWithSession:(MCMQTTSession *)session clientId:(NSString*)deviceId{
     self = [super init];
     mSession = session;
     mDeviceId = deviceId;
@@ -55,7 +52,7 @@
 
 - (void)didUpdateFeature:(BlueSTSDKFeature *)feature sample:(BlueSTSDKFeatureSample*) sample{
     
-    if(mSession.status!=MQTTSessionStatusConnected)
+    if(mSession.status!=MCMQTTSessionStatusConnected)
         return;
 
     NSArray<BlueSTSDKFeatureField*> *fields = feature.getFieldsDesc;

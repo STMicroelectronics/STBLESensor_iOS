@@ -52,7 +52,7 @@
  *
  * @return object that will send the data to cloud 
  */
--(instancetype)initWithSession:(MQTTSession *)session
+-(instancetype)initWithSession:(MCMQTTSession *)session
              minUpdateInterval:(NSTimeInterval)minUpdateInterval;
 
 @end

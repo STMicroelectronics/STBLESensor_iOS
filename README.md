@@ -22,6 +22,18 @@ git clone https://github.com/STMicroelectronics-CentralLabs/STBlueMS_iOS
 git submodule update --init --recursive
 ```
 
+## Run the code
+
+The project use [CacoaPods](https://cocoapods.org) and [Carthage](https://github.com/Carthage/Carthage) to manage the project dependencies.
+
+### CacoaPods
+ - Install CacoaPods using this [instruction](https://guides.cocoapods.org/using/getting-started.html)
+ - Run ```pod install``` to download and install all the dependency
+
+### Cartage
+ - Install Carthage using this [instruction](https://github.com/Carthage/Carthage#installing-carthage)
+ - Run ```carthage update --platform iOS --no-use-binaries```  to download and install all the dependency
+
 ## License
 
 Copyright (c) 2017  STMicroelectronics – All rights reserved

@@ -232,19 +232,33 @@
 			remoteGlobalIDString = DE9EF5C41C0628B1009EF667;
 			remoteInfo = MQTTiOS;
 		};
+		66765E162114487D00816DB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 007A371D8283CCAFA44B08D8777F9EF1;
+			remoteInfo = AWSCore;
+		};
+		66765E182114487D00816DB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5AA91855FBD21359C5AC9D184AAB08E4;
+			remoteInfo = AWSIoT;
+		};
+		66765E1A2114487D00816DB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F57EF17CC32606C8DD14F2AAA14AE446;
+			remoteInfo = SwiftyJSON;
+		};
 		6680E7781E2F6F0700C39C5E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6680E7731E2F6F0700C39C5E /* BlueSTSDK_Gui.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 663979141E2E5D0000FBF696;
 			remoteInfo = BlueSTSDK_Gui;
-		};
-		669F9D021FFD27F60007449D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 143F51EE1DB03FC330AF9629C634F2A8;
-			remoteInfo = MQTTClient;
 		};
 		66B556791F5FD70A00CE5A20 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -934,9 +948,11 @@
 		66BC48D51DA7E3E400C196B1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				66BC48DD1DA7E3E500C196B1 /* libCorePlot.a */,
-				669F9D031FFD27F60007449D /* libMQTTClient.a */,
-				66BC48E11DA7E3E500C196B1 /* libPods-W2STApp.a */,
+				66765E172114487D00816DB0 /* AWSCore.framework */,
+				66765E192114487D00816DB0 /* AWSIoT.framework */,
+				66BC48DD1DA7E3E500C196B1 /* CorePlot.framework */,
+				66BC48E11DA7E3E500C196B1 /* Pods_W2STApp.framework */,
+				66765E1B2114487D00816DB0 /* SwiftyJSON.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1148,7 +1164,6 @@
 				EA68CFA818D0CB75003B774E /* Resources */,
 				660311CA1BF3713700BA3198 /* Run Script */,
 				1FC7E21963687662778CABD6 /* [CP] Embed Pods Frameworks */,
-				C6D71AF95984693D50A2F260 /* [CP] Copy Pods Resources */,
 				66B5567B1F5FD70A00CE5A20 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -1284,6 +1299,27 @@
 			remoteRef = 66031FFD1FB9D15A00C59847 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		66765E172114487D00816DB0 /* AWSCore.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AWSCore.framework;
+			remoteRef = 66765E162114487D00816DB0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		66765E192114487D00816DB0 /* AWSIoT.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AWSIoT.framework;
+			remoteRef = 66765E182114487D00816DB0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		66765E1B2114487D00816DB0 /* SwiftyJSON.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyJSON.framework;
+			remoteRef = 66765E1A2114487D00816DB0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		6680E7791E2F6F0700C39C5E /* BlueSTSDK_Gui.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1291,24 +1327,17 @@
 			remoteRef = 6680E7781E2F6F0700C39C5E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		669F9D031FFD27F60007449D /* libMQTTClient.a */ = {
+		66BC48DD1DA7E3E500C196B1 /* CorePlot.framework */ = {
 			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libMQTTClient.a;
-			remoteRef = 669F9D021FFD27F60007449D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		66BC48DD1DA7E3E500C196B1 /* libCorePlot.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libCorePlot.a;
+			fileType = wrapper.framework;
+			path = CorePlot.framework;
 			remoteRef = 66BC48DC1DA7E3E500C196B1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		66BC48E11DA7E3E500C196B1 /* libPods-W2STApp.a */ = {
+		66BC48E11DA7E3E500C196B1 /* Pods_W2STApp.framework */ = {
 			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libPods-W2STApp.a";
+			fileType = wrapper.framework;
+			path = Pods_W2STApp.framework;
 			remoteRef = 66BC48E01DA7E3E500C196B1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -1404,6 +1433,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/SpeechToTextV1.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Starscream.framework",
 			);
 			name = "Run Script";
 			outputPaths = (
@@ -1411,21 +1441,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-		C6D71AF95984693D50A2F260 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-W2STApp/Pods-W2STApp-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		FE9F6BA25815755057B2B519 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

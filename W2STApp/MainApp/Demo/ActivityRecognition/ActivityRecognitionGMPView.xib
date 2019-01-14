@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActivityRecognitionGMPView" customModule="ST_BLE_Sensor" customModuleProvider="target">
+            <connections>
+                <outlet property="bikingImage" destination="ys5-sa-yV0" id="qLF-Mi-u66"/>
+                <outlet property="drivingImage" destination="NBR-Ge-N67" id="H99-Kn-8FQ"/>
+                <outlet property="joggingImage" destination="qD9-91-6XQ" id="Wyp-g5-iXi"/>
+                <outlet property="mContentView" destination="SY8-ZI-Xcg" id="HqN-TW-MD0"/>
+                <outlet property="standingImage" destination="iEH-hw-Ud6" id="VqY-Pj-8cH"/>
+                <outlet property="walkingImage" destination="mKA-NY-STe" id="Z2R-1Z-C25"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="SY8-ZI-Xcg">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="COs-23-o3n">
+                    <rect key="frame" x="-8" y="12" width="375" height="647"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GBp-Dd-6Z6">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="194.5"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity_standing" translatesAutoresizingMaskIntoConstraints="NO" id="iEH-hw-Ud6">
+                                    <rect key="frame" x="0.0" y="0.0" width="187.5" height="194.5"/>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity_walking" translatesAutoresizingMaskIntoConstraints="NO" id="mKA-NY-STe">
+                                    <rect key="frame" x="187.5" y="0.0" width="187.5" height="194.5"/>
+                                </imageView>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="B6G-iA-Ma0">
+                            <rect key="frame" x="0.0" y="226.5" width="375" height="194"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity_running" translatesAutoresizingMaskIntoConstraints="NO" id="qD9-91-6XQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="187.5" height="194"/>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity_biking" translatesAutoresizingMaskIntoConstraints="NO" id="ys5-sa-yV0">
+                                    <rect key="frame" x="187.5" y="0.0" width="187.5" height="194"/>
+                                </imageView>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ufc-fX-4hN">
+                            <rect key="frame" x="0.0" y="452.5" width="375" height="194.5"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity_driving" translatesAutoresizingMaskIntoConstraints="NO" id="NBR-Ge-N67">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="194.5"/>
+                                </imageView>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="B6G-iA-Ma0" secondAttribute="trailing" id="9Xk-0J-XA9"/>
+                        <constraint firstItem="B6G-iA-Ma0" firstAttribute="leading" secondItem="COs-23-o3n" secondAttribute="leading" id="Dcw-Ig-c0m"/>
+                        <constraint firstAttribute="trailing" secondItem="ufc-fX-4hN" secondAttribute="trailing" id="GZ6-vB-cca"/>
+                        <constraint firstItem="ufc-fX-4hN" firstAttribute="leading" secondItem="COs-23-o3n" secondAttribute="leading" id="TnP-rc-7N3"/>
+                        <constraint firstItem="GBp-Dd-6Z6" firstAttribute="leading" secondItem="COs-23-o3n" secondAttribute="leading" id="WAu-Hs-ooa"/>
+                        <constraint firstAttribute="trailing" secondItem="GBp-Dd-6Z6" secondAttribute="trailing" id="Y32-10-FvC"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="U9P-ds-eFK" firstAttribute="leading" secondItem="COs-23-o3n" secondAttribute="leading" constant="8" id="94M-od-HNZ"/>
+                <constraint firstItem="U9P-ds-eFK" firstAttribute="bottom" secondItem="COs-23-o3n" secondAttribute="bottom" constant="8" id="T0Q-61-nRf"/>
+                <constraint firstItem="U9P-ds-eFK" firstAttribute="top" secondItem="COs-23-o3n" secondAttribute="top" constant="8" id="TtF-jk-8we"/>
+                <constraint firstItem="U9P-ds-eFK" firstAttribute="trailing" secondItem="COs-23-o3n" secondAttribute="trailing" constant="8" id="jEh-l2-z0r"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="U9P-ds-eFK"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="activity_biking" width="300" height="300"/>
+        <image name="activity_driving" width="300" height="300"/>
+        <image name="activity_running" width="300" height="300"/>
+        <image name="activity_standing" width="300" height="300"/>
+        <image name="activity_walking" width="300" height="300"/>
+    </resources>
+</document>

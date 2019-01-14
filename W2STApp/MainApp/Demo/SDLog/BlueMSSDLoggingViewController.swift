@@ -40,7 +40,7 @@ import BlueSTSDK
 
 public class BlueMSSDLoggingViewController: BlueMSDemoTabViewController, BlueMSSDLoggingView,
 UITableViewDataSource,BlueMSSDLogFeatureTableCellViewSelectDelegate{
-
+    
     private static let START_LOGGING_STR:String = {
         let bundle = Bundle(for: BlueMSSDLoggingViewController.self)
         return NSLocalizedString("Start Logging", tableName: nil, bundle: bundle,
@@ -65,6 +65,21 @@ UITableViewDataSource,BlueMSSDLogFeatureTableCellViewSelectDelegate{
                                  value: "SD IO Error", comment: "")
     }();
     
+    private static let DISABLED_DATA_WARNING_MSG:String = {
+        let bundle = Bundle(for: BlueMSSDLoggingViewController.self)
+        return NSLocalizedString("BLE sensor data not available while logging",
+                                 tableName: nil, bundle: bundle,
+                                 value: "BLE sensor data not available while logging",
+                                 comment: "")
+    }();
+    private static let DISABLED_DATA_WARNING_TITLE:String = {
+        let bundle = Bundle(for: BlueMSSDLoggingViewController.self)
+        return NSLocalizedString("Warning",
+                                 tableName: nil, bundle: bundle,
+                                 value: "Warning",
+                                 comment: "")
+    }();
+    
     private static let CELL_REUSE_ID = "BlueMSSDLogTableViewCell"
     
     @IBOutlet weak var mHoursValue: UITextField!
@@ -84,14 +99,18 @@ UITableViewDataSource,BlueMSSDLogFeatureTableCellViewSelectDelegate{
         mFeatureListTable.dataSource = self;
     }
     
-
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated);
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated);
         let logFeature = self.node.getFeatureOfType(BlueSTSDKFeatureSDLogging.self) as! BlueSTSDKFeatureSDLogging?;
         mPresenter = BlueMSSDLoggingPresenterImpl(self,logFeature)
         mPresenter.startDemo()
     }
-    
+
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        mPresenter.stopDemo()
+    }
+
     /// hide the keyboard when the user touch something outside the UITextField
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = event?.allTouches?.first
@@ -148,9 +167,10 @@ UITableViewDataSource,BlueMSSDLogFeatureTableCellViewSelectDelegate{
     }
     
     public func getLogInterval()->UInt32{
-        return BlueMSSDLoggingViewController.getNumberOr0(field: mSecondsValue) +
-            BlueMSSDLoggingViewController.getNumberOr0(field: mMinutesValue)*60 +
-            BlueMSSDLoggingViewController.getNumberOr0(field: mHoursValue)*60*60;
+        let seconds = BlueMSSDLoggingViewController.getNumberOr0(field: mSecondsValue)
+        let minute = BlueMSSDLoggingViewController.getNumberOr0(field: mMinutesValue)*60
+        let hours = BlueMSSDLoggingViewController.getNumberOr0(field: mHoursValue)*60*60
+        return seconds + minute + hours;
     }
     
     public func setLogInterval(seconds: UInt32) {
@@ -179,6 +199,17 @@ UITableViewDataSource,BlueMSSDLogFeatureTableCellViewSelectDelegate{
             self.mErrorLablel.text = error;
             self.mErrorLablel.isHidden=false;
         }
+    }
+    
+    public func displayDisabledDataTransferWarning() {
+        let dialog = UIAlertController(title: BlueMSSDLoggingViewController.DISABLED_DATA_WARNING_TITLE,
+                                       message: BlueMSSDLoggingViewController.DISABLED_DATA_WARNING_MSG,
+                                       preferredStyle: .alert);
+        
+        let okButton = UIAlertAction(title: "Ok", style: .cancel)
+        dialog.addAction(okButton)
+        
+        self.present(dialog, animated: true, completion: nil)
     }
     
     @IBAction func onStartStopLogPressed(_ sender: UIButton) {

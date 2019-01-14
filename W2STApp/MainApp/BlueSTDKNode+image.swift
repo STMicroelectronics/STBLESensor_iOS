@@ -52,11 +52,13 @@ public extension BlueSTSDKNode {
                 return UIImage(named:"steval_wesu1_reset_position.png" , in: bundle, compatibleWith: nil);
             case .nucleo:
                 return UIImage(named: "board_nucleo", in: bundle, compatibleWith: nil);
-            case .sensor_Tile:
+        case .sensor_Tile:
                 return UIImage(named: "board_sensorTile", in: bundle, compatibleWith: nil);
             case .blue_Coin:
                 return UIImage(named: "board_blueCoin", in: bundle, compatibleWith: nil);
-            case .generic:
+            case .STEVAL_BCN002V1:
+                return UIImage(named: "board_blueNRGTile", in: bundle, compatibleWith: nil);
+            case .STEVAL_IDB008VX,.sensor_Tile_101, .generic:
                 return nil;
         }
     }

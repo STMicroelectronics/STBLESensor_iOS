@@ -47,6 +47,7 @@ public protocol BlueMSSDLoggingView {
     func setLogInterval(seconds:UInt32);
     func displayIOErrorLoggingView();
     func displayNoSDCardErrorLoggingView();
+    func displayDisabledDataTransferWarning();
 }
 
 public protocol BlueMSSDLoggingPresenter{

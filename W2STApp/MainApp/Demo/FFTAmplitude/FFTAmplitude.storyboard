@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VGr-Qa-SqH">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--FTTAmplitude-->
+        <scene sceneID="Hjz-rc-WSe">
+            <objects>
+                <viewController id="VGr-Qa-SqH" customClass="FFTAmplitudeViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KQt-6n-N3m">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLJ-Ux-0b7">
+                                <rect key="frame" x="16" y="35" width="288" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jqy-3b-KSQ" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="8" y="63.5" width="304" height="429.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ior-Il-od9">
+                                <rect key="frame" x="8" y="501" width="304" height="2"/>
+                            </progressView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="f8Y-od-Qi8">
+                                <rect key="frame" x="8" y="511" width="304" height="0.0"/>
+                                <subviews>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="coe-0m-Xnw">
+                                        <rect key="frame" x="0.0" y="0.0" width="42" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qc0-pZ-YDm">
+                                        <rect key="frame" x="0.0" y="0.0" width="42" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGm-tG-xqF">
+                                        <rect key="frame" x="0.0" y="0.0" width="42" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jqy-3b-KSQ" firstAttribute="leading" secondItem="FaC-YV-PnB" secondAttribute="leading" constant="8" id="CG1-3o-hCk"/>
+                            <constraint firstItem="FaC-YV-PnB" firstAttribute="trailing" secondItem="jqy-3b-KSQ" secondAttribute="trailing" constant="8" id="Dge-zs-Xtv"/>
+                            <constraint firstItem="f8Y-od-Qi8" firstAttribute="leading" secondItem="FaC-YV-PnB" secondAttribute="leading" constant="8" id="IUK-jV-fk1"/>
+                            <constraint firstItem="f8Y-od-Qi8" firstAttribute="top" secondItem="Ior-Il-od9" secondAttribute="bottom" constant="8" id="KEs-mH-B26"/>
+                            <constraint firstItem="FaC-YV-PnB" firstAttribute="bottom" secondItem="f8Y-od-Qi8" secondAttribute="bottom" constant="8" id="NKB-L8-vMg"/>
+                            <constraint firstItem="FaC-YV-PnB" firstAttribute="trailing" secondItem="Ior-Il-od9" secondAttribute="trailing" constant="8" id="PES-JC-qHs"/>
+                            <constraint firstItem="Ior-Il-od9" firstAttribute="leading" secondItem="FaC-YV-PnB" secondAttribute="leading" constant="8" id="T5I-Dx-6Mc"/>
+                            <constraint firstItem="Ior-Il-od9" firstAttribute="top" secondItem="jqy-3b-KSQ" secondAttribute="bottom" constant="8" id="UkD-TE-6wp"/>
+                            <constraint firstItem="FaC-YV-PnB" firstAttribute="trailing" secondItem="OLJ-Ux-0b7" secondAttribute="trailing" constant="16" id="a92-QA-Hun"/>
+                            <constraint firstItem="OLJ-Ux-0b7" firstAttribute="leading" secondItem="FaC-YV-PnB" secondAttribute="leading" constant="16" id="bIx-f5-Uy1"/>
+                            <constraint firstItem="FaC-YV-PnB" firstAttribute="trailing" secondItem="f8Y-od-Qi8" secondAttribute="trailing" constant="8" id="i8f-6X-aaE"/>
+                            <constraint firstItem="jqy-3b-KSQ" firstAttribute="top" secondItem="OLJ-Ux-0b7" secondAttribute="bottom" constant="8" id="jqp-7J-6s1"/>
+                            <constraint firstItem="OLJ-Ux-0b7" firstAttribute="top" secondItem="FaC-YV-PnB" secondAttribute="top" constant="15" id="vyx-GE-LSG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FaC-YV-PnB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="FTTAmplitude" image="chartIcon.png" id="YJS-63-akp"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="chart" destination="jqy-3b-KSQ" id="DVP-Zh-xeM"/>
+                        <outlet property="debugLabel" destination="OLJ-Ux-0b7" id="NWJ-8q-K1P"/>
+                        <outlet property="loadProgress" destination="Ior-Il-od9" id="wCd-yu-3Ib"/>
+                        <outlet property="xStatsLabel" destination="coe-0m-Xnw" id="5Pb-rs-kKC"/>
+                        <outlet property="yStatsLabel" destination="Qc0-pZ-YDm" id="1zh-KY-CUX"/>
+                        <outlet property="zStatsLabel" destination="yGm-tG-xqF" id="5DB-ga-ng9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tgp-fb-2DU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1.875" y="1.056338028169014"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chartIcon.png" width="16" height="16"/>
+    </resources>
+</document>

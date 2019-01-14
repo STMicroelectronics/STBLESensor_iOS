@@ -42,10 +42,10 @@
 #import "W2STSelectFeatureViewController.h"
 #import "BlueMSDemosViewController.h"
 
+#import <BlueSTSDK/BlueSTSDK-Swift.h>
 #import <BlueSTSDK/BlueSTSDKFeatureMagnetometer.h>
 #import <BlueSTSDK/BlueSTSDKFeatureCompass.h>
 #import <BlueSTSDK/BlueSTSDKFeatureAcceleration.h>
-#import <BlueSTSDK/BlueSTSDKFeatureActivity.h>
 #import <BlueSTSDK/BlueSTSDKFeatureGyroscope.h>
 #import <BlueSTSDK/BlueSTSDKFeatureHumidity.h>
 #import <BlueSTSDK/BlueSTSDKFeatureLuminosity.h>
@@ -60,6 +60,7 @@
 #import <BlueSTSDK/BlueSTSDKFeatureMicLevel.h>
 #import <BlueSTSDK/BlueSTSDKFeatureMotionIntensity.h>
 #import <BlueSTSDK/BlueSTSDKFeaturePedometer.h>
+#import <BlueSTSDK/BlueSTSDKFeatureCOSensor.h>
 
 #define Y_AXIS_BORDER 0.1f
 #define X_NAME BLUESTSDK_LOCALIZE(@"Time (ms)",nil)
@@ -142,7 +143,9 @@ static NSSet<Class> *sSupportedFeatureClass;
                 [BlueSTSDKFeaturePedometer class],
                 [BlueSTSDKFeatureProximity class],
                 [BlueSTSDKFeaturePressure class],
+                [BlueSTSDKFeatureCOSensor class],
                 [BlueSTSDKFeatureTemperature class],
+                [BlueSTSDKFeatureEulerAngle class],
                  nil ];
     }//if
 }//initialize
@@ -467,30 +470,30 @@ static NSSet<Class> *sSupportedFeatureClass;
     
     dispatch_async(mSerializePlotUpdateQueue,^{
         //check that in the mean time the used didn't select a new feature
-        if(mFeature==nil){ //plot stop
+        if(self->mFeature==nil){ //plot stop
             isPlotting=false;
             return;
         }
         
         double currentTime = CACurrentMediaTime();
-        double diffLastDataUpdate = currentTime-mLastDataUpdate;
-        if(mFirstTimeStamp<0){
-            mFirstTimeStamp=sample.timestamp;
-            mLastTimeStamp=0;
+        double diffLastDataUpdate = currentTime-self->mLastDataUpdate;
+        if(self->mFirstTimeStamp<0){
+            self->mFirstTimeStamp=sample.timestamp;
+            self->mLastTimeStamp=0;
         }
 
-        if(sample.timestamp<mLastTimeStamp){ // the data are old, avoid to plot it
+        if(sample.timestamp<self->mLastTimeStamp){ // the data are old, avoid to plot it
             isPlotting=false;
             return;
         }
         
-        mLastTimeStamp=sample.timestamp;
+        self->mLastTimeStamp=sample.timestamp;
 
         uint64_t xValue=sample.timestamp;
         
         if(forceUpdate){
-            mLastDataUpdate=currentTime;
-            mNForcedUpdate=0;
+            self->mLastDataUpdate=currentTime;
+            self->mNForcedUpdate=0;
             //update the text label
             
         }else{
@@ -502,20 +505,20 @@ static NSSet<Class> *sSupportedFeatureClass;
                 return;
             }else{
                 //increase the timestamp for duplicate the last received data
-                xValue += (++mNForcedUpdate)*(MAX_PLOT_UPDATE_DIFF_MS/MS_TO_TIMESTAMP_SCALE);
+                xValue += (++(self->mNForcedUpdate))*(MAX_PLOT_UPDATE_DIFF_MS/MS_TO_TIMESTAMP_SCALE);
             }//if-else
         }//if
         
         //convert from timestamp to time
-        xValue =(uint32_t)(xValue-mFirstTimeStamp)*MS_TO_TIMESTAMP_SCALE;
+        xValue =(uint32_t)(xValue-self->mFirstTimeStamp)*MS_TO_TIMESTAMP_SCALE;
         
         //the system clock is faster than the board one, so we run too much -> remove the sample that are in the future
-        if(((NSNumber*)mPlotDataX.lastObject).unsignedIntValue > xValue){
+        if(((NSNumber*)self->mPlotDataX.lastObject).unsignedIntValue > xValue){
             
             uint32_t nRemove =0;
-            while (mPlotDataX.count>0 && ((NSNumber*)mPlotDataX.lastObject).unsignedIntValue > xValue) {
-                [mPlotDataX removeLastObject];
-                [mPlotDataY removeLastObject];
+            while (self->mPlotDataX.count>0 && ((NSNumber*)self->mPlotDataX.lastObject).unsignedIntValue > xValue) {
+                [self->mPlotDataX removeLastObject];
+                [self->mPlotDataY removeLastObject];
                 nRemove++;
             }//while
                        
@@ -523,35 +526,35 @@ static NSSet<Class> *sSupportedFeatureClass;
         }//if
         
         //if is a proximity out of range value we add a 0 instad of the big value
-        if([mFeature isKindOfClass:BlueSTSDKFeatureProximity.class] &&
+        if([self->mFeature isKindOfClass:BlueSTSDKFeatureProximity.class] &&
             [BlueSTSDKFeatureProximity isOutOfRangeSample:sample]){
-                [mPlotDataY addObject:@[@(0)]];
+                [self->mPlotDataY addObject:@[@(0)]];
         }else{
-            [mPlotDataY addObject:sample.data];
+            [self->mPlotDataY addObject:sample.data];
         }
 
         NSNumber *lastXValue = @(xValue);
-        [mPlotDataX addObject:lastXValue];
+        [self->mPlotDataX addObject:lastXValue];
         
         unsigned int nRemove=0;
         // NSLog(@"Oldest: %@ newer:%@",((NSNumber*)mPlotDataX.firstObject),((NSNumber*)mPlotDataX.lastObject));
 //        const uint32_t lastTs =(((NSNumber*)mPlotDataX.lastObject).unsignedIntValue);
         while(( xValue-
-               (((NSNumber*) mPlotDataX[nRemove]).unsignedIntValue))
-              > mTimestampRange ){
+               (((NSNumber*) self->mPlotDataX[nRemove]).unsignedIntValue))
+              > self->mTimestampRange ){
             
             nRemove++;
         }//while
         
         if(nRemove!=0){
-            [mPlotDataX removeObjectsInRange:NSMakeRange(0, nRemove)];
-            [mPlotDataY removeObjectsInRange:NSMakeRange(0, nRemove)];
+            [self->mPlotDataX removeObjectsInRange:NSMakeRange(0, nRemove)];
+            [self->mPlotDataY removeObjectsInRange:NSMakeRange(0, nRemove)];
         }
         
         float minY=0,maxY=0;
-        if(mAutomaticRange){
+        if(self->mAutomaticRange){
             //update the y range
-            [self extractMaxMinFromData:mPlotDataY min:&minY max:&maxY];
+            [self extractMaxMinFromData:self->mPlotDataY min:&minY max:&maxY];
             float delta = maxY-minY;
             minY = minY - (delta)*Y_AXIS_BORDER;
             maxY = maxY + delta*Y_AXIS_BORDER;
@@ -560,24 +563,24 @@ static NSSet<Class> *sSupportedFeatureClass;
      //   if(currentTime-mLastPlotUpdate>0.016) // refresh at 60fps
        // if(currentTime-mLastPlotUpdate>0.1) // refresh at 30fps
             dispatch_sync(dispatch_get_main_queue(), ^{
-                    if(mFeature==nil){ //plot stop
+                    if(self->mFeature==nil){ //plot stop
                         isPlotting=false;
                         return;
                     }//if
                 
-                    mLastPlotUpdate = currentTime;
-                    CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)mGraph.defaultPlotSpace;
+                    self->mLastPlotUpdate = currentTime;
+                    CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)self->mGraph.defaultPlotSpace;
                 
                     plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:lastXValue
-                                                                length:mTimestampRangeDecimal];
+                                                                length:self->mTimestampRangeDecimal];
                  
-                    if(mAutomaticRange){
+                    if(self->mAutomaticRange){
                         plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:@(minY)
                                                                         length:@(maxY - minY)];
 
                     }//if automaticRange
                 
-                    [mGraph reloadData];
+                    [self->mGraph reloadData];
    
                     if(forceUpdate)
                         self.featureDataLabel.text=dataString;
@@ -585,7 +588,7 @@ static NSSet<Class> *sSupportedFeatureClass;
             });
         isPlotting=false;
         dispatch_time_t nextUpdate = dispatch_time(DISPATCH_TIME_NOW, MAX_PLOT_UPDATE_DIFF_MS*1000000L);
-        dispatch_after(nextUpdate,mForcePlotUpdateQueue, ^{
+        dispatch_after(nextUpdate,self->mForcePlotUpdateQueue, ^{
             [self insertPlotItem:false];
         });
 

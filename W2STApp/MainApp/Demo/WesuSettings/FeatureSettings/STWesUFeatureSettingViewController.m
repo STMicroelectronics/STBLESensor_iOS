@@ -192,7 +192,7 @@ didRegisterReadResult:(BlueSTSDKCommand *)cmd
     data.config = [BlueSTSDKWeSURegisterDefines extractFeatureConfig:cmd];
     
     dispatch_async(dispatch_get_main_queue(),^{
-        [mFeatureTable reloadData];
+        [self->mFeatureTable reloadData];
     });
 }
 
@@ -225,7 +225,7 @@ didRegisterWriteResult:(BlueSTSDKCommand *)cmd error:(NSInteger)error {    }
     mEditingData=nil;
 
     dispatch_async(dispatch_get_main_queue(),^{
-        [mFeatureTable reloadData];
+        [self->mFeatureTable reloadData];
     });
     
     

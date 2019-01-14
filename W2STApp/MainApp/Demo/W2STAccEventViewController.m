@@ -62,6 +62,24 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_Nucleo[] ={
     BlueSTSDKFeatureEventTypePedometer
 };
 
+static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_IDB008[] ={
+    BlueSTSDKFeatureEventTypeNone,
+    BlueSTSDKFeatureEventTypeFreeFall,
+    BlueSTSDKFeatureEventTypeSingleTap,
+    BlueSTSDKFeatureEventTypeWakeUp,
+    BlueSTSDKFeatureEventTypeTilt,
+    BlueSTSDKFeatureEventTypePedometer
+};
+
+static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_BNC002[] ={
+    BlueSTSDKFeatureEventTypeNone,
+    BlueSTSDKFeatureEventTypeWakeUp,
+    BlueSTSDKFeatureEventTypeSingleTap,
+    BlueSTSDKFeatureEventTypeTilt,
+    BlueSTSDKFeatureEventTypePedometer,
+    BlueSTSDKFeatureEventTypeFreeFall
+};
+
 #define TITLE_FORMAT BLUESTSDK_LOCALIZE(@"Event Enabled: %@",nil)
 #define DEFAULT_TITLE BLUESTSDK_LOCALIZE(@"Select event",nil)
 
@@ -108,8 +126,19 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_Nucleo[] ={
         mSupportedEventTypeSize = sizeof(sEventType_Wesu)/sizeof(BlueSTSDKFeatureAccelerationDetectableEventType);
         return;
     }
+    if(type == BlueSTSDKNodeTypeSTEVAL_IDB008VX){
+        mSupportedEventType = sEventType_IDB008;
+        mSupportedEventTypeSize = sizeof(sEventType_IDB008)/sizeof(BlueSTSDKFeatureAccelerationDetectableEventType);
+        return;
+    }
+    if(type == BlueSTSDKNodeTypeSTEVAL_BCN002V1){
+        mSupportedEventType = sEventType_BNC002;
+        mSupportedEventTypeSize = sizeof(sEventType_BNC002)/sizeof(BlueSTSDKFeatureAccelerationDetectableEventType);
+        return;
+    }
     mSupportedEventType = sEventType_Nucleo;
     mSupportedEventTypeSize = sizeof(sEventType_Nucleo)/sizeof(BlueSTSDKFeatureAccelerationDetectableEventType);
+    
     
 }
 
@@ -168,7 +197,8 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_Nucleo[] ={
             [BlueSTSDKFeatureAccelerometerEvent getAccelerationEvent:sample];
     
         const int32_t nSteps = [BlueSTSDKFeatureAccelerometerEvent getPedometerSteps:sample];
-    
+        NSLog(@"nStemps VC: %d ( %ld)",nSteps,event);
+
         dispatch_async(dispatch_get_main_queue(), ^{
             [self displayEventType:event data:nSteps];
         });
@@ -208,7 +238,6 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_Nucleo[] ={
 }
 
 -(void) selectEventAtIndex:(NSUInteger)row{
-    
     BlueSTSDKFeatureAccelerationDetectableEventType selectEvent;
     if (row>mSupportedEventTypeSize)
         selectEvent = BlueSTSDKFeatureEventTypeNone;
@@ -217,7 +246,11 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_Nucleo[] ={
     
     if(mCurrentEventTypeIndex!=row){ // the user select the something new
         //disable the prevous one
-        [mAccEventFeature enableEvent:mSupportedEventType[mCurrentEventTypeIndex] enable:false];
+        if(mCurrentEventTypeIndex<0){
+            [mAccEventFeature enableEvent:mAccEventFeature.DEFAULT_ENABLED_EVENT enable:false];
+        }else{
+            [mAccEventFeature enableEvent:mSupportedEventType[mCurrentEventTypeIndex] enable:false];
+        }
         mCurrentEventTypeIndex=row;
         //enable the new one
         [mAccEventFeature enableEvent:selectEvent enable:true];

@@ -99,9 +99,8 @@ class BlueMSBatteryInfoViewController: BlueMSDemoTabViewController, UITableViewD
     }
     
     private func infoNotAvailable(){
-        self.showErrorMsg(BlueMSBatteryInfoViewController.NOT_AVAILABLE_DIALOG_MSG,
-                          title:BlueMSBatteryInfoViewController.NOT_AVAILABLE_DIALOG_TITLE ,
-                          closeController:true);
+        showAllert(title: BlueMSBatteryInfoViewController.NOT_AVAILABLE_DIALOG_TITLE,
+                   message: BlueMSBatteryInfoViewController.NOT_AVAILABLE_DIALOG_MSG);
        // self.dismiss(animated: true);
     }
     

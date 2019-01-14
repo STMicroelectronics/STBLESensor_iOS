@@ -61,7 +61,6 @@ public class BlueMSSDLoggingPresenterImpl :NSObject, BlueMSSDLoggingPresenter, B
     
     public func startDemo() {
         if let feature = mLogFeature{
-            feature.add(self);
             mView.setLogInterval(seconds:BlueMSSDLoggingPresenterImpl.DEFAULT_LOG_INTERVAL)
             feature.add(self);
             feature.enableNotificaiton()
@@ -91,9 +90,13 @@ public class BlueMSSDLoggingPresenterImpl :NSObject, BlueMSSDLoggingPresenter, B
     private func startLogging(){
         syncNodeTime();
         let selectedFeature = mView.getSelectedFeature();
-        let interval = mView.getLogInterval();
+        var interval = mView.getLogInterval();
+        if(interval==0){
+            interval = BlueMSSDLoggingPresenterImpl.DEFAULT_LOG_INTERVAL
+        }
         mLogFeature?.sartLoggingFeature(selectedFeature, evrey: interval);
         mView.displayStopLoggingView()
+        mView.displayDisabledDataTransferWarning()
         isLogging=true
     }
     

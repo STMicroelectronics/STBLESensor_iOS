@@ -37,11 +37,11 @@
 
 import Foundation
 import SwiftyJSON
-import MQTTFramework
+import MQTTClient
 
 /// Class that send all the feature update to the azure cloud encoding the data
 /// into a json format
-public class BlueMSAzureIotFeatureListener : NSObject,BlueSTSDKFeatureDelegate{
+public class BlueMSAzureIotFeatureListener : BlueMSSubSampligFeatureDelegate{
     
     /// topic where publich the data
     private static let MQTT_TOPIC_FORMAT = "devices/%@/messages/events/";
@@ -65,10 +65,11 @@ public class BlueMSAzureIotFeatureListener : NSObject,BlueSTSDKFeatureDelegate{
         return formatter;
     }();
     
-    public init(conneciton:MCMQTTSession, deviceId:String){
+    public init(conneciton:MCMQTTSession, deviceId:String, minUpdateInterval:TimeInterval){
         mConneciton = conneciton;
         mDeviceId = deviceId;
         mNotificaitonTopic = String(format:BlueMSAzureIotFeatureListener.MQTT_TOPIC_FORMAT,deviceId);
+        super.init(minUpdateInterval: minUpdateInterval)
     }
     
     
@@ -100,8 +101,7 @@ public class BlueMSAzureIotFeatureListener : NSObject,BlueSTSDKFeatureDelegate{
         return jsonData;
     }
     
-    public func didUpdate(_ feature: BlueSTSDKFeature, sample: BlueSTSDKFeatureSample) {
-        
+    public override func featureHasNewUpdate(_ feature: BlueSTSDKFeature, sample: BlueSTSDKFeatureSample) {
         let json = createJsonSample(feature: feature, sample: sample);
         
         let jsonData = try? json.rawData();
@@ -114,7 +114,7 @@ public class BlueMSAzureIotFeatureListener : NSObject,BlueSTSDKFeatureDelegate{
                                     onTopic: mNotificaitonTopic,
                                     retain: false,
                                     qos: .atMostOnce);
-        }//if data
-    }//didUpdate
-    
+        }
+    }
+        
 }

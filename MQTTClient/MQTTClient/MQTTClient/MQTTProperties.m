@@ -6,9 +6,10 @@
 //  Copyright © 2017 Christoph Krey. All rights reserved.
 //
 
-#import "MQTTProperties.h"
+#import "MCMQTTProperties.h"
 
 @implementation MQTTProperties
+
 - (instancetype)init {
     return [self initFromData:[[NSData alloc] init]];
 }

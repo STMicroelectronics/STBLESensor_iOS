@@ -45,7 +45,7 @@ public class W2STAudioDumpController : NSObject,MFMailComposeViewControllerDeleg
 
     private static let MAIL_TITLE_FORMAT = "[%@] - Wave Audio";
     
-    private let mMenuController : BlueSTSDKViewControllerMenuDelegate;
+    private let mMenuController : BlueSTSDKViewControllerMenuDelegate?;
     private let mDateFormatter = DateFormatter()
     private let mParentViewController:UIViewController;
     private var startRecordingAction: UIAlertAction!;
@@ -54,7 +54,7 @@ public class W2STAudioDumpController : NSObject,MFMailComposeViewControllerDeleg
     private let mAudioConf:W2STAudioStreamConfig;
 
     public init(audioConf: W2STAudioStreamConfig, parentView: UIViewController,
-                menuController:BlueSTSDKViewControllerMenuDelegate){
+                menuController:BlueSTSDKViewControllerMenuDelegate?){
         mAudioConf=audioConf;
         
         mMenuController = menuController;
@@ -72,7 +72,7 @@ public class W2STAudioDumpController : NSObject,MFMailComposeViewControllerDeleg
         startRecordingAction = UIAlertAction(title: startText, style: .default) { action in self.startRecording() }
         stopRecordingAction = UIAlertAction(title: stopText, style: .default) { action in self.stopRecording() }
 
-        mMenuController.addMenuAction(startRecordingAction);
+        mMenuController?.addMenuAction(startRecordingAction);
 
     }
 
@@ -80,14 +80,14 @@ public class W2STAudioDumpController : NSObject,MFMailComposeViewControllerDeleg
         if(audioDump != nil){
             stopRecording();
         }
-        mMenuController.removeMenuAction(startRecordingAction);
+        mMenuController?.removeMenuAction(startRecordingAction);
     }
 
     private func startRecording() {
         audioDump = W2STWaveFileDump(audioParam:mAudioConf);
         if(audioDump != nil) {
-            mMenuController.removeMenuAction(startRecordingAction);
-            mMenuController.addMenuAction(stopRecordingAction);
+            mMenuController?.removeMenuAction(startRecordingAction);
+            mMenuController?.addMenuAction(stopRecordingAction);
         }
     }
 
@@ -98,8 +98,8 @@ public class W2STAudioDumpController : NSObject,MFMailComposeViewControllerDeleg
             if let view = mailView{
                 displayMailView(mailView: view);
             }
-            mMenuController.removeMenuAction(stopRecordingAction);
-            mMenuController.addMenuAction(startRecordingAction);
+            mMenuController?.removeMenuAction(stopRecordingAction);
+            mMenuController?.addMenuAction(startRecordingAction);
             audioDump=nil;
         }
     }

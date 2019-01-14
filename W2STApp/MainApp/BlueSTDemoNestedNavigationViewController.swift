@@ -36,10 +36,10 @@
  */
 import Foundation
 import BlueSTSDK
-
+import BlueSTSDK_Gui
 /// class that contains a demo inside a NavigationView controller
 public class BlueSTDemoNestedNavigationViewController:
-        BlueSTNestedNavigationViewController {
+        BlueSTNestedNavigationViewController, BlueSTSDKDemoViewProtocol {
     
     /// set the class property
     ///
@@ -51,21 +51,30 @@ public class BlueSTDemoNestedNavigationViewController:
         if let controller = viewController as? BlueSTDemoNestedNavigationViewController {
             controller.node = node;
             controller.menuDelegate = menuDelegate;
+            //propagate the information to the child view controllers
+            // it is needed since if the BlueSTDemoNestedNavigationViewController is inside the
+            // more view controller the willapperas and push controller are not called..
+            controller.viewControllers.forEach{ demoController in
+                BlueSTSDKDemoViewProtocolUtil.setupDemoProtocol(demo: demoController,
+                                                                node: node,
+                                                                menuDelegate: menuDelegate)
+            }
+            
         }
     }
     
     public var node:BlueSTSDKNode!;
-    public var menuDelegate:BlueSTSDKViewControllerMenuDelegate!;
+    public var menuDelegate:BlueSTSDKViewControllerMenuDelegate?;
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         //set the parameters for the root view controller
-        BlueMSDemoTabViewController.setViewControllerProperty(viewControllers[0], node: node, menuDelegate: menuDelegate);
+        BlueSTSDKDemoViewProtocolUtil.setupDemoProtocol(demo:viewControllers[0], node: node, menuDelegate: menuDelegate);
     }
     
     public override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         /// propagate the demo property to all the subview in this navigation Controller
-        BlueMSDemoTabViewController.setViewControllerProperty(viewController, node: node, menuDelegate: menuDelegate)
+        BlueSTSDKDemoViewProtocolUtil.setupDemoProtocol(demo:viewController, node: node, menuDelegate: menuDelegate)
         super.pushViewController(viewController, animated: animated);
     }
     

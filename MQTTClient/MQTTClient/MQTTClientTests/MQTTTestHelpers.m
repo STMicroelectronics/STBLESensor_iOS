@@ -11,37 +11,37 @@
 #import "MCMQTTCFSocketTransport.h"
 #import "MQTTInMemoryPersistence.h"
 #import "MQTTCoreDataPersistence.h"
-#import "MQTTWebsocketTransport.h"
+//#import "MQTTWebsocketTransport.h"
 #import "MQTTSSLSecurityPolicy.h"
 #import "MQTTSSLSecurityPolicyTransport.h"
 
 @implementation MQTTTestHelpers
 
-- (void)setUp {
-    [super setUp];
+static NSDictionary *brokers = nil;
+static NSDictionary *allBrokers = nil;
 
-#ifdef LUMBERJACK
-#ifdef DEBUG
-    [DDLog addLogger:[DDTTYLogger sharedInstance] withLevel:DDLogLevelVerbose];
-#else
-    [DDLog addLogger:[DDTTYLogger sharedInstance] withLevel:DDLogLevelWarning];
-#endif
-#endif
-    
++ (NSDictionary *)broker {
+    return [MQTTTestHelpers allBrokers][@"local"];
+}
+
++ (NSDictionary *)allBrokers {
+    if (allBrokers == nil) {
+        allBrokers = [MQTTTestHelpers loadAllBrokers];
+    }
+    return allBrokers;
+}
+
++ (NSDictionary *)loadAllBrokers {
     NSURL *url = [[NSBundle bundleForClass:[MQTTTestHelpers class]] URLForResource:@"MQTTTestHelpers"
                                                                      withExtension:@"plist"];
     NSDictionary *plist = [NSDictionary dictionaryWithContentsOfURL:url];
-    NSArray *brokerList = plist[@"brokerList"];
-    NSDictionary *brokers = plist[@"brokers"];
+    NSDictionary *plistBrokers = plist[@"brokers"];
+    return plistBrokers;
+}
 
-    self.brokers = [[NSMutableDictionary alloc] init];
-    for (NSString *brokerName in brokerList) {
-        NSDictionary *broker = brokers[brokerName];
-        if (broker) {
-            (self.brokers)[brokerName] = broker;
-        }
-    }
-
+- (void)setUp {
+    [super setUp];
+    [MQTTLog setLogLevel:DDLogLevelOff];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1
                                                   target:self
                                                 selector:@selector(ticker:)
@@ -277,16 +277,20 @@
     id<MQTTTransport> transport;
     
     if ([parameters[@"websocket"] boolValue]) {
-        MQTTWebsocketTransport *websocketTransport = [[MQTTWebsocketTransport alloc] init];
-        websocketTransport.host = parameters[@"host"];
-        websocketTransport.port = [parameters[@"port"] intValue];
-        websocketTransport.tls = [parameters[@"tls"] boolValue];
-        if (parameters[@"path"]) {
-            websocketTransport.path = parameters[@"path"];
-        }
-        websocketTransport.allowUntrustedCertificates = [parameters[@"allowUntrustedCertificates"] boolValue];
-
-        transport = websocketTransport;
+        NSException *exception = [NSException exceptionWithName:@"WebSockets tests currently disabled" reason:@"" userInfo:nil];
+        @throw exception;
+        /*
+         MQTTWebsocketTransport *websocketTransport = [[MQTTWebsocketTransport alloc] init];
+         websocketTransport.host = parameters[@"host"];
+         websocketTransport.port = [parameters[@"port"] intValue];
+         websocketTransport.tls = [parameters[@"tls"] boolValue];
+         if (parameters[@"path"]) {
+         websocketTransport.path = parameters[@"path"];
+         }
+         websocketTransport.allowUntrustedCertificates = [parameters[@"allowUntrustedCertificates"] boolValue];
+         
+         transport = websocketTransport;
+         */
     } else {
         MQTTSSLSecurityPolicy *securityPolicy = [MQTTTestHelpers securityPolicy:parameters];
         if (securityPolicy) {
@@ -296,7 +300,7 @@
             sslSecPolTransport.tls = [parameters[@"tls"] boolValue];
             sslSecPolTransport.certificates = [MQTTTestHelpers clientCerts:parameters];
             sslSecPolTransport.securityPolicy = securityPolicy;
-
+            
             transport = sslSecPolTransport;
         } else {
             MCMQTTCFSocketTransport *cfSocketTransport = [[MCMQTTCFSocketTransport alloc] init];

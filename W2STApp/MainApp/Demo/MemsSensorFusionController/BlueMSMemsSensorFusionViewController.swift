@@ -38,8 +38,8 @@
 import Foundation;
 import BlueSTSDK;
 import SceneKit;
-import AudioToolbox
 import GLKit;
+import AudioToolbox
 
 
 public class BlueMSMemsSensorFusionViewController: BlueMSCalibrationViewController,
@@ -167,11 +167,12 @@ public class BlueMSMemsSensorFusionViewController: BlueMSCalibrationViewControll
             self.node.disableNotification(feature);
             feature.remove(self);
         }
+        mProximityButton.isSelected=false;
     }
 
 
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated);
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated);
         
         enableFreeFall();
         enableProximity();
@@ -253,7 +254,6 @@ public class BlueMSMemsSensorFusionViewController: BlueMSCalibrationViewControll
     private func updateProximty(sample:BlueSTSDKFeatureSample){
 
         let distance = PoroximityType(BlueSTSDKFeatureProximity.getDistance(sample));
-        
         if (distance != PoroximityType(BlueSTSDKFeatureProximity.outOfRangeValue())){
             let scaleDistance = PoroximityType.minimum(distance, BlueMSMemsSensorFusionViewController.MAX_PROXIMITY_VALUE);
             let scale = BlueMSMemsSensorFusionViewController.CUBE_DEFAULT_SCALE*(scaleDistance/BlueMSMemsSensorFusionViewController.MAX_PROXIMITY_VALUE);

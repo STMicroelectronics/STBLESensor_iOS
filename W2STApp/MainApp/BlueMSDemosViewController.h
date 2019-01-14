@@ -38,8 +38,8 @@
 
 #import <UIKit/UIKit.h>
 
-#include <BlueSTSDK/BlueSTSDKNode.h>
-#include <BlueSTSDK_Gui/BlueSTSDKViewControllerMenuDelegate.h>
+#import <BlueSTSDK/BlueSTSDKNode.h>
+#import <BlueSTSDK_Gui/BlueSTSDK_Gui-Swift.h>
 
 /**
  *  it is a view that is the root for the other view that contains the real demo
@@ -49,10 +49,10 @@
  * send by the node are loged in csv files, when the user stop the logging a mail with
  * the files is send,
  */
-@interface BlueMSDemosViewController : UITabBarController
-@property (retain, nonatomic) BlueSTSDKNode *node;
+@interface BlueMSDemosViewController : UITabBarController<BlueSTSDKDemoViewProtocol>
+@property (retain, nonatomic) BlueSTSDKNode* _Nonnull node ;
+@property (retain,nonatomic) id<BlueSTSDKViewControllerMenuDelegate> _Nullable menuDelegate;
 
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *actionButton;
-@property (retain, nonatomic) id<BlueSTSDKViewControllerMenuDelegate> menuDelegate;
+@property (nonatomic) IBOutlet UIBarButtonItem* _Nonnull actionButton;
 
 @end

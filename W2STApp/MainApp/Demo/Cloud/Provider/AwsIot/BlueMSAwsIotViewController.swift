@@ -162,31 +162,28 @@ public class BlueMSAwsIotViewController : BlueMSCloudConfigDetailsViewController
     public override func buildConnectionFactory() -> BlueMSCloudIotConnectionFactory?{
         let clientId = mConnecitonIdTextView.text;
         guard isValidClientIdStr(clientId) else {
-            showErrorMsg(BlueMSAwsIotViewController.INVALID_CLIENT_ID,
-                         title: BlueMSAwsIotViewController.MISSING_DATA_TITLE,
-                         closeController: false);
+            showAllert(title: BlueMSAwsIotViewController.MISSING_DATA_TITLE,
+                       message:BlueMSAwsIotViewController.INVALID_CLIENT_ID)
             return nil;
         }
         let endpoint = mEndpointTextView.text;
         guard isValidEndpointStr(endpoint) else {
-            showErrorMsg(BlueMSAwsIotViewController.INVALID_ENDPOINT,
-                         title: BlueMSAwsIotViewController.MISSING_DATA_TITLE,
-                         closeController: false);
+            showAllert( title: BlueMSAwsIotViewController.MISSING_DATA_TITLE,
+                         message: BlueMSAwsIotViewController.INVALID_ENDPOINT)
             return nil;
         }
         guard mCertificateFile != nil else{
-            showErrorMsg(BlueMSAwsIotViewController.MISSING_CERTIFICATE_FILE,
-                         title: BlueMSAwsIotViewController.MISSING_DATA_TITLE,
-                         closeController: false);
+            showAllert( title: BlueMSAwsIotViewController.MISSING_DATA_TITLE,
+                        message: BlueMSAwsIotViewController.MISSING_CERTIFICATE_FILE)
             return nil;
         }
         guard mPrivateKeyFile != nil else{
-            showErrorMsg(BlueMSAwsIotViewController.MISSING_PRIVATE_KEY_FILE,
-                         title: BlueMSAwsIotViewController.MISSING_DATA_TITLE,
-                         closeController: false);
+            showAllert( title: BlueMSAwsIotViewController.MISSING_DATA_TITLE,
+                        message: BlueMSAwsIotViewController.MISSING_PRIVATE_KEY_FILE)
             return nil;
         }
         storeSettings()
+        showDetailsButton()
         let httpsEndpoint = BlueMSAwsIotViewController.addHttpsPrefix(endpoint!);
         return BlueMSAwsIotConnectionFactory(endpointUrl: httpsEndpoint,deviceId: clientId!,certificate: mCertificateFile!,privateKey: mPrivateKeyFile!);
     }

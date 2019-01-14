@@ -37,17 +37,6 @@
 
 
 #import "BlueMSDemoTabViewController.h"
-
 @implementation BlueMSDemoTabViewController
-
-+(void)setViewControllerProperty:(UIViewController*)viewController
-                            node:(BlueSTSDKNode *)node
-                    menuDelegate:(id<BlueSTSDKViewControllerMenuDelegate>) menuDelegate{
-    if([viewController isKindOfClass:BlueMSDemoTabViewController.class]){
-        BlueMSDemoTabViewController *demo = (BlueMSDemoTabViewController *)viewController;
-        demo.node = node;
-        demo.menuDelegate = menuDelegate;
-    }
-}
 
 @end

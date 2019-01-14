@@ -10,7 +10,7 @@
 
 #import "MQTTLog.h"
 #import "MQTTTestHelpers.h"
-#import "MCMQTTSessionSynchron.h"
+#import "MCMCMQTTSessionSynchron.h"
 
 @interface OneTest : NSObject <MCMQTTSessionDelegate>
 @property (strong, nonatomic) MCMQTTSession *session;
@@ -24,9 +24,9 @@
 - (id)setup:(NSDictionary *)parameters
 {
     self.parameters = parameters;
-
+    
     self.session = [MQTTTestHelpers session:parameters];
-
+    
     self.session.delegate = self;
     return self;
 }
@@ -127,22 +127,67 @@
 }
 
 - (void)testAsync {
-    for (NSString *broker in self.brokers.allKeys) {
-        DDLogVerbose(@"testing broker %@", broker);
-        NSDictionary *parameters = self.brokers[broker];
-        [self runAsync:parameters];
-    }
+    
+    
+    NSDictionary *parameters = MQTTTestHelpers.broker;
+    [self runAsync:parameters];
 }
 
 - (void)testSync {
-    for (NSString *broker in self.brokers.allKeys) {
-        DDLogVerbose(@"testing broker %@", broker);
-        NSDictionary *parameters = self.brokers[broker];
-        [self runSync:parameters];
-    }
+    
+    
+    NSDictionary *parameters = MQTTTestHelpers.broker;
+    [self runSync:parameters];
+    
 }
 
 - (void)testMultiConnect {
+<<<<<<< HEAD
+    
+    
+    NSDictionary *parameters = MQTTTestHelpers.broker;
+    NSMutableArray *connections = [[NSMutableArray alloc] initWithCapacity:MULTI];
+    
+    for (int i = 0; i < MULTI; i++) {
+        OneTest *oneTest = [[OneTest alloc] init];
+        [connections addObject:oneTest];
+    }
+    
+    for (OneTest *oneTest in connections) {
+        [oneTest setup:parameters];
+    }
+    
+    for (OneTest *oneTest in connections) {
+        [oneTest start];
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+    }
+    
+    for (OneTest *oneTest in connections) {
+        XCTAssertEqual(oneTest.event, MQTTSessionEventConnected, @"%@ Not Connected %ld %@", oneTest.session.clientId, (long)oneTest.event, oneTest.error);
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+    }
+    
+    for (OneTest *oneTest in connections) {
+        [oneTest sub];
+    }
+    
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:10]];
+    
+    for (OneTest *oneTest in connections) {
+        [oneTest pub];
+    }
+    
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:10]];
+    
+    for (OneTest *oneTest in connections) {
+        [oneTest close];
+    }
+    
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:10]];
+    
+    for (OneTest *oneTest in connections) {
+        [oneTest stop];
+=======
     for (NSString *broker in self.brokers.allKeys) {
         DDLogVerbose(@"testing broker %@", broker);
         NSDictionary *parameters = self.brokers[broker];
@@ -188,54 +233,55 @@
         for (OneTest *oneTest in connections) {
             [oneTest stop];
         }
+>>>>>>> rename mqttSession to avoid conlision with aws iot
     }
+    
 }
 
 - (void)testAsyncThreads {
-    for (NSString *broker in self.brokers.allKeys) {
-        DDLogVerbose(@"testing broker %@", broker);
-        NSDictionary *parameters = self.brokers[broker];
-
-        NSMutableArray *threads = [[NSMutableArray alloc] initWithCapacity:MULTI];
-
-        for (int i = 0; i < MULTI; i++) {
-            NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(runAsync:) object:parameters];
-            [threads addObject:thread];
-        }
-
-        for (NSThread *thread in threads) {
-            [thread start];
-        }
-
-        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:10]];
-
-        for (NSThread *thread in threads) {
-            [thread cancel];
-        }
+    
+    
+    NSDictionary *parameters = MQTTTestHelpers.broker;
+    
+    NSMutableArray *threads = [[NSMutableArray alloc] initWithCapacity:MULTI];
+    
+    for (int i = 0; i < MULTI; i++) {
+        NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(runAsync:) object:parameters];
+        [threads addObject:thread];
     }
+    
+    for (NSThread *thread in threads) {
+        [thread start];
+    }
+    
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:10]];
+    
+    for (NSThread *thread in threads) {
+        [thread cancel];
+    }
+    
 }
 
 - (void)testSyncThreads {
-    for (NSString *broker in self.brokers.allKeys) {
-        DDLogVerbose(@"testing broker %@", broker);
-        NSDictionary *parameters = self.brokers[broker];
-
-        NSMutableArray *threads = [[NSMutableArray alloc] initWithCapacity:MULTI];
-
-        for (int i = 0; i < MULTI; i++) {
-            NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(runSync:) object:parameters];
-            [threads addObject:thread];
-        }
-
-        for (NSThread *thread in threads) {
-            [thread start];
-        }
-
-        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:10]];
-
-        for (NSThread *thread in threads) {
-            [thread cancel];
-        }
+    
+    
+    NSDictionary *parameters = MQTTTestHelpers.broker;
+    
+    NSMutableArray *threads = [[NSMutableArray alloc] initWithCapacity:MULTI];
+    
+    for (int i = 0; i < MULTI; i++) {
+        NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(runSync:) object:parameters];
+        [threads addObject:thread];
+    }
+    
+    for (NSThread *thread in threads) {
+        [thread start];
+    }
+    
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:10]];
+    
+    for (NSThread *thread in threads) {
+        [thread cancel];
     }
 }
 
@@ -243,30 +289,38 @@
     OneTest *test = [[OneTest alloc] init];
     [test setup:parameters];
     [test start];
-
+    
     while (test.event == -1) {
         //DDLogVerbose(@"waiting for connection");
         [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
     }
+<<<<<<< HEAD
+    
+    XCTAssertEqual(test.event, MQTTSessionEventConnected, @"%@ Not Connected %ld %@", test.session.clientId, (long)test.event, test.error);
+    
+    if (test.session.status == MQTTSessionStatusConnected) {
+        
+=======
 
     XCTAssertEqual(test.event, MCMQTTSessionEventConnected, @"%@ Not Connected %ld %@", test.session.clientId, (long)test.event, test.error);
 
     if (test.session.status == MCMQTTSessionStatusConnected) {
 
+>>>>>>> rename mqttSession to avoid conlision with aws iot
         [test sub];
-
+        
         while (test.event == -1) {
             //DDLogVerbose(@"%@ waiting for suback", test.session.clientId);
             [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
         }
-
+        
         [test pub];
-
+        
         while (test.event == -1) {
             //DDLogVerbose(@"%@ waiting for puback", test.session.clientId);
             [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
         }
-
+        
         [test close];
         
         while (test.event == -1) {

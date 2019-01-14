@@ -17,8 +17,8 @@
 //    Kyle Roche - initial API and implementation and/or initial documentation
 //
 
-#import "MQTTMessage.h"
-#import "MQTTProperties.h"
+#import "MCMQTTMessage.h"
+#import "MCMQTTProperties.h"
 
 #import "MQTTLog.h"
 

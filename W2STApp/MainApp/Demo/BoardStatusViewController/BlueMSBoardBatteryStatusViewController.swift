@@ -99,9 +99,9 @@ public class BlueMSBoardBatteryStatusViewController: BlueMSDemoTabViewController
     
     
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        BlueMSDemoTabViewController.setViewControllerProperty(segue.destination,
-                                                              node: self.node,
-                                                              menuDelegate: self.menuDelegate);
+        BlueSTSDKDemoViewProtocolUtil.setupDemoProtocol(demo: segue.destination,
+                                                  node: self.node,
+                                                  menuDelegate: self.menuDelegate);
     }
     
     private func  loadBatteryCapacity(){
@@ -120,7 +120,7 @@ public class BlueMSBoardBatteryStatusViewController: BlueMSDemoTabViewController
         if let feature = mBatteryFeature{
             feature.add(self);
             feature.addBatteryDelegate(self);
-            self.menuDelegate.addMenuAction(mShowBatteryInfo);
+            self.menuDelegate?.addMenuAction(mShowBatteryInfo);
             self.node.enableNotification(feature);
             loadBatteryCapacity();
             loadMaxAssorbedCurrent();
@@ -132,7 +132,7 @@ public class BlueMSBoardBatteryStatusViewController: BlueMSDemoTabViewController
         if let feature = mBatteryFeature{
             feature.remove(self);
             feature.addBatteryDelegate(self)
-            self.menuDelegate.removeMenuAction(mShowBatteryInfo);
+            self.menuDelegate?.removeMenuAction(mShowBatteryInfo);
             self.node.disableNotification(feature);
         }
     }

@@ -24,10 +24,42 @@
                     disconnectHandler:nil];
     self.session.delegate = nil;
     self.session = nil;
-
+    
     [super tearDown];
 }
 
+<<<<<<< HEAD
+- (void)testConnectToWrongHostResultsInError {
+    XCTestExpectation *expectation = [self expectationWithDescription:@""];
+    
+    NSMutableDictionary *parameters = [MQTTTestHelpers.broker mutableCopy];
+    
+    parameters[@"host"] = @"abc";
+    self.session = [MQTTTestHelpers session:parameters];
+    [self.session connectWithConnectHandler:^(NSError *error) {
+        XCTAssertNotNil(error);
+        XCTAssertEqual(self.session.status, MQTTSessionStatusClosed);
+        [expectation fulfill];
+    }];
+    [self waitForExpectationsWithTimeout:10 handler:nil];
+    
+}
+
+- (void)testConnectToWrongPort1884ResultsInError {
+    XCTestExpectation *expectation = [self expectationWithDescription:@""];
+    
+    NSMutableDictionary *parameters = [MQTTTestHelpers.broker mutableCopy];
+    
+    parameters[@"port"] = @1884;
+    self.session = [MQTTTestHelpers session:parameters];
+    [self.session connectWithConnectHandler:^(NSError *error) {
+        XCTAssertNotNil(error);
+        XCTAssertEqual(self.session.status, MQTTSessionStatusClosed);
+        [expectation fulfill];
+    }];
+    [self waitForExpectationsWithTimeout:10 handler:nil];
+    
+=======
 - (void)test_connect_host_not_found {
     for (NSString *broker in self.brokers.allKeys) {
         DDLogVerbose(@"testing broker %@", broker);
@@ -66,6 +98,7 @@
         XCTAssertNotEqual(self.event, (NSInteger)MCMQTTSessionEventConnectionRefused, @"MCMQTTSessionEventConnectionRefused %@", self.error);
         XCTAssertNotEqual(self.event, (NSInteger)MCMQTTSessionEventProtocolError, @"MCMQTTSessionEventProtocolErrorr %@", self.error);
     }
+>>>>>>> rename mqttSession to avoid conlision with aws iot
 }
 
 @end

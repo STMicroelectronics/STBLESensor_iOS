@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l56-wu-bnz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l56-wu-bnz">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,7 +13,7 @@
         <!--IBM Watson IoT - Quickstart-->
         <scene sceneID="Bmx-8N-OA0">
             <objects>
-                <viewController title="IBM Watson IoT - Quickstart" id="C9I-KK-WCm" customClass="W2STCloudIBMWatsonQuickStartConfigViewController" sceneMemberID="viewController">
+                <viewController title="IBM Watson IoT - Quickstart" id="C9I-KK-WCm" customClass="BlueMSCloudIBMWatsonQuickStartConfigViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kCv-SX-QjA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,7 +31,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLa-kn-GbF">
-                                <rect key="frame" x="24" y="139" width="327" height="471"/>
+                                <rect key="frame" x="24" y="139" width="327" height="427"/>
                                 <connections>
                                     <segue destination="09I-wH-Id2" kind="embed" id="luE-9c-j8H"/>
                                 </connections>
@@ -41,7 +40,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="efm-YK-i8x" secondAttribute="trailing" constant="8" id="5GB-JV-IKE"/>
-                            <constraint firstItem="P44-yN-VYZ" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="VW7-dC-e14" secondAttribute="trailing" constant="20" symbolic="YES" id="6WZ-th-ukl"/>
+                            <constraint firstItem="P44-yN-VYZ" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="VW7-dC-e14" secondAttribute="trailing" symbolic="YES" id="6WZ-th-ukl"/>
                             <constraint firstItem="VW7-dC-e14" firstAttribute="top" secondItem="P44-yN-VYZ" secondAttribute="top" constant="8" id="CJT-qh-Txd"/>
                             <constraint firstItem="lLa-kn-GbF" firstAttribute="top" secondItem="efm-YK-i8x" secondAttribute="bottom" constant="8" id="CeT-WO-a80"/>
                             <constraint firstItem="VW7-dC-e14" firstAttribute="leading" secondItem="kCv-SX-QjA" secondAttribute="leadingMargin" constant="8" id="g2a-UV-K8l"/>
@@ -53,8 +52,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="P44-yN-VYZ"/>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="mDeviceIdText" destination="efm-YK-i8x" id="Egk-o2-wqX"/>
+                        <outlet property="mDeviceIdText" destination="efm-YK-i8x" id="7P7-0j-Qma"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NlP-me-VlY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -64,7 +65,7 @@
         <!--IBM Watson IoT-->
         <scene sceneID="hsz-wv-016">
             <objects>
-                <viewController title="IBM Watson IoT" id="Plz-bS-MX1" customClass="W2STCloudIBMWatsonIOTConfigViewController" sceneMemberID="viewController">
+                <viewController title="IBM Watson IoT" id="Plz-bS-MX1" customClass="BlueMSCloudIBMWatsonIOTConfigViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xVK-3J-Khn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,13 +73,6 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jW4-5N-EAD">
                                 <rect key="frame" x="24" y="72" width="327" height="538"/>
                                 <subviews>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zdi-17-yy0">
-                                        <rect key="frame" x="140" y="0.0" width="47" height="0.0"/>
-                                        <state key="normal" title="Details"/>
-                                        <connections>
-                                            <action selector="onDetailsButtonPressed:" destination="Plz-bS-MX1" eventType="touchUpInside" id="rHd-k5-ILI"/>
-                                        </connections>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Us-pq-6aJ">
                                         <rect key="frame" x="0.0" y="0.0" width="327" height="274"/>
                                         <subviews>
@@ -159,6 +153,13 @@
                                             <constraint firstItem="OB0-cL-s1h" firstAttribute="leading" secondItem="6Us-pq-6aJ" secondAttribute="leading" constant="8" id="xUo-R5-Ni8"/>
                                         </constraints>
                                     </view>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zdi-17-yy0">
+                                        <rect key="frame" x="140" y="274" width="47" height="0.0"/>
+                                        <state key="normal" title="Details"/>
+                                        <connections>
+                                            <action selector="onShowDetailsClick:" destination="Plz-bS-MX1" eventType="touchUpInside" id="TGm-TR-gug"/>
+                                        </connections>
+                                    </button>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VhA-f7-X4O">
                                         <rect key="frame" x="0.0" y="274" width="327" height="264"/>
                                         <connections>
@@ -168,7 +169,6 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="6Us-pq-6aJ" secondAttribute="trailing" id="JqF-gF-0kQ"/>
-                                    <constraint firstItem="Zdi-17-yy0" firstAttribute="centerX" secondItem="jW4-5N-EAD" secondAttribute="centerX" id="Zzu-LO-bB7"/>
                                     <constraint firstItem="6Us-pq-6aJ" firstAttribute="leading" secondItem="jW4-5N-EAD" secondAttribute="leading" id="pov-QV-U6k"/>
                                 </constraints>
                             </stackView>
@@ -187,12 +187,12 @@
                         <viewLayoutGuide key="safeArea" id="YBn-mX-eu1"/>
                     </view>
                     <connections>
-                        <outlet property="mAuthTocken" destination="f3n-1Q-7BE" id="o83-Tk-qQh"/>
-                        <outlet property="mDetailsView" destination="6Us-pq-6aJ" id="ieo-rC-sLK"/>
-                        <outlet property="mDeviceId" destination="vu9-eV-aKs" id="8NR-cQ-6oV"/>
-                        <outlet property="mDeviceType" destination="Sru-Ae-SgN" id="etj-R9-Ceq"/>
-                        <outlet property="mOrganization" destination="wfv-bZ-dhk" id="zbp-a9-93I"/>
-                        <outlet property="mShowDetailsButton" destination="Zdi-17-yy0" id="r6d-79-y1H"/>
+                        <outlet property="mAuthTockenText" destination="f3n-1Q-7BE" id="qkz-0g-eA0"/>
+                        <outlet property="mDetailsView" destination="6Us-pq-6aJ" id="Hhe-vH-rLd"/>
+                        <outlet property="mDeviceIdText" destination="vu9-eV-aKs" id="mZR-Si-DbH"/>
+                        <outlet property="mDeviceTypeText" destination="Sru-Ae-SgN" id="3ml-gD-4T7"/>
+                        <outlet property="mOrganizationText" destination="wfv-bZ-dhk" id="wEY-lX-gHJ"/>
+                        <outlet property="mShowDetailsButton" destination="Zdi-17-yy0" id="0iJ-Vo-avl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GvS-gQ-AKn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -202,7 +202,7 @@
         <!--Generic Mqtt-->
         <scene sceneID="e1r-Oh-1NN">
             <objects>
-                <viewController title="Generic Mqtt" id="CbA-Z3-G4z" customClass="W2STGenericMqttConfigurationViewController" sceneMemberID="viewController">
+                <viewController title="Generic Mqtt" id="CbA-Z3-G4z" customClass="BlueMSGenericMqttConfigurationViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8jf-o6-meu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -210,13 +210,6 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eXY-2M-wjp">
                                 <rect key="frame" x="24" y="72" width="327" height="494"/>
                                 <subviews>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgA-gl-b1Y">
-                                        <rect key="frame" x="140" y="0.0" width="47" height="0.0"/>
-                                        <state key="normal" title="Details"/>
-                                        <connections>
-                                            <action selector="onDetailsButtonCliecked:" destination="CbA-Z3-G4z" eventType="touchUpInside" id="CNu-lD-1qz"/>
-                                        </connections>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hs5-ZO-l3x">
                                         <rect key="frame" x="0.0" y="0.0" width="327" height="340.5"/>
                                         <subviews>
@@ -230,7 +223,7 @@
                                                 <rect key="frame" x="16" y="36.5" width="303" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" textContentType="url"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Port" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5x4-aL-uOh">
                                                 <rect key="frame" x="8" y="74.5" width="32.5" height="20.5"/>
@@ -275,10 +268,10 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UzR-NB-gpK">
-                                                <rect key="frame" x="270" y="102" width="51" height="31"/>
+                                                <rect key="frame" x="270" y="102.5" width="51" height="31"/>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tls" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmL-bG-T3e">
-                                                <rect key="frame" x="239" y="107.5" width="23" height="20.5"/>
+                                                <rect key="frame" x="239" y="108" width="23" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -329,6 +322,13 @@
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5x4-aL-uOh" secondAttribute="trailing" constant="20" symbolic="YES" id="zfa-NX-jp7"/>
                                         </constraints>
                                     </view>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgA-gl-b1Y">
+                                        <rect key="frame" x="140" y="340.5" width="47" height="0.0"/>
+                                        <state key="normal" title="Details"/>
+                                        <connections>
+                                            <action selector="onShowDetailsClick:" destination="CbA-Z3-G4z" eventType="touchUpInside" id="lWN-f3-TqM"/>
+                                        </connections>
+                                    </button>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nhi-jr-Zea">
                                         <rect key="frame" x="8" y="340.5" width="311" height="153.5"/>
                                         <connections>
@@ -357,88 +357,24 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="mBrokerText" destination="DRh-rm-2AW" id="YCr-1o-uy7"/>
-                        <outlet property="mClientText" destination="TcB-VH-ctG" id="mfv-rQ-H1x"/>
-                        <outlet property="mDetailsView" destination="Hs5-ZO-l3x" id="TBd-Or-GcT"/>
-                        <outlet property="mPasswordText" destination="RWc-kw-HKI" id="nM5-dJ-6DK"/>
-                        <outlet property="mPortText" destination="3Vs-Ss-XjZ" id="EUo-Io-Ug3"/>
-                        <outlet property="mShowDetailsButton" destination="bgA-gl-b1Y" id="S3O-6y-qb4"/>
-                        <outlet property="mTlsSwtich" destination="UzR-NB-gpK" id="lmz-w0-JaE"/>
-                        <outlet property="mUserText" destination="T9f-so-bcZ" id="Rhy-6H-EbY"/>
+                        <outlet property="mBrokerText" destination="DRh-rm-2AW" id="YEs-Yk-aey"/>
+                        <outlet property="mClientText" destination="TcB-VH-ctG" id="xS1-h4-puC"/>
+                        <outlet property="mDetailsView" destination="Hs5-ZO-l3x" id="Scc-u8-Xe6"/>
+                        <outlet property="mPasswordText" destination="RWc-kw-HKI" id="d0n-mG-o9v"/>
+                        <outlet property="mPortText" destination="3Vs-Ss-XjZ" id="Z0u-1P-Fxy"/>
+                        <outlet property="mShowDetailsButton" destination="bgA-gl-b1Y" id="9Px-z9-DS2"/>
+                        <outlet property="mTlsSwtich" destination="UzR-NB-gpK" id="vwF-DS-9dQ"/>
+                        <outlet property="mUserText" destination="T9f-so-bcZ" id="Kbn-Bd-2Bf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zLq-x5-Rlx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="11929" y="-271"/>
         </scene>
-        <!--Azure IoT - ST Web Dashboard-->
-        <scene sceneID="Ley-ea-ybV">
-            <objects>
-                <viewController title="Azure IoT - ST Web Dashboard" id="xAF-Wl-KxL" customClass="W2STSTAzureIotConfigurationViewController" customModule="ST_BlueMS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="94o-BM-DUT">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bSQ-Jn-gfP">
-                                <rect key="frame" x="24" y="138.5" width="327" height="471.5"/>
-                                <connections>
-                                    <segue destination="09I-wH-Id2" kind="embed" id="vu0-2o-odp"/>
-                                </connections>
-                            </containerView>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qn4-HL-l4H">
-                                <rect key="frame" x="24" y="72" width="327" height="58.5"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TzA-Es-CCG">
-                                        <rect key="frame" x="110.5" y="0.0" width="106" height="30"/>
-                                        <state key="normal" title="Register device"/>
-                                        <connections>
-                                            <action selector="onRegisterDeviceClick:" destination="xAF-Wl-KxL" eventType="touchUpInside" id="m0Q-dE-c1F"/>
-                                        </connections>
-                                    </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7Gv-bG-Eu6">
-                                        <rect key="frame" x="128.5" y="38" width="70" height="20.5"/>
-                                        <subviews>
-                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ilc-mA-Wzo">
-                                                <rect key="frame" x="0.0" y="0.0" width="20" height="20.5"/>
-                                            </activityIndicatorView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ct8-z6-bML">
-                                                <rect key="frame" x="28" y="0.0" width="42" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="qn4-HL-l4H" secondAttribute="trailing" constant="8" id="IIL-Wr-qFS"/>
-                            <constraint firstItem="bSQ-Jn-gfP" firstAttribute="leading" secondItem="94o-BM-DUT" secondAttribute="leadingMargin" constant="8" id="NQj-nt-YDo"/>
-                            <constraint firstItem="bSQ-Jn-gfP" firstAttribute="top" secondItem="qn4-HL-l4H" secondAttribute="bottom" constant="8" id="TkU-a1-L3q"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bSQ-Jn-gfP" secondAttribute="trailing" constant="8" id="Ur0-wn-7WU"/>
-                            <constraint firstItem="qn4-HL-l4H" firstAttribute="leading" secondItem="94o-BM-DUT" secondAttribute="leadingMargin" constant="8" id="pIV-NY-MTl"/>
-                            <constraint firstItem="qn4-HL-l4H" firstAttribute="top" secondItem="ErZ-ot-eS7" secondAttribute="top" constant="8" id="uEg-zM-8Js"/>
-                            <constraint firstItem="ErZ-ot-eS7" firstAttribute="bottom" secondItem="bSQ-Jn-gfP" secondAttribute="bottom" constant="8" id="wG5-hY-09s"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="ErZ-ot-eS7"/>
-                    </view>
-                    <connections>
-                        <outlet property="mActivityIndicator" destination="ilc-mA-Wzo" id="7ha-LL-Kny"/>
-                        <outlet property="mRegisterDeviceButton" destination="TzA-Es-CCG" id="gYc-OC-oEc"/>
-                        <outlet property="mStatusLabel" destination="Ct8-z6-bML" id="hwy-Se-mbw"/>
-                        <outlet property="mStatusView" destination="7Gv-bG-Eu6" id="aWc-9o-Lk4"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xTG-Vf-dvo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="11929" y="457"/>
-        </scene>
         <!--Azure IoT-->
         <scene sceneID="fgm-Ua-gHx">
             <objects>
-                <viewController title="Azure IoT" id="PZb-gk-KUc" customClass="BlueMSAzureIotViewController" customModule="ST_BlueMS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Azure IoT" id="PZb-gk-KUc" customClass="BlueMSAzureIotViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZYS-xo-aP1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -488,7 +424,7 @@
         <!--Aws IoT-->
         <scene sceneID="Jyr-ew-O1b">
             <objects>
-                <viewController title="Aws IoT" id="UEc-9Z-6om" customClass="BlueMSAwsIotViewController" customModule="ST_BlueMS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Aws IoT" id="UEc-9Z-6om" customClass="BlueMSAwsIotViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O7f-9N-OJh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -496,15 +432,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Feh-0K-emC">
                                 <rect key="frame" x="8" y="72" width="359" height="538"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJn-AM-UQJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="359" height="32"/>
-                                        <state key="normal" title="Show details"/>
-                                        <connections>
-                                            <action selector="onShowDetailsClick:" destination="UEc-9Z-6om" eventType="touchUpInside" id="Cco-qs-sbF"/>
-                                        </connections>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cWV-Zk-BpE">
-                                        <rect key="frame" x="0.0" y="32" width="359" height="196"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="196"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aws Endpoint" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFU-Dw-Xla">
                                                 <rect key="frame" x="8" y="8" width="103.5" height="20.5"/>
@@ -537,20 +466,20 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Private Key: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ReH-gz-54a">
-                                                <rect key="frame" x="8" y="169" width="94.5" height="20.5"/>
+                                                <rect key="frame" x="8" y="169.5" width="94.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="toy-EE-S5c">
-                                                <rect key="frame" x="110.5" y="136" width="44" height="30"/>
+                                                <rect key="frame" x="110.5" y="136.5" width="44" height="30"/>
                                                 <state key="normal" title="Select"/>
                                                 <connections>
                                                     <action selector="onSelectCertificateClick:" destination="UEc-9Z-6om" eventType="touchUpInside" id="WQK-qf-PMK"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXd-c0-DN1">
-                                                <rect key="frame" x="110.5" y="164.5" width="44" height="30"/>
+                                                <rect key="frame" x="110.5" y="165" width="44" height="30"/>
                                                 <state key="normal" title="Select"/>
                                                 <connections>
                                                     <action selector="onSelectPrivateKeyClick:" destination="UEc-9Z-6om" eventType="touchUpInside" id="rpC-oF-v5K"/>
@@ -585,6 +514,13 @@
                                             <constraint firstItem="T95-Op-THp" firstAttribute="leading" secondItem="eFU-Dw-Xla" secondAttribute="leading" constant="8" id="xBx-h8-O2I"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJn-AM-UQJ">
+                                        <rect key="frame" x="0.0" y="196" width="359" height="32"/>
+                                        <state key="normal" title="Show details"/>
+                                        <connections>
+                                            <action selector="onShowDetailsClick:" destination="UEc-9Z-6om" eventType="touchUpInside" id="Cco-qs-sbF"/>
+                                        </connections>
+                                    </button>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JeE-Py-Hle">
                                         <rect key="frame" x="0.0" y="228" width="359" height="310"/>
                                         <connections>
@@ -625,22 +561,82 @@
             </objects>
             <point key="canvasLocation" x="11989.6" y="1914.6926536731635"/>
         </scene>
+        <!--BlueMS Cloud Log Select Update Time View Controller-->
+        <scene sceneID="gFy-w3-13Q">
+            <objects>
+                <viewController id="u0l-vj-ytU" customClass="BlueMSCloudLogSelectUpdateTimeViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jMl-tv-e3e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select the minimum update interval" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHd-EB-CNp">
+                                <rect key="frame" x="8" y="28" width="359" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="F83-n6-VZh">
+                                <rect key="frame" x="8" y="57" width="359" height="602"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cloudLog_timeIntervalCell" textLabel="2yn-vi-uuf" style="IBUITableViewCellStyleDefault" id="icW-BX-i4F">
+                                        <rect key="frame" x="0.0" y="28" width="359" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="icW-BX-i4F" id="JQh-yW-4YS">
+                                            <rect key="frame" x="0.0" y="0.0" width="359" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2yn-vi-uuf">
+                                                    <rect key="frame" x="15" y="0.0" width="329" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="CJt-U2-Vjv" firstAttribute="bottom" secondItem="F83-n6-VZh" secondAttribute="bottom" constant="8" id="9j2-ay-Stb"/>
+                            <constraint firstItem="F83-n6-VZh" firstAttribute="top" secondItem="qHd-EB-CNp" secondAttribute="bottom" constant="8" id="NVH-9H-kzB"/>
+                            <constraint firstItem="CJt-U2-Vjv" firstAttribute="trailing" secondItem="qHd-EB-CNp" secondAttribute="trailing" constant="8" id="Qiu-e8-cpt"/>
+                            <constraint firstItem="qHd-EB-CNp" firstAttribute="top" secondItem="CJt-U2-Vjv" secondAttribute="top" constant="8" id="epL-8N-Kkj"/>
+                            <constraint firstItem="CJt-U2-Vjv" firstAttribute="trailing" secondItem="F83-n6-VZh" secondAttribute="trailing" constant="8" id="nRI-gy-4sX"/>
+                            <constraint firstItem="qHd-EB-CNp" firstAttribute="leading" secondItem="CJt-U2-Vjv" secondAttribute="leading" constant="8" id="tr1-DL-t75"/>
+                            <constraint firstItem="F83-n6-VZh" firstAttribute="leading" secondItem="CJt-U2-Vjv" secondAttribute="leading" constant="8" id="ypp-59-i7r"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CJt-U2-Vjv"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="368" height="326"/>
+                    <connections>
+                        <outlet property="mTimeIntervalList" destination="F83-n6-VZh" id="duM-Vt-21A"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dpr-HX-Dt2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="11311" y="-2270"/>
+        </scene>
         <!--Cloud Logging-->
         <scene sceneID="NEj-xi-ebk">
             <objects>
-                <viewController title="Cloud Logging" id="ZKZ-ko-zif" customClass="W2STCloudProviderSelectViewController" sceneMemberID="viewController">
+                <viewController title="Cloud Logging" id="ZKZ-ko-zif" customClass="BlueMSCloudProviderSelectViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pol-Rh-Rcf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select the cloud provider" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pt6-ii-Lee">
-                                <rect key="frame" x="24" y="72" width="327" height="21"/>
+                                <rect key="frame" x="24" y="126" width="327" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nef-Dy-51L">
-                                <rect key="frame" x="24" y="101" width="327" height="509"/>
+                                <rect key="frame" x="24" y="155" width="327" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CloudProviderName" textLabel="lM1-tu-n0Q" style="IBUITableViewCellStyleDefault" id="aVh-7i-yXX">
@@ -662,27 +658,55 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update interval:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fG-Fn-IPr">
+                                <rect key="frame" x="33" y="89" width="121" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Owe-VJ-CpP">
+                                <rect key="frame" x="162" y="89" width="40.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVI-ZO-yhl">
+                                <rect key="frame" x="306" y="85" width="53" height="30"/>
+                                <state key="normal" title="Change"/>
+                                <connections>
+                                    <segue destination="u0l-vj-ytU" kind="popoverPresentation" popoverAnchorView="xVI-ZO-yhl" id="HFe-EB-1E1">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Owe-VJ-CpP" firstAttribute="baseline" secondItem="2fG-Fn-IPr" secondAttribute="baseline" id="9Qo-Mi-WIT"/>
+                            <constraint firstItem="Owe-VJ-CpP" firstAttribute="leading" secondItem="2fG-Fn-IPr" secondAttribute="trailing" constant="8" id="CGS-pX-ROv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Nef-Dy-51L" secondAttribute="trailing" constant="8" id="Gak-0r-djQ"/>
+                            <constraint firstItem="D6x-Da-k7c" firstAttribute="trailing" secondItem="xVI-ZO-yhl" secondAttribute="trailing" constant="16" id="Hl1-95-ihs"/>
                             <constraint firstItem="Nef-Dy-51L" firstAttribute="top" secondItem="Pt6-ii-Lee" secondAttribute="bottom" constant="8" id="Hmm-Pn-rEy"/>
-                            <constraint firstItem="Pt6-ii-Lee" firstAttribute="top" secondItem="D6x-Da-k7c" secondAttribute="top" constant="8" id="QU4-mL-DIg"/>
+                            <constraint firstItem="xVI-ZO-yhl" firstAttribute="baseline" secondItem="Owe-VJ-CpP" secondAttribute="baseline" id="LJW-hP-Oxr"/>
+                            <constraint firstItem="xVI-ZO-yhl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Owe-VJ-CpP" secondAttribute="trailing" constant="8" id="Vsx-LR-dcl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Pt6-ii-Lee" secondAttribute="trailing" constant="8" id="XOh-Eg-zOG"/>
+                            <constraint firstItem="2fG-Fn-IPr" firstAttribute="top" secondItem="D6x-Da-k7c" secondAttribute="top" constant="25" id="kxU-fz-Azr"/>
+                            <constraint firstItem="Pt6-ii-Lee" firstAttribute="top" secondItem="2fG-Fn-IPr" secondAttribute="bottom" constant="16" id="pT8-ZP-0Gr"/>
                             <constraint firstItem="D6x-Da-k7c" firstAttribute="bottom" secondItem="Nef-Dy-51L" secondAttribute="bottom" constant="8" id="qRw-uJ-6p2"/>
                             <constraint firstItem="Nef-Dy-51L" firstAttribute="leading" secondItem="Pol-Rh-Rcf" secondAttribute="leadingMargin" constant="8" id="rXk-8M-bM2"/>
                             <constraint firstItem="Pt6-ii-Lee" firstAttribute="leading" secondItem="Pol-Rh-Rcf" secondAttribute="leadingMargin" constant="8" id="sQR-iW-XVS"/>
+                            <constraint firstItem="2fG-Fn-IPr" firstAttribute="leading" secondItem="D6x-Da-k7c" secondAttribute="leading" constant="33" id="xfu-8p-Obz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="D6x-Da-k7c"/>
                     </view>
                     <navigationItem key="navigationItem" id="BEt-sh-I5M"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="mCloudProviderList" destination="Nef-Dy-51L" id="5Wu-kV-xX2"/>
+                        <outlet property="mCloudProviderList" destination="Nef-Dy-51L" id="11I-fh-GGl"/>
+                        <outlet property="mUpdateIntervalValue" destination="Owe-VJ-CpP" id="jBZ-Ts-lRt"/>
                         <segue destination="C9I-KK-WCm" kind="show" identifier="BlueMxQuickStart_segue" id="5iM-lE-eRt"/>
                         <segue destination="Plz-bS-MX1" kind="show" identifier="BlueMx_segue" id="qRy-ye-qtV"/>
                         <segue destination="CbA-Z3-G4z" kind="show" identifier="GenericMqtt_segue" id="s4u-KH-cGt"/>
-                        <segue destination="xAF-Wl-KxL" kind="show" identifier="STAzureIot_segue" id="Lo7-43-mX5"/>
                         <segue destination="PZb-gk-KUc" kind="show" identifier="AzureIot_segue" id="dYn-7w-Yfx"/>
                         <segue destination="UEc-9Z-6om" kind="show" identifier="AwsIoT_Segue" id="xhW-tm-U5w"/>
                     </connections>
@@ -691,50 +715,50 @@
             </objects>
             <point key="canvasLocation" x="10791" y="-1373"/>
         </scene>
-        <!--Cloud Connection View Controller-->
+        <!--BlueMS Cloud Connection View Controller-->
         <scene sceneID="o50-mX-dtr">
             <objects>
-                <viewController id="09I-wH-Id2" customClass="W2STCloudConnectionViewController" sceneMemberID="viewController">
+                <viewController id="09I-wH-Id2" customClass="BlueMSCloudConnectionViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tK3-zW-bkA">
-                        <rect key="frame" x="0.0" y="0.0" width="359" height="310"/>
+                        <rect key="frame" x="0.0" y="0.0" width="311" height="153.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DcM-fY-3pd">
-                                <rect key="frame" x="24" y="8" width="311" height="30"/>
+                                <rect key="frame" x="24" y="8" width="263" height="30"/>
                                 <state key="normal" title="Connect"/>
                                 <connections>
-                                    <action selector="onConnectButtonPress:" destination="09I-wH-Id2" eventType="touchUpInside" id="DE2-mf-Rg2"/>
+                                    <action selector="onConnectButtonPressed:" destination="09I-wH-Id2" eventType="touchUpInside" id="JtI-HY-u20"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8r-Ll-eZt">
-                                <rect key="frame" x="24" y="269" width="311" height="33"/>
+                                <rect key="frame" x="24" y="112.5" width="263" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="View Data on Cloud"/>
                                 <connections>
-                                    <action selector="onViewDataButtonClick:" destination="09I-wH-Id2" eventType="touchUpInside" id="R5K-5E-0iy"/>
+                                    <action selector="onViewDataButtonPressed:" destination="09I-wH-Id2" eventType="touchUpInside" id="PaQ-l2-x23"/>
                                 </connections>
                             </button>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hyW-op-DKR">
-                                <rect key="frame" x="24" y="46" width="311" height="215"/>
+                                <rect key="frame" x="24" y="46" width="263" height="58.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BlueMSCloudLogTableViewCell" id="bFR-cR-tpu" customClass="W2STCloudFeatureTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="311" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BlueMSCloudLogTableViewCell" id="bFR-cR-tpu" customClass="BlueMSCloudFeatureTableViewCell" customModule="ST_BLE_Sensor" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="263" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bFR-cR-tpu" id="M0r-1x-gti">
-                                            <rect key="frame" x="0.0" y="0.0" width="311" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="263" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0f-D7-uMB">
-                                                    <rect key="frame" x="16" y="11" width="222" height="21"/>
+                                                    <rect key="frame" x="16" y="11.5" width="174" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YMH-dy-xxZ">
-                                                    <rect key="frame" x="246" y="6" width="51" height="31"/>
+                                                    <rect key="frame" x="198" y="6.5" width="51" height="31"/>
                                                     <connections>
-                                                        <action selector="onSwitchChange:" destination="bFR-cR-tpu" eventType="valueChanged" id="5qj-rF-1nJ"/>
+                                                        <action selector="onSwitchChange:" destination="bFR-cR-tpu" eventType="valueChanged" id="NHs-Ln-ioK"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
@@ -747,8 +771,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="mEnableFeature" destination="YMH-dy-xxZ" id="JTi-M9-1JO"/>
-                                            <outlet property="mFeatureName" destination="S0f-D7-uMB" id="ytL-EK-5Bw"/>
+                                            <outlet property="mEnableFeature" destination="YMH-dy-xxZ" id="5TS-hP-DLx"/>
+                                            <outlet property="mFeatureName" destination="S0f-D7-uMB" id="DIe-cl-xan"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -770,9 +794,9 @@
                         <viewLayoutGuide key="safeArea" id="2sd-su-JMT"/>
                     </view>
                     <connections>
-                        <outlet property="mConnectButton" destination="DcM-fY-3pd" id="8uz-Ow-pfy"/>
-                        <outlet property="mListFeature" destination="hyW-op-DKR" id="JHO-vE-o0P"/>
-                        <outlet property="mShowDataButton" destination="d8r-Ll-eZt" id="U7T-mu-xhs"/>
+                        <outlet property="mConnectButton" destination="DcM-fY-3pd" id="NCe-nG-iXr"/>
+                        <outlet property="mFeatureList" destination="hyW-op-DKR" id="bwR-Yq-zFD"/>
+                        <outlet property="mShowDataButton" destination="d8r-Ll-eZt" id="isr-OI-5jT"/>
                         <segue destination="PMg-1J-bgO" kind="show" identifier="cloudShowCloudData" id="KTE-6N-Irz"/>
                         <segue destination="juq-zx-0Q1" kind="show" identifier="cloudStartFwUpgrade" id="c2O-9Y-GN2"/>
                     </connections>
@@ -784,9 +808,9 @@
         <!--Cloud Data-->
         <scene sceneID="B0R-o6-8cb">
             <objects>
-                <viewController title="Cloud Data" id="PMg-1J-bgO" customClass="W2STCloudDataPageViewController" sceneMemberID="viewController">
+                <viewController title="Cloud Data" id="PMg-1J-bgO" customClass="BlueMSCloudDataPageViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cmx-JL-hf7">
-                        <rect key="frame" x="0.0" y="0.0" width="359" height="310"/>
+                        <rect key="frame" x="0.0" y="0.0" width="311" height="153.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="rnx-Mo-bsc"/>
@@ -807,7 +831,7 @@
         <!--Cloud Logging-->
         <scene sceneID="pk9-ce-0oQ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="l56-wu-bnz" customClass="BlueSTDemoNestedNavigationViewController" customModule="ST_BlueMS" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="l56-wu-bnz" customClass="BlueSTDemoNestedNavigationViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Cloud Logging" image="cloudLog_demo_icon" id="J1e-hp-2f6"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -829,6 +853,6 @@
         <image name="cloudLog_demo_icon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8zh-WZ-t4q"/>
+        <segue reference="BVY-aD-1Pd"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -34,15 +34,19 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
  * OF SUCH DAMAGE.
  */
-import Foundation
-import MQTTFramework
 
-@objc
-public class BlueMSCloudIotMQTTClient:NSObject,BlueMSCloudIotClient{
+
+import Foundation
+import MQTTClient
+
+public class BlueMSCloudIotMQTTClient:BlueMSCloudIotClient{
+    public var isConnected: Bool {
+        return connection.status == .connected
+    }
     
-    @objc public let connection:MCMQTTSession;
+    public let connection:MCMQTTSession;
     
-    @objc public init(_ session:MCMQTTSession){
+    public init(_ session:MCMQTTSession){
         connection = session;
     }
     
@@ -53,9 +57,4 @@ public class BlueMSCloudIotMQTTClient:NSObject,BlueMSCloudIotClient{
     public func disconnect(_ callback: OnIotClientActionCallback? = nil) {
         connection.close(disconnectHandler: callback)
     }
-    
-    public func isConnected() -> Bool {
-        return connection.status == .connected;
-    }
-    
 }

@@ -36,7 +36,7 @@
  */
 
 import Foundation
-import MQTTFramework
+import MQTTClient
 
 public class Dummy : NSObject,BlueSTSDKFeatureDelegate{
     public func didUpdate(_ feature: BlueSTSDKFeature, sample: BlueSTSDKFeatureSample) {
@@ -90,9 +90,9 @@ public class BlueMSAzureIotConnectionFactory : BlueMSCloudIotConnectionFactory{
         return BlueMSCloudIotMQTTClient(session!);
     }
         
-    public func getFeatureDelegate(withSession session: BlueMSCloudIotClient) -> BlueSTSDKFeatureDelegate {
+    public func getFeatureDelegate(withSession session: BlueMSCloudIotClient, minUpdateInterval: TimeInterval) -> BlueSTSDKFeatureDelegate {
         let mqttClient = session as! BlueMSCloudIotMQTTClient;
-        return BlueMSAzureIotFeatureListener(conneciton: mqttClient.connection, deviceId: param.deviceId);
+        return BlueMSAzureIotFeatureListener(conneciton: mqttClient.connection, deviceId: param.deviceId,minUpdateInterval:minUpdateInterval);
     }
     
     public func getDataUrl() -> URL? {
@@ -100,10 +100,11 @@ public class BlueMSAzureIotConnectionFactory : BlueMSCloudIotConnectionFactory{
     }
     
     public func isSupportedFeature(_ feature: BlueSTSDKFeature) -> Bool {
-        return true;
+        return BlueMSCloudUtil.isCloudSupportedFeature(feature);
     }
     
-    public func enableCloudFwUpgrade(for node: BlueSTSDKNode, connection cloudConnection: BlueMSCloudIotClient, callback: @escaping OnFwUpgradeAvailableCallback) -> Bool {
+    public func enableCloudFwUpgrade(for node: BlueSTSDKNode, connection: BlueMSCloudIotClient,
+                                     callback:@escaping OnFwUpgradeAvailableCallback) -> Bool {
         return false;
     }
     

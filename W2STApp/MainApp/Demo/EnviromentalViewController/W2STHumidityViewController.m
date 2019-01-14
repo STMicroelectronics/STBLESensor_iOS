@@ -89,8 +89,8 @@
     
   //  NSLog(@"temp: %f -> %d image: %@",humidity,pressureId,imageName);
     dispatch_sync(dispatch_get_main_queue(),^{
-        _humidityLabel.text=humidityLabel;
-        _humidityImage.alpha=humidity/100;
+        self->_humidityLabel.text=humidityLabel;
+        self->_humidityImage.alpha=humidity/100;
     });
 }
 

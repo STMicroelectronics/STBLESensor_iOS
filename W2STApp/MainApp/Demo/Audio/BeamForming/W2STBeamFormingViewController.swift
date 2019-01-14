@@ -136,8 +136,8 @@ public class W2STBeamFormingViewController: BlueMSDemoTabViewController,BlueSTSD
         mFeatureBeamForming = self.node.getFeatureOfType(BlueSTSDKFeatureBeamForming.self) as! BlueSTSDKFeatureBeamForming?
         if let beamForming = mFeatureBeamForming{
             self.node.enableNotification(beamForming);
-            beamForming.enableBeanForming(true);
-            beamForming.useStrongBeanFormingAlgorithm(true);
+            beamForming.enablebeamForming(true);
+            beamForming.useStrongbeamFormingAlgorithm(true);
             changeDirection(W2STBeamFormingViewController.DEFAULT_DIRECTION);
         }
 
@@ -157,7 +157,7 @@ public class W2STBeamFormingViewController: BlueMSDemoTabViewController,BlueSTSD
 
         if let beamForming = mFeatureBeamForming{
             self.node.disableNotification(beamForming);
-            beamForming.enableBeanForming(false);
+            beamForming.enablebeamForming(false);
             
         }
 

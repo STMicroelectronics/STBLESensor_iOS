@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Gq3-wN-lCv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Gq3-wN-lCv">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Switch-->
         <scene sceneID="bQY-i9-S6S">
             <objects>
-                <viewController title="Switch" id="FBo-WD-Swi" customClass="BlueMSSwitchViewController" customModule="ST_BlueMS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Switch" id="FBo-WD-Swi" customClass="BlueMSSwitchViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IIw-ma-7Lj"/>
                         <viewControllerLayoutGuide type="bottom" id="jQv-FE-N4U"/>
@@ -25,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Click the image to change the status" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8BZ-K8-BPi">
-                                <rect key="frame" x="28" y="28" width="358" height="21"/>
+                                <rect key="frame" x="28" y="28" width="358" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -69,7 +66,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y0C-9t-Pay" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7228" y="-924"/>
+            <point key="canvasLocation" x="7227" y="-981"/>
         </scene>
         <!--DirectionOfArrival-->
         <scene sceneID="bpT-qR-ziV">
@@ -79,7 +76,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DxE-RU-jq0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7238" y="-854"/>
+            <point key="canvasLocation" x="7220" y="-939"/>
         </scene>
         <!--SDLogging-->
         <scene sceneID="dln-bH-i0v">
@@ -89,7 +86,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lZE-po-OgS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7241" y="-686"/>
+            <point key="canvasLocation" x="7188" y="-861"/>
         </scene>
         <!--BeamForming-->
         <scene sceneID="sal-nv-iIl">
@@ -99,7 +96,27 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ybD-aZ-ij9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7207" y="-764"/>
+            <point key="canvasLocation" x="7201" y="-901"/>
+        </scene>
+        <!--BlueVoice-->
+        <scene sceneID="ocN-Fh-aHi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="BlueVoice" id="mKc-1a-gO0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="BlueVoice" image="bluetooth_audio" id="gdn-8Q-ao2"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mN7-X4-45t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7184" y="-817"/>
+        </scene>
+        <!--COSensor-->
+        <scene sceneID="Rba-PY-dtR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="COSensor" id="WBW-tn-uVh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="CO Sensor" image="co_sensor_small" id="SRj-gA-yKK"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yhE-dp-oZn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7186" y="-770"/>
         </scene>
         <!--Enviromental Sensors-->
         <scene sceneID="hg5-Lp-Y8J">
@@ -179,17 +196,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2aF-Uc-x7A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7209" y="-1021"/>
+            <point key="canvasLocation" x="7208" y="-1065"/>
         </scene>
-        <!--BlueVoice-->
+        <!--SpeechToText-->
         <scene sceneID="mnX-du-0qI">
             <objects>
-                <viewControllerPlaceholder storyboardName="BlueVoice" id="AEy-iY-0Q0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Soa-ed-Oak"/>
+                <viewControllerPlaceholder storyboardName="SpeechToText" id="AEy-iY-0Q0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="SpeechToText" image="bluetooth_audio" id="Soa-ed-Oak"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IXj-nV-5Qr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7186" y="-976"/>
+            <point key="canvasLocation" x="7201" y="-1022"/>
         </scene>
         <!--BoardStatusView-->
         <scene sceneID="oPH-HT-TjY">
@@ -199,81 +216,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0mF-Gc-Ohl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7217" y="-1068"/>
-        </scene>
-        <!--Activity Recognition-->
-        <scene sceneID="kcc-bb-ot3">
-            <objects>
-                <viewController id="o20-cb-u5F" customClass="BlueMSActivityViewController" customModule="ST_BlueMS" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xHQ-3O-Bug"/>
-                        <viewControllerLayoutGuide type="bottom" id="n8w-AT-Q3t"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="jp8-2d-fd9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity_stationary" translatesAutoresizingMaskIntoConstraints="NO" id="aEH-AW-BGp">
-                                <rect key="frame" x="4" y="20.000000000000014" width="203" height="222.33333333333337"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity_fastwalking" translatesAutoresizingMaskIntoConstraints="NO" id="55e-nn-Agd">
-                                <rect key="frame" x="4" y="242.33333333333331" width="203" height="222.33333333333331"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity_biking" translatesAutoresizingMaskIntoConstraints="NO" id="p5M-w1-0CC">
-                                <rect key="frame" x="4" y="464.66666666666669" width="203" height="222.33333333333331"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity_walking" translatesAutoresizingMaskIntoConstraints="NO" id="1eQ-n8-zOg">
-                                <rect key="frame" x="207" y="20.000000000000014" width="203" height="222.33333333333337"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity_jogging" translatesAutoresizingMaskIntoConstraints="NO" id="iWv-s4-8LZ">
-                                <rect key="frame" x="207" y="242.33333333333331" width="203" height="222.33333333333331"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity_driving" translatesAutoresizingMaskIntoConstraints="NO" id="FdP-WN-lUk">
-                                <rect key="frame" x="207" y="464.66666666666669" width="203" height="222.33333333333331"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="1eQ-n8-zOg" firstAttribute="height" secondItem="iWv-s4-8LZ" secondAttribute="height" id="0l2-nz-aG4"/>
-                            <constraint firstItem="iWv-s4-8LZ" firstAttribute="width" secondItem="55e-nn-Agd" secondAttribute="width" id="1CP-J3-1lA"/>
-                            <constraint firstItem="55e-nn-Agd" firstAttribute="leading" secondItem="jp8-2d-fd9" secondAttribute="leadingMargin" constant="-16" id="1dr-U2-9SD"/>
-                            <constraint firstItem="p5M-w1-0CC" firstAttribute="width" secondItem="FdP-WN-lUk" secondAttribute="width" id="2Ga-uj-oJy"/>
-                            <constraint firstItem="p5M-w1-0CC" firstAttribute="leading" secondItem="jp8-2d-fd9" secondAttribute="leadingMargin" constant="-16" id="4Dd-kO-BtF"/>
-                            <constraint firstItem="55e-nn-Agd" firstAttribute="top" secondItem="aEH-AW-BGp" secondAttribute="bottom" id="70V-S1-OS7"/>
-                            <constraint firstItem="iWv-s4-8LZ" firstAttribute="top" secondItem="1eQ-n8-zOg" secondAttribute="bottom" id="A38-1s-RsK"/>
-                            <constraint firstItem="p5M-w1-0CC" firstAttribute="leading" secondItem="jp8-2d-fd9" secondAttribute="leadingMargin" constant="-16" id="DQI-0R-hlW"/>
-                            <constraint firstItem="FdP-WN-lUk" firstAttribute="top" secondItem="iWv-s4-8LZ" secondAttribute="bottom" id="GpH-Bt-B2c"/>
-                            <constraint firstItem="FdP-WN-lUk" firstAttribute="height" secondItem="iWv-s4-8LZ" secondAttribute="height" id="HVY-g4-elv"/>
-                            <constraint firstItem="aEH-AW-BGp" firstAttribute="leading" secondItem="jp8-2d-fd9" secondAttribute="leadingMargin" constant="-16" id="LYn-qR-Isc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="iWv-s4-8LZ" secondAttribute="trailing" constant="-16" id="Vw4-QO-6Vq"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="1eQ-n8-zOg" secondAttribute="trailing" constant="-16" id="Xfy-d7-Peo"/>
-                            <constraint firstItem="n8w-AT-Q3t" firstAttribute="top" secondItem="FdP-WN-lUk" secondAttribute="bottom" id="Z39-Bd-15e"/>
-                            <constraint firstItem="p5M-w1-0CC" firstAttribute="top" secondItem="55e-nn-Agd" secondAttribute="bottom" id="bSO-d8-reU"/>
-                            <constraint firstItem="1eQ-n8-zOg" firstAttribute="width" secondItem="aEH-AW-BGp" secondAttribute="width" id="bW0-rp-uMY"/>
-                            <constraint firstItem="FdP-WN-lUk" firstAttribute="leading" secondItem="p5M-w1-0CC" secondAttribute="trailing" id="biW-LK-g3F"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="FdP-WN-lUk" secondAttribute="trailing" constant="-16" id="eeX-ZW-3Nf"/>
-                            <constraint firstItem="p5M-w1-0CC" firstAttribute="height" secondItem="55e-nn-Agd" secondAttribute="height" id="gHr-OV-Edi"/>
-                            <constraint firstItem="aEH-AW-BGp" firstAttribute="height" secondItem="55e-nn-Agd" secondAttribute="height" id="gVc-MD-reM"/>
-                            <constraint firstItem="aEH-AW-BGp" firstAttribute="top" secondItem="xHQ-3O-Bug" secondAttribute="bottom" id="jox-XS-PIK"/>
-                            <constraint firstItem="1eQ-n8-zOg" firstAttribute="top" secondItem="xHQ-3O-Bug" secondAttribute="bottom" id="q7T-cQ-oK4"/>
-                            <constraint firstItem="1eQ-n8-zOg" firstAttribute="leading" secondItem="aEH-AW-BGp" secondAttribute="trailing" id="rGp-7a-tWL"/>
-                            <constraint firstItem="iWv-s4-8LZ" firstAttribute="leading" secondItem="55e-nn-Agd" secondAttribute="trailing" id="ssd-lz-YwY"/>
-                            <constraint firstItem="n8w-AT-Q3t" firstAttribute="top" secondItem="p5M-w1-0CC" secondAttribute="bottom" id="uP5-sO-Ulp"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Activity Recognition" image="activity_demo_icon" id="eeh-FS-Ghs"/>
-                    <connections>
-                        <outlet property="bikingImage" destination="p5M-w1-0CC" id="ZbE-Df-Ib5"/>
-                        <outlet property="drivingImage" destination="FdP-WN-lUk" id="zWV-Ek-Ke6"/>
-                        <outlet property="fastWalkingImage" destination="55e-nn-Agd" id="zSZ-ti-LQG"/>
-                        <outlet property="joggingImage" destination="iWv-s4-8LZ" id="0O2-RW-K2x"/>
-                        <outlet property="standingImage" destination="aEH-AW-BGp" id="Tcz-e5-Vsw"/>
-                        <outlet property="walkingImage" destination="1eQ-n8-zOg" id="A4p-yK-hAP"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qg2-FX-fbc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="11361" y="14"/>
+            <point key="canvasLocation" x="7216" y="-1103"/>
         </scene>
         <!--BlueMS Demos View Controller-->
         <scene sceneID="G3g-qC-Kcn">
@@ -300,22 +243,29 @@
                         <segue destination="Ype-N3-ske" kind="relationship" relationship="viewControllers" id="GdU-nn-ish"/>
                         <segue destination="e2w-B9-g5d" kind="relationship" relationship="viewControllers" id="x1B-go-Ci5"/>
                         <segue destination="ow9-h3-a8X" kind="relationship" relationship="viewControllers" id="G6I-Y3-H6r"/>
-                        <segue destination="sAT-33-1Mm" kind="relationship" relationship="viewControllers" id="WH8-Zj-ZHB"/>
                         <segue destination="s0u-ua-usk" kind="relationship" relationship="viewControllers" id="fqc-8f-17O"/>
-                        <segue destination="o20-cb-u5F" kind="relationship" relationship="viewControllers" id="EPW-iS-y5g"/>
+                        <segue destination="g4e-hH-k8p" kind="relationship" relationship="viewControllers" id="7c4-4f-dO7"/>
                         <segue destination="xLQ-Gm-dqE" kind="relationship" relationship="viewControllers" id="OI0-3k-Ji3"/>
                         <segue destination="3cg-CN-zER" kind="relationship" relationship="viewControllers" id="xKV-8H-S9h"/>
                         <segue destination="pkZ-C6-DEL" kind="relationship" relationship="viewControllers" id="ijl-H4-a0N"/>
                         <segue destination="4cX-hO-gpM" kind="relationship" relationship="viewControllers" id="Ki3-di-I64"/>
                         <segue destination="O9Y-Ez-YZA" kind="relationship" relationship="viewControllers" id="AkS-ND-6l9"/>
                         <segue destination="FBo-WD-Swi" kind="relationship" relationship="viewControllers" id="Wti-wd-rDu"/>
+                        <segue destination="mKc-1a-gO0" kind="relationship" relationship="viewControllers" id="46i-4f-U8o"/>
                         <segue destination="AEy-iY-0Q0" kind="relationship" relationship="viewControllers" id="4vl-pb-Jka"/>
                         <segue destination="rou-KP-VFk" kind="relationship" relationship="viewControllers" id="xyu-tI-6cB"/>
                         <segue destination="ame-Kc-uhT" kind="relationship" relationship="viewControllers" id="6r8-jF-gDH"/>
+                        <segue destination="mtb-tQ-9QJ" kind="relationship" relationship="viewControllers" id="PF6-Jv-3bv"/>
                         <segue destination="a8A-yM-bqk" kind="relationship" relationship="viewControllers" id="sgR-PQ-XEG"/>
                         <segue destination="Ad0-kO-Yml" kind="relationship" relationship="viewControllers" id="eQV-wP-ncO"/>
                         <segue destination="DKm-pN-xeF" kind="relationship" relationship="viewControllers" id="taA-zI-aKi"/>
+                        <segue destination="WBW-tn-uVh" kind="relationship" relationship="viewControllers" id="Yfe-o4-iK9"/>
+                        <segue destination="mhQ-TZ-slz" kind="relationship" relationship="viewControllers" id="nhq-oh-W6S"/>
+                        <segue destination="rXD-o8-eCh" kind="relationship" relationship="viewControllers" id="qrb-2C-cxH"/>
+                        <segue destination="ENr-YE-cKg" kind="relationship" relationship="viewControllers" id="75U-PG-lqg"/>
+                        <segue destination="sAT-33-1Mm" kind="relationship" relationship="viewControllers" id="WH8-Zj-ZHB"/>
                         <segue destination="e49-gA-b4i" kind="relationship" relationship="viewControllers" id="uw9-fM-VIu"/>
+                        <segue destination="kBE-la-7Ht" kind="relationship" relationship="viewControllers" id="2Em-42-U9c"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fpc-TG-pwu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -331,6 +281,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TrG-s9-1cO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7210" y="-1228"/>
+        </scene>
+        <!--STM32WBLedButtonViewController-->
+        <scene sceneID="Rwf-ne-BgW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="STM32WB_P2PDemo" bundleIdentifier="com.st.clab.BlueSTSDK-Gui" referencedIdentifier="STM32WBLedButtonViewController" id="mhQ-TZ-slz" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="o1Y-Rd-l0S"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bHT-5J-2et" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7296" y="-1308"/>
+        </scene>
+        <!--FFTAmplitude-->
+        <scene sceneID="Q5q-G7-BCr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FFTAmplitude" id="kBE-la-7Ht" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="e5d-Cf-R8Y"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LHs-f8-za3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7203" y="-1344"/>
+        </scene>
+        <!--STM32WBOta-->
+        <scene sceneID="BZk-W0-Gis">
+            <objects>
+                <viewControllerPlaceholder storyboardName="STM32WBOta" bundleIdentifier="com.st.clab.BlueSTSDK-Gui" id="rXD-o8-eCh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="EsP-tv-vqN"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5S-Ae-kRJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7202" y="-1270"/>
         </scene>
         <!--PlotDemo-->
         <scene sceneID="ozA-Bp-Xdu">
@@ -350,12 +330,12 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ba-pd-jIa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7194" y="-1123"/>
+            <point key="canvasLocation" x="7193" y="-1140"/>
         </scene>
         <!--Pedometer-->
         <scene sceneID="tkL-fN-Ph3">
             <objects>
-                <viewController id="4cX-hO-gpM" customClass="BlueMSPedometerViewController" customModule="ST_BlueMS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4cX-hO-gpM" customClass="BlueMSPedometerViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HBO-gb-kpw"/>
                         <viewControllerLayoutGuide type="bottom" id="wIe-Ol-7Zd"/>
@@ -368,7 +348,7 @@
                                 <rect key="frame" x="20" y="20" width="374" height="340"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKM-2h-EVd">
-                                <rect key="frame" x="207.66666666666666" y="368" width="0.0" height="0.0"/>
+                                <rect key="frame" x="207" y="368" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -416,10 +396,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="temperature_missing_icon" translatesAutoresizingMaskIntoConstraints="NO" id="nQI-lB-Pna">
-                                <rect key="frame" x="24" y="8" width="139" height="268"/>
+                                <rect key="frame" x="24" y="8" width="139" height="267.66666666666669"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Present" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Dll-rb-rMC">
-                                <rect key="frame" x="16" y="260" width="155" height="42"/>
+                                <rect key="frame" x="16" y="259.66666666666669" width="155" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="evS-CF-4YC"/>
                                 </constraints>
@@ -476,7 +456,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Present" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="y48-b9-NGD">
-                                <rect key="frame" x="16" y="260" width="155" height="42"/>
+                                <rect key="frame" x="16" y="259.66666666666669" width="155" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="dDH-W6-dlQ"/>
                                 </constraints>
@@ -484,8 +464,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="led_off" translatesAutoresizingMaskIntoConstraints="NO" id="6ZM-gS-M2u">
-                                <rect key="frame" x="-56.666666666666657" y="8" width="300.33333333333331" height="268"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="luminosity_off" translatesAutoresizingMaskIntoConstraints="NO" id="6ZM-gS-M2u">
+                                <rect key="frame" x="-56.666666666666657" y="8" width="300.33333333333331" height="267.66666666666669"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -531,10 +511,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="pressure_missing" translatesAutoresizingMaskIntoConstraints="NO" id="0c9-V2-2gU">
-                                <rect key="frame" x="24" y="0.0" width="139" height="275"/>
+                                <rect key="frame" x="24" y="0.0" width="139" height="275.33333333333331"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Present" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="uuy-E5-bEH">
-                                <rect key="frame" x="16" y="259" width="155" height="42"/>
+                                <rect key="frame" x="16" y="259.33333333333331" width="155" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="2bK-yK-w6Z"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="sMQ-f3-ugD"/>
@@ -583,7 +563,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Present" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="sfs-u8-Npe">
-                                <rect key="frame" x="16" y="259" width="155" height="42"/>
+                                <rect key="frame" x="16" y="259.33333333333331" width="155" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="cQp-WZ-byU"/>
                                 </constraints>
@@ -592,7 +572,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="humidity_missing" translatesAutoresizingMaskIntoConstraints="NO" id="7F7-BA-x76">
-                                <rect key="frame" x="24" y="0.0" width="139" height="275"/>
+                                <rect key="frame" x="24" y="0.0" width="139" height="275.33333333333331"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -619,7 +599,7 @@
         <!--Heart Rate-->
         <scene sceneID="fDh-0y-9Cs">
             <objects>
-                <viewController title="Heart Rate" id="a8A-yM-bqk" customClass="W2STHeartRateViewController" sceneMemberID="viewController">
+                <viewController title="Heart Rate" id="a8A-yM-bqk" customClass="BlueMSHeartRateViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c0j-0s-tta"/>
                         <viewControllerLayoutGuide type="bottom" id="42E-iK-0Sq"/>
@@ -666,10 +646,10 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Heart Rate" image="heart_icon" id="YMl-bf-FpL"/>
                     <connections>
-                        <outlet property="mEnergyLabel" destination="gff-9q-a8h" id="te7-4x-kne"/>
-                        <outlet property="mHeartImage" destination="Du0-uE-3tL" id="KAY-r4-LNo"/>
-                        <outlet property="mHeartRateLabel" destination="Vpd-Xr-ad7" id="CAa-Yq-td2"/>
-                        <outlet property="mRRIntervalLabel" destination="hR0-ZQ-9UR" id="79E-id-fee"/>
+                        <outlet property="mEnergyLabel" destination="gff-9q-a8h" id="jk7-4i-0AC"/>
+                        <outlet property="mHeartImage" destination="Du0-uE-3tL" id="rEc-NZ-bHe"/>
+                        <outlet property="mHeartRateLabel" destination="Vpd-Xr-ad7" id="rns-Ug-cbZ"/>
+                        <outlet property="mRRIntervalLabel" destination="hR0-ZQ-9UR" id="pXP-Jx-W0s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L9G-UZ-P0W" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -679,7 +659,7 @@
         <!--Motion Intensity-->
         <scene sceneID="5ze-fa-3lU">
             <objects>
-                <viewController id="Ad0-kO-Yml" customClass="BlueMSMotionIntensityViewController" customModule="ST_BlueMS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ad0-kO-Yml" customClass="BlueMSMotionIntensityViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cTp-XY-xSQ"/>
                         <viewControllerLayoutGuide type="bottom" id="ZRw-t3-ens"/>
@@ -689,22 +669,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The intensity is proportional to the movement" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iiw-cn-GIS">
-                                <rect key="frame" x="34" y="28" width="347" height="74"/>
+                                <rect key="frame" x="33.666666666666657" y="28.000000000000007" width="347" height="73.666666666666686"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="motion_intensity_Background" translatesAutoresizingMaskIntoConstraints="NO" id="0fy-Lf-IjJ">
-                                <rect key="frame" x="12" y="110" width="374" height="487"/>
+                                <rect key="frame" x="12" y="109.66666666666666" width="374" height="487.66666666666674"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWG-Zd-Grh">
-                                <rect key="frame" x="28" y="605" width="358" height="74"/>
+                                <rect key="frame" x="28" y="605.33333333333337" width="358" height="73.666666666666629"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="motion_intensity_Needle" translatesAutoresizingMaskIntoConstraints="NO" id="YEX-k2-DTK">
-                                <rect key="frame" x="12" y="110" width="374" height="487"/>
+                                <rect key="frame" x="12" y="109.66666666666666" width="374" height="487.66666666666674"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -739,7 +719,7 @@
         <!--Carry Position-->
         <scene sceneID="iIO-kM-Kgm">
             <objects>
-                <viewController title="Carry Position" id="xLQ-Gm-dqE" customClass="W2STCarryPositionViewController" sceneMemberID="viewController">
+                <viewController title="Carry Position" id="xLQ-Gm-dqE" customClass="BlueMSCarryPositionViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="T6P-6L-IB2"/>
                         <viewControllerLayoutGuide type="bottom" id="yCS-x4-H2M"/>
@@ -755,7 +735,7 @@
                                 <rect key="frame" x="4" y="242.33333333333331" width="203" height="222.33333333333331"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carry_trousers" translatesAutoresizingMaskIntoConstraints="NO" id="9Yw-5t-2KE">
-                                <rect key="frame" x="207" y="242" width="203" height="222.66666666666663"/>
+                                <rect key="frame" x="207" y="242.33333333333331" width="203" height="222.33333333333331"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carry_arm" translatesAutoresizingMaskIntoConstraints="NO" id="5H9-e9-anG">
                                 <rect key="frame" x="207" y="464.66666666666669" width="203" height="222.33333333333331"/>
@@ -763,8 +743,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carry_desk" translatesAutoresizingMaskIntoConstraints="NO" id="9se-Ai-0Ac">
                                 <rect key="frame" x="4" y="464.66666666666669" width="203" height="222.33333333333331"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="carry_head" translatesAutoresizingMaskIntoConstraints="NO" id="eRo-Kt-mT7">
-                                <rect key="frame" x="4" y="28" width="203" height="222"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carry_head" translatesAutoresizingMaskIntoConstraints="NO" id="eRo-Kt-mT7">
+                                <rect key="frame" x="207" y="20.000000000000014" width="203" height="222.33333333333337"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -829,7 +809,7 @@
                                 <rect key="frame" x="223" y="353.66666666666674" width="171" height="333.33333333333326"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="748" image="gesture_tap" translatesAutoresizingMaskIntoConstraints="NO" id="IET-WH-hOX">
-                                <rect key="frame" x="122" y="20" width="171" height="333.66666666666669"/>
+                                <rect key="frame" x="121.66666666666669" y="20" width="171" height="333.66666666666669"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -871,7 +851,7 @@
         <!--Mems Gesture Recognition-->
         <scene sceneID="yzx-70-Gqv">
             <objects>
-                <viewController title="Mems Gesture Recognition" id="pkZ-C6-DEL" customClass="W2STMemsGestureViewController" sceneMemberID="viewController">
+                <viewController title="Mems Gesture Recognition" id="pkZ-C6-DEL" customClass="BlueMSMemsGestureViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RQd-GL-FgX"/>
                         <viewControllerLayoutGuide type="bottom" id="xpc-J3-sxG"/>
@@ -988,15 +968,40 @@
             </objects>
             <point key="canvasLocation" x="13286" y="14"/>
         </scene>
+        <!--AudioSceneClassification-->
+        <scene sceneID="eia-tw-H6r">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AudioSceneClassification" id="mtb-tQ-9QJ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Pk7-UZ-2sW"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rk2-1b-AO1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7254" y="-730"/>
+        </scene>
+        <!--ActivityRecognition-->
+        <scene sceneID="BDd-FI-CX2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ActivityRecognition" id="g4e-hH-k8p" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="kHj-bi-I8H"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eRJ-tI-YBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7228" y="-681"/>
+        </scene>
+        <!--AIDataLogDemo-->
+        <scene sceneID="cDc-6X-mQv">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="AIDataLogDemo" storyboardName="AIDataLogDemo" id="ENr-YE-cKg" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="BjG-tg-Rmk"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x7o-U8-zbI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7213" y="-634"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="activity_biking" width="160" height="160"/>
         <image name="activity_demo_icon" width="30" height="30"/>
-        <image name="activity_driving" width="160" height="160"/>
-        <image name="activity_fastwalking" width="160" height="160"/>
-        <image name="activity_jogging" width="160" height="160"/>
-        <image name="activity_stationary" width="160" height="160"/>
-        <image name="activity_walking" width="160" height="160"/>
+        <image name="bluetooth_audio" width="30" height="30"/>
         <image name="carry_arm" width="160" height="160"/>
         <image name="carry_demo_icon" width="30" height="30"/>
         <image name="carry_desk" width="160" height="160"/>
@@ -1004,7 +1009,8 @@
         <image name="carry_head" width="160" height="160"/>
         <image name="carry_shirt" width="160" height="160"/>
         <image name="carry_trousers" width="160" height="160"/>
-        <image name="chartIcon" width="30" height="30"/>
+        <image name="chartIcon" width="60" height="60"/>
+        <image name="co_sensor_small" width="30" height="30"/>
         <image name="enviromentalIcon.png" width="40" height="40"/>
         <image name="gesture_demo_icon" width="30" height="30"/>
         <image name="gesture_left" width="200" height="200"/>
@@ -1014,6 +1020,7 @@
         <image name="heart_icon" width="30" height="30"/>
         <image name="humidity_missing" width="300" height="450"/>
         <image name="led_off" width="300" height="300"/>
+        <image name="luminosity_off" width="300" height="300"/>
         <image name="mems_glance" width="120" height="120"/>
         <image name="mems_pickUp" width="120" height="120"/>
         <image name="mems_wakeUp" width="120" height="120"/>
@@ -1022,7 +1029,7 @@
         <image name="pedometer_demo_icon" width="30" height="30"/>
         <image name="pedometer_icon" width="300" height="300"/>
         <image name="pressure_missing" width="300" height="450"/>
-        <image name="sensorFusionIcon" width="30" height="30"/>
+        <image name="sensorFusionIcon" width="60" height="60"/>
         <image name="switch_demo_icon" width="30" height="30"/>
         <image name="temperature_missing_icon" width="300" height="450"/>
     </resources>

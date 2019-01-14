@@ -92,7 +92,7 @@
     [pressureLabel deleteCharactersInRange:NSMakeRange(pressureLabel.length-1, 1)];
     
     dispatch_sync(dispatch_get_main_queue(),^{
-        _pressureLabel.text=pressureLabel;
+        self->_pressureLabel.text=pressureLabel;
     });
 }
 

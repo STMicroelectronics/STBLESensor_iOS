@@ -89,7 +89,7 @@
     [temperatureLabel deleteCharactersInRange:NSMakeRange(temperatureLabel.length-1, 1)];
     
     dispatch_sync(dispatch_get_main_queue(),^{
-        _temperatureLabel.text=temperatureLabel;
+        self->_temperatureLabel.text=temperatureLabel;
     });
 }
 

@@ -113,15 +113,15 @@
 - (void)didUpdateFeature:(BlueSTSDKFeature *)feature sample:(BlueSTSDKFeatureSample *)sample{
     BlueSTSDKFeatureProximityGestureType type = [BlueSTSDKFeatureProximityGesture getGestureType:sample];
     dispatch_async(dispatch_get_main_queue(), ^{
-        if(_currentActivityImage!=nil)
-            _currentActivityImage.alpha=DEFAULT_ALPHA;
-        _currentActivityImage = [self getImageForType:type];
-        if(_currentActivityImage!=nil){
-            _currentActivityImage.alpha=SELECTED_ALPHA;
-            _currentActivityImage.transform=CGAffineTransformMakeScale(0.8, 0.8);
+        if(self->_currentActivityImage!=nil)
+            self->_currentActivityImage.alpha=DEFAULT_ALPHA;
+        self->_currentActivityImage = [self getImageForType:type];
+        if(self->_currentActivityImage!=nil){
+            self->_currentActivityImage.alpha=SELECTED_ALPHA;
+            self->_currentActivityImage.transform=CGAffineTransformMakeScale(0.8, 0.8);
             [UIView animateWithDuration:1/3.0f
                              animations:^{
-                                 _currentActivityImage.transform=CGAffineTransformMakeScale(1.0, 1.0);
+                                 self->_currentActivityImage.transform=CGAffineTransformMakeScale(1.0, 1.0);
                              }];
          }
         

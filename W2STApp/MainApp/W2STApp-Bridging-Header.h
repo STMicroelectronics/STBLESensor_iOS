@@ -38,15 +38,17 @@
 #ifndef W2STApp_Bridging_Header_h
 #define W2STApp_Bridging_Header_h
 
+#import "BlueMSDemosViewController.h"
 #import "BlueMSDemoTabViewController.h"
 #import "BlueMSDemoTabViewController+WesuLicenseCheck.h"
 #import "Reachability.h"
-//core plot lib
-#import <CorePlot/CorePlot-CocoaTouch.h>
 
+//core plot lib
+//#import <CorePlot/CorePlot-CocoaTouch.h>
+
+//azure cloud demo
 #import <CommonCrypto/CommonHMAC.h>
-#import "BlueMSCloudIotConnectionFactory.h"
-#import "W2STCloudConfigViewController.h"
+
 //openssl for aws iot
 #import <openssl/bio.h>
 #import <openssl/pem.h>

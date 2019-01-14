@@ -40,6 +40,7 @@ import Foundation
 import AWSIoT
 
 public class BlueMSAwsIotConnectionFactory : BlueMSCloudIotConnectionFactory{
+    
     private static let ENPOINT_FORMAT = "[-_\\w]*\\.iot\\.([-_\\w]*)\\.amazonaws\\.com";
     private static let PKSCS12_CERTIFICATE_NAME = "AwsIotCertificate"
     private static let PKSCS12_KEY_PASSWORD = "AwsIotPassword"
@@ -70,7 +71,7 @@ public class BlueMSAwsIotConnectionFactory : BlueMSCloudIotConnectionFactory{
     private static func buildAWSEndpiintFromString(endpointUrl:String)->AWSEndpoint{
         let region = extractRegion(serviceUrl:endpointUrl);
         let url = URL(string: endpointUrl);
-    
+
         return AWSEndpoint(region: region, service: .IoTData, url: url!)
     }
     
@@ -89,19 +90,21 @@ public class BlueMSAwsIotConnectionFactory : BlueMSCloudIotConnectionFactory{
         let certificate = BlueMSAwsIotConnectionFactory.getFileContent(fileUrl: certificateUrl);
         let privateKey =  BlueMSAwsIotConnectionFactory.getFileContent(fileUrl: privateKeyUrl);
         
-        let serviceConf = AWSServiceConfiguration(region:  self.enpoint.regionType,
-                                                  endpoint: enpoint,
-                                                  credentialsProvider: AWSAnonymousCredentialsProvider());
-        let p12Data = BlueMSAwsIotConnectionFactory.getP12CertificateFormat(certificateName: BlueMSAwsIotConnectionFactory.PKSCS12_CERTIFICATE_NAME,
-                                                                            certificateValue: certificate!,
-                                                                            password: BlueMSAwsIotConnectionFactory.PKSCS12_KEY_PASSWORD,
-                                                                            privateKey: privateKey!);
-        
-        AWSIoTManager.importIdentity( fromPKCS12Data: p12Data!,
-                                      passPhrase: BlueMSAwsIotConnectionFactory.PKSCS12_KEY_PASSWORD,
-                                      certificateId:BlueMSAwsIotConnectionFactory.PKSCS12_CERTIFICATE_NAME)
-        AWSIoTDataManager.register(with: serviceConf!, forKey: BlueMSAwsIotConnectionFactory.CONNECTION_CONF_NAME);
-        
+        if(certificate != nil && privateKey != nil){
+            let serviceConf = AWSServiceConfiguration(region:  self.enpoint.regionType,
+                                                      endpoint: enpoint,
+                                                      credentialsProvider: AWSAnonymousCredentialsProvider());
+            let p12Data = BlueMSAwsIotConnectionFactory.getP12CertificateFormat(
+                certificateName: BlueMSAwsIotConnectionFactory.PKSCS12_CERTIFICATE_NAME,
+                certificateValue: certificate!,
+                password: BlueMSAwsIotConnectionFactory.PKSCS12_KEY_PASSWORD,
+                privateKey: privateKey!);
+            AWSIoTManager.deleteCertificate() //remove the prevous data
+            AWSIoTManager.importIdentity( fromPKCS12Data: p12Data!,
+                                          passPhrase: BlueMSAwsIotConnectionFactory.PKSCS12_KEY_PASSWORD,
+                                          certificateId:BlueMSAwsIotConnectionFactory.PKSCS12_CERTIFICATE_NAME)
+            AWSIoTDataManager.register(with: serviceConf!, forKey: BlueMSAwsIotConnectionFactory.CONNECTION_CONF_NAME);
+        }
         let manager = AWSIoTDataManager(forKey: BlueMSAwsIotConnectionFactory.CONNECTION_CONF_NAME);
         return AwsCloudIotClient(manager,authId: BlueMSAwsIotConnectionFactory.PKSCS12_CERTIFICATE_NAME,clientId: clientId);
     }
@@ -110,16 +113,16 @@ public class BlueMSAwsIotConnectionFactory : BlueMSCloudIotConnectionFactory{
         return nil;
     }
     
-    public func getFeatureDelegate(withSession session: BlueMSCloudIotClient) -> BlueSTSDKFeatureDelegate {
+    public func getFeatureDelegate(withSession session: BlueMSCloudIotClient, minUpdateInterval: TimeInterval) -> BlueSTSDKFeatureDelegate {
         let awsConnection = (session as! AwsCloudIotClient).connection
-        return AwsMqttFeatureListener(clientId: clientId, connection: awsConnection);
+        return AwsMqttFeatureListener(clientId: clientId, connection: awsConnection, minUpdateInterval:minUpdateInterval);
     }
     
     public func isSupportedFeature(_ feature: BlueSTSDKFeature) -> Bool {
-        return true;
+        return BlueMSCloudUtil.isCloudSupportedFeature(feature);
     }
     
-    public func enableCloudFwUpgrade(for node: BlueSTSDKNode, connection cloudConnection: BlueMSCloudIotClient, callback: @escaping OnFwUpgradeAvailableCallback) -> Bool {
+    public func enableCloudFwUpgrade(for node: BlueSTSDKNode, connection cloudConnection: BlueMSCloudIotClient, callback:@escaping OnFwUpgradeAvailableCallback) -> Bool {
         return false;
     }
     
@@ -180,7 +183,7 @@ public class BlueMSAwsIotConnectionFactory : BlueMSCloudIotConnectionFactory{
             connection.disconnect()
         }
         
-        func isConnected() -> Bool {
+        public var isConnected: Bool {
             return connection.getConnectionStatus() == .connected;
         }
         

@@ -41,9 +41,40 @@ import Foundation
 /// that will display the real data
 public class BlueMSBoardStatusViewController: BlueMSDemoTabViewController{
     
+    private static let BOARD_NAME_FORMAT:String = {
+        let bundle = Bundle(for: BlueMSBoardStatusViewController.self)
+        return NSLocalizedString("%@", tableName: nil, bundle: bundle,
+                                 value: "%@", comment: "")
+    }();
+    
+    private static let BOARD_TYPE_FORMAT:String = {
+        let bundle = Bundle(for: BlueMSBoardStatusViewController.self)
+        return NSLocalizedString("Type: %@", tableName: nil, bundle: bundle,
+                                 value: "Type: %@", comment: "")
+    }();
+    
+    private static let BOARD_ADDRESS_FORMAT:String = {
+        let bundle = Bundle(for: BlueMSBoardStatusViewController.self)
+        return NSLocalizedString("Address: %@", tableName: nil, bundle: bundle,
+                                 value: "Address: %@", comment: "")
+    }();
+    
+    @IBOutlet weak var mBoardName: UILabel!
+    @IBOutlet weak var mBoardAddress: UILabel!
+    @IBOutlet weak var mBoardType: UILabel!
+    
+    
+    public override func viewDidAppear(_ animated: Bool) {
+        mBoardName.text = String(format:BlueMSBoardStatusViewController.BOARD_NAME_FORMAT,node.name)
+        mBoardAddress.text = String(format:BlueMSBoardStatusViewController.BOARD_ADDRESS_FORMAT,
+                                   node.address ?? "Unknown")
+        mBoardType.text = String(format:BlueMSBoardStatusViewController.BOARD_TYPE_FORMAT,
+                                   BlueSTSDKNode.nodeType(toString: node.type ))
+    }
+    
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        BlueMSDemoTabViewController.setViewControllerProperty(segue.destination,
-                                                              node: self.node,
-                                                              menuDelegate: self.menuDelegate);
+        BlueSTSDKDemoViewProtocolUtil.setupDemoProtocol(demo: segue.destination,
+                                                    node: self.node,
+                                                    menuDelegate: self.menuDelegate);
     }
 }

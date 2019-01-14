@@ -93,7 +93,7 @@ didRegisterReadResult:(BlueSTSDKCommand *)cmd
     
     if(regValue==0){
         dispatch_async(dispatch_get_main_queue(), ^{
-            [LiceseStatusDelegate displayMessage:mMessage showOn:mRootView];
+            [LiceseStatusDelegate displayMessage:self->mMessage showOn:self->mRootView];
         });
     }
     

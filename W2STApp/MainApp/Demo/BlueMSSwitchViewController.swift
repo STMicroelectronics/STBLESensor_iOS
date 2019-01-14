@@ -46,8 +46,8 @@ public class BlueMSSwitchViewController: BlueMSDemoTabViewController,BlueSTSDKFe
     @IBOutlet weak var mLedImage: UIImageView!
 
     private var mFeature:BlueSTSDKFeatureSwitch?;
-    private static let STATUS_ON_IMG = UIImage(named: "led_on");
-    private static let STATUS_OFF_IMG = UIImage(named: "led_off");
+    private static let STATUS_ON_IMG = #imageLiteral(resourceName: "led_on")
+    private static let STATUS_OFF_IMG = #imageLiteral(resourceName: "led_off")
 
     private func enableOnImageClickEvent(){
         let singleTapDetector = UITapGestureRecognizer(target: self,

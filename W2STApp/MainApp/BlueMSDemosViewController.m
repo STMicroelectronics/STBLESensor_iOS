@@ -37,13 +37,13 @@
 
 
 #import <MessageUI/MessageUI.h>
+#import <BlueSTSDK/BlueSTSDK-Swift.h>
 #import <BlueSTSDK/BlueSTSDKFeatureTemperature.h>
 #import <BlueSTSDK/BlueSTSDKFeaturePressure.h>
 #import <BlueSTSDK/BlueSTSDKFeatureLuminosity.h>
 #import <BlueSTSDK/BlueSTSDKFeatureHumidity.h>
 #import <BlueSTSDK/BlueSTSDKFeatureMemsSensorFusion.h>
 #import <BlueSTSDK/BlueSTSDKFeatureMemsSensorFusionCompact.h>
-#import <BlueSTSDK/BlueSTSDKFeatureActivity.h>
 #import <BlueSTSDK/BlueSTSDKFeatureCarryPosition.h>
 #import <BlueSTSDK/BlueSTSDKFeatureProximityGesture.h>
 #import <BlueSTSDK/BlueSTSDKFeatureMemsGesture.h>
@@ -58,34 +58,44 @@
 #import <BlueSTSDK/BlueSTSDKFeatureDirectionOfArrival.h>
 #import <BlueSTSDK/BlueSTSDKFeatureBeamForming.h>
 
-#import "ST_BlueMS-Swift.h"
+#import "ST_BLE_Sensor-Swift.h"
 #import "BlueMSDemosViewController.h"
 #import "BlueMSDemosViewController+WesuFwVersion.h"
 
 #import "BlueMSDemoTabViewController.h"
 #import "W2STPlotFeatureDemoViewController.h"
 
+#define SHOW_SETTINGS_NAME BLUESTSDK_LOCALIZE(@"Settings",nil)
+
+
 #define ENVIROMENTAL_DEMO_POSITION 0
 #define SENSOR_FUSION_DEMO_POSITION 1
 #define PLOT_DEMO_POSITION 2
-#define CLOUD_DEMO_POSITION 3
-#define SD_LOGGING_POSITION 4
-#define ACTIVITY_RECOGNITION_DEMO_POSITION 5
-#define CARRY_POSITION_RECOGNITION_DEMO_POSITION 6
-#define PROXIMITY_GESTURE_RECOGNITION_DEMO_POSITION 7
-#define MEMS_GESTURE_RECOGNITION_DEMO_POSITION 8
-#define PEDOMEMETER_DEMO_POSITION 9
-#define ACC_EVENT_DEMO_POSITION 10
-#define SWITCH_DEMO_POSITION 11
-#define BLUEVOICE_DEMO_POSITION 12
+#define SD_LOGGING_POSITION 3
+#define ACTIVITY_RECOGNITION_DEMO_POSITION 4
+#define CARRY_POSITION_RECOGNITION_DEMO_POSITION 5
+#define PROXIMITY_GESTURE_RECOGNITION_DEMO_POSITION 6
+#define MEMS_GESTURE_RECOGNITION_DEMO_POSITION 7
+#define PEDOMEMETER_DEMO_POSITION 8
+#define ACC_EVENT_DEMO_POSITION 9
+#define SWITCH_DEMO_POSITION 10
+#define BLUEVOICE_DEMO_POSITION 11
+#define SPEECHTOTEXT_DEMO_POSITION 12
 #define BEAM_FORMING_DEMO_POSITION 13
 #define DIRECTION_OF_ARRIVAL_DEMO_POSITION 14
-#define HEART_RATE_DEMO_POSITION 15
-#define MOTIONID_DEMO_POSITION 16
-#define COMPASS_DEMO_POSITION 17
-#define RSSI_DEMO_POSITION 18
+#define AUDIO_SCENE_CLASSIFICAITON_POSITION 15
+#define HEART_RATE_DEMO_POSITION 16
+#define MOTIONID_DEMO_POSITION 17
+#define COMPASS_DEMO_POSITION 18
+#define COSENSOR_DEMO_POSITION 19
+#define STM32WB_P2PSERVER_POSITION 20
+#define REBOOT_OTA_POSITION 21
+#define AILOG_POSITION 22
+#define CLOUD_DEMO_POSITION 23
+#define RSSI_DEMO_POSITION 24
+#define FFTAMPLITUDE_DEMO_POSITION 25
 
-#define NUMBER_OF_DEMOS 19
+#define NUMBER_OF_DEMOS 26
 
 @interface BlueMSDemosViewController () <UITabBarControllerDelegate>
 
@@ -96,6 +106,7 @@
     UISwipeGestureRecognizer *rightGesture;
     UIAlertAction *registerSettings;
     UIAlertAction *nucleoSettings;
+    UIAlertAction *mActionLicenseManager;
     bool mFwVarningDisplayed;
 }
 
@@ -115,10 +126,9 @@
     registerSettings = [self createRegisterSettings];
     [self.menuDelegate addMenuAction:registerSettings];
 
-    
     nucleoSettings = [self createNucleoSettings];
     [self.menuDelegate addMenuAction:nucleoSettings];
-    
+
     mFwVarningDisplayed=false;
     
     //add a button in the navbar
@@ -169,6 +179,7 @@
     if( [node getFeatureOfType:BlueSTSDKFeatureAudioADPCM.class]==nil ||
         [node getFeatureOfType:BlueSTSDKFeatureAudioADPCMSync.class]==nil){
         [removeItem addIndex:BLUEVOICE_DEMO_POSITION];
+        [removeItem addIndex:SPEECHTOTEXT_DEMO_POSITION];
     }
     if( [node getFeatureOfType:BlueSTSDKFeatureHeartRate.class]==nil){
         [removeItem addIndex:HEART_RATE_DEMO_POSITION];
@@ -185,18 +196,45 @@
     if([node getFeatureOfType:BlueSTSDKFeatureAudioADPCM.class]==nil ||
        [node getFeatureOfType:BlueSTSDKFeatureAudioADPCMSync.class]==nil ||
        [node getFeatureOfType:BlueSTSDKFeatureBeamForming.class]==nil){
-
         [removeItem addIndex:BEAM_FORMING_DEMO_POSITION];
     }
     if([node getFeatureOfType:BlueSTSDKFeatureSDLogging.class]==nil){
         [removeItem addIndex:SD_LOGGING_POSITION];
     }
+    if([node getFeatureOfType:BlueSTSDKFeatureAudioSceneCalssification.class]==nil){
+        [removeItem addIndex:AUDIO_SCENE_CLASSIFICAITON_POSITION];
+    }
+    
+    ///TODO temporaney disable the speechToText for the BlueNRG-Tile board
+    if(node.type == BlueSTSDKNodeTypeSTEVAL_BCN002V1){
+        [removeItem addIndex:SPEECHTOTEXT_DEMO_POSITION];
+    }
+    
     if(![W2STPlotFeatureDemoViewController canPlotFeatureForNode:node]){
         [removeItem addIndex:PLOT_DEMO_POSITION];
     }
+    if([node getFeatureOfType:BlueSTSDKSTM32WBRebootOtaModeFeature.class]==nil){
+        [removeItem addIndex:REBOOT_OTA_POSITION];
+    }
+    if([node getFeatureOfType:STM32WBControlLedFeature.class]==nil ||
+       [node getFeatureOfType:STM32WBSwitchStatusFeature.class] == nil){
+        [removeItem addIndex:STM32WB_P2PSERVER_POSITION];
+    }
+    
+    if([node getFeatureOfType:BlueSTSDKFeatureCOSensor.class]==nil){
+        [removeItem addIndex:COSENSOR_DEMO_POSITION];
+    }
+    
+    if([node getFeatureOfType:BlueSTSDKFeatureAILogging.class]==nil){
+        [removeItem addIndex:AILOG_POSITION];
+    }
+    
+    if([node getFeatureOfType:BlueSTSDKFeatureFFTAmplitude.class]==nil){
+        [removeItem addIndex:FFTAMPLITUDE_DEMO_POSITION];
+    }
+    
     [availableDemos removeObjectsAtIndexes:removeItem];
     self.viewControllers = availableDemos;
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -213,6 +251,11 @@
     //to pass the valid node also to the subview
     [self removeOptionalDemo];
 
+    //add the debug console if present
+    if(self.node.debugConsole==nil) {
+        [self.menuDelegate removeMenuAction:mActionLicenseManager];
+    }
+    
     if(self.node.type == BlueSTSDKNodeTypeSTEVAL_WESU1 ){
         if(!mFwVarningDisplayed){
             [self checkFwVersion];
@@ -227,9 +270,9 @@
 
 - (void)initializeDemos {
     for (UIViewController *c in self.viewControllers){
-        [BlueMSDemoTabViewController setViewControllerProperty:c
-                                                          node:self.node
-                                                  menuDelegate:self.menuDelegate];
+        [BlueSTSDKDemoViewProtocolUtil setupDemoProtocolWithDemo:c
+                                                  node:self.node
+                                          menuDelegate:self.menuDelegate];
         
         [BlueSTDemoNestedNavigationViewController setViewControllerProperty:c
                                                                      node:self.node
@@ -258,7 +301,7 @@
 }
 
 -(UIAlertAction*)createNucleoSettings{
-    return [UIAlertAction actionWithTitle:@"Settings"
+    return [UIAlertAction actionWithTitle:SHOW_SETTINGS_NAME
                                     style:UIAlertActionStyleDefault
                                   handler:^(UIAlertAction *action) {
                                       [self moveToNucleoSettingsViewController];

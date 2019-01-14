@@ -57,7 +57,7 @@
             [f addFeatureDelegate:self];
             [self.node enableNotification:f];
         }//for
-        _luminosityImage.image=[UIImage imageNamed:@"led_on"];
+        _luminosityImage.image=[UIImage imageNamed:@"luminosity"];
     }//if
 
 }
@@ -88,7 +88,7 @@
     [luminosityLabel deleteCharactersInRange:NSMakeRange(luminosityLabel.length-1, 1)];
     
     dispatch_sync(dispatch_get_main_queue(),^{
-        _luminosityLabel.text=luminosityLabel;
+        self->_luminosityLabel.text=luminosityLabel;
     });
 }
 

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rVT-e9-N9N">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Activity Recognition-->
+        <scene sceneID="FA5-2k-cll">
+            <objects>
+                <viewController id="rVT-e9-N9N" customClass="BlueMSActivityViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bkm-Fl-OSm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cdf-r9-ZZS" customClass="ActivityRecognitionIGNView" customModule="ST_BLE_Sensor" customModuleProvider="target">
+                                <rect key="frame" x="8" y="28" width="359" height="582"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GOl-dp-BdE" customClass="BlueMSMotionARView" customModule="ST_BLE_Sensor" customModuleProvider="target">
+                                <rect key="frame" x="8" y="42" width="359" height="582"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JaF-MH-yNn" customClass="ActivityRecognitionGMPView" customModule="ST_BLE_Sensor" customModuleProvider="target">
+                                <rect key="frame" x="8" y="42" width="359" height="582"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cdf-r9-ZZS" firstAttribute="top" secondItem="gFY-yw-gbM" secondAttribute="top" constant="8" id="4yD-34-v8q"/>
+                            <constraint firstItem="gFY-yw-gbM" firstAttribute="bottom" secondItem="cdf-r9-ZZS" secondAttribute="bottom" constant="8" id="7KC-Cg-VJS"/>
+                            <constraint firstItem="gFY-yw-gbM" firstAttribute="trailing" secondItem="cdf-r9-ZZS" secondAttribute="trailing" constant="8" id="8hA-9e-vW8"/>
+                            <constraint firstItem="cdf-r9-ZZS" firstAttribute="leading" secondItem="gFY-yw-gbM" secondAttribute="leading" constant="8" id="Hhd-je-zun"/>
+                            <constraint firstItem="JaF-MH-yNn" firstAttribute="bottom" secondItem="gFY-yw-gbM" secondAttribute="bottom" constant="6" id="IzR-i5-yL3"/>
+                            <constraint firstItem="GOl-dp-BdE" firstAttribute="leading" secondItem="gFY-yw-gbM" secondAttribute="leading" constant="8" id="UJ6-OC-sSV"/>
+                            <constraint firstItem="gFY-yw-gbM" firstAttribute="trailing" secondItem="GOl-dp-BdE" secondAttribute="trailing" constant="8" id="Uz4-Nj-mNJ"/>
+                            <constraint firstItem="JaF-MH-yNn" firstAttribute="top" secondItem="gFY-yw-gbM" secondAttribute="top" constant="22" id="YD7-mJ-T6O"/>
+                            <constraint firstItem="gFY-yw-gbM" firstAttribute="trailing" secondItem="JaF-MH-yNn" secondAttribute="trailing" constant="8" id="anW-3D-nEL"/>
+                            <constraint firstItem="GOl-dp-BdE" firstAttribute="bottom" secondItem="gFY-yw-gbM" secondAttribute="bottom" constant="6" id="cBX-7n-Jyg"/>
+                            <constraint firstItem="JaF-MH-yNn" firstAttribute="leading" secondItem="gFY-yw-gbM" secondAttribute="leading" constant="8" id="omD-W5-DZ3"/>
+                            <constraint firstItem="GOl-dp-BdE" firstAttribute="top" secondItem="gFY-yw-gbM" secondAttribute="top" constant="22" id="z8i-Vt-iZr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gFY-yw-gbM"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Activity Recognition" image="activity_demo_icon" id="xK5-S4-U6E"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="mActivityGMPView" destination="JaF-MH-yNn" id="jEB-Fj-Vbq"/>
+                        <outlet property="mActivityIGNView" destination="cdf-r9-ZZS" id="Iuw-oH-Yvz"/>
+                        <outlet property="mMotionARView" destination="GOl-dp-BdE" id="1OO-Hd-eIN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ord-jh-3JB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="12072" y="-12"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="activity_demo_icon" width="30" height="30"/>
+    </resources>
+</document>

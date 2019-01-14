@@ -61,8 +61,8 @@ public class BlueMSCompassViewController: BlueMSCalibrationViewController,
     
     private var mFeature:BlueSTSDKFeatureAutoConfigurable?;
     
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated);
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated);
         
         mFeature = self.node.getFeatureOfType(BlueSTSDKFeatureCompass.self) as? BlueSTSDKFeatureAutoConfigurable;
         if let feature = mFeature{

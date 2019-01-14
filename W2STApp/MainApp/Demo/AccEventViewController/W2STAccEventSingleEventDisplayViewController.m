@@ -62,11 +62,11 @@
 
 -(void)changeOrientationIcon:(BlueSTSDKFeatureAccelerometerEventType) event{
     dispatch_async(dispatch_get_main_queue(), ^{        
-        if(mPrevEvent!=event){
-            _eventIcon.image = getEventImage(event);
-            mPrevEvent = event;
+        if(self->mPrevEvent!=event){
+            self->_eventIcon.image = getEventImage(event);
+            self->mPrevEvent = event;
         }else{
-            shakeImage(_eventIcon);
+            shakeImage(self->_eventIcon);
         }
     });
 }
@@ -77,7 +77,7 @@
         [self changeOrientationIcon:event];
     }else{
         dispatch_async(dispatch_get_main_queue(), ^{
-            shakeImage(_eventIcon);
+            shakeImage(self->_eventIcon);
         });
     }
     
@@ -87,7 +87,7 @@
        NSString *eventDetails =
             [NSString stringWithFormat:BLUESTSDK_LOCALIZE(@"Number Steps: %d",nil),eventData];
         dispatch_async(dispatch_get_main_queue(), ^{
-            _eventDetailsLabel.text=eventDetails;
+            self->_eventDetailsLabel.text=eventDetails;
         });
     }
 }

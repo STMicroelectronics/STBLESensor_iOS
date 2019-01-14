@@ -41,9 +41,7 @@
 #import <BlueSTSDK/BlueSTSDKWeSURegisterDefines.h>
 #import <BlueSTSDK/BlueSTSDKFwVersion.h>
 #import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
-
-#import <BlueSTSDK_Gui/UIViewController+BlueSTSDK.h>
-
+#import <BlueSTSDK_Gui/BlueSTSDK_Gui-Swift.h>
 
 #import "STWeSUSettingsTableViewController.h"
 

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PredictiveStatusView" customModule="ST_BLE_Sensor" customModuleProvider="target">
+            <connections>
+                <outlet property="statusXView" destination="EiZ-Bg-fSG" id="9kb-CG-jOn"/>
+                <outlet property="statusYView" destination="Zp2-ca-5Dp" id="Ze9-ys-NcA"/>
+                <outlet property="statusZView" destination="2JE-tL-hB3" id="Fdk-wU-7XP"/>
+                <outlet property="titleLabel" destination="Qzs-bl-X3m" id="EuK-eM-5wD"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="373" height="362"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ylf-hw-sy9">
+                    <rect key="frame" x="0.0" y="0.0" width="373" height="362"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qzs-bl-X3m">
+                            <rect key="frame" x="0.0" y="0.0" width="373" height="20"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EiZ-Bg-fSG" customClass="PredictiveAxisStatusView" customModule="ST_BLE_Sensor" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="28" width="373" height="106"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="106" id="unw-Bh-Oba"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zp2-ca-5Dp" customClass="PredictiveAxisStatusView" customModule="ST_BLE_Sensor" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="142" width="373" height="106"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="106" id="UU2-AA-qH5"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2JE-tL-hB3" customClass="PredictiveAxisStatusView" customModule="ST_BLE_Sensor" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="256" width="373" height="106"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="106" id="pu7-wh-9h1"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="EiZ-Bg-fSG" firstAttribute="leading" secondItem="ylf-hw-sy9" secondAttribute="leading" id="1pC-aW-Kr5"/>
+                        <constraint firstAttribute="trailing" secondItem="Zp2-ca-5Dp" secondAttribute="trailing" id="6Im-ce-kkc"/>
+                        <constraint firstAttribute="trailing" secondItem="EiZ-Bg-fSG" secondAttribute="trailing" id="ILN-X6-SY5"/>
+                        <constraint firstAttribute="trailing" secondItem="2JE-tL-hB3" secondAttribute="trailing" id="Y5z-SU-f6M"/>
+                        <constraint firstItem="Zp2-ca-5Dp" firstAttribute="leading" secondItem="ylf-hw-sy9" secondAttribute="leading" id="qCZ-yP-AJf"/>
+                        <constraint firstItem="2JE-tL-hB3" firstAttribute="leading" secondItem="ylf-hw-sy9" secondAttribute="leading" id="wdS-fO-K3Y"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ylf-hw-sy9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="K1X-d2-rGP"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="ylf-hw-sy9" secondAttribute="top" id="Mlf-rr-zgS"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ylf-hw-sy9" secondAttribute="trailing" id="X7A-l8-Z6x"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ylf-hw-sy9" secondAttribute="bottom" id="tkh-Qf-LrW"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="53.600000000000001" y="-104.7976011994003"/>
+        </view>
+    </objects>
+</document>

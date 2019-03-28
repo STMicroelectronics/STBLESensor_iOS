@@ -126,7 +126,7 @@ didRegisterReadResult:(BlueSTSDKCommand *)cmd error:(NSInteger)error{
                                                           handler:^(UIAlertAction * action) {
                                                               UIApplication *app = [UIApplication sharedApplication];
                                                               NSURL *url = [NSURL URLWithString:DFU_APP_URL];
-                                                              [app openURL:url];
+                                                              [app openURL:url options:@{} completionHandler:nil];
                                                           }];
     UIAlertAction* updateAction = [UIAlertAction actionWithTitle:UPDATE_FW_CONTINUE
                                                            style:UIAlertActionStyleCancel

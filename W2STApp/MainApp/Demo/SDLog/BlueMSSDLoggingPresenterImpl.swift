@@ -63,7 +63,7 @@ public class BlueMSSDLoggingPresenterImpl :NSObject, BlueMSSDLoggingPresenter, B
         if let feature = mLogFeature{
             mView.setLogInterval(seconds:BlueMSSDLoggingPresenterImpl.DEFAULT_LOG_INTERVAL)
             feature.add(self);
-            feature.enableNotificaiton()
+            _ = feature.enableNotification()
             feature.read()
         }else{
             mView.displayDisableLoggingView()
@@ -71,7 +71,7 @@ public class BlueMSSDLoggingPresenterImpl :NSObject, BlueMSSDLoggingPresenter, B
     }
     
     public func stopDemo() {
-        mLogFeature?.disableNotificaiton()
+        _ = mLogFeature?.disableNotification()
         mLogFeature?.remove(self)
     }
     
@@ -147,18 +147,4 @@ public class BlueMSSDLoggingPresenterImpl :NSObject, BlueMSSDLoggingPresenter, B
         mView.setSelectedFeature(BlueSTSDKFeatureSDLogging.getLoggedFeature(feature.parentNode,data: sample));
     }
     
-}
-
-extension BlueSTSDKFeature{
-    func read(){
-        self.parentNode.read(self);
-    }
-    
-    func enableNotificaiton(){
-        self.parentNode.enableNotification(self)
-    }
-    
-    func disableNotificaiton(){
-        self.parentNode.disableNotification(self);
-    }
 }

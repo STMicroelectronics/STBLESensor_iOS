@@ -84,17 +84,17 @@ class AIDataLogAnnotationViewModel : NSObject{
     }
     
     func select(annotation:Annotation){
-        guard !isLogging else{
+        guard isLogging else{
             return
         }
-        mFeature?.updateAnnotation(">"+annotation.label)
+        logAnnotationEnabled(annotation)
     }
     
     func deselect(annotation:Annotation){
-        guard !isLogging else{
+        guard isLogging else{
             return
         }
-        mFeature?.updateAnnotation("<"+annotation.label)
+        logAnnotationDisabled(annotation)
     }
     
     private func syncNodeTime(){
@@ -103,10 +103,25 @@ class AIDataLogAnnotationViewModel : NSObject{
         }
     }
     
+    private func logAnnotationEnabled(_ annotation:Annotation){
+        mFeature?.updateAnnotation(">"+annotation.label)
+    }
+    
+    private func logAnnotationDisabled(_ annotation:Annotation){
+        mFeature?.updateAnnotation("<"+annotation.label)
+    }
+    
+    private func syncEnabledAnnotation(){
+        annotations.filter{ $0.isSelected }.forEach{
+            logAnnotationEnabled($0.annotation)
+        }
+    }
+    
     func changeLogStatus(param: BlueSTSDKFeatureAILogging.Parameters){
         if(!isLogging){
             syncNodeTime()
             mFeature?.startLogging(param)
+            syncEnabledAnnotation()
         }else{
             mFeature?.stopLogging()
         }

@@ -1,4 +1,3 @@
-
 import Foundation
 
 func PKSCS12_storeKeyOnTempFile( certificate:UnsafeMutablePointer<PKCS12>?)->URL?{
@@ -34,7 +33,7 @@ func PKSCS12_createCertificate(certificateName:String, certificateValue:String, 
         BIO_puts(privateKeyBuffer, bytes)
     })
     let privateKey = PEM_read_bio_PrivateKey(privateKeyBuffer, nil, nil, nil)
-    PEM_write_PrivateKey(stdout, privateKey, nil, nil, 0, nil, nil)
+    //PEM_write_PrivateKey(stdout, privateKey, nil, nil, 0, nil, nil)
     // Check if private key matches certificate
     guard X509_check_private_key(certificate, privateKey) == 1 else {
         NSLog("Private key does not match certificate")

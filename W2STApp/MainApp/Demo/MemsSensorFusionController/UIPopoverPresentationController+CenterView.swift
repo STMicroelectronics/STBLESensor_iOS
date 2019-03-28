@@ -37,8 +37,8 @@
 
 import Foundation
 
-/// class that set the presentation stile to none in this way the popuo will 
-/// displayed as a dialog also in the iphon eviroment
+/// class that set the presentation stile to none.In this way the popup will
+/// displayed as a dialog also in the iphone enviroment
 fileprivate class BlueMSShowPopOverAsDialog: NSObject,UIPopoverPresentationControllerDelegate{
     
     /// instace class to pass a weak delegate
@@ -54,8 +54,12 @@ public extension UIPopoverPresentationController {
 
     /// display the popover inside the placeolder view
     public func displayOnView(_ placeHolder:UIView){
+        displayWithSize(placeHolder.bounds.size)
+    }
+
+    /// display the popover inside the placeolder view
+    public func displayWithSize(_ viewSize:CGSize){
         let screenSize = UIScreen.main.bounds.size;
-        let viewSize = placeHolder.bounds.size;
         
         self.sourceRect = CGRect(x: (screenSize.width-viewSize.width)/2,
                                  y: (screenSize.height-viewSize.height)/2,
@@ -64,5 +68,7 @@ public extension UIPopoverPresentationController {
         self.presentedViewController.preferredContentSize=viewSize;
         self.delegate = BlueMSShowPopOverAsDialog.INSTANCE;
     }
- 
+    
 }
+
+

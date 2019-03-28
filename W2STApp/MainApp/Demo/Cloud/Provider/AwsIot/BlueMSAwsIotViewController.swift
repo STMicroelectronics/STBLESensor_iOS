@@ -38,7 +38,7 @@
 import Foundation
 
 public class BlueMSAwsIotViewController : BlueMSCloudConfigDetailsViewController,
-    UIDocumentPickerDelegate,UIDocumentMenuDelegate{
+    UIDocumentPickerDelegate{
     private static let ENPOINT_KEY = "BlueMSAwsIotViewController_ENDPOINT"
     private static let CLIENT_KEY = "BlueMSAwsIotViewController_CLIENTID"
     private static let ENPOINT_FORMAT = "([-_\\w]*)\\.iot\\.([-_\\w]*)\\.amazonaws\\.com";
@@ -102,10 +102,9 @@ public class BlueMSAwsIotViewController : BlueMSCloudConfigDetailsViewController
         configuration.set(mConnecitonIdTextView.text, forKey:BlueMSAwsIotViewController.CLIENT_KEY)
     }
 
-    private func buildSelectFileMenu(sourceView: UIView)->UIDocumentMenuViewController{
-        //TODO is deprecated?
+    private func buildSelectFileMenu(sourceView: UIView)-> UIDocumentPickerViewController{
         //"com.apple.keynote.key" = ask to open the keynote file to be able to download file with the key extension..
-        let docMenu = UIDocumentMenuViewController(documentTypes: ["public.data","com.apple.keynote.key"], in: .import);
+        let docMenu =  UIDocumentPickerViewController(documentTypes: ["public.data","com.apple.keynote.key"], in: .import);
         docMenu.delegate=self;
         docMenu.popoverPresentationController?.permittedArrowDirections = .up;
         docMenu.popoverPresentationController?.sourceView=sourceView;
@@ -199,12 +198,6 @@ public class BlueMSAwsIotViewController : BlueMSCloudConfigDetailsViewController
     private func onCertificateFileSelected(url: URL){
         mCertificateFile = url;
         mSelectCertificateButton.setTitle(url.lastPathComponent, for: .normal)
-    }
-    
-    public func documentMenu(_ documentMenu: UIDocumentMenuViewController,
-                             didPickDocumentPicker documentPicker: UIDocumentPickerViewController){
-        documentPicker.delegate=self;
-        present(documentPicker, animated: true, completion: nil)
     }
     
     public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL){

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l56-wu-bnz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l56-wu-bnz">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -720,18 +720,18 @@
             <objects>
                 <viewController id="09I-wH-Id2" customClass="BlueMSCloudConnectionViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tK3-zW-bkA">
-                        <rect key="frame" x="0.0" y="0.0" width="311" height="153.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="359" height="310"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DcM-fY-3pd">
-                                <rect key="frame" x="24" y="8" width="263" height="30"/>
+                                <rect key="frame" x="24" y="8" width="311" height="30"/>
                                 <state key="normal" title="Connect"/>
                                 <connections>
                                     <action selector="onConnectButtonPressed:" destination="09I-wH-Id2" eventType="touchUpInside" id="JtI-HY-u20"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8r-Ll-eZt">
-                                <rect key="frame" x="24" y="112.5" width="263" height="33"/>
+                                <rect key="frame" x="24" y="269" width="311" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="View Data on Cloud"/>
                                 <connections>
@@ -739,24 +739,24 @@
                                 </connections>
                             </button>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hyW-op-DKR">
-                                <rect key="frame" x="24" y="46" width="263" height="58.5"/>
+                                <rect key="frame" x="24" y="46" width="311" height="215"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BlueMSCloudLogTableViewCell" id="bFR-cR-tpu" customClass="BlueMSCloudFeatureTableViewCell" customModule="ST_BLE_Sensor" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="263" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="311" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bFR-cR-tpu" id="M0r-1x-gti">
-                                            <rect key="frame" x="0.0" y="0.0" width="263" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="311" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0f-D7-uMB">
-                                                    <rect key="frame" x="16" y="11.5" width="174" height="21"/>
+                                                    <rect key="frame" x="16" y="11.5" width="222" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YMH-dy-xxZ">
-                                                    <rect key="frame" x="198" y="6.5" width="51" height="31"/>
+                                                    <rect key="frame" x="246" y="6.5" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="onSwitchChange:" destination="bFR-cR-tpu" eventType="valueChanged" id="NHs-Ln-ioK"/>
                                                     </connections>
@@ -810,7 +810,7 @@
             <objects>
                 <viewController title="Cloud Data" id="PMg-1J-bgO" customClass="BlueMSCloudDataPageViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cmx-JL-hf7">
-                        <rect key="frame" x="0.0" y="0.0" width="311" height="153.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="359" height="310"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="rnx-Mo-bsc"/>
@@ -853,6 +853,6 @@
         <image name="cloudLog_demo_icon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BVY-aD-1Pd"/>
+        <segue reference="8zh-WZ-t4q"/>
     </inferredMetricsTieBreakers>
 </document>

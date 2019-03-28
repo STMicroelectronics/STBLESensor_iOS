@@ -41,7 +41,6 @@ import SceneKit;
 import GLKit;
 import AudioToolbox
 
-
 public class BlueMSMemsSensorFusionViewController: BlueMSCalibrationViewController,
     BlueSTSDKFeatureDelegate,
     BlueMSSimpleDialogViewControllerDelegate {
@@ -77,11 +76,24 @@ public class BlueMSMemsSensorFusionViewController: BlueMSCalibrationViewControll
                                  value: "Check the license", comment: "")
     }();
 
+    private static let DISTANCE_OUT_OF_RANGE:String = {
+        let bundle = Bundle(for: BlueMSMemsSensorFusionViewController.self)
+        return NSLocalizedString("Distance: Out of range", tableName: nil, bundle: bundle,
+                                 value: "Distance: Out of range", comment: "")
+    }();
+    
+    private static let DISTANCE_FORMAT:String = {
+        let bundle = Bundle(for: BlueMSMemsSensorFusionViewController.self)
+        return NSLocalizedString("Distance: %.0f mm", tableName: nil, bundle: bundle,
+                                 value: "Distance: %.0f mm", comment: "")
+    }();
+    
     private static let FREE_FALL_DIALOG_DURATION_S = TimeInterval(2.0);
     private static let MAX_PROXIMITY_VALUE = PoroximityType(255);
 
     private static let RESET_POSITION_SEGUE = "ResetPositionDialogID";
 
+    @IBOutlet weak var mProximityText: UILabel!
     @IBOutlet weak var m3DCubeView: SCNView!
     @IBOutlet weak var mProximityButton: UIButton!
 
@@ -150,15 +162,17 @@ public class BlueMSMemsSensorFusionViewController: BlueMSCalibrationViewControll
     private func enableProximity(){
         mProximity = self.node.getFeatureOfType(BlueSTSDKFeatureProximity.self);
         if let feature = mProximity{
-            feature.add(self);
-            mProximityButton.isSelected=true;
-            mProximityButton.isEnabled=true;
-            mProximityButton.alpha=1;
-            self.node.enableNotification(feature);
+            feature.add(self)
+            mProximityButton.isSelected=true
+            mProximityButton.isEnabled=true
+            mProximityButton.alpha=1
+            mProximityText.isHidden=false
+            self.node.enableNotification(feature)
         }else{
-            mProximityButton.isSelected=false;
-            mProximityButton.isEnabled=false;
-            mProximityButton.alpha=0;
+            mProximityButton.isSelected=false
+            mProximityButton.isEnabled=false
+            mProximityButton.alpha=0
+            mProximityText.isHidden=true
         }
     }
 
@@ -168,6 +182,7 @@ public class BlueMSMemsSensorFusionViewController: BlueMSCalibrationViewControll
             feature.remove(self);
         }
         mProximityButton.isSelected=false;
+        mProximityText.isHidden=true
     }
 
 
@@ -258,8 +273,14 @@ public class BlueMSMemsSensorFusionViewController: BlueMSCalibrationViewControll
             let scaleDistance = PoroximityType.minimum(distance, BlueMSMemsSensorFusionViewController.MAX_PROXIMITY_VALUE);
             let scale = BlueMSMemsSensorFusionViewController.CUBE_DEFAULT_SCALE*(scaleDistance/BlueMSMemsSensorFusionViewController.MAX_PROXIMITY_VALUE);
             setCubeScaleFactor(scale);
+            DispatchQueue.main.async {
+                self.mProximityText.text = String(format:BlueMSMemsSensorFusionViewController.DISTANCE_FORMAT,distance);
+            }
         }else{
             setCubeScaleFactor(BlueMSMemsSensorFusionViewController.CUBE_DEFAULT_SCALE)
+            DispatchQueue.main.async {
+                self.mProximityText.text = BlueMSMemsSensorFusionViewController.DISTANCE_OUT_OF_RANGE
+            }
         }
     }
 

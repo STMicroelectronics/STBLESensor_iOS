@@ -35,28 +35,59 @@
  * OF SUCH DAMAGE.
  */
 import Foundation
+import BlueSTSDK_Gui
 
-public class BlueMSMainViewController : UINavigationController,
-    BlueSTSDKAboutViewControllerDelegate,
-    BlueSTSDKNodeListViewControllerDelegate{
+public class BlueMSMainViewController : BlueSTSDKMainViewController {
     
-     private static let PRIVACY_URL = URL(string:"http://www.st.com/content/st_com/en/common/privacy-policy.html")
     /**
      *  laod the BlueSTSDKMainView and set the delegate for it
      */
     public override func viewDidLoad() {
         super.viewDidLoad()
-
-        let storyBoard = UIStoryboard(name: "BlueSTSDKMainView", bundle: Bundle(for: BlueSTSDKMainViewController.self))
-        
-        if let mainView = storyBoard.instantiateInitialViewController() as? BlueSTSDKMainViewController{
-            mainView.delegateMain=nil;
-            mainView.delegateAbout=self;
-            mainView.delegateNodeList=self;
-            pushViewController(mainView, animated: true)
-        }
+        self.delegateAbout = self
+        self.delegateNodeList = self
     }
     
+    private func getDemoViewController(with node: BlueSTSDKNode, menuManager: BlueSTSDKViewControllerMenuDelegate)
+        -> UIViewController{
+            let storyBoard = UIStoryboard(name: "BlueMS", bundle: nil);
+            let mainView = storyBoard.instantiateInitialViewController() as? BlueMSDemosViewController
+            mainView?.node=node;
+            mainView?.menuDelegate = menuManager;
+            return mainView!;
+    }
+    
+    /**
+     *  when the user select a node show the main view form the DemoView storyboard
+     *
+     *  @param node node selected
+     *
+     *  @return controller with the demo to show
+     */
+    public func demoViewController(with node: BlueSTSDKNode, menuManager: BlueSTSDKViewControllerMenuDelegate)
+            -> UIViewController {
+                        
+        if(BlueSTSDKSTM32WBOTAUtils.isOTANode(node)){
+            return BlueSTSDKFwUpgradeManagerViewController.instaziate(forNode: node,
+                                                                      requireAddress: true,
+                                                                      defaultAddress: BlueSTSDKSTM32WBOTAUtils.DEFAULT_FW_ADDRESS)
+        }else if (BlueNRGOtaUtils.isOTANode(node)){
+            return BlueSTSDKFwUpgradeManagerViewController.instaziate(forNode: node,
+                                                                      requireAddress: false,
+                                                                      defaultAddress:nil)
+        }else{
+            return getDemoViewController(with: node, menuManager: menuManager)
+        }
+        
+    }
+
+    
+    
+}
+
+
+extension BlueMSMainViewController : BlueSTSDKAboutViewControllerDelegate{
+    private static let PRIVACY_URL = URL(string:"http://www.st.com/content/st_com/en/common/privacy-policy.html")
     
     public func abaoutHtmlPagePath() -> String? {
         return Bundle.main.path(forResource: "text", ofType: "html");
@@ -85,6 +116,9 @@ public class BlueMSMainViewController : UINavigationController,
         ]
     }
     
+}
+
+extension BlueMSMainViewController : BlueSTSDKNodeListViewControllerDelegate{
     /**
      *  filter the node for show only the ones with remote features
      *
@@ -94,43 +128,19 @@ public class BlueMSMainViewController : UINavigationController,
     public func display(node: BlueSTSDKNode) -> Bool {
         return true;
     }
- 
+    
     public func prepareToConnect(node:BlueSTSDKNode){
         node.addExternalCharacteristics(BlueSTSDKStdCharToFeatureMap.getManageStdCharacteristics())
         node.addExternalCharacteristics(BlueSTSDKSTM32WBOTAUtils.getOtaCharacteristics())
+        node.addExternalCharacteristics(BlueNRGOtaUtils.getOtaCharacteristics())
         if(STM32WBPeer2PeerDemoConfiguration.isValidDeviceNode(node)){
             node.addExternalCharacteristics(STM32WBPeer2PeerDemoConfiguration.getCharacteristicMapping())
         }
     }
     
-    private func getDemoViewController(with node: BlueSTSDKNode, menuManager: BlueSTSDKViewControllerMenuDelegate)
-        -> UIViewController{
-            let storyBoard = UIStoryboard(name: "BlueMS", bundle: nil);
-            let mainView = storyBoard.instantiateInitialViewController() as? BlueMSDemosViewController
-            mainView?.node=node;
-            mainView?.menuDelegate = menuManager;
-            return mainView!;
-    }
-    
-    /**
-     *  when the user select a node show the main view form the DemoView storyboard
-     *
-     *  @param node node selected
-     *
-     *  @return controller with the demo to show
-     */
-    public func demoViewController(with node: BlueSTSDKNode, menuManager: BlueSTSDKViewControllerMenuDelegate)
-            -> UIViewController {
-                        
-        if(BlueSTSDKSTM32WBOTAUtils.isOTANode(node)){
-            return BlueSTSDKFwUpgradeManagerViewController.instaziate(forNode: node,
-                                                                      requireAddress: true,
-                                                                      defaultAddress: BlueSTSDKSTM32WBOTAUtils.DEFAULT_FW_ADDRESS)
-        }else{
-            return getDemoViewController(with: node, menuManager: menuManager)
+    public var advertiseFilters: [BlueSTSDKAdvertiseFilter]{
+        get{
+            return [ BlueNRGOtaAdvertiseParser() ] + BlueSTSDKManager.DEFAULT_ADVERTISE_FILTER
         }
-        
-        
     }
-
 }

@@ -65,37 +65,39 @@
 #import "BlueMSDemoTabViewController.h"
 #import "W2STPlotFeatureDemoViewController.h"
 
+#define SHOW_LICENSE_MANAGER_NAME BLUESTSDK_LOCALIZE(@"License Manager",nil)
 #define SHOW_SETTINGS_NAME BLUESTSDK_LOCALIZE(@"Settings",nil)
 
 
 #define ENVIROMENTAL_DEMO_POSITION 0
 #define SENSOR_FUSION_DEMO_POSITION 1
-#define PLOT_DEMO_POSITION 2
-#define SD_LOGGING_POSITION 3
-#define ACTIVITY_RECOGNITION_DEMO_POSITION 4
-#define CARRY_POSITION_RECOGNITION_DEMO_POSITION 5
-#define PROXIMITY_GESTURE_RECOGNITION_DEMO_POSITION 6
-#define MEMS_GESTURE_RECOGNITION_DEMO_POSITION 7
-#define PEDOMEMETER_DEMO_POSITION 8
-#define ACC_EVENT_DEMO_POSITION 9
-#define SWITCH_DEMO_POSITION 10
-#define BLUEVOICE_DEMO_POSITION 11
-#define SPEECHTOTEXT_DEMO_POSITION 12
-#define BEAM_FORMING_DEMO_POSITION 13
-#define DIRECTION_OF_ARRIVAL_DEMO_POSITION 14
-#define AUDIO_SCENE_CLASSIFICAITON_POSITION 15
-#define HEART_RATE_DEMO_POSITION 16
-#define MOTIONID_DEMO_POSITION 17
-#define COMPASS_DEMO_POSITION 18
-#define COSENSOR_DEMO_POSITION 19
-#define STM32WB_P2PSERVER_POSITION 20
-#define REBOOT_OTA_POSITION 21
-#define AILOG_POSITION 22
-#define CLOUD_DEMO_POSITION 23
-#define RSSI_DEMO_POSITION 24
-#define FFTAMPLITUDE_DEMO_POSITION 25
+#define FFTAMPLITUDE_DEMO_POSITION 2
+#define PLOT_DEMO_POSITION 3
+#define SD_LOGGING_POSITION 4
+#define ACTIVITY_RECOGNITION_DEMO_POSITION 5
+#define CARRY_POSITION_RECOGNITION_DEMO_POSITION 6
+#define PROXIMITY_GESTURE_RECOGNITION_DEMO_POSITION 7
+#define MEMS_GESTURE_RECOGNITION_DEMO_POSITION 8
+#define PEDOMEMETER_DEMO_POSITION 9
+#define ACC_EVENT_DEMO_POSITION 10
+#define SWITCH_DEMO_POSITION 11
+#define BLUEVOICE_DEMO_POSITION 12
+#define SPEECHTOTEXT_DEMO_POSITION 13
+#define BEAM_FORMING_DEMO_POSITION 14
+#define DIRECTION_OF_ARRIVAL_DEMO_POSITION 15
+#define AUDIO_SCENE_CLASSIFICAITON_POSITION 16
+#define HEART_RATE_DEMO_POSITION 17
+#define MOTIONID_DEMO_POSITION 18
+#define COMPASS_DEMO_POSITION 19
+#define COSENSOR_DEMO_POSITION 20
+#define STM32WB_P2PSERVER_POSITION 21
+#define REBOOT_OTA_POSITION 22
+#define AILOG_POSITION 23
+#define CLOUD_DEMO_POSITION 24
+#define PREDICTIVE_DEMO_POSITION 25
+#define RSSI_DEMO_POSITION 26
 
-#define NUMBER_OF_DEMOS 26
+#define NUMBER_OF_DEMOS 27
 
 @interface BlueMSDemosViewController () <UITabBarControllerDelegate>
 
@@ -106,7 +108,6 @@
     UISwipeGestureRecognizer *rightGesture;
     UIAlertAction *registerSettings;
     UIAlertAction *nucleoSettings;
-    UIAlertAction *mActionLicenseManager;
     bool mFwVarningDisplayed;
 }
 
@@ -128,7 +129,7 @@
 
     nucleoSettings = [self createNucleoSettings];
     [self.menuDelegate addMenuAction:nucleoSettings];
-
+    
     mFwVarningDisplayed=false;
     
     //add a button in the navbar
@@ -187,7 +188,8 @@
     if( [node getFeatureOfType:BlueSTSDKFeatureMotionIntensity.class]==nil){
         [removeItem addIndex:MOTIONID_DEMO_POSITION];
     }
-    if( [node getFeatureOfType:BlueSTSDKFeatureCompass.class]==nil){
+    if( [node getFeatureOfType:BlueSTSDKFeatureCompass.class]==nil &&
+        [node getFeatureOfType:BlueSTSDKFeatureEulerAngle.class]==nil){
         [removeItem addIndex:COMPASS_DEMO_POSITION];
     }
     if( [node getFeatureOfType:BlueSTSDKFeatureDirectionOfArrival.class]==nil){
@@ -233,6 +235,12 @@
         [removeItem addIndex:FFTAMPLITUDE_DEMO_POSITION];
     }
     
+    if([node getFeatureOfType:BlueSTSDKFeaturePredictiveSpeedStatus.class]==nil &&
+       [node getFeatureOfType:BlueSTSDKFeaturePredictiveFrequencyDomainStatus.class]==nil &&
+       [node getFeatureOfType:BlueSTSDKFeaturePredictiveAccelerationStatus.class]==nil){
+        [removeItem addIndex:PREDICTIVE_DEMO_POSITION];
+    }
+    
     [availableDemos removeObjectsAtIndexes:removeItem];
     self.viewControllers = availableDemos;
 }
@@ -250,11 +258,6 @@
     //remove is after the initialization to permit to correctly initialize the demo that have some internal view controller
     //to pass the valid node also to the subview
     [self removeOptionalDemo];
-
-    //add the debug console if present
-    if(self.node.debugConsole==nil) {
-        [self.menuDelegate removeMenuAction:mActionLicenseManager];
-    }
     
     if(self.node.type == BlueSTSDKNodeTypeSTEVAL_WESU1 ){
         if(!mFwVarningDisplayed){
@@ -318,7 +321,6 @@
     
     [self changeViewController:settingsControlView];
 }
-
 
 #pragma mark - UITabBarControllerDelegate
 - (void)tabBarController:(UITabBarController *)tabBarController

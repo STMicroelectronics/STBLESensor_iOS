@@ -59,16 +59,20 @@ public class BlueMSCompassViewController: BlueMSCalibrationViewController,
     @IBOutlet weak var mNeedleImage: UIImageView!
     @IBOutlet weak var mAngleLabel: UILabel!
     
-    private var mFeature:BlueSTSDKFeatureAutoConfigurable?;
+    private var mFeature:BlueSTSDKFeature?;
     
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
         
-        mFeature = self.node.getFeatureOfType(BlueSTSDKFeatureCompass.self) as? BlueSTSDKFeatureAutoConfigurable;
+        mFeature = self.node.getFeatureOfType(BlueSTSDKFeatureCompass.self) ??
+                self.node.getFeatureOfType(BlueSTSDKFeatureEulerAngle.self)
+        
         if let feature = mFeature{
             feature.add(self);
-            manageCalibrationForFeature(feature);
-            self.node.enableNotification(feature);
+            if let calibrableFeature = mFeature as? BlueSTSDKFeatureAutoConfigurable{
+                manageCalibrationForFeature(calibrableFeature);
+            }
+            feature.enableNotification()
         }
     }
  
@@ -76,7 +80,7 @@ public class BlueMSCompassViewController: BlueMSCalibrationViewController,
         super.viewWillDisappear(animated);
         
         if let feature = mFeature{
-            self.node.disableNotification(feature);
+            feature.disableNotification()
             feature.remove(self);
         }
     }
@@ -95,8 +99,18 @@ public class BlueMSCompassViewController: BlueMSCalibrationViewController,
         return ORIENTATION[index % nOrientation];
     }
     
+    private func extractAngle(_ feature: BlueSTSDKFeature, sample: BlueSTSDKFeatureSample) -> Float{
+        if(feature.isKind(of: BlueSTSDKFeatureCompass.self)){
+            return BlueSTSDKFeatureCompass.getAngle(sample)
+        }else if feature.isKind(of: BlueSTSDKFeatureEulerAngle.self){
+            return BlueSTSDKFeatureEulerAngle.getYaw(sample)
+        }
+        return Float.nan
+    }
+    
+    
     public func didUpdate(_ feature: BlueSTSDKFeature, sample: BlueSTSDKFeatureSample) {
-        let angle = BlueSTSDKFeatureCompass.getAngle(sample);
+        let angle = extractAngle(feature, sample: sample)
         let orientation = BlueMSCompassViewController.getOrientationNameForAngle(angle: angle);
         let angleRad = BlueMSCompassViewController.degreeToRad(angle: angle);
         

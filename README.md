@@ -13,12 +13,12 @@ The application is built on top of BlueST SDK, a library that provides an implem
 Since the project uses git submodules, <code>--recursive</code> option must be used to clone the repository:
 
 ```Shell
-git clone --recursive https://github.com/STMicroelectronics-CentralLabs/STBlueMS_iOS
+git clone --recursive https://github.com/STMicroelectronics/STBlueMS_iOS
 ```
 
 or run
 ```Shell
-git clone https://github.com/STMicroelectronics-CentralLabs/STBlueMS_iOS
+git clone https://github.com/STMicroelectronics/STBlueMS_iOS
 git submodule update --init --recursive
 ```
 
@@ -58,3 +58,4 @@ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSE
 THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
 OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
 OF SUCH DAMAGE.
+

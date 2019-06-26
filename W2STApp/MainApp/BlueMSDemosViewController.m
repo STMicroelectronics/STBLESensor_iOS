@@ -96,8 +96,11 @@
 #define CLOUD_DEMO_POSITION 24
 #define PREDICTIVE_DEMO_POSITION 25
 #define RSSI_DEMO_POSITION 26
+#define LEVEL_DEMO_POSITION 27
+#define MOTIONALGO_DEMO_POSITION 28
+#define FITNESS_ACTIVITY_DEMO_POSITION 29
 
-#define NUMBER_OF_DEMOS 27
+#define NUMBER_OF_DEMOS 30
 
 @interface BlueMSDemosViewController () <UITabBarControllerDelegate>
 
@@ -108,6 +111,7 @@
     UISwipeGestureRecognizer *rightGesture;
     UIAlertAction *registerSettings;
     UIAlertAction *nucleoSettings;
+    UIAlertAction *mActionLicenseManager;
     bool mFwVarningDisplayed;
 }
 
@@ -206,12 +210,7 @@
     if([node getFeatureOfType:BlueSTSDKFeatureAudioSceneCalssification.class]==nil){
         [removeItem addIndex:AUDIO_SCENE_CLASSIFICAITON_POSITION];
     }
-    
-    ///TODO temporaney disable the speechToText for the BlueNRG-Tile board
-    if(node.type == BlueSTSDKNodeTypeSTEVAL_BCN002V1){
-        [removeItem addIndex:SPEECHTOTEXT_DEMO_POSITION];
-    }
-    
+        
     if(![W2STPlotFeatureDemoViewController canPlotFeatureForNode:node]){
         [removeItem addIndex:PLOT_DEMO_POSITION];
     }
@@ -235,10 +234,22 @@
         [removeItem addIndex:FFTAMPLITUDE_DEMO_POSITION];
     }
     
+    if([node getFeatureOfType:BlueSTSDKFeatureEulerAngle.class]==nil){
+        [removeItem addIndex:LEVEL_DEMO_POSITION];
+    }
+    
     if([node getFeatureOfType:BlueSTSDKFeaturePredictiveSpeedStatus.class]==nil &&
        [node getFeatureOfType:BlueSTSDKFeaturePredictiveFrequencyDomainStatus.class]==nil &&
        [node getFeatureOfType:BlueSTSDKFeaturePredictiveAccelerationStatus.class]==nil){
         [removeItem addIndex:PREDICTIVE_DEMO_POSITION];
+    }
+    
+    if([node getFeatureOfType:BlueSTSDKFeatureMotionAlogrithm.class]==nil){
+        [removeItem addIndex:MOTIONALGO_DEMO_POSITION];
+    }
+    
+    if([node getFeatureOfType:BlueSTSDKFeatureFitnessActivity.class]==nil){
+        [removeItem addIndex:FITNESS_ACTIVITY_DEMO_POSITION];
     }
     
     [availableDemos removeObjectsAtIndexes:removeItem];
@@ -258,6 +269,11 @@
     //remove is after the initialization to permit to correctly initialize the demo that have some internal view controller
     //to pass the valid node also to the subview
     [self removeOptionalDemo];
+
+    //add the debug console if present
+    if(self.node.debugConsole==nil) {
+        [self.menuDelegate removeMenuAction:mActionLicenseManager];
+    }
     
     if(self.node.type == BlueSTSDKNodeTypeSTEVAL_WESU1 ){
         if(!mFwVarningDisplayed){

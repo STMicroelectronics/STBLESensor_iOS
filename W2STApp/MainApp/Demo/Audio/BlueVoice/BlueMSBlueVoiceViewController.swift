@@ -210,13 +210,12 @@ public class BlueMSBlueVoiceViewController: BlueMSDemoTabViewController,
 
 
     private func updateAudioPlot(_ sample:Data){
-
-        let value = sample.withUnsafeBytes { (ptr: UnsafePointer<Int16>) -> Int16 in
-            return ptr.pointee;
+        let value = sample.withUnsafeBytes { (ptr: UnsafeRawBufferPointer) -> Int16? in
+            return ptr.bindMemory(to: Int16.self).first
         }
-
-        mAudioGraph.appendToPlot(value);
-
+        if let value = value{
+            mAudioGraph.appendToPlot(value);
+        }
     }
     
     /// call when the BlueSTSDKFeatureAudioADPCMSync has new data, it is used to 

@@ -43,11 +43,11 @@ public protocol NibLoadable {
 
 public extension NibLoadable where Self: UIView {
     
-    public static var nibName: String {
+    static var nibName: String {
         return String(describing: Self.self) // defaults to the name of the class implementing this protocol.
     }
     
-    public static var nib: UINib {
+    static var nib: UINib {
         let bundle = Bundle(for: Self.self)
         return UINib(nibName: Self.nibName, bundle: bundle)
     }

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Fk-aq-gHW">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Level-->
+        <scene sceneID="H9j-3S-jd0">
+            <objects>
+                <viewController id="4Fk-aq-gHW" customClass="BlueMSEulerAngleLevelViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rYC-2k-pxH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3q-60-2oj">
+                                <rect key="frame" x="8" y="28" width="359" height="31.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="trp-au-45Y">
+                                <rect key="frame" x="8" y="590" width="359" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="level_bar" translatesAutoresizingMaskIntoConstraints="NO" id="3uv-rO-8f0">
+                                <rect key="frame" x="112.5" y="244" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="3uv-rO-8f0" secondAttribute="height" multiplier="1:1" id="evZ-uX-xu2"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="level_circle" translatesAutoresizingMaskIntoConstraints="NO" id="cCo-Ch-2w1">
+                                <rect key="frame" x="112.5" y="244" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="cCo-Ch-2w1" secondAttribute="height" multiplier="1:1" id="hI2-9Q-rSG"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="level_circle" translatesAutoresizingMaskIntoConstraints="NO" id="2Lz-y6-g4s">
+                                <rect key="frame" x="112.5" y="244" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="2Lz-y6-g4s" secondAttribute="height" multiplier="1:1" id="ZA9-cs-p5w"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qSn-5L-Y7D" firstAttribute="bottom" secondItem="trp-au-45Y" secondAttribute="bottom" constant="8" id="2IM-tI-uXq"/>
+                            <constraint firstItem="cCo-Ch-2w1" firstAttribute="width" secondItem="3uv-rO-8f0" secondAttribute="width" id="7hE-He-yrf"/>
+                            <constraint firstItem="qSn-5L-Y7D" firstAttribute="trailing" secondItem="trp-au-45Y" secondAttribute="trailing" constant="8" id="8Hm-A0-LCt"/>
+                            <constraint firstItem="trp-au-45Y" firstAttribute="leading" secondItem="qSn-5L-Y7D" secondAttribute="leading" constant="8" id="9u7-5T-iJm"/>
+                            <constraint firstItem="cCo-Ch-2w1" firstAttribute="centerY" secondItem="qSn-5L-Y7D" secondAttribute="centerY" id="CjH-pT-EEr"/>
+                            <constraint firstItem="2Lz-y6-g4s" firstAttribute="centerX" secondItem="qSn-5L-Y7D" secondAttribute="centerX" id="F97-yg-3Fz"/>
+                            <constraint firstItem="3uv-rO-8f0" firstAttribute="width" secondItem="rYC-2k-pxH" secondAttribute="width" multiplier="0.4" id="Nlx-Uw-Ros"/>
+                            <constraint firstItem="2Lz-y6-g4s" firstAttribute="width" secondItem="2Lz-y6-g4s" secondAttribute="height" multiplier="1:1" id="NtD-mO-Gmp"/>
+                            <constraint firstItem="cCo-Ch-2w1" firstAttribute="centerX" secondItem="qSn-5L-Y7D" secondAttribute="centerX" id="SXH-wV-goI"/>
+                            <constraint firstItem="cCo-Ch-2w1" firstAttribute="width" secondItem="cCo-Ch-2w1" secondAttribute="height" multiplier="1:1" id="TmC-q5-vPk"/>
+                            <constraint firstItem="3uv-rO-8f0" firstAttribute="centerY" secondItem="qSn-5L-Y7D" secondAttribute="centerY" id="WjG-3T-xYS"/>
+                            <constraint firstItem="3uv-rO-8f0" firstAttribute="centerX" secondItem="qSn-5L-Y7D" secondAttribute="centerX" id="YAU-6N-gCo"/>
+                            <constraint firstItem="V3q-60-2oj" firstAttribute="top" secondItem="qSn-5L-Y7D" secondAttribute="top" constant="8" id="dl7-k3-a9E"/>
+                            <constraint firstItem="2Lz-y6-g4s" firstAttribute="centerY" secondItem="qSn-5L-Y7D" secondAttribute="centerY" id="fvW-EO-7F8"/>
+                            <constraint firstItem="qSn-5L-Y7D" firstAttribute="trailing" secondItem="V3q-60-2oj" secondAttribute="trailing" constant="8" id="j3P-lM-bFv"/>
+                            <constraint firstItem="V3q-60-2oj" firstAttribute="leading" secondItem="qSn-5L-Y7D" secondAttribute="leading" constant="8" id="kv3-9q-n7o"/>
+                            <constraint firstItem="2Lz-y6-g4s" firstAttribute="width" secondItem="3uv-rO-8f0" secondAttribute="width" id="uz6-Qd-Ymc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qSn-5L-Y7D"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Level" image="sensorFusionIcon.png" id="oXx-3d-GOg"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="mDetailsLabel" destination="trp-au-45Y" id="Prx-0h-lfW"/>
+                        <outlet property="mOffsetLabel" destination="V3q-60-2oj" id="rwL-vc-yDc"/>
+                        <outlet property="mPlanarTarget1" destination="cCo-Ch-2w1" id="DPl-dU-UbU"/>
+                        <outlet property="mPlanarTarget2" destination="2Lz-y6-g4s" id="BfJ-c0-eBa"/>
+                        <outlet property="mVerticalTarget" destination="3uv-rO-8f0" id="JZq-ow-EnF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eSf-xD-Zx7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="224.80000000000001" y="94.902548725637189"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="level_bar" width="300" height="300"/>
+        <image name="level_circle" width="300" height="300"/>
+        <image name="sensorFusionIcon.png" width="16" height="16"/>
+    </resources>
+</document>

@@ -146,9 +146,8 @@ static NSSet<Class> *sSupportedFeatureClass;
                 [BlueSTSDKFeatureCOSensor class],
                 [BlueSTSDKFeatureTemperature class],
                 [BlueSTSDKFeatureEulerAngle class],
-                [BlueSTSDKFeatureMagnetometerNorm class],
-                [BlueSTSDKFeatureAccelerationNorm class],
-                [BlueSTSDKFeatureGyroscopeNorm class],
+                [BlueSTSDKFeatureMemsNorm class],
+                [BlueSTSDKFeatureEventCounter class],
                  nil ];
     }//if
 }//initialize

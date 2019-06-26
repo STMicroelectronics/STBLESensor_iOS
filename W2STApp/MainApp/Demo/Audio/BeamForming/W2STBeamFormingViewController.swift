@@ -182,7 +182,7 @@ public class W2STBeamFormingViewController: BlueMSDemoTabViewController,BlueSTSD
     }
 
     private func getButtonForDirection(_ direction:BlueSTSDKFeatureBeamFormingDirection)->UIButton?{
-        let dirIndex = mButtonToDirectionMap.index { $0.value == direction }
+        let dirIndex = mButtonToDirectionMap.firstIndex { $0.value == direction }
         if let index = dirIndex {
             return mButtonToDirectionMap[index].key;
         }else {
@@ -204,17 +204,18 @@ public class W2STBeamFormingViewController: BlueMSDemoTabViewController,BlueSTSD
         let sampleData = BlueSTSDKFeatureAudioADPCM.getLinearPCMAudio(sample);
         if let data = sampleData{
             mAudioPlayback?.playSample(sample: data);
-
-            let sampleValue = data.withUnsafeBytes(
-                { (ptr:UnsafePointer<Int16>) -> Int16 in
-                    return ptr.pointee;
-                })
-
-            mPlotController.appendToPlot(sampleValue);
-
+            updateAudioPlot(data)
         }//if data!=null
     }
 
+    private func updateAudioPlot(_ sample:Data){
+        let value = sample.withUnsafeBytes { (ptr: UnsafeRawBufferPointer) -> Int16? in
+            return ptr.bindMemory(to: Int16.self).first
+        }
+        if let value = value{
+            mPlotController.appendToPlot(value);
+        }
+    }
 
     /// call when the BlueSTSDKFeatureAudioADPCMSync has new data, it is used to
     /// correctly decode the data from the the BlueSTSDKFeatureAudioADPCM feature

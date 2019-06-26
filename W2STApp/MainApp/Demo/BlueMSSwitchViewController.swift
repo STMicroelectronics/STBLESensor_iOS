@@ -40,10 +40,23 @@ import BlueSTSDK;
 
 public class BlueMSSwitchViewController: BlueMSDemoTabViewController,BlueSTSDKFeatureDelegate{
 
+    private static let SWITCH_DESCRIPTION:String = {
+        let bundle = Bundle(for: BlueMSPedometerViewController.self)
+        return NSLocalizedString("Click the image to change the status", tableName: nil, bundle: bundle,
+                                 value: "Click the image to change the status", comment: "")
+    }();
+    
+    private static let EVENT_DESCRIPTION:String = {
+        let bundle = Bundle(for: BlueMSPedometerViewController.self)
+        return NSLocalizedString("The led is swithing on when an event is detected", tableName: nil, bundle: bundle,
+                                 value: "The led is swithing on when an event is detected", comment: "")
+    }();
+    
     private static let SWITCH_ON:UInt8 = 0x01;
     private static let SWITCH_OFF:UInt8 = 0x00;
     
     @IBOutlet weak var mLedImage: UIImageView!
+    @IBOutlet weak var mLedDescription: UILabel!
 
     private var mFeature:BlueSTSDKFeatureSwitch?;
     private static let STATUS_ON_IMG = #imageLiteral(resourceName: "led_on")
@@ -62,9 +75,17 @@ public class BlueMSSwitchViewController: BlueMSDemoTabViewController,BlueSTSDKFe
         enableOnImageClickEvent();
     }
 
+    private func setDescriptionString(_ nodeType:BlueSTSDKNodeType){
+        if(nodeType == .sensor_Tile_Box){
+            mLedDescription.text = BlueMSSwitchViewController.EVENT_DESCRIPTION
+        }else{
+            mLedDescription.text = BlueMSSwitchViewController.SWITCH_DESCRIPTION
+        }
+    }
+    
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        setDescriptionString(node.type)
         mFeature = self.node.getFeatureOfType(BlueSTSDKFeatureSwitch.self) as! BlueSTSDKFeatureSwitch?
         if let feature = mFeature {
             feature.add(self);

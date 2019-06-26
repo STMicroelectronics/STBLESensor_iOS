@@ -41,6 +41,7 @@ import BlueSTSDK
 public class BlueMSSDLoggingViewController: BlueMSDemoTabViewController, BlueMSSDLoggingView,
 UITableViewDataSource,BlueMSSDLogFeatureTableCellViewSelectDelegate{
     
+    
     private static let START_LOGGING_STR:String = {
         let bundle = Bundle(for: BlueMSSDLoggingViewController.self)
         return NSLocalizedString("Start Logging", tableName: nil, bundle: bundle,
@@ -80,14 +81,33 @@ UITableViewDataSource,BlueMSSDLogFeatureTableCellViewSelectDelegate{
                                  comment: "")
     }();
     
+    private static let LOG_STARTED:String = {
+        let bundle = Bundle(for: BlueMSSDLoggingViewController.self)
+        return NSLocalizedString("Status: Recording the data",
+                                 tableName: nil, bundle: bundle,
+                                 value: "Status: Recording the data",
+                                 comment: "")
+    }();
+    
+    private static let LOG_STOPPED:String = {
+        let bundle = Bundle(for: BlueMSSDLoggingViewController.self)
+        return NSLocalizedString("Status: Press the button to start recording the data",
+                                 tableName: nil, bundle: bundle,
+                                 value: "Status: Press the button to start recording the data",
+                                 comment: "")
+    }();
+    
     private static let CELL_REUSE_ID = "BlueMSSDLogTableViewCell"
     
+    @IBOutlet weak var mStatusLabel: UILabel!
     @IBOutlet weak var mHoursValue: UITextField!
     @IBOutlet weak var mSecondsValue: UITextField!
     @IBOutlet weak var mMinutesValue: UITextField!
     @IBOutlet weak var mFeatureListTable: UITableView!
     @IBOutlet weak var mErrorLablel: UILabel!
-
+    @IBOutlet weak var mLoggingIntervalView: UIView!
+    
+    @IBOutlet weak var mFeatureTableLabel: UILabel!
     @IBOutlet weak var mStartStopButton: UIButton!
     
     private var mPresenter:BlueMSSDLoggingPresenter!;
@@ -102,7 +122,11 @@ UITableViewDataSource,BlueMSSDLogFeatureTableCellViewSelectDelegate{
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
         let logFeature = self.node.getFeatureOfType(BlueSTSDKFeatureSDLogging.self) as! BlueSTSDKFeatureSDLogging?;
-        mPresenter = BlueMSSDLoggingPresenterImpl(self,logFeature)
+        if(self.node.type == .sensor_Tile_Box){
+            mPresenter = BlueMSSDLoggingPresenterImpl_STBox(self,logFeature)
+        }else{
+            mPresenter = BlueMSSDLoggingPresenterImpl(self,logFeature)
+        }
         mPresenter.startDemo()
     }
 
@@ -135,14 +159,20 @@ UITableViewDataSource,BlueMSSDLogFeatureTableCellViewSelectDelegate{
     public func displayStartLoggingView(_ availableFeature: [BlueSTSDKFeature]?) {
         mAvailableFeatures = availableFeature;
         DispatchQueue.main.async {
-            self.mFeatureListTable.isHidden=false;
+            self.mStatusLabel.text = BlueMSSDLoggingViewController.LOG_STOPPED
             self.mStartStopButton.setTitle(BlueMSSDLoggingViewController.START_LOGGING_STR, for: .normal)
-            self.mFeatureListTable.reloadData();
+            if(availableFeature != nil){
+                self.mFeatureTableLabel.isHidden=false
+                self.mFeatureListTable.isHidden=false
+                self.mFeatureListTable.reloadData();
+            }
         }
     }
     
     public func displayStopLoggingView() {
         DispatchQueue.main.async {
+            self.mStatusLabel.text = BlueMSSDLoggingViewController.LOG_STARTED
+            self.mFeatureTableLabel.isHidden=true
             self.mFeatureListTable.isHidden=true;
             self.mErrorLablel.isHidden=true;
             self.mStartStopButton.setTitle(BlueMSSDLoggingViewController.STOP_LOGGING_STR, for: .normal)
@@ -216,6 +246,13 @@ UITableViewDataSource,BlueMSSDLogFeatureTableCellViewSelectDelegate{
         mPresenter.onStartStopLogPressed()
     }
 
+    public func hideLogInterval() {
+        mLoggingIntervalView.isHidden = true
+    }
+    
+    public func displayLogInterval() {
+        mLoggingIntervalView.isHidden = false
+    }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mAvailableFeatures?.count ?? 0;

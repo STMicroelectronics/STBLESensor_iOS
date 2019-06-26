@@ -81,15 +81,17 @@ extension Data{
     /// - Returns: buffer containing the sha256 hash encoeded with the key parameters
     func getSHA256HMac(key: Data) -> Data {
         var digestData = Data(count: Int(CC_SHA256_DIGEST_LENGTH));
-        digestData.withUnsafeMutableBytes { (ptr:UnsafeMutablePointer<UInt8>) -> Void in
-            let outPtr = UnsafeMutableRawPointer(ptr);
-            key.withUnsafeBytes({ (ptr:UnsafePointer<UInt8>) -> Void in
-                let keyPtr = UnsafeRawPointer(ptr)
-                self.withUnsafeBytes({ (ptr:UnsafePointer<UInt8>) -> Void in
-                    let dataPtr = UnsafeRawPointer(ptr)
+        //digestData.withUnsafeMutableBytes { (ptr:UnsafeMutablePointer<UInt8>) -> Void in
+        //
+        digestData.withUnsafeMutableBytes{ digestBufferPtr in
+            let outPtr = digestBufferPtr.baseAddress!
+            key.withUnsafeBytes{ keyBufferPtr in
+                let keyPtr = keyBufferPtr.baseAddress!
+                self.withUnsafeBytes{ dataBufferPtr in
+                    let dataPtr = dataBufferPtr.baseAddress!
                     CCHmac(CCHmacAlgorithm(kCCHmacAlgSHA256), keyPtr, key.count, dataPtr, self.count, outPtr);
-                })// self unsafe byte
-            }) //key unsefe byte
+                }// self unsafe byte
+            } //key unsefe byte
         } // out unsafe byte
         return digestData;
     }//getSHA256HMac

@@ -44,7 +44,7 @@ public extension BlueSTSDKNode {
     /// get node board image, in function of its type
     ///
     /// - Returns: node board type log, or null if unknown
-    @objc public func getImage()->UIImage?{
+    @objc func getImage()->UIImage?{
         let bundle = Bundle.main;
         
         switch (self.type){
@@ -54,11 +54,13 @@ public extension BlueSTSDKNode {
                 return UIImage(named: "board_nucleo", in: bundle, compatibleWith: nil);
             case .sensor_Tile:
                 return UIImage(named: "board_sensorTile", in: bundle, compatibleWith: nil);
+            case .sensor_Tile_Box:
+                return UIImage(named: "board_sensorTile_box", in: bundle, compatibleWith: nil);
             case .blue_Coin:
                 return UIImage(named: "board_blueCoin", in: bundle, compatibleWith: nil);
             case .STEVAL_BCN002V1:
                 return UIImage(named: "board_blueNRGTile", in: bundle, compatibleWith: nil);
-            case .STEVAL_IDB008VX,.sensor_Tile_101, .generic, .discovery_IOT01A:
+            case .STEVAL_IDB008VX, .generic, .discovery_IOT01A:
                 return nil;
         }
     }

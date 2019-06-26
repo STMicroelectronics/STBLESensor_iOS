@@ -1,32 +1,50 @@
 PODS:
-  - AWSCore (2.7.3)
-  - AWSIoT (2.7.3):
-    - AWSCore (= 2.7.3)
+  - AWSCore (2.9.5)
+  - AWSIoT (2.9.5):
+    - AWSCore (= 2.9.5)
+  - AzureIoTHubClient (1.2.11):
+    - AzureIoTuAmqp (= 1.2.11)
+    - AzureIoTuMqtt (= 1.1.11)
+    - AzureIoTUtility (= 1.1.11)
+  - AzureIoTuAmqp (1.2.11):
+    - AzureIoTUtility (= 1.1.11)
+  - AzureIoTuMqtt (1.1.11):
+    - AzureIoTUtility (= 1.1.11)
+  - AzureIoTUtility (1.1.11)
   - CorePlot (2.2)
   - OpenSSL-for-iOS (1.0.2.d.1)
-  - SwiftyJSON (4.2.0)
+  - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
-  - AWSIoT (~> 2.7)
+  - AWSIoT (~> 2.9)
+  - AzureIoTHubClient (~> 1.2)
   - CorePlot (~> 2.2)
   - OpenSSL-for-iOS (= 1.0.2.d.1)
-  - SwiftyJSON (~> 4.2)
+  - SwiftyJSON (~> 5.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AWSCore
     - AWSIoT
+    - AzureIoTHubClient
+    - AzureIoTuAmqp
+    - AzureIoTuMqtt
+    - AzureIoTUtility
     - CorePlot
     - OpenSSL-for-iOS
     - SwiftyJSON
 
 SPEC CHECKSUMS:
-  AWSCore: 02d9ae2b6c2aaba6077fee2b09b0a62fb9b80282
-  AWSIoT: 534e4bab2c38a8694f4f5880212f1702c28722d0
+  AWSCore: 90ddc0234a321d5649c9572b1447f528f68d41b9
+  AWSIoT: 31d85adfce6119409040c9c7430c4830697239a4
+  AzureIoTHubClient: 41b79a87e4931a7c7ff4d6d812a3864f738c3762
+  AzureIoTuAmqp: 708a4d2d1cf6df50e2e79748065d7a4a410b84cf
+  AzureIoTuMqtt: 27964116acbf92f3d5181c8bdac28ebe4296e2dc
+  AzureIoTUtility: f1c3bd49ee06f35ba21a22e4c6c0eb2cffa40ff0
   CorePlot: cbe0c6e14220705e32e06a89c7d6a5a908b7d7d8
   OpenSSL-for-iOS: d7a30add88a1969b052135adbe48452af231ed32
-  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: a28e4d8fdec03a0aaab88cd4cff6eb67d4df571a
+PODFILE CHECKSUM: 546150a8e2ef327723b73c87c53abc3e2bc17d51
 
 COCOAPODS: 1.5.3

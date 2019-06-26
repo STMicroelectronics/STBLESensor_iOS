@@ -41,6 +41,16 @@ import Charts
 
 class FFTAmplitudeViewController : BlueMSDemoTabViewController{
    
+    
+    
+    private static let DATA_ACQUISITION = {
+        return  NSLocalizedString("Data acquisition ongoing…",
+                                  tableName: nil,
+                                  bundle: Bundle(for: FFTAmplitudeViewController.self),
+                                  value: "Data acquisition ongoing…",
+                                  comment: "Data acquisition ongoing…");
+    }()
+    
     @IBOutlet weak var detailsDialogPlaceHolder: UIView!
     @IBOutlet weak var chart: LineChartView!
     @IBOutlet weak var loadProgress: UIProgressView!
@@ -56,6 +66,8 @@ class FFTAmplitudeViewController : BlueMSDemoTabViewController{
         chart.xAxis.labelPosition = XAxis.LabelPosition.bottom
         chart.chartDescription?.enabled=false
         chart.isMultipleTouchEnabled=false
+        chart.noDataText = FFTAmplitudeViewController.DATA_ACQUISITION
+    
         let legend = chart.legend
         legend.drawInside = true
         legend.horizontalAlignment = .right
@@ -230,7 +242,7 @@ extension FFTAmplitudeViewController : BlueSTSDKFeatureDelegate{
    
     private func buildDataSet(conf:LineConfig, yData:[Float],deltaX:Float) -> ILineChartDataSet{
         let data = yData.enumerated().map{ ChartDataEntry(x: Double($0.offset)*Double(deltaX),y: Double($0.element))}
-        let line =  LineChartDataSet(values: data,label: conf.name)
+        let line =  LineChartDataSet(entries: data,label: conf.name)
         line.drawCirclesEnabled=false
         line.drawIconsEnabled=false
         line.drawValuesEnabled=false

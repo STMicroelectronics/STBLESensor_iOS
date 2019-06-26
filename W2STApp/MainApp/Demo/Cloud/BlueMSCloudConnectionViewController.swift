@@ -207,6 +207,8 @@ public class BlueMSCloudConnectionViewController : UIViewController{
         DispatchQueue.main.async {
             self.showAllert(title: BlueMSCloudConnectionViewController.CONNECTION_ERROR_TITLE,
                             message: error.localizedDescription)
+            self.mConnectButton.setTitle(BlueMSCloudConnectionViewController.CONNECT_BUTTON_LABEL, for: .normal)
+            self.mConnectButton.isEnabled=true
         }
     }
     

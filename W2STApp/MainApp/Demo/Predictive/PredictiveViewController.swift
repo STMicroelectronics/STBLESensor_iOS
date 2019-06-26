@@ -82,14 +82,14 @@ fileprivate extension PredictiveViewController{
                                   comment: "RMS Speed: %.2f mm/s");
     }();
     
-    fileprivate func initSpeedStatus(_ view:PredictiveStatusView){
+    func initSpeedStatus(_ view:PredictiveStatusView){
         view.title = PredictiveViewController.SPEED_STATE_TITLE
         view.valueYFormater = {
             $0.formatOrNil(format: PredictiveViewController.SPEED_VALUE_FORMAT)
         }
     }
     
-    fileprivate func updateSpeedStatus(sample:BlueSTSDKFeatureSample, view:PredictiveStatusView){
+    func updateSpeedStatus(sample:BlueSTSDKFeatureSample, view:PredictiveStatusView){
         view.setXStatus(status: BlueSTSDKFeaturePredictiveSpeedStatus.getStatusX(sample),
                         y:BlueSTSDKFeaturePredictiveSpeedStatus.getSpeedX(sample))
         view.setYStatus(status: BlueSTSDKFeaturePredictiveSpeedStatus.getStatusY(sample),
@@ -116,14 +116,14 @@ fileprivate extension PredictiveViewController{
                                   comment: "Acc Peak: %.2f m/s^2");
     }();
     
-    fileprivate func initAccelerationStatus(_ view:PredictiveStatusView){
+    func initAccelerationStatus(_ view:PredictiveStatusView){
         view.title = PredictiveViewController.ACCELERATION_STATE_TITLE
         view.valueYFormater = {
             $0.formatOrNil(format: PredictiveViewController.ACCELERATION_VALUE_FORMAT)
         }
     }
     
-    fileprivate func updateAccelerationStatus(sample:BlueSTSDKFeatureSample, view:PredictiveStatusView){
+    func updateAccelerationStatus(sample:BlueSTSDKFeatureSample, view:PredictiveStatusView){
         view.setXStatus(status: BlueSTSDKFeaturePredictiveAccelerationStatus.getStatusX(sample),
                         y:BlueSTSDKFeaturePredictiveAccelerationStatus.getAccX(sample))
         view.setYStatus(status: BlueSTSDKFeaturePredictiveAccelerationStatus.getStatusY(sample),
@@ -159,7 +159,7 @@ fileprivate extension PredictiveViewController{
                                   comment: "Max Amplitude: %.2f m/s^2");
     }();
     
-    fileprivate func initFrequencyDomainStatus(_ view:PredictiveStatusView){
+    func initFrequencyDomainStatus(_ view:PredictiveStatusView){
         view.title = PredictiveViewController.FREQUENCY_DOMAIN_STATE_TITLE
         view.valueXFormater = {
             $0.formatOrNil(format: PredictiveViewController.FREQUENCY_DOMAIN_X_VALUE_FORMAT)
@@ -169,7 +169,7 @@ fileprivate extension PredictiveViewController{
         }
     }
     
-    fileprivate func updateFrequencyDomainStatus(sample:BlueSTSDKFeatureSample, view:PredictiveStatusView){
+    func updateFrequencyDomainStatus(sample:BlueSTSDKFeatureSample, view:PredictiveStatusView){
         view.setXStatus(status: BlueSTSDKFeaturePredictiveFrequencyDomainStatus.getStatusX(sample),
                         x:BlueSTSDKFeaturePredictiveFrequencyDomainStatus.getWorstXFrequency(sample),
                         y:BlueSTSDKFeaturePredictiveFrequencyDomainStatus.getWorstXValue(sample))
@@ -262,7 +262,7 @@ extension PredictiveViewController: BlueSTSDKFeatureDelegate{
 
 fileprivate extension Optional where Wrapped == Float {
     
-    fileprivate func formatOrNil(format:String)->String?{
+    func formatOrNil(format:String)->String?{
         if let value = self {
             return String(format: format, value)
         }

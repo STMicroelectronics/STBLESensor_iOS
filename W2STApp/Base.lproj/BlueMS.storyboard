@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Gq3-wN-lCv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Gq3-wN-lCv">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -51,6 +51,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Switch" image="switch_demo_icon" id="gqj-r0-qly"/>
                     <connections>
+                        <outlet property="mLedDescription" destination="8BZ-K8-BPi" id="bqg-i4-2eC"/>
                         <outlet property="mLedImage" destination="HTf-Jo-UgS" id="UnZ-Hu-4DT"/>
                     </connections>
                 </viewController>
@@ -267,7 +268,9 @@
                         <segue destination="sAT-33-1Mm" kind="relationship" relationship="viewControllers" id="WH8-Zj-ZHB"/>
                         <segue destination="16E-dW-1Ik" kind="relationship" relationship="viewControllers" id="2TX-Gt-nlj"/>
                         <segue destination="e49-gA-b4i" kind="relationship" relationship="viewControllers" id="uw9-fM-VIu"/>
-
+                        <segue destination="jqu-6g-5sh" kind="relationship" relationship="viewControllers" id="z77-YM-CyT"/>
+                        <segue destination="2Id-Mn-xoA" kind="relationship" relationship="viewControllers" id="2oH-vO-lMT"/>
+                        <segue destination="cgS-vY-Om0" kind="relationship" relationship="viewControllers" id="G9K-cD-b1l"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fpc-TG-pwu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1010,6 +1013,36 @@
             </objects>
             <point key="canvasLocation" x="7251" y="-1382"/>
         </scene>
+        <!--EulerAngleLevel-->
+        <scene sceneID="XsB-7L-osD">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EulerAngleLevel" id="jqu-6g-5sh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="xgU-re-HiU"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VjQ-3k-qKD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7212" y="-1416"/>
+        </scene>
+        <!--MotionAlogorinthm-->
+        <scene sceneID="mVl-FK-jrB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MotionAlogorinthm" id="2Id-Mn-xoA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="igI-Rg-WbP"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FaW-SJ-Kxh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7220" y="-1454"/>
+        </scene>
+        <!--FitnessActivity-->
+        <scene sceneID="7Gm-Fc-tcg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FitnessActivity" id="cgS-vY-Om0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Fqm-LK-Vxp"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1KA-EA-tVo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7196" y="-1495"/>
+        </scene>
     </scenes>
     <resources>
         <image name="activity_demo_icon" width="30" height="30"/>
@@ -1021,7 +1054,7 @@
         <image name="carry_head" width="160" height="160"/>
         <image name="carry_shirt" width="160" height="160"/>
         <image name="carry_trousers" width="160" height="160"/>
-        <image name="chartIcon" width="60" height="60"/>
+        <image name="chartIcon" width="30" height="30"/>
         <image name="co_sensor_small" width="30" height="30"/>
         <image name="enviromentalIcon.png" width="40" height="40"/>
         <image name="gesture_demo_icon" width="30" height="30"/>
@@ -1041,7 +1074,7 @@
         <image name="pedometer_demo_icon" width="30" height="30"/>
         <image name="pedometer_icon" width="300" height="300"/>
         <image name="pressure_missing" width="300" height="450"/>
-        <image name="sensorFusionIcon" width="60" height="60"/>
+        <image name="sensorFusionIcon" width="30" height="30"/>
         <image name="switch_demo_icon" width="30" height="30"/>
         <image name="temperature_missing_icon" width="300" height="450"/>
     </resources>

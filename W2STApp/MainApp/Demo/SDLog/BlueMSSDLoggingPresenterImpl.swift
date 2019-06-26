@@ -61,6 +61,7 @@ public class BlueMSSDLoggingPresenterImpl :NSObject, BlueMSSDLoggingPresenter, B
     
     public func startDemo() {
         if let feature = mLogFeature{
+            mView.displayLogInterval()
             mView.setLogInterval(seconds:BlueMSSDLoggingPresenterImpl.DEFAULT_LOG_INTERVAL)
             feature.add(self);
             _ = feature.enableNotification()

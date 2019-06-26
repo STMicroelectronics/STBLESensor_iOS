@@ -58,17 +58,9 @@ BlueMSCloudLogSelectUpdateTimeDelegate, UITableViewDataSource, UITableViewDelega
         let bundle = Bundle(for: BlueMSCloudProviderSelectViewController.self)
         return [
         CloudProvider(name:
-            NSLocalizedString("IBM Watson IoT - Quickstart", tableName: nil, bundle: bundle,
-                              value: "IIBM Watson IoT - Quickstart", comment: ""),
-                      segue:"BlueMxQuickStart_segue"),
-        CloudProvider(name:
-            NSLocalizedString("IBM Watson IoT", tableName: nil, bundle: bundle,
-                              value: "IBM Watson IoT", comment: ""),
-                      segue:"BlueMx_segue"),
-        CloudProvider(name:
-            NSLocalizedString("Azure IoT - ST Web Dashboard", tableName: nil, bundle: bundle,
-                              value: "Azure IoT - ST Web Dashboard", comment: ""),
-                      segue:"STAzureIot_segue"),
+            NSLocalizedString("Azure IoT Central - Contoso", tableName: nil, bundle: bundle,
+                              value: "Azure IoT Central - Contoso", comment: ""),
+                      segue:"azureIoTCentral_segue"),
         CloudProvider(name:
             NSLocalizedString("Azure IoT", tableName: nil, bundle: bundle,
                               value: "Azure IoT", comment: ""),
@@ -77,6 +69,14 @@ BlueMSCloudLogSelectUpdateTimeDelegate, UITableViewDataSource, UITableViewDelega
             NSLocalizedString("Aws IoT", tableName: nil, bundle: bundle,
                               value: "Aws IoT", comment: ""),
                       segue:"AwsIoT_Segue"),
+        CloudProvider(name:
+            NSLocalizedString("IBM Watson IoT - Quickstart", tableName: nil, bundle: bundle,
+                              value: "IBM Watson IoT - Quickstart", comment: ""),
+                      segue:"BlueMxQuickStart_segue"),
+        CloudProvider(name:
+            NSLocalizedString("IBM Watson IoT", tableName: nil, bundle: bundle,
+                              value: "IBM Watson IoT", comment: ""),
+                      segue:"BlueMx_segue"),
         CloudProvider(name:
             NSLocalizedString("Generic MQTT", tableName: nil, bundle: bundle,
                               value: "Generic MQTT", comment: ""),

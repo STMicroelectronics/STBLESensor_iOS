@@ -39,7 +39,7 @@ import Foundation
 
 class FFTSettingsConsole {
  
-    static let ODR_VALUES:[UInt16] = [13,26,52,104,208,416,833,1660]
+    static let ODR_VALUES:[UInt16] = [13,26,52,104,208,416,833,1660,3330,6660]
     static let SIZE_VALUES:[UInt16] = [256,512,1024]
     static let FULL_SCALE_VALUES:[UInt8] = [2,4,8,16]
     static let SUB_RANGE:[UInt8] = [8,16,32,64]

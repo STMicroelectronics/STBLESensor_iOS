@@ -119,6 +119,16 @@ class BlueVoiceIBMWatsonASREngine: BlueVoiceASREngine, IBMWatsonKeyDelegate{
     private func upsamplingAudioBuffer(_ audio:Data)->Data{
         // allocate the new buffer
         var upsampligAudio = Data(capacity: 2*audio.count)
+        audio.withUnsafeBytes{ (ptr : UnsafeRawBufferPointer) in
+            let audioSample = ptr.bindMemory(to: UInt16.self)
+            audioSample.forEach{ sample in
+                let bytes = [UInt8(truncatingIfNeeded: sample >> 8),
+                             UInt8(truncatingIfNeeded: sample)]
+                upsampligAudio.append(contentsOf: bytes)
+                upsampligAudio.append(contentsOf: bytes)
+            }
+        }
+        /*
         audio.withUnsafeBytes{(audioSamples: UnsafePointer<UInt16>) in
             //for each audio sample
             for i in 0..<audio.count/2{
@@ -131,7 +141,7 @@ class BlueVoiceIBMWatsonASREngine: BlueVoiceASREngine, IBMWatsonKeyDelegate{
                     upsampligAudio.append(bytes, count: 2)
                 })
             }
-        }
+        }*/
         return upsampligAudio;
     }
 

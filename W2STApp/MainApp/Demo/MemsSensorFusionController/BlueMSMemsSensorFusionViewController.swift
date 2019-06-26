@@ -41,6 +41,7 @@ import SceneKit;
 import GLKit;
 import AudioToolbox
 
+
 public class BlueMSMemsSensorFusionViewController: BlueMSCalibrationViewController,
     BlueSTSDKFeatureDelegate,
     BlueMSSimpleDialogViewControllerDelegate {
@@ -111,7 +112,7 @@ public class BlueMSMemsSensorFusionViewController: BlueMSCalibrationViewControll
         m3DScene = SCNScene(named: BlueMSMemsSensorFusionViewController.SCENE_MODEL_FILE);
         m3DCube = m3DScene.rootNode.childNode(withName: BlueMSMemsSensorFusionViewController.SCENE_MODEL_NAME, recursively: true);
         setCubeScaleFactor(BlueMSMemsSensorFusionViewController.CUBE_DEFAULT_SCALE)
-        m3DCubeView.prepare(m3DCube, shouldAbortBlock: nil);
+        m3DCubeView.prepare(m3DCube!, shouldAbortBlock: nil);
         m3DCubeView.scene = m3DScene;
     }
 
@@ -355,7 +356,7 @@ public class BlueMSMemsSensorFusionViewController: BlueMSCalibrationViewControll
     /// get the text to show in the dialog
     public func getDialogText()->String?{
         switch node.type {
-            case .nucleo,.STEVAL_WESU1,.blue_Coin,.sensor_Tile:
+            case .nucleo,.STEVAL_WESU1,.blue_Coin,.sensor_Tile,.sensor_Tile_Box:
                 return BlueMSMemsSensorFusionViewController.NUCLEO_RESET_POSITION_MESSAGE;
             default:
                 return BlueMSMemsSensorFusionViewController.GENERIC_RESET_POSITION_MESSAGE;

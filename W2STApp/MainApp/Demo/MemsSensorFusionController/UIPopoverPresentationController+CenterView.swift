@@ -53,12 +53,12 @@ fileprivate class BlueMSShowPopOverAsDialog: NSObject,UIPopoverPresentationContr
 public extension UIPopoverPresentationController {
 
     /// display the popover inside the placeolder view
-    public func displayOnView(_ placeHolder:UIView){
+    func displayOnView(_ placeHolder:UIView){
         displayWithSize(placeHolder.bounds.size)
     }
 
     /// display the popover inside the placeolder view
-    public func displayWithSize(_ viewSize:CGSize){
+    func displayWithSize(_ viewSize:CGSize){
         let screenSize = UIScreen.main.bounds.size;
         
         self.sourceRect = CGRect(x: (screenSize.width-viewSize.width)/2,

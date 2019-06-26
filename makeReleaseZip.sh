@@ -5,7 +5,7 @@ read -p "Did you increase the Version and boundle id for BlueSTSDK?(pfile)"
 releaseName=$1
 projectDir=$(pwd)
 cd ..
-cp -r $projectDir $releaseName
+cp -r "$projectDir" $releaseName
 cd $releaseName
 rm -rf .git
 rm -rf BlueSTSDK/.git

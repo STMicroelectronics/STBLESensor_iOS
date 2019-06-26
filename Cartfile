@@ -1,2 +1,2 @@
-github "watson-developer-cloud/swift-sdk" == 0.38.1
+github "watson-developer-cloud/swift-sdk" == 2.0.2
 github "danielgindi/Charts" ~> 3.2.1

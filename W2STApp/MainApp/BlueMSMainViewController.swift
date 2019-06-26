@@ -48,6 +48,9 @@ public class BlueMSMainViewController : BlueSTSDKMainViewController {
         self.delegateNodeList = self
     }
     
+    @IBAction func onCreateAppButtonClick(_ sender: UIButton) {
+    }
+    
     private func getDemoViewController(with node: BlueSTSDKNode, menuManager: BlueSTSDKViewControllerMenuDelegate)
         -> UIViewController{
             let storyBoard = UIStoryboard(name: "BlueMS", bundle: nil);
@@ -66,11 +69,12 @@ public class BlueMSMainViewController : BlueSTSDKMainViewController {
      */
     public func demoViewController(with node: BlueSTSDKNode, menuManager: BlueSTSDKViewControllerMenuDelegate)
             -> UIViewController {
-                        
+                
         if(BlueSTSDKSTM32WBOTAUtils.isOTANode(node)){
             return BlueSTSDKFwUpgradeManagerViewController.instaziate(forNode: node,
                                                                       requireAddress: true,
-                                                                      defaultAddress: BlueSTSDKSTM32WBOTAUtils.DEFAULT_FW_ADDRESS)
+                                                                      defaultAddress: BlueSTSDKSTM32WBOTAUtils.DEFAULT_FW_ADDRESS,
+                                                                       requireFwType: true)
         }else if (BlueNRGOtaUtils.isOTANode(node)){
             return BlueSTSDKFwUpgradeManagerViewController.instaziate(forNode: node,
                                                                       requireAddress: false,
@@ -81,8 +85,6 @@ public class BlueMSMainViewController : BlueSTSDKMainViewController {
         
     }
 
-    
-    
 }
 
 
@@ -140,7 +142,8 @@ extension BlueMSMainViewController : BlueSTSDKNodeListViewControllerDelegate{
     
     public var advertiseFilters: [BlueSTSDKAdvertiseFilter]{
         get{
-            return [ BlueNRGOtaAdvertiseParser() ] + BlueSTSDKManager.DEFAULT_ADVERTISE_FILTER
+            //if a board is compatible with multiple advertise, give the precedence to the sdk format
+            return  BlueSTSDKManager.DEFAULT_ADVERTISE_FILTER + [ BlueNRGOtaAdvertiseParser() ]
         }
     }
 }

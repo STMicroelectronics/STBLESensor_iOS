@@ -50,8 +50,6 @@
 #import <BlueSTSDK/BlueSTSDKFeaturePedometer.h>
 #import <BlueSTSDK/BlueSTSDKFeatureAccelerometerEvent.h>
 #import <BlueSTSDK/BlueSTSDKFeatureSwitch.h>
-#import <BlueSTSDK/BlueSTSDKFeatureAudioADPCM.h>
-#import <BlueSTSDK/BlueSTSDKFeatureAudioADPCMSync.h>
 #import <BlueSTSDK/BlueSTSDKFeatureHeartRate.h>
 #import <BlueSTSDK/BlueSTSDKFeatureCompass.h>
 #import <BlueSTSDK/BlueSTSDKFeatureMotionIntensity.h>
@@ -89,20 +87,21 @@
 #define HEART_RATE_DEMO_POSITION 17
 #define MOTIONID_DEMO_POSITION 18
 #define COMPASS_DEMO_POSITION 19
-#define COSENSOR_DEMO_POSITION 20
-#define STM32WB_P2PSERVER_POSITION 21
-#define REBOOT_OTA_POSITION 22
-#define AILOG_POSITION 23
-#define CLOUD_DEMO_POSITION 24
-#define PREDICTIVE_DEMO_POSITION 25
-#define RSSI_DEMO_POSITION 26
-#define LEVEL_DEMO_POSITION 27
-#define MOTIONALGO_DEMO_POSITION 28
-#define FITNESS_ACTIVITY_DEMO_POSITION 29
+#define LEVEL_DEMO_POSITION 20
+#define COSENSOR_DEMO_POSITION 21
+#define STM32WB_P2PSERVER_POSITION 22
+#define REBOOT_OTA_POSITION 23
+#define AILOG_POSITION 24
+#define MULTI_NN_DEMO_POSITION 25
+#define CLOUD_DEMO_POSITION 26
+#define PREDICTIVE_DEMO_POSITION 27
+#define RSSI_DEMO_POSITION 28
+#define MOTIONALGO_DEMO_POSITION 29
+#define FITNESS_ACTIVITY_DEMO_POSITION 30
 
-#define NUMBER_OF_DEMOS 30
+#define NUMBER_OF_DEMOS 31
 
-@interface BlueMSDemosViewController () <UITabBarControllerDelegate>
+@interface BlueMSDemosViewController () <UITabBarControllerDelegate, UINavigationControllerDelegate>
 
 @end
 
@@ -111,7 +110,6 @@
     UISwipeGestureRecognizer *rightGesture;
     UIAlertAction *registerSettings;
     UIAlertAction *nucleoSettings;
-    UIAlertAction *mActionLicenseManager;
     bool mFwVarningDisplayed;
 }
 
@@ -133,9 +131,9 @@
 
     nucleoSettings = [self createNucleoSettings];
     [self.menuDelegate addMenuAction:nucleoSettings];
-    
+
     mFwVarningDisplayed=false;
-    
+
     //add a button in the navbar
     /*
     if (self.node != nil && self.node.configControl != nil)
@@ -145,6 +143,15 @@
         self.navigationItem.rightBarButtonItems = @[self.actionButton, extraButton];
     }
      */
+}
+
+-(BOOL)hasAudioStream{
+    BlueSTSDKNode *node = self.node;
+    BOOL hasADPCMStream = [node getFeatureOfType:BlueSTSDKFeatureAudioADPCM.class]!=nil &&
+    [node getFeatureOfType:BlueSTSDKFeatureAudioADPCMSync.class]!=nil ;
+    BOOL hasOPUSStream = [node getFeatureOfType:BlueSTSDKFeatureAudioOpus.class]!=nil &&
+    [node getFeatureOfType:BlueSTSDKFeatureAudioOpusConf.class]!=nil ;
+    return hasOPUSStream || hasADPCMStream ;
 }
 
 /**
@@ -181,8 +188,7 @@
         [removeItem addIndex:ACC_EVENT_DEMO_POSITION];
     if([self.node getFeatureOfType:BlueSTSDKFeatureSwitch.class] == nil)
         [removeItem addIndex:SWITCH_DEMO_POSITION];
-    if( [node getFeatureOfType:BlueSTSDKFeatureAudioADPCM.class]==nil ||
-        [node getFeatureOfType:BlueSTSDKFeatureAudioADPCMSync.class]==nil){
+    if( ![self hasAudioStream]){
         [removeItem addIndex:BLUEVOICE_DEMO_POSITION];
         [removeItem addIndex:SPEECHTOTEXT_DEMO_POSITION];
     }
@@ -199,15 +205,14 @@
     if( [node getFeatureOfType:BlueSTSDKFeatureDirectionOfArrival.class]==nil){
         [removeItem addIndex:DIRECTION_OF_ARRIVAL_DEMO_POSITION];
     }
-    if([node getFeatureOfType:BlueSTSDKFeatureAudioADPCM.class]==nil ||
-       [node getFeatureOfType:BlueSTSDKFeatureAudioADPCMSync.class]==nil ||
+    if(![self hasAudioStream] ||
        [node getFeatureOfType:BlueSTSDKFeatureBeamForming.class]==nil){
         [removeItem addIndex:BEAM_FORMING_DEMO_POSITION];
     }
     if([node getFeatureOfType:BlueSTSDKFeatureSDLogging.class]==nil){
         [removeItem addIndex:SD_LOGGING_POSITION];
     }
-    if([node getFeatureOfType:BlueSTSDKFeatureAudioSceneCalssification.class]==nil){
+    if([node getFeatureOfType:BlueSTSDKFeatureAudioCalssification.class]==nil){
         [removeItem addIndex:AUDIO_SCENE_CLASSIFICAITON_POSITION];
     }
         
@@ -252,6 +257,12 @@
         [removeItem addIndex:FITNESS_ACTIVITY_DEMO_POSITION];
     }
     
+    
+    if([node getFeatureOfType:BlueSTSDKFeatureAudioCalssification.class]==nil ||
+       [node getFeatureOfType:BlueSTSDKFeatureActivity.class]==nil){
+        [removeItem addIndex:MULTI_NN_DEMO_POSITION];
+    }
+    
     [availableDemos removeObjectsAtIndexes:removeItem];
     self.viewControllers = availableDemos;
 }
@@ -264,16 +275,12 @@
     // in this way the user can't edit the item in the tabbar and we have more
     // space for the demo
     self.moreNavigationController.navigationBarHidden=true;
-
+    self.moreNavigationController.delegate = self;
+    
     [self initializeDemos];
     //remove is after the initialization to permit to correctly initialize the demo that have some internal view controller
     //to pass the valid node also to the subview
     [self removeOptionalDemo];
-
-    //add the debug console if present
-    if(self.node.debugConsole==nil) {
-        [self.menuDelegate removeMenuAction:mActionLicenseManager];
-    }
     
     if(self.node.type == BlueSTSDKNodeTypeSTEVAL_WESU1 ){
         if(!mFwVarningDisplayed){
@@ -342,6 +349,13 @@
 - (void)tabBarController:(UITabBarController *)tabBarController
  didSelectViewController:(UIViewController *)viewController{
     self.navigationItem.title = viewController.navigationItem.title;
+}
+
+#pragma mark - UINavigationControllerDelegate
+-(void)navigationController:(UINavigationController *)navigationController
+willShowViewController:(UIViewController *)viewController
+animated:(BOOL)animated{
+    navigationController.navigationBarHidden = YES;
 }
 
 @end

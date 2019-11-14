@@ -2,6 +2,21 @@
     <head>
         <title></title>
         <style type="text/css">
+            :root {
+                color-scheme: light dark;
+                    --h1-color: #333;
+                    --header-bg-clr: #FFF1FF;
+                    --header-txt-clr: white;
+                }
+                @media (prefers-color-scheme: dark) {
+                :root {
+                    color-scheme: light dark;
+                    --h1-color: #333;
+                    --header-bg-clr: #FFF1FF;
+                    --header-txt-clr: white;
+                    }
+                }
+
             body {
                 margin-left:auto;
                 margin-right:auto;
@@ -10,6 +25,11 @@
                 font-family: "helvetica";
                 font-size: 1em;
                 padding: 8px;
+            }
+            h1 { color: var(--h1-color); }
+            .header {
+                background-color: var (--header-bg-clr);
+                color: var(--header-txt-clr);
             }
         </style>
     </head>

@@ -47,8 +47,8 @@ BlueMSDemoTabViewController {
     private var mFitnessFeature:BlueSTSDKFeatureFitnessActivity?;
     private var mCurrentActivity:BlueSTSDKFeatureFitnessActivity.ActivityType = .bicep_curl
     
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         mFitnessFeature = self.node.getFeatureOfType(BlueSTSDKFeatureFitnessActivity.self) as? BlueSTSDKFeatureFitnessActivity
         if let feature = mFitnessFeature{

@@ -110,23 +110,19 @@ UITableViewDataSource,BlueMSSDLogFeatureTableCellViewSelectDelegate{
     @IBOutlet weak var mFeatureTableLabel: UILabel!
     @IBOutlet weak var mStartStopButton: UIButton!
     
-    private var mPresenter:BlueMSSDLoggingPresenter!;
-    private var mAvailableFeatures:[BlueSTSDKFeature]?;
+    private var mPresenter:BlueMSSDLoggingPresenter!
+    private var mAvailableFeatures:[BlueSTSDKFeature]?
     private var mSelectedFeatures = Set<BlueSTSDKFeature>()
     
     public override func viewDidLoad() {
-        super.viewDidLoad();
-        mFeatureListTable.dataSource = self;
+        super.viewDidLoad()
+        mFeatureListTable.dataSource = self
     }
     
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
         let logFeature = self.node.getFeatureOfType(BlueSTSDKFeatureSDLogging.self) as! BlueSTSDKFeatureSDLogging?;
-        if(self.node.type == .sensor_Tile_Box){
-            mPresenter = BlueMSSDLoggingPresenterImpl_STBox(self,logFeature)
-        }else{
-            mPresenter = BlueMSSDLoggingPresenterImpl(self,logFeature)
-        }
+        mPresenter = BlueMSSDLoggingPresenterImpl(self,logFeature)
         mPresenter.startDemo()
     }
 
@@ -141,14 +137,16 @@ UITableViewDataSource,BlueMSSDLogFeatureTableCellViewSelectDelegate{
         if( !(touch?.view?.isKind(of: UITextField.self) ?? false)){
             self.view.endEditing(true)
         }
-        super .touchesBegan(touches, with: event);
+        super .touchesBegan(touches, with: event)
     }
     
     public func setSelectedFeature(_ features: Set<BlueSTSDKFeature>) {
-        mSelectedFeatures = features;
-        DispatchQueue.main.async {
-            self.mFeatureListTable.reloadData();
-            self.mStartStopButton.isEnabled = !self.mSelectedFeatures.isEmpty
+        mSelectedFeatures = features
+        if mAvailableFeatures != nil {
+            DispatchQueue.main.async {
+                self.mFeatureListTable.reloadData();
+                self.mStartStopButton.isEnabled = !self.mSelectedFeatures.isEmpty
+            }
         }
     }
     
@@ -161,10 +159,15 @@ UITableViewDataSource,BlueMSSDLogFeatureTableCellViewSelectDelegate{
         DispatchQueue.main.async {
             self.mStatusLabel.text = BlueMSSDLoggingViewController.LOG_STOPPED
             self.mStartStopButton.setTitle(BlueMSSDLoggingViewController.START_LOGGING_STR, for: .normal)
+            let image = UIImage(imageLiteralResourceName: "sdLog_start")
+            self.mStartStopButton.setImage(image, for: .normal)
             if(availableFeature != nil){
-                self.mFeatureTableLabel.isHidden=false
-                self.mFeatureListTable.isHidden=false
-                self.mFeatureListTable.reloadData();
+                self.mFeatureTableLabel.isHidden = false
+                self.mFeatureListTable.isHidden = false
+                self.mLoggingIntervalView.isHidden = false
+                self.mFeatureListTable.reloadData()
+            }else{
+                self.mStartStopButton.isEnabled = true
             }
         }
     }
@@ -173,44 +176,47 @@ UITableViewDataSource,BlueMSSDLogFeatureTableCellViewSelectDelegate{
         DispatchQueue.main.async {
             self.mStatusLabel.text = BlueMSSDLoggingViewController.LOG_STARTED
             self.mFeatureTableLabel.isHidden=true
-            self.mFeatureListTable.isHidden=true;
-            self.mErrorLablel.isHidden=true;
+            self.mFeatureListTable.isHidden=true
+            self.mErrorLablel.isHidden=true
+            self.mLoggingIntervalView.isHidden=true
             self.mStartStopButton.setTitle(BlueMSSDLoggingViewController.STOP_LOGGING_STR, for: .normal)
+            let image = UIImage(imageLiteralResourceName: "sdLog_stop")
+            self.mStartStopButton.setImage(image, for: .normal)
             self.mFeatureListTable.reloadData()
         }
     }
     
     private func changeInputViewStatus(enable:Bool){
-        mHoursValue.isEnabled=enable;
-        mMinutesValue.isEnabled=enable;
-        mSecondsValue.isEnabled=enable;
-        mStartStopButton.isEnabled=enable;
+        mHoursValue.isEnabled=enable
+        mMinutesValue.isEnabled=enable
+        mSecondsValue.isEnabled=enable
+        mStartStopButton.isEnabled=enable
     }
     
     public func displayDisableLoggingView() {
-        changeInputViewStatus(enable:false);
+        changeInputViewStatus(enable:false)
     }
     
     static func getNumberOr0(field:UITextField) -> UInt32{
-        let value = field.text ?? "0";
-        return UInt32(value) ?? 0;
+        let value = field.text ?? "0"
+        return UInt32(value) ?? 0
     }
     
     public func getLogInterval()->UInt32{
         let seconds = BlueMSSDLoggingViewController.getNumberOr0(field: mSecondsValue)
         let minute = BlueMSSDLoggingViewController.getNumberOr0(field: mMinutesValue)*60
         let hours = BlueMSSDLoggingViewController.getNumberOr0(field: mHoursValue)*60*60
-        return seconds + minute + hours;
+        return seconds + minute + hours
     }
     
     public func setLogInterval(seconds: UInt32) {
         let sec = seconds % 60;
         let hours = seconds / (60*60)
-        let minute = seconds/60-hours*60;
+        let minute = seconds/60-hours*60
         DispatchQueue.main.async {
-            self.mSecondsValue.text = sec.description;
-            self.mMinutesValue.text = minute.description;
-            self.mHoursValue.text = hours.description;
+            self.mSecondsValue.text = sec.description
+            self.mMinutesValue.text = minute.description
+            self.mHoursValue.text = hours.description
         }
     }
     
@@ -234,7 +240,7 @@ UITableViewDataSource,BlueMSSDLogFeatureTableCellViewSelectDelegate{
     public func displayDisabledDataTransferWarning() {
         let dialog = UIAlertController(title: BlueMSSDLoggingViewController.DISABLED_DATA_WARNING_TITLE,
                                        message: BlueMSSDLoggingViewController.DISABLED_DATA_WARNING_MSG,
-                                       preferredStyle: .alert);
+                                       preferredStyle: .alert)
         
         let okButton = UIAlertAction(title: "Ok", style: .cancel)
         dialog.addAction(okButton)
@@ -247,11 +253,15 @@ UITableViewDataSource,BlueMSSDLogFeatureTableCellViewSelectDelegate{
     }
 
     public func hideLogInterval() {
-        mLoggingIntervalView.isHidden = true
+        DispatchQueue.main.async {
+            self.mLoggingIntervalView.isHidden = true
+        }
     }
     
     public func displayLogInterval() {
-        mLoggingIntervalView.isHidden = false
+        DispatchQueue.main.async {
+            self.mLoggingIntervalView.isHidden = false
+        }
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

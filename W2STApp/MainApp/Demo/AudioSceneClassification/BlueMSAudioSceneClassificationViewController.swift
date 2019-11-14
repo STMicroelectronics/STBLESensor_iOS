@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018  STMicroelectronics – All rights reserved
+ * Copyright (c) 2017  STMicroelectronics – All rights reserved
  * The STMicroelectronics corporate logo is a trademark of STMicroelectronics
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -35,84 +35,107 @@
  * OF SUCH DAMAGE.
  */
 
+import Foundation
+import CoreGraphics
+import BlueSTSDK_Gui
 import BlueSTSDK
 
 class BlueMSAudioSceneClassificationViewController : BlueMSDemoTabViewController{
-    fileprivate typealias SceneType = BlueSTSDKFeatureAudioSceneCalssification.Scene
     
-    private static let DEFAULT_ALPHA = CGFloat(0.3)
-    private static let SELECTED_ALPHA = CGFloat(1.0)
-    private static let ANIMATION_LENGTH = TimeInterval(1.0/3.0)
+    private static let START_MESSAGE:String = {
+        return NSLocalizedString("Audio classifier started",
+                                 tableName: nil,
+                                 bundle:Bundle(for: BlueMSActivityViewController.self),
+                                 value: "Audio classifier started",
+                                 comment: "")
+    }();
     
+    private static let MESSAGE_DISPLAY_TIME = TimeInterval(1.0)
     
-    @IBOutlet weak var indoorIcon: UIImageView!
-    @IBOutlet weak var outdoorIcon: UIImageView!
-    @IBOutlet weak var inVehicleIcon: UIImageView!
+    @IBOutlet weak var audioSceneClassification : AudioSceneView!
+    @IBOutlet weak var babyCrying: BabyCryingView!
     
-    private var mAudioSceneFeature : BlueSTSDKFeature?
-    private var mSceneToImage: [SceneType : UIImageView]!
-    private var mCurrenctSlected:SceneType?
-
-    private func initSceneImageMap(){
-        mSceneToImage = [
-            .Indoor : indoorIcon,
-            .Outdoor : outdoorIcon,
-            .InVehicle : inVehicleIcon
-        ]
-    }
+    private var mCurrentAudioClass:BlueSTSDKFeatureAudioCalssification.AudioClass?;
+    private var mFeature:BlueSTSDKFeature?;
     
-    private func disableAllImages(){
-        mSceneToImage.values.forEach{$0.alpha = BlueMSAudioSceneClassificationViewController.DEFAULT_ALPHA}
-        mCurrenctSlected=nil
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        initSceneImageMap()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        disableAllImages()
+        deselectAllImages()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        mAudioSceneFeature = node.getFeatureOfType(BlueSTSDKFeatureAudioSceneCalssification.self)
-        if let feature = mAudioSceneFeature {
+    private lazy var algoIdToView : [ UInt8 : BlueMSAudioClassView] = {
+        return [
+            0 : audioSceneClassification,
+            1 : babyCrying,
+        ]
+    }()
+    
+    
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated);
+        
+        mFeature = self.node.getFeatureOfType(BlueSTSDKFeatureAudioCalssification.self);
+        if let feature = mFeature{
             feature.add(self)
-            node.enableNotification(feature)
-            node.read(feature)
+            self.node.enableNotification(feature);
+            self.node.read(feature);
+            displayStartMessage();
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if let feature = mAudioSceneFeature{
-            feature.remove(self)
-            node.disableNotification(feature)
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated);
+        if let feature = mFeature{
+            feature.remove(self);
+            self.node.disableNotification(feature);
+            mFeature=nil;
         }
     }
     
-    fileprivate func selectScene(_ scene:SceneType){
-        //if we have an image to update
-        guard let newImage = mSceneToImage[scene] else{
-            return;
+    private func deselectAllImages(){
+        algoIdToView.values.forEach{
+            $0.deselectAll()
         }
-        //deselect the prevous one
-        if let  current = mCurrenctSlected{
-            mSceneToImage[current]?.alpha = BlueMSAudioSceneClassificationViewController.DEFAULT_ALPHA
-        }
-        newImage.alpha = BlueMSAudioSceneClassificationViewController.SELECTED_ALPHA
-        mCurrenctSlected=scene
     }
+    
+    private func displayStartMessage(){
+        let message = MBProgressHUD.showAdded(to: self.view, animated: true)
+        message.mode = .text;
+        message.removeFromSuperViewOnHide=true;
+        message.label.text = Self.START_MESSAGE;
+        message .hide(animated: true,
+                    afterDelay: Self.MESSAGE_DISPLAY_TIME)
+    }
+    
+    private func displayAudioClass(on view: BlueMSAudioClassView ,_ newClass: BlueSTSDKFeatureAudioCalssification.AudioClass){
+        if let audioClass = mCurrentAudioClass{
+            view.deselect(type: audioClass)
+        }
+        self.mCurrentAudioClass = newClass
+        view.select(type: newClass)
+    }
+    
+    private func displayAudioClass(algoID: UInt8, type:BlueSTSDKFeatureAudioCalssification.AudioClass){
+        algoIdToView.forEach{ id , view in
+            if ( id == algoID){
+                view.setVisible()
+                displayAudioClass(on: view, type)
+            }else{
+                view.setHidden()
+            }
+        } // for each
+    }
+    
 }
 
 extension BlueMSAudioSceneClassificationViewController : BlueSTSDKFeatureDelegate{
-    func didUpdate(_ feature: BlueSTSDKFeature, sample: BlueSTSDKFeatureSample) {
-        let gesture = BlueSTSDKFeatureAudioSceneCalssification.getScene(sample)
+    public func didUpdate(_ feature: BlueSTSDKFeature, sample: BlueSTSDKFeatureSample) {
+    
+        let newClass = BlueSTSDKFeatureAudioCalssification.getAudioScene(sample);
+        let algorithmId = BlueSTSDKFeatureAudioCalssification.getAlgorythmType(sample);
         DispatchQueue.main.async { [weak self] in
-            self?.selectScene(gesture)
+            self?.displayAudioClass(algoID: algorithmId, type: newClass)
         }
+    
     }
 }

@@ -46,8 +46,8 @@ class BlueMSMotionAlgorithmViewController:
     private var mMotionAlgoFeature:BlueSTSDKFeatureMotionAlogrithm?;
     private var mCurrentAlgo:BlueSTSDKFeatureMotionAlogrithm.Algorithm = .poseEstimation
     
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         mMotionAlgoFeature = self.node.getFeatureOfType(BlueSTSDKFeatureMotionAlogrithm.self) as? BlueSTSDKFeatureMotionAlogrithm
         if let feature = mMotionAlgoFeature{

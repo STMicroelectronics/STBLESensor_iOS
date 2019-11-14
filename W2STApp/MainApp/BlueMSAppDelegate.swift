@@ -40,12 +40,11 @@ import STTheme
 
 
 @UIApplicationMain
-public class BlueMSAppDelegate : UIResponder,UIApplicationDelegate {
+public class BlueMSAppDelegate : UIResponder,UIApplicationDelegate{
     public var window:UIWindow?
     
     public func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool{
 
-        
         configureApperance()
         return true
     }

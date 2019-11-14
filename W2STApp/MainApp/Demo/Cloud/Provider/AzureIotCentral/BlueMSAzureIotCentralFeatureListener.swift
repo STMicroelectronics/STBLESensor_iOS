@@ -102,43 +102,43 @@ internal class BlueMSAzureIotCentralFeatureListener : BlueMSSubSampligFeatureDel
     
     private func buildAccelerationJson(_ sample:BlueSTSDKFeatureSample)->JSON{
         var jsonObj = JSON()
-        jsonObj["accelerometerX"].floatValue = BlueSTSDKFeatureAcceleration.getAccX(sample)
-        jsonObj["accelerometerY"].floatValue = BlueSTSDKFeatureAcceleration.getAccY(sample)
-        jsonObj["accelerometerZ"].floatValue = BlueSTSDKFeatureAcceleration.getAccZ(sample)
+        jsonObj["Accelerometer_X"].floatValue = BlueSTSDKFeatureAcceleration.getAccX(sample)
+        jsonObj["Accelerometer_Y"].floatValue = BlueSTSDKFeatureAcceleration.getAccY(sample)
+        jsonObj["Accelerometer_Z"].floatValue = BlueSTSDKFeatureAcceleration.getAccZ(sample)
         return jsonObj
     }
     
     private func buildGyroscopeJson(_ sample:BlueSTSDKFeatureSample)->JSON{
         var jsonObj = JSON()
-        jsonObj["gyroscopeX"].floatValue = BlueSTSDKFeatureGyroscope.getGyroX(sample)
-        jsonObj["gyroscopeY"].floatValue = BlueSTSDKFeatureGyroscope.getGyroY(sample)
-        jsonObj["gyroscopeZ"].floatValue = BlueSTSDKFeatureGyroscope.getGyroZ(sample)
+        jsonObj["Gyroscope_X"].floatValue = BlueSTSDKFeatureGyroscope.getGyroX(sample)
+        jsonObj["Gyroscope_Y"].floatValue = BlueSTSDKFeatureGyroscope.getGyroY(sample)
+        jsonObj["Gyroscope_Z"].floatValue = BlueSTSDKFeatureGyroscope.getGyroZ(sample)
         return jsonObj
     }
     
     private func buildMagnetometerJson(_ sample:BlueSTSDKFeatureSample)->JSON{
         var jsonObj = JSON()
-        jsonObj["magnetometerX"].floatValue = BlueSTSDKFeatureMagnetometer.getMagX(sample)
-        jsonObj["magnetometerY"].floatValue = BlueSTSDKFeatureMagnetometer.getMagY(sample)
-        jsonObj["magnetometerZ"].floatValue = BlueSTSDKFeatureMagnetometer.getMagZ(sample)
+        jsonObj["Magnetometer_X"].floatValue = BlueSTSDKFeatureMagnetometer.getMagX(sample)
+        jsonObj["Magnetometer_Y"].floatValue = BlueSTSDKFeatureMagnetometer.getMagY(sample)
+        jsonObj["Magnetometer_Z"].floatValue = BlueSTSDKFeatureMagnetometer.getMagZ(sample)
         return jsonObj
     }
     
     private func buildTemperatureJson(_ sample:BlueSTSDKFeatureSample)->JSON{
         var jsonObj = JSON()
-        jsonObj["temp"].floatValue = BlueSTSDKFeatureTemperature.getTemperature(sample)
+        jsonObj["Temperature"].floatValue = BlueSTSDKFeatureTemperature.getTemperature(sample)
         return jsonObj
     }
     
     private func buildHunidityJson(_ sample:BlueSTSDKFeatureSample)->JSON{
         var jsonObj = JSON()
-        jsonObj["humidity"].floatValue = BlueSTSDKFeatureHumidity.getHumidity(sample)
+        jsonObj["Humidity"].floatValue = BlueSTSDKFeatureHumidity.getHumidity(sample)
         return jsonObj
     }
     
     private func buildPressureJson(_ sample:BlueSTSDKFeatureSample)->JSON{
         var jsonObj = JSON()
-        jsonObj["pressure"].floatValue = BlueSTSDKFeaturePressure.getPressure(sample)
+        jsonObj["Pressure"].floatValue = BlueSTSDKFeaturePressure.getPressure(sample)
         return jsonObj
     }
     

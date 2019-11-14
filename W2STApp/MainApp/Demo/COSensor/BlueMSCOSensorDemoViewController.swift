@@ -68,8 +68,8 @@ public class BlueMSCOSensorDemoViewController:
         }
     }
     
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         mCOSensorFeature = self.node.getFeatureOfType(BlueSTSDKFeatureCOSensor.self) as? BlueSTSDKFeatureCOSensor
         if let feature = mCOSensorFeature{
             feature.add(self)

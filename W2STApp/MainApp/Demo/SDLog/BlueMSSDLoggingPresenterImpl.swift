@@ -79,8 +79,17 @@ public class BlueMSSDLoggingPresenterImpl :NSObject, BlueMSSDLoggingPresenter, B
     private func stopLogging(){
         mLogFeature?.stopLogging();
         isLogging=false;
-        mView.displayStartLoggingView(getAvailabeFeatures())
     }    
+    
+    private func displayStartLoggingView(){
+        let features = getAvailabeFeatures()
+        if features.isEmpty {
+            mView.hideLogInterval()
+            mView.displayStartLoggingView(nil)
+        }else{
+            mView.displayStartLoggingView(getAvailabeFeatures())
+        }
+    }
     
     private func syncNodeTime(){
         if let console = mLogFeature?.parentNode.debugConsole {
@@ -117,7 +126,7 @@ public class BlueMSSDLoggingPresenterImpl :NSObject, BlueMSSDLoggingPresenter, B
         var supportedFeature:[BlueSTSDKFeature] = [];
         BlueMSSDLoggingPresenterImpl.SUPPORTED_FEATURE.forEach{ featureType in
             let features = node.getFeaturesOfType(featureType)
-            if( features.count>=0){
+            if !features.isEmpty {
                 supportedFeature.append(features[0])
             }
         }
@@ -133,7 +142,7 @@ public class BlueMSSDLoggingPresenterImpl :NSObject, BlueMSSDLoggingPresenter, B
                 break;
             case BlueSTSDKFeatureSDLoggingStatus.STOPPED:
                 isLogging=false;
-                mView.displayStartLoggingView(getAvailabeFeatures());
+                displayStartLoggingView()
                 break;
             case BlueSTSDKFeatureSDLoggingStatus.IO_ERROR:
                 isLogging=false;

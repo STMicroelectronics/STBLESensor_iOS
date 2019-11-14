@@ -83,8 +83,8 @@ public class BlueMSSwitchViewController: BlueMSDemoTabViewController,BlueSTSDKFe
         }
     }
     
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         setDescriptionString(node.type)
         mFeature = self.node.getFeatureOfType(BlueSTSDKFeatureSwitch.self) as! BlueSTSDKFeatureSwitch?
         if let feature = mFeature {

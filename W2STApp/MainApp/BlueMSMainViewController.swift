@@ -48,9 +48,6 @@ public class BlueMSMainViewController : BlueSTSDKMainViewController {
         self.delegateNodeList = self
     }
     
-    @IBAction func onCreateAppButtonClick(_ sender: UIButton) {
-    }
-    
     private func getDemoViewController(with node: BlueSTSDKNode, menuManager: BlueSTSDKViewControllerMenuDelegate)
         -> UIViewController{
             let storyBoard = UIStoryboard(name: "BlueMS", bundle: nil);
@@ -67,9 +64,8 @@ public class BlueMSMainViewController : BlueSTSDKMainViewController {
      *
      *  @return controller with the demo to show
      */
-    public func demoViewController(with node: BlueSTSDKNode, menuManager: BlueSTSDKViewControllerMenuDelegate)
-            -> UIViewController {
-                
+    public func demoViewController(with node: BlueSTSDKNode, menuManager: BlueSTSDKViewControllerMenuDelegate)-> UIViewController?{
+
         if(BlueSTSDKSTM32WBOTAUtils.isOTANode(node)){
             return BlueSTSDKFwUpgradeManagerViewController.instaziate(forNode: node,
                                                                       requireAddress: true,
@@ -85,6 +81,7 @@ public class BlueMSMainViewController : BlueSTSDKMainViewController {
         
     }
 
+
 }
 
 
@@ -96,7 +93,7 @@ extension BlueMSMainViewController : BlueSTSDKAboutViewControllerDelegate{
     }
     
     public func headImage() -> UIImage? {
-        return UIImage(named: "press_contact.jpg")
+        return UIImage(named: "press_contact.png")
     }
     
     public func privacyInfoUrl() -> URL? {

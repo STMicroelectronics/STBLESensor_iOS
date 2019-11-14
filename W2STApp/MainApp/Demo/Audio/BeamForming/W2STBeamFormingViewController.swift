@@ -70,8 +70,7 @@ public class W2STBeamFormingViewController: BlueMSDemoTabViewController,BlueSTSD
     private var mAudioPlayback:W2STAudioPlayBackController?;
     private var mPlotController:W2STAudioPlotViewController!;
 
-    private var mFeatureAudio:BlueSTSDKFeatureAudioADPCM?=nil;
-    private var mFeatureAudioSync:BlueSTSDKFeatureAudioADPCMSync?=nil;
+    private var mFeatureAudio: BlueMSAudioFeatures?
     private var mFeatureBeamForming:BlueSTSDKFeatureBeamForming?=nil;
 
     private var mButtonToDirectionMap:[UIButton:BlueSTSDKFeatureBeamFormingDirection]!
@@ -107,9 +106,7 @@ public class W2STBeamFormingViewController: BlueMSDemoTabViewController,BlueSTSD
 
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        mAudioRecorder = W2STAudioDumpController(audioConf: W2STAudioStreamConfig.blueVoiceConf,
-                parentView: self, menuController: self.menuDelegate);
-
+        
         if(self.node.type == .nucleo){
             displayNucleoDemoSetup();
         }
@@ -119,18 +116,19 @@ public class W2STBeamFormingViewController: BlueMSDemoTabViewController,BlueSTSD
     override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        mPlotController = W2STAudioPlotViewController(view: mGraphView, reDrawAfterSample: 3);
+        mPlotController = W2STAudioPlotViewController(view: mGraphView,
+                                                      reDrawAfterSample: 3,
+        hasDarkTheme: hasDarkTheme());
 
-        mFeatureAudio = self.node.getFeatureOfType(BlueSTSDKFeatureAudioADPCM.self) as! BlueSTSDKFeatureAudioADPCM?;
-        mFeatureAudioSync = self.node.getFeatureOfType(BlueSTSDKFeatureAudioADPCMSync.self) as!
-        BlueSTSDKFeatureAudioADPCMSync?;
+        mFeatureAudio = BlueMSAudioFeatures.extractBestFeatures(from: self.node)
         //if both feature are present enable the audio
-        if let audio = mFeatureAudio, let audioSync = mFeatureAudioSync{
-            mAudioPlayback = W2STAudioPlayBackController(W2STAudioStreamConfig.blueVoiceConf);
-            audio.add(self);
-            audioSync.add(self);
-            self.node.enableNotification(audio);
-            self.node.enableNotification(audioSync);
+        if let featureAudio = mFeatureAudio{
+            mAudioPlayback = W2STAudioPlayBackController(featureAudio.audioStream.codecManager);
+            featureAudio.audioStream.add(self)
+            featureAudio.controlData.add(self)
+            featureAudio.controlData.enableNotification()
+            featureAudio.audioStream.enableNotification()
+            mAudioRecorder = W2STAudioDumpController(audioConf: featureAudio.audioStream.codecManager,parentView: self, menuController: self.menuDelegate);
         }
         
         mFeatureBeamForming = self.node.getFeatureOfType(BlueSTSDKFeatureBeamForming.self) as! BlueSTSDKFeatureBeamForming?
@@ -147,12 +145,12 @@ public class W2STBeamFormingViewController: BlueMSDemoTabViewController,BlueSTSD
     override public func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         mAudioRecorder.viewWillDisappear();
-        if let audio = mFeatureAudio, let audioSync = mFeatureAudioSync{
+        if let featureAudio = mFeatureAudio{
             mAudioPlayback = nil;
-            audio.remove(self);
-            audioSync.remove(self);
-            self.node.disableNotification(audio);
-            self.node.disableNotification(audioSync);
+            featureAudio.audioStream.remove(self);
+            featureAudio.controlData.remove(self);
+            featureAudio.audioStream.disableNotification()
+            featureAudio.controlData.disableNotification()
         }
 
         if let beamForming = mFeatureBeamForming{
@@ -200,9 +198,8 @@ public class W2STBeamFormingViewController: BlueMSDemoTabViewController,BlueSTSD
     /// - Parameters:
     ///   - feature: feature that generate the new data
     ///   - sample: new data
-    private func didAudioUpdate(_ feature: BlueSTSDKFeatureAudioADPCM, sample: BlueSTSDKFeatureSample){
-        let sampleData = BlueSTSDKFeatureAudioADPCM.getLinearPCMAudio(sample);
-        if let data = sampleData{
+    private func didAudioUpdate(_ feature: BlueSTSDKAudioDecoder, sample: BlueSTSDKFeatureSample){
+        if let data = feature.getAudio(from:sample){
             mAudioPlayback?.playSample(sample: data);
             updateAudioPlot(data)
         }//if data!=null
@@ -223,8 +220,8 @@ public class W2STBeamFormingViewController: BlueMSDemoTabViewController,BlueSTSD
     /// - Parameters:
     ///   - feature: feature that generate new data
     ///   - sample: new data
-    private func didAudioSyncUpdate(_ feature: BlueSTSDKFeatureAudioADPCMSync, sample: BlueSTSDKFeatureSample){
-        mFeatureAudio?.audioManager.setSyncParam(sample);
+    private func didAudioSyncUpdate(_ feature: BlueSTSDKFeature, sample: BlueSTSDKFeatureSample){
+        mFeatureAudio?.audioStream.codecManager.updateParameters(from: sample)
     }
 
     /// call when a feature gets update
@@ -233,11 +230,12 @@ public class W2STBeamFormingViewController: BlueMSDemoTabViewController,BlueSTSD
     ///   - feature: feature that get update
     ///   - sample: new feature data
     public func didUpdate(_ feature: BlueSTSDKFeature, sample: BlueSTSDKFeatureSample) {
-        if(feature .isKind(of: BlueSTSDKFeatureAudioADPCM.self)){
-            self.didAudioUpdate(feature as! BlueSTSDKFeatureAudioADPCM, sample: sample);
+
+        if let decoder = feature as? BlueSTSDKAudioDecoder {
+            self.didAudioUpdate(decoder, sample: sample);
         }
-        if(feature .isKind(of: BlueSTSDKFeatureAudioADPCMSync.self)){
-            self.didAudioSyncUpdate(feature as! BlueSTSDKFeatureAudioADPCMSync, sample: sample);
+        if(feature == mFeatureAudio?.controlData){
+            self.didAudioSyncUpdate(feature, sample: sample);
         }
     }
 

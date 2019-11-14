@@ -41,7 +41,6 @@ import SceneKit;
 import GLKit;
 import AudioToolbox
 
-
 public class BlueMSMemsSensorFusionViewController: BlueMSCalibrationViewController,
     BlueSTSDKFeatureDelegate,
     BlueMSSimpleDialogViewControllerDelegate {
@@ -113,7 +112,10 @@ public class BlueMSMemsSensorFusionViewController: BlueMSCalibrationViewControll
         m3DCube = m3DScene.rootNode.childNode(withName: BlueMSMemsSensorFusionViewController.SCENE_MODEL_NAME, recursively: true);
         setCubeScaleFactor(BlueMSMemsSensorFusionViewController.CUBE_DEFAULT_SCALE)
         m3DCubeView.prepare(m3DCube!, shouldAbortBlock: nil);
-        m3DCubeView.scene = m3DScene;
+        m3DCubeView.scene = m3DScene
+        if #available(iOS 13, *){
+            m3DCubeView.backgroundColor = UIColor.systemBackground
+        }
     }
 
     public override func viewDidLoad() {

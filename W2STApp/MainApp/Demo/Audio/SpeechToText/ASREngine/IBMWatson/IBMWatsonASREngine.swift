@@ -37,7 +37,7 @@
 
 import Foundation
 import UIKit
-import SpeechToTextV1
+import SpeechToText
 
 class IBMWatsonDescription : BlueVoiceASRDescription{
     
@@ -158,9 +158,8 @@ class BlueVoiceIBMWatsonASREngine: BlueVoiceASREngine, IBMWatsonKeyDelegate{
         var watsonSettings =
             RecognitionSettings(contentType:"audio/l16;rate=16000;channels=1")
         watsonSettings.interimResults=true;
-        
-        mSpeechToText = SpeechToTextSession(username: asrKey.userName ?? "",
-                                            password: asrKey.password ?? "",
+        let autenticator = WatsonIAMAuthenticator(apiKey: asrKey.apiKey ?? "")
+        mSpeechToText = SpeechToTextSession(authenticator: autenticator,
                                             model: mAsrVoiceModel,
                                             acousticCustomizationID: nil)
         mSpeechToText?.websocketsURL = buildWebSocketEndpint(serviceUrl: asrKey.endpoint)
@@ -205,12 +204,12 @@ class BlueVoiceIBMWatsonASREngine: BlueVoiceASREngine, IBMWatsonKeyDelegate{
         return true;
     }
     
-    private func notifyResults(results:SpeechToTextV1.SpeechRecognitionResults){
+    private func notifyResults(results:SpeechRecognitionResults){
         guard let res = results.results, res.count>=1 else{ //if no result don't do anything
             return;
         }
                 
-        if let lastResult = results.results?.last, lastResult.finalResults{
+        if let lastResult = results.results?.last, lastResult.final{
             let transcript = lastResult.alternatives.first?.transcript;
             if let str = transcript{
               self.mSpeechTextCallback?.onAsrRequestSuccess(withText: str)

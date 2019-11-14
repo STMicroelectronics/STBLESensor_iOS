@@ -95,7 +95,7 @@ public class W2STWaveFileDump {
     /// number of byte writed
     private var mNByteWrite:UInt32=0;
 
-    init?(audioParam: W2STAudioStreamConfig){
+    init?(audioParam: BlueSTSDKAudioCodecSettings){
         fileLocation = W2STWaveFileDump.createFile();
         do {
             outFile = try FileHandle(forWritingTo: fileLocation)
@@ -133,19 +133,19 @@ public class W2STWaveFileDump {
         return fileUrl;
     }
 
-    private func writeWavHeader(_ param: W2STAudioStreamConfig){
+    private func writeWavHeader(_ param: BlueSTSDKAudioCodecSettings){
         outFile.writeStr("RIFF");// chunk id
         outFile.writeUInt32(0);// chunk size
         outFile.writeStr("WAVE");// format
         outFile.writeStr("fmt ");// subchunk 1 id
         outFile.writeUInt32(16);// subchunk 1 size
         outFile.writeUInt16(1);// audio format (1 = PCM)
-        outFile.writeUInt16(param.channels);// number of channels
-        outFile.writeUInt32(param.sampleRate); // sample rate
-        let byteRate = UInt32(param.channels)*param.sampleRate*UInt32(param.bytePerSample);
+        outFile.writeUInt16(UInt16(param.channels))// number of channels
+        outFile.writeUInt32(UInt32(param.samplingFequency)) // sample rate
+        let byteRate = UInt32(param.channels*param.samplingFequency*param.bytesPerSample)
         outFile.writeUInt32(byteRate);// byte rate
-        outFile.writeUInt16(param.channels*UInt16(param.bytePerSample)); // block align
-        outFile.writeUInt16(8*UInt16(param.bytePerSample));// bits per sample
+        outFile.writeUInt16(UInt16(param.channels*param.bytesPerSample)); // block align
+        outFile.writeUInt16(8*UInt16(param.bytesPerSample));// bits per sample
         outFile.writeStr("data");// subchunk 2 id
         outFile.writeUInt32(0);// subchunk 2 size
     }

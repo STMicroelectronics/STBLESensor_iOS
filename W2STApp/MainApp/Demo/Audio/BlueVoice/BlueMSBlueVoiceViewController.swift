@@ -45,11 +45,7 @@ import BlueSTSDK_Gui
 public class BlueMSBlueVoiceViewController: BlueMSDemoTabViewController,
     BlueSTSDKFeatureDelegate{
 
-    private static let CODEC="ADPCM"
     private static let DEFAULT_DIRECTION = BlueSTSDKFeatureBeamFormingDirection.RIGHT;
-
-    private static let PLOT_AUDIO_BUFFER_SIZE = 100*40;
-    private static let PLOT_AUDIO_SCALE_FACTOR = 1.0/32768.0;
     
     private var mBundle:Bundle!;
 
@@ -63,16 +59,14 @@ public class BlueMSBlueVoiceViewController: BlueMSDemoTabViewController,
     @IBOutlet weak var mAudioPlot: CPTGraphHostingView!
     private var mAudioGraph: W2STAudioPlotViewController!
     
-    private var mRecordController:W2STAudioDumpController!;
+    private var mRecordController:W2STAudioDumpController?;
     
-    private var mFeatureAudio:BlueSTSDKFeatureAudioADPCM?;
-    private var mFeatureAudioSync:BlueSTSDKFeatureAudioADPCMSync?;
+    private var mAudioFeature : BlueMSAudioFeatures?
     private var mFeatureBeamForming:BlueSTSDKFeatureBeamForming?;
     
     /////////////////// AUDIO //////////////////////////////////////////////////
 
     //variable where store the audio before send to an speech to text service
-    private let mAudioConf = W2STAudioStreamConfig.blueVoiceConf;
     private var mRecordData:Data?;
     private var mAudioPlayBack:W2STAudioPlayBackController?;
 
@@ -83,15 +77,11 @@ public class BlueMSBlueVoiceViewController: BlueMSDemoTabViewController,
     override public func viewDidLoad(){
         super.viewDidLoad()
         mBundle = Bundle(for: type(of: self));
-
-        //set the constant string
-        mCodecLabel.text = mCodecLabel.text!+BlueMSBlueVoiceViewController.CODEC
-        mSampligFreqLabel.text = mSampligFreqLabel.text!+String(mAudioConf.sampleRate/1000)+" kHz"
     }
 
-    override public func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        mRecordController = W2STAudioDumpController(audioConf: mAudioConf, parentView: self, menuController: self.menuDelegate);
+    private func displayCodecSettings(_ settings:BlueSTSDKAudioCodecSettings){
+        mCodecLabel.text = mCodecLabel.text!+settings.codecName
+        mSampligFreqLabel.text = mSampligFreqLabel.text!+String(settings.samplingFequency/1000)+" kHz"
     }
 
     /*
@@ -100,21 +90,21 @@ public class BlueMSBlueVoiceViewController: BlueMSDemoTabViewController,
     override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
 
-        mAudioGraph = W2STAudioPlotViewController(view: mAudioPlot, reDrawAfterSample: 3);
+        mAudioGraph = W2STAudioPlotViewController(view: mAudioPlot,
+                                                  reDrawAfterSample: 3,
+                                                  hasDarkTheme: hasDarkTheme());
 
-        mFeatureAudio = self.node.getFeatureOfType(BlueSTSDKFeatureAudioADPCM.self) as! BlueSTSDKFeatureAudioADPCM?;
-        mFeatureAudioSync = self.node.getFeatureOfType(BlueSTSDKFeatureAudioADPCMSync.self) as!
-            BlueSTSDKFeatureAudioADPCMSync?;
-
+        mAudioFeature = BlueMSAudioFeatures.extractBestFeatures(from: self.node)
 
         //if both feature are present enable the audio
-        if let audio = mFeatureAudio, let audioSync = mFeatureAudioSync{
-            mAudioPlayBack = W2STAudioPlayBackController(W2STAudioStreamConfig.blueVoiceConf);
-            audio.add(self);
-            audioSync.add(self);
-            self.node.enableNotification(audio);
-            self.node.enableNotification(audioSync);
-
+        if let audioFeature = mAudioFeature{
+            mRecordController = W2STAudioDumpController(audioConf: audioFeature.audioStream.codecManager, parentView: self, menuController: self.menuDelegate);
+            mAudioPlayBack = W2STAudioPlayBackController(audioFeature.audioStream.codecManager);
+            displayCodecSettings(audioFeature.audioStream.codecManager)
+            audioFeature.audioStream.add(self);
+            audioFeature.controlData.add(self);
+            audioFeature.controlData.enableNotification()
+            audioFeature.audioStream.enableNotification()
         }
 
         mFeatureBeamForming = self.node.getFeatureOfType(BlueSTSDKFeatureBeamForming.self) as! BlueSTSDKFeatureBeamForming?
@@ -131,13 +121,13 @@ public class BlueMSBlueVoiceViewController: BlueMSDemoTabViewController,
      */
     override public func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated);
-        mRecordController.viewWillDisappear();
-        if let audio = mFeatureAudio, let audioSync = mFeatureAudioSync{
+        mRecordController?.viewWillDisappear()
+        if let audioFeature = mAudioFeature{
             mAudioPlayBack = nil;
-            audio.remove(self);
-            audioSync.remove(self);
-            self.node.disableNotification(audio);
-            self.node.disableNotification(audioSync);
+            audioFeature.audioStream.remove(self);
+            audioFeature.controlData.remove(self);
+            audioFeature.audioStream.disableNotification()
+            audioFeature.controlData.disableNotification()
         }
         if let beamForming = mFeatureBeamForming{
             self.node.disableNotification(beamForming);
@@ -197,14 +187,12 @@ public class BlueMSBlueVoiceViewController: BlueMSDemoTabViewController,
     /// - Parameters:
     ///   - feature: feature that generate the new data
     ///   - sample: new data
-    private func didAudioUpdate(_ feature: BlueSTSDKFeatureAudioADPCM, sample: BlueSTSDKFeatureSample){
-        let sampleData = BlueSTSDKFeatureAudioADPCM.getLinearPCMAudio(sample);
+    private func didAudioUpdate(_ feature: BlueSTSDKAudioDecoder, sample: BlueSTSDKFeatureSample){
+        let sampleData = feature.getAudio(from: sample);
         if let data = sampleData{
             mAudioPlayBack?.playSample(sample: data);
-            mRecordController.dumpAudioSample(sample: data);
-            
+            mRecordController?.dumpAudioSample(sample: data);
             updateAudioPlot(data);
-            
         }//if data!=null
     }
 
@@ -224,8 +212,9 @@ public class BlueMSBlueVoiceViewController: BlueMSDemoTabViewController,
     /// - Parameters:
     ///   - feature: feature that generate new data
     ///   - sample: new data
-    private func didAudioSyncUpdate(_ feature: BlueSTSDKFeatureAudioADPCMSync, sample: BlueSTSDKFeatureSample){
-        mFeatureAudio?.audioManager.setSyncParam(sample);
+    private func didAudioSyncUpdate(_ feature: BlueSTSDKFeature,
+                                    sample: BlueSTSDKFeatureSample){
+        mAudioFeature?.audioStream.codecManager.updateParameters(from: sample)
     }
     
     
@@ -235,11 +224,11 @@ public class BlueMSBlueVoiceViewController: BlueMSDemoTabViewController,
     ///   - feature: feature that get update
     ///   - sample: new feature data
     public func didUpdate(_ feature: BlueSTSDKFeature, sample: BlueSTSDKFeatureSample) {
-        if(feature .isKind(of: BlueSTSDKFeatureAudioADPCM.self)){
-            self.didAudioUpdate(feature as! BlueSTSDKFeatureAudioADPCM, sample: sample);
+        if let decoder = feature as? BlueSTSDKAudioDecoder {
+            self.didAudioUpdate(decoder, sample: sample);
         }
-        if(feature .isKind(of: BlueSTSDKFeatureAudioADPCMSync.self)){
-            self.didAudioSyncUpdate(feature as! BlueSTSDKFeatureAudioADPCMSync, sample: sample);
+        if(feature == mAudioFeature?.controlData){
+            self.didAudioSyncUpdate(feature, sample: sample);
         }
     }
     

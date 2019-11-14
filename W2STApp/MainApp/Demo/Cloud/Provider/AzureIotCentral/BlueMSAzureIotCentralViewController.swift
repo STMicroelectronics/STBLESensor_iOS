@@ -42,6 +42,7 @@ internal class BlueMSAzureIotCentralViewController : BlueMSCloudConfigDetailsVie
     private static let SCOPE_ID_KEY = "BlueMSAzureIotCentraViewController.scopeId"
     private static let AUTH_KEY = "BlueMSAzureIotCentraViewController.symKey"
     private static let DEVICE_ID_KEY = "BlueMSAzureIotCentraViewController.deviceId"
+    private static let CREATE_NEW_APP_URL = URL(string: "https://apps.azureiotcentral.com/create?appTemplate=771a66fa-f16c-47b5-abcd-8db027a754e2")!
     
     private static let MISSING_DATA_TITLE:String = {
         let bundle = Bundle(for: BlueMSAzureIotCentralViewController.self)
@@ -131,6 +132,9 @@ internal class BlueMSAzureIotCentralViewController : BlueMSCloudConfigDetailsVie
        
     }
     
+    @IBAction func onCreateApplicationPressed(_ sender: UIButton) {
+        UIApplication.shared.open(BlueMSAzureIotCentralViewController.CREATE_NEW_APP_URL)
+    }
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

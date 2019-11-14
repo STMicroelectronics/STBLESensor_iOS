@@ -73,6 +73,11 @@ class FFTAmplitudeViewController : BlueMSDemoTabViewController{
         legend.horizontalAlignment = .right
         legend.verticalAlignment = .top
         legend.orientation = .vertical
+        if #available(iOS 13, *){
+            chart.xAxis.labelTextColor = UIColor.label
+            chart.leftAxis.labelTextColor = UIColor.label
+            legend.textColor = .label
+        }
     }
     
     private func findDemoViewController()->BlueSTSDKDemoViewController?{
@@ -228,7 +233,8 @@ extension FFTAmplitudeViewController : BlueSTSDKFeatureDelegate{
     }
     
     private func updateLog(_ fftData:[[Float]],_ freqSteps:Float){
-        guard let demoVc = self.findDemoViewController(),
+        let vc = DispatchQueue.main.sync{ self.findDemoViewController() }
+        guard let demoVc = vc,
             demoVc.isLogging else{
             return
         }

@@ -49,8 +49,8 @@ class BlueMSEulerAngleLevelViewController:
 
     private var mAngleFeature: BlueSTSDKFeature?
     
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         mAngleFeature = self.node.getFeatureOfType(BlueSTSDKFeatureEulerAngle.self) as? BlueSTSDKFeatureEulerAngle
         if let feature = mAngleFeature{
             feature.add(self)

@@ -58,23 +58,20 @@ public class BlueVoiceIBMWatsonASRKeyViewController : UIViewController,UITextFie
     
     public var delegate:IBMWatsonKeyDelegate?;
     
-    @IBOutlet weak var mUserTextField: UITextField!
-    @IBOutlet weak var mPasswordTextField: UITextField!
+    @IBOutlet weak var apiKeyTextField: UITextField!
     
-    @IBOutlet weak var mEndpointTextField: UITextField!
+    @IBOutlet weak var endpointTextField: UITextField!
     public override func viewDidLoad() {
         super.viewDidLoad()
-        mUserTextField.delegate=self;
-        mPasswordTextField.delegate=self;
+        apiKeyTextField.delegate=self;
     }
     
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         let currentKey = delegate?.loadAsrKey()
-        mUserTextField.text = currentKey?.userName
-        mPasswordTextField.text = currentKey?.password
-        mEndpointTextField.text = currentKey?.endpoint
+        apiKeyTextField.text = currentKey?.apiKey
+        endpointTextField.text = currentKey?.endpoint
     }
     
     /// called when the store button is clicked, save the current key and dismis
@@ -82,13 +79,12 @@ public class BlueVoiceIBMWatsonASRKeyViewController : UIViewController,UITextFie
     ///
     /// - Parameter sender: button pressed
     @IBAction func onSaveButtonClick(_ sender: UIButton) {
-        let newUser = mUserTextField.text;
-        let newPass = mPasswordTextField.text;
-        let newEndpoint = mEndpointTextField.text;
+        let apiKey = apiKeyTextField.text;
+        let newEndpoint = endpointTextField.text;
         
         if let endpoint = newEndpoint{
-            let key = BlueVoiceIBMWatsonASRKey(endpoint:endpoint, user: newUser, pwd: newPass);
-            delegate?.storeAsrKey(key);
+            let key = BlueVoiceIBMWatsonASRKey(endpoint:endpoint, apiKey:apiKey)
+            delegate?.storeAsrKey(key)
         }
         self.dismiss(animated: true, completion: nil);
         
@@ -99,18 +95,18 @@ public class BlueVoiceIBMWatsonASRKeyViewController : UIViewController,UITextFie
     ///
     /// - Parameter sender: button pressed
     @IBAction func onCancelButtonClick(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil);
+        self.dismiss(animated: true, completion: nil)
     }
     
     /// hide the keyboard when the return is pressed
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool{
-        textField.resignFirstResponder();
+        textField.resignFirstResponder()
         return false;
     }
     
     /// hide the keyboard if the use touch on the view
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true);
-        super.touchesBegan(touches, with: event);
+        self.view.endEditing(true)
+        super.touchesBegan(touches, with: event)
     }
 }

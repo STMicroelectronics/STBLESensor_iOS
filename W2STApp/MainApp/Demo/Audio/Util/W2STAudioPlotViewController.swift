@@ -40,6 +40,7 @@ import CorePlot
 
 /// Manage a plot view that show an audio signal
 public class W2STAudioPlotViewController: NSObject, CPTPlotDataSource{
+    
     private static let PLOT_AUDIO_SCALE_FACTOR = 1.0/32768.0;
 
     /// plot object
@@ -67,7 +68,7 @@ public class W2STAudioPlotViewController: NSObject, CPTPlotDataSource{
     /// - Parameters:
     ///   - view: view where draw the plot
     ///   - dataBuffer: data to plot
-    public init(view:CPTGraphHostingView, reDrawAfterSample:UInt){
+    public init(view:CPTGraphHostingView, reDrawAfterSample:UInt, hasDarkTheme:Bool = false){
         mGraph = CPTXYGraph(frame: view.bounds);
         mUpdateSubsampling = reDrawAfterSample;
         plotWidth = UInt(view.bounds.width);
@@ -83,15 +84,20 @@ public class W2STAudioPlotViewController: NSObject, CPTPlotDataSource{
         view.allowPinchScaling = false;
         view.collapsesLayers=true;
         
-        initializeGraphView();
+        initializeGraphView(hasDarkTheme: hasDarkTheme);
        
         view.hostedGraph = mGraph;
     }
     
     
     /// initialize the plot with the axis and line styles
-    private func initializeGraphView(){
-        mGraph.apply(CPTTheme(named:CPTThemeName.plainWhiteTheme));
+    private func initializeGraphView(hasDarkTheme:Bool){
+        if(hasDarkTheme){
+            mGraph.apply(CPTTheme(named:CPTThemeName.plainBlackTheme));
+        }else {
+            mGraph.apply(CPTTheme(named:CPTThemeName.plainWhiteTheme));
+        }
+        
         
         let dataSourceLinePlot = CPTScatterPlot();
         dataSourceLinePlot.cachePrecision = .double;

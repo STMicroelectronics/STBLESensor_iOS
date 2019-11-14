@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="LPc-l5-Er4">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="LPc-l5-Er4">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Source Localization-->
         <scene sceneID="ZMa-Yw-baB">
             <objects>
-                <viewController id="LPc-l5-Er4" customClass="W2STDirectionOfArrivalViewController" customModule="ST_BlueMS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="LPc-l5-Er4" customClass="W2STDirectionOfArrivalViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Qbt-uM-T21"/>
                         <viewControllerLayoutGuide type="bottom" id="Hzb-80-nPa"/>
@@ -22,13 +20,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="7xG-nM-ZjM">
-                                <rect key="frame" x="24" y="28" width="327" height="491"/>
+                                <rect key="frame" x="24" y="8" width="327" height="511"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalCompressionResistancePriority="749" image="sourceLoc_needle" translatesAutoresizingMaskIntoConstraints="NO" id="tGM-88-SiZ">
-                                <rect key="frame" x="24" y="28" width="327" height="491"/>
+                                <rect key="frame" x="24" y="8" width="327" height="511"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hms-J0-U6O" userLabel="AngleContainer">
-                                <rect key="frame" x="130" y="527" width="114.5" height="36"/>
+                                <rect key="frame" x="130.5" y="527" width="114.5" height="36"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Angle:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ek-ga-b5j">
                                         <rect key="frame" x="8" y="8" width="48.5" height="20"/>
@@ -43,7 +41,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="5BF-yX-GDd" firstAttribute="centerY" secondItem="Hms-J0-U6O" secondAttribute="centerY" id="2LH-NU-ItD"/>
                                     <constraint firstItem="4ek-ga-b5j" firstAttribute="top" secondItem="Hms-J0-U6O" secondAttribute="top" constant="8" id="6h2-1X-5ta"/>
@@ -55,7 +52,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a66-2r-yfD" userLabel="switchContainer">
-                                <rect key="frame" x="90" y="563" width="194.5" height="47"/>
+                                <rect key="frame" x="90.5" y="563" width="194.5" height="47"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High sensitivity:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5tt-uh-xef">
                                         <rect key="frame" x="8" y="13.5" width="121.5" height="20.5"/>
@@ -70,7 +67,6 @@
                                         </connections>
                                     </switch>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="YHl-bv-9Rk" secondAttribute="trailing" constant="8" id="3qk-Gf-IDf"/>
                                     <constraint firstAttribute="bottom" secondItem="YHl-bv-9Rk" secondAttribute="bottom" constant="8" id="Iil-LJ-FUl"/>
@@ -82,7 +78,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="a66-2r-yfD" firstAttribute="top" secondItem="Hms-J0-U6O" secondAttribute="bottom" id="CHC-Kq-y8M"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7xG-nM-ZjM" secondAttribute="trailing" constant="8" id="Fwx-ty-JLc"/>

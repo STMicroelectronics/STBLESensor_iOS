@@ -1036,6 +1036,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -1679,7 +1680,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.owntracks.MQTTClient;
 				PRODUCT_NAME = MQTTClient;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 arm64e";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1710,7 +1713,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.owntracks.MQTTClient;
 				PRODUCT_NAME = MQTTClient;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 arm64e";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};

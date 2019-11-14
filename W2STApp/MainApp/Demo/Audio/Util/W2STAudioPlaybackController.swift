@@ -63,8 +63,7 @@ fileprivate func audioCallback(usedData:UnsafeMutableRawPointer?,queue:AudioQueu
 
 public class W2STAudioPlayBackController{
 
-    private static let NUM_BUFFERS=18;
-    private static let BUFFER_SIZE_SAMPLE=40;
+    private static let NUM_BUFFERS=9;
 
     private var mAudioFormat:AudioStreamBasicDescription;
 
@@ -92,27 +91,24 @@ public class W2STAudioPlayBackController{
     }
 
 
-    init(_ param:W2STAudioStreamConfig){
-
+    init(_ param:BlueSTSDKAudioCodecSettings){
         //https://developer.apple.com/library/mac/documentation/MusicAudio/Reference/CoreAudioDataTypesRef/#//apple_ref/c/tdef/AudioStreamBasicDescription
         mAudioFormat = AudioStreamBasicDescription(
-                mSampleRate: Float64(param.sampleRate),
+            mSampleRate: Float64(param.samplingFequency),
                 mFormatID: kAudioFormatLinearPCM,
                 mFormatFlags: kLinearPCMFormatFlagIsSignedInteger,
-                mBytesPerPacket: UInt32(param.bytePerSample) * UInt32(param.channels),
+                mBytesPerPacket: UInt32(param.bytesPerSample*param.channels),
                 mFramesPerPacket: 1,
-                mBytesPerFrame: UInt32(param.bytePerSample)*UInt32(param.channels),
+                mBytesPerFrame: UInt32(param.bytesPerSample*param.channels),
                 mChannelsPerFrame: UInt32(param.channels),
-                mBitsPerChannel: UInt32(8 * param.bytePerSample),
+                mBitsPerChannel: UInt32(8 * param.bytesPerSample),
                 mReserved: 0);
-
-
         mSyncAudioQueue = BlueVoiceSyncQueue();
 
         //create the audio queue
         AudioQueueNewOutput(&mAudioFormat,audioCallback, &mSyncAudioQueue,nil, nil, 0, &queue);
         //create the system audio buffer that will be filled with the data inside the mSyncAudioQueue
-        let bufferSizeByte = W2STAudioPlayBackController.BUFFER_SIZE_SAMPLE*Int(param.bytePerSample);
+        let bufferSizeByte = param.samplePerBlock*Int(param.bytesPerSample);
         for i in 0..<W2STAudioPlayBackController.NUM_BUFFERS{
             AudioQueueAllocateBuffer(queue!,
                     UInt32(bufferSizeByte),
@@ -139,8 +135,8 @@ public class W2STAudioPlayBackController{
     /// free the audio initialized audio queues
     deinit{
         AudioQueueStop(queue!, true);
-        for i in 0..<W2STAudioPlayBackController.NUM_BUFFERS{
-            if let buffer = buffers[i]{
+        buffers.forEach{ buff in
+            if let buffer = buff{
                 AudioQueueFreeBuffer(queue!,buffer);
             }
         }

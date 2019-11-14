@@ -119,8 +119,8 @@ class AIDataLogAnnotationViewController : UIViewController, BlueSTSDKDemoViewPro
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         viewModel.start(with: self.node)
         showLogStoppedView()
         //in the ipad the demo navigation controller is in the foruground, so we have to add the button to it

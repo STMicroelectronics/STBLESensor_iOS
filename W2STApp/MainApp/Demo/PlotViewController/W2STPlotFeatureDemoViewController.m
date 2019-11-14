@@ -59,7 +59,6 @@
 #import <BlueSTSDK/BlueSTSDK_LocalizeUtil.h>
 #import <BlueSTSDK/BlueSTSDKFeatureMicLevel.h>
 #import <BlueSTSDK/BlueSTSDKFeatureMotionIntensity.h>
-#import <BlueSTSDK/BlueSTSDKFeaturePedometer.h>
 #import <BlueSTSDK/BlueSTSDKFeatureCOSensor.h>
 
 #define Y_AXIS_BORDER 0.1f
@@ -123,9 +122,9 @@ static NSSet<Class> *sSupportedFeatureClass;
         sLineColor = @[ [CPTColor greenColor],
                         [CPTColor blueColor],
                         [CPTColor redColor],
-                        [CPTColor yellowColor],
                         [CPTColor purpleColor],
-                        [CPTColor purpleColor],
+                        [CPTColor magentaColor],
+                        [CPTColor orangeColor]
                       ];
         sZero =[NSDecimalNumber zero];
         sSupportedFeatureClass = [NSSet setWithObjects:
@@ -140,7 +139,6 @@ static NSSet<Class> *sSupportedFeatureClass;
                 [BlueSTSDKFeatureMemsSensorFusion class],
                 [BlueSTSDKFeatureMicLevel class],
                 [BlueSTSDKFeatureMotionIntensity class],
-                [BlueSTSDKFeaturePedometer class],
                 [BlueSTSDKFeatureProximity class],
                 [BlueSTSDKFeaturePressure class],
                 [BlueSTSDKFeatureCOSensor class],
@@ -278,11 +276,23 @@ static NSSet<Class> *sSupportedFeatureClass;
     
     CPTMutableTextStyle *textStyle = [CPTMutableTextStyle textStyle];
     [textStyle setFontSize:8.0f];
+    if (@available(iOS 13, *)) {
+        
+    }
     
     //create the graph
     mGraph =[[CPTXYGraph alloc] initWithFrame: _plotView.bounds];
+    if (@available(iOS 13, *)) {
+        CPTColor *systemLabel  = [CPTColor colorWithCGColor:UIColor.labelColor.CGColor];
+        [textStyle setColor: systemLabel];
+        if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+            [mGraph applyTheme:[CPTTheme themeNamed:kCPTPlainBlackTheme]];
+        } else {
+            [mGraph applyTheme:[CPTTheme themeNamed:kCPTPlainWhiteTheme]];
+        }
+    }
     
-    [mGraph applyTheme:[CPTTheme themeNamed:kCPTPlainWhiteTheme]];
+    
     self.plotView.hostedGraph = mGraph;
    
     //padding of the graph inside the graph view
@@ -320,7 +330,11 @@ static NSSet<Class> *sSupportedFeatureClass;
     x.axisConstraints             = [CPTConstraints constraintWithLowerOffset:0.0];
     x.labelTextStyle = textStyle;
     x.labelRotation = CPTFloat(-M_PI_2);
-    
+
+    if (@available(iOS 13, *)) {
+        mGraph.backgroundColor = UIColor.systemBackgroundColor.CGColor;
+        mGraph.borderColor = UIColor.labelColor.CGColor;
+    }
 
 }
 

@@ -102,20 +102,16 @@ public class BlueVoiceSelectEngineViewController: UIViewController,UITableViewDe
         }
         
         public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            var cell = tableView.dequeueReusableCell(withIdentifier: "BlueVoiceEngineCell");
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BlueVoiceEngineCell", for: indexPath)
             
-            if (cell == nil){
-                cell = UITableViewCell(style: .default, reuseIdentifier: "BlueVoiceEngineCell");
-                cell?.selectionStyle = .none;
-            }
             let desc = mEngines[indexPath.row];
-            cell?.textLabel?.text = desc.name;
+            cell.textLabel?.text = desc.name;
             if(desc.supportedLanguages.count==1){
-                cell?.accessoryType = .none;
+                cell.accessoryType = .none;
             }else{
-                cell?.accessoryType = .disclosureIndicator;
+                cell.accessoryType = .disclosureIndicator;
             }
-            return cell!
+            return cell
         }
     }
     
@@ -137,17 +133,13 @@ public class BlueVoiceSelectEngineViewController: UIViewController,UITableViewDe
         }
         
         public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            var cell = tableView.dequeueReusableCell(withIdentifier: "BlueVoiceEngineCell");
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BlueVoiceEngineCell", for: indexPath)
             
-            if (cell == nil){
-                cell = UITableViewCell(style: .default, reuseIdentifier: "BlueVoiceEngineCell");
-                cell?.selectionStyle = .none;
-            }
+            cell.selectionStyle = .none;
+            cell.textLabel?.text = mLanguages[indexPath.row].rawValue;
+            cell.accessoryType = .disclosureIndicator;
             
-            cell?.textLabel?.text = mLanguages[indexPath.row].rawValue;
-            cell?.accessoryType = .disclosureIndicator;
-            
-            return cell!
+            return cell
         }
     }
 }

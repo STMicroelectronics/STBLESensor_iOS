@@ -51,9 +51,9 @@ public class W2STAudioDumpController : NSObject,MFMailComposeViewControllerDeleg
     private var startRecordingAction: UIAlertAction!;
     private var stopRecordingAction: UIAlertAction!;
     private var audioDump: W2STWaveFileDump?;
-    private let mAudioConf:W2STAudioStreamConfig;
+    private let mAudioConf:BlueSTSDKAudioCodecSettings;
 
-    public init(audioConf: W2STAudioStreamConfig, parentView: UIViewController,
+    public init(audioConf: BlueSTSDKAudioCodecSettings, parentView: UIViewController,
                 menuController:BlueSTSDKViewControllerMenuDelegate?){
         mAudioConf=audioConf;
         

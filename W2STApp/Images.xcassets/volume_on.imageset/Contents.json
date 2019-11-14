@@ -3,6 +3,16 @@
     {
       "idiom" : "universal",
       "filename" : "volume_on.pdf"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "volume-on.pdf",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
     }
   ],
   "info" : {

@@ -69,13 +69,13 @@ public class BlueMSCalibrationViewController : BlueMSDemoTabViewController,
             feature.removeFeatureConfigurationDelegate(self);
         }
         
+        featureToCalibrate = feature;
+        
         // set the listener for the new feature
         if let feature = feature{
             feature.addFeatureConfigurationDelegate(self)
             setCalibrationState(feature.isConfigured);
         }
-        
-        featureToCalibrate = feature;
     }
     
     /// set the view to show the calibration state

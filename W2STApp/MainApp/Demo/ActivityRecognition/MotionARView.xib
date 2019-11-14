@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina3_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina3_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,38 +25,38 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="2jd-4Q-nUv">
-                    <rect key="frame" x="-8" y="12" width="320" height="460"/>
+                    <rect key="frame" x="-8" y="-8" width="320" height="480"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ARY-S7-xzC">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="132"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="138.5"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity_standing" translatesAutoresizingMaskIntoConstraints="NO" id="dCw-WI-mFf">
-                                    <rect key="frame" x="0.0" y="0.0" width="160" height="132"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="160" height="138.5"/>
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity_walking" translatesAutoresizingMaskIntoConstraints="NO" id="h9z-pj-rAU">
-                                    <rect key="frame" x="160" y="0.0" width="160" height="132"/>
+                                    <rect key="frame" x="160" y="0.0" width="160" height="138.5"/>
                                 </imageView>
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GeH-s7-VHA">
-                            <rect key="frame" x="0.0" y="164" width="320" height="132"/>
+                            <rect key="frame" x="0.0" y="170.5" width="320" height="139"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity_fastWalking" translatesAutoresizingMaskIntoConstraints="NO" id="tHM-Pj-7an">
-                                    <rect key="frame" x="0.0" y="0.0" width="160" height="132"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="160" height="139"/>
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity_running" translatesAutoresizingMaskIntoConstraints="NO" id="dQ0-S7-r6h">
-                                    <rect key="frame" x="160" y="0.0" width="160" height="132"/>
+                                    <rect key="frame" x="160" y="0.0" width="160" height="139"/>
                                 </imageView>
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="u9i-gn-Y13">
-                            <rect key="frame" x="0.0" y="328" width="320" height="132"/>
+                            <rect key="frame" x="0.0" y="341.5" width="320" height="138.5"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity_biking" translatesAutoresizingMaskIntoConstraints="NO" id="KTJ-3C-cjV">
-                                    <rect key="frame" x="0.0" y="0.0" width="160" height="132"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="160" height="138.5"/>
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="activity_driving" translatesAutoresizingMaskIntoConstraints="NO" id="2CO-6B-uJY">
-                                    <rect key="frame" x="160" y="0.0" width="160" height="132"/>
+                                    <rect key="frame" x="160" y="0.0" width="160" height="138.5"/>
                                 </imageView>
                             </subviews>
                         </stackView>
@@ -73,7 +71,6 @@
                     </constraints>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="YzD-ep-OY4" firstAttribute="top" secondItem="2jd-4Q-nUv" secondAttribute="top" constant="8" id="Rvs-yT-XnH"/>
                 <constraint firstItem="YzD-ep-OY4" firstAttribute="bottom" secondItem="2jd-4Q-nUv" secondAttribute="bottom" constant="8" id="Xk2-n6-uAW"/>
@@ -81,6 +78,7 @@
                 <constraint firstItem="YzD-ep-OY4" firstAttribute="trailing" secondItem="2jd-4Q-nUv" secondAttribute="trailing" constant="8" id="wra-Xz-qHw"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="YzD-ep-OY4"/>
+            <point key="canvasLocation" x="139" y="155"/>
         </view>
     </objects>
     <resources>

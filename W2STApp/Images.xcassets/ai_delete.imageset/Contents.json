@@ -3,6 +3,16 @@
     {
       "idiom" : "universal",
       "filename" : "ai_delete.pdf"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "ia_delete.pdf",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
     }
   ],
   "info" : {

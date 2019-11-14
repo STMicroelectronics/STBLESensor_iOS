@@ -63,6 +63,7 @@ public class BlueMSActivityViewController:
     @IBOutlet weak var mMotionARView : BlueMSMotionARView!
     @IBOutlet weak var mActivityIGNView: ActivityRecognitionIGNView!
     @IBOutlet weak var mActivityGMPView: ActivityRecognitionGMPView!
+    @IBOutlet weak var mActivityMLCView: ActivityRecognitionMLCView!
     
     private var mCurrentActivity:BlueSTSDKFeatureActivity.ActivityType?;
     private var mFeature:BlueSTSDKFeature?;
@@ -77,6 +78,7 @@ public class BlueMSActivityViewController:
             0 : mMotionARView,
             1 : mActivityGMPView,
             2 : mActivityIGNView,
+            3 : mActivityMLCView
         ]
     }()
     
@@ -111,6 +113,7 @@ public class BlueMSActivityViewController:
         mMotionARView.deselectAll()
         mActivityGMPView.deselectAll()
         mActivityIGNView.deselectAll()
+        mActivityMLCView.deselectAll()
     }
     
     private func displayStartMessage(){

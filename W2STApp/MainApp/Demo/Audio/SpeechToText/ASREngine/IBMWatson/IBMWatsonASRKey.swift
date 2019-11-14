@@ -39,13 +39,11 @@ import Foundation
 
 public class BlueVoiceIBMWatsonASRKey{
     
-    private static let USERNAME_KEY = "BlueVoiceIBMWatsonASRKey.username"
-    private static let PASSWORD_KEY = "BlueVoiceIBMWatsonASRKey.password"
+    private static let APIKEY_KEY = "BlueVoiceIBMWatsonASRKey.apiKey"
     private static let ENDPOINT_KEY = "BlueVoiceIBMWatsonASRKey.endpoint"
     private static let DEFAULT_ENDPOINT = "https://stream.watsonplatform.net/speech-to-text/api"
     
-    public let userName:String?;
-    public let password:String?;
+    public let apiKey:String?;
     public let endpoint:String;
     
     private static func sanitizeEnpoint(_ endpoint:String) ->String{
@@ -62,25 +60,22 @@ public class BlueVoiceIBMWatsonASRKey{
         
     }
     
-    init(endpoint:String,user:String? , pwd:String?) {
-        userName = user;
-        password = pwd;
+    init(endpoint:String,apiKey:String?) {
+        self.apiKey = apiKey;
         self.endpoint = BlueVoiceIBMWatsonASRKey.sanitizeEnpoint(endpoint);
     }
     
     public func store(){
         let userPref = UserDefaults.standard;
-        userPref.setValue(userName, forKey: BlueVoiceIBMWatsonASRKey.USERNAME_KEY);
-        userPref.setValue(password, forKey: BlueVoiceIBMWatsonASRKey.PASSWORD_KEY);
+        userPref.setValue(apiKey, forKey: BlueVoiceIBMWatsonASRKey.APIKEY_KEY);
         userPref.setValue(endpoint, forKey: BlueVoiceIBMWatsonASRKey.ENDPOINT_KEY);
     }
     
     public static func load()->BlueVoiceIBMWatsonASRKey?{
         let userPref = UserDefaults.standard;
-        let username = userPref.string(forKey: BlueVoiceIBMWatsonASRKey.USERNAME_KEY);
-        let password = userPref.string(forKey: BlueVoiceIBMWatsonASRKey.PASSWORD_KEY);
+        let apiKey = userPref.string(forKey: BlueVoiceIBMWatsonASRKey.APIKEY_KEY);
         let endpoint = userPref.string(forKey: BlueVoiceIBMWatsonASRKey.ENDPOINT_KEY) ?? BlueVoiceIBMWatsonASRKey.DEFAULT_ENDPOINT;
-        return BlueVoiceIBMWatsonASRKey(endpoint:endpoint,user: username,pwd: password);
+        return BlueVoiceIBMWatsonASRKey(endpoint:endpoint, apiKey: apiKey);
     }
     
 }

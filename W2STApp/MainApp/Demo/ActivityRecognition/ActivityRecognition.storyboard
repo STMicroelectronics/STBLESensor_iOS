@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rVT-e9-N9N">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rVT-e9-N9N">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,30 +17,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cdf-r9-ZZS" customClass="ActivityRecognitionIGNView" customModule="ST_BLE_Sensor" customModuleProvider="target">
-                                <rect key="frame" x="8" y="28" width="359" height="582"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="8" y="8" width="359" height="602"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rCc-Gt-olV" customClass="ActivityRecognitionMLCView" customModule="ST_BLE_Sensor" customModuleProvider="target">
+                                <rect key="frame" x="8" y="8" width="359" height="618"/>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GOl-dp-BdE" customClass="BlueMSMotionARView" customModule="ST_BLE_Sensor" customModuleProvider="target">
-                                <rect key="frame" x="8" y="42" width="359" height="582"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="8" y="22" width="359" height="602"/>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JaF-MH-yNn" customClass="ActivityRecognitionGMPView" customModule="ST_BLE_Sensor" customModuleProvider="target">
-                                <rect key="frame" x="8" y="42" width="359" height="582"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="8" y="22" width="359" height="602"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="rCc-Gt-olV" firstAttribute="bottom" secondItem="gFY-yw-gbM" secondAttribute="bottom" constant="8" id="08b-WM-wO0"/>
                             <constraint firstItem="cdf-r9-ZZS" firstAttribute="top" secondItem="gFY-yw-gbM" secondAttribute="top" constant="8" id="4yD-34-v8q"/>
+                            <constraint firstItem="rCc-Gt-olV" firstAttribute="top" secondItem="gFY-yw-gbM" secondAttribute="top" constant="8" id="7AT-nX-fpV"/>
                             <constraint firstItem="gFY-yw-gbM" firstAttribute="bottom" secondItem="cdf-r9-ZZS" secondAttribute="bottom" constant="8" id="7KC-Cg-VJS"/>
                             <constraint firstItem="gFY-yw-gbM" firstAttribute="trailing" secondItem="cdf-r9-ZZS" secondAttribute="trailing" constant="8" id="8hA-9e-vW8"/>
                             <constraint firstItem="cdf-r9-ZZS" firstAttribute="leading" secondItem="gFY-yw-gbM" secondAttribute="leading" constant="8" id="Hhd-je-zun"/>
                             <constraint firstItem="JaF-MH-yNn" firstAttribute="bottom" secondItem="gFY-yw-gbM" secondAttribute="bottom" constant="6" id="IzR-i5-yL3"/>
+                            <constraint firstItem="rCc-Gt-olV" firstAttribute="leading" secondItem="gFY-yw-gbM" secondAttribute="leading" constant="8" id="UCe-oz-05r"/>
                             <constraint firstItem="GOl-dp-BdE" firstAttribute="leading" secondItem="gFY-yw-gbM" secondAttribute="leading" constant="8" id="UJ6-OC-sSV"/>
                             <constraint firstItem="gFY-yw-gbM" firstAttribute="trailing" secondItem="GOl-dp-BdE" secondAttribute="trailing" constant="8" id="Uz4-Nj-mNJ"/>
                             <constraint firstItem="JaF-MH-yNn" firstAttribute="top" secondItem="gFY-yw-gbM" secondAttribute="top" constant="22" id="YD7-mJ-T6O"/>
                             <constraint firstItem="gFY-yw-gbM" firstAttribute="trailing" secondItem="JaF-MH-yNn" secondAttribute="trailing" constant="8" id="anW-3D-nEL"/>
                             <constraint firstItem="GOl-dp-BdE" firstAttribute="bottom" secondItem="gFY-yw-gbM" secondAttribute="bottom" constant="6" id="cBX-7n-Jyg"/>
+                            <constraint firstItem="gFY-yw-gbM" firstAttribute="trailing" secondItem="rCc-Gt-olV" secondAttribute="trailing" constant="8" id="hm1-Ae-Xkb"/>
                             <constraint firstItem="JaF-MH-yNn" firstAttribute="leading" secondItem="gFY-yw-gbM" secondAttribute="leading" constant="8" id="omD-W5-DZ3"/>
                             <constraint firstItem="GOl-dp-BdE" firstAttribute="top" secondItem="gFY-yw-gbM" secondAttribute="top" constant="22" id="z8i-Vt-iZr"/>
                         </constraints>
@@ -53,6 +54,7 @@
                     <connections>
                         <outlet property="mActivityGMPView" destination="JaF-MH-yNn" id="jEB-Fj-Vbq"/>
                         <outlet property="mActivityIGNView" destination="cdf-r9-ZZS" id="Iuw-oH-Yvz"/>
+                        <outlet property="mActivityMLCView" destination="rCc-Gt-olV" id="75b-i3-tAb"/>
                         <outlet property="mMotionARView" destination="GOl-dp-BdE" id="1OO-Hd-eIN"/>
                     </connections>
                 </viewController>

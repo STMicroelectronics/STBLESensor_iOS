@@ -40,15 +40,13 @@ import Foundation
 extension BlueSTSDKFeatureMotionAlogrithm.DeskTypeDetection{
     
     public var icon:UIImage {
-        get{
-            switch self {
-                case .sittingDesk:
-                    return UIImage(named: "desktop_type_sitting")!
-                case .standingDesk:
-                    return UIImage(named: "desktop_type_standing")!
-                case .unknown:
-                    return UIImage(named: "motion_algo_unknown")!
-            }
+        switch self {
+            case .sittingDesk:
+                return UIImage(imageLiteralResourceName: "desktop_type_sitting")
+            case .standingDesk:
+                return UIImage(imageLiteralResourceName: "desktop_type_standing")
+            case .unknown:
+                return UIImage(imageLiteralResourceName: "motion_algo_unknown")
         }
     }
     
@@ -57,17 +55,15 @@ extension BlueSTSDKFeatureMotionAlogrithm.DeskTypeDetection{
 extension BlueSTSDKFeatureMotionAlogrithm.PoseEstimation{
     
     public var icon:UIImage{
-        get{
-            switch self {
-                case .layingDown:
-                    return UIImage(named: "motion_algo_pose_lying_down")!
-                case .sitting:
-                    return UIImage(named: "motion_algo_pose_sitting")!
-                case .standing:
-                    return UIImage(named: "motion_algo_pose_standing")!
-                case .unknown:
-                    return UIImage(named: "motion_algo_unknown")!
-            }
+        switch self {
+            case .layingDown:
+                return UIImage(imageLiteralResourceName: "motion_algo_pose_lying_down")
+            case .sitting:
+                return UIImage(imageLiteralResourceName: "motion_algo_pose_sitting")
+            case .standing:
+                return UIImage(imageLiteralResourceName: "motion_algo_pose_standing")
+            case .unknown:
+                return UIImage(imageLiteralResourceName: "motion_algo_unknown")
         }
     }
     
@@ -76,21 +72,20 @@ extension BlueSTSDKFeatureMotionAlogrithm.PoseEstimation{
 extension BlueSTSDKFeatureMotionAlogrithm.VerticalContext{
     
     public var icon:UIImage{
-        get{
-            switch self {
-            case .elevator:
-                return UIImage(named: "motion_algo_vertical_elevator")!
-            case .escalator:
-                return UIImage(named: "motion_algo_vertical_escalator")!
-            case .floor:
-                return UIImage(named: "motion_algo_vertical_floor")!
-            case .stairs:
-                return UIImage(named: "motion_algo_vertical_stairs")!
-            case .upDown:
-                return UIImage(named: "motion_algo_vertical_updown")!
-            case .unknown:
-                return UIImage(named: "motion_algo_unknown")!
-            }
+        switch self {
+        case .elevator:
+            return UIImage(imageLiteralResourceName: "motion_algo_vertical_elevator")
+        case .escalator:
+            return UIImage(imageLiteralResourceName: "motion_algo_vertical_escalator")
+        case .floor:
+            return UIImage(imageLiteralResourceName: "motion_algo_vertical_floor")
+        case .stairs:
+            return UIImage(imageLiteralResourceName: "motion_algo_vertical_stairs")
+        case .upDown:
+            return UIImage(imageLiteralResourceName: "motion_algo_vertical_updown")
+        case .unknown:
+            return UIImage(imageLiteralResourceName: "motion_algo_unknown")
         }
+        
     }
 }

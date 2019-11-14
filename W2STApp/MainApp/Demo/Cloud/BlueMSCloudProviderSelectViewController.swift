@@ -58,9 +58,13 @@ BlueMSCloudLogSelectUpdateTimeDelegate, UITableViewDataSource, UITableViewDelega
         let bundle = Bundle(for: BlueMSCloudProviderSelectViewController.self)
         return [
         CloudProvider(name:
-            NSLocalizedString("Azure IoT Central - Contoso", tableName: nil, bundle: bundle,
-                              value: "Azure IoT Central - Contoso", comment: ""),
+            NSLocalizedString("Azure IoT Central - SensorTile.box", tableName: nil, bundle: bundle,
+                              value: "Azure IoT Central - SensorTile.box", comment: ""),
                       segue:"azureIoTCentral_segue"),
+        CloudProvider(name:
+            NSLocalizedString("Azure IoT - ST Web Dashboard", tableName: nil, bundle: bundle,
+                              value: "Azure IoT - ST Web Dashboard", comment: ""),
+                      segue:"STAzureIot_segue"),
         CloudProvider(name:
             NSLocalizedString("Azure IoT", tableName: nil, bundle: bundle,
                               value: "Azure IoT", comment: ""),

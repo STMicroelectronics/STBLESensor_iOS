@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gwE-Qp-oji">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gwE-Qp-oji">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,112 +11,35 @@
         <!--Audio Scene-->
         <scene sceneID="py2-T3-X4T">
             <objects>
-                <viewController id="gwE-Qp-oji" customClass="BlueMSAudioSceneClassificationViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gwE-Qp-oji" customClass="BlueMSAudioClassificationViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IWu-u3-Zhh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="O6J-cb-V8n">
-                                <rect key="frame" x="8" y="28" width="359" height="582"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bke-Cb-pDM">
-                                        <rect key="frame" x="0.0" y="0.0" width="351" height="183.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Indoor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDt-K4-GX1">
-                                                <rect key="frame" x="8" y="155" width="335" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" image="audioScene_inside" translatesAutoresizingMaskIntoConstraints="NO" id="H2L-0K-cE9">
-                                                <rect key="frame" x="8" y="8" width="335" height="139"/>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="fDt-K4-GX1" secondAttribute="trailing" constant="8" id="Qc0-5h-3Hd"/>
-                                            <constraint firstItem="H2L-0K-cE9" firstAttribute="leading" secondItem="bke-Cb-pDM" secondAttribute="leading" constant="8" id="Xz7-na-Idm"/>
-                                            <constraint firstItem="fDt-K4-GX1" firstAttribute="top" secondItem="H2L-0K-cE9" secondAttribute="bottom" constant="8" id="dng-bE-S5C"/>
-                                            <constraint firstAttribute="trailing" secondItem="H2L-0K-cE9" secondAttribute="trailing" constant="8" id="jnK-It-efl"/>
-                                            <constraint firstItem="fDt-K4-GX1" firstAttribute="leading" secondItem="bke-Cb-pDM" secondAttribute="leading" constant="8" id="oGy-PZ-w9D"/>
-                                            <constraint firstItem="H2L-0K-cE9" firstAttribute="top" secondItem="bke-Cb-pDM" secondAttribute="top" constant="8" id="qaR-qo-Hrq"/>
-                                            <constraint firstAttribute="bottom" secondItem="fDt-K4-GX1" secondAttribute="bottom" constant="8" id="x62-qD-7Rm"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YdG-L6-w0i">
-                                        <rect key="frame" x="0.0" y="199.5" width="351" height="183"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Outdoor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXX-5b-Yuy">
-                                                <rect key="frame" x="8" y="154.5" width="335" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="audioScene_outside" translatesAutoresizingMaskIntoConstraints="NO" id="60o-26-3EW">
-                                                <rect key="frame" x="8" y="8" width="335" height="138.5"/>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="CXX-5b-Yuy" firstAttribute="top" secondItem="60o-26-3EW" secondAttribute="bottom" constant="8" id="3zI-bR-vKM"/>
-                                            <constraint firstItem="CXX-5b-Yuy" firstAttribute="leading" secondItem="YdG-L6-w0i" secondAttribute="leading" constant="8" id="5QT-gD-1Xi"/>
-                                            <constraint firstAttribute="trailing" secondItem="60o-26-3EW" secondAttribute="trailing" constant="8" id="EYO-8j-QDc"/>
-                                            <constraint firstItem="60o-26-3EW" firstAttribute="leading" secondItem="YdG-L6-w0i" secondAttribute="leading" constant="8" id="NHf-mA-l4X"/>
-                                            <constraint firstAttribute="bottom" secondItem="CXX-5b-Yuy" secondAttribute="bottom" constant="8" id="eoE-gR-Qzc"/>
-                                            <constraint firstItem="60o-26-3EW" firstAttribute="top" secondItem="YdG-L6-w0i" secondAttribute="top" constant="8" id="fTI-Tu-Xwh"/>
-                                            <constraint firstAttribute="trailing" secondItem="CXX-5b-Yuy" secondAttribute="trailing" constant="8" id="tDH-Q6-eH1"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="krZ-FX-hdm">
-                                        <rect key="frame" x="0.0" y="398.5" width="351" height="183.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In vehicle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O89-69-EE8">
-                                                <rect key="frame" x="8" y="155" width="335" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" image="audioScene_inDriving" translatesAutoresizingMaskIntoConstraints="NO" id="e6P-Lu-VHw">
-                                                <rect key="frame" x="8" y="8" width="335" height="139"/>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="O89-69-EE8" secondAttribute="bottom" constant="8" id="11K-Mo-QmB"/>
-                                            <constraint firstAttribute="trailing" secondItem="e6P-Lu-VHw" secondAttribute="trailing" constant="8" id="2iB-Gv-ezc"/>
-                                            <constraint firstItem="O89-69-EE8" firstAttribute="top" secondItem="e6P-Lu-VHw" secondAttribute="bottom" constant="8" id="3ah-rU-YMs"/>
-                                            <constraint firstItem="e6P-Lu-VHw" firstAttribute="top" secondItem="krZ-FX-hdm" secondAttribute="top" constant="8" id="Cfc-4V-EOm"/>
-                                            <constraint firstItem="e6P-Lu-VHw" firstAttribute="leading" secondItem="krZ-FX-hdm" secondAttribute="leading" constant="8" id="Sv1-hd-joz"/>
-                                            <constraint firstAttribute="trailing" secondItem="O89-69-EE8" secondAttribute="trailing" constant="8" id="d4J-kt-GXt"/>
-                                            <constraint firstItem="O89-69-EE8" firstAttribute="leading" secondItem="krZ-FX-hdm" secondAttribute="leading" constant="8" id="tPD-pq-h29"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="bke-Cb-pDM" firstAttribute="leading" secondItem="O6J-cb-V8n" secondAttribute="leading" id="09E-bU-qdH"/>
-                                    <constraint firstItem="YdG-L6-w0i" firstAttribute="leading" secondItem="O6J-cb-V8n" secondAttribute="leading" id="K0I-MV-jFQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="krZ-FX-hdm" secondAttribute="trailing" constant="8" id="Tbe-Bz-ERV"/>
-                                    <constraint firstAttribute="trailing" secondItem="YdG-L6-w0i" secondAttribute="trailing" constant="8" id="YR9-4J-Rbq"/>
-                                    <constraint firstItem="krZ-FX-hdm" firstAttribute="leading" secondItem="O6J-cb-V8n" secondAttribute="leading" id="cv0-Yh-qWf"/>
-                                    <constraint firstAttribute="trailing" secondItem="bke-Cb-pDM" secondAttribute="trailing" constant="8" id="qjy-A4-Vbf"/>
-                                </constraints>
-                            </stackView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g5i-HA-nN1" customClass="BabyCryingView" customModule="ST_BLE_Sensor" customModuleProvider="target">
+                                <rect key="frame" x="8" y="8" width="375" height="602"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wQX-IY-fEy" customClass="AudioSceneView" customModule="ST_BLE_Sensor" customModuleProvider="target">
+                                <rect key="frame" x="8" y="8" width="359" height="618"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="O6J-cb-V8n" firstAttribute="top" secondItem="lz9-Bd-gI2" secondAttribute="top" constant="8" id="S5z-cf-VNA"/>
-                            <constraint firstItem="lz9-Bd-gI2" firstAttribute="trailing" secondItem="O6J-cb-V8n" secondAttribute="trailing" constant="8" id="UuS-N1-QIg"/>
-                            <constraint firstItem="O6J-cb-V8n" firstAttribute="leading" secondItem="lz9-Bd-gI2" secondAttribute="leading" constant="8" id="cWg-QJ-A8e"/>
-                            <constraint firstItem="lz9-Bd-gI2" firstAttribute="bottom" secondItem="O6J-cb-V8n" secondAttribute="bottom" constant="8" id="jjs-Lh-x6q"/>
+                            <constraint firstItem="g5i-HA-nN1" firstAttribute="trailing" secondItem="lz9-Bd-gI2" secondAttribute="trailing" constant="8" id="LKL-ew-i6N"/>
+                            <constraint firstItem="wQX-IY-fEy" firstAttribute="top" secondItem="lz9-Bd-gI2" secondAttribute="top" constant="8" id="O34-Oc-Xd3"/>
+                            <constraint firstItem="wQX-IY-fEy" firstAttribute="leading" secondItem="lz9-Bd-gI2" secondAttribute="leading" constant="8" id="Rxu-Ft-mW4"/>
+                            <constraint firstItem="lz9-Bd-gI2" firstAttribute="trailing" secondItem="wQX-IY-fEy" secondAttribute="trailing" constant="8" id="ZrY-vF-Yu1"/>
+                            <constraint firstItem="wQX-IY-fEy" firstAttribute="bottom" secondItem="lz9-Bd-gI2" secondAttribute="bottom" constant="8" id="eaw-eD-2Wl"/>
+                            <constraint firstItem="lz9-Bd-gI2" firstAttribute="bottom" secondItem="g5i-HA-nN1" secondAttribute="bottom" constant="8" id="fPe-d2-200"/>
+                            <constraint firstItem="g5i-HA-nN1" firstAttribute="leading" secondItem="lz9-Bd-gI2" secondAttribute="leading" constant="8" id="jkA-H7-xHX"/>
+                            <constraint firstItem="g5i-HA-nN1" firstAttribute="top" secondItem="lz9-Bd-gI2" secondAttribute="top" constant="8" id="oII-yI-5Dx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lz9-Bd-gI2"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Audio Scene" image="bluetooth_audio" id="JMV-Qg-JqO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="inVehicleIcon" destination="e6P-Lu-VHw" id="Fg0-04-uom"/>
-                        <outlet property="indoorIcon" destination="H2L-0K-cE9" id="uWZ-n4-7bb"/>
-                        <outlet property="outdoorIcon" destination="60o-26-3EW" id="6DH-up-GGT"/>
+                        <outlet property="audioSceneClassification" destination="wQX-IY-fEy" id="K6T-fJ-ZHt"/>
+                        <outlet property="babyCrying" destination="g5i-HA-nN1" id="Wgg-GO-o8r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l2T-F0-7DN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -127,9 +48,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="audioScene_inDriving" width="300" height="300"/>
-        <image name="audioScene_inside" width="300" height="300"/>
-        <image name="audioScene_outside" width="120" height="120"/>
         <image name="bluetooth_audio" width="30" height="30"/>
     </resources>
 </document>

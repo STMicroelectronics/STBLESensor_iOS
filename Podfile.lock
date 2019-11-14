@@ -1,7 +1,7 @@
 PODS:
-  - AWSCore (2.9.5)
-  - AWSIoT (2.9.5):
-    - AWSCore (= 2.9.5)
+  - AWSCore (2.12.0)
+  - AWSIoT (2.12.0):
+    - AWSCore (= 2.12.0)
   - AzureIoTHubClient (1.2.11):
     - AzureIoTuAmqp (= 1.2.11)
     - AzureIoTuMqtt (= 1.1.11)
@@ -11,40 +11,58 @@ PODS:
   - AzureIoTuMqtt (1.1.11):
     - AzureIoTUtility (= 1.1.11)
   - AzureIoTUtility (1.1.11)
+  - Charts (3.4.0):
+    - Charts/Core (= 3.4.0)
+  - Charts/Core (3.4.0)
   - CorePlot (2.2)
+  - IBMSwiftSDKCore (1.0.0)
+  - IBMWatsonSpeechToTextV1 (3.0.0):
+    - IBMSwiftSDKCore (~> 1.0.0)
+    - Starscream (= 3.0.5)
   - OpenSSL-for-iOS (1.0.2.d.1)
+  - Starscream (3.0.5)
   - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
-  - AWSIoT (~> 2.9)
+  - AWSIoT (~> 2.11)
   - AzureIoTHubClient (~> 1.2)
+  - Charts (~> 3.4)
   - CorePlot (~> 2.2)
+  - IBMWatsonSpeechToTextV1 (~> 3.0)
   - OpenSSL-for-iOS (= 1.0.2.d.1)
   - SwiftyJSON (~> 5.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - AWSCore
     - AWSIoT
     - AzureIoTHubClient
     - AzureIoTuAmqp
     - AzureIoTuMqtt
     - AzureIoTUtility
+    - Charts
     - CorePlot
+    - IBMSwiftSDKCore
+    - IBMWatsonSpeechToTextV1
     - OpenSSL-for-iOS
+    - Starscream
     - SwiftyJSON
 
 SPEC CHECKSUMS:
-  AWSCore: 90ddc0234a321d5649c9572b1447f528f68d41b9
-  AWSIoT: 31d85adfce6119409040c9c7430c4830697239a4
+  AWSCore: 6573232b6b4339ce0ffcf8abd4215a412488f71f
+  AWSIoT: dbacc09ef794a1ef9fd08e2f0612258d4fe8a6c9
   AzureIoTHubClient: 41b79a87e4931a7c7ff4d6d812a3864f738c3762
   AzureIoTuAmqp: 708a4d2d1cf6df50e2e79748065d7a4a410b84cf
   AzureIoTuMqtt: 27964116acbf92f3d5181c8bdac28ebe4296e2dc
   AzureIoTUtility: f1c3bd49ee06f35ba21a22e4c6c0eb2cffa40ff0
+  Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
   CorePlot: cbe0c6e14220705e32e06a89c7d6a5a908b7d7d8
+  IBMSwiftSDKCore: 54ad77b03a4d27b218ba514580197db3b89a96ca
+  IBMWatsonSpeechToTextV1: 20af2841eef76b0404c53dd34147154faa535d75
   OpenSSL-for-iOS: d7a30add88a1969b052135adbe48452af231ed32
+  Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 546150a8e2ef327723b73c87c53abc3e2bc17d51
+PODFILE CHECKSUM: 12b18e733b4ad6fec1f79484bc22f339d5b5b3e4
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.3

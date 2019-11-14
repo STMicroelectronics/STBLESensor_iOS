@@ -239,11 +239,10 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
     
     @IBOutlet weak var mEnableBeamFormingSwitch: UISwitch!
     
-    private var mRecordController:W2STAudioDumpController!;
+    private var mRecordController:W2STAudioDumpController?;
     private var engine:BlueVoiceASREngine?;
     
-    private var mFeatureAudio:BlueSTSDKFeatureAudioADPCM?;
-    private var mFeatureAudioSync:BlueSTSDKFeatureAudioADPCMSync?;
+    private var mFeatureAudio:BlueMSAudioFeatures?
     private var mFeatureBeamForming:BlueSTSDKFeatureBeamForming?;
     private var mFeatureAccEvents:BlueSTSDKFeatureAccelerometerEvent?;
     
@@ -255,7 +254,6 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
     /////////////////// AUDIO //////////////////////////////////////////////////
 
     //variable where store the audio before send to an speech to text service
-    private let mAudioConf = W2STAudioStreamConfig.blueVoiceConf;
     private var mRecordData:Data?;
 
     /////////CONTROLLER STATUS////////////
@@ -268,26 +266,18 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
         mAsrResultsTableView.dataSource=self;
         onEngineSelected(engine: getDefaultEngine(), language: getDefaultLanguage())
     }
-
-    override public func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        mRecordController = W2STAudioDumpController(audioConf: mAudioConf, parentView: self, menuController: self.menuDelegate);
-    }
-
+    
     private func enableAudioStream(){
-        mFeatureAudio = self.node.getFeatureOfType(BlueSTSDKFeatureAudioADPCM.self) as! BlueSTSDKFeatureAudioADPCM?;
-        mFeatureAudioSync = self.node.getFeatureOfType(BlueSTSDKFeatureAudioADPCMSync.self) as!
-            BlueSTSDKFeatureAudioADPCMSync?;
     
         //if both feature are present enable the audio
-        if let audio = mFeatureAudio,
-            let audioSync = mFeatureAudioSync,
-            !self.node.isEnableNotification(audio),
-            !self.node.isEnableNotification(audioSync) {
-            audio.add(self);
-            audioSync.add(self);
-            self.node.enableNotification(audio);
-            self.node.enableNotification(audioSync);
+        if let audioFeature = mFeatureAudio,
+            !self.node.isEnableNotification(audioFeature.audioStream),
+            !self.node.isEnableNotification(audioFeature.controlData) {
+            audioFeature.audioStream.add(self);
+            audioFeature.controlData.add(self);
+            audioFeature.controlData.enableNotification()
+            audioFeature.audioStream.enableNotification()
+            mRecordController = W2STAudioDumpController(audioConf: audioFeature.audioStream.codecManager, parentView: self, menuController: self.menuDelegate);
         }
     
         mFeatureBeamForming = self.node.getFeatureOfType(BlueSTSDKFeatureBeamForming.self) as? BlueSTSDKFeatureBeamForming
@@ -295,19 +285,19 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
             !self.node.isEnableNotification(beamForming){
             self.node.enableNotification(beamForming)
             beamForming.enablebeamForming(mEnableBeamFormingSwitch.isOn)
+            
         }
     
     }
     
     private func disableAudioStream(){
-        if let audio = mFeatureAudio,
-           let audioSync = mFeatureAudioSync,
-           self.node.isEnableNotification(audio),
-           self.node.isEnableNotification(audioSync) {
-            audio.remove(self);
-            audioSync.remove(self);
-            self.node.disableNotification(audio);
-            self.node.disableNotification(audioSync);
+        if let audioFeature = mFeatureAudio ,
+            self.node.isEnableNotification(audioFeature.audioStream),
+            self.node.isEnableNotification(audioFeature.controlData) {
+            audioFeature.audioStream.remove(self);
+            audioFeature.controlData.remove(self);
+            audioFeature.audioStream.disableNotification()
+            audioFeature.controlData.disableNotification()
         }
         if let beamForming = mFeatureBeamForming,
             self.node.isEnableNotification(beamForming){
@@ -332,14 +322,14 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
         initRecability();
         initBeamformingGui();
         
+        mFeatureAudio = BlueMSAudioFeatures.extractBestFeatures(from: self.node)
+        
         mFeatureAccEvents = node.getFeatureOfType(BlueSTSDKFeatureAccelerometerEvent.self) as? BlueSTSDKFeatureAccelerometerEvent
         if let accEvent = mFeatureAccEvents{
             accEvent.add(self)
             accEvent.enable(accEvent.DEFAULT_ENABLED_EVENT, enable: false)
             accEvent.enable(.eventTypeDoubleTap, enable: true)
             node.enableNotification(accEvent)
-        }else{
-            enableAudioStream()
         }
         
     }
@@ -349,7 +339,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
      */
     override public func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated);
-        mRecordController.viewWillDisappear();
+        mRecordController?.viewWillDisappear();
         disableAudioStream()
         deInitRecability()
         
@@ -644,10 +634,11 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
     ///
     /// - Parameter language: voice language
     private func loadAsrEngine(_ engineDesc:BlueVoiceASRDescription ,_ language:BlueVoiceLanguage){
-        if(engine != nil){
-            engine!.destroyListener();
+        guard let audioSettings = mFeatureAudio?.audioStream.codecManager else {
+            return
         }
-        let samplingRateHz = UInt(mAudioConf.sampleRate)
+        engine?.destroyListener()
+        let samplingRateHz = UInt(audioSettings.samplingFequency)
         engine = engineDesc.build(withLanguage: language, samplingRateHz: samplingRateHz);
         if let asrEngine = engine{
             mAddAsrKeyButton.isHidden = !asrEngine.engineDesc.needAuthKey;
@@ -686,10 +677,9 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
     /// - Parameters:
     ///   - feature: feature that generate the new data
     ///   - sample: new data
-    private func didAudioUpdate(_ feature: BlueSTSDKFeatureAudioADPCM, sample: BlueSTSDKFeatureSample){
-        let sampleData = BlueSTSDKFeatureAudioADPCM.getLinearPCMAudio(sample);
-        if let data = sampleData{
-            mRecordController.dumpAudioSample(sample: data);
+    private func didAudioUpdate(_ feature: BlueSTSDKAudioDecoder, sample: BlueSTSDKFeatureSample){
+        if let data = feature.getAudio(from: sample){
+            mRecordController?.dumpAudioSample(sample: data);
             if(mIsRecording){
                 if(engine!.engineDesc.hasContinuousRecognizer){
                     _ = engine!.sendASRRequest(audio: data, callback: self);
@@ -712,8 +702,8 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
     /// - Parameters:
     ///   - feature: feature that generate new data
     ///   - sample: new data
-    private func didAudioSyncUpdate(_ feature: BlueSTSDKFeatureAudioADPCMSync, sample: BlueSTSDKFeatureSample){
-        mFeatureAudio?.audioManager.setSyncParam(sample);
+    private func didAudioSyncUpdate(_ feature: BlueSTSDKFeature, sample: BlueSTSDKFeatureSample){
+        mFeatureAudio?.audioStream.codecManager.updateParameters(from: sample)
     }
     private static let IGNORE_DOUBLE_TAP_INTERVAL:TimeInterval=1.0
     
@@ -739,11 +729,11 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
     ///   - feature: feature that get update
     ///   - sample: new feature data
     public func didUpdate(_ feature: BlueSTSDKFeature, sample: BlueSTSDKFeatureSample) {
-        if(feature .isKind(of: BlueSTSDKFeatureAudioADPCM.self)){
-            self.didAudioUpdate(feature as! BlueSTSDKFeatureAudioADPCM, sample: sample);
+        if let decoder = feature as? BlueSTSDKAudioDecoder {
+            self.didAudioUpdate(decoder, sample: sample);
         }
-        if(feature .isKind(of: BlueSTSDKFeatureAudioADPCMSync.self)){
-            self.didAudioSyncUpdate(feature as! BlueSTSDKFeatureAudioADPCMSync, sample: sample);
+        if(feature == mFeatureAudio?.controlData){
+            self.didAudioSyncUpdate(feature, sample: sample);
         }
         if(feature .isKind(of: BlueSTSDKFeatureAccelerometerEvent.self)){
             self.didAccEventUpdate(feature, sample: sample);

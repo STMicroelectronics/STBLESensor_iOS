@@ -6,13 +6,12 @@
 //
 
 
-#import "MCMQTTSession.h"
+#import "MQTTSession.h"
 #import "MQTTDecoder.h"
 #import "MQTTStrict.h"
-#import "MCMQTTProperties.h"
-#import "MCMQTTMessage.h"
+#import "MQTTProperties.h"
+#import "MQTTMessage.h"
 #import "MQTTCoreDataPersistence.h"
-#import "GCDTimer.h"
 
 @class MQTTSSLSecurityPolicy;
 
@@ -25,10 +24,10 @@ NSString * const MCMQTTSessionErrorDomain = @"MQTT";
 @property (nonatomic, readwrite) MCMQTTSessionStatus status;
 @property (nonatomic, readwrite) BOOL sessionPresent;
 
-@property (strong, nonatomic) GCDTimer *keepAliveTimer;
+@property (strong, nonatomic) NSTimer *keepAliveTimer;
 @property (strong, nonatomic) NSNumber *serverKeepAlive;
 @property (nonatomic) UInt16 effectiveKeepAlive;
-@property (strong, nonatomic) GCDTimer *checkDupTimer;
+@property (strong, nonatomic) NSTimer *checkDupTimer;
 
 @property (strong, nonatomic) MCMQTTDecoder *decoder;
 
@@ -87,27 +86,26 @@ NSString * const MCMQTTSessionErrorDomain = @"MQTT";
     self.willQoS = MQTTQosLevelAtMostOnce;
     self.willRetainFlag = false;
     self.protocolLevel = MQTTProtocolVersion311;
+    self.runLoop = [NSRunLoop currentRunLoop];
+    self.runLoopMode = NSRunLoopCommonModes;
 
-    self.queue = dispatch_get_main_queue();
     self.status = MCMQTTSessionStatusCreated;
-    self.streamSSLLevel = (NSString *)kCFStreamSocketSecurityLevelNegotiatedSSL;
+
     return self;
 }
 
-- (void)dealloc {
-    [self.keepAliveTimer invalidate];
-    [self.checkDupTimer invalidate];
-}
-
-- (NSString *)host {
+- (NSString *)host
+{
     return _transport.host;
 }
 
-- (UInt32)port {
+- (UInt32)port
+{
     return _transport.port;
 }
 
-- (void)setClientId:(NSString *)clientId {
+- (void)setClientId:(NSString *)clientId
+{
     if (!clientId) {
         clientId = [NSString stringWithFormat:@"MQTTClient%.0f",fmod([NSDate date].timeIntervalSince1970, 1.0) * 1000000.0];
     }
@@ -115,9 +113,20 @@ NSString * const MCMQTTSessionErrorDomain = @"MQTT";
     _clientId = clientId;
 }
 
-- (void)setStreamSSLLevel:(NSString *)streamSSLLevel {
-    _streamSSLLevel = streamSSLLevel;
-    self.transport.streamSSLLevel = self.streamSSLLevel;
+- (void)setRunLoop:(NSRunLoop *)runLoop
+{
+    if (!runLoop ) {
+        runLoop = [NSRunLoop currentRunLoop];
+    }
+    _runLoop = runLoop;
+}
+
+- (void)setRunLoopMode:(NSString *)runLoopMode
+{
+    if (!runLoopMode) {
+        runLoopMode = NSRunLoopCommonModes;
+    }
+    _runLoopMode = runLoopMode;
 }
 
 - (UInt16)subscribeToTopic:(NSString *)topic
@@ -524,16 +533,18 @@ NSString * const MCMQTTSessionErrorDomain = @"MQTT";
     DDLogVerbose(@"[MCMQTTSession] sending DISCONNECT");
     self.status = MCMQTTSessionStatusDisconnecting;
 
-    [self encode:[MCMQTTMessage disconnectMessage:self.protocolLevel
-                                     returnCode:returnCode
-                          sessionExpiryInterval:sessionExpiryInterval
-                                   reasonString:reasonString
-                                   userProperty:userProperty]];
-    [self closeInternal];
+    BOOL isSent = [self encode:[MCMQTTMessage disconnectMessage:self.protocolLevel
+                                                   returnCode:returnCode
+                                        sessionExpiryInterval:sessionExpiryInterval
+                                                 reasonString:reasonString
+                                                 userProperty:userProperty]];
+    if (isSent) {
+        [self closeInternal];
+    }
 }
 
-
-- (void)closeInternal {
+- (void)closeInternal
+{
     DDLogVerbose(@"[MCMQTTSession] closeInternal");
 
     if (self.checkDupTimer) {
@@ -608,12 +619,12 @@ NSString * const MCMQTTSessionErrorDomain = @"MQTT";
 }
 
 
-- (void)keepAlive {
+- (void)keepAlive:(NSTimer *)timer {
     DDLogVerbose(@"[MCMQTTSession] keepAlive %@ @%.0f", self.clientId, [[NSDate date] timeIntervalSince1970]);
     (void)[self encode:[MCMQTTMessage pingreqMessage]];
 }
 
-- (void)checkDup {
+- (void)checkDup:(NSTimer *)timer {
     DDLogVerbose(@"[MCMQTTSession] checkDup %@ @%.0f", self.clientId, [[NSDate date] timeIntervalSince1970]);
     [self checkTxFlows];
 }
@@ -704,7 +715,7 @@ NSString * const MCMQTTSessionErrorDomain = @"MQTT";
     }
 }
 
-- (void)decoder:(MCMQTTDecoder *)sender handleEvent:(MCMQTTDecoderEvent)eventCode error:(NSError *)error {
+- (void)decoder:(MCMQTTDecoder*)sender handleEvent:(MCMQTTDecoderEvent)eventCode error:(NSError *)error {
     __unused NSArray *events = @[
                                  @"MCMQTTDecoderEventProtocolError",
                                  @"MCMQTTDecoderEventConnectionClosed",
@@ -733,7 +744,7 @@ NSString * const MCMQTTSessionErrorDomain = @"MQTT";
     }
 }
 
-- (void)decoder:(MCMQTTDecoder *)sender didReceiveMessage:(NSData *)data {
+- (void)decoder:(MCMQTTDecoder*)sender didReceiveMessage:(NSData *)data {
     MCMQTTMessage *message = [MCMQTTMessage messageFromData:data protocolLevel:self.protocolLevel];
     if (!message) {
         DDLogError(@"[MCMQTTSession] MQTT illegal message received");
@@ -791,14 +802,14 @@ NSString * const MCMQTTSessionErrorDomain = @"MQTT";
                                 } else {
                                     self.sessionPresent = false;
                                 }
-                                __weak typeof(self) weakSelf = self;
-                                self.checkDupTimer = [GCDTimer scheduledTimerWithTimeInterval:DUPLOOP
-                                                                                      repeats:YES
-                                                                                        queue:self.queue
-                                                                                        block:^{
-                                                                                            [weakSelf checkDup];
-                                                                                        }];
-                                [self checkDup];
+
+                                self.checkDupTimer = [NSTimer timerWithTimeInterval:DUPLOOP
+                                                                             target:self
+                                                                           selector:@selector(checkDup:)
+                                                                           userInfo:nil
+                                                                            repeats:YES];
+                                [self.runLoop addTimer:self.checkDupTimer forMode:self.runLoopMode];
+                                [self checkDup:self.checkDupTimer];
 
                                 if (message.properties) {
                                     self.serverKeepAlive = message.properties.serverKeepAlive;
@@ -810,12 +821,13 @@ NSString * const MCMQTTSessionErrorDomain = @"MQTT";
                                 }
 
                                 if (self.effectiveKeepAlive > 0) {
-                                    self.keepAliveTimer = [GCDTimer scheduledTimerWithTimeInterval:self.effectiveKeepAlive
-                                                                                           repeats:YES
-                                                                                             queue: self.queue
-                                                                                             block:^() {
-                                                                                                 [weakSelf keepAlive];
-                                                                                             }];
+                                    self.keepAliveTimer = [NSTimer
+                                                           timerWithTimeInterval:self.effectiveKeepAlive
+                                                           target:self
+                                                           selector:@selector(keepAlive:)
+                                                           userInfo:nil
+                                                           repeats:YES];
+                                    [self.runLoop addTimer:self.keepAliveTimer forMode:self.runLoopMode];
                                 }
 
                                 if ([self.delegate respondsToSelector:@selector(handleEvent:event:error:)]) {
@@ -828,7 +840,7 @@ NSString * const MCMQTTSessionErrorDomain = @"MQTT";
                                     [self.delegate connected:self sessionPresent:self.sessionPresent];
                                 }
 
-                                if (self.connectionHandler) {
+                                if(self.connectionHandler){
                                     self.connectionHandler(MCMQTTSessionEventConnected);
                                 }
                                 MQTTConnectHandler connectHandler = self.connectHandler;
@@ -1323,23 +1335,85 @@ NSString * const MCMQTTSessionErrorDomain = @"MQTT";
     }
 }
 
+/*
+ * Threaded block callbacks
+ */
 - (void)onConnect:(MQTTConnectHandler)connectHandler error:(NSError *)error {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject:connectHandler forKey:@"Block"];
+    if (error) {
+        dict[@"Error"] = error;
+    }
+    NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(onConnectExecute:) object:dict];
+    [thread start];
+}
+
+- (void)onConnectExecute:(NSDictionary *)dict {
+    MQTTConnectHandler connectHandler = dict[@"Block"];
+    NSError *error = dict[@"Error"];
     connectHandler(error);
 }
 
 - (void)onDisconnect:(MQTTDisconnectHandler)disconnectHandler error:(NSError *)error {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject:disconnectHandler forKey:@"Block"];
+    if (error) {
+        dict[@"Error"] = error;
+    }
+    NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(onDisconnectExecute:) object:dict];
+    [thread start];
+}
+
+- (void)onDisconnectExecute:(NSDictionary *)dict {
+    MQTTDisconnectHandler disconnectHandler = dict[@"Block"];
+    NSError *error = dict[@"Error"];
     disconnectHandler(error);
 }
 
-- (void)onSubscribe:(MQTTSubscribeHandler)subscribeHandler error:(NSError *)error gQoss:(NSArray *)gqoss {
+- (void)onSubscribe:(MQTTSubscribeHandler)subscribeHandler error:(NSError *)error gQoss:(NSArray *)gqoss{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject:subscribeHandler forKey:@"Block"];
+    if (error) {
+        dict[@"Error"] = error;
+    }
+    if (gqoss) {
+        dict[@"GQoss"] = gqoss;
+    }
+    NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(onSubscribeExecute:) object:dict];
+    [thread start];
+}
+
+- (void)onSubscribeExecute:(NSDictionary *)dict {
+    MQTTSubscribeHandler subscribeHandler = dict[@"Block"];
+    NSError *error = dict[@"Error"];
+    NSArray *gqoss = dict[@"GQoss"];
     subscribeHandler(error, gqoss);
 }
 
 - (void)onUnsubscribe:(MQTTUnsubscribeHandler)unsubscribeHandler error:(NSError *)error {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject:unsubscribeHandler forKey:@"Block"];
+    if (error) {
+        dict[@"Error"] = error;
+    }
+    NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(onUnsubscribeExecute:) object:dict];
+    [thread start];
+}
+
+- (void)onUnsubscribeExecute:(NSDictionary *)dict {
+    MQTTUnsubscribeHandler unsubscribeHandler = dict[@"Block"];
+    NSError *error = dict[@"Error"];
     unsubscribeHandler(error);
 }
 
 - (void)onPublish:(MQTTPublishHandler)publishHandler error:(NSError *)error {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject:publishHandler forKey:@"Block"];
+    if (error) {
+        dict[@"Error"] = error;
+    }
+    NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(onPublishExecute:) object:dict];
+    [thread start];
+}
+
+- (void)onPublishExecute:(NSDictionary *)dict {
+    MQTTPublishHandler publishHandler = dict[@"Block"];
+    NSError *error = dict[@"Error"];
     publishHandler(error);
 }
 
@@ -1401,7 +1475,7 @@ NSString * const MCMQTTSessionErrorDomain = @"MQTT";
         ![self.userName dataUsingEncoding:NSUTF8StringEncoding]) {
         NSException* myException = [NSException
                                     exceptionWithName:@"userName must not contain non-UTF8 characters"
-                                    reason:[NSString stringWithFormat:@"userName = %@", self.userName]
+                                    reason:[NSString stringWithFormat:@"password = %@", self.userName]
                                     userInfo:nil];
         @throw myException;
     }
@@ -1552,7 +1626,8 @@ NSString * const MCMQTTSessionErrorDomain = @"MQTT";
     self.status = MCMQTTSessionStatusConnecting;
 
     self.decoder = [[MCMQTTDecoder alloc] init];
-    self.decoder.queue = self.queue;
+    self.decoder.runLoop = self.runLoop;
+    self.decoder.runLoopMode = self.runLoopMode;
     self.decoder.delegate = self;
     [self.decoder open];
 

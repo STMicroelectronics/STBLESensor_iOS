@@ -41,7 +41,7 @@ import BlueSTSDK
 
 class ActivityRecognitionModelView : NSObject{
     
-    var onStateChange:((BlueSTSDKFeatureActivity.ActivityType)->())?
+    var onStateChange:((UIImage,String)->())?
     var onSetVisibiltiy:((Bool)->())?
         
     func attachListener(feature: BlueSTSDKFeatureActivity?){
@@ -64,13 +64,45 @@ class ActivityRecognitionModelView : NSObject{
 
 extension ActivityRecognitionModelView : BlueSTSDKFeatureDelegate{
     
-    func didUpdate(_ feature: BlueSTSDKFeature, sample: BlueSTSDKFeatureSample) {
-        let activity = BlueSTSDKFeatureActivity.getType(sample)
+    private func showDefaultActivity(_ activity:BlueSTSDKFeatureActivity.ActivityType){
         DispatchQueue.main.async { [weak self] in
-            self?.onStateChange?(activity)
+            self?.onStateChange?(activity.icon,activity.description)
             if(activity != .noActivity){
                 self?.onSetVisibiltiy?(true)
             }
+        }
+    }
+    
+    private static let ACTIVITY_ADULT_NOT_IN_CAR_STR = {
+        return  NSLocalizedString("Adult not in the Car",
+                                  tableName: nil,
+                                  bundle: Bundle(for: BlueMSMultiNetworkViewController.self),
+                                  value: "Adult not in the Car",
+                                  comment: "Adult not in the Car")
+    }();
+    
+    private func showAdultPresenceActivity(_ activity:BlueSTSDKFeatureActivity.ActivityType){
+        let activityImg = activity == .adultInCar ? activity.icon : UIImage(imageLiteralResourceName: "adult_not_in_car")
+        let activityDesc = activity == .adultInCar ? activity.description : Self.ACTIVITY_ADULT_NOT_IN_CAR_STR
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.onStateChange?(activityImg,activityDesc)
+            self?.onSetVisibiltiy?(true)
+        }
+    }
+    
+    func didUpdate(_ feature: BlueSTSDKFeature, sample: BlueSTSDKFeatureSample) {
+        let activity = BlueSTSDKFeatureActivity.getType(sample)
+        let algoId = BlueSTSDKFeatureActivity.getAlgorithmId(sample)
+        
+        print(activity)
+        print(algoId)
+        
+        switch algoId {
+        case 4:
+            showAdultPresenceActivity(activity)
+        default:
+            showDefaultActivity(activity)
         }
     }
     

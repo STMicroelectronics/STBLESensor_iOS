@@ -50,6 +50,16 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_Wesu[] ={
     BlueSTSDKFeatureEventTypeMultiple
 };
 
+static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_SensorTileBox[] ={
+    BlueSTSDKFeatureEventTypeNone,
+    BlueSTSDKFeatureEventTypeOrientation,
+    BlueSTSDKFeatureEventTypeDoubleTap,
+    BlueSTSDKFeatureEventTypeFreeFall,
+    BlueSTSDKFeatureEventTypeSingleTap,
+    BlueSTSDKFeatureEventTypeTilt,
+    BlueSTSDKFeatureEventTypeWakeUp
+};
+
 static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_Nucleo[] ={
     BlueSTSDKFeatureEventTypeNone,
     BlueSTSDKFeatureEventTypeOrientation,
@@ -131,6 +141,14 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_BNC002[] ={
         mSupportedEventTypeSize = sizeof(sEventType_IDB008)/sizeof(BlueSTSDKFeatureAccelerationDetectableEventType);
         return;
     }
+    
+    if(type == BlueSTSDKNodeTypeSensor_Tile_Box){
+        mSupportedEventType = sEventType_SensorTileBox;
+        mSupportedEventTypeSize = sizeof(sEventType_SensorTileBox)/sizeof(BlueSTSDKFeatureAccelerationDetectableEventType);
+        return;
+    }
+
+    
     if(type == BlueSTSDKNodeTypeSTEVAL_BCN002V1){
         mSupportedEventType = sEventType_BNC002;
         mSupportedEventTypeSize = sizeof(sEventType_BNC002)/sizeof(BlueSTSDKFeatureAccelerationDetectableEventType);

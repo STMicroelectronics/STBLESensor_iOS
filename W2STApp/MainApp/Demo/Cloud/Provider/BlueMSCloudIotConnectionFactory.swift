@@ -62,7 +62,7 @@ public protocol BlueMSCloudIotConnectionFactory{
  *
  * @return mqtt object to use for connect and send data to the cloud service
  */
-    func getSession()->BlueMSCloudIotClient
+func getSession()->BlueMSCloudIotClient
 
 
 /**

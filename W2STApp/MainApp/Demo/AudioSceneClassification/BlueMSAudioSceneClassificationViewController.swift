@@ -38,9 +38,9 @@
 import Foundation
 import CoreGraphics
 import BlueSTSDK_Gui
-import BlueSTSDK
+import BlueSTSDK;
 
-class BlueMSAudioSceneClassificationViewController : BlueMSDemoTabViewController{
+public class BlueMSAudioClassificationViewController: BlueMSDemoTabViewController{
     
     private static let START_MESSAGE:String = {
         return NSLocalizedString("Audio classifier started",
@@ -77,8 +77,8 @@ class BlueMSAudioSceneClassificationViewController : BlueMSDemoTabViewController
         mFeature = self.node.getFeatureOfType(BlueSTSDKFeatureAudioCalssification.self);
         if let feature = mFeature{
             feature.add(self)
-            self.node.enableNotification(feature);
-            self.node.read(feature);
+            feature.enableNotification()
+            feature.read()
             displayStartMessage();
         }
     }
@@ -128,7 +128,7 @@ class BlueMSAudioSceneClassificationViewController : BlueMSDemoTabViewController
     
 }
 
-extension BlueMSAudioSceneClassificationViewController : BlueSTSDKFeatureDelegate{
+extension BlueMSAudioClassificationViewController : BlueSTSDKFeatureDelegate{
     public func didUpdate(_ feature: BlueSTSDKFeature, sample: BlueSTSDKFeatureSample) {
     
         let newClass = BlueSTSDKFeatureAudioCalssification.getAudioScene(sample);

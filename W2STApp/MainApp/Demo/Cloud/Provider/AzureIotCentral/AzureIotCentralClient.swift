@@ -68,7 +68,7 @@ internal class AzureIotCentralClient : BlueMSCloudIotClient{
                 return
             }
             IoTHubClient_LL_DoWork(device)
-            client.networkQueue.asyncAfter(deadline: .now() + 0.5, execute: client.doWork)
+            client.networkQueue.asyncAfter(deadline: .now() + 0.2, execute: client.doWork)
         }
         networkQueue.async(execute: doWork)
         buildConnectionString{ cs in

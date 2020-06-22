@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F6D08FD71E535E9900CD2566"
-               BuildableName = "MQTTClient.framework"
-               BlueprintName = "MQTTClienttvOS"
+               BuildableName = "MQTTFramework.framework"
+               BlueprintName = "MQTTtvOS"
                ReferencedContainer = "container:MQTTClient.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -31,8 +31,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F6D08FD71E535E9900CD2566"
-            BuildableName = "MQTTClient.framework"
-            BlueprintName = "MQTTClienttvOS"
+            BuildableName = "MQTTFramework.framework"
+            BlueprintName = "MQTTtvOS"
             ReferencedContainer = "container:MQTTClient.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -42,8 +42,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8425D7001BBE8D3D005AD733"
-               BuildableName = "MQTTClienttvOSTests.xctest"
-               BlueprintName = "MQTTClienttvOSTests"
+               BuildableName = "MQTTClientTVTests.xctest"
+               BlueprintName = "MQTTClientTVTests"
                ReferencedContainer = "container:MQTTClient.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -63,8 +63,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F6D08FD71E535E9900CD2566"
-            BuildableName = "MQTTClient.framework"
-            BlueprintName = "MQTTClienttvOS"
+            BuildableName = "MQTTFramework.framework"
+            BlueprintName = "MQTTtvOS"
             ReferencedContainer = "container:MQTTClient.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -79,8 +79,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F6D08FD71E535E9900CD2566"
-            BuildableName = "MQTTClient.framework"
-            BlueprintName = "MQTTClienttvOS"
+            BuildableName = "MQTTFramework.framework"
+            BlueprintName = "MQTTtvOS"
             ReferencedContainer = "container:MQTTClient.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

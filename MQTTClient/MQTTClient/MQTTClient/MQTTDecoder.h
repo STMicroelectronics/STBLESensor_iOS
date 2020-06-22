@@ -1,5 +1,5 @@
 //
-// MQTTDecoder.h
+// MCMQTTDecoder.h
 // MQTTClient.framework
 // 
 // Copyright © 2013-2017, Christoph Krey. All rights reserved.
@@ -18,7 +18,7 @@
 // 
 
 #import <Foundation/Foundation.h>
-#import "MCMQTTMessage.h"
+#import "MQTTMessage.h"
 
 typedef NS_ENUM(unsigned int, MCMQTTDecoderEvent) {
     MCMQTTDecoderEventProtocolError,
@@ -46,21 +46,20 @@ typedef NS_ENUM(unsigned int, MCMQTTDecoderState) {
 @end
 
 
-@interface MCMQTTDecoder: NSObject <NSStreamDelegate>
+@interface MCMQTTDecoder : NSObject <NSStreamDelegate>
+@property (nonatomic)    MCMQTTDecoderState       state;
+@property (strong, nonatomic)    NSRunLoop*      runLoop;
+@property (strong, nonatomic)    NSString*       runLoopMode;
+@property (nonatomic)    UInt32          length;
+@property (nonatomic)    UInt32          lengthMultiplier;
+@property (nonatomic)    int          offset;
+@property (strong, nonatomic)    NSMutableData*  dataBuffer;
 
-@property (nonatomic) MCMQTTDecoderState state;
-@property (strong, nonatomic) dispatch_queue_t queue;
-@property (nonatomic) UInt32 length;
-@property (nonatomic) UInt32 lengthMultiplier;
-@property (nonatomic) int offset;
-@property (strong, nonatomic) NSMutableData *dataBuffer;
-
-@property (weak, nonatomic) id<MCMQTTDecoderDelegate> delegate;
+@property (weak, nonatomic ) id<MCMQTTDecoderDelegate> delegate;
 
 - (void)open;
 - (void)close;
 - (void)decodeMessage:(NSData *)data;
-
 @end
 
 

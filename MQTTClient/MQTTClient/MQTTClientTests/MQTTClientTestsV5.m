@@ -10,7 +10,7 @@
 
 #import "MQTTLog.h"
 #import "MQTTTestHelpers.h"
-#import "MCMCMQTTSessionSynchron.h"
+#import "MCMQTTSessionSynchron.h"
 #import "MCMQTTCFSocketTransport.h"
 
 @interface MQTTClientTestsV5 : MQTTTestHelpers
@@ -25,28 +25,6 @@
 @implementation MQTTClientTestsV5
 
 - (void)test_complete_v5 {
-<<<<<<< HEAD
-    NSDictionary *parameters = MQTTTestHelpers.broker;
-    if ([parameters[@"protocollevel"] integerValue] == MQTTProtocolVersion50) {
-        self.session = [MQTTTestHelpers session:parameters];
-        self.session.sessionExpiryInterval = @60U;
-        self.session.authMethod = @"method";
-        self.session.authData = [@"data" dataUsingEncoding:NSUTF8StringEncoding];
-        self.session.requestProblemInformation = @1U;
-        self.session.willDelayInterval = @30U;
-        self.session.requestResponseInformation = @1U;
-        self.session.receiveMaximum = @5U;
-        self.session.topicAliasMaximum = @10U;
-        self.session.userProperty = @{@"u1":@"v1", @"u2": @"v2"};
-        self.session.maximumPacketSize = @8192U;
-        [self connect:parameters];
-        XCTAssertEqual(self.event, MQTTSessionEventConnected, @"Not Connected %ld %@", (long)self.event, self.error);
-        [self shutdown:parameters
-            returnCode:MQTTSuccess
- sessionExpiryInterval:nil
-          reasonString:nil
-          userProperty:nil];
-=======
     for (NSString *broker in self.brokers.allKeys) {
         DDLogVerbose(@"testing broker %@", broker);
         NSDictionary *parameters = self.brokers[broker];
@@ -70,24 +48,10 @@
               reasonString:nil
               userProperty:nil];
         }
->>>>>>> rename mqttSession to avoid conlision with aws iot
     }
 }
 
 - (void)test_v5_sessionExpiryInterval_5 {
-<<<<<<< HEAD
-    NSDictionary *parameters = MQTTTestHelpers.broker;
-    if ([parameters[@"protocollevel"] integerValue] == MQTTProtocolVersion50) {
-        self.session = [MQTTTestHelpers session:parameters];
-        self.session.sessionExpiryInterval = @5U;
-        [self connect:parameters];
-        XCTAssertEqual(self.event, MQTTSessionEventConnected, @"Not Connected %ld %@", (long)self.event, self.error);
-        [self shutdown:parameters
-            returnCode:MQTTSuccess
- sessionExpiryInterval:nil
-          reasonString:nil
-          userProperty:nil];
-=======
     for (NSString *broker in self.brokers.allKeys) {
         DDLogVerbose(@"testing broker %@", broker);
         NSDictionary *parameters = self.brokers[broker];
@@ -102,15 +66,10 @@
               reasonString:nil
               userProperty:nil];
         }
->>>>>>> rename mqttSession to avoid conlision with aws iot
     }
 }
 
 - (void)test_v5_sessionExpiryInterval_0 {
-<<<<<<< HEAD
-    NSDictionary *parameters = MQTTTestHelpers.broker;
-    if ([parameters[@"protocollevel"] integerValue] == MQTTProtocolVersion50) {
-=======
     for (NSString *broker in self.brokers.allKeys) {
         DDLogVerbose(@"testing broker %@", broker);
         NSDictionary *parameters = self.brokers[broker];
@@ -233,48 +192,41 @@
         [sendingSession publishAndWaitData:[[NSData alloc] init] onTopic:TOPIC retain:true qos:qos];
         
         DDLogVerbose(@"Clearing old subs");
->>>>>>> rename mqttSession to avoid conlision with aws iot
         self.session = [MQTTTestHelpers session:parameters];
-        self.session.sessionExpiryInterval = @0U;
+        self.session.clientId = @"MQTTClient-sub";
         [self connect:parameters];
-        XCTAssertEqual(self.event, MQTTSessionEventConnected, @"Not Connected %ld %@", (long)self.event, self.error);
         [self shutdown:parameters
             returnCode:MQTTSuccess
  sessionExpiryInterval:nil
           reasonString:nil
           userProperty:nil];
-    }
-}
 
-- (void)test_v5_sessionExpiryInterval_none {
-    NSDictionary *parameters = MQTTTestHelpers.broker;
-    if ([parameters[@"protocollevel"] integerValue] == MQTTProtocolVersion50) {
+        DDLogVerbose(@"Subscribing to topic");
         self.session = [MQTTTestHelpers session:parameters];
+        self.session.clientId = @"MQTTClient-sub";
+        self.session.cleanSessionFlag = FALSE;
+        
         [self connect:parameters];
-        XCTAssertEqual(self.event, MQTTSessionEventConnected, @"Not Connected %ld %@", (long)self.event, self.error);
+        [self.session subscribeAndWaitToTopic:TOPIC atLevel:qos];
         [self shutdown:parameters
             returnCode:MQTTSuccess
  sessionExpiryInterval:nil
           reasonString:nil
           userProperty:nil];
-    }
-}
 
-- (void)test_v5_willDelayInterval_5 {
-    NSDictionary *parameters = MQTTTestHelpers.broker;
-    if ([parameters[@"protocollevel"] integerValue] == MQTTProtocolVersion50) {
+        for (int i = 1; i < BULK; i++) {
+            DDLogVerbose(@"publishing to topic %d", i);
+            NSString *payload = [NSString stringWithFormat:@"payload %d", i];
+            [sendingSession publishAndWaitData:[payload dataUsingEncoding:NSUTF8StringEncoding] onTopic:TOPIC retain:false qos:qos];
+        }
+        [sendingSession closeAndWait];
+        
+        DDLogVerbose(@"receiving from topic");
         self.session = [MQTTTestHelpers session:parameters];
-        self.session.sessionExpiryInterval = @10U;
-        self.session.willDelayInterval = @5U;
-        self.session.willFlag = true;
-        self.session.willTopic = TOPIC;
-        self.session.willMsg = [@"will" dataUsingEncoding:NSUTF8StringEncoding];
-        self.session.willRetainFlag = false;
-        self.session.willQoS = MQTTQosLevelAtMostOnce;
+        self.session.clientId = @"MQTTClient-sub";
+        self.session.cleanSessionFlag = FALSE;
+        
         [self connect:parameters];
-<<<<<<< HEAD
-        XCTAssertEqual(self.event, MQTTSessionEventConnected, @"Not Connected %ld %@", (long)self.event, self.error);
-=======
         XCTAssertEqual(self.event, MCMQTTSessionEventConnected, @"No MCMQTTSessionEventConnected %@", self.error);
         
         [NSObject cancelPreviousPerformRequestsWithTarget:self];
@@ -287,19 +239,13 @@
             [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
         }
         
->>>>>>> rename mqttSession to avoid conlision with aws iot
         [self shutdown:parameters
-            returnCode:MQTTDisconnectWithWillMessage
+            returnCode:MQTTSuccess
  sessionExpiryInterval:nil
           reasonString:nil
           userProperty:nil];
     }
 }
-<<<<<<< HEAD
-- (void)test_v5_willDelayInterval_0 {
-    NSDictionary *parameters = MQTTTestHelpers.broker;
-    if ([parameters[@"protocollevel"] integerValue] == MQTTProtocolVersion50) {
-=======
 
 - (void)cleansession:(MQTTQosLevel)qos {
     for (NSString *broker in self.brokers.allKeys) {
@@ -316,174 +262,47 @@
         [sendingSession publishAndWaitData:[[NSData alloc] init] onTopic:TOPIC retain:true qos:qos];
         
         DDLogVerbose(@"Clearing old subs");
->>>>>>> rename mqttSession to avoid conlision with aws iot
         self.session = [MQTTTestHelpers session:parameters];
-        self.session.sessionExpiryInterval = @5U;
-        self.session.willDelayInterval = @0U;
-        self.session.willFlag = true;
-        self.session.willTopic = TOPIC;
-        self.session.willMsg = [@"will" dataUsingEncoding:NSUTF8StringEncoding];
-        self.session.willRetainFlag = false;
-        self.session.willQoS = MQTTQosLevelAtMostOnce;
+        self.session.clientId = @"MQTTClient-sub";
         [self connect:parameters];
-        XCTAssertEqual(self.event, MQTTSessionEventConnected, @"Not Connected %ld %@", (long)self.event, self.error);
         [self shutdown:parameters
-            returnCode:MQTTDisconnectWithWillMessage
+            returnCode:MQTTSuccess
+ sessionExpiryInterval:nil
+          reasonString:nil
+          userProperty:nil];
+
+        DDLogVerbose(@"Subscribing to topic");
+        self.session = [MQTTTestHelpers session:parameters];
+        self.session.clientId = @"MQTTClient-sub";
+        [self connect:parameters];
+        [self.session subscribeAndWaitToTopic:TOPIC atLevel:qos];
+        
+        for (int i = 1; i < BULK; i++) {
+            DDLogVerbose(@"publishing to topic %d", i);
+            NSString *payload = [NSString stringWithFormat:@"payload %d", i];
+            [sendingSession publishAndWaitData:[payload dataUsingEncoding:NSUTF8StringEncoding] onTopic:TOPIC retain:false qos:qos];
+        }
+        [sendingSession closeAndWait];
+        
+        [NSObject cancelPreviousPerformRequestsWithTarget:self];
+        self.timedout = FALSE;
+        [self performSelector:@selector(timedout:)
+                   withObject:nil
+                   afterDelay:[parameters[@"timeout"] intValue]];
+        
+        while (!self.timedout) {
+            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+        }
+        
+        [self shutdown:parameters
+            returnCode:MQTTSuccess
  sessionExpiryInterval:nil
           reasonString:nil
           userProperty:nil];
     }
 }
 
-- (void)test_v5_willDelayInterval_None {
-    NSDictionary *parameters = MQTTTestHelpers.broker;
-    if ([parameters[@"protocollevel"] integerValue] == MQTTProtocolVersion50) {
-        self.session = [MQTTTestHelpers session:parameters];
-        self.session.sessionExpiryInterval = @0U;
-        self.session.willFlag = true;
-        self.session.willTopic = TOPIC;
-        self.session.willMsg = [@"will" dataUsingEncoding:NSUTF8StringEncoding];
-        self.session.willRetainFlag = false;
-        self.session.willQoS = MQTTQosLevelAtMostOnce;
-        [self connect:parameters];
-        XCTAssertEqual(self.event, MQTTSessionEventConnected, @"Not Connected %ld %@", (long)self.event, self.error);
-        [self shutdown:parameters
-            returnCode:MQTTDisconnectWithWillMessage
- sessionExpiryInterval:nil
-          reasonString:nil
-          userProperty:nil];
-    }
-}
-
-<<<<<<< HEAD
-
-#pragma mark helpers
-
-- (void)no_cleansession:(MQTTQosLevel)qos {
-    
-    NSDictionary *parameters = MQTTTestHelpers.broker;
-    
-    DDLogVerbose(@"Cleaning topic");
-    
-    MQTTSession *sendingSession = [MQTTTestHelpers session:parameters];
-    sendingSession.clientId = @"MQTTClient-pub";
-    if (![sendingSession connectAndWaitTimeout:[parameters[@"timeout"] unsignedIntValue]]) {
-        XCTFail(@"no connection for pub to broker");
-    }
-    [sendingSession publishAndWaitData:[[NSData alloc] init] onTopic:TOPIC retain:true qos:qos];
-    
-    DDLogVerbose(@"Clearing old subs");
-    self.session = [MQTTTestHelpers session:parameters];
-    self.session.clientId = @"MQTTClient-sub";
-    [self connect:parameters];
-    [self shutdown:parameters
-        returnCode:MQTTSuccess
-sessionExpiryInterval:nil
-      reasonString:nil
-      userProperty:nil];
-    
-    DDLogVerbose(@"Subscribing to topic");
-    self.session = [MQTTTestHelpers session:parameters];
-    self.session.clientId = @"MQTTClient-sub";
-    self.session.cleanSessionFlag = FALSE;
-    
-    [self connect:parameters];
-    [self.session subscribeAndWaitToTopic:TOPIC atLevel:qos];
-    [self shutdown:parameters
-        returnCode:MQTTSuccess
-sessionExpiryInterval:nil
-      reasonString:nil
-      userProperty:nil];
-    
-    for (int i = 1; i < BULK; i++) {
-        DDLogVerbose(@"publishing to topic %d", i);
-        NSString *payload = [NSString stringWithFormat:@"payload %d", i];
-        [sendingSession publishAndWaitData:[payload dataUsingEncoding:NSUTF8StringEncoding] onTopic:TOPIC retain:false qos:qos];
-    }
-    [sendingSession closeAndWait];
-    
-    DDLogVerbose(@"receiving from topic");
-    self.session = [MQTTTestHelpers session:parameters];
-    self.session.clientId = @"MQTTClient-sub";
-    self.session.cleanSessionFlag = FALSE;
-    
-    [self connect:parameters];
-    XCTAssertEqual(self.event, MQTTSessionEventConnected, @"No MQTTSessionEventConnected %@", self.error);
-    
-    [NSObject cancelPreviousPerformRequestsWithTarget:self];
-    self.timedout = FALSE;
-    [self performSelector:@selector(timedout:)
-               withObject:nil
-               afterDelay:[parameters[@"timeout"] intValue]];
-    
-    while (!self.timedout) {
-        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
-    }
-    
-    [self shutdown:parameters
-        returnCode:MQTTSuccess
-sessionExpiryInterval:nil
-      reasonString:nil
-      userProperty:nil];
-}
-
-- (void)cleansession:(MQTTQosLevel)qos {
-    
-    NSDictionary *parameters = MQTTTestHelpers.broker;
-    
-    DDLogVerbose(@"Cleaning topic");
-    MQTTSession *sendingSession = [MQTTTestHelpers session:parameters];
-    sendingSession.clientId = @"MQTTClient-pub";
-    
-    if (![sendingSession connectAndWaitTimeout:[parameters[@"timeout"] unsignedIntValue]]) {
-        XCTFail(@"no connection for pub to broker");
-    }
-    [sendingSession publishAndWaitData:[[NSData alloc] init] onTopic:TOPIC retain:true qos:qos];
-    
-    DDLogVerbose(@"Clearing old subs");
-    self.session = [MQTTTestHelpers session:parameters];
-    self.session.clientId = @"MQTTClient-sub";
-    [self connect:parameters];
-    [self shutdown:parameters
-        returnCode:MQTTSuccess
-sessionExpiryInterval:nil
-      reasonString:nil
-      userProperty:nil];
-    
-    DDLogVerbose(@"Subscribing to topic");
-    self.session = [MQTTTestHelpers session:parameters];
-    self.session.clientId = @"MQTTClient-sub";
-    [self connect:parameters];
-    [self.session subscribeAndWaitToTopic:TOPIC atLevel:qos];
-    
-    for (int i = 1; i < BULK; i++) {
-        DDLogVerbose(@"publishing to topic %d", i);
-        NSString *payload = [NSString stringWithFormat:@"payload %d", i];
-        [sendingSession publishAndWaitData:[payload dataUsingEncoding:NSUTF8StringEncoding] onTopic:TOPIC retain:false qos:qos];
-    }
-    [sendingSession closeAndWait];
-    
-    [NSObject cancelPreviousPerformRequestsWithTarget:self];
-    self.timedout = FALSE;
-    [self performSelector:@selector(timedout:)
-               withObject:nil
-               afterDelay:[parameters[@"timeout"] intValue]];
-    
-    while (!self.timedout) {
-        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
-    }
-    
-    [self shutdown:parameters
-        returnCode:MQTTSuccess
-sessionExpiryInterval:nil
-      reasonString:nil
-      userProperty:nil];
-}
-
-- (BOOL)newMessageWithFeedback:(MQTTSession *)session data:(NSData *)data onTopic:(NSString *)topic qos:(MQTTQosLevel)qos retained:(BOOL)retained mid:(unsigned int)mid {
-=======
 - (BOOL)newMessageWithFeedback:(MCMQTTSession *)session data:(NSData *)data onTopic:(NSString *)topic qos:(MQTTQosLevel)qos retained:(BOOL)retained mid:(unsigned int)mid {
->>>>>>> rename mqttSession to avoid conlision with aws iot
     DDLogVerbose(@"newMessageWithFeedback(%lu):%@ onTopic:%@ qos:%d retained:%d mid:%d", (unsigned long)self.processed, data, topic, qos, retained, mid);
     if (self.processed > self.received - 10) {
         if (!retained && [topic isEqualToString:TOPIC]) {
@@ -529,7 +348,7 @@ sessionExpiryInterval:(NSNumber *)sessionExpiryInterval
         
         [self.session closeWithReturnCode:returnCode
                     sessionExpiryInterval:sessionExpiryInterval
-                             reasonString:reasonString
+                            reasonString:reasonString
                              userProperty:userProperty
                         disconnectHandler:nil];
         

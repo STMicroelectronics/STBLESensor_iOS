@@ -98,8 +98,10 @@
 #define RSSI_DEMO_POSITION 28
 #define MOTIONALGO_DEMO_POSITION 29
 #define FITNESS_ACTIVITY_DEMO_POSITION 30
+#define MACHINE_LEARNING_CORE_POSITION 31
+#define FINITE_STATE_MACHINE_POSITION 32
 
-#define NUMBER_OF_DEMOS 31
+#define NUMBER_OF_DEMOS 33
 
 @interface BlueMSDemosViewController () <UITabBarControllerDelegate, UINavigationControllerDelegate>
 
@@ -198,8 +200,7 @@
     if( [node getFeatureOfType:BlueSTSDKFeatureMotionIntensity.class]==nil){
         [removeItem addIndex:MOTIONID_DEMO_POSITION];
     }
-    if( [node getFeatureOfType:BlueSTSDKFeatureCompass.class]==nil &&
-        [node getFeatureOfType:BlueSTSDKFeatureEulerAngle.class]==nil){
+    if( [node getFeatureOfType:BlueSTSDKFeatureCompass.class]==nil){
         [removeItem addIndex:COMPASS_DEMO_POSITION];
     }
     if( [node getFeatureOfType:BlueSTSDKFeatureDirectionOfArrival.class]==nil){
@@ -263,6 +264,13 @@
         [removeItem addIndex:MULTI_NN_DEMO_POSITION];
     }
     
+    if([node getFeatureOfType:BlueSTSDKFeatureMachineLearningCore.class]==nil){
+        [removeItem addIndex:MACHINE_LEARNING_CORE_POSITION];
+    }
+    if([node getFeatureOfType:BlueSTSDKFeatureFiniteStateMachine.class]==nil){
+        [removeItem addIndex:FINITE_STATE_MACHINE_POSITION];
+    }
+    
     [availableDemos removeObjectsAtIndexes:removeItem];
     self.viewControllers = availableDemos;
 }
@@ -281,6 +289,7 @@
     //remove is after the initialization to permit to correctly initialize the demo that have some internal view controller
     //to pass the valid node also to the subview
     [self removeOptionalDemo];
+
     
     if(self.node.type == BlueSTSDKNodeTypeSTEVAL_WESU1 ){
         if(!mFwVarningDisplayed){
@@ -356,6 +365,18 @@
 willShowViewController:(UIViewController *)viewController
 animated:(BOOL)animated{
     navigationController.navigationBarHidden = YES;
+}
+
+/*
+ * on Ipad, show the tabItem name below the icon an not after 
+ * https://stackoverflow.com/questions/44822558/ios-11-uitabbar-uitabbaritem-positioning-issue
+ */
+- (UITraitCollection *)traitCollection
+{
+  UITraitCollection *curr = [super traitCollection];
+  UITraitCollection *compact = [UITraitCollection  traitCollectionWithHorizontalSizeClass:UIUserInterfaceSizeClassCompact];
+
+  return [UITraitCollection traitCollectionWithTraitsFromCollections:@[curr, compact]];
 }
 
 @end

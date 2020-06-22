@@ -75,11 +75,11 @@ protocol BlueVoiceAsrRequestCallback{
 }
 
 protocol BlueVoiceASRDescription{
-    
-    
+
+
     /// engine name
     var name:String{get};
-    
+
     /// list of supported value
     var supportedLanguages:[BlueVoiceLanguage]{get};
     
@@ -88,7 +88,7 @@ protocol BlueVoiceASRDescription{
     
     /// It reveals if this engine has a continuous recognizer or not.
     var hasContinuousRecognizer:Bool{get};
-    
+
     /// instanziate the engine
     ///
     /// - Parameters:
@@ -99,7 +99,7 @@ protocol BlueVoiceASRDescription{
 }
 
 extension BlueVoiceASRDescription{
-    
+
     /// tell if the engine support a specific language
     ///
     /// - Parameter lang: lanquage to query
@@ -110,7 +110,7 @@ extension BlueVoiceASRDescription{
 }
 
 protocol BlueVoiceASREngine{
-    
+
     // Engine description
     static var engineDescription:BlueVoiceASRDescription{get};
     
@@ -130,7 +130,7 @@ protocol BlueVoiceASREngine{
     
     /// Destroy the recognizer listener
     func destroyListener();
-    
+
     /// tell if the engine has a valid key inserted
     ///
     /// - Returns: if the engine has a valid key, or if it doesn't need one
@@ -148,7 +148,7 @@ protocol BlueVoiceASREngine{
 
 extension BlueVoiceASREngine{
     
-    
+
     /// default implementation that will retrun the engine description as instance property
     /// also if it is a class property
     var engineDesc:BlueVoiceASRDescription{

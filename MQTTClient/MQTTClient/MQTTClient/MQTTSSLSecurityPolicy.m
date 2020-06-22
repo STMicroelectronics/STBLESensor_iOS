@@ -226,7 +226,6 @@ static NSArray * SSLPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
         return self.allowInvalidCertificates || SSLServerTrustIsValid(serverTrust);
     }
     // if client didn't allow invalid certs, it must pass CA infrastructure
-    // TODO: Can we change order here?
     else if (!SSLServerTrustIsValid(serverTrust) && !self.allowInvalidCertificates) {
         return NO;
     }

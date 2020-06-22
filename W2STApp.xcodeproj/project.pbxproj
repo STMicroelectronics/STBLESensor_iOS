@@ -27,6 +27,8 @@
 		66031FE01FB9D0BE00C59847 /* BlueSTDemoNestedNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66031FB21FB9D0BD00C59847 /* BlueSTDemoNestedNavigationViewController.swift */; };
 		66031FE11FB9D0BE00C59847 /* CloudDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66031FB31FB9D0BD00C59847 /* CloudDemo.storyboard */; };
 		66031FE21FB9D0BE00C59847 /* BlueSTNestedNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66031FB71FB9D0BD00C59847 /* BlueSTNestedNavigationViewController.swift */; };
+		66031FFF1FB9D19400C59847 /* MQTTFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66031FFA1FB9D15A00C59847 /* MQTTFramework.framework */; };
+		660320001FB9D19400C59847 /* MQTTFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 66031FFA1FB9D15A00C59847 /* MQTTFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6606AB481EB0A06F00FFBEFF /* BlueMSBoardStatusBatteryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6606AB471EB0A06F00FFBEFF /* BlueMSBoardStatusBatteryInfo.swift */; };
 		6606AB4F1EB0D8DF00FFBEFF /* BlueMSBoardRssiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6606AB4E1EB0D8DF00FFBEFF /* BlueMSBoardRssiViewController.swift */; };
 		66096AC1212C30D70079A5B1 /* BlueMSCloudConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66096AC0212C30D70079A5B1 /* BlueMSCloudConnectionViewController.swift */; };
@@ -43,8 +45,12 @@
 		6622336D1FAB1D0A002515CD /* BlueMSNucleoPrefSetNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6622336C1FAB1D01002515CD /* BlueMSNucleoPrefSetNameViewController.swift */; };
 		662734D922200F0700405839 /* BlueSTSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66CFCD561B9F264900B9A096 /* BlueSTSDK.framework */; };
 		662734DA22200F0700405839 /* BlueSTSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 66CFCD561B9F264900B9A096 /* BlueSTSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		662A05512382FC0000C46237 /* STAzureDashboardClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662A05502382FC0000C46237 /* STAzureDashboardClient.swift */; };
 		662D25D41F56B754009B199E /* BlueMSPedometerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662D25D31F56B754009B199E /* BlueMSPedometerViewController.swift */; };
 		662E423E1E5C313800D6927D /* steval_wesu1_reset_position.png in Resources */ = {isa = PBXBuildFile; fileRef = 662E423B1E5C313800D6927D /* steval_wesu1_reset_position.png */; };
+		662E798323A935A000EAE60B /* AdultPresenceMLCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662E796C23A9359F00EAE60B /* AdultPresenceMLCView.swift */; };
+		662E798423A935A000EAE60B /* AdultPresenceMLCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 662E798223A935A000EAE60B /* AdultPresenceMLCView.xib */; };
+		662E798623A9361D00EAE60B /* ComboViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662E798523A9361C00EAE60B /* ComboViewModel.swift */; };
 		6630C9F21ED323B2008D955D /* CorePlot.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6630C9EE1ED323B2008D955D /* CorePlot.txt */; };
 		6630C9F31ED323B2008D955D /* MBProgressHUD.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6630C9EF1ED323B2008D955D /* MBProgressHUD.txt */; };
 		6630C9F41ED323B2008D955D /* MQTTClient.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6630C9F01ED323B2008D955D /* MQTTClient.txt */; };
@@ -111,6 +117,9 @@
 		6667540D23291FA900794EC1 /* BlueMSAIAlgorithmSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6667540C23291FA900794EC1 /* BlueMSAIAlgorithmSelectorViewController.swift */; };
 		666C41491D085AA10021D9D3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 666C41481D085AA10021D9D3 /* AudioToolbox.framework */; };
 		666C414A1D085B620021D9D3 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 666C41461D085A2D0021D9D3 /* CoreAudio.framework */; };
+		6670B5462388281800609CF7 /* MLCMachineLearningCoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6670B5452388281800609CF7 /* MLCMachineLearningCoreViewController.swift */; };
+		6670B5482388284900609CF7 /* MachineLearningCore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6670B5472388284900609CF7 /* MachineLearningCore.storyboard */; };
+		6670B54E2388317E00609CF7 /* MLCMachineLearningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6670B54D2388317E00609CF7 /* MLCMachineLearningViewModel.swift */; };
 		6670ED0C1DB0D5F7003D6185 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6670ED0B1DB0D5F7003D6185 /* WebKit.framework */; };
 		667129E3231FAF1600E86DA5 /* BlueMSMultiNeuralNetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667129E2231FAF1600E86DA5 /* BlueMSMultiNeuralNetworkViewController.swift */; };
 		667129E5231FAF6600E86DA5 /* MultiNeuralNetwork.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 667129E4231FAF6600E86DA5 /* MultiNeuralNetwork.storyboard */; };
@@ -142,6 +151,7 @@
 		66876BD7204585B400E1BB0C /* BlueMSCloudLogSelectUpdateTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66876BD6204585B400E1BB0C /* BlueMSCloudLogSelectUpdateTimeViewController.swift */; };
 		66896C03233A5B6A002F2D9D /* BabyCryingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66896C02233A5B6A002F2D9D /* BabyCryingView.xib */; };
 		66896C30233A696A002F2D9D /* AudioSceneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66896C1E233A696A002F2D9D /* AudioSceneView.xib */; };
+		668C0EFC237EFF2B00F2CB05 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 668C0EFB237EFF2B00F2CB05 /* CoreData.framework */; };
 		669072BE21819DD6000EBB28 /* AnnotationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669072BD21819DD6000EBB28 /* AnnotationRepository.swift */; };
 		669072C02181BF6D000EBB28 /* AIDataLogDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669072BF2181BF6D000EBB28 /* AIDataLogDemoViewController.swift */; };
 		669072C22181C0A3000EBB28 /* AIDataLogDemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 669072C12181C0A3000EBB28 /* AIDataLogDemo.storyboard */; };
@@ -150,6 +160,14 @@
 		669818D6200E4FDA0034A4F5 /* BlueMSIBMWatsonIotFeatureListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669818D5200E4FDA0034A4F5 /* BlueMSIBMWatsonIotFeatureListener.swift */; };
 		669E39B11EAA428100E96C02 /* BlueMSBatteryInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669E39B01EAA428100E96C02 /* BlueMSBatteryInfoViewController.swift */; };
 		66A0D4E01EDD6DE000D9CDA7 /* BlueSTDKNode+image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A0D4DF1EDD6DE000D9CDA7 /* BlueSTDKNode+image.swift */; };
+		66A2B0D4238D81C100EAF370 /* FiniteStateMachine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66A2B0D3238D81C100EAF370 /* FiniteStateMachine.storyboard */; };
+		66A2B0D6238D81D900EAF370 /* MLCFiniteStateMachineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A2B0D5238D81D900EAF370 /* MLCFiniteStateMachineViewController.swift */; };
+		66A2B0DE238D83AC00EAF370 /* RegisterStatusDataSourceAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A2B0D8238D83AC00EAF370 /* RegisterStatusDataSourceAdapter.swift */; };
+		66A2B0DF238D83AC00EAF370 /* ValueLabelConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A2B0D9238D83AC00EAF370 /* ValueLabelConsole.swift */; };
+		66A2B0E0238D83AC00EAF370 /* ValueLabelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A2B0DA238D83AC00EAF370 /* ValueLabelMapper.swift */; };
+		66A2B0E1238D83AC00EAF370 /* RegisterStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A2B0DB238D83AC00EAF370 /* RegisterStatus.swift */; };
+		66A2B0E2238D83AC00EAF370 /* RegisterStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A2B0DC238D83AC00EAF370 /* RegisterStatusCell.swift */; };
+		66A2B0E3238D83AC00EAF370 /* RegisterStatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A2B0DD238D83AC00EAF370 /* RegisterStatusCell.xib */; };
 		66A47C682040533F00986ADA /* COSensor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66A47C672040533F00986ADA /* COSensor.storyboard */; };
 		66A47C6A2040537400986ADA /* BlueMSCOSensorDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A47C692040537400986ADA /* BlueMSCOSensorDemoViewController.swift */; };
 		66A917811D7DA5130004A4DC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66A917801D7DA5130004A4DC /* MediaPlayer.framework */; };
@@ -165,6 +183,7 @@
 		66AE69FF1E2D249A008CB6AA /* W2STAccEventIconUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 66AE69FE1E2D249A008CB6AA /* W2STAccEventIconUtil.m */; };
 		66B556771F5FD70A00CE5A20 /* BlueSTSDK_Gui.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6680E7791E2F6F0700C39C5E /* BlueSTSDK_Gui.framework */; };
 		66B556781F5FD70A00CE5A20 /* BlueSTSDK_Gui.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6680E7791E2F6F0700C39C5E /* BlueSTSDK_Gui.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		66B57C4822686DFB008CB99C /* BlueMSAzureIotCentralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B57C4722686DFB008CB99C /* BlueMSAzureIotCentralViewController.swift */; };
 		66B6520E2187388C00F73B58 /* AIDataLogAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B6520D2187388C00F73B58 /* AIDataLogAnnotationViewController.swift */; };
 		66B652102187411B00F73B58 /* AIDataLogInsertAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B6520F2187411B00F73B58 /* AIDataLogInsertAnnotationViewController.swift */; };
 		66B65213218757F300F73B58 /* AIDataLogAnnotationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B65212218757F300F73B58 /* AIDataLogAnnotationViewCell.swift */; };
@@ -176,7 +195,6 @@
 		66B92C821D2C02E2008CEC03 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66B92C811D2C02E2008CEC03 /* AVFoundation.framework */; };
 		66BF7538220D990000A4A4E7 /* FFTSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BF7537220D98FF00A4A4E7 /* FFTSettingsViewController.swift */; };
 		66BF753A220DAD2500A4A4E7 /* FFTSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BF7539220DAD2500A4A4E7 /* FFTSettings.swift */; };
-		66C491371E530F4B008CB166 /* st_images_LanchScreen.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66C491361E530F4B008CB166 /* st_images_LanchScreen.xcassets */; };
 		66C491391E530F9F008CB166 /* st_images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66C491381E530F9F008CB166 /* st_images.xcassets */; };
 		66C7A4F9220AD5C800B16902 /* PredictiveStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66C7A4F8220AD5C800B16902 /* PredictiveStatusView.xib */; };
 		66C7A507220AD81700B16902 /* PredictiveStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C7A506220AD81700B16902 /* PredictiveStatusView.swift */; };
@@ -234,15 +252,12 @@
 		66F320E921B571DF006DCB38 /* FFTAmplitudeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F320E821B571DF006DCB38 /* FFTAmplitudeViewController.swift */; };
 		66F5AEC42342263F00E7573C /* ActivityRecognitionMLCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F5AEC22342263E00E7573C /* ActivityRecognitionMLCView.swift */; };
 		66F5AEC52342263F00E7573C /* ActivityRecognitionMLCView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66F5AEC32342263F00E7573C /* ActivityRecognitionMLCView.xib */; };
-		66FA21442357113A0001B19E /* press_contact.png in Resources */ = {isa = PBXBuildFile; fileRef = 66FA21432357113A0001B19E /* press_contact.png */; };
 		66FAF3DD20343DE6009AA362 /* WebSocketASREngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FAF3DC20343DE5009AA362 /* WebSocketASREngine.swift */; };
 		66FAF3DF203440BA009AA362 /* WebSocketASRConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FAF3DE203440BA009AA362 /* WebSocketASRConfiguration.swift */; };
 		66FAF3E120344244009AA362 /* WebSocketASRConfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FAF3E020344244009AA362 /* WebSocketASRConfViewController.swift */; };
 		66FC8B0D22687753001C7899 /* BlueMSAzureIotCentralConnectionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC8B0C22687753001C7899 /* BlueMSAzureIotCentralConnectionFactory.swift */; };
 		66FC8B2722687878001C7899 /* BlueMSAzureIotCentralFeatureListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC8B2622687878001C7899 /* BlueMSAzureIotCentralFeatureListener.swift */; };
 		66FC8B2922687BD4001C7899 /* AzureIotCentralClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FC8B2822687BD4001C7899 /* AzureIotCentralClient.swift */; };
-		66FECB56237D912900651CA0 /* MQTTClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FECB36237D8A6E00651CA0 /* MQTTClient.framework */; };
-		66FECB57237D912900651CA0 /* MQTTClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 66FECB36237D8A6E00651CA0 /* MQTTClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		66FF61971C3E950300642010 /* W2STAccEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FF61961C3E950300642010 /* W2STAccEventViewController.m */; };
 		866AD01186C181418162B47A /* Pods_W2STApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 516CD6B37E97A968A1EF980B /* Pods_W2STApp.framework */; };
 		EA0DC47219EE71C7008AD681 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0DC47119EE71C7008AD681 /* QuartzCore.framework */; };
@@ -255,6 +270,55 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		66031FF11FB9D15A00C59847 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66031FE41FB9D15900C59847 /* MQTTClient.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8425D7011BBE8D3D005AD733;
+			remoteInfo = MQTTClientTVTests;
+		};
+		66031FF31FB9D15A00C59847 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66031FE41FB9D15900C59847 /* MQTTClient.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 840716321BBEF13A00FBB3CB;
+			remoteInfo = MQTTClientOSXTests;
+		};
+		66031FF71FB9D15A00C59847 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66031FE41FB9D15900C59847 /* MQTTClient.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8404875E1C51212600569C79;
+			remoteInfo = MQTTiOSTests;
+		};
+		66031FF91FB9D15A00C59847 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66031FE41FB9D15900C59847 /* MQTTClient.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DE9EF5C51C0628B1009EF667;
+			remoteInfo = MQTTiOS;
+		};
+		66031FFB1FB9D15A00C59847 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66031FE41FB9D15900C59847 /* MQTTClient.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F6D08FD81E535E9900CD2566;
+			remoteInfo = MQTTtvOS;
+		};
+		66031FFD1FB9D15A00C59847 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66031FE41FB9D15900C59847 /* MQTTClient.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F6D08FA41E535B6800CD2566;
+			remoteInfo = MQTTMac;
+		};
+		660320011FB9D19400C59847 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66031FE41FB9D15900C59847 /* MQTTClient.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = DE9EF5C41C0628B1009EF667;
+			remoteInfo = MQTTiOS;
+		};
 		662734DB22200F0700405839 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 66CFCD501B9F264900B9A096 /* BlueSTSDK.xcodeproj */;
@@ -289,6 +353,48 @@
 			proxyType = 2;
 			remoteGlobalIDString = 663979141E2E5D0000FBF696;
 			remoteInfo = BlueSTSDK_Gui;
+		};
+		66985ED824A0C28D008E4786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66031FE41FB9D15900C59847 /* MQTTClient.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8461913A1883E56800101409;
+			remoteInfo = MQTTClientTests;
+		};
+		66985EDA24A0C28D008E4786 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66031FE41FB9D15900C59847 /* MQTTClient.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 840D3D311F28A7C20072019B;
+			remoteInfo = MQTTClientOSXTestsNOLumberjack;
+		};
+		66A0D93A2354BC1100FA55D6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A1C1B977ED8804E8AEEC884E7359EE58;
+			remoteInfo = Charts;
+		};
+		66A0D93C2354BC1100FA55D6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D7BC3B6AB1E4137B03F61EEDDCE61162;
+			remoteInfo = IBMSwiftSDKCore;
+		};
+		66A0D93E2354BC1100FA55D6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 07F10DE944B6A35DEF451FE6D50C5994;
+			remoteInfo = IBMWatsonSpeechToTextV1;
+		};
+		66A0D9402354BC1100FA55D6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 891B2270823847ED23F2ECFC28F935EC;
+			remoteInfo = Starscream;
 		};
 		66B556791F5FD70A00CE5A20 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -339,103 +445,33 @@
 			remoteGlobalIDString = 7E093792DB3CB18C5305736960B5A4C3;
 			remoteInfo = AWSIoT;
 		};
-		66FECB35237D8A6E00651CA0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 66FECB2C237D8A6E00651CA0 /* MQTTClient.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DE9EF5C51C0628B1009EF667;
-			remoteInfo = MQTTClientiOS;
-		};
-		66FECB37237D8A6E00651CA0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 66FECB2C237D8A6E00651CA0 /* MQTTClient.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8404875E1C51212600569C79;
-			remoteInfo = MQTTClientiOSTests;
-		};
-		66FECB39237D8A6E00651CA0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 66FECB2C237D8A6E00651CA0 /* MQTTClient.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F6D08FD81E535E9900CD2566;
-			remoteInfo = MQTTClienttvOS;
-		};
-		66FECB3B237D8A6E00651CA0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 66FECB2C237D8A6E00651CA0 /* MQTTClient.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8425D7011BBE8D3D005AD733;
-			remoteInfo = MQTTClienttvOSTests;
-		};
-		66FECB3D237D8A6E00651CA0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 66FECB2C237D8A6E00651CA0 /* MQTTClient.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F6D08FA41E535B6800CD2566;
-			remoteInfo = MQTTClientmacOS;
-		};
-		66FECB3F237D8A6E00651CA0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 66FECB2C237D8A6E00651CA0 /* MQTTClient.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 840716321BBEF13A00FBB3CB;
-			remoteInfo = MQTTClientmacOSTests;
-		};
-		66FECB67237D912900651CA0 /* PBXContainerItemProxy */ = {
+		66FC8B1E22687754001C7899 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = B30EC1C72B4E545F5BAF315C8E18153D;
+			remoteGlobalIDString = 769F196D3FF3CC6B9F0C873715F415CE;
 			remoteInfo = AzureIoTHubClient;
 		};
-		66FECB69237D912900651CA0 /* PBXContainerItemProxy */ = {
+		66FC8B2022687754001C7899 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = F3745DFD6AD6D59F624ED61D1FE8F548;
+			remoteGlobalIDString = 767897B2CF4F064FDC0BD212AA6890C5;
 			remoteInfo = AzureIoTuAmqp;
 		};
-		66FECB6B237D912900651CA0 /* PBXContainerItemProxy */ = {
+		66FC8B2222687754001C7899 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 7A7B8C008D13821ED2625B12C4F78450;
+			remoteGlobalIDString = 97030BB5DB8AB4AC065ABD31BDB9554A;
 			remoteInfo = AzureIoTuMqtt;
 		};
-		66FECB6D237D912900651CA0 /* PBXContainerItemProxy */ = {
+		66FC8B2422687754001C7899 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = DF72FCB9046DA75B164B325720F6156E;
+			remoteGlobalIDString = 096BD321C6D0DD0E72CA576C30DFD545;
 			remoteInfo = AzureIoTUtility;
-		};
-		66FECB6F237D912900651CA0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A1C1B977ED8804E8AEEC884E7359EE58;
-			remoteInfo = Charts;
-		};
-		66FECB71237D912900651CA0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D7BC3B6AB1E4137B03F61EEDDCE61162;
-			remoteInfo = IBMSwiftSDKCore;
-		};
-		66FECB73237D912900651CA0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 07F10DE944B6A35DEF451FE6D50C5994;
-			remoteInfo = IBMWatsonSpeechToTextV1;
-		};
-		66FECB75237D912900651CA0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 891B2270823847ED23F2ECFC28F935EC;
-			remoteInfo = Starscream;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -447,9 +483,9 @@
 			dstSubfolderSpec = 10;
 			files = (
 				662734DA22200F0700405839 /* BlueSTSDK.framework in Embed Frameworks */,
-				66FECB57237D912900651CA0 /* MQTTClient.framework in Embed Frameworks */,
 				667718A121FA1CE2006230B6 /* STTheme.framework in Embed Frameworks */,
 				66B556781F5FD70A00CE5A20 /* BlueSTSDK_Gui.framework in Embed Frameworks */,
+				660320001FB9D19400C59847 /* MQTTFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,6 +499,7 @@
 		4EDA2952228B042395759553 /* BlueMSConsoleCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlueMSConsoleCommand.swift; path = BoardStatusViewController/BlueMSConsoleCommand.swift; sourceTree = "<group>"; };
 		4EDA2F517475F30AF7B07075 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		516CD6B37E97A968A1EF980B /* Pods_W2STApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_W2STApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		66000852243B073300E81D7D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BlueMS.strings; sourceTree = "<group>"; };
 		66031F7C1FB9D0BD00C59847 /* BlueMSCloudIotMQTTClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueMSCloudIotMQTTClient.swift; sourceTree = "<group>"; };
 		66031F8B1FB9D0BD00C59847 /* BlueMSAzureIotCryptoUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueMSAzureIotCryptoUtil.swift; sourceTree = "<group>"; };
 		66031F8C1FB9D0BD00C59847 /* BlueMSAzureIotSignature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueMSAzureIotSignature.swift; sourceTree = "<group>"; };
@@ -478,6 +515,7 @@
 		66031FB21FB9D0BD00C59847 /* BlueSTDemoNestedNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTDemoNestedNavigationViewController.swift; sourceTree = "<group>"; };
 		66031FB41FB9D0BD00C59847 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CloudDemo.storyboard; sourceTree = "<group>"; };
 		66031FB71FB9D0BD00C59847 /* BlueSTNestedNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueSTNestedNavigationViewController.swift; sourceTree = "<group>"; };
+		66031FE41FB9D15900C59847 /* MQTTClient.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MQTTClient.xcodeproj; path = MQTTClient/MQTTClient/MQTTClient.xcodeproj; sourceTree = "<group>"; };
 		6606AB471EB0A06F00FFBEFF /* BlueMSBoardStatusBatteryInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlueMSBoardStatusBatteryInfo.swift; path = BoardStatusViewController/BlueMSBoardStatusBatteryInfo.swift; sourceTree = "<group>"; };
 		6606AB4E1EB0D8DF00FFBEFF /* BlueMSBoardRssiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlueMSBoardRssiViewController.swift; path = BoardStatusViewController/BlueMSBoardRssiViewController.swift; sourceTree = "<group>"; };
 		66096AC0212C30D70079A5B1 /* BlueMSCloudConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueMSCloudConnectionViewController.swift; sourceTree = "<group>"; };
@@ -495,9 +533,13 @@
 		661A782B202D943300D1C833 /* BlueMSIBMWatsonQuickStartConnectionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueMSIBMWatsonQuickStartConnectionFactory.swift; sourceTree = "<group>"; };
 		661E93D81FCD72EF0004F213 /* BlueVoiceLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueVoiceLanguage.swift; sourceTree = "<group>"; };
 		6622336C1FAB1D01002515CD /* BlueMSNucleoPrefSetNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueMSNucleoPrefSetNameViewController.swift; sourceTree = "<group>"; };
+		662A05502382FC0000C46237 /* STAzureDashboardClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STAzureDashboardClient.swift; sourceTree = "<group>"; };
 		662A2DBD1E82687300F3451A /* W2STApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "W2STApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		662D25D31F56B754009B199E /* BlueMSPedometerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueMSPedometerViewController.swift; sourceTree = "<group>"; };
 		662E423B1E5C313800D6927D /* steval_wesu1_reset_position.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = steval_wesu1_reset_position.png; sourceTree = "<group>"; };
+		662E796C23A9359F00EAE60B /* AdultPresenceMLCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdultPresenceMLCView.swift; sourceTree = "<group>"; };
+		662E798223A935A000EAE60B /* AdultPresenceMLCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdultPresenceMLCView.xib; sourceTree = "<group>"; };
+		662E798523A9361C00EAE60B /* ComboViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComboViewModel.swift; sourceTree = "<group>"; };
 		6630C9EE1ED323B2008D955D /* CorePlot.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CorePlot.txt; sourceTree = "<group>"; };
 		6630C9EF1ED323B2008D955D /* MBProgressHUD.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MBProgressHUD.txt; sourceTree = "<group>"; };
 		6630C9F01ED323B2008D955D /* MQTTClient.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MQTTClient.txt; sourceTree = "<group>"; };
@@ -570,6 +612,9 @@
 		666847B51DE84854001064A3 /* BlueMSDemosViewController+WesuFwVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BlueMSDemosViewController+WesuFwVersion.m"; sourceTree = "<group>"; };
 		666C41461D085A2D0021D9D3 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		666C41481D085AA10021D9D3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		6670B5452388281800609CF7 /* MLCMachineLearningCoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLCMachineLearningCoreViewController.swift; sourceTree = "<group>"; };
+		6670B5472388284900609CF7 /* MachineLearningCore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MachineLearningCore.storyboard; sourceTree = "<group>"; };
+		6670B54D2388317E00609CF7 /* MLCMachineLearningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLCMachineLearningViewModel.swift; sourceTree = "<group>"; };
 		6670ED0B1DB0D5F7003D6185 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		667129E2231FAF1600E86DA5 /* BlueMSMultiNeuralNetworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueMSMultiNeuralNetworkViewController.swift; sourceTree = "<group>"; };
 		667129E4231FAF6600E86DA5 /* MultiNeuralNetwork.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MultiNeuralNetwork.storyboard; sourceTree = "<group>"; };
@@ -603,6 +648,7 @@
 		66876BD6204585B400E1BB0C /* BlueMSCloudLogSelectUpdateTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueMSCloudLogSelectUpdateTimeViewController.swift; sourceTree = "<group>"; };
 		66896C02233A5B6A002F2D9D /* BabyCryingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BabyCryingView.xib; sourceTree = "<group>"; };
 		66896C1E233A696A002F2D9D /* AudioSceneView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioSceneView.xib; sourceTree = "<group>"; };
+		668C0EFB237EFF2B00F2CB05 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		669072BD21819DD6000EBB28 /* AnnotationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationRepository.swift; sourceTree = "<group>"; };
 		669072BF2181BF6D000EBB28 /* AIDataLogDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIDataLogDemoViewController.swift; sourceTree = "<group>"; };
 		669072C12181C0A3000EBB28 /* AIDataLogDemo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AIDataLogDemo.storyboard; sourceTree = "<group>"; };
@@ -611,6 +657,14 @@
 		669818D5200E4FDA0034A4F5 /* BlueMSIBMWatsonIotFeatureListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueMSIBMWatsonIotFeatureListener.swift; sourceTree = "<group>"; };
 		669E39B01EAA428100E96C02 /* BlueMSBatteryInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlueMSBatteryInfoViewController.swift; path = BoardStatusViewController/BlueMSBatteryInfoViewController.swift; sourceTree = "<group>"; };
 		66A0D4DF1EDD6DE000D9CDA7 /* BlueSTDKNode+image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlueSTDKNode+image.swift"; sourceTree = "<group>"; };
+		66A2B0D3238D81C100EAF370 /* FiniteStateMachine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FiniteStateMachine.storyboard; sourceTree = "<group>"; };
+		66A2B0D5238D81D900EAF370 /* MLCFiniteStateMachineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLCFiniteStateMachineViewController.swift; sourceTree = "<group>"; };
+		66A2B0D8238D83AC00EAF370 /* RegisterStatusDataSourceAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterStatusDataSourceAdapter.swift; sourceTree = "<group>"; };
+		66A2B0D9238D83AC00EAF370 /* ValueLabelConsole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueLabelConsole.swift; sourceTree = "<group>"; };
+		66A2B0DA238D83AC00EAF370 /* ValueLabelMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueLabelMapper.swift; sourceTree = "<group>"; };
+		66A2B0DB238D83AC00EAF370 /* RegisterStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterStatus.swift; sourceTree = "<group>"; };
+		66A2B0DC238D83AC00EAF370 /* RegisterStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterStatusCell.swift; sourceTree = "<group>"; };
+		66A2B0DD238D83AC00EAF370 /* RegisterStatusCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterStatusCell.xib; sourceTree = "<group>"; };
 		66A47C672040533F00986ADA /* COSensor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = COSensor.storyboard; sourceTree = "<group>"; };
 		66A47C692040537400986ADA /* BlueMSCOSensorDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueMSCOSensorDemoViewController.swift; sourceTree = "<group>"; };
 		66A917801D7DA5130004A4DC /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -643,7 +697,6 @@
 		66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		66BF7537220D98FF00A4A4E7 /* FFTSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FFTSettingsViewController.swift; sourceTree = "<group>"; };
 		66BF7539220DAD2500A4A4E7 /* FFTSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFTSettings.swift; sourceTree = "<group>"; };
-		66C491361E530F4B008CB166 /* st_images_LanchScreen.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = st_images_LanchScreen.xcassets; path = ../BlueSTSDK_Gui/BlueSTSDK_Gui/st_images_LanchScreen.xcassets; sourceTree = "<group>"; };
 		66C491381E530F9F008CB166 /* st_images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = st_images.xcassets; sourceTree = "<group>"; };
 		66C7A4F8220AD5C800B16902 /* PredictiveStatusView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PredictiveStatusView.xib; sourceTree = "<group>"; };
 		66C7A506220AD81700B16902 /* PredictiveStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictiveStatusView.swift; sourceTree = "<group>"; };
@@ -659,7 +712,6 @@
 		66D5FDDE1EA7862D005D8AE9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/BlueMS.strings"; sourceTree = "<group>"; };
 		66D5FDE01EA7863C005D8AE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		66D5FDE21EA78645005D8AE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/BlueMS.storyboard; sourceTree = "<group>"; };
-		66D5FDE31EA78650005D8AE9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BlueMS.strings; sourceTree = "<group>"; };
 		66D5FDE51EA788EC005D8AE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PlotDemo.storyboard; sourceTree = "<group>"; };
 		66D5FDE81EA7899A005D8AE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/BoardStatusView.storyboard; sourceTree = "<group>"; };
 		66D5FDEB1EA78A20005D8AE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/motionFXDemos.storyboard; sourceTree = "<group>"; };
@@ -719,14 +771,12 @@
 		66F5AEC22342263E00E7573C /* ActivityRecognitionMLCView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityRecognitionMLCView.swift; sourceTree = "<group>"; };
 		66F5AEC32342263F00E7573C /* ActivityRecognitionMLCView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityRecognitionMLCView.xib; sourceTree = "<group>"; };
 		66F7730B1D2E2DD400D37ED4 /* ST BlueMS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "ST BlueMS.entitlements"; sourceTree = "<group>"; };
-		66FA21432357113A0001B19E /* press_contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = press_contact.png; sourceTree = "<group>"; };
 		66FAF3DC20343DE5009AA362 /* WebSocketASREngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocketASREngine.swift; sourceTree = "<group>"; };
 		66FAF3DE203440BA009AA362 /* WebSocketASRConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketASRConfiguration.swift; sourceTree = "<group>"; };
 		66FAF3E020344244009AA362 /* WebSocketASRConfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketASRConfViewController.swift; sourceTree = "<group>"; };
 		66FC8B0C22687753001C7899 /* BlueMSAzureIotCentralConnectionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueMSAzureIotCentralConnectionFactory.swift; sourceTree = "<group>"; };
 		66FC8B2622687878001C7899 /* BlueMSAzureIotCentralFeatureListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueMSAzureIotCentralFeatureListener.swift; sourceTree = "<group>"; };
 		66FC8B2822687BD4001C7899 /* AzureIotCentralClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzureIotCentralClient.swift; sourceTree = "<group>"; };
-		66FECB2C237D8A6E00651CA0 /* MQTTClient.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MQTTClient.xcodeproj; path = MQTTClient/MQTTClient/MQTTClient.xcodeproj; sourceTree = "<group>"; };
 		66FF61961C3E950300642010 /* W2STAccEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = W2STAccEventViewController.m; sourceTree = "<group>"; };
 		70FF83E0AF6F99AEEBD55B3E /* Pods-W2STApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-W2STApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-W2STApp/Pods-W2STApp.debug.xcconfig"; sourceTree = "<group>"; };
 		847BB1FBC708E3F6745FFF9D /* Pods-W2STApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-W2STApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-W2STApp/Pods-W2STApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -745,18 +795,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				666C41491D085AA10021D9D3 /* AudioToolbox.framework in Frameworks */,
+				668C0EFC237EFF2B00F2CB05 /* CoreData.framework in Frameworks */,
 				66E1304A1E8A50AD00D26A0E /* libz.tbd in Frameworks */,
 				667718A021FA1CE2006230B6 /* STTheme.framework in Frameworks */,
 				66E1304C1E8A50D900D26A0E /* Contacts.framework in Frameworks */,
 				66B92C731D2BABE7008CEC03 /* SystemConfiguration.framework in Frameworks */,
+				666C41491D085AA10021D9D3 /* AudioToolbox.framework in Frameworks */,
 				66E130481E8A4FD700D26A0E /* AddressBook.framework in Frameworks */,
+				66031FFF1FB9D19400C59847 /* MQTTFramework.framework in Frameworks */,
 				66E130461E8A4FCC00D26A0E /* CoreTelephony.framework in Frameworks */,
 				66E1303F1E8A4FAB00D26A0E /* CoreLocation.framework in Frameworks */,
 				66B556771F5FD70A00CE5A20 /* BlueSTSDK_Gui.framework in Frameworks */,
 				6670ED0C1DB0D5F7003D6185 /* WebKit.framework in Frameworks */,
 				66A917811D7DA5130004A4DC /* MediaPlayer.framework in Frameworks */,
-				66FECB56237D912900651CA0 /* MQTTClient.framework in Frameworks */,
 				66B92C821D2C02E2008CEC03 /* AVFoundation.framework in Frameworks */,
 				666C414A1D085B620021D9D3 /* CoreAudio.framework in Frameworks */,
 				66F1BB811BFC8FE800BCB0D7 /* Accelerate.framework in Frameworks */,
@@ -874,6 +925,21 @@
 				661A782B202D943300D1C833 /* BlueMSIBMWatsonQuickStartConnectionFactory.swift */,
 			);
 			path = IBMWatsonQuickstart;
+			sourceTree = "<group>";
+		};
+		66031FE51FB9D15900C59847 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				66985ED924A0C28D008E4786 /* MQTTClientTests.xctest */,
+				66031FF21FB9D15A00C59847 /* MQTTClientTVTests.xctest */,
+				66031FF41FB9D15A00C59847 /* MQTTClientOSXTests.xctest */,
+				66985EDB24A0C28D008E4786 /* MQTTClientOSXTestsNOLumberjack.xctest */,
+				66031FF81FB9D15A00C59847 /* MQTTFrameworkTests.xctest */,
+				66031FFA1FB9D15A00C59847 /* MQTTFramework.framework */,
+				66031FFC1FB9D15A00C59847 /* MQTTFramework.framework */,
+				66031FFE1FB9D15A00C59847 /* MQTTFramework.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		6630C9ED1ED323B2008D955D /* ThirdPartyLibLicenses */ = {
@@ -1015,7 +1081,6 @@
 		664E09501E49F9FD00C6EA07 /* st_image_Resources */ = {
 			isa = PBXGroup;
 			children = (
-				66FA21432357113A0001B19E /* press_contact.png */,
 				664E09511E49F9FD00C6EA07 /* Graphics */,
 				664E095B1E49F9FD00C6EA07 /* text.html */,
 			);
@@ -1101,9 +1166,23 @@
 			name = AccEventViewController;
 			sourceTree = "<group>";
 		};
+		6670B5442388281800609CF7 /* machineLearningCore */ = {
+			isa = PBXGroup;
+			children = (
+				66A2B0D7238D83AC00EAF370 /* common */,
+				6670B5452388281800609CF7 /* MLCMachineLearningCoreViewController.swift */,
+				6670B5472388284900609CF7 /* MachineLearningCore.storyboard */,
+				6670B54D2388317E00609CF7 /* MLCMachineLearningViewModel.swift */,
+				66A2B0D3238D81C100EAF370 /* FiniteStateMachine.storyboard */,
+				66A2B0D5238D81D900EAF370 /* MLCFiniteStateMachineViewController.swift */,
+			);
+			path = machineLearningCore;
+			sourceTree = "<group>";
+		};
 		667129E1231FAF1600E86DA5 /* MultiNN */ = {
 			isa = PBXGroup;
 			children = (
+				662E798523A9361C00EAE60B /* ComboViewModel.swift */,
 				667129E2231FAF1600E86DA5 /* BlueMSMultiNeuralNetworkViewController.swift */,
 				667129F8232004FF00E86DA5 /* MultiNeuralNetworkViewModel.swift */,
 				6667540C23291FA900794EC1 /* BlueMSAIAlgorithmSelectorViewController.swift */,
@@ -1160,6 +1239,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		66A2B0D7238D83AC00EAF370 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				66A2B0D8238D83AC00EAF370 /* RegisterStatusDataSourceAdapter.swift */,
+				66A2B0D9238D83AC00EAF370 /* ValueLabelConsole.swift */,
+				66A2B0DA238D83AC00EAF370 /* ValueLabelMapper.swift */,
+				66A2B0DB238D83AC00EAF370 /* RegisterStatus.swift */,
+				66A2B0DC238D83AC00EAF370 /* RegisterStatusCell.swift */,
+				66A2B0DD238D83AC00EAF370 /* RegisterStatusCell.xib */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
 		66A47C662040532800986ADA /* COSensor */ = {
 			isa = PBXGroup;
 			children = (
@@ -1187,6 +1279,8 @@
 		66ADF452217758C400BBC511 /* ActivityRecognition */ = {
 			isa = PBXGroup;
 			children = (
+				662E796C23A9359F00EAE60B /* AdultPresenceMLCView.swift */,
+				662E798223A935A000EAE60B /* AdultPresenceMLCView.xib */,
 				66F5AEC22342263E00E7573C /* ActivityRecognitionMLCView.swift */,
 				66F5AEC32342263F00E7573C /* ActivityRecognitionMLCView.xib */,
 				66ADF45F21775A1500BBC511 /* ActivityRecognition.storyboard */,
@@ -1208,6 +1302,7 @@
 				66B57C4722686DFB008CB99C /* BlueMSAzureIotCentralViewController.swift */,
 				66FC8B0C22687753001C7899 /* BlueMSAzureIotCentralConnectionFactory.swift */,
 				66FC8B2622687878001C7899 /* BlueMSAzureIotCentralFeatureListener.swift */,
+				662A05502382FC0000C46237 /* STAzureDashboardClient.swift */,
 				66FC8B2822687BD4001C7899 /* AzureIotCentralClient.swift */,
 			);
 			path = AzureIotCentral;
@@ -1247,16 +1342,16 @@
 			children = (
 				66C4914E1E5335E6008CB166 /* AWSCore.framework */,
 				66DDEE571FACAB39007E5AE7 /* AWSIoT.framework */,
-				66FECB68237D912900651CA0 /* AzureIoTHubClient.framework */,
-				66FECB6A237D912900651CA0 /* AzureIoTuAmqp.framework */,
-				66FECB6C237D912900651CA0 /* AzureIoTuMqtt.framework */,
-				66FECB6E237D912900651CA0 /* AzureIoTUtility.framework */,
-				66FECB70237D912900651CA0 /* Charts.framework */,
+				66FC8B1F22687754001C7899 /* AzureIoTHubClient.framework */,
+				66FC8B2122687754001C7899 /* AzureIoTuAmqp.framework */,
+				66FC8B2322687754001C7899 /* AzureIoTuMqtt.framework */,
+				66FC8B2522687754001C7899 /* AzureIoTUtility.framework */,
+				66A0D93B2354BC1100FA55D6 /* Charts.framework */,
 				66BC48DD1DA7E3E500C196B1 /* CorePlot.framework */,
-				66FECB72237D912900651CA0 /* IBMSwiftSDKCore.framework */,
-				66FECB74237D912900651CA0 /* SpeechToText.framework */,
+				66A0D93D2354BC1100FA55D6 /* IBMSwiftSDKCore.framework */,
+				66A0D93F2354BC1100FA55D6 /* SpeechToText.framework */,
 				66BC48E11DA7E3E500C196B1 /* Pods_W2STApp.framework */,
-				66FECB76237D912900651CA0 /* Starscream.framework */,
+				66A0D9412354BC1100FA55D6 /* Starscream.framework */,
 				664DF4B51F5822F900D84156 /* SwiftyJSON.framework */,
 			);
 			name = Products;
@@ -1406,25 +1501,12 @@
 			path = WebSocket;
 			sourceTree = "<group>";
 		};
-		66FECB2D237D8A6E00651CA0 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				66FECB36237D8A6E00651CA0 /* MQTTClient.framework */,
-				66FECB38237D8A6E00651CA0 /* MQTTClientiOSTests.xctest */,
-				66FECB3A237D8A6E00651CA0 /* MQTTClient.framework */,
-				66FECB3C237D8A6E00651CA0 /* MQTTClienttvOSTests.xctest */,
-				66FECB3E237D8A6E00651CA0 /* MQTTClient.framework */,
-				66FECB40237D8A6E00651CA0 /* MQTTClientmacOSTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		EA68CFA118D0CB75003B774E = {
 			isa = PBXGroup;
 			children = (
-				66FECB2C237D8A6E00651CA0 /* MQTTClient.xcodeproj */,
 				6677188421FA1B48006230B6 /* STTheme.xcodeproj */,
 				66BC48D41DA7E3E400C196B1 /* Pods.xcodeproj */,
+				66031FE41FB9D15900C59847 /* MQTTClient.xcodeproj */,
 				6630C9ED1ED323B2008D955D /* ThirdPartyLibLicenses */,
 				6680E7731E2F6F0700C39C5E /* BlueSTSDK_Gui.xcodeproj */,
 				66CFCD501B9F264900B9A096 /* BlueSTSDK.xcodeproj */,
@@ -1447,6 +1529,7 @@
 		EA68CFAC18D0CB75003B774E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				668C0EFB237EFF2B00F2CB05 /* CoreData.framework */,
 				66E1304B1E8A50D900D26A0E /* Contacts.framework */,
 				66E130491E8A50AD00D26A0E /* libz.tbd */,
 				66E130471E8A4FD700D26A0E /* AddressBook.framework */,
@@ -1475,7 +1558,6 @@
 			children = (
 				660CCE7B203EDC8D000CE9D1 /* W2STAppDebug-Info.plist */,
 				660CCE8A203EDC8E000CE9D1 /* W2STAppRelease-Info.plist */,
-				66C491361E530F4B008CB166 /* st_images_LanchScreen.xcassets */,
 				66C491381E530F9F008CB166 /* st_images.xcassets */,
 				66F7730B1D2E2DD400D37ED4 /* ST BlueMS.entitlements */,
 				EAD77DA61982A62500CCD0BE /* BlueMS.storyboard */,
@@ -1512,6 +1594,7 @@
 		EAD77DAD1982A62500CCD0BE /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				6670B5442388281800609CF7 /* machineLearningCore */,
 				667129E1231FAF1600E86DA5 /* MultiNN */,
 				66EECCB4228C603200F3174B /* FitnessActivity */,
 				664DF01D2278784E008C2412 /* MotionAlgorithm */,
@@ -1567,6 +1650,7 @@
 			);
 			dependencies = (
 				66B5567A1F5FD70A00CE5A20 /* PBXTargetDependency */,
+				660320021FB9D19400C59847 /* PBXTargetDependency */,
 				667718A321FA1CE2006230B6 /* PBXTargetDependency */,
 				662734DC22200F0700405839 /* PBXTargetDependency */,
 			);
@@ -1590,7 +1674,6 @@
 						DevelopmentTeam = 9L4QA9SNQK;
 						DevelopmentTeamName = "STMICROELECTRONICS, INC";
 						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1624,8 +1707,8 @@
 					ProjectRef = 6680E7731E2F6F0700C39C5E /* BlueSTSDK_Gui.xcodeproj */;
 				},
 				{
-					ProductGroup = 66FECB2D237D8A6E00651CA0 /* Products */;
-					ProjectRef = 66FECB2C237D8A6E00651CA0 /* MQTTClient.xcodeproj */;
+					ProductGroup = 66031FE51FB9D15900C59847 /* Products */;
+					ProjectRef = 66031FE41FB9D15900C59847 /* MQTTClient.xcodeproj */;
 				},
 				{
 					ProductGroup = 66BC48D51DA7E3E400C196B1 /* Products */;
@@ -1644,6 +1727,48 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		66031FF21FB9D15A00C59847 /* MQTTClientTVTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MQTTClientTVTests.xctest;
+			remoteRef = 66031FF11FB9D15A00C59847 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		66031FF41FB9D15A00C59847 /* MQTTClientOSXTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MQTTClientOSXTests.xctest;
+			remoteRef = 66031FF31FB9D15A00C59847 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		66031FF81FB9D15A00C59847 /* MQTTFrameworkTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MQTTFrameworkTests.xctest;
+			remoteRef = 66031FF71FB9D15A00C59847 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		66031FFA1FB9D15A00C59847 /* MQTTFramework.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MQTTFramework.framework;
+			remoteRef = 66031FF91FB9D15A00C59847 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		66031FFC1FB9D15A00C59847 /* MQTTFramework.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MQTTFramework.framework;
+			remoteRef = 66031FFB1FB9D15A00C59847 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		66031FFE1FB9D15A00C59847 /* MQTTFramework.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MQTTFramework.framework;
+			remoteRef = 66031FFD1FB9D15A00C59847 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		664DF4B51F5822F900D84156 /* SwiftyJSON.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1663,6 +1788,48 @@
 			fileType = wrapper.framework;
 			path = BlueSTSDK_Gui.framework;
 			remoteRef = 6680E7781E2F6F0700C39C5E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		66985ED924A0C28D008E4786 /* MQTTClientTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MQTTClientTests.xctest;
+			remoteRef = 66985ED824A0C28D008E4786 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		66985EDB24A0C28D008E4786 /* MQTTClientOSXTestsNOLumberjack.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MQTTClientOSXTestsNOLumberjack.xctest;
+			remoteRef = 66985EDA24A0C28D008E4786 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		66A0D93B2354BC1100FA55D6 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 66A0D93A2354BC1100FA55D6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		66A0D93D2354BC1100FA55D6 /* IBMSwiftSDKCore.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = IBMSwiftSDKCore.framework;
+			remoteRef = 66A0D93C2354BC1100FA55D6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		66A0D93F2354BC1100FA55D6 /* SpeechToText.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SpeechToText.framework;
+			remoteRef = 66A0D93E2354BC1100FA55D6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		66A0D9412354BC1100FA55D6 /* Starscream.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Starscream.framework;
+			remoteRef = 66A0D9402354BC1100FA55D6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		66BC48DD1DA7E3E500C196B1 /* CorePlot.framework */ = {
@@ -1707,102 +1874,32 @@
 			remoteRef = 66DDEE561FACAB39007E5AE7 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		66FECB36237D8A6E00651CA0 /* MQTTClient.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = MQTTClient.framework;
-			remoteRef = 66FECB35237D8A6E00651CA0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		66FECB38237D8A6E00651CA0 /* MQTTClientiOSTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = MQTTClientiOSTests.xctest;
-			remoteRef = 66FECB37237D8A6E00651CA0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		66FECB3A237D8A6E00651CA0 /* MQTTClient.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = MQTTClient.framework;
-			remoteRef = 66FECB39237D8A6E00651CA0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		66FECB3C237D8A6E00651CA0 /* MQTTClienttvOSTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = MQTTClienttvOSTests.xctest;
-			remoteRef = 66FECB3B237D8A6E00651CA0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		66FECB3E237D8A6E00651CA0 /* MQTTClient.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = MQTTClient.framework;
-			remoteRef = 66FECB3D237D8A6E00651CA0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		66FECB40237D8A6E00651CA0 /* MQTTClientmacOSTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = MQTTClientmacOSTests.xctest;
-			remoteRef = 66FECB3F237D8A6E00651CA0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		66FECB68237D912900651CA0 /* AzureIoTHubClient.framework */ = {
+		66FC8B1F22687754001C7899 /* AzureIoTHubClient.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = AzureIoTHubClient.framework;
-			remoteRef = 66FECB67237D912900651CA0 /* PBXContainerItemProxy */;
+			remoteRef = 66FC8B1E22687754001C7899 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		66FECB6A237D912900651CA0 /* AzureIoTuAmqp.framework */ = {
+		66FC8B2122687754001C7899 /* AzureIoTuAmqp.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = AzureIoTuAmqp.framework;
-			remoteRef = 66FECB69237D912900651CA0 /* PBXContainerItemProxy */;
+			remoteRef = 66FC8B2022687754001C7899 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		66FECB6C237D912900651CA0 /* AzureIoTuMqtt.framework */ = {
+		66FC8B2322687754001C7899 /* AzureIoTuMqtt.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = AzureIoTuMqtt.framework;
-			remoteRef = 66FECB6B237D912900651CA0 /* PBXContainerItemProxy */;
+			remoteRef = 66FC8B2222687754001C7899 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		66FECB6E237D912900651CA0 /* AzureIoTUtility.framework */ = {
+		66FC8B2522687754001C7899 /* AzureIoTUtility.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = AzureIoTUtility.framework;
-			remoteRef = 66FECB6D237D912900651CA0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		66FECB70237D912900651CA0 /* Charts.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Charts.framework;
-			remoteRef = 66FECB6F237D912900651CA0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		66FECB72237D912900651CA0 /* IBMSwiftSDKCore.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = IBMSwiftSDKCore.framework;
-			remoteRef = 66FECB71237D912900651CA0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		66FECB74237D912900651CA0 /* SpeechToText.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SpeechToText.framework;
-			remoteRef = 66FECB73237D912900651CA0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		66FECB76237D912900651CA0 /* Starscream.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Starscream.framework;
-			remoteRef = 66FECB75237D912900651CA0 /* PBXContainerItemProxy */;
+			remoteRef = 66FC8B2422687754001C7899 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1812,7 +1909,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66FA21442357113A0001B19E /* press_contact.png in Resources */,
+				66A2B0E3238D83AC00EAF370 /* RegisterStatusCell.xib in Resources */,
 				66031FE11FB9D0BE00C59847 /* CloudDemo.storyboard in Resources */,
 				6630C9FD1ED33355008D955D /* BlueSTSDK_Gui.txt in Resources */,
 				66D5FDED1EA78AFE005D8AE9 /* AccEventDemo.storyboard in Resources */,
@@ -1829,6 +1926,8 @@
 				662E423E1E5C313800D6927D /* steval_wesu1_reset_position.png in Resources */,
 				66896C03233A5B6A002F2D9D /* BabyCryingView.xib in Resources */,
 				66EECCC6228C612400F3174B /* FitnessActivity.storyboard in Resources */,
+				662E798423A935A000EAE60B /* AdultPresenceMLCView.xib in Resources */,
+				66A2B0D4238D81C100EAF370 /* FiniteStateMachine.storyboard in Resources */,
 				6671783B2209D83800E51A2F /* PredictiveAxisStatusView.xib in Resources */,
 				EACE369719DDA7BF007E2A2D /* art.scnassets in Resources */,
 				66C7A4F9220AD5C800B16902 /* PredictiveStatusView.xib in Resources */,
@@ -1842,7 +1941,6 @@
 				66D5FDE41EA788EC005D8AE9 /* PlotDemo.storyboard in Resources */,
 				66ADF43D21772F1400BBC511 /* AudioSceneClassification.storyboard in Resources */,
 				663A57411FA8C333000DC163 /* BlueMSNucleoPreferences.storyboard in Resources */,
-				66C491371E530F4B008CB166 /* st_images_LanchScreen.xcassets in Resources */,
 				6630C9F41ED323B2008D955D /* MQTTClient.txt in Resources */,
 				66CAC1F31B4D6F6F001B0BA1 /* Images.xcassets in Resources */,
 				66ADF4662177774800BBC511 /* MotionARView.xib in Resources */,
@@ -1854,6 +1952,7 @@
 				667909A21FD6A06100373C01 /* IBMWatson.txt in Resources */,
 				4EDA2ACD09B8CC11808D5CE1 /* LICENSE.txt in Resources */,
 				66D5FDE71EA7899A005D8AE9 /* BoardStatusView.storyboard in Resources */,
+				6670B5482388284900609CF7 /* MachineLearningCore.storyboard in Resources */,
 				66F5AEC52342263F00E7573C /* ActivityRecognitionMLCView.xib in Resources */,
 				6630C9FE1ED33355008D955D /* BlueSTSDK.txt in Resources */,
 				66ADF46021775A1500BBC511 /* ActivityRecognition.storyboard in Resources */,
@@ -1942,6 +2041,7 @@
 				66876BC32045564A00E1BB0C /* BlueMSCloudProviderSelectViewController.swift in Sources */,
 				66031FDC1FB9D0BE00C59847 /* BlueMSAwsIotConnectionFactory.swift in Sources */,
 				66F2783921806C9600D56759 /* ActivityRecognitionGMPView.swift in Sources */,
+				66A2B0DE238D83AC00EAF370 /* RegisterStatusDataSourceAdapter.swift in Sources */,
 				6614EB5F20E3AF8B00D991B9 /* BlueMSDemoTabViewController.m in Sources */,
 				66B881E01F334C2700529A39 /* BlueMSDemoTabViewController+WesuLicenseCheck.m in Sources */,
 				66096AE8212C71CE0079A5B1 /* BlueMSCloudIotConnectionFactory.swift in Sources */,
@@ -1962,10 +2062,12 @@
 				66157F31227AE16600104235 /* BlueMSMotionAlogorithmSelectorViewController.swift in Sources */,
 				66C7A507220AD81700B16902 /* PredictiveStatusView.swift in Sources */,
 				6638AF7D1F160CA1009D64A0 /* BlueVoiceSyncQueue.swift in Sources */,
+				66A2B0D6238D81D900EAF370 /* MLCFiniteStateMachineViewController.swift in Sources */,
 				66F278532180B47700D56759 /* AnnotationStorageProtocol.swift in Sources */,
 				66AE69FF1E2D249A008CB6AA /* W2STAccEventIconUtil.m in Sources */,
 				66CADFC51F56FF6B00568F7C /* BlueMSActivityViewController.swift in Sources */,
 				663397B61FA7766F00FFF531 /* BlueMSSDLoggingViewController.swift in Sources */,
+				6670B54E2388317E00609CF7 /* MLCMachineLearningViewModel.swift in Sources */,
 				669072BE21819DD6000EBB28 /* AnnotationRepository.swift in Sources */,
 				6606AB481EB0A06F00FFBEFF /* BlueMSBoardStatusBatteryInfo.swift in Sources */,
 				66031FCA1FB9D0BE00C59847 /* BlueMSAzureIotViewController.swift in Sources */,
@@ -1986,11 +2088,13 @@
 				665AAE1A1FB348A900B39776 /* IBMWatsonAsrKeyViewController.swift in Sources */,
 				66BF753A220DAD2500A4A4E7 /* FFTSettings.swift in Sources */,
 				6637DADA1E30D6CB007C0B82 /* W2STPlotFeatureDemoViewController.m in Sources */,
+				66B57C4822686DFB008CB99C /* BlueMSAzureIotCentralViewController.swift in Sources */,
 				66EECC8C228C081B00F3174B /* MotionAlgorithm+UIImage.swift in Sources */,
 				667129F3231FFD8300E86DA5 /* FitnessActivityType+locateString.swift in Sources */,
 				66F320E921B571DF006DCB38 /* FFTAmplitudeViewController.swift in Sources */,
 				66E6D3571DF1ADF800D1FBBA /* STWeSUSettingsAdvancedTableViewController.m in Sources */,
 				664DF031227879AE008C2412 /* BlueMSMotionAlogorithmViewController.swift in Sources */,
+				6670B5462388281800609CF7 /* MLCMachineLearningCoreViewController.swift in Sources */,
 				663397BF1FA776BD00FFF531 /* BlueMSSDLogFeatureTableCellView.swift in Sources */,
 				6667540D23291FA900794EC1 /* BlueMSAIAlgorithmSelectorViewController.swift in Sources */,
 				66AE69FC1E2CF521008CB6AA /* W2STAccEventMultipleEventDisplayViewController.m in Sources */,
@@ -2001,6 +2105,7 @@
 				6638AF741F160CA1009D64A0 /* BlueVoiceASREngine.swift in Sources */,
 				6638AF7E1F160CA1009D64A0 /* W2STAudioDumpController.swift in Sources */,
 				6674D0001FA8D0DC0085E388 /* NucleoConsole.swift in Sources */,
+				66A2B0E2238D83AC00EAF370 /* RegisterStatusCell.swift in Sources */,
 				667129F2231FFD8300E86DA5 /* FitnessActivityType+UIImage.swift in Sources */,
 				66096AD4212C44D60079A5B1 /* BlueMSCloudFeatureTableViewCell.swift in Sources */,
 				66F278512180B25500D56759 /* Annotation.swift in Sources */,
@@ -2018,6 +2123,7 @@
 				669818D4200E4A8D0034A4F5 /* BlueMSCloudUtil.swift in Sources */,
 				66DBAF471F6AC45B008E56A6 /* UIPopoverPresentationController+CenterView.swift in Sources */,
 				66031FDB1FB9D0BE00C59847 /* BlueMSAwsP12Util.swift in Sources */,
+				66A2B0DF238D83AC00EAF370 /* ValueLabelConsole.swift in Sources */,
 				665CB5461C6DCDD5003118BC /* W2STSelectAccEventViewController.m in Sources */,
 				667129F7232004E800E86DA5 /* MultiNeuralNetworkConsole.swift in Sources */,
 				667129E9231FB9F100E86DA5 /* AudioScene+UIImage.swift in Sources */,
@@ -2025,6 +2131,7 @@
 				66D94C1A218351FF00044085 /* AIDataLogParametersViewModel.swift in Sources */,
 				66FF61971C3E950300642010 /* W2STAccEventViewController.m in Sources */,
 				66A0D4E01EDD6DE000D9CDA7 /* BlueSTDKNode+image.swift in Sources */,
+				662A05512382FC0000C46237 /* STAzureDashboardClient.swift in Sources */,
 				6671783F2209DFD800E51A2F /* NibLoadable.swift in Sources */,
 				66DA0F122010DFD300261A7B /* BlueMSAppDelegate.swift in Sources */,
 				66D9F4CA1FA77A07001A3674 /* BlueMSSDLoggingContract.swift in Sources */,
@@ -2034,6 +2141,7 @@
 				66876BD7204585B400E1BB0C /* BlueMSCloudLogSelectUpdateTimeViewController.swift in Sources */,
 				66E6915A1AFA393000BD44C1 /* W2STPressureViewController.m in Sources */,
 				66FAF3E120344244009AA362 /* WebSocketASRConfViewController.swift in Sources */,
+				66A2B0E0238D83AC00EAF370 /* ValueLabelMapper.swift in Sources */,
 				665E29F7234DE01900160C2C /* BlueMSAudioFeatures.swift in Sources */,
 				667129E3231FAF1600E86DA5 /* BlueMSMultiNeuralNetworkViewController.swift in Sources */,
 				66DA0F142010E4C400261A7B /* BlueMSMainViewController.swift in Sources */,
@@ -2062,6 +2170,7 @@
 				6606AB4F1EB0D8DF00FFBEFF /* BlueMSBoardRssiViewController.swift in Sources */,
 				66CE31A121BED262001A68B2 /* FFTAmplitudeStatsViewController.swift in Sources */,
 				66EDA78A1AF9F4B30049C793 /* W2STEnviromentalViewController.m in Sources */,
+				662E798323A935A000EAE60B /* AdultPresenceMLCView.swift in Sources */,
 				665A54411F6BB3B900296842 /* BlueMSMemsSensorFusionViewController.swift in Sources */,
 				669072C02181BF6D000EBB28 /* AIDataLogDemoViewController.swift in Sources */,
 				6638AF7A1F160CA1009D64A0 /* BlueMSSpeechToTextViewController.swift in Sources */,
@@ -2083,11 +2192,13 @@
 				66096AE6212C710E0079A5B1 /* BlueMSCloudConfigViewController.swift in Sources */,
 				6664EA442040207D007707A0 /* BlueMSCloudIBMWatsonIOTConfigViewController.swift in Sources */,
 				6638AF731F160CA1009D64A0 /* W2STBeamFormingViewController.swift in Sources */,
+				66A2B0E1238D83AC00EAF370 /* RegisterStatus.swift in Sources */,
 				66ADF43F21772F3500BBC511 /* BlueMSAudioSceneClassificationViewController.swift in Sources */,
 				664EF35D203D8237000624EA /* BlueMSBlueVoiceViewController.swift in Sources */,
 				66E6D3591DF1ADF800D1FBBA /* STWeSUSettingsTableViewController.m in Sources */,
 				66D94C0C2183487C00044085 /* AIDataLogFeatureTableViewCell.swift in Sources */,
 				66CADFB71F56E93B00568F7C /* BlueMSMotionIntensityViewController.swift in Sources */,
+				662E798623A9361D00EAE60B /* ComboViewModel.swift in Sources */,
 				667129E7231FB4B300E86DA5 /* AudioSceneConfigurationModelView.swift in Sources */,
 				669818D6200E4FDA0034A4F5 /* BlueMSIBMWatsonIotFeatureListener.swift in Sources */,
 				66096AE4212C692D0079A5B1 /* BlueMSGenericMqttConfigurationViewController.swift in Sources */,
@@ -2108,6 +2219,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		660320021FB9D19400C59847 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MQTTiOS;
+			targetProxy = 660320011FB9D19400C59847 /* PBXContainerItemProxy */;
+		};
 		662734DC22200F0700405839 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = BlueSTSDK;
@@ -2208,7 +2324,7 @@
 			children = (
 				66D5FDDE1EA7862D005D8AE9 /* zh-Hans */,
 				66D5FDE21EA78645005D8AE9 /* Base */,
-				66D5FDE31EA78650005D8AE9 /* en */,
+				66000852243B073300E81D7D /* en */,
 			);
 			name = BlueMS.storyboard;
 			sourceTree = "<group>";
@@ -2338,8 +2454,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
-				APP_BUILD = 58;
-				APP_VERSION = "4.4.4-dev";
+				APP_BUILD = 63;
+				APP_VERSION = "4.6.1-dev";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
@@ -2348,7 +2464,7 @@
 				CODE_SIGN_ENTITLEMENTS = "W2STApp/ST BlueMS.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 61;
+				CURRENT_PROJECT_VERSION = 66;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 9L4QA9SNQK;
 				ENABLE_BITCODE = NO;
@@ -2371,7 +2487,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/W2STApp/MainApp/LicenseManager/GenerateLicenseCode",
 				);
-				MARKETING_VERSION = "4.5.1-dev";
+				MARKETING_VERSION = 4.6.4;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.st.clab.CloudTest;
 				PRODUCT_NAME = "ST BLE Sensor";
@@ -2392,17 +2508,18 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
-				APP_BUILD = 58;
-				APP_VERSION = "4.4.4-dev";
+				APP_BUILD = 63;
+				APP_VERSION = "4.6.1-dev";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "W2STApp/ST BlueMS.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 61;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 66;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 9L4QA9SNQK;
 				ENABLE_BITCODE = NO;
@@ -2425,11 +2542,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/W2STApp/MainApp/LicenseManager/GenerateLicenseCode",
 				);
-				MARKETING_VERSION = "4.5.1-dev";
+				MARKETING_VERSION = 4.6.4;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.st.clab.CloudTest;
 				PRODUCT_NAME = "ST BLE Sensor";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "W2STApp/MainApp/W2STApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;

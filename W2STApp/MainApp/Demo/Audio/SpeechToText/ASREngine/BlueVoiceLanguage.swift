@@ -38,7 +38,7 @@
 import Foundation
 
 public enum BlueVoiceLanguage:String{
-    
+
     case ENGLISH_UK = "English (US)"
     case ENGLISH_US = "English (UK)"
     case ITALIAN = "Italian"

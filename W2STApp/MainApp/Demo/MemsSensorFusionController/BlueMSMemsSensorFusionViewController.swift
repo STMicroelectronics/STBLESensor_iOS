@@ -38,8 +38,9 @@
 import Foundation;
 import BlueSTSDK;
 import SceneKit;
-import GLKit;
 import AudioToolbox
+import GLKit;
+
 
 public class BlueMSMemsSensorFusionViewController: BlueMSCalibrationViewController,
     BlueSTSDKFeatureDelegate,

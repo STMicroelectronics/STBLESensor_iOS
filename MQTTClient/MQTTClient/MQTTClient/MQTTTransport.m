@@ -6,14 +6,14 @@
 //  Copyright © 2016-2017 Christoph Krey. All rights reserved.
 //
 
-#import "MCMQTTTransport.h"
+#import "MQTTTransport.h"
 
 #import "MQTTLog.h"
 
 @implementation MQTTTransport
 @synthesize state;
-@synthesize queue;
-@synthesize streamSSLLevel;
+@synthesize runLoop;
+@synthesize runLoopMode;
 @synthesize delegate;
 @synthesize host;
 @synthesize port;
@@ -21,6 +21,8 @@
 - (instancetype)init {
     self = [super init];
     self.state = MQTTTransportCreated;
+    self.runLoop = [NSRunLoop currentRunLoop];
+    self.runLoopMode = NSRunLoopCommonModes;
     return self;
 }
 

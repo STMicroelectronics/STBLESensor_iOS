@@ -36,7 +36,7 @@
  */
 
 import Foundation
-import MQTTClient
+import MQTTFramework
 
 public class Dummy : NSObject,BlueSTSDKFeatureDelegate{
     public func didUpdate(_ feature: BlueSTSDKFeature, sample: BlueSTSDKFeatureSample) {

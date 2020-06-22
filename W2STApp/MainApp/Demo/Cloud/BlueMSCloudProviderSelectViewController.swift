@@ -62,10 +62,6 @@ BlueMSCloudLogSelectUpdateTimeDelegate, UITableViewDataSource, UITableViewDelega
                               value: "Azure IoT Central - SensorTile.box", comment: ""),
                       segue:"azureIoTCentral_segue"),
         CloudProvider(name:
-            NSLocalizedString("Azure IoT - ST Web Dashboard", tableName: nil, bundle: bundle,
-                              value: "Azure IoT - ST Web Dashboard", comment: ""),
-                      segue:"STAzureIot_segue"),
-        CloudProvider(name:
             NSLocalizedString("Azure IoT", tableName: nil, bundle: bundle,
                               value: "Azure IoT", comment: ""),
                       segue:"AzureIot_segue"),

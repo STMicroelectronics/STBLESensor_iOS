@@ -140,6 +140,15 @@ public class BlueMSCloudConnectionViewController : UIViewController{
             .filter{ $0.enabled && mConnectionFactory?.isSupportedFeature($0) ?? false}
     }
   
+    private var progressBar : MBProgressHUD?
+    
+    private func createConnectiongProgressBar() -> MBProgressHUD{
+        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        hud.mode = .indeterminate
+        hud.removeFromSuperViewOnHide = true
+        hud.label.text = Self.CONNECTING
+        return hud
+    }
     
     @IBAction func onConnectButtonPressed(_ sender: UIButton) {
         mConnectionFactory = connectionFactoryBuilder.buildConnectionFactory();
@@ -160,6 +169,7 @@ public class BlueMSCloudConnectionViewController : UIViewController{
             }//disconnect
         }else{ //no session or disconnect
             mSession = connectionFactory.getSession()
+            progressBar = createConnectiongProgressBar()
             mSession?.connect{ [weak self] error in
                 if( error == nil){
                     self?.onConnectionDone()
@@ -184,6 +194,7 @@ public class BlueMSCloudConnectionViewController : UIViewController{
         }
         
         DispatchQueue.main.async {
+            self.progressBar?.hide(animated: true)
             self.mConnectButton.setTitle(BlueMSCloudConnectionViewController.DISCONNECT_BUTTON_LABEL, for: .normal)
             self.mConnectButton.isEnabled=true
             self.mFeatureList.reloadData()
@@ -195,6 +206,7 @@ public class BlueMSCloudConnectionViewController : UIViewController{
         disableAllNotification()
         mEnabledFeature.removeAll()
         DispatchQueue.main.async {
+            
             self.mConnectButton.setTitle(BlueMSCloudConnectionViewController.CONNECT_BUTTON_LABEL, for: .normal)
             self.mConnectButton.isEnabled=true
             self.mFeatureList.reloadData()
@@ -205,6 +217,7 @@ public class BlueMSCloudConnectionViewController : UIViewController{
     
     private func onConnectionError(_ error:Error){
         DispatchQueue.main.async {
+            self.progressBar?.hide(animated: false)
             self.showAllert(title: BlueMSCloudConnectionViewController.CONNECTION_ERROR_TITLE,
                             message: error.localizedDescription)
             self.mConnectButton.setTitle(BlueMSCloudConnectionViewController.CONNECT_BUTTON_LABEL, for: .normal)
@@ -242,6 +255,14 @@ public class BlueMSCloudConnectionViewController : UIViewController{
                                   bundle: Bundle(for: BlueMSCloudConnectionViewController.self),
                                   value: "No",
                                   comment: "No");
+    }();
+    
+    private static let CONNECTING = {
+        return  NSLocalizedString("Connecting...",
+                                  tableName: nil,
+                                  bundle: Bundle(for: BlueMSCloudConnectionViewController.self),
+                                  value: "Connecting...",
+                                  comment: "Connecting...");
     }();
     
     private func askForFwUpgrade(_ fwUrl : URL){

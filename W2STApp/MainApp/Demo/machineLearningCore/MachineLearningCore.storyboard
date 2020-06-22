@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BHy-7Q-7oT">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Machine Learning Core-->
+        <scene sceneID="fJ8-mm-xVh">
+            <objects>
+                <viewController id="BHy-7Q-7oT" customClass="MCLMachineLearningCoreViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2Gg-9L-TpZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BJr-WP-BaQ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="BJr-WP-BaQ" firstAttribute="top" secondItem="8YZ-bA-0fs" secondAttribute="top" id="4b6-7b-3Ie"/>
+                            <constraint firstItem="BJr-WP-BaQ" firstAttribute="leading" secondItem="8YZ-bA-0fs" secondAttribute="leading" id="7Rf-Uu-KyT"/>
+                            <constraint firstItem="8YZ-bA-0fs" firstAttribute="bottom" secondItem="BJr-WP-BaQ" secondAttribute="bottom" id="KMA-y3-dbW"/>
+                            <constraint firstItem="8YZ-bA-0fs" firstAttribute="trailing" secondItem="BJr-WP-BaQ" secondAttribute="trailing" id="seG-An-d5X"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8YZ-bA-0fs"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Machine Learning Core" image="ai_demo_icon" id="onk-np-h0O"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="BJr-WP-BaQ" id="Myb-xb-bTE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UTU-BZ-EUm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="108" y="158"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ai_demo_icon" width="32" height="32"/>
+    </resources>
+</document>

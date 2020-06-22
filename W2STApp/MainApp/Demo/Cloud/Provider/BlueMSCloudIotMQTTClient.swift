@@ -37,7 +37,7 @@
 
 
 import Foundation
-import MQTTClient
+import MQTTFramework
 
 public class BlueMSCloudIotMQTTClient:BlueMSCloudIotClient{
     public var isConnected: Bool {

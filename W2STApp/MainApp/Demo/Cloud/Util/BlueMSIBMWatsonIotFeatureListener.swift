@@ -1,6 +1,6 @@
 
 import Foundation
-import MQTTClient
+import MQTTFramework
 
 public class BlueMsIBMWatsonIotFeatureListener : BlueMSSubSampligFeatureDelegate{
     

@@ -49,11 +49,11 @@ extension BlueSTSDKFeatureActivity.ActivityType : CustomStringConvertible{
     }();
     
     private static let ACTIVITY_STANDING = {
-        return  NSLocalizedString("Standig",
+        return  NSLocalizedString("Standing",
                                   tableName: nil,
                                   bundle: Bundle(for: BlueMSMultiNetworkViewController.self),
-                                  value: "Standig",
-                                  comment: "Standig")
+                                  value: "Standing",
+                                  comment: "Standing")
     }();
     
     private static let ACTIVITY_WALKING = {
@@ -104,6 +104,14 @@ extension BlueSTSDKFeatureActivity.ActivityType : CustomStringConvertible{
                                   comment: "Stairs")
     }();
     
+    private static let ACTIVITY_ADULT_IN_CAR = {
+        return  NSLocalizedString("Adult in Car",
+                                  tableName: nil,
+                                  bundle: Bundle(for: BlueMSMultiNetworkViewController.self),
+                                  value: "Adult in Car",
+                                  comment: "Adult in Car")
+    }();
+    
     public var description: String{
         switch self{
         case .noActivity:
@@ -122,6 +130,8 @@ extension BlueSTSDKFeatureActivity.ActivityType : CustomStringConvertible{
             return BlueSTSDKFeatureActivity.ActivityType.ACTIVITY_DRIVING
         case .stairs:
             return BlueSTSDKFeatureActivity.ActivityType.ACTIVITY_STAIRS
+        case .adultInCar:
+            return BlueSTSDKFeatureActivity.ActivityType.ACTIVITY_ADULT_IN_CAR
         case .error:
             return BlueSTSDKFeatureActivity.ActivityType.ACTIVITY_UNKNOWN
         @unknown default:

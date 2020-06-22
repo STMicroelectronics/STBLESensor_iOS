@@ -44,8 +44,6 @@
 
 @interface W2STEnviromentalViewController : BlueMSDemoTabViewController
 
-
-
 @end
 
 

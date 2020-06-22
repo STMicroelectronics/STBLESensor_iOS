@@ -57,6 +57,8 @@ extension BlueSTSDKFeatureActivity.ActivityType{
             return UIImage(imageLiteralResourceName: "activity_driving")
         case .stairs:
             return UIImage(imageLiteralResourceName: "activity_stairs")
+        case .adultInCar:
+            return UIImage(imageLiteralResourceName: "adult_in_car")
         case .error:
             return UIImage(imageLiteralResourceName: "motion_algo_unknown")
         @unknown default:

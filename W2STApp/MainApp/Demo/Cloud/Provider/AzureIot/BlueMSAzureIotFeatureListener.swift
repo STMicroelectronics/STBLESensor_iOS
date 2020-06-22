@@ -37,7 +37,7 @@
 
 import Foundation
 import SwiftyJSON
-import MQTTClient
+import MQTTFramework
 
 /// Class that send all the feature update to the azure cloud encoding the data
 /// into a json format

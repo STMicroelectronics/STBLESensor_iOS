@@ -12,9 +12,9 @@
  @see http://mqtt.org
  */
 
-#import "MCMQTTSession.h"
-#import "MCMQTTSessionLegacy.h"
-#import "MCMQTTSessionSynchron.h"
+#import "MQTTSession.h"
+#import "MQTTSessionLegacy.h"
+#import "MQTTSessionSynchron.h"
 
 #import "MQTTLog.h"
 

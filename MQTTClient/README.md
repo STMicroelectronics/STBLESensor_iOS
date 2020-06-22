@@ -1,14 +1,15 @@
-# MQTT-Client-Framework 
+MQTT-Client-Framework 
+=====================
 
-[![Build Status](https://travis-ci.org/novastone-media/MQTT-Client-Framework.svg?branch=master)](https://travis-ci.org/novastone-media/MQTT-Client-Framework)
+an Objective-C native MQTT Framework http://mqtt.org
 
-**Welcome to MQTT-Client-Framework**
+* [Introduction](http://www.hivemq.com/blog/mqtt-client-library-encyclopedia-mqtt-client-framework)
 
-MQTT-Client-Framework is Objective-C native MQTT Framework http://mqtt.org
+* [Support on request](mailto:support@ckrey.de)
 
-You can read [introduction](http://www.hivemq.com/blog/mqtt-client-library-encyclopedia-mqtt-client-framework) to learn more about framework.
+* [Developer Community Mailing List](mailto:mqttclient-dev-subscribe@ckrey.de)
 
-MQTT-Client-Framework is tested with a long list of brokers:
+### Tested with a long list of brokers
 
 * mosquitto
 * paho
@@ -25,126 +26,128 @@ MQTT-Client-Framework is tested with a long list of brokers:
 * aws
 * hbmqtt (MQTTv311 only, limitations)
 * [aedes](https://github.com/mcollina/aedes) 
-* [flespi](https://flespi.com/mqtt-broker) 
 
-## Usage
+### As a CocoaPod
 
-Create a new client and connect to a broker:
-
-```objective-c
-#import "MQTTClient.h"
-
-MQTTCFSocketTransport *transport = [[MQTTCFSocketTransport alloc] init];
-transport.host = @"test.mosquitto.org";
-transport.port = 1883;
-    
-MQTTSession *session = [[MQTTSession alloc] init];
-session.transport = transport;
-[session connectWithConnectHandler:^(NSError *error) {
-	// Do some work
-}];
-```
-
-Subscribe to a topic:
-
-```objective-c
-[session subscribeToTopic:@"example/#" atLevel:MQTTQosLevelExactlyOnce subscribeHandler:^(NSError *error, NSArray<NSNumber *> *gQoss) {
-    if (error) {
-        NSLog(@"Subscription failed %@", error.localizedDescription);
-    } else {
-        NSLog(@"Subscription sucessfull! Granted Qos: %@", gQoss);
-    }
- }];
-
-```
-
-In your `MQTTSession` delegate, add the following to receive messages for the subscribed topics:
-
-```objective-c
-- (void)newMessage:(MQTTSession *)session data:(NSData *)data onTopic:(NSString *)topic qos:(MQTTQosLevel)qos retained:(BOOL)retained mid:(unsigned int)mid {
-    // New message received in topic
-}
-```
-
-Publish a message to a topic:
-
-```objective-c
-[session publishData:someData onTopic:@"example/#" retain:NO qos:MQTTQosLevelAtMostOnce publishHandler:^(NSError *error) {
-}];
-```
-
-If you already have a self signed URL from broker like AWS IoT endpoint, use the `url` property of `MQTTWebsocketTransport`:
-```objective-c
-MQTTWebsocketTransport *transport = [[MQTTWebsocketTransport alloc] init];
-transport.url = @"wss://aws.iot-amazonaws.com/mqtt?expiry='2018-05-01T23:12:32.950Z'"
-
-MQTTSession *session = [[MQTTSession alloc] init];
-session.transport = transport;
-[session connectWithConnectHandler:^(NSError *error) {
-    // Do some work
-}];
-```
-
-## Installation
-
-### CocoaPods 
+Use the CocoaPod MQTTClient! 
 
 Add this to your Podfile:
 
 ```
 pod 'MQTTClient'
 ```
-which is a short for:
-
+which is a short for
 ```
 pod 'MQTTClient/Min'
 pod 'MQTTClient/Manager'
 ```
 
-The Manager subspec includes the `MQTTSessionManager` class.
+The Manager subspec includes the MQTTSessionManager class.
 
-If you want to use MQTT over Websockets:
+Additionally add this subspec if you want to use MQTT over Websockets:
 
 ```
 pod 'MQTTClient/Websocket'
 ```
 
-If you want to do your logging with CocoaLumberjack (recommended):
-
+If you want to do your logging with CocoaLumberjack (my suggestion), use
 ```
 pod 'MQTTClient/MinL'
 pod 'MQTTClient/ManagerL'
 pod 'MQTTClient/WebsocketL'
 ```
+instead.
 
-### Carthage
+### As a dynamic library
 
-In your Cartfile:
+Or use the dynamic library created in the MQTTFramework target.
+
+### As source
+
+Or include the source from here.
+
+### With Carthage
+
+[Carthage](https://github.com/Carthage/Carthage)
+```
+github "ckrey/MQTT-Client-Framework"
+```
+
+### docs
+
+Documentation generated with doxygen http://doxygen.org in the `./MQTTClient/dist/documentation` subdirectory.
+
+Here is the [PDF](MQTTClient/dist/documentation/latex/refman.pdf).
+
+You may open the HTML version of the documentation here  [index.html](MQTTClient/dist/documentation/html/index.html)
+
+Run `make install` in the `./MQTTClient/dist/documentation/html` subdirectory to install the the documentation as a DOCSET on your Mac.
+
+### Usage
+
+Create a new client and connect to a broker:
+
+```objective-c
+#import "MQTTClient.h"
+
+\@interface MyDelegate : ... <MQTTSessionDelegate>
+...
+
+        MQTTCFSocketTransport *transport = [[MQTTCFSocketTransport alloc] init];
+        transport.host = @"localhost";
+        transport.port = 1883;
+
+        MQTTSession *session = [[MQTTSession alloc] init];
+        session.transport = transport;
+        
+	session.delegate = self;
+
+	[session connectAndWaitTimeout:30];  //this is part of the synchronous API
 
 ```
-github "novastone-media/MQTT-Client-Framework"
+
+Subscribe to a topic:
+
+```objective-c
+[session subscribeToTopic:@"example/#" atLevel:2 subscribeHandler:^(NSError *error, NSArray<NSNumber *> *gQoss){
+    if (error) {
+        NSLog(@"Subscription failed %@", error.localizedDescription);
+    } else {
+        NSLog(@"Subscription sucessfull! Granted Qos: %@", gQoss);
+    }
+ }]; // this is part of the block API
+
 ```
 
-### Manually
+Add the following to receive messages for the subscribed topics
+```objective-c
+ - (void)newMessage:(MQTTSession *)session
+	data:(NSData *)data
+	onTopic:(NSString *)topic
+	qos:(MQTTQosLevel)qos
+	retained:(BOOL)retained
+	mid:(unsigned int)mid {
+	// this is one of the delegate callbacks
+}
+```
 
-#### Git submodule
+Publish a message to a topic:
 
-1. Add MQTT-Client-Framework as a git submodule into your top-level project directory or simply copy whole folder
-2. Find MQTTClient.xcodeproj and drag it into the file navigator of your app project.
-3. In Xcode, navigate to the target configuration window by clicking on the blue project icon, and selecting the application target under the "Targets" heading in the sidebar.
-4. Under "General" panel go to "Linked Frameworks and Libraries" and add MQTTClient.framework
+```objective-c
+[session publishAndWaitData:data
+                    onTopic:@"topic"
+                     retain:NO
+	                qos:MQTTQosLevelAtLeastOnce]; // this is part of the asynchronous API
+```
 
-#### Framework
 
-1. Download MQTT-Client-Framework
-2. Build it and you should find MQTTClient.framework under "Products" group.
-3. Right click on it and select "Show in Finder" option.
-4. Just drag and drop MQTTClient.framework to your project
 
-## Security Disclosure
 
-If you believe you have identified a security vulnerability with MQTT-Client-Framework, please report it to ios@novastonemedia.com and do not post it to a public issue tracker.
+### Comparison MQTT Clients for iOS (incomplete)
 
-## Thanks
+|Wrapper|---|----|MQTTKit  |Marquette|Moscapsule|Musqueteer|MQTT-Client|MqttSDK|CocoaMQTT|
+|-------|---|----|---------|---------|----------|----------|-----------|-------|---------|
+|       |   |    |Obj-C    |Obj-C    |Swift     |Obj-C     |Obj-C      |Obj-C  |Swift    |
+|Library|IBM|Paho|Mosquitto|Mosquitto|Mosquitto |Mosquitto |native     |native |native   |
 
-This project was originally written by [Christoph Krey](https://github.com/ckrey).
+

@@ -50,8 +50,13 @@ class BlueMSMultiNetworkViewController : BlueMSDemoTabViewController {
     @IBOutlet weak var algorithnSelectionView: UIView!
     @IBOutlet weak var currentAlgorithmLabel: UILabel!
     
+    @IBOutlet weak var comboView: UIView!
+    @IBOutlet weak var comboImage: UIImageView!
+    @IBOutlet weak var comboDesc: UILabel!
+    
     private let mAudioSceneVM = AudioSceneClassificaitonModelView()
     private let mActiviyRecognitionVM = ActivityRecognitionModelView()
+    private let mComboVM = ComboModelView()
     private var mMultiNNViewModel: MultiNeuralNetworkViewModel?
     
     private static let TIME_FORMAT:DateFormatter = {
@@ -64,8 +69,10 @@ class BlueMSMultiNetworkViewController : BlueMSDemoTabViewController {
         super.viewDidLoad()
         humanActivityView.isHidden = true
         audioSceneView.isHidden = true
+        comboView.isHidden = true
         attachAudioSceneViewModel()
         attachActivityRecognitionViewModel()
+        attachComboViewModel()
     }
     
     public override func viewDidAppear(_ animated: Bool) {
@@ -79,8 +86,10 @@ class BlueMSMultiNetworkViewController : BlueMSDemoTabViewController {
             mMultiNNViewModel = MultiNeuralNetworkViewModel(node: self.node)
             mMultiNNViewModel?.loadAvailableAlgorithm()
         }
-        attachMultiNNViewModel()
         
+        mComboVM.attachListener(featureActivity: activityFeature, featureAudio: audioFeature)
+        
+        attachMultiNNViewModel()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -89,6 +98,7 @@ class BlueMSMultiNetworkViewController : BlueMSDemoTabViewController {
         
         mActiviyRecognitionVM.removeListener(feature: activityFeature)
         mAudioSceneVM.removeListener(feature: audioFeature)
+        mMultiNNViewModel?.disableNotification()
     }
     
     private func attachAudioSceneViewModel(){
@@ -96,10 +106,10 @@ class BlueMSMultiNetworkViewController : BlueMSDemoTabViewController {
             audioSceneView?.isHidden = !isVisble
         }
         
-        mAudioSceneVM.onStateChange = { [weak self] newState in
-            self?.audioSceneImage.image = newState.icon
+        mAudioSceneVM.onStateChange = { [weak self] newImage, newDesciption in
+            self?.audioSceneImage.image = newImage
             let time = BlueMSMultiNetworkViewController.TIME_FORMAT.string(from:Date())
-            self?.audioSceneDesc.text = String(format:"%@: %@",time,newState.description)
+            self?.audioSceneDesc.text = String(format:"%@: %@",time,newDesciption)
         }
     }
     
@@ -108,10 +118,22 @@ class BlueMSMultiNetworkViewController : BlueMSDemoTabViewController {
             humanActivityView?.isHidden = !isVisble
         }
         
-        mActiviyRecognitionVM.onStateChange = { [weak self] newActivity in
-            self?.humanActivityImage.image = newActivity.icon
+        mActiviyRecognitionVM.onStateChange = { [weak self] newImage, newDesciption in
+            self?.humanActivityImage.image = newImage
             let time = BlueMSMultiNetworkViewController.TIME_FORMAT.string(from:Date())
-            self?.humanActivityDesc.text = String(format:"%@: %@",time,newActivity.description)
+            self?.humanActivityDesc.text = String(format:"%@: %@",time,newDesciption)
+        }
+    }
+    
+    private func attachComboViewModel(){
+        mComboVM.onSetVisibiltiy = { [weak comboView] isVisble in
+            comboView?.isHidden = !isVisble
+        }
+        
+        mComboVM.onStateChange = { [weak self] newImage, newDesciption in
+            self?.comboImage.image = newImage
+            let time = BlueMSMultiNetworkViewController.TIME_FORMAT.string(from:Date())
+            self?.comboDesc.text = String(format:"%@: %@",time,newDesciption)
         }
     }
     
@@ -146,6 +168,10 @@ class BlueMSMultiNetworkViewController : BlueMSDemoTabViewController {
             algo in
                 self.mMultiNNViewModel?.selectAlgorithm(algo)
         }
+        vc.modalPresentationStyle = .popover
+        let popOverVc = vc.popoverPresentationController
+        popOverVc?.permittedArrowDirections = .any
+        popOverVc?.sourceView = sender
         present(vc, animated: true, completion: nil)
     }
     

@@ -48,6 +48,9 @@ public class BlueMSMainViewController : BlueSTSDKMainViewController {
         self.delegateNodeList = self
     }
     
+    @IBAction func onCreateAppButtonClick(_ sender: UIButton) {
+    }
+    
     private func getDemoViewController(with node: BlueSTSDKNode, menuManager: BlueSTSDKViewControllerMenuDelegate)
         -> UIViewController{
             let storyBoard = UIStoryboard(name: "BlueMS", bundle: nil);
@@ -57,6 +60,10 @@ public class BlueMSMainViewController : BlueSTSDKMainViewController {
             return mainView!;
     }
     
+    
+    @IBAction func onBLEToolboxButtonPressed(_ sender: UIButton) {
+    }
+    
     /**
      *  when the user select a node show the main view form the DemoView storyboard
      *
@@ -64,8 +71,9 @@ public class BlueMSMainViewController : BlueSTSDKMainViewController {
      *
      *  @return controller with the demo to show
      */
-    public func demoViewController(with node: BlueSTSDKNode, menuManager: BlueSTSDKViewControllerMenuDelegate)-> UIViewController?{
-
+    public func demoViewController(with node: BlueSTSDKNode, menuManager: BlueSTSDKViewControllerMenuDelegate)
+            -> UIViewController? {
+                
         if(BlueSTSDKSTM32WBOTAUtils.isOTANode(node)){
             return BlueSTSDKFwUpgradeManagerViewController.instaziate(forNode: node,
                                                                       requireAddress: true,
@@ -80,8 +88,6 @@ public class BlueMSMainViewController : BlueSTSDKMainViewController {
         }
         
     }
-
-
 }
 
 
@@ -93,7 +99,7 @@ extension BlueMSMainViewController : BlueSTSDKAboutViewControllerDelegate{
     }
     
     public func headImage() -> UIImage? {
-        return UIImage(named: "press_contact.png")
+        return UIImage(named: "press_contact")
     }
     
     public func privacyInfoUrl() -> URL? {
@@ -134,6 +140,41 @@ extension BlueMSMainViewController : BlueSTSDKNodeListViewControllerDelegate{
         node.addExternalCharacteristics(BlueNRGOtaUtils.getOtaCharacteristics())
         if(STM32WBPeer2PeerDemoConfiguration.isValidDeviceNode(node)){
             node.addExternalCharacteristics(STM32WBPeer2PeerDemoConfiguration.getCharacteristicMapping())
+        }
+        if(node.type == .sensor_Tile_Box ){
+            showStBoxPinAllert()
+        }
+        
+    }
+    
+    private static let ST_BOX_PIN_ALLERT_SHOW = "BlueSTSDKNodeListViewControllerDelegate.ST_BOX_PIN_ALLERT_SHOW"
+    
+    private static let ST_BOX_PIN_ALLERT_TITLE:String = {
+        let bundle = Bundle(for: BlueMSMotionIntensityViewController.self)
+        return NSLocalizedString("SensorTile.Box Pin",
+                                 tableName: nil,
+                                 bundle: bundle,
+                                 value: "SensorTile.Box Pin",
+                                 comment: "")
+        
+    }();
+    
+    private static let ST_BOX_PIN_ALLERT_CONTENT:String = {
+        let bundle = Bundle(for: BlueMSMotionIntensityViewController.self)
+        return NSLocalizedString("If requested the default pin is 123456",
+                                 tableName: nil,
+                                 bundle: bundle,
+                                 value: "If requested the default pin is 123456",
+                                 comment: "")
+        
+    }();
+    
+    func showStBoxPinAllert(){
+        let userSettings = UserDefaults.standard
+        if(!userSettings.bool(forKey: Self.ST_BOX_PIN_ALLERT_SHOW )){
+            showAllert(title: Self.ST_BOX_PIN_ALLERT_TITLE,
+                       message: Self.ST_BOX_PIN_ALLERT_CONTENT)
+            userSettings.set(true, forKey: Self.ST_BOX_PIN_ALLERT_SHOW)
         }
     }
     

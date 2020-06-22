@@ -64,7 +64,8 @@ public class BlueMSActivityViewController:
     @IBOutlet weak var mActivityIGNView: ActivityRecognitionIGNView!
     @IBOutlet weak var mActivityGMPView: ActivityRecognitionGMPView!
     @IBOutlet weak var mActivityMLCView: ActivityRecognitionMLCView!
-    
+    @IBOutlet weak var mAdultPresenceMLCView: AdultPresenceMLCView!
+
     private var mCurrentActivity:BlueSTSDKFeatureActivity.ActivityType?;
     private var mFeature:BlueSTSDKFeature?;
     
@@ -78,7 +79,8 @@ public class BlueMSActivityViewController:
             0 : mMotionARView,
             1 : mActivityGMPView,
             2 : mActivityIGNView,
-            3 : mActivityMLCView
+            3 : mActivityMLCView,
+            4 : mAdultPresenceMLCView
         ]
     }()
     
@@ -114,6 +116,7 @@ public class BlueMSActivityViewController:
         mActivityGMPView.deselectAll()
         mActivityIGNView.deselectAll()
         mActivityMLCView.deselectAll()
+        mAdultPresenceMLCView.deselectAll()
     }
     
     private func displayStartMessage(){
@@ -121,7 +124,7 @@ public class BlueMSActivityViewController:
         message.mode = .text;
         message.removeFromSuperViewOnHide=true;
         message.label.text = BlueMSActivityViewController.START_MESSAGE;
-        message .hide(animated: true,
+        message.hide(animated: true,
                     afterDelay: BlueMSActivityViewController.MESSAGE_DISPLAY_TIME)
     }
     

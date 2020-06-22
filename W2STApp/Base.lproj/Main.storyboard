@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="W7K-rY-hAY">
-    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -12,7 +12,7 @@
             <objects>
                 <navigationController id="W7K-rY-hAY" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DXM-zI-cQj">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -32,101 +32,97 @@
                         <viewControllerLayoutGuide type="bottom" id="uMq-Vh-vtf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="w1e-M6-EJq" userLabel="View Main">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YNc-h0-pV1">
+                                <rect key="frame" x="8" y="153.5" width="752" height="717"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="stx-cb-VX8">
+                                        <rect key="frame" x="291" y="0.0" width="170" height="264.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="15"/>
+                                        <state key="normal" title="Connect to a device" backgroundImage="main_searchButton"/>
+                                        <connections>
+                                            <action selector="onStartDiscoveryClick:" destination="xZ5-lJ-evK" eventType="touchUpInside" id="Nae-Bs-sCR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WuU-hH-SFU">
+                                        <rect key="frame" x="301" y="272.5" width="150" height="216.5"/>
+                                        <state key="normal" title="BLEToolbox" backgroundImage="main_toolboxButton"/>
+                                        <connections>
+                                            <action selector="onBLEToolboxButtonPressed:" destination="xZ5-lJ-evK" eventType="touchUpInside" id="xT2-L8-bbr"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="AQ7-Lm-1V1">
+                                        <rect key="frame" x="222" y="497" width="308" height="220"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J6F-2K-U83">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="220"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="10"/>
+                                                <state key="normal" title="Create apps" backgroundImage="main_createAppButton"/>
+                                                <connections>
+                                                    <action selector="onCreateAppButtonClick:" destination="xZ5-lJ-evK" eventType="touchUpInside" id="BTo-9G-aHN"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MsD-r0-biA">
+                                                <rect key="frame" x="158" y="0.0" width="150" height="220"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="10"/>
+                                                <state key="normal" title="About" backgroundImage="main_aboutButton"/>
+                                                <connections>
+                                                    <action selector="onAboutClick:" destination="xZ5-lJ-evK" eventType="touchUpInside" id="fFk-Uy-CAQ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJx-Ny-dZ4" userLabel="Version">
-                                <rect key="frame" x="254.5" y="508" width="49.5" height="15"/>
+                                <rect key="frame" x="698.5" y="964.5" width="49.5" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lpq-di-3l4" userLabel="© Copyright  2017 STMicroelectronics. All rights reserved.">
-                                <rect key="frame" x="83.5" y="531" width="220.5" height="29"/>
+                                <rect key="frame" x="527.5" y="987" width="220.5" height="29"/>
                                 <string key="text">© Copyright  2019 STMicroelectronics.
 All rights reserved.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="stx-cb-VX8">
-                                <rect key="frame" x="60" y="117" width="200" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="Q9U-9z-Z4C">
-                                        <variation key="widthClass=compact" constant="150"/>
-                                        <variation key="heightClass=compact-widthClass=compact" constant="150"/>
-                                    </constraint>
-                                    <constraint firstAttribute="width" secondItem="stx-cb-VX8" secondAttribute="height" multiplier="1:1" id="nLy-O5-4mZ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="15"/>
-                                <state key="normal" title="Connect to a device" backgroundImage="main_searchButton"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Q9U-9z-Z4C"/>
-                                        <exclude reference="nLy-O5-4mZ"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="onStartDiscoveryClick:" destination="xZ5-lJ-evK" eventType="touchUpInside" id="Nae-Bs-sCR"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FB3-1A-MIL">
-                                <rect key="frame" x="273" y="491" width="31" height="15"/>
+                                <rect key="frame" x="717" y="948" width="31" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MsD-r0-biA">
-                                <rect key="frame" x="166" y="333" width="138" height="150"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="10"/>
-                                <state key="normal" title="About" backgroundImage="main_aboutButton"/>
-                                <connections>
-                                    <action selector="onAboutClick:" destination="xZ5-lJ-evK" eventType="touchUpInside" id="fFk-Uy-CAQ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J6F-2K-U83">
-                                <rect key="frame" x="10" y="333" width="150" height="150"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="10"/>
-                                <state key="normal" title="Create apps" backgroundImage="main_createAppButton"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="Lpq-di-3l4" secondAttribute="trailing" id="03r-Rw-xAF"/>
-                            <constraint firstItem="stx-cb-VX8" firstAttribute="centerY" secondItem="w1e-M6-EJq" secondAttribute="centerY" id="0yh-0D-jyI"/>
-                            <constraint firstItem="stx-cb-VX8" firstAttribute="centerY" secondItem="w1e-M6-EJq" secondAttribute="centerY" id="39N-c6-SXd"/>
+                            <constraint firstItem="YNc-h0-pV1" firstAttribute="top" relation="greaterThanOrEqual" secondItem="SqI-z5-4aq" secondAttribute="bottom" constant="8" id="1Pj-Gt-cEa"/>
                             <constraint firstItem="RJx-Ny-dZ4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="w1e-M6-EJq" secondAttribute="leading" constant="20" symbolic="YES" id="3Wg-zu-D6Z"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FB3-1A-MIL" secondAttribute="trailing" id="Dkq-oN-P8z"/>
-                            <constraint firstItem="stx-cb-VX8" firstAttribute="centerX" secondItem="w1e-M6-EJq" secondAttribute="centerX" id="DoL-fR-K9H"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MsD-r0-biA" secondAttribute="trailing" constant="16" id="G28-vC-X2L"/>
+                            <constraint firstItem="YNc-h0-pV1" firstAttribute="leading" secondItem="w1e-M6-EJq" secondAttribute="leading" constant="8" id="FgK-CZ-VOL"/>
                             <constraint firstItem="Lpq-di-3l4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="w1e-M6-EJq" secondAttribute="leading" constant="20" symbolic="YES" id="H9V-jw-guW"/>
                             <constraint firstItem="Lpq-di-3l4" firstAttribute="top" secondItem="RJx-Ny-dZ4" secondAttribute="bottom" constant="8" id="Ltw-jz-kd8"/>
-                            <constraint firstItem="J6F-2K-U83" firstAttribute="centerX" secondItem="w1e-M6-EJq" secondAttribute="centerX" constant="-75" id="O3P-Rl-JMu"/>
-                            <constraint firstItem="FB3-1A-MIL" firstAttribute="top" secondItem="MsD-r0-biA" secondAttribute="bottom" constant="8" id="Xjt-zI-V8I"/>
+                            <constraint firstItem="YNc-h0-pV1" firstAttribute="height" secondItem="w1e-M6-EJq" secondAttribute="height" multiplier="0.7" id="Mbx-pz-UHl"/>
+                            <constraint firstAttribute="trailing" secondItem="YNc-h0-pV1" secondAttribute="trailing" constant="8" id="OfS-MY-nmn"/>
                             <constraint firstItem="Lpq-di-3l4" firstAttribute="leading" secondItem="w1e-M6-EJq" secondAttribute="leadingMargin" constant="339" id="awJ-Mx-ky8"/>
                             <constraint firstItem="uMq-Vh-vtf" firstAttribute="top" secondItem="Lpq-di-3l4" secondAttribute="bottom" constant="8" id="egM-UG-8wF"/>
                             <constraint firstItem="RJx-Ny-dZ4" firstAttribute="top" secondItem="FB3-1A-MIL" secondAttribute="bottom" constant="2" id="hHL-Os-v98"/>
-                            <constraint firstItem="J6F-2K-U83" firstAttribute="centerY" secondItem="MsD-r0-biA" secondAttribute="centerY" id="iPP-dI-clW"/>
+                            <constraint firstItem="YNc-h0-pV1" firstAttribute="centerY" secondItem="w1e-M6-EJq" secondAttribute="centerY" id="iNj-3L-ewM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RJx-Ny-dZ4" secondAttribute="trailing" id="jUH-sj-OmB"/>
                             <constraint firstItem="FB3-1A-MIL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="w1e-M6-EJq" secondAttribute="leading" constant="20" symbolic="YES" id="mxu-cg-qjI"/>
-                            <constraint firstItem="MsD-r0-biA" firstAttribute="top" secondItem="stx-cb-VX8" secondAttribute="bottom" constant="16" id="tLu-8T-uhD"/>
-                            <constraint firstItem="MsD-r0-biA" firstAttribute="centerX" secondItem="stx-cb-VX8" secondAttribute="centerX" constant="75" id="u3d-07-swM"/>
+                            <constraint firstItem="FB3-1A-MIL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="YNc-h0-pV1" secondAttribute="bottom" constant="8" id="yGd-mf-6FR"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="39N-c6-SXd"/>
                                 <exclude reference="awJ-Mx-ky8"/>
-                                <exclude reference="Xjt-zI-V8I"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="constraints">
-                                <exclude reference="0yh-0D-jyI"/>
-                                <include reference="Xjt-zI-V8I"/>
                             </mask>
                         </variation>
                     </view>
@@ -140,12 +136,13 @@ All rights reserved.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rxd-Rr-H8O" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1615" y="506"/>
+            <point key="canvasLocation" x="1613.5999999999999" y="505.99700149925042"/>
         </scene>
     </scenes>
     <resources>
-        <image name="main_aboutButton" width="150" height="150"/>
-        <image name="main_createAppButton" width="150" height="150"/>
-        <image name="main_searchButton" width="200" height="200"/>
+        <image name="main_aboutButton" width="150" height="180"/>
+        <image name="main_createAppButton" width="150" height="180"/>
+        <image name="main_searchButton" width="170" height="220"/>
+        <image name="main_toolboxButton" width="150" height="180"/>
     </resources>
 </document>

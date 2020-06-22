@@ -25,15 +25,9 @@
 + (id<MQTTPersistence>)persistence:(NSDictionary *)parameters;
 + (NSArray *)clientCerts:(NSDictionary *)parameters;
 + (MQTTSSLSecurityPolicy *)securityPolicy:(NSDictionary *)parameters;
-+ (NSDictionary *)broker;
-+ (NSDictionary *)allBrokers;
 
-<<<<<<< HEAD
-@property (strong, nonatomic) MQTTSession *session;
-=======
 @property (strong, nonatomic) NSMutableDictionary *brokers;
 @property (strong, nonatomic) MCMQTTSession *session;
->>>>>>> rename mqttSession to avoid conlision with aws iot
 
 @property (nonatomic) int event;
 @property (strong, nonatomic) NSError *error;

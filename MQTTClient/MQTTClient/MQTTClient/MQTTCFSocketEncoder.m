@@ -10,7 +10,6 @@
 #import "MQTTLog.h"
 
 @interface MQTTCFSocketEncoder()
-
 @property (strong, nonatomic) NSMutableData *buffer;
 
 @end
@@ -21,7 +20,11 @@
     self = [super init];
     self.state = MQTTCFSocketEncoderStateInitializing;
     self.buffer = [[NSMutableData alloc] init];
+    
     self.stream = nil;
+    self.runLoop = [NSRunLoop currentRunLoop];
+    self.runLoopMode = NSRunLoopCommonModes;
+    
     return self;
 }
 
@@ -31,11 +34,13 @@
 
 - (void)open {
     (self.stream).delegate = self;
+    [self.stream scheduleInRunLoop:self.runLoop forMode:self.runLoopMode];
     [self.stream open];
 }
 
 - (void)close {
     [self.stream close];
+    [self.stream removeFromRunLoop:self.runLoop forMode:self.runLoopMode];
     [self.stream setDelegate:nil];
 }
 
@@ -44,13 +49,16 @@
     _state = state;
 }
 
-- (void)stream:(NSStream *)sender handleEvent:(NSStreamEvent)eventCode {
+- (void)stream:(NSStream*)sender handleEvent:(NSStreamEvent)eventCode {
+    
     if (eventCode & NSStreamEventOpenCompleted) {
         DDLogVerbose(@"[MQTTCFSocketEncoder] NSStreamEventOpenCompleted");
+
     }
     if (eventCode & NSStreamEventHasBytesAvailable) {
         DDLogVerbose(@"[MQTTCFSocketEncoder] NSStreamEventHasBytesAvailable");
     }
+    
     if (eventCode & NSStreamEventHasSpaceAvailable) {
         DDLogVerbose(@"[MQTTCFSocketEncoder] NSStreamEventHasSpaceAvailable");
         if (self.state == MQTTCFSocketEncoderStateInitializing) {
@@ -64,13 +72,15 @@
             }
         }
     }
-    if (eventCode & NSStreamEventEndEncountered) {
+    
+    if (eventCode &  NSStreamEventEndEncountered) {
         DDLogVerbose(@"[MQTTCFSocketEncoder] NSStreamEventEndEncountered");
         self.state = MQTTCFSocketEncoderStateInitializing;
         self.error = nil;
         [self.delegate encoderdidClose:self];
     }
-    if (eventCode & NSStreamEventErrorOccurred) {
+    
+    if (eventCode &  NSStreamEventErrorOccurred) {
         DDLogVerbose(@"[MQTTCFSocketEncoder] NSStreamEventErrorOccurred");
         self.state = MQTTCFSocketEncoderStateError;
         self.error = self.stream.streamError;
@@ -82,7 +92,7 @@
     @synchronized(self) {
         if (self.state != MQTTCFSocketEncoderStateReady) {
             DDLogInfo(@"[MQTTCFSocketEncoder] not MQTTCFSocketEncoderStateReady");
-            return NO;
+            return FALSE;
         }
         
         if (data) {
@@ -100,7 +110,7 @@
                 DDLogVerbose(@"[MQTTCFSocketEncoder] streamError: %@", self.error);
                 self.state = MQTTCFSocketEncoderStateError;
                 self.error = self.stream.streamError;
-                return NO;
+                return FALSE;
             } else {
                 if (n < self.buffer.length) {
                     DDLogVerbose(@"[MQTTCFSocketEncoder] buffer partially written: %ld", (long)n);
@@ -108,7 +118,7 @@
                 [self.buffer replaceBytesInRange:NSMakeRange(0, n) withBytes:NULL length:0];
             }
         }
-        return YES;
+        return TRUE;
     }
 }
 

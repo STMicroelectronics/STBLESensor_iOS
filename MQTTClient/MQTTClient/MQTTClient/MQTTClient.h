@@ -18,20 +18,9 @@
 #import <MQTTClient/MCMQTTSession.h>
 #import <MQTTClient/MCMQTTSessionLegacy.h>
 #import <MQTTClient/MCMQTTSessionSynchron.h>
-#import <MQTTClient/MCMQTTProperties.h>
+#import <MQTTClient/MQTTProperties.h>
 #import <MQTTClient/MCMQTTMessage.h>
-#import <MQTTClient/MCMQTTTransport.h>
-#import <MQTTClient/MQTTCFSocketTransport.h>
+#import <MQTTClient/MQTTTransport.h>
+#import <MQTTClient/MCMQTTCFSocketTransport.h>
 #import <MQTTClient/MQTTCoreDataPersistence.h>
 #import <MQTTClient/MQTTSSLSecurityPolicyTransport.h>
-
-#if __has_include(<MQTTClient/MQTTSessionManager.h>)
-#import <MQTTClient/MQTTSessionManager.h>
-#endif
-
-//! Project version number for MQTTClient.
-FOUNDATION_EXPORT double MQTTClientVersionNumber;
-
-//! Project version string for MQTTClient&lt;.
-FOUNDATION_EXPORT const unsigned char MQTTClientVersionString[];
-

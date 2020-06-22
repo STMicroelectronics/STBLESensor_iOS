@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F6D08FA31E535B6800CD2566"
-               BuildableName = "MQTTClient.framework"
-               BlueprintName = "MQTTClientmacOS"
+               BuildableName = "MQTTFramework.framework"
+               BlueprintName = "MQTTMac"
                ReferencedContainer = "container:MQTTClient.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -31,8 +31,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F6D08FA31E535B6800CD2566"
-            BuildableName = "MQTTClient.framework"
-            BlueprintName = "MQTTClientmacOS"
+            BuildableName = "MQTTFramework.framework"
+            BlueprintName = "MQTTMac"
             ReferencedContainer = "container:MQTTClient.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -42,8 +42,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "840716311BBEF13A00FBB3CB"
-               BuildableName = "MQTTClientmacOSTests.xctest"
-               BlueprintName = "MQTTClientmacOSTests"
+               BuildableName = "MQTTClientOSXTests.xctest"
+               BlueprintName = "MQTTClientOSXTests"
                ReferencedContainer = "container:MQTTClient.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -63,8 +63,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F6D08FA31E535B6800CD2566"
-            BuildableName = "MQTTClient.framework"
-            BlueprintName = "MQTTClientmacOS"
+            BuildableName = "MQTTFramework.framework"
+            BlueprintName = "MQTTMac"
             ReferencedContainer = "container:MQTTClient.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -79,8 +79,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F6D08FA31E535B6800CD2566"
-            BuildableName = "MQTTClient.framework"
-            BlueprintName = "MQTTClientmacOS"
+            BuildableName = "MQTTFramework.framework"
+            BlueprintName = "MQTTMac"
             ReferencedContainer = "container:MQTTClient.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

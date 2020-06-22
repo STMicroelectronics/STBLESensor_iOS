@@ -11,7 +11,8 @@ import Foundation
 public class BlueMSSubSampligFeatureDelegate :NSObject, BlueSTSDKFeatureDelegate{
     
     public static let DEFAULT_MIN_UPDATE_INTERVAL_S = TimeInterval(5.0)
-    
+    private let mSerialQueue = DispatchQueue(label: "BlueMSSubSampligFeatureDelegateSerializer")
+
     private let mMinUpdateInterval : TimeInterval;
     private var mLastFeatureUpdate = Dictionary<String,Date>()
   
@@ -24,14 +25,16 @@ public class BlueMSSubSampligFeatureDelegate :NSObject, BlueSTSDKFeatureDelegate
         let featureName = feature.name
         if(featureNeedsUpdate(featureName,updateTime: sample.notificaitonTime)){
             featureHasNewUpdate(feature, sample: sample)
-            mLastFeatureUpdate[featureName]=sample.notificaitonTime
+            mSerialQueue.sync {
+                mLastFeatureUpdate[featureName]=sample.notificaitonTime
+            }
         }
     }
     
     public func featureHasNewUpdate(_ feature: BlueSTSDKFeature, sample: BlueSTSDKFeatureSample){}
     
     private func featureNeedsUpdate(_ featureName:String, updateTime:Date) -> Bool{
-        let lastUpdate = mLastFeatureUpdate[featureName];
+        let lastUpdate = mSerialQueue.sync { mLastFeatureUpdate[featureName] }
         if(lastUpdate == nil){
             return true
         }

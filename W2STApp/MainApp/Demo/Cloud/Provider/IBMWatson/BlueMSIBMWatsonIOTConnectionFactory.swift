@@ -36,7 +36,7 @@
  */
 
 import Foundation
-import MQTTClient
+import MQTTFramework
 
 public class BlueMSIBMWatsonIOTConnectionFactory : BlueMSCloudIotConnectionFactory{
       

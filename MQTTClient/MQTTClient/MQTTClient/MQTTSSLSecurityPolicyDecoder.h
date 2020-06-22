@@ -10,7 +10,6 @@
 #import "MQTTCFSocketDecoder.h"
 
 @interface MQTTSSLSecurityPolicyDecoder : MQTTCFSocketDecoder
-
 @property(strong, nonatomic) MQTTSSLSecurityPolicy *securityPolicy;
 @property(strong, nonatomic) NSString *securityDomain;
 

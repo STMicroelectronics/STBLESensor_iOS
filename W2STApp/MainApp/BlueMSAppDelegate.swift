@@ -35,22 +35,26 @@
  * OF SUCH DAMAGE.
  */
 
+
 import Foundation
+import CoreData
 import STTheme
 
 
 @UIApplicationMain
-public class BlueMSAppDelegate : UIResponder,UIApplicationDelegate{
+public class BlueMSAppDelegate : UIResponder,UIApplicationDelegate {
     public var window:UIWindow?
+        
     
     public func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool{
-
         configureApperance()
         return true
     }
     
     private func configureApperance(){
         ThemeService.shared.applyToAllViewType()
+     /*  UIImageView.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).tintColor=ThemeService.shared.currentTheme.color.secondary.light    }
+    */
     }
 }
 

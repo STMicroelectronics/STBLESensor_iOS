@@ -12,7 +12,6 @@
 
 - (instancetype)initWithRetryInterval:(NSTimeInterval)retryInterval
                      maxRetryInterval:(NSTimeInterval)maxRetryInterval
-                                queue:(dispatch_queue_t)queue
                        reconnectBlock:(void (^)(void))block;
 - (void)schedule;
 - (void)stop;

@@ -1,9 +1,15 @@
 
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "08i-8G-hnP"; */
+"08i-8G-hnP.title" = "Item";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "1ZP-Ep-RrO"; */
+"1ZP-Ep-RrO.title" = "Item";
+
 /* Class = "UITabBarItem"; title = "Item"; ObjectID = "2Av-uB-Odx"; */
 "2Av-uB-Odx.title" = "Item";
 
-/* Class = "UITabBarItem"; title = "Sensor Fusion"; ObjectID = "2dL-AI-Bem"; */
-"2dL-AI-Bem.title" = "Sensor Fusion";
+/* Class = "UITabBarItem"; title = "Mems Sensor Fusion"; ObjectID = "2dL-AI-Bem"; */
+"2dL-AI-Bem.title" = "Mems Sensor Fusion";
 
 /* Class = "UIViewController"; title = "Proximity Gesture Recognition"; ObjectID = "3cg-CN-zER"; */
 "3cg-CN-zER.title" = "Proximity Gesture Recognition";
@@ -14,14 +20,26 @@
 /* Class = "UILabel"; text = "Click the image to change the status"; ObjectID = "8BZ-K8-BPi"; */
 "8BZ-K8-BPi.text" = "Click the image to change the status";
 
-/* Class = "UITabBarItem"; title = "proximity Gesture"; ObjectID = "DjI-qa-Hi8"; */
-"DjI-qa-Hi8.title" = "proximity Gesture";
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "BjG-tg-Rmk"; */
+"BjG-tg-Rmk.title" = "Item";
+
+/* Class = "UITabBarItem"; title = "Proximity Gesture"; ObjectID = "DjI-qa-Hi8"; */
+"DjI-qa-Hi8.title" = "Proximity Gesture";
 
 /* Class = "UILabel"; text = "Not Present"; ObjectID = "Dll-rb-rMC"; */
 "Dll-rb-rMC.text" = "Not Present";
 
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "EsP-tv-vqN"; */
+"EsP-tv-vqN.title" = "Item";
+
 /* Class = "UIViewController"; title = "Switch"; ObjectID = "FBo-WD-Swi"; */
 "FBo-WD-Swi.title" = "Switch";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "Fqm-LK-Vxp"; */
+"Fqm-LK-Vxp.title" = "Item";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "Hmy-LU-AQ1"; */
+"Hmy-LU-AQ1.title" = "Item";
 
 /* Class = "UILabel"; text = "The intensity is proportional to the movement"; ObjectID = "Iiw-cn-GIS"; */
 "Iiw-cn-GIS.text" = "The intensity is proportional to the movement";
@@ -35,44 +53,65 @@
 /* Class = "UITabBarItem"; title = "Item"; ObjectID = "N16-Zu-Dxm"; */
 "N16-Zu-Dxm.title" = "Item";
 
-/* Class = "UITabBarItem"; title = "Item"; ObjectID = "Soa-ed-Oak"; */
-"Soa-ed-Oak.title" = "Item";
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "Pk7-UZ-2sW"; */
+"Pk7-UZ-2sW.title" = "Item";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "TKM-2h-EVd"; */
-"TKM-2h-EVd.text" = "Label";
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "Qwj-86-Dmi"; */
+"Qwj-86-Dmi.title" = "Item";
+
+/* Class = "UITabBarItem"; title = "CO Sensor"; ObjectID = "SRj-gA-yKK"; */
+"SRj-gA-yKK.title" = "CO Sensor";
+
+/* Class = "UITabBarItem"; title = "SpeechToText"; ObjectID = "Soa-ed-Oak"; */
+"Soa-ed-Oak.title" = "SpeechToText";
 
 /* Class = "UITabBarItem"; title = "Heart Rate"; ObjectID = "YMl-bf-FpL"; */
 "YMl-bf-FpL.title" = "Heart Rate";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "YVN-c2-EqU"; */
-"YVN-c2-EqU.text" = "Label";
-
-/* Class = "UIViewController"; title = "Enviromental Sensors"; ObjectID = "Ype-N3-ske"; */
-"Ype-N3-ske.title" = "Enviromental Sensors";
+/* Class = "UIViewController"; title = "Environmental Sensors"; ObjectID = "Ype-N3-ske"; */
+"Ype-N3-ske.title" = "Environmental Sensors";
 
 /* Class = "UIViewController"; title = "Heart Rate"; ObjectID = "a8A-yM-bqk"; */
 "a8A-yM-bqk.title" = "Heart Rate";
 
-/* Class = "UITabBarItem"; title = "Enviromental"; ObjectID = "avo-a1-L8K"; */
-"avo-a1-L8K.title" = "Enviromental";
+/* Class = "UITabBarItem"; title = "Environmental"; ObjectID = "avo-a1-L8K"; */
+"avo-a1-L8K.title" = "Environmental";
 
-/* Class = "UITabBarItem"; title = "Activity Recognition"; ObjectID = "eeh-FS-Ghs"; */
-"eeh-FS-Ghs.title" = "Activity Recognition";
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "e5d-Cf-R8Y"; */
+"e5d-Cf-R8Y.title" = "Item";
+
+/* Class = "UITabBarItem"; title = "BlueVoice"; ObjectID = "gdn-8Q-ao2"; */
+"gdn-8Q-ao2.title" = "BlueVoice";
 
 /* Class = "UITabBarItem"; title = "Switch"; ObjectID = "gqj-r0-qly"; */
 "gqj-r0-qly.title" = "Switch";
 
+/* Class = "UITabBarItem"; title = "BeamForming"; ObjectID = "hrD-7m-ACl"; */
+"hrD-7m-ACl.title" = "BeamForming";
+
 /* Class = "UITabBarItem"; title = "Item"; ObjectID = "iRd-SH-n3R"; */
 "iRd-SH-n3R.title" = "Item";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "igI-Rg-WbP"; */
+"igI-Rg-WbP.title" = "Item";
 
 /* Class = "UITabBarItem"; title = "Motion Intensity"; ObjectID = "k6G-g2-sbJ"; */
 "k6G-g2-sbJ.title" = "Motion Intensity";
 
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "kHj-bi-I8H"; */
+"kHj-bi-I8H.title" = "Item";
+
 /* Class = "UITabBarItem"; title = "Plot Feature"; ObjectID = "ndf-DW-IKP"; */
 "ndf-DW-IKP.title" = "Plot Feature";
 
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "o1Y-Rd-l0S"; */
+"o1Y-Rd-l0S.title" = "Item";
+
 /* Class = "UIViewController"; title = "Mems Gesture Recognition"; ObjectID = "pkZ-C6-DEL"; */
 "pkZ-C6-DEL.title" = "Mems Gesture Recognition";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "qfN-JI-NJb"; */
+"qfN-JI-NJb.title" = "Item";
 
 /* Class = "UILabel"; text = "Not Present"; ObjectID = "sfs-u8-Npe"; */
 "sfs-u8-Npe.text" = "Not Present";
@@ -82,6 +121,9 @@
 
 /* Class = "UIViewController"; title = "Carry Position"; ObjectID = "xLQ-Gm-dqE"; */
 "xLQ-Gm-dqE.title" = "Carry Position";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "xgU-re-HiU"; */
+"xgU-re-HiU.title" = "Item";
 
 /* Class = "UILabel"; text = "Not Present"; ObjectID = "y48-b9-NGD"; */
 "y48-b9-NGD.text" = "Not Present";

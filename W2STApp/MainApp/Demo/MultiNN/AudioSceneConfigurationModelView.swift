@@ -41,7 +41,7 @@ import BlueSTSDK
 
 class AudioSceneClassificaitonModelView : NSObject{
     
-    var onStateChange:((BlueSTSDKFeatureAudioCalssification.AudioClass)->())?
+    var onStateChange:((UIImage,String)->())?
     var onSetVisibiltiy:((Bool)->())?
     
     func attachListener(feature: BlueSTSDKFeatureAudioCalssification?){
@@ -64,13 +64,41 @@ class AudioSceneClassificaitonModelView : NSObject{
 
 extension AudioSceneClassificaitonModelView : BlueSTSDKFeatureDelegate{
     
-    func didUpdate(_ feature: BlueSTSDKFeature, sample: BlueSTSDKFeatureSample) {
-        let scene = BlueSTSDKFeatureAudioCalssification.getAudioScene(sample)
+    private func showDefaultAudioScene(_ scene:BlueSTSDKFeatureAudioCalssification.AudioClass){
         DispatchQueue.main.async { [weak self] in
-            self?.onStateChange?(scene)
+            self?.onStateChange?(scene.icon,scene.description)
             if(scene != .Unknown){
                 self?.onSetVisibiltiy?(true)
             }
+        }
+    }
+    
+    private static let SCENE_BABY_IS_NOT_CRYING_STR = {
+        return  NSLocalizedString("Baby is not crying",
+                                  tableName: nil,
+                                  bundle: Bundle(for: BlueMSMultiNetworkViewController.self),
+                                  value: "Baby is not crying",
+                                  comment: "Baby is not crying")
+    }();
+    
+    private func showBabyCryingAudioScene(_ scene:BlueSTSDKFeatureAudioCalssification.AudioClass){
+        let sceneImg = scene == .BabyIsCrying ? scene.icon : UIImage(imageLiteralResourceName: "audioScene_babyNotCrying")
+        let sceneDesc = scene == .BabyIsCrying ? scene.description : Self.SCENE_BABY_IS_NOT_CRYING_STR
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.onStateChange?(sceneImg,sceneDesc)
+            self?.onSetVisibiltiy?(true)
+        }
+    }
+    
+    func didUpdate(_ feature: BlueSTSDKFeature, sample: BlueSTSDKFeatureSample) {
+        let scene = BlueSTSDKFeatureAudioCalssification.getAudioScene(sample)
+        let algoId = BlueSTSDKFeatureAudioCalssification.getAlgorythmType(sample)
+        switch algoId {
+        case 1:
+            showBabyCryingAudioScene(scene)
+        default:
+            showDefaultAudioScene(scene)
         }
     }
     

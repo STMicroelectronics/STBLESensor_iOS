@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rVT-e9-N9N">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rVT-e9-N9N">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,6 +16,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rav-Io-I2h" customClass="AdultPresenceMLCView" customModule="ST_BLE_Sensor" customModuleProvider="target">
+                                <rect key="frame" x="8" y="8" width="359" height="602"/>
+                            </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cdf-r9-ZZS" customClass="ActivityRecognitionIGNView" customModule="ST_BLE_Sensor" customModuleProvider="target">
                                 <rect key="frame" x="8" y="8" width="359" height="602"/>
                             </view>
@@ -55,12 +58,13 @@
                         <outlet property="mActivityGMPView" destination="JaF-MH-yNn" id="jEB-Fj-Vbq"/>
                         <outlet property="mActivityIGNView" destination="cdf-r9-ZZS" id="Iuw-oH-Yvz"/>
                         <outlet property="mActivityMLCView" destination="rCc-Gt-olV" id="75b-i3-tAb"/>
+                        <outlet property="mAdultPresenceMLCView" destination="Rav-Io-I2h" id="Dc9-m4-32f"/>
                         <outlet property="mMotionARView" destination="GOl-dp-BdE" id="1OO-Hd-eIN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ord-jh-3JB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12072" y="-12"/>
+            <point key="canvasLocation" x="12071.200000000001" y="-12.143928035982009"/>
         </scene>
     </scenes>
     <resources>

@@ -45,13 +45,15 @@ class ActivityRecognitionMLCView : UIView, BlueMSActivityView{
     @IBOutlet weak var walkingImage: UIImageView!
     @IBOutlet weak var joggingImage: UIImageView!
     @IBOutlet weak var bikingImage: UIImageView!
+    @IBOutlet weak var drivingImage: UIImageView!
     
     lazy var activityToImage: [ActivityType : UIImageView] = {
         return [
             .standing : standingImage,
             .walking : walkingImage,
             .jogging : joggingImage,
-            .biking : bikingImage
+            .biking : bikingImage,
+            .driving : drivingImage
         ]
     }();
         

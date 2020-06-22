@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MCMQTTPersistence.h"
+#import "MQTTPersistence.h"
 
 @interface MQTTInMemoryPersistence : NSObject <MQTTPersistence>
 @end

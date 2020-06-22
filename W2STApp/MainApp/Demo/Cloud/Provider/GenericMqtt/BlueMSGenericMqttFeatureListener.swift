@@ -35,7 +35,7 @@
  * OF SUCH DAMAGE.
  */
 import Foundation
-import MQTTClient
+import MQTTFramework
 
 public class BlueMSGenericMqttFeatureListener : BlueMSSubSampligFeatureDelegate{
     

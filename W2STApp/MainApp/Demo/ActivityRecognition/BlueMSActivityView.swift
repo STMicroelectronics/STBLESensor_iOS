@@ -44,30 +44,31 @@ protocol BlueMSActivityView{
 
     func setVisible()
     func setHidden()
-    
+
 }
 
 private let SELECTED_ALPHA = CGFloat(1.0)
 private let DESELECTED_ALPHA = CGFloat(0.3)
 
 extension BlueMSActivityView{
-    
+
     func deselectAll(){
         activityToImage.values.forEach{ deselect($0)}
     }
-    
+
     func select(type:ActivityType ){
+        print(type)
         if let img = activityToImage[type]{
             select(img)
         }
     }
-    
+
     func deselect(type:ActivityType ){
         if let img = activityToImage[type]{
             deselect(img)
         }
     }
-    
+
     private func select(_ image : UIImageView) {
         image.alpha = SELECTED_ALPHA
     }
@@ -82,7 +83,7 @@ extension UIView{
     func setVisible() {
         isHidden = false
     }
-    
+
     func setHidden() {
         isHidden = true
     }

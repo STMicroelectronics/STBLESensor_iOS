@@ -35,7 +35,7 @@
  * OF SUCH DAMAGE.
  */
 
-import MQTTClient
+import MQTTFramework
 
 public class BlueMSGenericMqttConnectionFactory : BlueMSCloudIotConnectionFactory{
        

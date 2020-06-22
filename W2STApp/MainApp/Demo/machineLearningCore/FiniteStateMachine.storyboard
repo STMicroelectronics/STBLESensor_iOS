@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gon-aT-LFp">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Finite State Machine-->
+        <scene sceneID="p61-uU-TIo">
+            <objects>
+                <viewController id="gon-aT-LFp" customClass="MLCFiniteStateMachineViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Foc-o1-meT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="giv-A1-HqK">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="giv-A1-HqK" firstAttribute="leading" secondItem="g8i-ds-JCM" secondAttribute="leading" id="0MY-bY-w1B"/>
+                            <constraint firstItem="g8i-ds-JCM" firstAttribute="bottom" secondItem="giv-A1-HqK" secondAttribute="bottom" id="evZ-f7-adT"/>
+                            <constraint firstItem="g8i-ds-JCM" firstAttribute="trailing" secondItem="giv-A1-HqK" secondAttribute="trailing" id="mHF-WP-pyY"/>
+                            <constraint firstItem="giv-A1-HqK" firstAttribute="top" secondItem="g8i-ds-JCM" secondAttribute="top" id="syO-3Q-130"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="g8i-ds-JCM"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Finite State Machine" image="ai_demo_icon" id="Z1A-wD-WET"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="giv-A1-HqK" id="ryi-0w-syt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ncs-2Y-ROQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ai_demo_icon" width="32" height="32"/>
+    </resources>
+</document>

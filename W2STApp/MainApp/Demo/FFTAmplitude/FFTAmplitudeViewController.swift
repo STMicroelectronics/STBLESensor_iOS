@@ -51,6 +51,7 @@ class FFTAmplitudeViewController : BlueMSDemoTabViewController{
                                   comment: "Data acquisition ongoing…");
     }()
     
+    @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var detailsDialogPlaceHolder: UIView!
     @IBOutlet weak var chart: LineChartView!
     @IBOutlet weak var loadProgress: UIProgressView!
@@ -67,13 +68,14 @@ class FFTAmplitudeViewController : BlueMSDemoTabViewController{
         chart.chartDescription?.enabled=false
         chart.isMultipleTouchEnabled=false
         chart.noDataText = FFTAmplitudeViewController.DATA_ACQUISITION
-    
+        
         let legend = chart.legend
         legend.drawInside = true
         legend.horizontalAlignment = .right
         legend.verticalAlignment = .top
         legend.orientation = .vertical
         if #available(iOS 13, *){
+            chart.noDataTextColor = UIColor.label
             chart.xAxis.labelTextColor = UIColor.label
             chart.leftAxis.labelTextColor = UIColor.label
             legend.textColor = .label
@@ -108,6 +110,8 @@ class FFTAmplitudeViewController : BlueMSDemoTabViewController{
             feature.add(self)
             _ = feature.enableNotification()
         }
+        
+        settingsButton.isHidden = (node.type == .sensor_Tile_Box)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

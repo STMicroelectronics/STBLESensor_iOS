@@ -91,10 +91,11 @@ class MultiNeuralNetworkViewModel {
     private func enableNotification(){
         mAudioSceneNN?.enableNotification()
         mActivityNN?.enableNotification()
-        
+        mAudioSceneNN?.read()
+        mActivityNN?.read()
     }
     
-    private func disableNotification(){
+    func disableNotification(){
         mAudioSceneNN?.disableNotification()
         mActivityNN?.disableNotification()
         

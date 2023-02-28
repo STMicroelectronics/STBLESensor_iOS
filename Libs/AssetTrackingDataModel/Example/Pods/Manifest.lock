@@ -1,0 +1,16 @@
+PODS:
+  - AssetTrackingDataModel (0.1.0)
+
+DEPENDENCIES:
+  - AssetTrackingDataModel (from `../`)
+
+EXTERNAL SOURCES:
+  AssetTrackingDataModel:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AssetTrackingDataModel: 7963c1d99ce00a037f4dddba777e27ad46a1348d
+
+PODFILE CHECKSUM: bcf7db9ada484c8df2f57837211205c9741ab707
+
+COCOAPODS: 1.9.3

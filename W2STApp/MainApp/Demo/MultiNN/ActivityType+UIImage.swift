@@ -61,8 +61,8 @@ extension BlueSTSDKFeatureActivity.ActivityType{
             return UIImage(imageLiteralResourceName: "adult_in_car")
         case .error:
             return UIImage(imageLiteralResourceName: "motion_algo_unknown")
-        @unknown default:
-            return UIImage(imageLiteralResourceName: "motion_algo_unknown")
+//        @unknown default:
+//            return UIImage(imageLiteralResourceName: "motion_algo_unknown")
         }
     }
 }

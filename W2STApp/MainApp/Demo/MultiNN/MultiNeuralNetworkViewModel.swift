@@ -117,7 +117,7 @@ class MultiNeuralNetworkViewModel {
     
     public func selectAlgorithm( _ algo:AvailableAlgorithm){
         disableNotification()
-        _ = mConsole.enableAlgorithm(algo){
+        mConsole.enableAlgorithm(algo){
             self.currentAlgorithm = algo
             self.enableNotification()
         }

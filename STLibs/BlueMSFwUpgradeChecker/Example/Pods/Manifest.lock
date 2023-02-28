@@ -1,0 +1,16 @@
+PODS:
+  - BlueMSFwUpgradeChecker (0.1.0)
+
+DEPENDENCIES:
+  - BlueMSFwUpgradeChecker (from `../`)
+
+EXTERNAL SOURCES:
+  BlueMSFwUpgradeChecker:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  BlueMSFwUpgradeChecker: 0b8630c73ecb77d481b7ffbf39ecfeefc7585b1a
+
+PODFILE CHECKSUM: dcf0f188fac1f11f0ae530fef208a6cefd43c560
+
+COCOAPODS: 1.10.0

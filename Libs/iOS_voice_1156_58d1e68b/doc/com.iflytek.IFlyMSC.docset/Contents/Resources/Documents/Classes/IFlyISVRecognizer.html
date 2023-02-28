@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>IFlyISVRecognizer Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">IFlyMSC </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">iflytek</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/delegate">delegate</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/sharedInstance">+ sharedInstance</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/cancel">- cancel</option>
+		
+		<option value="//api/name/generatePassword:">- generatePassword:</option>
+		
+		<option value="//api/name/getParameter:">- getParameter:</option>
+		
+		<option value="//api/name/getPasswordList:">- getPasswordList:</option>
+		
+		<option value="//api/name/isListening">- isListening</option>
+		
+		<option value="//api/name/sendRequest:authid:pwdt:ptxt:vid:err:">- sendRequest:authid:pwdt:ptxt:vid:err:</option>
+		
+		<option value="//api/name/setParameter:forKey:">- setParameter:forKey:</option>
+		
+		<option value="//api/name/startListening">- startListening</option>
+		
+		<option value="//api/name/stopListening">- stopListening</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">IFlyISVRecognizer Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>IFlyISVRecognizer.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>声纹接口类</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/delegate" title="delegate"></a>
+	<h3 class="method-title"><code><a href="#//api/name/delegate">&nbsp;&nbsp;delegate</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The delegate of FlyISVRecognizer responsing to <a href="../Protocols/IFlyISVDelegate.html">IFlyISVDelegate</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (assign) id&lt;IFlyISVDelegate&gt; delegate</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">IFlyISVRecognizer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sharedInstance" title="sharedInstance"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sharedInstance">+&nbsp;sharedInstance</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>FlyISVRecognizer is a kind of Singleton calss.The function can be used as below:<br>
+IFLyISVRecognizer *recognizer=[IFlyISVRecognizer creteRecognizer: self];</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)sharedInstance</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">IFlyISVRecognizer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/generatePassword:" title="generatePassword:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/generatePassword:">&ndash;&nbsp;generatePassword:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Genrerate a serial number password<br>
+Princeple:<br>
+1.Number serial has no 1 in itself;<br>
+2.The nuber serial has no same number(&ldquo;98765432"is right while "99876543&rdquo; is wrong)</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *)generatePassword:(int)<em>length</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>length</code></th>
+						<td><p>the serial number&rsquo;s length,length of &ldquo;98765432&rdquo; is 8,generally length is 8 and other value is forbidden</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">IFlyISVRecognizer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getPasswordList:" title="getPasswordList:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getPasswordList:">&ndash;&nbsp;getPasswordList:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Used to get password from server</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSArray *)getPasswordList:(int)<em>pwdt</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>pwdt</code></th>
+						<td><p>when pwdt is 1,the function will return chinese text;while pwdt is 2, the funciton will return number serial</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">IFlyISVRecognizer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isListening" title="isListening"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isListening">&ndash;&nbsp;isListening</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Used to judge if the engine is running in listenning</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)isListening</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>YES: the engine is listenning;<br>No : the engine is not listenning</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">IFlyISVRecognizer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sendRequest:authid:pwdt:ptxt:vid:err:" title="sendRequest:authid:pwdt:ptxt:vid:err:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sendRequest:authid:pwdt:ptxt:vid:err:">&ndash;&nbsp;sendRequest:authid:pwdt:ptxt:vid:err:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Used to query or delete the voiceprint model in server</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)sendRequest:(NSString *)<em>cmd</em> authid:(NSString *)<em>auth_id</em> pwdt:(int)<em>pwdt</em> ptxt:(NSString *)<em>ptxt</em> vid:(NSString *)<em>vid</em> err:(int *)<em>err</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>cmd</code></th>
+						<td><p>&ldquo;del&rdquo;: delete model;<br>&ldquo;que&rdquo;: query model;</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>pwdt</code></th>
+						<td><p>voiceprint type<br>
+1: fixed txt voiceprint code ,like @&ldquo;我的地盘我做主&rdquo;;<br>
+2: free voiceprint code , user can speek anything,but 5 times trainning the speech shall be same;<br>
+3: number serial voiceprint code ,like @&ldquo;98765432&rdquo; and so on.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>ptxt</code></th>
+						<td><p>voiceprint txt,only fixed voiceprint and number serial have this,in free voiceprint model this param shall be set nil.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>vid</code></th>
+						<td><p>another voiceprint type model,user can use this to query or delete model in server can be @&ldquo;jakillasdfasdjjjlajlsdfhdfdsadff&rdquo;,totally 32 bits;<br>
+NOTES:<br>
+when vid is not nil,then the server will judge the vid first; while the vid is nil, server can still query or delete the voiceprint model by other params.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>authid:</code></th>
+						<td><p>user id ,can be @&ldquo;tianxia&rdquo; or other;</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">IFlyISVRecognizer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setParameter:forKey:" title="setParameter:forKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setParameter:forKey:">&ndash;&nbsp;setParameter:forKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Set the voiceprint params</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)setParameter:(NSString *)<em>value</em> forKey:(NSString *)<em>key</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>value</code></th>
+						<td><p>参数值</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>key</code></th>
+						<td><p>参数类型</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>设置成功返回YES，失败返回NO</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<table>
+<thead>
+<tr>
+<th align="center"> key             </th>
+<th align="center"> value                                             </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"> sst             </td>
+<td align="center"> @&ldquo;train&rdquo; or @&ldquo;verify&rdquo;                             </td>
+</tr>
+<tr>
+<td align="center"> auth_id         </td>
+<td align="center"> @&ldquo;tianxia&rdquo; or other                               </td>
+</tr>
+<tr>
+<td align="center"> sub             </td>
+<td align="center"> @&ldquo;ivp&rdquo;                                            </td>
+</tr>
+<tr>
+<td align="center"> ptxt            </td>
+<td align="center">                                                   </td>
+</tr>
+<tr>
+<td align="center"> rgn             </td>
+<td align="center"> @&ldquo;5&rdquo;                                              </td>
+</tr>
+<tr>
+<td align="center"> pwdt            </td>
+<td align="center"> @&ldquo;1&rdquo;,or @&ldquo;2&rdquo;, or @&ldquo;3&rdquo;                             </td>
+</tr>
+<tr>
+<td align="center"> auf             </td>
+<td align="center"> @&ldquo;audio/L16;rate=16000&rdquo; or @&ldquo;audio/L16;rate=8000&rdquo; </td>
+</tr>
+<tr>
+<td align="center"> vad_enable      </td>
+<td align="center"> @&ldquo;1&rdquo; or @&ldquo;0&rdquo;                                      </td>
+</tr>
+<tr>
+<td align="center"> vad_timeout     </td>
+<td align="center"> @&ldquo;3000&rdquo;                                           </td>
+</tr>
+<tr>
+<td align="center"> vad_speech_tail </td>
+<td align="center"> @&ldquo;100&rdquo;                                            </td>
+</tr>
+</tbody>
+</table>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">IFlyISVRecognizer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getParameter:" title="getParameter:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getParameter:">&ndash;&nbsp;getParameter:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get the voiceprint params used the same as function of setParameter</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *)getParameter:(NSString *)<em>key</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">IFlyISVRecognizer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/startListening" title="startListening"></a>
+	<h3 class="method-title"><code><a href="#//api/name/startListening">&ndash;&nbsp;startListening</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Start recording</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)startListening</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">IFlyISVRecognizer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/stopListening" title="stopListening"></a>
+	<h3 class="method-title"><code><a href="#//api/name/stopListening">&ndash;&nbsp;stopListening</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Stop recording</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)stopListening</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">IFlyISVRecognizer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/cancel" title="cancel"></a>
+	<h3 class="method-title"><code><a href="#//api/name/cancel">&ndash;&nbsp;cancel</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Cancel recording,like function <a href="#//api/name/stopListening">stopListening</a></p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)cancel</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">IFlyISVRecognizer.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2017 iflytek. All rights reserved. Updated: 2017-03-02</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

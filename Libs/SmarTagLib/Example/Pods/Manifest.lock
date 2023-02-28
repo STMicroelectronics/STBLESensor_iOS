@@ -1,0 +1,16 @@
+PODS:
+  - SmarTagLib (0.1.0)
+
+DEPENDENCIES:
+  - SmarTagLib (from `../`)
+
+EXTERNAL SOURCES:
+  SmarTagLib:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SmarTagLib: 73d45d58e489e214d5c32088f44bdc0770dc6a53
+
+PODFILE CHECKSUM: c6a8e9108d074b13ce1c3d715c7a8e9931989369
+
+COCOAPODS: 1.9.3

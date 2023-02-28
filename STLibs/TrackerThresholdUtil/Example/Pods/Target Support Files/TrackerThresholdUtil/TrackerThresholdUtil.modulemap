@@ -1,0 +1,6 @@
+framework module TrackerThresholdUtil {
+  umbrella header "TrackerThresholdUtil-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -53,8 +53,8 @@ public class W2STCloudConfigViewController : UIViewController,BlueSTSDKDemoViewP
             .replacingOccurrences(of: "@", with: "_")
     }
     
-    public var node:BlueSTSDKNode!;
-    public var minUpdateInterval:TimeInterval!;
+    public var node:BlueSTSDKNode!
+    public var minUpdateInterval:TimeInterval!
     
 
     ///hide the keyboard when the user touch something outside the UITextField
@@ -62,21 +62,26 @@ public class W2STCloudConfigViewController : UIViewController,BlueSTSDKDemoViewP
         event?.allTouches?.forEach{ touch in
             if touch.view?.isKind(of: UITextField.self) ?? false{
                 self.view.endEditing(true)
-            }//if
-        }//for each
+            }
+        }
+        
         super.touchesBegan(touches, with: event)
     }
     
     
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? BlueMSCloudConnectionViewController {
-            destination.node = node
-            destination.minUpdateInterval = minUpdateInterval
-            destination.connectionFactoryBuilder = self
+            setupController(destination)
         }
     }
     
     public func buildConnectionFactory() -> BlueMSCloudIotConnectionFactory? {
         fatalError("Implement this method in a subClass")
+    }
+    
+    public func setupController(_ controller: BlueMSCloudConnectionViewController) {
+        controller.node = node
+        controller.minUpdateInterval = minUpdateInterval
+        controller.connectionFactoryBuilder = self
     }
 }

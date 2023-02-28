@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>IFlyVoiceWakeuperDelegate Protocol Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">IFlyMSC </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">iflytek</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/onBeginOfSpeech">- onBeginOfSpeech</option>
+		
+		<option value="//api/name/onEndOfSpeech">- onEndOfSpeech</option>
+		
+		<option value="//api/name/onError:">- onError:</option>
+		
+		<option value="//api/name/onEvent:isLast:arg1:data:">- onEvent:isLast:arg1:data:</option>
+		
+		<option value="//api/name/onResult:">- onResult:</option>
+		
+		<option value="//api/name/onVolumeChanged:">- onVolumeChanged:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">IFlyVoiceWakeuperDelegate Protocol Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Conforms to</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>IFlyVoiceWakeuperDelegate.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<ul>
+<li><p>代理返回时序描述</p>
+
+<p>onError 为唤醒会话错误反馈<br>
+<a href="#//api/name/onBeginOfSpeech">onBeginOfSpeech</a> 表示录音开始<br>
+onVolumeChanged 录音音量大小<br>
+<a href="#//api/name/onEndOfSpeech">onEndOfSpeech</a> 录音结束，当服务终止时返回onEndOfSpeech<br>
+onResult 服务结果反馈，内容定义如下</p></li>
+<li><p>唤醒服务</p>
+
+<p> 例：<br>
+ focus_type = wake   唤醒会话<br>
+ wakeup_result_id = 0    唤醒词位置<br>
+ wakeup_result_Score = 60    唤醒词可信度<br></p></li>
+<li><p>注册服务</p>
+
+<p> 例：<br>
+ focus_type = enroll 注册会话<br>
+ enroll_success_num = 1  当前注册成功次数<br>
+ current_enroll_status = success/failed  当前会话是否成功<br>
+ wakeup_result_Score = 60    注册结果可信度<br>
+ threshold = 10  当注册达到3次后，反馈对应资源的阀值</p></li>
+</ul>
+
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/onBeginOfSpeech" title="onBeginOfSpeech"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onBeginOfSpeech">&ndash;&nbsp;onBeginOfSpeech</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>录音开始</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onBeginOfSpeech</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">IFlyVoiceWakeuperDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/onEndOfSpeech" title="onEndOfSpeech"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onEndOfSpeech">&ndash;&nbsp;onEndOfSpeech</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>录音结束</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onEndOfSpeech</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">IFlyVoiceWakeuperDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/onError:" title="onError:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onError:">&ndash;&nbsp;onError:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>会话错误</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onError:(IFlySpeechError *)<em>error</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>errorCode</code></th>
+						<td><p>错误描述类，</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">IFlyVoiceWakeuperDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/onResult:" title="onResult:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onResult:">&ndash;&nbsp;onResult:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>唤醒结果</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onResult:(NSMutableDictionary *)<em>resultDic</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>resultDic</code></th>
+						<td><p>唤醒结果字典</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">IFlyVoiceWakeuperDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/onVolumeChanged:" title="onVolumeChanged:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onVolumeChanged:">&ndash;&nbsp;onVolumeChanged:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>音量反馈，返回频率与录音数据返回回调频率一致</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onVolumeChanged:(int)<em>volume</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>volume</code></th>
+						<td><p>音量值</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">IFlyVoiceWakeuperDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/onEvent:isLast:arg1:data:" title="onEvent:isLast:arg1:data:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onEvent:isLast:arg1:data:">&ndash;&nbsp;onEvent:isLast:arg1:data:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<ul>
+<li>扩展事件回调<br></li>
+<li>根据事件类型返回额外的数据
+*</li>
+</ul>
+
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)onEvent:(int)<em>eventType</em> isLast:(BOOL)<em>isLast</em> arg1:(int)<em>arg1</em> data:(NSMutableDictionary *)<em>eventData</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>eventType</code></th>
+						<td><p>事件类型，具体参见IFlySpeechEvent枚举。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">IFlyVoiceWakeuperDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2017 iflytek. All rights reserved. Updated: 2017-03-02</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

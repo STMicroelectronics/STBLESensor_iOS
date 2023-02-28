@@ -161,7 +161,7 @@ didRegisterReadResult:(BlueSTSDKCommand *)cmd error:(NSInteger)error{
 
 
 -(void)moveToRegisterSettingsViewController{
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"WeSUSettings" bundle:nil];
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"WeSUSettings" bundle:[NSBundle bundleForClass:[self class]]];
     
     STWeSUSettingsTableViewController *settingsControlView = [storyBoard instantiateInitialViewController];
     

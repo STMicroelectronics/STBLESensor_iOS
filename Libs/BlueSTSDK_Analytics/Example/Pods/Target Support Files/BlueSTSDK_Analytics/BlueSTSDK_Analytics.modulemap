@@ -1,0 +1,6 @@
+framework module BlueSTSDK_Analytics {
+  umbrella header "BlueSTSDK_Analytics-umbrella.h"
+
+  export *
+  module * { export * }
+}

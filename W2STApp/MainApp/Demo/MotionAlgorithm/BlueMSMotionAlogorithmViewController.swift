@@ -46,9 +46,30 @@ class BlueMSMotionAlgorithmViewController:
     private var mMotionAlgoFeature:BlueSTSDKFeatureMotionAlogrithm?;
     private var mCurrentAlgo:BlueSTSDKFeatureMotionAlogrithm.Algorithm = .poseEstimation
     
+    private var featureWasEnabled = false
+    
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        startNotification()
+    }
+
+    public override func viewDidLoad() {
+        super.viewDidLoad();
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground),
+                                               name: UIApplication.didEnterBackgroundNotification,
+                                               object: nil)
+                
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActivity),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated);
+        stopNotification()
+    }
+    
+    public func startNotification(){
         mMotionAlgoFeature = self.node.getFeatureOfType(BlueSTSDKFeatureMotionAlogrithm.self) as? BlueSTSDKFeatureMotionAlogrithm
         if let feature = mMotionAlgoFeature{
             feature.add(self)
@@ -56,13 +77,28 @@ class BlueMSMotionAlgorithmViewController:
             feature.enableAlgorithm(mCurrentAlgo)
         }
     }
-    
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated);
-        
+
+    public func stopNotification(){
         if let feature = mMotionAlgoFeature{
             feature.remove(self)
             feature.disableNotification()
+        }
+    }
+
+
+    @objc func didEnterForeground() {
+        mMotionAlgoFeature = self.node.getFeatureOfType(BlueSTSDKFeatureMotionAlogrithm.self) as? BlueSTSDKFeatureMotionAlogrithm
+        if !(mMotionAlgoFeature==nil) && node.isEnableNotification(mMotionAlgoFeature!) {
+            featureWasEnabled = true
+            stopNotification()
+        }else {
+            featureWasEnabled = false;
+        }
+    }
+        
+    @objc func didBecomeActivity() {
+        if(featureWasEnabled) {
+            startNotification()
         }
     }
     

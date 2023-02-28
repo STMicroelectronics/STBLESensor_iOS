@@ -51,6 +51,10 @@ extension BlueSTSDKFeatureAudioCalssification.AudioClass{
             return UIImage(imageLiteralResourceName: "audioScene_babyCrying")
         case .Unknown:
             return UIImage(imageLiteralResourceName: "motion_algo_unknown")
+        case .ON:
+            return UIImage(imageLiteralResourceName: "motion_algo_unknown")
+        case .OFF:
+            return UIImage(imageLiteralResourceName: "motion_algo_unknown")
         }
     }
 }

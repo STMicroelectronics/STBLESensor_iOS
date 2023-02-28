@@ -59,8 +59,12 @@ public class BlueMSSwitchViewController: BlueMSDemoTabViewController,BlueSTSDKFe
     @IBOutlet weak var mLedDescription: UILabel!
 
     private var mFeature:BlueSTSDKFeatureSwitch?;
-    private static let STATUS_ON_IMG = #imageLiteral(resourceName: "led_on")
-    private static let STATUS_OFF_IMG = #imageLiteral(resourceName: "led_off")
+    //private static let STATUS_ON_IMG = #imageLiteral(resourceName: "led_on")
+    //private static let STATUS_OFF_IMG = #imageLiteral(resourceName: "led_off")
+    private static let STATUS_ON_IMG = UIImage(named: "led_on", in: Bundle(for: BlueMSSwitchViewController.self), compatibleWith: nil) ?? .none
+    private static let STATUS_OFF_IMG = UIImage(named: "led_off", in: Bundle(for: BlueMSSwitchViewController.self), compatibleWith: nil) ?? .none
+    
+    private var featureWasEnabled = false
 
     private func enableOnImageClickEvent(){
         let singleTapDetector = UITapGestureRecognizer(target: self,
@@ -72,6 +76,13 @@ public class BlueMSSwitchViewController: BlueMSDemoTabViewController,BlueSTSDKFe
 
     public override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground),
+                                               name: UIApplication.didEnterBackgroundNotification,
+                                               object: nil)
+                
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActivity),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
         enableOnImageClickEvent();
     }
 
@@ -86,6 +97,15 @@ public class BlueMSSwitchViewController: BlueMSDemoTabViewController,BlueSTSDKFe
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setDescriptionString(node.type)
+        startNotification()
+    }
+
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopNotification()
+    }
+    
+    public func startNotification(){
         mFeature = self.node.getFeatureOfType(BlueSTSDKFeatureSwitch.self) as! BlueSTSDKFeatureSwitch?
         if let feature = mFeature {
             feature.add(self);
@@ -93,12 +113,29 @@ public class BlueMSSwitchViewController: BlueMSDemoTabViewController,BlueSTSDKFe
         }
     }
 
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    public func stopNotification(){
         if let feature = mFeature {
             feature.remove(self);
             self.node.disableNotification(feature);
+            Thread.sleep(forTimeInterval: 0.1)
             mFeature=nil;
+        }
+    }
+
+
+    @objc func didEnterForeground() {
+        mFeature = self.node.getFeatureOfType(BlueSTSDKFeatureSwitch.self) as! BlueSTSDKFeatureSwitch?
+        if !(mFeature==nil) && node.isEnableNotification(mFeature!) {
+            featureWasEnabled = true
+            stopNotification()
+        }else {
+            featureWasEnabled = false;
+        }
+    }
+        
+    @objc func didBecomeActivity() {
+        if(featureWasEnabled) {
+            startNotification()
         }
     }
 

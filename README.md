@@ -10,16 +10,10 @@ The application is built on top of BlueST SDK, a library that provides an implem
 
 ## Download the source
 
-Since the project uses git submodules, <code>--recurse-submodules</code> option must be used to clone the repository:
+To clone the repository:
 
-```Shell
-git clone --recurse-submodules https://github.com/STMicroelectronics/STBlueMS_iOS
-```
-
-or run
 ```Shell
 git clone https://github.com/STMicroelectronics/STBlueMS_iOS
-git submodule update --init --recursive
 ```
 
 ## License

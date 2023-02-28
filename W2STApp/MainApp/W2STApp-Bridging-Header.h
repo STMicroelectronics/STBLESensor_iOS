@@ -42,10 +42,13 @@
 #import "BlueMSDemoTabViewController.h"
 #import "BlueMSDemoTabViewController+WesuLicenseCheck.h"
 #import "Reachability.h"
-//core plot lib
-#import <CorePlot/CorePlot-CocoaTouch.h>
+#import <iflyMSC/IFlyMSC.h>
 
-#import <CommonCrypto/CommonHMAC.h>
+//core plot lib
+//#import <CorePlot/CorePlot-CocoaTouch.h>
+
+//analytics
+#import <CommonCrypto/CommonHMAC.h> //already imported for the azure demo
 
 //openssl for aws iot
 #import <openssl/bio.h>

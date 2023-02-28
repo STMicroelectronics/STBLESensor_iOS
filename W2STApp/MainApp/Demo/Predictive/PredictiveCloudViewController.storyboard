@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Cloud Pred Maintenance-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="PredictiveCloudViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="prH-pU-Gwi">
+                                <rect key="frame" x="0.0" y="44" width="414" height="900"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tY8-lx-cfp" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="predictive_maintenance_light_blue" translatesAutoresizingMaskIntoConstraints="NO" id="ngu-cb-TeK">
+                                                <rect key="frame" x="8" y="16" width="398" height="160"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="160" id="Wtg-gf-zHL"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Predictive Maintenance DSH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jya-93-as5">
+                                                <rect key="frame" x="8" y="192" width="398" height="30"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to MyST.com and start managing your devices provisioned on the predictive maintenance dashboard" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMI-Sz-b53">
+                                                <rect key="frame" x="8" y="238" width="398" height="36"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55y-un-NQ9">
+                                                <rect key="frame" x="8" y="282" width="398" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="GO TO THE DASHBOARD"/>
+                                                <connections>
+                                                    <action selector="onClickBtnDashboard:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="mV2-oI-i69"/>
+                                                </connections>
+                                            </button>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowed_logo_blue" translatesAutoresizingMaskIntoConstraints="NO" id="5Y0-6N-Z6H">
+                                                <rect key="frame" x="8" y="345" width="398" height="160"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="160" id="oW1-gO-w5G"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arrowhead Project" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ll0-CG-SXr">
+                                                <rect key="frame" x="8" y="521" width="398" height="30"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Arrowhead framework consists of what is needed for anyone to design, implement and deploy an Arrowhead compliant system" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Onw-3V-2ks">
+                                                <rect key="frame" x="8" y="567" width="398" height="55"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Try to retrieve Predictive Maintenance Dashboard from Arrowhead Catalog" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYI-yl-IPx">
+                                                <rect key="frame" x="8" y="630" width="398" height="36"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OFC-5a-DmR">
+                                                <rect key="frame" x="8" y="674" width="398" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="RETRIEVE INFORMATION"/>
+                                                <connections>
+                                                    <action selector="onClickBtnArrowhead:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="M5k-Fj-fJF"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Ll0-CG-SXr" firstAttribute="top" secondItem="5Y0-6N-Z6H" secondAttribute="bottom" constant="16" id="1m8-Q9-lL7"/>
+                                            <constraint firstItem="ngu-cb-TeK" firstAttribute="top" secondItem="tY8-lx-cfp" secondAttribute="top" constant="16" id="48b-ug-ekp"/>
+                                            <constraint firstAttribute="trailing" secondItem="RYI-yl-IPx" secondAttribute="trailing" constant="8" id="6OT-Kr-IeQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="jya-93-as5" secondAttribute="trailing" constant="8" id="6U1-pb-BVK"/>
+                                            <constraint firstAttribute="trailing" secondItem="5Y0-6N-Z6H" secondAttribute="trailing" constant="8" id="AG3-Ee-Afq"/>
+                                            <constraint firstAttribute="trailing" secondItem="ngu-cb-TeK" secondAttribute="trailing" constant="8" id="BBm-ym-PWD"/>
+                                            <constraint firstItem="ngu-cb-TeK" firstAttribute="leading" secondItem="tY8-lx-cfp" secondAttribute="leading" constant="8" id="BpD-ny-xec"/>
+                                            <constraint firstItem="55y-un-NQ9" firstAttribute="top" secondItem="PMI-Sz-b53" secondAttribute="bottom" constant="8" id="Ebc-OK-8eD"/>
+                                            <constraint firstItem="OFC-5a-DmR" firstAttribute="leading" secondItem="tY8-lx-cfp" secondAttribute="leading" constant="8" id="GEb-mf-ati"/>
+                                            <constraint firstItem="jya-93-as5" firstAttribute="top" secondItem="ngu-cb-TeK" secondAttribute="bottom" constant="16" id="S6s-sI-RqD"/>
+                                            <constraint firstItem="jya-93-as5" firstAttribute="leading" secondItem="tY8-lx-cfp" secondAttribute="leading" constant="8" id="UgW-hC-aVp"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ll0-CG-SXr" secondAttribute="trailing" constant="8" id="Veb-bp-VIi"/>
+                                            <constraint firstItem="RYI-yl-IPx" firstAttribute="leading" secondItem="tY8-lx-cfp" secondAttribute="leading" constant="8" id="W81-7y-WEw"/>
+                                            <constraint firstItem="5Y0-6N-Z6H" firstAttribute="leading" secondItem="tY8-lx-cfp" secondAttribute="leading" constant="8" id="Xke-ub-Qsr"/>
+                                            <constraint firstItem="PMI-Sz-b53" firstAttribute="top" secondItem="jya-93-as5" secondAttribute="bottom" constant="16" id="Znf-BK-tej"/>
+                                            <constraint firstAttribute="trailing" secondItem="PMI-Sz-b53" secondAttribute="trailing" constant="8" id="aYX-ND-sDZ"/>
+                                            <constraint firstItem="OFC-5a-DmR" firstAttribute="top" secondItem="RYI-yl-IPx" secondAttribute="bottom" constant="8" id="eyt-95-n9W"/>
+                                            <constraint firstItem="5Y0-6N-Z6H" firstAttribute="top" secondItem="55y-un-NQ9" secondAttribute="bottom" constant="32" id="fKx-bl-1Di"/>
+                                            <constraint firstItem="RYI-yl-IPx" firstAttribute="top" secondItem="Onw-3V-2ks" secondAttribute="bottom" constant="8" id="hM3-xG-do4"/>
+                                            <constraint firstItem="Onw-3V-2ks" firstAttribute="top" secondItem="Ll0-CG-SXr" secondAttribute="bottom" constant="16" id="iWe-51-e6s"/>
+                                            <constraint firstAttribute="trailing" secondItem="55y-un-NQ9" secondAttribute="trailing" constant="8" id="jOG-Jx-qaA"/>
+                                            <constraint firstAttribute="trailing" secondItem="OFC-5a-DmR" secondAttribute="trailing" constant="8" id="jqN-OZ-gHu"/>
+                                            <constraint firstItem="Ll0-CG-SXr" firstAttribute="leading" secondItem="tY8-lx-cfp" secondAttribute="leading" constant="8" id="rYk-i9-nZJ"/>
+                                            <constraint firstItem="Onw-3V-2ks" firstAttribute="leading" secondItem="tY8-lx-cfp" secondAttribute="leading" constant="8" id="uIA-XN-rFH"/>
+                                            <constraint firstAttribute="trailing" secondItem="Onw-3V-2ks" secondAttribute="trailing" constant="8" id="vHN-r2-8Mr"/>
+                                            <constraint firstItem="PMI-Sz-b53" firstAttribute="leading" secondItem="tY8-lx-cfp" secondAttribute="leading" constant="8" id="xS1-sO-oZ2"/>
+                                            <constraint firstItem="55y-un-NQ9" firstAttribute="leading" secondItem="tY8-lx-cfp" secondAttribute="leading" constant="8" id="zwt-r7-iZI"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="tY8-lx-cfp" firstAttribute="leading" secondItem="prH-pU-Gwi" secondAttribute="leading" id="7vI-rM-Gke"/>
+                                    <constraint firstItem="tY8-lx-cfp" firstAttribute="centerX" secondItem="prH-pU-Gwi" secondAttribute="centerX" id="MID-lL-ATD"/>
+                                    <constraint firstItem="tY8-lx-cfp" firstAttribute="top" secondItem="prH-pU-Gwi" secondAttribute="top" id="ujU-b2-Lfd"/>
+                                    <constraint firstAttribute="trailing" secondItem="tY8-lx-cfp" secondAttribute="trailing" id="vOp-7G-Rbx"/>
+                                    <constraint firstAttribute="bottom" secondItem="tY8-lx-cfp" secondAttribute="bottom" id="x8l-0M-vMO"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="prH-pU-Gwi" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="eNU-r0-EVZ"/>
+                            <constraint firstItem="prH-pU-Gwi" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="fm2-ho-Zmk"/>
+                            <constraint firstItem="prH-pU-Gwi" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" constant="131" id="qd6-Tb-oI3"/>
+                            <constraint firstItem="tY8-lx-cfp" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.858259" constant="130.99993600000005" id="smM-Jz-qfc"/>
+                            <constraint firstItem="prH-pU-Gwi" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="yO1-3k-Xyu"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Cloud Pred Maintenance" image="predictive_demo_icon" id="cWa-Wn-V9A"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1048" y="-228"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrowed_logo_blue" width="779" height="617"/>
+        <image name="predictive_demo_icon" width="30" height="30"/>
+        <image name="predictive_maintenance_light_blue" width="200" height="200"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

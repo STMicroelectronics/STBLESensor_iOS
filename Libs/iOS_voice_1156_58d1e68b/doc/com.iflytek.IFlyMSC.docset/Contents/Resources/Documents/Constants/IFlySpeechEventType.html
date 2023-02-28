@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>IFlySpeechEventType Constants Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">IFlyMSC </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">iflytek</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+
+	
+
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">IFlySpeechEventType Constants Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Declared in</th>
+	<td>IFlySpeechEvent.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+
+					
+
+                    
+                    <h3 class="subsubtitle method-title">IFlySpeechEventType</h3>
+                    
+					
+					<div class="section section-overview">
+                        <p>事件类型</p>
+					</div>
+					
+					
+                    <div class="section">
+                        <!-- display enum values -->
+                        
+                        <h4 class="method-subtitle">Definition</h4>
+                        <code>typedef NS_ENUM(NSUInteger, IFlySpeechEventType ) {<br>
+                            
+                            &nbsp;&nbsp; <a href="">IFlySpeechEventTypeNetPref</a> = 10001,<br>
+                            
+                            &nbsp;&nbsp; <a href="">IFlySpeechEventTypeISTAudioFile</a> = 10004,<br>
+                            
+                            &nbsp;&nbsp; <a href="">IFlySpeechEventTypeISTUploadBytes</a> = 10006,<br>
+                            
+                            &nbsp;&nbsp; <a href="">IFlySpeechEventTypeISTCacheLeft</a> = 10007,<br>
+                            
+                            &nbsp;&nbsp; <a href="">IFlySpeechEventTypeISTResultTime</a> = 10008,<br>
+                            
+                            &nbsp;&nbsp; <a href="">IFlySpeechEventTypeISTSyncID</a> = 10009,<br>
+                            
+                            &nbsp;&nbsp; <a href="">IFlySpeechEventTypeSessionBegin</a> = 10010,<br>
+                            
+                            &nbsp;&nbsp; <a href="">IFlySpeechEventTypeSessionEnd</a> = 10011,<br>
+                            
+                            &nbsp;&nbsp; <a href="">IFlySpeechEventTypeVolume</a> = 10012,<br>
+                            
+                            &nbsp;&nbsp; <a href="">IFlySpeechEventTypeVadEOS</a> = 10013,<br>
+                            
+                            &nbsp;&nbsp; <a href="">IFlySpeechEventTypeSessionID</a> = 20001,<br>
+                            
+                            &nbsp;&nbsp; <a href="">IFlySpeechEventTypeTTSBuffer</a> = 21001,<br>
+                            
+                            &nbsp;&nbsp; <a href="">IFlySpeechEventTypeTTSCancel</a> = 21002,<br>
+                            
+                            &nbsp;&nbsp; <a href="">IFlySpeechEventTypeIVWResult</a> = 22001,<br>
+                            
+                            &nbsp;&nbsp; <a href="">IFlySpeechEventTypeSpeechStart</a> = 22002,<br>
+                            
+                            &nbsp;&nbsp; <a href="">IFlySpeechEventTypeRecordStop</a> = 22003,<br>
+                            
+                            &nbsp;&nbsp; <a href="">IFlySpeechEventTypeAudioUrl</a> = 23001,<br>
+                            
+                            &nbsp;&nbsp; <a href="">IFlySpeechEventTypeVoiceChangeResult</a> = 24001,<br>
+                            
+                            };</code>
+                    
+                    </div>
+                    
+                    <div class="section section-methods">
+                        <h4 class="method-subtitle">Constants</h4>
+                        <dl class="termdef">
+                            
+                            <dt><a name="" title="IFlySpeechEventTypeNetPref"></a><code>IFlySpeechEventTypeNetPref</code></dt>
+<dd>
+
+
+<p>网络状态消息<br>
+在消息到达时,可通过onEvent的第2个参数arg1,获取当前网络连接状态值</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">IFlySpeechEvent.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="IFlySpeechEventTypeISTAudioFile"></a><code>IFlySpeechEventTypeISTAudioFile</code></dt>
+<dd>
+
+
+<p>转写音频文件消息<br>
+在录音模式下，成功创建音频文件时返回。可通过onEvent第4个参数data，指定Key为[<a href="../Classes/IFlySpeechConstant.html">IFlySpeechConstant</a> IST_AUDIO_PATH],获取音频文件绝对路径.或通过[IFlySpeechTranscripter getParameter:[<a href="../Classes/IFlySpeechConstant.html">IFlySpeechConstant</a> IST_AUDIO_PATH]],获取音频文件绝对路径.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">IFlySpeechEvent.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="IFlySpeechEventTypeISTUploadBytes"></a><code>IFlySpeechEventTypeISTUploadBytes</code></dt>
+<dd>
+
+
+<p>转写已上传字节消息<br>
+在消息到达时,通过onEvent的第二个参数arg1,获取已确认上传到服务器的字节数.若当前音频源为非写音频模式,还可通过onEvent
+的第三个参数arg2,获取当前所有音频的字节大小.录音模式时，由于所有音频字节大小会变。当停止音频输入后（等待录音时间超时<a href="../Classes/IFlySpeechConstant.html#//api/name/SPEECH_TIMEOUT">[IFlySpeechConstant SPEECH_TIMEOUT]</a>，或调用[IFlySpeechTranscripter stopTranscripting]），且服务器收到所有音频时，第四个参数data，将包含完成标记的布尔值(true)，可通过data调用指定KEY为KCIFlySpeechEventKeyISTUploadComplete获取。此消息可能多次返回.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">IFlySpeechEvent.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="IFlySpeechEventTypeISTCacheLeft"></a><code>IFlySpeechEventTypeISTCacheLeft</code></dt>
+<dd>
+
+
+<p>转写缓存剩余<br>
+此消息仅在音频源为-1时需要关注,在调用[IFlySpeechTranscripter writeAudio]写音频时，应该关注此事件。<br>
+此事件在调用写音频接口、及音频最后被写入底库库时分别回调一次。当事件回调时，通过onEvent的第二个参数arg1,获取当前剩余的缓存大小，当缓存小于要写入的音频时，应该先暂停写音频数据，直到下次缓存大小大于要写入的音频时.最大缓存为128KByte。</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">IFlySpeechEvent.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="IFlySpeechEventTypeISTResultTime"></a><code>IFlySpeechEventTypeISTResultTime</code></dt>
+<dd>
+
+
+<p>转写结果等待时间消息<br>
+在消息到达时,通过 onEvent的第二个参数arg1,获取当前结果需要的时间.<br>
+此消息可能多次返回，返回时间不定，且不一定会返回.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">IFlySpeechEvent.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="IFlySpeechEventTypeISTSyncID"></a><code>IFlySpeechEventTypeISTSyncID</code></dt>
+<dd>
+
+
+<p>转写转写音频同步ID消息<br>
+在消息到达时,通过 onEvent的第二个参数arg1,获取当前写音频同步ID.<br>
+此消息可能多次返回.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">IFlySpeechEvent.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="IFlySpeechEventTypeSessionBegin"></a><code>IFlySpeechEventTypeSessionBegin</code></dt>
+<dd>
+
+
+<p>会话开始消息<br>
+在会话开始成功后返回</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">IFlySpeechEvent.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="IFlySpeechEventTypeSessionEnd"></a><code>IFlySpeechEventTypeSessionEnd</code></dt>
+<dd>
+
+
+<p>会话结束消息<br>
+在会话结束前返回</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">IFlySpeechEvent.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="IFlySpeechEventTypeVolume"></a><code>IFlySpeechEventTypeVolume</code></dt>
+<dd>
+
+
+<p>音量消息，在得到音量时抛出，暂时只有身份验证的声纹业务用到</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">IFlySpeechEvent.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="IFlySpeechEventTypeVadEOS"></a><code>IFlySpeechEventTypeVadEOS</code></dt>
+<dd>
+
+
+<p>VAD后端点消息，在检测到VAD后端点时抛出，暂时只有身份验证的声纹业务用到</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">IFlySpeechEvent.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="IFlySpeechEventTypeSessionID"></a><code>IFlySpeechEventTypeSessionID</code></dt>
+<dd>
+
+
+<p>服务端会话id<br>
+在消息到达时,可通过onEvent的第4个参数data(字典类型)，指定key KCIFlySpeechEventKeySessionID,获取服务端会话id.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">IFlySpeechEvent.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="IFlySpeechEventTypeTTSBuffer"></a><code>IFlySpeechEventTypeTTSBuffer</code></dt>
+<dd>
+
+
+<p>TTS合成数据消息<br>
+-(void)onEvent:(int)eventType arg0:(int)arg0 arg1:(int)arg1 data:(NSData *)eventData<br>
+其中eventData中包含数据</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">IFlySpeechEvent.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="IFlySpeechEventTypeTTSCancel"></a><code>IFlySpeechEventTypeTTSCancel</code></dt>
+<dd>
+
+
+<p>通知cancel方法被调用的回调</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">IFlySpeechEvent.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="IFlySpeechEventTypeIVWResult"></a><code>IFlySpeechEventTypeIVWResult</code></dt>
+<dd>
+
+
+<p>IVW onshot 听写 or 识别结果<br>
+在消息到达时,第2个参数arg1包含是否为最后一个结果:1为是,0为否;<br>
+第4个参数data中包含数据，通过指定KEY为KCIFlySpeechEventKeyIVWResult获取.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">IFlySpeechEvent.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="IFlySpeechEventTypeSpeechStart"></a><code>IFlySpeechEventTypeSpeechStart</code></dt>
+<dd>
+
+
+<p>开始处理录音数据</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">IFlySpeechEvent.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="IFlySpeechEventTypeRecordStop"></a><code>IFlySpeechEventTypeRecordStop</code></dt>
+<dd>
+
+
+<p>录音停止</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">IFlySpeechEvent.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="IFlySpeechEventTypeAudioUrl"></a><code>IFlySpeechEventTypeAudioUrl</code></dt>
+<dd>
+
+
+<p>服务端音频url<br>
+在消息到达时,第4个参数data,包含数据,通过指定KEY为KCIFlySpeechEventKeyAudioUrl获取.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">IFlySpeechEvent.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="IFlySpeechEventTypeVoiceChangeResult"></a><code>IFlySpeechEventTypeVoiceChangeResult</code></dt>
+<dd>
+
+
+<p>变声数据结果返回<br>
+设置voice_change参数获取结果.</p>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">IFlySpeechEvent.h</code>.
+	</p>
+	
+</dd>
+                            
+                        </dl>
+                    </div>
+                    
+
+                    
+                    
+
+                    
+
+                    
+                    <div class="method-subsection declared-in-section">
+                        <h4 class="method-subtitle">Declared In</h4>
+                        <p><code class="declared-in-ref">IFlySpeechEvent.h</code></p>
+                    </div>
+                    
+                    
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2017 iflytek. All rights reserved. Updated: 2017-03-02</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

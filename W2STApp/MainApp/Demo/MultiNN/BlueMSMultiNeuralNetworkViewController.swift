@@ -54,10 +54,16 @@ class BlueMSMultiNetworkViewController : BlueMSDemoTabViewController {
     @IBOutlet weak var comboImage: UIImageView!
     @IBOutlet weak var comboDesc: UILabel!
     
+    @IBOutlet weak var labelRunningPausedActivityRec: UILabel!
+    @IBOutlet weak var labelRunningPausedAudioClass: UILabel!
+    @IBOutlet weak var labelMultiNNClass: UILabel!
+    
     private let mAudioSceneVM = AudioSceneClassificaitonModelView()
     private let mActiviyRecognitionVM = ActivityRecognitionModelView()
     private let mComboVM = ComboModelView()
     private var mMultiNNViewModel: MultiNeuralNetworkViewModel?
+    
+    private var featureWasEnabled = false
     
     private static let TIME_FORMAT:DateFormatter = {
         var timeFormatter = DateFormatter()
@@ -67,8 +73,16 @@ class BlueMSMultiNetworkViewController : BlueMSDemoTabViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        humanActivityView.isHidden = true
-        audioSceneView.isHidden = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground),
+                                               name: UIApplication.didEnterBackgroundNotification,
+                                               object: nil)
+                    
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActivity),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
+        humanActivityView.isHidden = false
+        audioSceneView.isHidden = false
         comboView.isHidden = true
         attachAudioSceneViewModel()
         attachActivityRecognitionViewModel()
@@ -89,16 +103,45 @@ class BlueMSMultiNetworkViewController : BlueMSDemoTabViewController {
         
         mComboVM.attachListener(featureActivity: activityFeature, featureAudio: audioFeature)
         
-        attachMultiNNViewModel()
+        startNotification()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        stopNotification()
+    }
+    
+    public func startNotification(){
+        attachMultiNNViewModel()
+    }
+
+    public func stopNotification(){
         let audioFeature = self.node.getFeatureOfType(BlueSTSDKFeatureAudioCalssification.self) as? BlueSTSDKFeatureAudioCalssification
         let activityFeature = self.node.getFeatureOfType(BlueSTSDKFeatureActivity.self) as? BlueSTSDKFeatureActivity
         
         mActiviyRecognitionVM.removeListener(feature: activityFeature)
         mAudioSceneVM.removeListener(feature: audioFeature)
         mMultiNNViewModel?.disableNotification()
+    }
+
+
+    @objc func didEnterForeground() {
+        let audioFeature = self.node.getFeatureOfType(BlueSTSDKFeatureAudioCalssification.self) as? BlueSTSDKFeatureAudioCalssification
+        let activityFeature = self.node.getFeatureOfType(BlueSTSDKFeatureActivity.self) as? BlueSTSDKFeatureActivity
+        
+        if !(audioFeature==nil && activityFeature==nil){
+            if node.isEnableNotification(audioFeature!) || node.isEnableNotification(activityFeature!) {
+                featureWasEnabled = true
+                stopNotification()
+            }else {
+                featureWasEnabled = false;
+            }
+        }
+    }
+        
+    @objc func didBecomeActivity() {
+        if(featureWasEnabled) {
+            startNotification()
+        }
     }
     
     private func attachAudioSceneViewModel(){
@@ -107,9 +150,13 @@ class BlueMSMultiNetworkViewController : BlueMSDemoTabViewController {
         }
         
         mAudioSceneVM.onStateChange = { [weak self] newImage, newDesciption in
-            self?.audioSceneImage.image = newImage
-            let time = BlueMSMultiNetworkViewController.TIME_FORMAT.string(from:Date())
-            self?.audioSceneDesc.text = String(format:"%@: %@",time,newDesciption)
+            if(newDesciption == "Running" || newDesciption == "Paused"){
+                self?.labelRunningPausedAudioClass.text = String(newDesciption)
+            }else{
+                self?.audioSceneImage.image = newImage
+                let time = BlueMSMultiNetworkViewController.TIME_FORMAT.string(from:Date())
+                self?.audioSceneDesc.text = String(format:"%@: %@",time,newDesciption)
+            }
         }
     }
     

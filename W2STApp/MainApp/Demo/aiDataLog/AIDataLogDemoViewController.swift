@@ -37,7 +37,7 @@
 
 import Foundation
 
-class AILogSetParametersViewController : BlueMSDemoTabViewController{
+class AILogSetParametersViewController : BlueMSDemoTabViewController {
         
     fileprivate let parameterViewModel = AIDataLogParametersViewModel();
     

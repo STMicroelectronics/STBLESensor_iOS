@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/IFlyEngineMode.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/IFlyEngineMode</TokenIdentifier>
+			<Abstract type="html">引擎模式</Abstract>
+			<DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+            
+			
+			<NodeRef refid="28"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/IFlyEngineModeAuto</TokenIdentifier>
+            <Abstract type="html">云端使用MSC，本地优先使用语记
+     </Abstract>
+            <Declaration>IFlyEngineModeAuto</Declaration>
+            
+            <DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+            
+            <NodeRef refid="28"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/IFlyEngineModeMsc</TokenIdentifier>
+            <Abstract type="html">只使用MSC
+     </Abstract>
+            <Declaration>IFlyEngineModeMsc</Declaration>
+            
+            <DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+            
+            <NodeRef refid="28"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/IFlyEngineModePlus</TokenIdentifier>
+            <Abstract type="html">本地只使用语记(受平台限制，云端无法使用语记）
+     </Abstract>
+            <Declaration>IFlyEngineModePlus</Declaration>
+            
+            <DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+            
+            <NodeRef refid="28"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

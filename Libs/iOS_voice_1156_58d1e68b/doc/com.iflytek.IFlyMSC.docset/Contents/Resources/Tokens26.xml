@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/IFlySpeechplusDelegate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/IFlySpeechplusDelegate</TokenIdentifier>
+			<Abstract type="html">语记返回回调</Abstract>
+			<DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+            
+			
+			<NodeRef refid="26"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlySpeechplusDelegate/onError:</TokenIdentifier>
+			<Abstract type="html">发生错误</Abstract>
+			<DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+			
+			<Declaration>- (void)onError:(int)errorCode</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>errorCode</Name>
+					<Abstract type="html">错误码</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/onError:</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlySpeechplusDelegate/onCompleted</TokenIdentifier>
+			<Abstract type="html">服务正常结束</Abstract>
+			<DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+			
+			<Declaration>- (void)onCompleted</Declaration>
+			
+			
+			<Anchor>//api/name/onCompleted</Anchor>
+            <NodeRef refid="26"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/IFlyUserWords.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/IFlyUserWords</TokenIdentifier>
+			<Abstract type="html">用户词表类
+获取用户词表是为了更好的语音识别(iat)，用户词表也属于个性化的一部分.</Abstract>
+			<DeclaredIn>IFlyUserWords.h</DeclaredIn>
+            
+			
+			<NodeRef refid="18"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyUserWords/initWithJson:</TokenIdentifier>
+			<Abstract type="html">初始化对象</Abstract>
+			<DeclaredIn>IFlyUserWords.h</DeclaredIn>
+			
+			<Declaration>- (id)initWithJson:(NSString *)json</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>json</Name>
+					<Abstract type="html">初始化时传入的数据</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">IFlyUserWords对象</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithJson:</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyUserWords/toString</TokenIdentifier>
+			<Abstract type="html">将数据转化为上传的数据格式</Abstract>
+			<DeclaredIn>IFlyUserWords.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)toString</Declaration>
+			
+			<ReturnValue><Abstract type="html">没有数据或者格式不对时返回nil</Abstract></ReturnValue>
+			<Anchor>//api/name/toString</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyUserWords/getWords:</TokenIdentifier>
+			<Abstract type="html">返回key对应的数据</Abstract>
+			<DeclaredIn>IFlyUserWords.h</DeclaredIn>
+			
+			<Declaration>- (NSArray *)getWords:(NSString *)key</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>key</Name>
+					<Abstract type="html">在putword:value中设置的key</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">key对应的数组</Abstract></ReturnValue>
+			<Anchor>//api/name/getWords:</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyUserWords/putWord:value:</TokenIdentifier>
+			<Abstract type="html">添加一条用户词数据</Abstract>
+			<DeclaredIn>IFlyUserWords.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)putWord:(NSString *)key value:(NSString *)value</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>key</Name>
+					<Abstract type="html">用户词对应的key</Abstract>
+				</Parameter><Parameter>
+					<Name>value</Name>
+					<Abstract type="html">上传的用户词数据</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">成功返回YES,失败返回NO</Abstract></ReturnValue>
+			<Anchor>//api/name/putWord:value:</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyUserWords/putwords:words:</TokenIdentifier>
+			<Abstract type="html">添加一组数据</Abstract>
+			<DeclaredIn>IFlyUserWords.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)putwords:(NSString *)key words:(NSArray *)words</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>key</Name>
+					<Abstract type="html">用户词对应的key</Abstract>
+				</Parameter><Parameter>
+					<Name>words</Name>
+					<Abstract type="html">上传的用户词数据</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">成功返回YES,失败返回NO</Abstract></ReturnValue>
+			<Anchor>//api/name/putwords:words:</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyUserWords/containsKey:</TokenIdentifier>
+			<Abstract type="html">是否包含key对应的用户词数据</Abstract>
+			<DeclaredIn>IFlyUserWords.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)containsKey:(NSString *)key</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>key</Name>
+					<Abstract type="html">用户词对应的key</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">成功返回YES,失败返回NO</Abstract></ReturnValue>
+			<Anchor>//api/name/containsKey:</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

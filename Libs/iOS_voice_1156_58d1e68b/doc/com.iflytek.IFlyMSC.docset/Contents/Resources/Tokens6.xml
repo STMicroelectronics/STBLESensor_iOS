@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/IFlyPcmRecorder.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/IFlyPcmRecorder</TokenIdentifier>
+			<Abstract type="html">录音器控件</Abstract>
+			<DeclaredIn>IFlyPcmRecorder.h</DeclaredIn>
+            
+			
+			<NodeRef refid="6"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyPcmRecorder/setDelegate:</TokenIdentifier>
+			<Abstract type="html">录音委托对象</Abstract>
+			<DeclaredIn>IFlyPcmRecorder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) id&lt;IFlyPcmRecorderDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyPcmRecorder/delegate</TokenIdentifier>
+			<Abstract type="html">录音委托对象</Abstract>
+			<DeclaredIn>IFlyPcmRecorder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) id&lt;IFlyPcmRecorderDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/IFlyPcmRecorder/delegate</TokenIdentifier>
+			<Abstract type="html">录音委托对象</Abstract>
+			<DeclaredIn>IFlyPcmRecorder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) id&lt;IFlyPcmRecorderDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyPcmRecorder/setIsNeedDeActive:</TokenIdentifier>
+			<Abstract type="html">用于设置是否在录音结束后发送Deactive通知，默认是YES：发送</Abstract>
+			<DeclaredIn>IFlyPcmRecorder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL isNeedDeActive</Declaration>
+			
+			
+			<Anchor>//api/name/isNeedDeActive</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyPcmRecorder/isNeedDeActive</TokenIdentifier>
+			<Abstract type="html">用于设置是否在录音结束后发送Deactive通知，默认是YES：发送</Abstract>
+			<DeclaredIn>IFlyPcmRecorder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL isNeedDeActive</Declaration>
+			
+			
+			<Anchor>//api/name/isNeedDeActive</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/IFlyPcmRecorder/isNeedDeActive</TokenIdentifier>
+			<Abstract type="html">用于设置是否在录音结束后发送Deactive通知，默认是YES：发送</Abstract>
+			<DeclaredIn>IFlyPcmRecorder.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) BOOL isNeedDeActive</Declaration>
+			
+			
+			<Anchor>//api/name/isNeedDeActive</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlyPcmRecorder/sharedInstance</TokenIdentifier>
+			<Abstract type="html">单例模式</Abstract>
+			<DeclaredIn>IFlyPcmRecorder.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)sharedInstance</Declaration>
+			
+			<ReturnValue><Abstract type="html">返回录音对象单例</Abstract></ReturnValue>
+			<Anchor>//api/name/sharedInstance</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyPcmRecorder/start</TokenIdentifier>
+			<Abstract type="html">开始录音</Abstract>
+			<DeclaredIn>IFlyPcmRecorder.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)start</Declaration>
+			
+			<ReturnValue><Abstract type="html">开启录音成功返回YES，否则返回NO</Abstract></ReturnValue>
+			<Anchor>//api/name/start</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyPcmRecorder/stop</TokenIdentifier>
+			<Abstract type="html">停止录音</Abstract>
+			<DeclaredIn>IFlyPcmRecorder.h</DeclaredIn>
+			
+			<Declaration>- (void)stop</Declaration>
+			
+			
+			<Anchor>//api/name/stop</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyPcmRecorder/setSample:</TokenIdentifier>
+			<Abstract type="html">设置音频采样率</Abstract>
+			<DeclaredIn>IFlyPcmRecorder.h</DeclaredIn>
+			
+			<Declaration>- (void)setSample:(NSString *)rate</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>rate</Name>
+					<Abstract type="html">-[in] 采样率，8k/16k</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setSample:</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyPcmRecorder/setPowerCycle:</TokenIdentifier>
+			<Abstract type="html">设置录音音量回调时间间隔参数</Abstract>
+			<DeclaredIn>IFlyPcmRecorder.h</DeclaredIn>
+			
+			<Declaration>- (void)setPowerCycle:(float)cycle</Declaration>
+			
+			
+			<Anchor>//api/name/setPowerCycle:</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyPcmRecorder/setSaveAudioPath:</TokenIdentifier>
+			<Abstract type="html">保存录音</Abstract>
+			<DeclaredIn>IFlyPcmRecorder.h</DeclaredIn>
+			
+			<Declaration>- (void)setSaveAudioPath:(NSString *)savePath</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>savePath</Name>
+					<Abstract type="html">音频保存路径</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setSaveAudioPath:</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

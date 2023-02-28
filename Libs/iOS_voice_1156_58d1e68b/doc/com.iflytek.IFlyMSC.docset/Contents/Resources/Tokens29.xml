@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/IFlySpeechEventType.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/IFlySpeechEventType</TokenIdentifier>
+			<Abstract type="html">事件类型</Abstract>
+			<DeclaredIn>IFlySpeechEvent.h</DeclaredIn>
+            
+			
+			<NodeRef refid="29"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/IFlySpeechEventTypeNetPref</TokenIdentifier>
+            <Abstract type="html">网络状态消息&lt;br&gt;
+在消息到达时,可通过onEvent的第2个参数arg1,获取当前网络连接状态值
+     </Abstract>
+            <Declaration>IFlySpeechEventTypeNetPref</Declaration>
+            
+            <DeclaredIn>IFlySpeechEvent.h</DeclaredIn>
+            
+            <NodeRef refid="29"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/IFlySpeechEventTypeISTAudioFile</TokenIdentifier>
+            <Abstract type="html">转写音频文件消息&lt;br&gt;
+在录音模式下，成功创建音频文件时返回。可通过onEvent第4个参数data，指定Key为[IFlySpeechConstant ISTAUDIOPATH],获取音频文件绝对路径.或通过IFlySpeechTranscripter getParameter:[[IFlySpeechConstant ISTAUDIOPATH]],获取音频文件绝对路径.
+     </Abstract>
+            <Declaration>IFlySpeechEventTypeISTAudioFile</Declaration>
+            
+            <DeclaredIn>IFlySpeechEvent.h</DeclaredIn>
+            
+            <NodeRef refid="29"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/IFlySpeechEventTypeISTUploadBytes</TokenIdentifier>
+            <Abstract type="html">转写已上传字节消息&lt;br&gt;
+在消息到达时,通过onEvent的第二个参数arg1,获取已确认上传到服务器的字节数.若当前音频源为非写音频模式,还可通过onEvent
+的第三个参数arg2,获取当前所有音频的字节大小.录音模式时，由于所有音频字节大小会变。当停止音频输入后（等待录音时间超时[IFlySpeechConstant SPEECH_TIMEOUT]，或调用[IFlySpeechTranscripter stopTranscripting]），且服务器收到所有音频时，第四个参数data，将包含完成标记的布尔值(true)，可通过data调用指定KEY为KCIFlySpeechEventKeyISTUploadComplete获取。此消息可能多次返回.
+     </Abstract>
+            <Declaration>IFlySpeechEventTypeISTUploadBytes</Declaration>
+            
+            <DeclaredIn>IFlySpeechEvent.h</DeclaredIn>
+            
+            <NodeRef refid="29"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/IFlySpeechEventTypeISTCacheLeft</TokenIdentifier>
+            <Abstract type="html">转写缓存剩余&lt;br&gt;
+此消息仅在音频源为-1时需要关注,在调用[IFlySpeechTranscripter writeAudio]写音频时，应该关注此事件。&lt;br&gt;
+此事件在调用写音频接口、及音频最后被写入底库库时分别回调一次。当事件回调时，通过onEvent的第二个参数arg1,获取当前剩余的缓存大小，当缓存小于要写入的音频时，应该先暂停写音频数据，直到下次缓存大小大于要写入的音频时.最大缓存为128KByte。
+     </Abstract>
+            <Declaration>IFlySpeechEventTypeISTCacheLeft</Declaration>
+            
+            <DeclaredIn>IFlySpeechEvent.h</DeclaredIn>
+            
+            <NodeRef refid="29"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/IFlySpeechEventTypeISTResultTime</TokenIdentifier>
+            <Abstract type="html">转写结果等待时间消息&lt;br&gt;
+在消息到达时,通过 onEvent的第二个参数arg1,获取当前结果需要的时间.&lt;br&gt;
+此消息可能多次返回，返回时间不定，且不一定会返回.
+     </Abstract>
+            <Declaration>IFlySpeechEventTypeISTResultTime</Declaration>
+            
+            <DeclaredIn>IFlySpeechEvent.h</DeclaredIn>
+            
+            <NodeRef refid="29"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/IFlySpeechEventTypeISTSyncID</TokenIdentifier>
+            <Abstract type="html">转写转写音频同步ID消息&lt;br&gt;
+在消息到达时,通过 onEvent的第二个参数arg1,获取当前写音频同步ID.&lt;br&gt;
+此消息可能多次返回.
+     </Abstract>
+            <Declaration>IFlySpeechEventTypeISTSyncID</Declaration>
+            
+            <DeclaredIn>IFlySpeechEvent.h</DeclaredIn>
+            
+            <NodeRef refid="29"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/IFlySpeechEventTypeSessionBegin</TokenIdentifier>
+            <Abstract type="html">会话开始消息&lt;br&gt;
+在会话开始成功后返回
+     </Abstract>
+            <Declaration>IFlySpeechEventTypeSessionBegin</Declaration>
+            
+            <DeclaredIn>IFlySpeechEvent.h</DeclaredIn>
+            
+            <NodeRef refid="29"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/IFlySpeechEventTypeSessionEnd</TokenIdentifier>
+            <Abstract type="html">会话结束消息&lt;br&gt;
+在会话结束前返回
+     </Abstract>
+            <Declaration>IFlySpeechEventTypeSessionEnd</Declaration>
+            
+            <DeclaredIn>IFlySpeechEvent.h</DeclaredIn>
+            
+            <NodeRef refid="29"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/IFlySpeechEventTypeVolume</TokenIdentifier>
+            <Abstract type="html">音量消息，在得到音量时抛出，暂时只有身份验证的声纹业务用到
+     </Abstract>
+            <Declaration>IFlySpeechEventTypeVolume</Declaration>
+            
+            <DeclaredIn>IFlySpeechEvent.h</DeclaredIn>
+            
+            <NodeRef refid="29"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/IFlySpeechEventTypeVadEOS</TokenIdentifier>
+            <Abstract type="html">VAD后端点消息，在检测到VAD后端点时抛出，暂时只有身份验证的声纹业务用到
+     </Abstract>
+            <Declaration>IFlySpeechEventTypeVadEOS</Declaration>
+            
+            <DeclaredIn>IFlySpeechEvent.h</DeclaredIn>
+            
+            <NodeRef refid="29"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/IFlySpeechEventTypeSessionID</TokenIdentifier>
+            <Abstract type="html">服务端会话id&lt;br&gt;
+在消息到达时,可通过onEvent的第4个参数data(字典类型)，指定key KCIFlySpeechEventKeySessionID,获取服务端会话id.
+     </Abstract>
+            <Declaration>IFlySpeechEventTypeSessionID</Declaration>
+            
+            <DeclaredIn>IFlySpeechEvent.h</DeclaredIn>
+            
+            <NodeRef refid="29"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/IFlySpeechEventTypeTTSBuffer</TokenIdentifier>
+            <Abstract type="html">TTS合成数据消息&lt;br&gt;
+-(void)onEvent:(int)eventType arg0:(int)arg0 arg1:(int)arg1 data:(NSData *)eventData&lt;br&gt;
+其中eventData中包含数据</Abstract>
+            <Declaration>IFlySpeechEventTypeTTSBuffer</Declaration>
+            
+            <DeclaredIn>IFlySpeechEvent.h</DeclaredIn>
+            
+            <NodeRef refid="29"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/IFlySpeechEventTypeTTSCancel</TokenIdentifier>
+            <Abstract type="html">通知cancel方法被调用的回调</Abstract>
+            <Declaration>IFlySpeechEventTypeTTSCancel</Declaration>
+            
+            <DeclaredIn>IFlySpeechEvent.h</DeclaredIn>
+            
+            <NodeRef refid="29"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/IFlySpeechEventTypeIVWResult</TokenIdentifier>
+            <Abstract type="html">IVW onshot 听写 or 识别结果&lt;br&gt;
+在消息到达时,第2个参数arg1包含是否为最后一个结果:1为是,0为否;&lt;br&gt;
+第4个参数data中包含数据，通过指定KEY为KCIFlySpeechEventKeyIVWResult获取.
+     </Abstract>
+            <Declaration>IFlySpeechEventTypeIVWResult</Declaration>
+            
+            <DeclaredIn>IFlySpeechEvent.h</DeclaredIn>
+            
+            <NodeRef refid="29"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/IFlySpeechEventTypeSpeechStart</TokenIdentifier>
+            <Abstract type="html">开始处理录音数据</Abstract>
+            <Declaration>IFlySpeechEventTypeSpeechStart</Declaration>
+            
+            <DeclaredIn>IFlySpeechEvent.h</DeclaredIn>
+            
+            <NodeRef refid="29"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/IFlySpeechEventTypeRecordStop</TokenIdentifier>
+            <Abstract type="html">录音停止</Abstract>
+            <Declaration>IFlySpeechEventTypeRecordStop</Declaration>
+            
+            <DeclaredIn>IFlySpeechEvent.h</DeclaredIn>
+            
+            <NodeRef refid="29"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/IFlySpeechEventTypeAudioUrl</TokenIdentifier>
+            <Abstract type="html">服务端音频url&lt;br&gt;
+在消息到达时,第4个参数data,包含数据,通过指定KEY为KCIFlySpeechEventKeyAudioUrl获取.
+     </Abstract>
+            <Declaration>IFlySpeechEventTypeAudioUrl</Declaration>
+            
+            <DeclaredIn>IFlySpeechEvent.h</DeclaredIn>
+            
+            <NodeRef refid="29"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/IFlySpeechEventTypeVoiceChangeResult</TokenIdentifier>
+            <Abstract type="html">变声数据结果返回&lt;br&gt;
+设置voice_change参数获取结果.
+     </Abstract>
+            <Declaration>IFlySpeechEventTypeVoiceChangeResult</Declaration>
+            
+            <DeclaredIn>IFlySpeechEvent.h</DeclaredIn>
+            
+            <NodeRef refid="29"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

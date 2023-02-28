@@ -38,7 +38,8 @@
 import Foundation
 import CoreGraphics
 import BlueSTSDK_Gui
-import BlueSTSDK;
+import BlueSTSDK
+import MBProgressHUD
 
 public class BlueMSAudioClassificationViewController: BlueMSDemoTabViewController{
     
@@ -58,6 +59,8 @@ public class BlueMSAudioClassificationViewController: BlueMSDemoTabViewControlle
     private var mCurrentAudioClass:BlueSTSDKFeatureAudioCalssification.AudioClass?;
     private var mFeature:BlueSTSDKFeature?;
     
+    private var featureWasEnabled = false
+    
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         deselectAllImages()
@@ -70,10 +73,28 @@ public class BlueMSAudioClassificationViewController: BlueMSDemoTabViewControlle
         ]
     }()
     
+    public override func viewDidLoad() {
+        super.viewDidLoad();
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground),
+                                                       name: UIApplication.didEnterBackgroundNotification,
+                                                       object: nil)
+                
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActivity),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
+    }
     
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
-        
+        startNotification()
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated);
+        stopNotification()
+    }
+    
+    public func startNotification(){
         mFeature = self.node.getFeatureOfType(BlueSTSDKFeatureAudioCalssification.self);
         if let feature = mFeature{
             feature.add(self)
@@ -82,13 +103,29 @@ public class BlueMSAudioClassificationViewController: BlueMSDemoTabViewControlle
             displayStartMessage();
         }
     }
-    
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated);
+
+    public func stopNotification(){
         if let feature = mFeature{
             feature.remove(self);
             self.node.disableNotification(feature);
+            Thread.sleep(forTimeInterval: 0.1)
             mFeature=nil;
+        }
+    }
+    
+    @objc func didEnterForeground() {
+        mFeature = self.node.getFeatureOfType(BlueSTSDKFeatureAudioCalssification.self);
+        if !(mFeature==nil) && node.isEnableNotification(mFeature!) {
+            featureWasEnabled = true
+            stopNotification()
+        }else {
+            featureWasEnabled = false;
+        }
+    }
+        
+    @objc func didBecomeActivity() {
+        if(featureWasEnabled) {
+            startNotification()
         }
     }
     

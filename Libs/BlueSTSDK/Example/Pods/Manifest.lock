@@ -1,0 +1,23 @@
+PODS:
+  - BlueSTSDK (0.1.0):
+    - opus-ios
+  - opus-ios (1.1.3)
+
+DEPENDENCIES:
+  - BlueSTSDK (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - opus-ios
+
+EXTERNAL SOURCES:
+  BlueSTSDK:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  BlueSTSDK: 5707a7829abb9d4fb1b04e3b5fe9be635b886e3a
+  opus-ios: 22c5b7a5d37cdb661e73f6a65932dbf902d4214f
+
+PODFILE CHECKSUM: 7e18a4875f2401d6a419396dd2f1413aef45fce6
+
+COCOAPODS: 1.10.0

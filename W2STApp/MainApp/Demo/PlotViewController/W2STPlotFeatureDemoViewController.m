@@ -108,6 +108,8 @@
     NSArray *mFeatureArray; //array with the available features
     UITapGestureRecognizer *mDoubleTapRecognizer;
     
+    bool featureWasEnabled;
+    
 }
 
 
@@ -197,6 +199,15 @@ static NSSet<Class> *sSupportedFeatureClass;
 
 -(void) viewDidLoad{
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+            selector:@selector(applicationDidEnterBackground:)
+            name:UIApplicationDidEnterBackgroundNotification
+            object:nil];
+        
+    [[NSNotificationCenter defaultCenter] addObserver:self
+        selector:@selector(applicationDidBecomeActive:)
+        name:UIApplicationDidBecomeActiveNotification
+        object:nil];
     mForcePlotUpdateQueue = dispatch_queue_create("ForcePlotUpdateQueue", DISPATCH_QUEUE_SERIAL);
     mSerializePlotUpdateQueue = dispatch_queue_create("SerializePlotUpdateQueue", DISPATCH_QUEUE_SERIAL);
     mLastPlotUpdate = -1;
@@ -242,6 +253,28 @@ static NSSet<Class> *sSupportedFeatureClass;
     
 }
 
+#pragma mark - Handling BLE Notification
+
+/** Disabling Notification */
+-(void)applicationDidEnterBackground:(NSNotification *)notification {
+    if(featureWasEnabled == false){
+        featureWasEnabled = true;
+    }
+    [mFeature removeFeatureDelegate:self];
+    [self.node disableNotification:mFeature];
+    [NSThread sleepForTimeInterval:0.1];
+}
+
+/** Enabling Notification */
+-(void)applicationDidBecomeActive:(NSNotification *)notification {
+    if(featureWasEnabled) {
+        //if we are ploting something stop it
+        //start receve data from the new feature
+        [mFeature addFeatureDelegate:self];
+        [mNode enableNotification:mFeature];
+    }
+}
+
 -(void)doubleTapEvent:(UITapGestureRecognizer*)sender{
     if(sender.state == UIGestureRecognizerStateEnded){
         [self showSelectFeature:_selectFeatureButton];
@@ -254,6 +287,7 @@ static NSSet<Class> *sSupportedFeatureClass;
     if(mFeature!=nil){
         [mFeature removeFeatureDelegate:self];
         [mNode disableNotification:mFeature];
+        [NSThread sleepForTimeInterval:0.1];
         mFeature=nil;
     }//if
 }
@@ -647,6 +681,7 @@ static NSSet<Class> *sSupportedFeatureClass;
 -(void) stopPlotCurrentFeature{
     [mFeature removeFeatureDelegate:self];
     [mNode disableNotification:mFeature];
+    [NSThread sleepForTimeInterval:0.1];
     mFeature=nil;
     
 }

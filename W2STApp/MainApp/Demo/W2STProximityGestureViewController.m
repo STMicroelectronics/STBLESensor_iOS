@@ -55,6 +55,7 @@
      *  featire that will send the data
      */
     BlueSTSDKFeature *mGestureFeature;
+    bool featureWasEnabled;
 }
 
 -(void)switchOffImage{
@@ -68,6 +69,19 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self switchOffImage];
+    
+    featureWasEnabled = false;
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+        selector:@selector(applicationDidEnterBackground:)
+        name:UIApplicationDidEnterBackgroundNotification
+        object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+        selector:@selector(applicationDidBecomeActive:)
+        name:UIApplicationDidBecomeActiveNotification
+        object:nil];
+    
     //enable the notification
     mGestureFeature = [self.node getFeatureOfType:BlueSTSDKFeatureProximityGesture.class];
     if(mGestureFeature!=nil){
@@ -85,8 +99,38 @@
     if(mGestureFeature!=nil){
         [mGestureFeature removeFeatureDelegate:self];
         [self.node disableNotification:mGestureFeature];
+        [NSThread sleepForTimeInterval:0.1];
         mGestureFeature=nil;
     }//if
+}
+
+#pragma mark - Handling BLE Notification
+
+/** Disabling Notification */
+-(void)applicationDidEnterBackground:(NSNotification *)notification {
+    mGestureFeature = [self.node getFeatureOfType:BlueSTSDKFeatureProximityGesture.class];
+    if(mGestureFeature != nil){
+        if([self.node isEnableNotification: mGestureFeature]){
+            if(featureWasEnabled == false){
+                featureWasEnabled = true;
+            }
+            [mGestureFeature removeFeatureDelegate:self];
+            [self.node disableNotification:mGestureFeature];
+            [NSThread sleepForTimeInterval:0.1];
+            mGestureFeature=nil;
+        }
+    }
+}
+
+/** Enabling Notification */
+-(void)applicationDidBecomeActive:(NSNotification *)notification {
+    mGestureFeature = [self.node getFeatureOfType:BlueSTSDKFeatureProximityGesture.class];
+        if(featureWasEnabled) {
+            featureWasEnabled = false;
+            [mGestureFeature addFeatureDelegate:self];
+            [self.node enableNotification:mGestureFeature];
+            [self.node readFeature:mGestureFeature];
+        }
 }
 
 /**

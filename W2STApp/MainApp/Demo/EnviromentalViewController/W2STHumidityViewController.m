@@ -44,18 +44,36 @@
 
 @implementation W2STHumidityViewController{
     NSArray *mHumidityFeature;
+    bool featureWasEnabled;
 }
 
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    
+    featureWasEnabled = false;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+            selector:@selector(applicationDidEnterBackground:)
+            name:UIApplicationDidEnterBackgroundNotification
+            object:nil];
+        
+    [[NSNotificationCenter defaultCenter] addObserver:self
+        selector:@selector(applicationDidBecomeActive:)
+        name:UIApplicationDidBecomeActiveNotification
+        object:nil];
+    
     mHumidityFeature = [self.node getFeaturesOfType: BlueSTSDKFeatureHumidity.class];
     if(mHumidityFeature.count != 0){
         for (BlueSTSDKFeature *f in mHumidityFeature){
             [f addFeatureDelegate:self];
             [self.node enableNotification:f];
         }//for
-        _humidityImage.image = [UIImage imageNamed:@"humidity"];
+        if (@available(iOS 13.0, *)) {
+            _humidityImage.image = [UIImage imageNamed: @"humidity" inBundle: [NSBundle bundleForClass:[W2STHumidityViewController class]] withConfiguration: nil];
+        } else {
+            _humidityImage.image = [UIImage imageNamed:@"humidity"];
+        }
     }//if
 }
 
@@ -65,6 +83,7 @@
         for (BlueSTSDKFeature *f in mHumidityFeature){
             [f removeFeatureDelegate:self];
             [self.node disableNotification:f];
+            [NSThread sleepForTimeInterval:0.1];
         }//for
     }//if
 }
@@ -94,5 +113,42 @@
     });
 }
 
+#pragma mark - Handling BLE Notification
+
+/** Disabling Notification */
+-(void)applicationDidEnterBackground:(NSNotification *)notification {
+    if(mHumidityFeature.count != 0){
+        for (BlueSTSDKFeature *f in mHumidityFeature){
+            if([self.node isEnableNotification: f]){
+                if(featureWasEnabled == false){
+                    featureWasEnabled = true;
+                }
+                [f removeFeatureDelegate:self];
+                [self.node disableNotification:f];
+                [NSThread sleepForTimeInterval:0.1];
+            }else{
+                featureWasEnabled = false;
+            }
+        }
+    }
+}
+
+/** Enabling Notification */
+-(void)applicationDidBecomeActive:(NSNotification *)notification {
+    if(mHumidityFeature.count != 0){
+        if(featureWasEnabled) {
+            featureWasEnabled = false;
+            for (BlueSTSDKFeature *f in mHumidityFeature){
+                [f addFeatureDelegate:self];
+                [self.node enableNotification:f];
+            }//for
+            if (@available(iOS 13.0, *)) {
+                _humidityImage.image = [UIImage imageNamed: @"humidity" inBundle: [NSBundle bundleForClass:[W2STHumidityViewController class]] withConfiguration: nil];
+            } else {
+                _humidityImage.image = [UIImage imageNamed:@"humidity"];
+            }
+        }//if
+    }
+}
 
 @end

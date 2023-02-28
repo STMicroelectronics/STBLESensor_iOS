@@ -1,0 +1,6 @@
+framework module AssetTrackingDataModel {
+  umbrella header "AssetTrackingDataModel-umbrella.h"
+
+  export *
+  module * { export * }
+}

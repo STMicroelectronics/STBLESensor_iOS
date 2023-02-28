@@ -152,6 +152,8 @@ public class BlueMSSDLoggingPresenterImpl :NSObject, BlueMSSDLoggingPresenter, B
                 isLogging=false;
                 mView.displayNoSDCardErrorLoggingView();
                 break;
+            @unknown default:
+                break
         }//switch
         mView.setLogInterval(seconds:BlueSTSDKFeatureSDLogging.getLogInterval(sample));
         mView.setSelectedFeature(BlueSTSDKFeatureSDLogging.getLoggedFeature(feature.parentNode,data: sample));

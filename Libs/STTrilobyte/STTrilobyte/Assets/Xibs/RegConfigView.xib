@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ux9-zp-htg" customClass="RegConfigView" customModule="trilobyte_lib_ios" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="426" height="348"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Configuration File" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVS-iH-ajE">
+                    <rect key="frame" x="8" y="7.9999999999999982" width="410" height="20.333333333333329"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" name="textDark"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="left" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XXe-kM-dwI">
+                    <rect key="frame" x="32" y="36.333333333333336" width="386" height="30.000000000000007"/>
+                    <state key="normal" title="Select a .UCF File"/>
+                    <connections>
+                        <action selector="ucfFileButtonPressed:" destination="ux9-zp-htg" eventType="touchUpInside" id="ZbS-VZ-C35"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Labels" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRo-ja-Xl5">
+                    <rect key="frame" x="8" y="98.333333333333329" width="410" height="20.333333333333329"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" name="textDark"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Y3N-xJ-X4A">
+                    <rect key="frame" x="32" y="126.66666666666667" width="386" height="213.33333333333331"/>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="XXe-kM-dwI" firstAttribute="leading" secondItem="bhZ-BQ-XyA" secondAttribute="leading" constant="32" id="8BT-m2-ttI"/>
+                <constraint firstItem="bhZ-BQ-XyA" firstAttribute="bottom" secondItem="Y3N-xJ-X4A" secondAttribute="bottom" constant="8" id="9a0-wo-WHA"/>
+                <constraint firstItem="Y3N-xJ-X4A" firstAttribute="leading" secondItem="bhZ-BQ-XyA" secondAttribute="leading" constant="32" id="AlF-QE-Q4H"/>
+                <constraint firstItem="bhZ-BQ-XyA" firstAttribute="trailing" secondItem="nVS-iH-ajE" secondAttribute="trailing" constant="8" id="Avp-TA-2N6"/>
+                <constraint firstItem="bhZ-BQ-XyA" firstAttribute="trailing" secondItem="XXe-kM-dwI" secondAttribute="trailing" constant="8" id="AwG-TT-Qwx"/>
+                <constraint firstItem="bhZ-BQ-XyA" firstAttribute="trailing" secondItem="kRo-ja-Xl5" secondAttribute="trailing" constant="8" id="GDu-se-IYf"/>
+                <constraint firstItem="kRo-ja-Xl5" firstAttribute="leading" secondItem="bhZ-BQ-XyA" secondAttribute="leading" constant="8" id="L7T-OK-FEP"/>
+                <constraint firstItem="Y3N-xJ-X4A" firstAttribute="top" secondItem="kRo-ja-Xl5" secondAttribute="bottom" constant="8" id="UU2-ak-x9f"/>
+                <constraint firstItem="XXe-kM-dwI" firstAttribute="top" secondItem="nVS-iH-ajE" secondAttribute="bottom" constant="8" id="VJb-aK-9hE"/>
+                <constraint firstItem="bhZ-BQ-XyA" firstAttribute="trailing" secondItem="Y3N-xJ-X4A" secondAttribute="trailing" constant="8" id="ahx-Ah-o5S"/>
+                <constraint firstItem="nVS-iH-ajE" firstAttribute="leading" secondItem="bhZ-BQ-XyA" secondAttribute="leading" constant="8" id="pHr-ca-Gng"/>
+                <constraint firstItem="kRo-ja-Xl5" firstAttribute="top" secondItem="XXe-kM-dwI" secondAttribute="bottom" constant="32" id="r1E-Q9-kuR"/>
+                <constraint firstItem="nVS-iH-ajE" firstAttribute="top" secondItem="bhZ-BQ-XyA" secondAttribute="top" constant="8" id="zKY-Jp-SeS"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="bhZ-BQ-XyA"/>
+            <connections>
+                <outlet property="labelStackView" destination="Y3N-xJ-X4A" id="9LS-Es-gc4"/>
+                <outlet property="ucfFileButton" destination="XXe-kM-dwI" id="1sH-bA-WbX"/>
+            </connections>
+            <point key="canvasLocation" x="-86.956521739130437" y="-181.79347826086959"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="textDark">
+            <color red="0.25882352941176473" green="0.27843137254901962" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

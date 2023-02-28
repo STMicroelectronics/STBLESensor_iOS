@@ -36,7 +36,7 @@
  */
 
 
-#import <BlueSTSDK_Gui/MBProgressHUD.h>
+#import <MBProgressHUD.h>
 
 #import "BlueMSDemoTabViewController+WesuLicenseCheck.h"
 #import <BlueSTSDK/BlueSTSDKConfigControl.h>

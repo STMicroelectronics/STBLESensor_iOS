@@ -34,12 +34,16 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
  * OF SUCH DAMAGE.
  */
+import UIKit
+import MBProgressHUD
 
 class BlueMSCarryPositionViewController : BlueMSDemoTabViewController {
 
     private static let DEFAULT_ALPHA = CGFloat(0.3)
     private static let SELECTED_ALPHA = CGFloat(1.0)
     private static let START_MESSAGE_DISPLAY_TIME = TimeInterval(1.0)
+    
+    private var featureWasEnabled = false
     
     private static let START_MESSAGE:String = {
         return  NSLocalizedString("Carry detection started",
@@ -84,6 +88,13 @@ class BlueMSCarryPositionViewController : BlueMSDemoTabViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground),
+                                               name: UIApplication.didEnterBackgroundNotification,
+                                               object: nil)
+                
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActivity),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
         initPositionToImageMap()
     }
     
@@ -107,6 +118,15 @@ class BlueMSCarryPositionViewController : BlueMSDemoTabViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        startNotification()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopNotification()
+    }
+    
+    public func startNotification(){
         mPositionFeature = node.getFeatureOfType(BlueSTSDKFeatureCarryPosition.self)
         if let feature = mPositionFeature{
             feature.add(self)
@@ -119,12 +139,29 @@ class BlueMSCarryPositionViewController : BlueMSDemoTabViewController {
             }
         }
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+
+    public func stopNotification(){
         if let feature = mPositionFeature{
             feature.remove(self)
             node.disableNotification(feature)
+            Thread.sleep(forTimeInterval: 0.1)
+        }
+    }
+
+
+    @objc func didEnterForeground() {
+        mPositionFeature = node.getFeatureOfType(BlueSTSDKFeatureCarryPosition.self)
+        if !(mPositionFeature==nil) && node.isEnableNotification(mPositionFeature!) {
+            featureWasEnabled = true
+            stopNotification()
+        }else {
+            featureWasEnabled = false;
+        }
+    }
+        
+    @objc func didBecomeActivity() {
+        if(featureWasEnabled) {
+            startNotification()
         }
     }
     

@@ -114,21 +114,57 @@ UITableViewDataSource,BlueMSSDLogFeatureTableCellViewSelectDelegate{
     private var mAvailableFeatures:[BlueSTSDKFeature]?
     private var mSelectedFeatures = Set<BlueSTSDKFeature>()
     
+    private var featureWasEnabled = false
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground),
+                                               name: UIApplication.didEnterBackgroundNotification,
+                                               object: nil)
+                
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActivity),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
+        
         mFeatureListTable.dataSource = self
     }
     
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
+        startNotification()
+    }
+
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopNotification()
+    }
+    
+    public func startNotification(){
         let logFeature = self.node.getFeatureOfType(BlueSTSDKFeatureSDLogging.self) as! BlueSTSDKFeatureSDLogging?;
         mPresenter = BlueMSSDLoggingPresenterImpl(self,logFeature)
         mPresenter.startDemo()
     }
 
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    public func stopNotification(){
         mPresenter.stopDemo()
+    }
+
+
+    @objc func didEnterForeground() {
+        let logFeature = self.node.getFeatureOfType(BlueSTSDKFeatureSDLogging.self) as! BlueSTSDKFeatureSDLogging?;
+        if !(logFeature==nil) && node.isEnableNotification(logFeature!) {
+            featureWasEnabled = true
+            stopNotification()
+        }else {
+            featureWasEnabled = false;
+        }
+    }
+        
+    @objc func didBecomeActivity() {
+        if(featureWasEnabled) {
+            startNotification()
+        }
     }
 
     /// hide the keyboard when the user touch something outside the UITextField

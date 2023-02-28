@@ -35,12 +35,11 @@
  * OF SUCH DAMAGE.
  */
 
-import Foundation;
-import BlueSTSDK;
-import SceneKit;
-import AudioToolbox
-import GLKit;
-
+import Foundation
+import BlueSTSDK
+import SceneKit
+import GLKit
+import MBProgressHUD
 
 public class BlueMSMemsSensorFusionViewController: BlueMSCalibrationViewController,
     BlueSTSDKFeatureDelegate,
@@ -49,7 +48,7 @@ public class BlueMSMemsSensorFusionViewController: BlueMSCalibrationViewControll
     //consider the poximity as a float value, since we use it for scale the cube
     private typealias PoroximityType = Float;
 
-    private static let SCENE_MODEL_FILE = "art.scnassets/cubeModel.dae";
+    private static let SCENE_MODEL_FILE = "art.scnassets/cubeModel.scn";
     private static let SCENE_MODEL_NAME = "Cube";
     private static let CUBE_DEFAULT_SCALE = Float(1.5);
 
@@ -98,31 +97,77 @@ public class BlueMSMemsSensorFusionViewController: BlueMSCalibrationViewControll
     @IBOutlet weak var m3DCubeView: SCNView!
     @IBOutlet weak var mProximityButton: UIButton!
 
-    private var mResetQuat = GLKQuaternionIdentity;
-    private var m3DScene:SCNScene!;
-    private var m3DCube:SCNNode!;
+    private var mResetQuat = GLKQuaternionIdentity
+    private var m3DScene: SCNScene?
+    private var m3DCube: SCNNode?
 
-    private var mSensorFusion:BlueSTSDKFeatureAutoConfigurable?;
-    private var mFreeFall: BlueSTSDKFeatureAccelerometerEvent?;
-    private var mProximity : BlueSTSDKFeature?;
+    private var mSensorFusion:BlueSTSDKFeatureAutoConfigurable?
+    private var mFreeFall: BlueSTSDKFeatureAccelerometerEvent?
+    private var mProximity : BlueSTSDKFeature?
 
-    private var mResetPositionDialog: BlueMSSimpleDialogViewController?;
+    private var mResetPositionDialog: BlueMSSimpleDialogViewController?
 
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        init3DCubeScene();
+    }
+
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        enableFreeFall()
+        enableProximity()
+        enableMemsSensorFusion();
+        
+        if self.node.type == .STEVAL_WESU1 {
+            checkLicense(fromRegister: .REGISTER_NAME_MOTION_FX_CALIBRATION_LIC_STATUS,
+                         errorString: BlueMSMemsSensorFusionViewController.LICENSE_NOT_VALID_MESSAGE);
+        }
+    }
+
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        disableFreeFall()
+        disableProximity()
+        disableMemsSensorFusion()
+    }
+    
+    //if the reset dialog is shown set the delegate for it
+    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        guard segue.identifier == BlueMSMemsSensorFusionViewController.RESET_POSITION_SEGUE else{
+            return;
+        }
+        
+        let destination = segue.destination as? BlueMSSimpleDialogViewController;
+        if let controller = destination{
+            controller.popoverPresentationController?.displayOnView(mDialogViewPlaceHolder);
+            mResetPositionDialog = controller;
+            mResetPositionDialog?.delegate=self;
+        }
+
+    }
+    
     private func init3DCubeScene(){
         m3DScene = SCNScene(named: BlueMSMemsSensorFusionViewController.SCENE_MODEL_FILE);
+        guard let m3DScene = m3DScene else { return }
+        
         m3DCube = m3DScene.rootNode.childNode(withName: BlueMSMemsSensorFusionViewController.SCENE_MODEL_NAME, recursively: true);
+        
+        guard let m3DCube = m3DCube else { return }
+        
         setCubeScaleFactor(BlueMSMemsSensorFusionViewController.CUBE_DEFAULT_SCALE)
-        m3DCubeView.prepare(m3DCube!, shouldAbortBlock: nil);
+        m3DCubeView.prepare(m3DCube, shouldAbortBlock: nil);
         m3DCubeView.scene = m3DScene
+        
         if #available(iOS 13, *){
             m3DCubeView.backgroundColor = UIColor.systemBackground
         }
     }
-
-    public override func viewDidLoad() {
-        init3DCubeScene();
-    }
-
+    
     private func enableMemsSensorFusion(){
         mSensorFusion = self.node.getFeatureOfType(BlueSTSDKFeatureMemsSensorFusionCompact.self) as? BlueSTSDKFeatureAutoConfigurable;
 
@@ -141,6 +186,7 @@ public class BlueMSMemsSensorFusionViewController: BlueMSCalibrationViewControll
     private func disableMemsSensorFusion(){
         if let feature = mSensorFusion{
             self.node.disableNotification(feature);
+            Thread.sleep(forTimeInterval: 0.1)
             manageCalibrationForFeature(nil);
             feature.remove(self);
         }
@@ -159,6 +205,7 @@ public class BlueMSMemsSensorFusionViewController: BlueMSCalibrationViewControll
     private func disableFreeFall(){
         if let feature = mFreeFall{
             self.node.disableNotification(feature);
+            Thread.sleep(forTimeInterval: 0.1)
             feature.remove(self);
         }
     }
@@ -183,31 +230,11 @@ public class BlueMSMemsSensorFusionViewController: BlueMSCalibrationViewControll
     private func disableProximity(){
         if let feature = mProximity{
             self.node.disableNotification(feature);
+            Thread.sleep(forTimeInterval: 0.1)
             feature.remove(self);
         }
         mProximityButton.isSelected=false;
         mProximityText.isHidden=true
-    }
-
-
-    public override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated);
-        
-        enableFreeFall();
-        enableProximity();
-        enableMemsSensorFusion();
-        
-        if(self.node.type == .STEVAL_WESU1){
-            checkLicense(fromRegister: .REGISTER_NAME_MOTION_FX_CALIBRATION_LIC_STATUS,
-                         errorString: BlueMSMemsSensorFusionViewController.LICENSE_NOT_VALID_MESSAGE);
-        }
-    }
-
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated);
-        disableFreeFall();
-        disableProximity();
-        disableMemsSensorFusion();
     }
 
     @IBAction func onResetPositionClick(_ sender: UIButton) {
@@ -290,7 +317,7 @@ public class BlueMSMemsSensorFusionViewController: BlueMSCalibrationViewControll
 
     //change the cube scale factor
     private func setCubeScaleFactor(_ scale:Float){
-        m3DCube.scale = SCNVector3Make(scale,scale,scale);
+        m3DCube?.scale = SCNVector3Make(scale,scale,scale);
     }
 
     /// dispatch the node update event
@@ -311,7 +338,6 @@ public class BlueMSMemsSensorFusionViewController: BlueMSCalibrationViewControll
         }
     }
 
-
     //set the current cube position as the default one
     private func resetCubePosition(){
         let sample = mSensorFusion?.lastSample;
@@ -322,7 +348,6 @@ public class BlueMSMemsSensorFusionViewController: BlueMSCalibrationViewControll
         }
     }
 
-
     /// create a quaternion from the node sensor fusion datas
     private static func extractQuaternion( sample: BlueSTSDKFeatureSample) -> GLKQuaternion{
         var temp = GLKQuaternion();
@@ -331,24 +356,6 @@ public class BlueMSMemsSensorFusionViewController: BlueMSCalibrationViewControll
         temp.x =   BlueSTSDKFeatureMemsSensorFusion.getQk(sample);
         temp.w =   BlueSTSDKFeatureMemsSensorFusion.getQs(sample);
         return temp;
-    }
-
-
-    //if the reset dialog is shown set the delegate for it
-    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        
-        guard segue.identifier == BlueMSMemsSensorFusionViewController.RESET_POSITION_SEGUE else{
-            return;
-        }
-        
-        let destination = segue.destination as? BlueMSSimpleDialogViewController;
-        if let controller = destination{
-            controller.popoverPresentationController?.displayOnView(mDialogViewPlaceHolder);
-            mResetPositionDialog = controller;
-            mResetPositionDialog?.delegate=self;
-        }
-
     }
 
     /// get the node image to display in the dialog
@@ -371,5 +378,4 @@ public class BlueMSMemsSensorFusionViewController: BlueMSCalibrationViewControll
         resetCubePosition();
         mResetPositionDialog = nil;
     }
-    
 }

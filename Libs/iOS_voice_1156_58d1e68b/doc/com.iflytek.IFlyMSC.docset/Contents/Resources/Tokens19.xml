@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/IFlyVoiceWakeuper.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/IFlyVoiceWakeuper</TokenIdentifier>
+			<Abstract type="html">  版本描述：唤醒1.0.0.1</Abstract>
+			<DeclaredIn>IFlyVoiceWakeuper.h</DeclaredIn>
+            
+			
+			<NodeRef refid="19"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyVoiceWakeuper/setDelegate:</TokenIdentifier>
+			<Abstract type="html">代理</Abstract>
+			<DeclaredIn>IFlyVoiceWakeuper.h</DeclaredIn>
+			
+			<Declaration>@property (assign) id&lt;IFlyVoiceWakeuperDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+            <NodeRef refid="19"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyVoiceWakeuper/delegate</TokenIdentifier>
+			<Abstract type="html">代理</Abstract>
+			<DeclaredIn>IFlyVoiceWakeuper.h</DeclaredIn>
+			
+			<Declaration>@property (assign) id&lt;IFlyVoiceWakeuperDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+            <NodeRef refid="19"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/IFlyVoiceWakeuper/delegate</TokenIdentifier>
+			<Abstract type="html">代理</Abstract>
+			<DeclaredIn>IFlyVoiceWakeuper.h</DeclaredIn>
+			
+			<Declaration>@property (assign) id&lt;IFlyVoiceWakeuperDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+            <NodeRef refid="19"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlyVoiceWakeuper/sharedInstance</TokenIdentifier>
+			<Abstract type="html">创建唤醒实例，采用单例模式</Abstract>
+			<DeclaredIn>IFlyVoiceWakeuper.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)sharedInstance</Declaration>
+			
+			
+			<Anchor>//api/name/sharedInstance</Anchor>
+            <NodeRef refid="19"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyVoiceWakeuper/startListening</TokenIdentifier>
+			<Abstract type="html">启动唤醒
+返回值:YES 成功，NO：失败</Abstract>
+			<DeclaredIn>IFlyVoiceWakeuper.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)startListening</Declaration>
+			
+			
+			<Anchor>//api/name/startListening</Anchor>
+            <NodeRef refid="19"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyVoiceWakeuper/stopListening</TokenIdentifier>
+			<Abstract type="html">取消唤醒会话&lt;br&gt;
+注意与cancel的区别，紧紧停止服务，并不释放资源</Abstract>
+			<DeclaredIn>IFlyVoiceWakeuper.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)stopListening</Declaration>
+			
+			
+			<Anchor>//api/name/stopListening</Anchor>
+            <NodeRef refid="19"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyVoiceWakeuper/getParameter:</TokenIdentifier>
+			<Abstract type="html">获取工作参数</Abstract>
+			<DeclaredIn>IFlyVoiceWakeuper.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)getParameter:(NSString *)key</Declaration>
+			
+			
+			<Anchor>//api/name/getParameter:</Anchor>
+            <NodeRef refid="19"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyVoiceWakeuper/setParameter:forKey:</TokenIdentifier>
+			<Abstract type="html">设置工作参数&lt;br&gt;
+注意服务正在运行中，不能设置参数</Abstract>
+			<DeclaredIn>IFlyVoiceWakeuper.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)setParameter:(NSString *)value forKey:(NSString *)key</Declaration>
+			
+			
+			<Anchor>//api/name/setParameter:forKey:</Anchor>
+            <NodeRef refid="19"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyVoiceWakeuper/cancel</TokenIdentifier>
+			<Abstract type="html">取消唤醒会话，并释放内部资源</Abstract>
+			<DeclaredIn>IFlyVoiceWakeuper.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)cancel</Declaration>
+			
+			
+			<Anchor>//api/name/cancel</Anchor>
+            <NodeRef refid="19"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyVoiceWakeuper/setIsListening:</TokenIdentifier>
+			<Abstract type="html">写入录音数据&lt;br&gt;
+暂时紧紧支持唤醒的写入，注册服务尚不支持</Abstract>
+			<DeclaredIn>IFlyVoiceWakeuper.h</DeclaredIn>
+			
+			<Declaration>@property (readonly) BOOL isListening</Declaration>
+			
+			
+			<Anchor>//api/name/isListening</Anchor>
+            <NodeRef refid="19"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyVoiceWakeuper/isListening</TokenIdentifier>
+			<Abstract type="html">写入录音数据&lt;br&gt;
+暂时紧紧支持唤醒的写入，注册服务尚不支持</Abstract>
+			<DeclaredIn>IFlyVoiceWakeuper.h</DeclaredIn>
+			
+			<Declaration>@property (readonly) BOOL isListening</Declaration>
+			
+			
+			<Anchor>//api/name/isListening</Anchor>
+            <NodeRef refid="19"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/IFlyVoiceWakeuper/isListening</TokenIdentifier>
+			<Abstract type="html">写入录音数据&lt;br&gt;
+暂时紧紧支持唤醒的写入，注册服务尚不支持</Abstract>
+			<DeclaredIn>IFlyVoiceWakeuper.h</DeclaredIn>
+			
+			<Declaration>@property (readonly) BOOL isListening</Declaration>
+			
+			
+			<Anchor>//api/name/isListening</Anchor>
+            <NodeRef refid="19"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

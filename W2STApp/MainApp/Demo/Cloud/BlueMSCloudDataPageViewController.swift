@@ -37,6 +37,7 @@
 
 import Foundation
 import WebKit
+import MBProgressHUD
 
 class BlueMSCloudDataPageViewController : BlueMSDemoTabViewController,
     WKNavigationDelegate{

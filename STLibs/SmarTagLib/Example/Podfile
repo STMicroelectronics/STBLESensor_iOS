@@ -1,0 +1,16 @@
+platform :ios, '11.0'
+
+inhibit_all_warnings!
+
+use_frameworks!
+
+abstract_target 'defaults' do
+
+  pod 'SmarTagLib', :path => '../'
+
+  target 'v1'
+  target 'v2'
+  target 'SmarTagLib_Example'
+  target 'SmarTagLib_Tests'
+  
+end

@@ -37,7 +37,7 @@
 
 import Foundation
 import SwiftyJSON
-import MQTTFramework
+import MQTTClient
 
 /// Class that send all the feature update to the azure cloud encoding the data
 /// into a json format
@@ -50,7 +50,7 @@ public class BlueMSAzureIotFeatureListener : BlueMSSubSampligFeatureDelegate{
     private static let DATA_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
 
     /// object where pubblish the data
-    private let mConneciton:MCMQTTSession;
+    private let mConneciton:MQTTSession;
     
     /// device that is trasmitting the data
     private let mDeviceId:String;
@@ -65,7 +65,7 @@ public class BlueMSAzureIotFeatureListener : BlueMSSubSampligFeatureDelegate{
         return formatter;
     }();
     
-    public init(conneciton:MCMQTTSession, deviceId:String, minUpdateInterval:TimeInterval){
+    public init(conneciton:MQTTSession, deviceId:String, minUpdateInterval:TimeInterval){
         mConneciton = conneciton;
         mDeviceId = deviceId;
         mNotificaitonTopic = String(format:BlueMSAzureIotFeatureListener.MQTT_TOPIC_FORMAT,deviceId);

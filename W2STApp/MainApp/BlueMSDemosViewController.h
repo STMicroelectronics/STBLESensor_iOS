@@ -50,8 +50,10 @@
  * the files is send,
  */
 @interface BlueMSDemosViewController : UITabBarController<BlueSTSDKDemoViewProtocol>
-@property (retain, nonatomic) BlueSTSDKNode* _Nonnull node ;
-@property (retain,nonatomic) id<BlueSTSDKViewControllerMenuDelegate> _Nullable menuDelegate;
+
+@property (retain, nonatomic) NSMutableArray* _Nonnull addedViewControllers;
+@property (retain, nonatomic) BlueSTSDKNode* _Nonnull node;
+@property (retain, nonatomic) id<BlueSTSDKViewControllerMenuDelegate> _Nullable menuDelegate;
 
 @property (nonatomic) IBOutlet UIBarButtonItem* _Nonnull actionButton;
 

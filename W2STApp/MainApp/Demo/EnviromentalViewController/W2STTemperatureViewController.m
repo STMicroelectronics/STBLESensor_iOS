@@ -47,17 +47,35 @@
 
 @implementation W2STTemperatureViewController{
     NSArray *mTemperatureFeature;
+    bool featureWasEnabled;
 }
 
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+
+    featureWasEnabled = false;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+            selector:@selector(applicationDidEnterBackground:)
+            name:UIApplicationDidEnterBackgroundNotification
+            object:nil];
+        
+    [[NSNotificationCenter defaultCenter] addObserver:self
+        selector:@selector(applicationDidBecomeActive:)
+        name:UIApplicationDidBecomeActiveNotification
+        object:nil];
+    
     mTemperatureFeature = [self.node getFeaturesOfType: BlueSTSDKFeatureTemperature.class];
     if(mTemperatureFeature.count != 0){
         for (BlueSTSDKFeature *f in mTemperatureFeature){
             [f addFeatureDelegate:self];
             [self.node enableNotification:f];
-            _temperatureImage.image = [UIImage imageNamed:@"temperature_icon"];
+            if (@available(iOS 13.0, *)) {
+                _temperatureImage.image = [UIImage imageNamed: @"temperature_icon" inBundle: [NSBundle bundleForClass:[W2STTemperatureViewController class]] withConfiguration: nil];
+            } else {
+                _temperatureImage.image = [UIImage imageNamed:@"temperature_icon"];
+            }
         }
     }
 }
@@ -68,6 +86,7 @@
         for (BlueSTSDKFeature *f in mTemperatureFeature){
             [f removeFeatureDelegate:self];
             [self.node disableNotification:f];
+            [NSThread sleepForTimeInterval:0.1];
         }
     }
 }
@@ -93,6 +112,42 @@
     });
 }
 
+#pragma mark - Handling BLE Notification
 
+/** Disabling Notification */
+-(void)applicationDidEnterBackground:(NSNotification *)notification {
+    if(mTemperatureFeature.count != 0){
+        for (BlueSTSDKFeature *f in mTemperatureFeature){
+            if([self.node isEnableNotification: f]){
+                if(featureWasEnabled == false){
+                    featureWasEnabled = true;
+                }
+                [f removeFeatureDelegate:self];
+                [self.node disableNotification:f];
+                [NSThread sleepForTimeInterval:0.1];
+            }
+        }
+        
+    }
+}
+
+/** Enabling Notification */
+-(void)applicationDidBecomeActive:(NSNotification *)notification {
+    mTemperatureFeature = [self.node getFeaturesOfType: BlueSTSDKFeatureTemperature.class];
+    if(mTemperatureFeature.count != 0){
+        if(featureWasEnabled) {
+            featureWasEnabled = false;
+            for (BlueSTSDKFeature *f in mTemperatureFeature){
+                [f addFeatureDelegate:self];
+                [self.node enableNotification:f];
+                if (@available(iOS 13.0, *)) {
+                    _temperatureImage.image = [UIImage imageNamed: @"temperature_icon" inBundle: [NSBundle bundleForClass:[W2STTemperatureViewController class]] withConfiguration: nil];
+                } else {
+                    _temperatureImage.image = [UIImage imageNamed:@"temperature_icon"];
+                }
+            }
+        }
+    }
+}
 
 @end

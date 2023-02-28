@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ic_ext_conf_settings.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -1,0 +1,920 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		148871B4230465748D49F1DB091ED0D9 /* STTheme.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4C266C66CDD4D4E2545AB340D17CD700 /* STTheme.bundle */; };
+		1FB4F6665D612578C9B99D09A858F5D1 /* STTheme-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B2137F3458930E24BF441D2C6877AC8 /* STTheme-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E27282882A86D6D248E9F96162442B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		2E9614DF542A1AE7BEF64984C4ED2BD3 /* Pods-STTheme_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C19F8FBAA0C674970876553BC0A46DAC /* Pods-STTheme_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		322212D9701A3381D4B79AE2CC5345F7 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84778D98C1EFF1AE2C646C0EB567F81C /* UIColor+Hex.swift */; };
+		3B3D1DCE8D69BD7AE09CE8615CE1BE8D /* Pods-STTheme_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 97C50CA5AC3B06041C5BA75F2EFD7F62 /* Pods-STTheme_Tests-dummy.m */; };
+		450A087F913FA5CC8D2D3DCDE3CF1149 /* Pods-STTheme_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 371E43731894605AC8C9D095179FFE6D /* Pods-STTheme_Example-dummy.m */; };
+		6B6B415BE60641007F4754345B15FCD0 /* Pods-STTheme_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B94B3BBF6245BAE7528EF1F9BC3891D /* Pods-STTheme_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7A09045A82A5BD403CF04628679D21E1 /* ThemeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17EA17CE7CDE8D68C44F06143141D5 /* ThemeService.swift */; };
+		8EAED61943DB0FE511ABD58BA10BE7D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		AEE1BF9E9CA5BFDFBA9CA806A12B4397 /* STDefaultTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAE85AA806D3DCE4081C9BE6DB513DC /* STDefaultTheme.swift */; };
+		C97ED202F371D82116E2BB2718EC885C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		CE19660814D4A0FB3169B40B9092B554 /* UIResponder+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03CBF12C263A57CB67E45D644F01DD6 /* UIResponder+Helper.swift */; };
+		E79B91B5596B3FB8AA38C952C065AAB0 /* STTheme-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CE498980721E729BF91364E51D55979B /* STTheme-dummy.m */; };
+		EC54C187206946D80F5A75B07F583E05 /* STTheme.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F5D753F123E7D04657D8FD0C67FF3A9 /* STTheme.xcassets */; };
+		F10124286F25CADA66E215858B0799FF /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F80FB8BA081478392B8F850A7680B9 /* Theme.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0927BB0557FB69025F098D591A2B8498 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8239D404C5496760CCBAE66153CB185;
+			remoteInfo = STTheme;
+		};
+		4006D86E624DED9BA29F1384B78ED149 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 225C74C737F59D6EAA217D44E7B68E88;
+			remoteInfo = "STTheme-STTheme";
+		};
+		6BD78A3BE2FD4B34417165E74B4EE348 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC1109B445E3832FE1494BB788B09668;
+			remoteInfo = "Pods-STTheme_Example";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		05F80FB8BA081478392B8F850A7680B9 /* Theme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		08735266AAB6BB90866F153000F05AC0 /* Pods_STTheme_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_STTheme_Example.framework; path = "Pods-STTheme_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1AE31FF6C07B05CB494F9C516DC5DB44 /* Pods-STTheme_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-STTheme_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		1B0A522A831D47EF8AD812887533D635 /* STTheme-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "STTheme-prefix.pch"; sourceTree = "<group>"; };
+		1B2137F3458930E24BF441D2C6877AC8 /* STTheme-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "STTheme-umbrella.h"; sourceTree = "<group>"; };
+		1BBCB92536D522B81F44E982BD9FC7DE /* Pods-STTheme_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-STTheme_Example.release.xcconfig"; sourceTree = "<group>"; };
+		1F17EA17CE7CDE8D68C44F06143141D5 /* ThemeService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ThemeService.swift; sourceTree = "<group>"; };
+		371E43731894605AC8C9D095179FFE6D /* Pods-STTheme_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-STTheme_Example-dummy.m"; sourceTree = "<group>"; };
+		426F5670B1C064FD275B8CAB3CF8C4E0 /* Pods-STTheme_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-STTheme_Tests-Info.plist"; sourceTree = "<group>"; };
+		42C5CC2EAD906099C5742595FFEB6191 /* Pods-STTheme_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-STTheme_Example-Info.plist"; sourceTree = "<group>"; };
+		43139EE45BC01F60300BA7C9523178BF /* Pods-STTheme_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-STTheme_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		46F124A62FE030BC46ABC31C5CDEEC1D /* STTheme.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = STTheme.debug.xcconfig; sourceTree = "<group>"; };
+		4C266C66CDD4D4E2545AB340D17CD700 /* STTheme.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = STTheme.bundle; path = "STTheme-STTheme.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5427E30701D6862CDE70CEBC6CA8645F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		595F045BD4E04A841EBD2D81D9B1F8E8 /* STTheme.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = STTheme.modulemap; sourceTree = "<group>"; };
+		5FAE85AA806D3DCE4081C9BE6DB513DC /* STDefaultTheme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = STDefaultTheme.swift; sourceTree = "<group>"; };
+		6032C18BB5CD034C6D410AE9C985AAE2 /* Pods-STTheme_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-STTheme_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		6179DF5FB19C686268B6B88403CAFC87 /* STTheme.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = STTheme.release.xcconfig; sourceTree = "<group>"; };
+		652B26A8843CF5BD572B5DCDE76FE8CE /* STTheme.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = STTheme.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		6F5D753F123E7D04657D8FD0C67FF3A9 /* STTheme.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = STTheme.xcassets; path = STTheme/Assets/STTheme.xcassets; sourceTree = "<group>"; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		78FDA1B893A55394CC9440AEC5FA4374 /* Pods-STTheme_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-STTheme_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		7E7C34F6E7AF6D34465DDCA4FA7C3760 /* Pods-STTheme_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-STTheme_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		84778D98C1EFF1AE2C646C0EB567F81C /* UIColor+Hex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		863A5CB80BCAF01F6E90E87015C9171E /* Pods-STTheme_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-STTheme_Example.modulemap"; sourceTree = "<group>"; };
+		8B94B3BBF6245BAE7528EF1F9BC3891D /* Pods-STTheme_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-STTheme_Example-umbrella.h"; sourceTree = "<group>"; };
+		97C50CA5AC3B06041C5BA75F2EFD7F62 /* Pods-STTheme_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-STTheme_Tests-dummy.m"; sourceTree = "<group>"; };
+		9B1A6C27CF6C98F229E33FA5BBC4A308 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		9B8ADDE2A2C7E0F530AD8FB014F4AC61 /* ResourceBundle-STTheme-STTheme-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-STTheme-STTheme-Info.plist"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A6E6AAB0B105DC1C33C373E18B56F323 /* Pods-STTheme_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-STTheme_Example-frameworks.sh"; sourceTree = "<group>"; };
+		A6F7B0BC2D054EC7A1668F3A786F6373 /* Pods_STTheme_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_STTheme_Tests.framework; path = "Pods-STTheme_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABC875CAF28A56D556886F5D47DECBFC /* Pods-STTheme_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-STTheme_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		AE1313417E25D2D6F7B12C9D17842D88 /* STTheme.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = STTheme.framework; path = STTheme.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C19F8FBAA0C674970876553BC0A46DAC /* Pods-STTheme_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-STTheme_Tests-umbrella.h"; sourceTree = "<group>"; };
+		C761EB657ED0790946B15808147ACECB /* Pods-STTheme_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-STTheme_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		CE498980721E729BF91364E51D55979B /* STTheme-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "STTheme-dummy.m"; sourceTree = "<group>"; };
+		D03CBF12C263A57CB67E45D644F01DD6 /* UIResponder+Helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIResponder+Helper.swift"; sourceTree = "<group>"; };
+		D30B217873E34941AE33429ADFCF0504 /* STTheme-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "STTheme-Info.plist"; sourceTree = "<group>"; };
+		F3A73B2B8147B02F6BC55FBA228E6B68 /* Pods-STTheme_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-STTheme_Tests.modulemap"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1BA8218419989CD2AED99824938B9569 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E27282882A86D6D248E9F96162442B2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A036CF3B391F62148A95F6EC1E5F416 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C97ED202F371D82116E2BB2718EC885C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF97F44325B528396D83B5175D63E420 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9740227FB6138DC47A62E33360DD072 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EAED61943DB0FE511ABD58BA10BE7D5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		129A29355311DCDE18F6CC8D59A7AD5E /* STTheme */ = {
+			isa = PBXGroup;
+			children = (
+				6F5D753F123E7D04657D8FD0C67FF3A9 /* STTheme.xcassets */,
+				200744ABEE51C7159446D4BD12080283 /* Extension */,
+				57A2416FC2564720066E58C63935E97F /* Pod */,
+				21237F0E4D2621441E8A567ED9EFBDF5 /* Service */,
+				4982F3A3A2AC753CE1AAE6C8E9DAFB5F /* Support Files */,
+			);
+			name = STTheme;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		200744ABEE51C7159446D4BD12080283 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				84778D98C1EFF1AE2C646C0EB567F81C /* UIColor+Hex.swift */,
+				D03CBF12C263A57CB67E45D644F01DD6 /* UIResponder+Helper.swift */,
+			);
+			name = Extension;
+			path = STTheme/Classes/Extension;
+			sourceTree = "<group>";
+		};
+		21237F0E4D2621441E8A567ED9EFBDF5 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				5FAE85AA806D3DCE4081C9BE6DB513DC /* STDefaultTheme.swift */,
+				05F80FB8BA081478392B8F850A7680B9 /* Theme.swift */,
+				1F17EA17CE7CDE8D68C44F06143141D5 /* ThemeService.swift */,
+			);
+			name = Service;
+			path = STTheme/Classes/Service;
+			sourceTree = "<group>";
+		};
+		3112BE3483F627495FE7DC11DE11359E /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				129A29355311DCDE18F6CC8D59A7AD5E /* STTheme */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		3417110F12FA1B58E0BF70D15E764DDC /* Pods-STTheme_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				F3A73B2B8147B02F6BC55FBA228E6B68 /* Pods-STTheme_Tests.modulemap */,
+				78FDA1B893A55394CC9440AEC5FA4374 /* Pods-STTheme_Tests-acknowledgements.markdown */,
+				6032C18BB5CD034C6D410AE9C985AAE2 /* Pods-STTheme_Tests-acknowledgements.plist */,
+				97C50CA5AC3B06041C5BA75F2EFD7F62 /* Pods-STTheme_Tests-dummy.m */,
+				426F5670B1C064FD275B8CAB3CF8C4E0 /* Pods-STTheme_Tests-Info.plist */,
+				C19F8FBAA0C674970876553BC0A46DAC /* Pods-STTheme_Tests-umbrella.h */,
+				ABC875CAF28A56D556886F5D47DECBFC /* Pods-STTheme_Tests.debug.xcconfig */,
+				1AE31FF6C07B05CB494F9C516DC5DB44 /* Pods-STTheme_Tests.release.xcconfig */,
+			);
+			name = "Pods-STTheme_Tests";
+			path = "Target Support Files/Pods-STTheme_Tests";
+			sourceTree = "<group>";
+		};
+		4982F3A3A2AC753CE1AAE6C8E9DAFB5F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9B8ADDE2A2C7E0F530AD8FB014F4AC61 /* ResourceBundle-STTheme-STTheme-Info.plist */,
+				595F045BD4E04A841EBD2D81D9B1F8E8 /* STTheme.modulemap */,
+				CE498980721E729BF91364E51D55979B /* STTheme-dummy.m */,
+				D30B217873E34941AE33429ADFCF0504 /* STTheme-Info.plist */,
+				1B0A522A831D47EF8AD812887533D635 /* STTheme-prefix.pch */,
+				1B2137F3458930E24BF441D2C6877AC8 /* STTheme-umbrella.h */,
+				46F124A62FE030BC46ABC31C5CDEEC1D /* STTheme.debug.xcconfig */,
+				6179DF5FB19C686268B6B88403CAFC87 /* STTheme.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/STTheme";
+			sourceTree = "<group>";
+		};
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		57A2416FC2564720066E58C63935E97F /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				5427E30701D6862CDE70CEBC6CA8645F /* LICENSE */,
+				9B1A6C27CF6C98F229E33FA5BBC4A308 /* README.md */,
+				652B26A8843CF5BD572B5DCDE76FE8CE /* STTheme.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		739E9BFFFA03EAC3C221FCF8BBEC28F5 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				90985826ADE0A7CE48194E65A22C9456 /* Pods-STTheme_Example */,
+				3417110F12FA1B58E0BF70D15E764DDC /* Pods-STTheme_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		90985826ADE0A7CE48194E65A22C9456 /* Pods-STTheme_Example */ = {
+			isa = PBXGroup;
+			children = (
+				863A5CB80BCAF01F6E90E87015C9171E /* Pods-STTheme_Example.modulemap */,
+				C761EB657ED0790946B15808147ACECB /* Pods-STTheme_Example-acknowledgements.markdown */,
+				7E7C34F6E7AF6D34465DDCA4FA7C3760 /* Pods-STTheme_Example-acknowledgements.plist */,
+				371E43731894605AC8C9D095179FFE6D /* Pods-STTheme_Example-dummy.m */,
+				A6E6AAB0B105DC1C33C373E18B56F323 /* Pods-STTheme_Example-frameworks.sh */,
+				42C5CC2EAD906099C5742595FFEB6191 /* Pods-STTheme_Example-Info.plist */,
+				8B94B3BBF6245BAE7528EF1F9BC3891D /* Pods-STTheme_Example-umbrella.h */,
+				43139EE45BC01F60300BA7C9523178BF /* Pods-STTheme_Example.debug.xcconfig */,
+				1BBCB92536D522B81F44E982BD9FC7DE /* Pods-STTheme_Example.release.xcconfig */,
+			);
+			name = "Pods-STTheme_Example";
+			path = "Target Support Files/Pods-STTheme_Example";
+			sourceTree = "<group>";
+		};
+		AAF7B828D3A0B25AB1626E678C935986 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				08735266AAB6BB90866F153000F05AC0 /* Pods_STTheme_Example.framework */,
+				A6F7B0BC2D054EC7A1668F3A786F6373 /* Pods_STTheme_Tests.framework */,
+				4C266C66CDD4D4E2545AB340D17CD700 /* STTheme.bundle */,
+				AE1313417E25D2D6F7B12C9D17842D88 /* STTheme.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				3112BE3483F627495FE7DC11DE11359E /* Development Pods */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				AAF7B828D3A0B25AB1626E678C935986 /* Products */,
+				739E9BFFFA03EAC3C221FCF8BBEC28F5 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		577A150A5F0B9228C0F1EC5C5646D5A7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E9614DF542A1AE7BEF64984C4ED2BD3 /* Pods-STTheme_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82DD304882540B6939928B925BB3CE3A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B6B415BE60641007F4754345B15FCD0 /* Pods-STTheme_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5126C45FF7CB19A293E28D8CC9D9560 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FB4F6665D612578C9B99D09A858F5D1 /* STTheme-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		225C74C737F59D6EAA217D44E7B68E88 /* STTheme-STTheme */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC72A64FC9CF476C027195C4F758F058 /* Build configuration list for PBXNativeTarget "STTheme-STTheme" */;
+			buildPhases = (
+				503918CA4C06DB0F71ADE771EBD9231E /* Sources */,
+				BF97F44325B528396D83B5175D63E420 /* Frameworks */,
+				2B911E542F3E7FEF7C60883039447533 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "STTheme-STTheme";
+			productName = "STTheme-STTheme";
+			productReference = 4C266C66CDD4D4E2545AB340D17CD700 /* STTheme.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		AC1109B445E3832FE1494BB788B09668 /* Pods-STTheme_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9B0486708372226CF0FB2E69C4879A81 /* Build configuration list for PBXNativeTarget "Pods-STTheme_Example" */;
+			buildPhases = (
+				82DD304882540B6939928B925BB3CE3A /* Headers */,
+				6BE934B0099A1FD10DA0CB84232F925D /* Sources */,
+				1BA8218419989CD2AED99824938B9569 /* Frameworks */,
+				486E9557D50B274B2471BEBACCD129CB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				37EA0E3F3E310F190EFA2716D81C4A7A /* PBXTargetDependency */,
+			);
+			name = "Pods-STTheme_Example";
+			productName = "Pods-STTheme_Example";
+			productReference = 08735266AAB6BB90866F153000F05AC0 /* Pods_STTheme_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B8239D404C5496760CCBAE66153CB185 /* STTheme */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9C852AB5846F8AE618D4C3DF5870F25 /* Build configuration list for PBXNativeTarget "STTheme" */;
+			buildPhases = (
+				B5126C45FF7CB19A293E28D8CC9D9560 /* Headers */,
+				1AF9F8A00FB66D2415B1ED42A47569A1 /* Sources */,
+				9A036CF3B391F62148A95F6EC1E5F416 /* Frameworks */,
+				F40432CB2DFD5D0E55FC1BB07330DA38 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A013D4B6CE3756159C2E7DCF976EC170 /* PBXTargetDependency */,
+			);
+			name = STTheme;
+			productName = STTheme;
+			productReference = AE1313417E25D2D6F7B12C9D17842D88 /* STTheme.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E7E2411D50FF3A2AAFC5D2AD89BF0979 /* Pods-STTheme_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E15B81045FC6A094A11E81CA5AED09AB /* Build configuration list for PBXNativeTarget "Pods-STTheme_Tests" */;
+			buildPhases = (
+				577A150A5F0B9228C0F1EC5C5646D5A7 /* Headers */,
+				6A4BCC92F0DBE0B3FEBB6536EE907AE8 /* Sources */,
+				F9740227FB6138DC47A62E33360DD072 /* Frameworks */,
+				D2C46FA0B5A6D2C983A1CFCB5082A4E4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				996365AEAECC35562F166CA1CD8E9F77 /* PBXTargetDependency */,
+			);
+			name = "Pods-STTheme_Tests";
+			productName = "Pods-STTheme_Tests";
+			productReference = A6F7B0BC2D054EC7A1668F3A786F6373 /* Pods_STTheme_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = AAF7B828D3A0B25AB1626E678C935986 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AC1109B445E3832FE1494BB788B09668 /* Pods-STTheme_Example */,
+				E7E2411D50FF3A2AAFC5D2AD89BF0979 /* Pods-STTheme_Tests */,
+				B8239D404C5496760CCBAE66153CB185 /* STTheme */,
+				225C74C737F59D6EAA217D44E7B68E88 /* STTheme-STTheme */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2B911E542F3E7FEF7C60883039447533 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC54C187206946D80F5A75B07F583E05 /* STTheme.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		486E9557D50B274B2471BEBACCD129CB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2C46FA0B5A6D2C983A1CFCB5082A4E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F40432CB2DFD5D0E55FC1BB07330DA38 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				148871B4230465748D49F1DB091ED0D9 /* STTheme.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1AF9F8A00FB66D2415B1ED42A47569A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEE1BF9E9CA5BFDFBA9CA806A12B4397 /* STDefaultTheme.swift in Sources */,
+				E79B91B5596B3FB8AA38C952C065AAB0 /* STTheme-dummy.m in Sources */,
+				F10124286F25CADA66E215858B0799FF /* Theme.swift in Sources */,
+				7A09045A82A5BD403CF04628679D21E1 /* ThemeService.swift in Sources */,
+				322212D9701A3381D4B79AE2CC5345F7 /* UIColor+Hex.swift in Sources */,
+				CE19660814D4A0FB3169B40B9092B554 /* UIResponder+Helper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		503918CA4C06DB0F71ADE771EBD9231E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A4BCC92F0DBE0B3FEBB6536EE907AE8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B3D1DCE8D69BD7AE09CE8615CE1BE8D /* Pods-STTheme_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BE934B0099A1FD10DA0CB84232F925D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				450A087F913FA5CC8D2D3DCDE3CF1149 /* Pods-STTheme_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		37EA0E3F3E310F190EFA2716D81C4A7A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = STTheme;
+			target = B8239D404C5496760CCBAE66153CB185 /* STTheme */;
+			targetProxy = 0927BB0557FB69025F098D591A2B8498 /* PBXContainerItemProxy */;
+		};
+		996365AEAECC35562F166CA1CD8E9F77 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-STTheme_Example";
+			target = AC1109B445E3832FE1494BB788B09668 /* Pods-STTheme_Example */;
+			targetProxy = 6BD78A3BE2FD4B34417165E74B4EE348 /* PBXContainerItemProxy */;
+		};
+		A013D4B6CE3756159C2E7DCF976EC170 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "STTheme-STTheme";
+			target = 225C74C737F59D6EAA217D44E7B68E88 /* STTheme-STTheme */;
+			targetProxy = 4006D86E624DED9BA29F1384B78ED149 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2B9E26EAE2CD392AD762421F663075A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		47B41D2431C464F8ED74FD03108504E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6179DF5FB19C686268B6B88403CAFC87 /* STTheme.release.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/STTheme";
+				IBSC_MODULE = STTheme;
+				INFOPLIST_FILE = "Target Support Files/STTheme/ResourceBundle-STTheme-STTheme-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_NAME = STTheme;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		587D8EB0D52C26215CE8D32477BE8C8B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1BBCB92536D522B81F44E982BD9FC7DE /* Pods-STTheme_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-STTheme_Example/Pods-STTheme_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-STTheme_Example/Pods-STTheme_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		63FAF33E1C55B71A5F5A8B3CC8749F99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		708ACB5AFC4C7E84A4AF54554F025DBC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6179DF5FB19C686268B6B88403CAFC87 /* STTheme.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/STTheme/STTheme-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/STTheme/STTheme-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/STTheme/STTheme.modulemap";
+				PRODUCT_MODULE_NAME = STTheme;
+				PRODUCT_NAME = STTheme;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		80E8884BF88DBFB6C603C9F8CBC30AF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43139EE45BC01F60300BA7C9523178BF /* Pods-STTheme_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-STTheme_Example/Pods-STTheme_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-STTheme_Example/Pods-STTheme_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9B1B6F7FE13AD742A3004B3C403ECE71 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46F124A62FE030BC46ABC31C5CDEEC1D /* STTheme.debug.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/STTheme";
+				IBSC_MODULE = STTheme;
+				INFOPLIST_FILE = "Target Support Files/STTheme/ResourceBundle-STTheme-STTheme-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_NAME = STTheme;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		9F4CBD91EDF48E0824833BD171223DC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ABC875CAF28A56D556886F5D47DECBFC /* Pods-STTheme_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-STTheme_Tests/Pods-STTheme_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-STTheme_Tests/Pods-STTheme_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B803B131DB21311E67B85994C0684B26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46F124A62FE030BC46ABC31C5CDEEC1D /* STTheme.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/STTheme/STTheme-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/STTheme/STTheme-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/STTheme/STTheme.modulemap";
+				PRODUCT_MODULE_NAME = STTheme;
+				PRODUCT_NAME = STTheme;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D0A9F70924EFDFFCBC50626FF059EBAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1AE31FF6C07B05CB494F9C516DC5DB44 /* Pods-STTheme_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-STTheme_Tests/Pods-STTheme_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-STTheme_Tests/Pods-STTheme_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B9E26EAE2CD392AD762421F663075A1 /* Debug */,
+				63FAF33E1C55B71A5F5A8B3CC8749F99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9B0486708372226CF0FB2E69C4879A81 /* Build configuration list for PBXNativeTarget "Pods-STTheme_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80E8884BF88DBFB6C603C9F8CBC30AF2 /* Debug */,
+				587D8EB0D52C26215CE8D32477BE8C8B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B9C852AB5846F8AE618D4C3DF5870F25 /* Build configuration list for PBXNativeTarget "STTheme" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B803B131DB21311E67B85994C0684B26 /* Debug */,
+				708ACB5AFC4C7E84A4AF54554F025DBC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E15B81045FC6A094A11E81CA5AED09AB /* Build configuration list for PBXNativeTarget "Pods-STTheme_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F4CBD91EDF48E0824833BD171223DC3 /* Debug */,
+				D0A9F70924EFDFFCBC50626FF059EBAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC72A64FC9CF476C027195C4F758F058 /* Build configuration list for PBXNativeTarget "STTheme-STTheme" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B1B6F7FE13AD742A3004B3C403ECE71 /* Debug */,
+				47B41D2431C464F8ED74FD03108504E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

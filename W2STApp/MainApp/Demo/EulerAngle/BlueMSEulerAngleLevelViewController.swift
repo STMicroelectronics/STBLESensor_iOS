@@ -37,8 +37,7 @@
 
 import Foundation
 
-class BlueMSEulerAngleLevelViewController:
-    BlueMSDemoTabViewController {
+class BlueMSEulerAngleLevelViewController: BlueMSDemoTabViewController {
     
     @IBOutlet weak var mDetailsLabel: UILabel!
     @IBOutlet weak var mOffsetLabel: UILabel!
@@ -48,24 +47,62 @@ class BlueMSEulerAngleLevelViewController:
     @IBOutlet weak var mPlanarTarget2: UIImageView!
 
     private var mAngleFeature: BlueSTSDKFeature?
-    
+
+    private var featureWasEnabled = false
+
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        startNotification()
+    }
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad();
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground),
+                                                       name: UIApplication.didEnterBackgroundNotification,
+                                                       object: nil)
+                
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActivity),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated);
+        stopNotification()
+    }
+    
+    public func startNotification(){
         mAngleFeature = self.node.getFeatureOfType(BlueSTSDKFeatureEulerAngle.self) as? BlueSTSDKFeatureEulerAngle
         if let feature = mAngleFeature{
             feature.add(self)
             feature.enableNotification()
         }
     }
-    
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated);
-        
+
+    public func stopNotification(){
         if let feature = mAngleFeature{
             feature.remove(self)
             feature.disableNotification()
         }
     }
+
+
+    @objc func didEnterForeground() {
+        mAngleFeature = self.node.getFeatureOfType(BlueSTSDKFeatureEulerAngle.self) as? BlueSTSDKFeatureEulerAngle
+        if !(mAngleFeature==nil) && node.isEnableNotification(mAngleFeature!) {
+            featureWasEnabled = true
+            stopNotification()
+        }else {
+            featureWasEnabled = false;
+        }
+    }
+        
+    @objc func didBecomeActivity() {
+        if(featureWasEnabled) {
+            startNotification()
+        }
+    }
+
     
 }
 

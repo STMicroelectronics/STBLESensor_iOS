@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gwE-Qp-oji">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gwE-Qp-oji">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Audio Scene-->
+        <!--Audio Classification-->
         <scene sceneID="py2-T3-X4T">
             <objects>
                 <viewController id="gwE-Qp-oji" customClass="BlueMSAudioClassificationViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,7 +20,7 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BY6-xs-bfY">
                                 <rect key="frame" x="67" y="269" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g5i-HA-nN1" customClass="BabyCryingView" customModule="ST_BLE_Sensor" customModuleProvider="target">
                                 <rect key="frame" x="8" y="8" width="375" height="602"/>
@@ -28,6 +29,7 @@
                                 <rect key="frame" x="8" y="8" width="359" height="618"/>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="lz9-Bd-gI2"/>
                         <constraints>
                             <constraint firstItem="g5i-HA-nN1" firstAttribute="trailing" secondItem="lz9-Bd-gI2" secondAttribute="trailing" constant="8" id="LKL-ew-i6N"/>
                             <constraint firstItem="wQX-IY-fEy" firstAttribute="top" secondItem="lz9-Bd-gI2" secondAttribute="top" constant="8" id="O34-Oc-Xd3"/>
@@ -38,9 +40,8 @@
                             <constraint firstItem="g5i-HA-nN1" firstAttribute="leading" secondItem="lz9-Bd-gI2" secondAttribute="leading" constant="8" id="jkA-H7-xHX"/>
                             <constraint firstItem="g5i-HA-nN1" firstAttribute="top" secondItem="lz9-Bd-gI2" secondAttribute="top" constant="8" id="oII-yI-5Dx"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="lz9-Bd-gI2"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Audio Scene" image="bluetooth_audio" id="JMV-Qg-JqO"/>
+                    <tabBarItem key="tabBarItem" title="Audio Classification" image="bluetooth_audio" id="JMV-Qg-JqO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="audioSceneClassification" destination="wQX-IY-fEy" id="K6T-fJ-ZHt"/>
@@ -54,5 +55,8 @@
     </scenes>
     <resources>
         <image name="bluetooth_audio" width="30" height="30"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

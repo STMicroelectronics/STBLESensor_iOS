@@ -1,0 +1,593 @@
+[
+  {
+    "id": "S1",
+    "description": "Temperature sensor",
+    "icon": "ic_termometer",
+    "model": "STTS751",
+    "output": "Temperature",
+    "outputs": [
+      "O1",
+      "O2",
+      "O3"
+    ],
+    "um": "degC",
+    "datasheetLink": "https://www.st.com/resource/en/datasheet/stts751.pdf",
+    "notes": "use max bit resolution for each ODR",
+    "dataType": "Float scalar",
+    "powerModes": [
+      {
+        "mode": "NONE",
+        "label": "Power Mode",
+        "odrs": [
+          0.0625,
+          0.125,
+          0.25,
+          0.5,
+          1,
+          2,
+          4,
+          8
+        ],
+        "minCustomOdr": 17
+      }
+    ],
+    "acquisitionTime": 0,
+    "configuration": {
+      "powerMode": "NONE",
+      "odr": 1,
+      "acquisitionTime": 0
+    }
+  },
+  {
+    "id": "S2",
+    "description": "Humidity sensor",
+    "icon": "ic_humidity",
+    "model": "HTS221",
+    "output": "Humidity",
+    "outputs": [
+      "O1",
+      "O2",
+      "O3"
+    ],
+    "dataType": "Float scalar",
+    "um": "% RH",
+    "datasheetLink": "https://www.st.com/resource/en/datasheet/hts221.pdf",
+    "powerModes": [
+      {
+        "mode": "NONE",
+        "label": "Power Mode",
+        "odrs": [
+          1,
+          7,
+          12.5
+        ],
+        "minCustomOdr": 2
+      }
+    ],
+    "acquisitionTime": 0,
+    "configuration": {
+      "powerMode": "NONE",
+      "odr": 1,
+      "acquisitionTime": 0
+    }
+  },
+  {
+    "id": "S3",
+    "description": "Pressure sensor",
+    "icon": "ic_pressure",
+    "model": "LPS22HH",
+    "output": "Pressure",
+    "outputs": [
+      "O1",
+      "O2",
+      "O3"
+    ],
+    "um": "hPa",
+    "datasheetLink": "https://www.st.com/resource/en/datasheet/lps22hh.pdf",
+    "dataType": "Float scalar",
+    "powerModes": [
+      {
+        "mode": "LOW_NOISE",
+        "label": "Low noise",
+        "odrs": [
+          1,
+          10,
+          25,
+          50,
+          75
+        ],
+        "minCustomOdr": 2
+      },
+      {
+        "mode": "LOW_CURRENT",
+        "label": "Low current",
+        "odrs": [
+          1,
+          10,
+          25,
+          50,
+          75,
+          100,
+          200
+        ],
+        "minCustomOdr": 2
+      }
+    ],
+    "acquisitionTime": 0,
+    "bleMaxOdr": 50,
+    "configuration": {
+      "powerMode": "LOW_NOISE",
+      "odr": 1,
+      "filters": {
+        "lowPass": {
+            "label": "ODR/2",
+            "value": 1
+          }
+      },
+      "acquisitionTime": 0
+    }
+  },
+  {
+    "id": "S4",
+    "description": "Low power Acceleromter sensor",
+    "icon": "ic_accelerometer",
+    "output": "Acceleration",
+    "outputs": [
+      "O1",
+      "O2",
+      "O3"
+    ],
+    "model": "LIS2DW12",
+    "um": "mg",
+    "fullScaleUm": "g",
+    "datasheetLink": "https://www.st.com/resource/en/datasheet/lis2dw12.pdf",
+    "dataType": "Float vector x3",
+    "fullScales": [
+      2,
+      4,
+      8,
+      16
+    ],
+    "powerModes": [
+      {
+        "mode": "LOW_POWER",
+        "label": "Low power mode 1",
+        "odrs": [
+          1.6,
+          12.5,
+          25,
+          50,
+          100,
+          200
+        ]
+      },
+      {
+        "mode": "LOW_POWER_2",
+        "label": "Low power mode 2",
+        "odrs": [
+          1.6,
+          12.5,
+          25,
+          50,
+          100,
+          200
+        ]
+      },
+      {
+        "mode": "LOW_POWER_3",
+        "label": "Low power mode 3",
+        "odrs": [
+          1.6,
+          12.5,
+          25,
+          50,
+          100,
+          200
+        ]
+      },
+      {
+        "mode": "LOW_POWER_4",
+        "label": "Low power mode 4",
+        "odrs": [
+          1.6,
+          12.5,
+          25,
+          50,
+          100,
+          200
+        ]
+      },
+      {
+        "mode": "HIGH_PERFORMANCE",
+        "label": "High performance mode",
+        "odrs": [
+          12.5,
+          25,
+          50,
+          100,
+          200,
+          400,
+          800,
+          1600
+        ]
+      }
+    ],
+    "acquisitionTime": 0,
+    "bleMaxOdr": 50,
+    "configuration": {
+      "powerMode": "LOW_POWER",
+      "odr": 50,
+      "filters": {
+        "lowPass": {
+            "label": "3200",
+            "value": 1
+          }
+      },
+      "fullScale": 2,
+      "acquisitionTime": 0
+    }
+  },
+  {
+    "id": "S5",
+    "description": "Vibrometer Accelerometer sensor",
+    "icon": "ic_inemo",
+    "output": "Acceleration",
+    "outputs": [
+      "O1",
+      "O2",
+      "O3"
+    ],
+    "model": "LSM6DSOX",
+    "um": "mg",
+    "fullScaleUm": "g",
+    "datasheetLink": "https://www.st.com/resource/en/datasheet/lsm6dsox.pdf",
+    "dataType": "Float vector x3",
+    "fullScales": [
+      2,
+      4,
+      8,
+      16
+    ],
+    "powerModes": [
+      {
+        "mode": "LOW_POWER",
+        "label": "Low power",
+        "odrs": [
+          1.6,
+          12.5,
+          26,
+          52,
+          104,
+          208
+        ]
+      },
+      {
+        "mode": "HIGH_PERFORMANCE",
+        "label": "High performance",
+        "odrs": [
+          12.5,
+          26,
+          52,
+          104,
+          208,
+          416,
+          833,
+          1666,
+          3333,
+          6666
+        ]
+      }
+    ],
+    "acquisitionTime": 0,
+    "bleMaxOdr": 52,
+    "configuration": {
+      "powerMode": "LOW_POWER",
+      "odr": 52,
+      "filters": {
+        "lowPass": {
+            "label": "700",
+            "value": 1
+          }
+      },
+      "fullScale": 2,
+      "acquisitionTime": 0
+    }
+  },
+ {
+    "id": "S5",
+    "description": "IMU Accelerometer sensor",
+    "icon": "ic_inemo",
+    "output": "Acceleration",
+    "outputs": [
+      "O1",
+      "O2",
+      "O3"
+    ],
+    "model": "LSM6DSOX",
+    "um": "mg",
+    "fullScaleUm": "g",
+    "datasheetLink": "https://www.st.com/resource/en/datasheet/lsm6dsox.pdf",
+    "dataType": "Float vector x3",
+    "fullScales": [
+      2,
+      4,
+      8,
+      16
+    ],
+    "powerModes": [
+      {
+        "mode": "LOW_POWER",
+        "label": "Low power",
+        "odrs": [
+          1.6,
+          12.5,
+          26,
+          52,
+          104,
+          208
+        ]
+      },
+      {
+        "mode": "HIGH_PERFORMANCE",
+        "label": "High performance",
+        "odrs": [
+          12.5,
+          26,
+          52,
+          104,
+          208,
+          416,
+          833,
+          1666,
+          3333,
+          6666
+        ]
+      }
+    ],
+    "acquisitionTime": 0,
+    "bleMaxOdr": 52,
+    "configuration": {
+      "powerMode": "LOW_POWER",
+      "odr": 52,
+      "filters": {
+        "lowPass": {
+            "label": "700",
+            "value": 1
+          }
+      },
+      "fullScale": 2,
+      "acquisitionTime": 0
+    }
+  },  
+  {
+    "id": "S6",
+    "description": "IMU Gyroscope sensor",
+    "output": "Angular rate",
+    "outputs": [
+      "O1",
+      "O2",
+      "O3"
+    ],
+    "icon": "ic_inemo",
+    "model": "LSM6DSOX",
+    "um": "mdps",
+    "fullScaleUm": "dps",
+    "datasheetLink": "https://www.st.com/resource/en/datasheet/lsm6dsox.pdf",
+    "dataType": "Float vector x3",
+    "fullScales": [
+      125,
+      250,
+      500,
+      1000,
+      2000
+    ],
+    "powerModes": [
+      {
+        "mode": "LOW_POWER",
+        "label": "Low power",
+        "odrs": [
+          12.5,
+          26,
+          52,
+          104,
+          208
+        ]
+      },
+      {
+        "mode": "HIGH_PERFORMANCE",
+        "label": "High performance",
+        "odrs": [
+          12.5,
+          26,
+          52,
+          104,
+          208,
+          416,
+          833,
+          1666,
+          3333,
+          6666
+        ]
+      }
+    ],
+    "acquisitionTime": 0,
+    "bleMaxOdr": 52,
+    "configuration": {
+      "powerMode": "LOW_POWER",
+      "odr": 52,
+      "fullScale": 2000,
+      "acquisitionTime": 0
+    }
+  },
+  {
+    "id": "S7",
+    "description": "Inclinometer Accelerometer sensor",
+    "output": "Acceleration",
+    "outputs": [
+      "O1",
+      "O2",
+      "O3"
+    ],
+    "icon": "ic_accelerometer",
+    "model": "LIS3DHH",
+    "um": "mg",
+    "datasheetLink": "https://www.st.com/resource/en/datasheet/lis3dhh.pdf",
+    "dataType": "Float vector x3",
+    "acquisitionTime": 0,
+    "configuration": {
+      "powerMode": "NONE",
+      "filters": {
+          "lowPass": {
+            "label": "235",
+            "value": 1
+          }
+        },
+      "acquisitionTime": 0
+    }
+  },
+  {
+    "id": "S8",
+    "description": "Magnetic field sensor",
+    "icon": "ic_magnetometer",
+    "output": "Magnetic field",
+    "outputs": [
+      "O1",
+      "O2",
+      "O3"
+    ],
+    "model": "LIS2MDL",
+    "notes": "OFF_CANC always enabled",
+    "um": "mG",
+    "datasheetLink": "https://www.st.com/resource/en/datasheet/lis2mdl.pdf",
+    "dataType": "Float vector x3",
+    "powerModes": [
+      {
+        "mode": "LOW_POWER",
+        "odrs": [
+          10,
+          20,
+          50,
+          100
+        ],
+        "label": "Low power"
+      },
+      {
+        "mode": "HIGH_RESOLUTION",
+        "odrs": [
+          10,
+          20,
+          50,
+          100
+        ],
+        "label": "High resolution"
+      }
+    ],
+    "acquisitionTime": 0,
+    "bleMaxOdr": 50,
+    "configuration": {
+      "powerMode": "LOW_POWER",
+      "odr": 50,
+      "acquisitionTime": 0
+    }
+  },
+  {
+    "id": "S9",
+    "description": "Microphone",
+    "output": "Sound",
+    "outputs": [
+      "O1",
+      "O3"
+    ],
+    "icon": "ic_microphone",
+    "model": "MP23ABS1",
+    "datasheetLink": "https://www.st.com/resource/en/datasheet/mp23abs1.pdf",
+    "dataType": "int16_t vector x n",
+    "notes": "n depends on the sampling freq: we are used to send a data every 1 msec",
+    "um": "dBV",
+    "powerModes": [
+      {
+        "mode": "NONE",
+        "label": "Power Mode",
+        "odrs": [
+          16000
+        ]
+      }
+    ],
+    "acquisitionTime": 0,
+    "configuration": {
+      "powerMode": "NONE",
+      "odr": 16000,
+      "acquisitionTime": 0
+    }
+  },
+  {
+    "id": "S10",
+    "description": "RTC (Time)",
+    "icon": "ic_rtc",
+    "output": "Time",
+    "dataType": "float scalar",
+    "model": "STM32L4R9ZI",
+    "outputs": [
+      "O1",
+      "O2",
+      "O3"
+    ],
+    "datasheetLink": "https://www.st.com/en/microcontrollers/stm32l4r9zi.html",
+    "um": "msec"
+  },
+  {
+    "id": "S11",
+    "description": "RTC (Date)",
+    "output": "Date",
+    "outputs": [
+      "O1",
+      "O2",
+      "O3"
+    ],
+    "icon": "ic_rtc",
+    "dataType": "uint64_t scalar",
+    "model": "STM32L4R9ZI",
+    "datasheetLink": "https://www.st.com/en/microcontrollers/stm32l4r9zi.html",
+    "um": "utc format"
+  },
+  {
+    "id": "S12",
+    "description": "MLC Virtual Sensor",
+    "output": "MLC Output",
+    "outputs": [
+      "O1",
+      "O2",
+      "O3"
+    ],
+    "configuration": {
+      "regConfig": "",
+      "mlcLabels": "",
+      "ucfFilename": ""
+    },
+    "icon": "ic_accelerometer",
+    "dataType": "uint8_t vector x8",
+    "model": "LSM6DSOX",
+    "datasheetLink": "https://www.st.com/resource/en/datasheet/lsm6dsox.pdf",
+    "um": ""
+  },
+  {
+    "id": "S13",
+    "description": "FSM Virtual Sensor",
+    "output": "FSM Output",
+    "outputs": [
+      "O1",
+      "O2",
+      "O3"
+    ],
+    "configuration": {
+      "regConfig": "",
+      "fsmLabels": "",
+      "ucfFilename": ""
+    },
+    "icon": "ic_accelerometer",
+    "dataType": "uint8_t vector x8",
+    "model": "LSM6DSOX",
+    "datasheetLink": "https://www.st.com/resource/en/datasheet/lsm6dsox.pdf",
+    "um": ""
+  }
+]

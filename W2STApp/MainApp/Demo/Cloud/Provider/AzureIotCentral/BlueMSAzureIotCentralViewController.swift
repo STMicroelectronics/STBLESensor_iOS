@@ -112,7 +112,7 @@ internal class BlueMSAzureIotCentralViewController : BlueMSCloudConfigDetailsVie
         
         storeSettings()
         showDetailsButton()
-        return BlueMSAzureIotCentralConnectionFactory(deviceId: deviceId, scopeId: scopeId, symKey: symKey)
+        return BlueMSAzureIotCentralConnectionFactory(deviceId: deviceId, scopeId: scopeId, sasKey: symKey)
         
     }
     

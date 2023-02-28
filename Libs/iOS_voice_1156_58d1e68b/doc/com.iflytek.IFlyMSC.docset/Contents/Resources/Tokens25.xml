@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/IFlySpeechSynthesizerDelegate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/IFlySpeechSynthesizerDelegate</TokenIdentifier>
+			<Abstract type="html">语音合成回调</Abstract>
+			<DeclaredIn>IFlySpeechSynthesizerDelegate.h</DeclaredIn>
+            
+			
+			<NodeRef refid="25"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlySpeechSynthesizerDelegate/onCompleted:</TokenIdentifier>
+			<Abstract type="html">结束回调&lt;br&gt;
+当整个合成结束之后会回调此函数</Abstract>
+			<DeclaredIn>IFlySpeechSynthesizerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onCompleted:(IFlySpeechError *)error</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>error</Name>
+					<Abstract type="html">错误码</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/onCompleted:</Anchor>
+            <NodeRef refid="25"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlySpeechSynthesizerDelegate/onSpeakBegin</TokenIdentifier>
+			<Abstract type="html">开始合成回调</Abstract>
+			<DeclaredIn>IFlySpeechSynthesizerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onSpeakBegin</Declaration>
+			
+			
+			<Anchor>//api/name/onSpeakBegin</Anchor>
+            <NodeRef refid="25"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlySpeechSynthesizerDelegate/onBufferProgress:message:</TokenIdentifier>
+			<Abstract type="html">缓冲进度回调</Abstract>
+			<DeclaredIn>IFlySpeechSynthesizerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onBufferProgress:(int)progress message:(NSString *)msg</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>progress</Name>
+					<Abstract type="html">缓冲进度，0-100</Abstract>
+				</Parameter><Parameter>
+					<Name>msg</Name>
+					<Abstract type="html">附件信息，此版本为nil</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/onBufferProgress:message:</Anchor>
+            <NodeRef refid="25"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlySpeechSynthesizerDelegate/onSpeakProgress:beginPos:endPos:</TokenIdentifier>
+			<Abstract type="html">播放进度回调</Abstract>
+			<DeclaredIn>IFlySpeechSynthesizerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onSpeakProgress:(int)progress beginPos:(int)beginPos endPos:(int)endPos</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>progress</Name>
+					<Abstract type="html">当前播放进度，0-100</Abstract>
+				</Parameter><Parameter>
+					<Name>beginPos</Name>
+					<Abstract type="html">当前播放文本的起始位置，0-100</Abstract>
+				</Parameter><Parameter>
+					<Name>endPos</Name>
+					<Abstract type="html">当前播放文本的结束位置，0-100</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/onSpeakProgress:beginPos:endPos:</Anchor>
+            <NodeRef refid="25"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlySpeechSynthesizerDelegate/onSpeakPaused</TokenIdentifier>
+			<Abstract type="html">暂停播放回调</Abstract>
+			<DeclaredIn>IFlySpeechSynthesizerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onSpeakPaused</Declaration>
+			
+			
+			<Anchor>//api/name/onSpeakPaused</Anchor>
+            <NodeRef refid="25"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlySpeechSynthesizerDelegate/onSpeakResumed</TokenIdentifier>
+			<Abstract type="html">恢复播放回调&lt;br&gt;
+注意：此回调方法SDK内部不执行，播放恢复全部在onSpeakBegin中执行</Abstract>
+			<DeclaredIn>IFlySpeechSynthesizerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onSpeakResumed</Declaration>
+			
+			
+			<Anchor>//api/name/onSpeakResumed</Anchor>
+            <NodeRef refid="25"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlySpeechSynthesizerDelegate/onSpeakCancel</TokenIdentifier>
+			<Abstract type="html">正在取消回调&lt;br&gt;
+注意：此回调方法SDK内部不执行</Abstract>
+			<DeclaredIn>IFlySpeechSynthesizerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onSpeakCancel</Declaration>
+			
+			
+			<Anchor>//api/name/onSpeakCancel</Anchor>
+            <NodeRef refid="25"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlySpeechSynthesizerDelegate/onEvent:arg0:arg1:data:</TokenIdentifier>
+			<Abstract type="html">扩展事件回调&lt;br&gt;
+根据事件类型返回额外的数据</Abstract>
+			<DeclaredIn>IFlySpeechSynthesizerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onEvent:(int)eventType arg0:(int)arg0 arg1:(int)arg1 data:(NSData *)eventData</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>eventType</Name>
+					<Abstract type="html">事件类型，具体参见IFlySpeechEventType枚举。目前只支持EVENTTTSBUFFER也就是实时返回合成音频。</Abstract>
+				</Parameter><Parameter>
+					<Name>arg0</Name>
+					<Abstract type="html">arg0</Abstract>
+				</Parameter><Parameter>
+					<Name>arg1</Name>
+					<Abstract type="html">arg1</Abstract>
+				</Parameter><Parameter>
+					<Name>eventData</Name>
+					<Abstract type="html">事件数据</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/onEvent:arg0:arg1:data:</Anchor>
+            <NodeRef refid="25"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

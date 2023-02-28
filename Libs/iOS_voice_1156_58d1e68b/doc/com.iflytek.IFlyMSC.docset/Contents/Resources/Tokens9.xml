@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/IFlySetting.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/IFlySetting</TokenIdentifier>
+			<Abstract type="html">此接口为iflyMSC sdk 配置接口。&lt;br&gt;
+可以获取版本号，设置日志打印等级等</Abstract>
+			<DeclaredIn>IFlySetting.h</DeclaredIn>
+            
+			
+			<NodeRef refid="9"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySetting/getVersion</TokenIdentifier>
+			<Abstract type="html">获取版本号</Abstract>
+			<DeclaredIn>IFlySetting.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)getVersion</Declaration>
+			
+			<ReturnValue><Abstract type="html">版本号</Abstract></ReturnValue>
+			<Anchor>//api/name/getVersion</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySetting/logLvl</TokenIdentifier>
+			<Abstract type="html">获取日志等级</Abstract>
+			<DeclaredIn>IFlySetting.h</DeclaredIn>
+			
+			<Declaration>+ (LOG_LEVEL)logLvl</Declaration>
+			
+			<ReturnValue><Abstract type="html">返回日志等级</Abstract></ReturnValue>
+			<Anchor>//api/name/logLvl</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySetting/showLogcat:</TokenIdentifier>
+			<Abstract type="html">是否打印控制台log&lt;br&gt;
+在软件发布时，建议关闭此log。</Abstract>
+			<DeclaredIn>IFlySetting.h</DeclaredIn>
+			
+			<Declaration>+ (void)showLogcat:(BOOL)showLog</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>showLog</Name>
+					<Abstract type="html">-[in] YES,打印log;NO,不打印</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/showLogcat:</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySetting/setLogFile:</TokenIdentifier>
+			<Abstract type="html">设置日志msc.log生成路径以及日志等级</Abstract>
+			<DeclaredIn>IFlySetting.h</DeclaredIn>
+			
+			<Declaration>+ (void)setLogFile:(LOG_LEVEL)level</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>level</Name>
+					<Abstract type="html">-[in] 日志打印等级</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setLogFile:</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySetting/setLogFilePath:</TokenIdentifier>
+			<Abstract type="html">设置日志文件的路径&lt;br&gt;
+日志文件默认存放在Documents目录。</Abstract>
+			<DeclaredIn>IFlySetting.h</DeclaredIn>
+			
+			<Declaration>+ (void)setLogFilePath:(NSString *)path</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>path</Name>
+					<Abstract type="html">-[in] 日志文件的全路径</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setLogFilePath:</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

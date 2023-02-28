@@ -35,22 +35,62 @@
  * OF SUCH DAMAGE.
  */
 
-public class BlueMSCloudFeatureTableViewCell : UITableViewCell{
+public class BlueMSCloudFeatureTableViewCell: UITableViewCell {
+    @IBOutlet weak var mFeatureName: UILabel?
+    @IBOutlet weak var mEnableFeature: UISwitch?
+    @IBOutlet weak var eventsView: UIView?
+    @IBOutlet weak var eventsLabel: UILabel?
+    @IBOutlet weak var eventsSelectorButton: UIButton?
     
-    private var mFeature:BlueSTSDKFeature!
+    private var feature: BlueSTSDKFeature?
     
-    public var onFeatureIsSelected: ((_:BlueSTSDKFeature, _:Bool)->Void)?
-    
-    @IBOutlet weak var mFeatureName: UILabel!
-    @IBOutlet weak var mEnableFeature: UISwitch!
+    public var onFeatureIsSelected: ((BlueSTSDKFeature, Bool) -> Void)?
+    public var wantChooseEvent: () -> Void = {}
 
-    @IBAction func onSwitchChange(_ sender: UISwitch) {
-        onFeatureIsSelected?(mFeature,sender.isOn)
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        eventsLabel?.text = "Event:"
+        eventsView?.isHidden = true
+    }
+    
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        feature = nil
+        eventsView?.isHidden = true
+        mFeatureName?.text = nil
+    }
+    
+    @IBAction
+    func onSwitchChange(_ sender: UISwitch) {
+        guard let feature = feature else { return }
+        
+        onFeatureIsSelected?(feature, sender.isOn)
     }
 
-    public func setFeature(_ feature:BlueSTSDKFeature, isSelected:Bool){
-        mFeatureName.text = feature.name
-        mEnableFeature.isOn = isSelected
-        mFeature = feature
+    @IBAction
+    func chooseEvent() {
+        wantChooseEvent()
+    }
+    
+    public func setFeature(_ feature: BlueSTSDKFeature, isSelected: Bool) {
+        self.feature = feature
+        
+        mFeatureName?.text = feature.name
+        mEnableFeature?.isOn = isSelected
+    }
+    
+    public func setEvents(_ events: [BlueSTSDKFeatureAccelerationDetectableEventType], selectedEvent: BlueSTSDKFeatureAccelerationDetectableEventType?) {
+        eventsView?.isHidden = false
+        
+        let title: String
+        if let event = selectedEvent {
+            title = BlueSTSDKFeatureAccelerometerEvent.detectableEventType(toString: event)
+        } else {
+            title = "None"
+        }
+        
+        eventsSelectorButton?.setTitle(title, for: .normal)
     }
 }

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FlowSelectCell" rowHeight="60" id="lbD-sb-MzR" customClass="FlowSelectCell" customModule="trilobyte_lib_ios" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lbD-sb-MzR" id="vdK-h4-t29">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2n0-XR-Tqo">
+                        <rect key="frame" x="20" y="0.0" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="88U-HA-8GD"/>
+                            <constraint firstAttribute="width" constant="60" id="O0p-QD-s41"/>
+                        </constraints>
+                        <connections>
+                            <action selector="checkButtonPressed:" destination="lbD-sb-MzR" eventType="touchUpInside" id="r0d-16-Poy"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d96-kp-KW2">
+                        <rect key="frame" x="90" y="0.0" width="304" height="60"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="d96-kp-KW2" firstAttribute="top" secondItem="vdK-h4-t29" secondAttribute="top" id="55y-ek-oop"/>
+                    <constraint firstItem="d96-kp-KW2" firstAttribute="leading" secondItem="2n0-XR-Tqo" secondAttribute="trailing" constant="10" id="Tli-d7-h7L"/>
+                    <constraint firstAttribute="bottom" secondItem="2n0-XR-Tqo" secondAttribute="bottom" priority="900" id="Vha-hv-oVr"/>
+                    <constraint firstAttribute="trailing" secondItem="d96-kp-KW2" secondAttribute="trailing" constant="20" id="Yu9-lG-N2w"/>
+                    <constraint firstItem="2n0-XR-Tqo" firstAttribute="top" secondItem="vdK-h4-t29" secondAttribute="top" id="v8q-Pi-2u6"/>
+                    <constraint firstItem="2n0-XR-Tqo" firstAttribute="leading" secondItem="vdK-h4-t29" secondAttribute="leading" constant="20" id="xY4-wd-QUf"/>
+                    <constraint firstAttribute="bottom" secondItem="d96-kp-KW2" secondAttribute="bottom" id="zQS-Zh-GaJ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="checkButton" destination="2n0-XR-Tqo" id="93b-g9-9wL"/>
+                <outlet property="titleLabel" destination="d96-kp-KW2" id="p1G-O8-WuU"/>
+            </connections>
+            <point key="canvasLocation" x="-310.14492753623193" y="83.035714285714278"/>
+        </tableViewCell>
+    </objects>
+</document>

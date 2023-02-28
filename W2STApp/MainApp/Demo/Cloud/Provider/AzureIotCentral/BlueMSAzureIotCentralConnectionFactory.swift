@@ -39,19 +39,21 @@ import Foundation
 
 internal class BlueMSAzureIotCentralConnectionFactory : BlueMSCloudIotConnectionFactory{
     
-    private let deviceId:String
-    private let scopeId:String
-    private let symKey:String
+    private let deviceId: String
+    private let scopeId: String
+    private let sasKey: String
+    private let deviceSymmetricKey: String?
     
-    init( deviceId:String,scopeId:String, symKey:String){
+    init(deviceId: String, scopeId: String, sasKey: String, deviceSymmetricKey: String? = nil) {
         self.deviceId = deviceId
         self.scopeId = scopeId
-        self.symKey = symKey;
+        self.sasKey = sasKey
+        self.deviceSymmetricKey = deviceSymmetricKey
     }
     
     
     func getSession() -> BlueMSCloudIotClient {
-        return AzureIotCentralClient(deviceId: deviceId, scopeId: scopeId, symKey: symKey)
+        return AzureIotCentralClient(deviceId: deviceId, scopeId: scopeId, symKey: sasKey, deviceSymmetricKey: deviceSymmetricKey)
     }
     
     func getDataUrl() -> URL? {

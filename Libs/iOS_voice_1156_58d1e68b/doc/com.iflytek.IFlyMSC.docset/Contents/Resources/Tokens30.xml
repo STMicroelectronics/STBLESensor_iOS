@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/IFlySpeechPlusServiceType.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/IFlySpeechPlusServiceType</TokenIdentifier>
+			<Abstract type="html">服务类型</Abstract>
+			<DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+            
+			
+			<NodeRef refid="30"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/IFlySpeechPlusServiceTypeNone</TokenIdentifier>
+            <Abstract type="html">打开语记主界面
+     </Abstract>
+            <Declaration>IFlySpeechPlusServiceTypeNone</Declaration>
+            
+            <DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+            
+            <NodeRef refid="30"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/IFlySpeechPlusServiceTypeTTS</TokenIdentifier>
+            <Abstract type="html">获取合成资源
+     </Abstract>
+            <Declaration>IFlySpeechPlusServiceTypeTTS</Declaration>
+            
+            <DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+            
+            <NodeRef refid="30"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/IFlySpeechPlusServiceTypeISR</TokenIdentifier>
+            <Abstract type="html">获取识别资源（未开放）
+     </Abstract>
+            <Declaration>IFlySpeechPlusServiceTypeISR</Declaration>
+            
+            <DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+            
+            <NodeRef refid="30"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/IFlySpeechPlusServiceTypeIVW</TokenIdentifier>
+            <Abstract type="html">获取唤醒资源（未开放）
+     </Abstract>
+            <Declaration>IFlySpeechPlusServiceTypeIVW</Declaration>
+            
+            <DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+            
+            <NodeRef refid="30"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

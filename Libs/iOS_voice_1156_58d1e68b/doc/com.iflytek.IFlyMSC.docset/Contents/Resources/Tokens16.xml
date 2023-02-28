@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/IFlySpeechUtility.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/IFlySpeechUtility</TokenIdentifier>
+			<Abstract type="html">用户配置</Abstract>
+			<DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+            
+			
+			<NodeRef refid="16"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechUtility/createUtility:</TokenIdentifier>
+			<Abstract type="html">创建用户语音配置&lt;br&gt;
+注册应用请前往语音云开发者网站。&lt;br&gt;
+网站：http://www.xfyun.cn</Abstract>
+			<DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+			
+			<Declaration>+ (IFlySpeechUtility *)createUtility:(NSString *)params</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>params</Name>
+					<Abstract type="html">启动参数，必须保证appid参数传入，示例：appid=123456</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">语音配置对象</Abstract></ReturnValue>
+			<Anchor>//api/name/createUtility:</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechUtility/destroy</TokenIdentifier>
+			<Abstract type="html">销毁用户配置对象</Abstract>
+			<DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+			
+			<Declaration>+ (BOOL)destroy</Declaration>
+			
+			<ReturnValue><Abstract type="html">成功返回YES,失败返回NO</Abstract></ReturnValue>
+			<Anchor>//api/name/destroy</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechUtility/getUtility</TokenIdentifier>
+			<Abstract type="html">获取用户配置对象</Abstract>
+			<DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+			
+			<Declaration>+ (IFlySpeechUtility *)getUtility</Declaration>
+			
+			<ReturnValue><Abstract type="html">用户配置对象</Abstract></ReturnValue>
+			<Anchor>//api/name/getUtility</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlySpeechUtility/setParameter:forKey:</TokenIdentifier>
+			<Abstract type="html">设置MSC引擎的状态参数</Abstract>
+			<DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)setParameter:(NSString *)value forKey:(NSString *)key</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>value</Name>
+					<Abstract type="html">参数值</Abstract>
+				</Parameter><Parameter>
+					<Name>key</Name>
+					<Abstract type="html">参数名称</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">成功返回YES,失败返回NO</Abstract></ReturnValue>
+			<Anchor>//api/name/setParameter:forKey:</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlySpeechUtility/parameterForKey:</TokenIdentifier>
+			<Abstract type="html">获取MSC引擎状态参数</Abstract>
+			<DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)parameterForKey:(NSString *)key</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>key</Name>
+					<Abstract type="html">参数名</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">参数值</Abstract></ReturnValue>
+			<Anchor>//api/name/parameterForKey:</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlySpeechUtility/setEngineMode:</TokenIdentifier>
+			<Abstract type="html">引擎类型</Abstract>
+			<DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) IFlyEngineMode engineMode</Declaration>
+			
+			
+			<Anchor>//api/name/engineMode</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlySpeechUtility/engineMode</TokenIdentifier>
+			<Abstract type="html">引擎类型</Abstract>
+			<DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) IFlyEngineMode engineMode</Declaration>
+			
+			
+			<Anchor>//api/name/engineMode</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/IFlySpeechUtility/engineMode</TokenIdentifier>
+			<Abstract type="html">引擎类型</Abstract>
+			<DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) IFlyEngineMode engineMode</Declaration>
+			
+			
+			<Anchor>//api/name/engineMode</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlySpeechUtility/setDelegate:</TokenIdentifier>
+			<Abstract type="html">语记协议委托</Abstract>
+			<DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) id&lt;IFlySpeechplusDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlySpeechUtility/delegate</TokenIdentifier>
+			<Abstract type="html">语记协议委托</Abstract>
+			<DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) id&lt;IFlySpeechplusDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/IFlySpeechUtility/delegate</TokenIdentifier>
+			<Abstract type="html">语记协议委托</Abstract>
+			<DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, assign) id&lt;IFlySpeechplusDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechUtility/checkServiceInstalled</TokenIdentifier>
+			<Abstract type="html">检查讯飞语记是否安装</Abstract>
+			<DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+			
+			<Declaration>+ (BOOL)checkServiceInstalled</Declaration>
+			
+			<ReturnValue><Abstract type="html">已安装返回YES，否则返回NO</Abstract></ReturnValue>
+			<Anchor>//api/name/checkServiceInstalled</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechUtility/componentUrl</TokenIdentifier>
+			<Abstract type="html">获取讯飞语记下载地址进行下载，安装完成后即可使用服务。&lt;br&gt;
+下载地址需要通过[[UIApplication sharedApplication] openUrl:]打开</Abstract>
+			<DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)componentUrl</Declaration>
+			
+			<ReturnValue><Abstract type="html">讯飞语记在App Store下载地址</Abstract></ReturnValue>
+			<Anchor>//api/name/componentUrl</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlySpeechUtility/handleOpenURL:</TokenIdentifier>
+			<Abstract type="html">注意：此接口废弃，不再需要使用&lt;br&gt;
+处理语记使用URL启动第三方应用程序时传递的数据&lt;br&gt;
+需要在 application:openURL:sourceApplication:annotation:或者application:handleOpenURL中调用。</Abstract>
+			<DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)handleOpenURL:(NSURL *)url</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>url</Name>
+					<Abstract type="html">语记启动第三方应用程序时传递过来的URL</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">成功返回YES，失败返回NO。</Abstract></ReturnValue>
+			<Anchor>//api/name/handleOpenURL:</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlySpeechUtility/openSpeechPlus:</TokenIdentifier>
+			<Abstract type="html">打开讯飞语记获取相应类型服务，0表示打开主界面</Abstract>
+			<DeclaredIn>IFlySpeechUtility.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)openSpeechPlus:(IFlySpeechPlusServiceType)serviceType</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>serviceType</Name>
+					<Abstract type="html">服务类型</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">成功打开返回YES，否则返回NO</Abstract></ReturnValue>
+			<Anchor>//api/name/openSpeechPlus:</Anchor>
+            <NodeRef refid="16"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

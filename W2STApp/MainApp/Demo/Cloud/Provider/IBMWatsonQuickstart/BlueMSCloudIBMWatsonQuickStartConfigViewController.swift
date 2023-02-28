@@ -37,10 +37,10 @@
 
 import Foundation
 
-public class BlueMSCloudIBMWatsonQuickStartConfigViewController : W2STCloudConfigViewController{
+public class BlueMSCloudIBMWatsonQuickStartConfigViewController : W2STCloudConfigViewController {
     @IBOutlet weak var mDeviceIdText: UITextField!
     
-    private var nodeType:String!
+    private var nodeType: String!
     
     public override func viewDidLoad() {
         mDeviceIdText.delegate = self
@@ -48,19 +48,21 @@ public class BlueMSCloudIBMWatsonQuickStartConfigViewController : W2STCloudConfi
     
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         mDeviceIdText.text = W2STCloudConfigViewController.getDeviceId(for: self.node)
         nodeType = BlueSTSDKNode.nodeType(toString: self.node.type)
     }
     
     public override func buildConnectionFactory() -> BlueMSCloudIotConnectionFactory? {
-        if let deviceId = mDeviceIdText.text, !deviceId.isEmpty{
-            return BlueMSIBMWatsonQuickStartConnectionFactory(deviceType: nodeType,deviceId: deviceId);
+        if let deviceId = mDeviceIdText.text, !deviceId.isEmpty {
+            return BlueMSIBMWatsonQuickStartConnectionFactory(deviceType: nodeType,deviceId: deviceId)
         }
-        return nil;
+        
+        return nil
     }
 }
 
-extension BlueMSCloudIBMWatsonQuickStartConfigViewController : UITextFieldDelegate{
+extension BlueMSCloudIBMWatsonQuickStartConfigViewController : UITextFieldDelegate {
     //hide keyboard when the user press return
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

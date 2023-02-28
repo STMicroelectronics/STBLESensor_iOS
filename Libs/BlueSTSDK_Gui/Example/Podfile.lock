@@ -1,0 +1,39 @@
+PODS:
+  - BlueSTSDK (0.1.0):
+    - opus-ios
+  - BlueSTSDK_Gui (0.1.0):
+    - BlueSTSDK
+    - MBProgressHUD
+    - STTheme
+  - MBProgressHUD (1.2.0)
+  - opus-ios (1.1.3)
+  - STTheme (0.1.0)
+
+DEPENDENCIES:
+  - BlueSTSDK (from `../../BlueSTSDK`)
+  - BlueSTSDK_Gui (from `../`)
+  - STTheme (from `../../STTheme`)
+
+SPEC REPOS:
+  trunk:
+    - MBProgressHUD
+    - opus-ios
+
+EXTERNAL SOURCES:
+  BlueSTSDK:
+    :path: "../../BlueSTSDK"
+  BlueSTSDK_Gui:
+    :path: "../"
+  STTheme:
+    :path: "../../STTheme"
+
+SPEC CHECKSUMS:
+  BlueSTSDK: 5707a7829abb9d4fb1b04e3b5fe9be635b886e3a
+  BlueSTSDK_Gui: 2852a9863b9066713820efc2e6e4c3d2e7a8eef0
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  opus-ios: 22c5b7a5d37cdb661e73f6a65932dbf902d4214f
+  STTheme: c47378cfc0e6ba67d39d549d2b3e6f7341e0977c
+
+PODFILE CHECKSUM: c758df11d32b41b5c5e6bac724534f9394012017
+
+COCOAPODS: 1.10.0

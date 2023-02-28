@@ -45,6 +45,8 @@
 
 #define DEFAULT_EVENT_INDEX 1
 
+//  Code Duplicated in: BlueSTSDKFeatureAccelerometerEvent+extensions.swift
+
 static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_Wesu[] ={
     BlueSTSDKFeatureEventTypeNone,
     BlueSTSDKFeatureEventTypeMultiple
@@ -90,6 +92,11 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_BNC002[] ={
     BlueSTSDKFeatureEventTypeFreeFall
 };
 
+static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_PROTEUS[] ={
+    BlueSTSDKFeatureEventTypeNone,
+    BlueSTSDKFeatureEventTypeWakeUp
+};
+
 #define TITLE_FORMAT BLUESTSDK_LOCALIZE(@"Event Enabled: %@",nil)
 #define DEFAULT_TITLE BLUESTSDK_LOCALIZE(@"Select event",nil)
 
@@ -101,7 +108,7 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_BNC002[] ={
 
 @end
 
-@implementation W2STAccEventViewController{
+@implementation W2STAccEventViewController {
     /**
      *  feature that will send the data
      */
@@ -113,10 +120,11 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_BNC002[] ={
     
     BlueSTSDKFeatureAccelerationDetectableEventType *mSupportedEventType;
     NSUInteger mSupportedEventTypeSize;
+    
+    bool featureWasEnabled;
 }
 
-
--(void)setEventTitleLabel:(BlueSTSDKFeatureAccelerationDetectableEventType)event{
+- (void)setEventTitleLabel:(BlueSTSDKFeatureAccelerationDetectableEventType)event{
     
     NSString *newButtonTitle;
     if(event != BlueSTSDKFeatureEventTypeNone){
@@ -130,7 +138,7 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_BNC002[] ={
 
 }
 
--(void)setSupportedEventTypeForNode:(BlueSTSDKNodeType)type{
+- (void)setSupportedEventTypeForNode:(BlueSTSDKNodeType)type {
     if(type==BlueSTSDKNodeTypeSTEVAL_WESU1){
         mSupportedEventType = sEventType_Wesu;
         mSupportedEventTypeSize = sizeof(sEventType_Wesu)/sizeof(BlueSTSDKFeatureAccelerationDetectableEventType);
@@ -148,36 +156,53 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_BNC002[] ={
         return;
     }
 
-    
     if(type == BlueSTSDKNodeTypeSTEVAL_BCN002V1){
         mSupportedEventType = sEventType_BNC002;
         mSupportedEventTypeSize = sizeof(sEventType_BNC002)/sizeof(BlueSTSDKFeatureAccelerationDetectableEventType);
         return;
     }
+    
+    if(type == BlueSTSDKNodeTypePROTEUS){
+        mSupportedEventType = sEventType_PROTEUS;
+    }
+    
     mSupportedEventType = sEventType_Nucleo;
     mSupportedEventTypeSize = sizeof(sEventType_Nucleo)/sizeof(BlueSTSDKFeatureAccelerationDetectableEventType);
     
     
 }
 
--(void)viewDidLoad{
+- (void)viewDidLoad {
     [super viewDidLoad];
     mCurrentEventTypeIndex=-1;
 }
 
--(void)forceEventAtIndex:(NSInteger)index{
+- (void)forceEventAtIndex:(NSInteger)index {
     //force the new event
     NSInteger temp = mCurrentEventTypeIndex;
     mCurrentEventTypeIndex=-1;
     [self selectEventAtIndex:temp];
 }
 
--(void)viewDidAppear:(BOOL)animated{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    featureWasEnabled = false;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+            selector:@selector(applicationDidEnterBackground:)
+            name:UIApplicationDidEnterBackgroundNotification
+            object:nil];
+        
+    [[NSNotificationCenter defaultCenter] addObserver:self
+        selector:@selector(applicationDidBecomeActive:)
+        name:UIApplicationDidBecomeActiveNotification
+        object:nil];
+    
     //enable the notification
-    mAccEventFeature = (BlueSTSDKFeatureAccelerometerEvent*)
-        [self.node getFeatureOfType:BlueSTSDKFeatureAccelerometerEvent.class];
+    mAccEventFeature = (BlueSTSDKFeatureAccelerometerEvent*)[self.node getFeatureOfType:BlueSTSDKFeatureAccelerometerEvent.class];
     [self setSupportedEventTypeForNode:self.node.type];
+    
     if(mAccEventFeature!=nil){
         [mAccEventFeature addFeatureDelegate:self];
         [mAccEventFeature addFeatureAccelerationEnableTypeDelegate:self];
@@ -199,18 +224,62 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_BNC002[] ={
     }
 }
 
--(void)viewWillDisappear:(BOOL)animated{
+- (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     if(mAccEventFeature!=nil){
         [mAccEventFeature removeFeatureDelegate:self];
         [mAccEventFeature removeFeatureAccelerationEnableTypeDelegate:self];
         [self.node disableNotification:mAccEventFeature];
+        [NSThread sleepForTimeInterval:0.1];
         mAccEventFeature=nil;
     }//if
 }
 
+#pragma mark - Handling BLE Notification
+
+/** Disabling Notification */
+-(void)applicationDidEnterBackground:(NSNotification *)notification {
+    if(mAccEventFeature!=nil){
+        [mAccEventFeature removeFeatureDelegate:self];
+        [mAccEventFeature removeFeatureAccelerationEnableTypeDelegate:self];
+        [self.node disableNotification:mAccEventFeature];
+        [NSThread sleepForTimeInterval:0.1];
+        mAccEventFeature=nil;
+    }//if
+}
+
+/** Enabling Notification */
+-(void)applicationDidBecomeActive:(NSNotification *)notification {
+    mAccEventFeature = (BlueSTSDKFeatureAccelerometerEvent*)[self.node getFeatureOfType:BlueSTSDKFeatureAccelerometerEvent.class];
+    [self setSupportedEventTypeForNode:self.node.type];
+    
+    if(mAccEventFeature!=nil){
+        if(featureWasEnabled) {
+            [mAccEventFeature addFeatureDelegate:self];
+            [mAccEventFeature addFeatureAccelerationEnableTypeDelegate:self];
+            [self.node enableNotification:mAccEventFeature];
+            if(mCurrentEventTypeIndex<0){ // if it is the first time, set the default demo
+                mCurrentEventTypeIndex = DEFAULT_EVENT_INDEX;
+                if(mSupportedEventType[mCurrentEventTypeIndex] == mAccEventFeature.DEFAULT_ENABLED_EVENT){
+                    //since the default event is already enabled change only the button
+                    //without send the message to the node
+                    [self setEventTitleLabel:mSupportedEventType[mCurrentEventTypeIndex]];
+                    [self enableEventType:mSupportedEventType[mCurrentEventTypeIndex] forBoardType:self.node.type];
+                }else{
+                    [self forceEventAtIndex:mCurrentEventTypeIndex];
+                }
+            }else{
+                [self forceEventAtIndex:mCurrentEventTypeIndex];
+            }
+            //[self.node readFeature:mAccEventFeature];
+        }
+    }
+    
+    
+}
+
 #pragma mark - BlueSTSDKFeatureDelegate
-- (void)didUpdateFeature:(BlueSTSDKFeature *)feature sample:(BlueSTSDKFeatureSample *)sample{
+- (void)didUpdateFeature:(BlueSTSDKFeature *)feature sample:(BlueSTSDKFeatureSample *)sample {
         const BlueSTSDKFeatureAccelerometerEventType event =
             [BlueSTSDKFeatureAccelerometerEvent getAccelerationEvent:sample];
     
@@ -224,9 +293,9 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_BNC002[] ={
     }
 
 #pragma mark - BlueSTSDKFeatureAccelerationEnableTypeDelegate
--(void)didTypeChangeStatus:(BlueSTSDKFeatureAccelerometerEvent *)feature
+- (void)didTypeChangeStatus:(BlueSTSDKFeatureAccelerometerEvent *)feature
                       type:(BlueSTSDKFeatureAccelerationDetectableEventType)type
-                 newStatus:(BOOL)newStatus{
+                 newStatus:(BOOL)newStatus {
     NSLog(@"Event %@ Status:%d",[BlueSTSDKFeatureAccelerometerEvent detectableEventTypeToString:type],newStatus);
 }
 
@@ -255,7 +324,7 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_BNC002[] ={
 
 }
 
--(void) selectEventAtIndex:(NSUInteger)row{
+- (void)selectEventAtIndex:(NSUInteger)row {
     BlueSTSDKFeatureAccelerationDetectableEventType selectEvent;
     if (row>mSupportedEventTypeSize)
         selectEvent = BlueSTSDKFeatureEventTypeNone;
@@ -286,8 +355,7 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_BNC002[] ={
     
 }
 
-
--(void)displayEventType:(BlueSTSDKFeatureAccelerometerEventType) event data:(int32_t)eventData{
+- (void)displayEventType:(BlueSTSDKFeatureAccelerometerEventType) event data:(int32_t)eventData {
     if(!mSingleEventView.view.hidden){
         [mSingleEventView displayEventType:event data:eventData];
     }
@@ -296,7 +364,7 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_BNC002[] ={
     }
 }
 
--(void)enableEventType:(BlueSTSDKFeatureAccelerationDetectableEventType) event forBoardType:(BlueSTSDKNodeType)boardType{
+- (void)enableEventType:(BlueSTSDKFeatureAccelerationDetectableEventType) event forBoardType:(BlueSTSDKNodeType)boardType {
     if(!mSingleEventView.view.hidden){
         [mSingleEventView enableEventType:event forBoardType:boardType];
     }
@@ -307,23 +375,19 @@ static BlueSTSDKFeatureAccelerationDetectableEventType sEventType_BNC002[] ={
 }
 
 #pragma mark - UIPickerViewDataSource
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
 }
 
-- (NSInteger)pickerView:(UIPickerView *)pickerView
-numberOfRowsInComponent:(NSInteger)component{
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     return mSupportedEventTypeSize;
 }
 
 #pragma mark -  UIPickerViewDelegate
-- (NSString *)pickerView:(UIPickerView *)pickerView
-             titleForRow:(NSInteger)row
-            forComponent:(NSInteger)component{
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     
     BlueSTSDKFeatureAccelerationDetectableEventType temp = mSupportedEventType[row];
     return [BlueSTSDKFeatureAccelerometerEvent detectableEventTypeToString:temp];
 }
-
 
 @end

@@ -1,0 +1,1 @@
+cp -R -f -a com.iflytek.documentation.IFlyMSC.docset ~/Library/Developer/Shared/Documentation/DocSets/

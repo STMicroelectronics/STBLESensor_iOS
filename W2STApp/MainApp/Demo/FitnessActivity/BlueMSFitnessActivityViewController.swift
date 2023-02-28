@@ -37,8 +37,7 @@
 
 import Foundation
 
-class BlueMSFitnessActivityViewController:
-BlueMSDemoTabViewController {
+class BlueMSFitnessActivityViewController: BlueMSDemoTabViewController {
     
     @IBOutlet weak var activityTilte: UILabel!
     @IBOutlet weak var activityCounterLabel: UILabel!
@@ -47,9 +46,30 @@ BlueMSDemoTabViewController {
     private var mFitnessFeature:BlueSTSDKFeatureFitnessActivity?;
     private var mCurrentActivity:BlueSTSDKFeatureFitnessActivity.ActivityType = .bicep_curl
     
+    private var featureWasEnabled = false
+    
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        startNotification()
+    }
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad();
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground),
+                                               name: UIApplication.didEnterBackgroundNotification,
+                                               object: nil)
+                
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActivity),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated);
+        stopNotification()
+    }
+    
+    public func startNotification(){
         mFitnessFeature = self.node.getFeatureOfType(BlueSTSDKFeatureFitnessActivity.self) as? BlueSTSDKFeatureFitnessActivity
         if let feature = mFitnessFeature{
             feature.add(self)
@@ -57,13 +77,28 @@ BlueMSDemoTabViewController {
             feature.enableActivity(mCurrentActivity)
         }
     }
-    
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated);
-        
+
+    public func stopNotification(){
         if let feature = mFitnessFeature{
             feature.remove(self)
             feature.disableNotification()
+        }
+    }
+
+
+    @objc func didEnterForeground() {
+        mFitnessFeature = self.node.getFeatureOfType(BlueSTSDKFeatureFitnessActivity.self) as? BlueSTSDKFeatureFitnessActivity
+        if !(mFitnessFeature==nil) && node.isEnableNotification(mFitnessFeature!) {
+            featureWasEnabled = true
+            stopNotification()
+        }else {
+            featureWasEnabled = false;
+        }
+    }
+        
+    @objc func didBecomeActivity() {
+        if(featureWasEnabled) {
+            startNotification()
         }
     }
     

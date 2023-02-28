@@ -46,23 +46,39 @@
 
 @implementation W2STPressureViewController{
     NSArray *mPressureFeatures;
+    bool featureWasEnabled;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    featureWasEnabled = false;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self
+            selector:@selector(applicationDidEnterBackground:)
+            name:UIApplicationDidEnterBackgroundNotification
+            object:nil];
+        
+    [[NSNotificationCenter defaultCenter] addObserver:self
+        selector:@selector(applicationDidBecomeActive:)
+        name:UIApplicationDidBecomeActiveNotification
+        object:nil];
+    
     mPressureFeatures = [self.node getFeaturesOfType: BlueSTSDKFeaturePressure.class];
     if(mPressureFeatures.count != 0){
         for (BlueSTSDKFeature *f in mPressureFeatures){
             [f addFeatureDelegate:self];
             [self.node enableNotification:f];
         }
-        _pressureImage.image=[UIImage imageNamed:@"pressure"];
+        if (@available(iOS 13.0, *)) {
+            _pressureImage.image = [UIImage imageNamed: @"pressure" inBundle: [NSBundle bundleForClass:[W2STPressureViewController class]] withConfiguration: nil];
+        } else {
+            _pressureImage.image = [UIImage imageNamed:@"pressure"];
+        }
     }
 }
 
@@ -72,6 +88,7 @@
         for (BlueSTSDKFeature *f in mPressureFeatures){
             [f removeFeatureDelegate:self];
             [self.node disableNotification:f];
+            [NSThread sleepForTimeInterval:0.1];
         }
     }
 }
@@ -96,5 +113,42 @@
     });
 }
 
+#pragma mark - Handling BLE Notification
+
+/** Disabling Notification */
+-(void)applicationDidEnterBackground:(NSNotification *)notification {
+    if(mPressureFeatures.count != 0){
+        for (BlueSTSDKFeature *f in mPressureFeatures){
+            if([self.node isEnableNotification: f]){
+                if(featureWasEnabled == false){
+                    featureWasEnabled = true;
+                }
+                [f removeFeatureDelegate:self];
+                [self.node disableNotification:f];
+                [NSThread sleepForTimeInterval:0.1];
+            }else {
+                featureWasEnabled = false;
+            }
+        }
+    }
+}
+
+/** Enabling Notification */
+-(void)applicationDidBecomeActive:(NSNotification *)notification {
+    if(mPressureFeatures.count != 0){
+        if(featureWasEnabled) {
+            featureWasEnabled = false;
+            for (BlueSTSDKFeature *f in mPressureFeatures){
+                [f addFeatureDelegate:self];
+                [self.node enableNotification:f];
+            }
+        }
+        if (@available(iOS 13.0, *)) {
+            _pressureImage.image = [UIImage imageNamed: @"pressure" inBundle: [NSBundle bundleForClass:[W2STPressureViewController class]] withConfiguration: nil];
+        } else {
+            _pressureImage.image = [UIImage imageNamed:@"pressure"];
+        }
+    }
+}
 
 @end

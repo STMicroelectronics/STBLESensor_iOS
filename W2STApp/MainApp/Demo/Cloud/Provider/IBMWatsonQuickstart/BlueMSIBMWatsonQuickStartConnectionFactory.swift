@@ -35,45 +35,44 @@
  * OF */
 
 import Foundation
-import MQTTFramework
+import MQTTClient
 
-public class BlueMSIBMWatsonQuickStartConnectionFactory : BlueMSCloudIotConnectionFactory{
+public class BlueMSIBMWatsonQuickStartConnectionFactory : BlueMSCloudIotConnectionFactory {
   
     private static let DATA_URL_FORMAT = "https://quickstart.internetofthings.ibmcloud.com/#/device/%@/sensor/"
     private static let MQTT_BROKER = "quickstart.messaging.internetofthings.ibmcloud.com"
     private static let MQTT_BROKER_PORT = UInt32(8883)
     private static let MQTT_CLIENT_ID_FORMAT = "d:quickstart:%@:%@"
     
-    private let mDeviceType:String
-    private let mDeviceId:String
+    private let mDeviceType: String
+    private let mDeviceId: String
     
-    public init(deviceType:String,deviceId:String){
+    public init(deviceType:String,deviceId:String) {
         mDeviceId = deviceId
         mDeviceType = deviceType
     }
     
     public func getDataUrl() -> URL? {
-        let urlStr = String(format: BlueMSIBMWatsonQuickStartConnectionFactory.DATA_URL_FORMAT,
-                            mDeviceId)
+        let urlStr = String(format: BlueMSIBMWatsonQuickStartConnectionFactory.DATA_URL_FORMAT, mDeviceId)
         return URL(string: urlStr)
     }
     
     public func getSession() -> BlueMSCloudIotClient {
-        let transport = MCMQTTCFSocketTransport();
-        transport.host = BlueMSIBMWatsonQuickStartConnectionFactory.MQTT_BROKER;
-        transport.port = BlueMSIBMWatsonQuickStartConnectionFactory.MQTT_BROKER_PORT;
-        transport.tls=true;
+        let transport = MQTTCFSocketTransport()
+        transport.host = BlueMSIBMWatsonQuickStartConnectionFactory.MQTT_BROKER
+        transport.port = BlueMSIBMWatsonQuickStartConnectionFactory.MQTT_BROKER_PORT
+        transport.tls = true
         
-        let clientId = String(format:BlueMSIBMWatsonQuickStartConnectionFactory.MQTT_CLIENT_ID_FORMAT,
-                              mDeviceType,mDeviceId)
-        let session = MCMQTTSession(clientId: clientId)
+        let clientId = String(format:BlueMSIBMWatsonQuickStartConnectionFactory.MQTT_CLIENT_ID_FORMAT, mDeviceType, mDeviceId)
+        let session = MQTTSession(clientId: clientId)
         session?.transport = transport
+        
         return BlueMSCloudIotMQTTClient(session!)
     }
     
     public func getFeatureDelegate(withSession session: BlueMSCloudIotClient, minUpdateInterval: TimeInterval) -> BlueSTSDKFeatureDelegate {
-        let mqttClient = session as! BlueMSCloudIotMQTTClient;
-        return BlueMsIBMWatsonIotFeatureListener(session: mqttClient.connection,minUpdateInterval:minUpdateInterval);
+        let mqttClient = session as! BlueMSCloudIotMQTTClient
+        return BlueMsIBMWatsonIotFeatureListener(session: mqttClient.connection, minUpdateInterval: minUpdateInterval)
     }
     
     public func isSupportedFeature(_ feature: BlueSTSDKFeature) -> Bool {

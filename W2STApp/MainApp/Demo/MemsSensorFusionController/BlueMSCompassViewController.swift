@@ -61,9 +61,30 @@ public class BlueMSCompassViewController: BlueMSCalibrationViewController,
     
     private var mFeature:BlueSTSDKFeature?;
     
+    private var featureWasEnabled = false
+    
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
-        
+        startNotification()
+    }
+ 
+    public override func viewDidLoad() {
+        super.viewDidLoad();
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground),
+                                               name: UIApplication.didEnterBackgroundNotification,
+                                               object: nil)
+                
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActivity),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated);
+        stopNotification()
+    }
+    
+    public func startNotification(){
         mFeature = self.node.getFeatureOfType(BlueSTSDKFeatureCompass.self) ??
                 self.node.getFeatureOfType(BlueSTSDKFeatureEulerAngle.self)
         
@@ -75,13 +96,29 @@ public class BlueMSCompassViewController: BlueMSCalibrationViewController,
             feature.enableNotification()
         }
     }
- 
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated);
-        
+
+    public func stopNotification(){
         if let feature = mFeature{
             feature.disableNotification()
             feature.remove(self);
+        }
+    }
+
+
+    @objc func didEnterForeground() {
+        mFeature = self.node.getFeatureOfType(BlueSTSDKFeatureCompass.self) ??
+                self.node.getFeatureOfType(BlueSTSDKFeatureEulerAngle.self)
+        if !(mFeature==nil) && node.isEnableNotification(mFeature!) {
+            featureWasEnabled = true
+            stopNotification()
+        }else {
+            featureWasEnabled = false;
+        }
+    }
+        
+    @objc func didBecomeActivity() {
+        if(featureWasEnabled) {
+            startNotification()
         }
     }
     

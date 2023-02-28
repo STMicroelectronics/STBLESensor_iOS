@@ -1,0 +1,1344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/IFlySpeechConstant.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/IFlySpeechConstant</TokenIdentifier>
+			<Abstract type="html">公共常量类&lt;br&gt;
+主要定义参数的key value值</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+            
+			
+			<NodeRef refid="10"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/APPID</TokenIdentifier>
+			<Abstract type="html">语音应用ID&lt;br&gt;
+通过开发者网站申请</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)APPID</Declaration>
+			
+			<ReturnValue><Abstract type="html">语音应用IDkey</Abstract></ReturnValue>
+			<Anchor>//api/name/APPID</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/ACCENT</TokenIdentifier>
+			<Abstract type="html">语言区域。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)ACCENT</Declaration>
+			
+			<ReturnValue><Abstract type="html">语言区域key。</Abstract></ReturnValue>
+			<Anchor>//api/name/ACCENT</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/ACCENT_MANDARIN</TokenIdentifier>
+			<Abstract type="html">语言区域。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)ACCENT_MANDARIN</Declaration>
+			
+			<ReturnValue><Abstract type="html">普通话value。</Abstract></ReturnValue>
+			<Anchor>//api/name/ACCENT_MANDARIN</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/ACCENT_HENANESE</TokenIdentifier>
+			<Abstract type="html">语言区域。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)ACCENT_HENANESE</Declaration>
+			
+			<ReturnValue><Abstract type="html">河南话value。</Abstract></ReturnValue>
+			<Anchor>//api/name/ACCENT_HENANESE</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/ACCENT_SICHUANESE</TokenIdentifier>
+			<Abstract type="html">语言区域。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)ACCENT_SICHUANESE</Declaration>
+			
+			<ReturnValue><Abstract type="html">四川话value。</Abstract></ReturnValue>
+			<Anchor>//api/name/ACCENT_SICHUANESE</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/ACCENT_CANTONESE</TokenIdentifier>
+			<Abstract type="html">语言区域。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)ACCENT_CANTONESE</Declaration>
+			
+			<ReturnValue><Abstract type="html">粤语value。</Abstract></ReturnValue>
+			<Anchor>//api/name/ACCENT_CANTONESE</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/LANGUAGE</TokenIdentifier>
+			<Abstract type="html">语言&lt;br&gt;
+支持：zhcn，zhtw，en_us&lt;br&gt;</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)LANGUAGE</Declaration>
+			
+			<ReturnValue><Abstract type="html">语言key</Abstract></ReturnValue>
+			<Anchor>//api/name/LANGUAGE</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/LANGUAGE_CHINESE</TokenIdentifier>
+			<Abstract type="html">语言</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)LANGUAGE_CHINESE</Declaration>
+			
+			<ReturnValue><Abstract type="html">中文value</Abstract></ReturnValue>
+			<Anchor>//api/name/LANGUAGE_CHINESE</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/LANGUAGE_CHINESE_TW</TokenIdentifier>
+			<Abstract type="html">语言</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)LANGUAGE_CHINESE_TW</Declaration>
+			
+			<ReturnValue><Abstract type="html">中文台湾value</Abstract></ReturnValue>
+			<Anchor>//api/name/LANGUAGE_CHINESE_TW</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/LANGUAGE_ENGLISH</TokenIdentifier>
+			<Abstract type="html">语言</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)LANGUAGE_ENGLISH</Declaration>
+			
+			<ReturnValue><Abstract type="html">英文value</Abstract></ReturnValue>
+			<Anchor>//api/name/LANGUAGE_ENGLISH</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/RESULT_TYPE</TokenIdentifier>
+			<Abstract type="html">返回结果的数据格式，可设置为json，xml，plain，默认为json。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)RESULT_TYPE</Declaration>
+			
+			<ReturnValue><Abstract type="html">返回结果的数据格式key</Abstract></ReturnValue>
+			<Anchor>//api/name/RESULT_TYPE</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/IFLY_DOMAIN</TokenIdentifier>
+			<Abstract type="html">应用领域。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)IFLY_DOMAIN</Declaration>
+			
+			<ReturnValue><Abstract type="html">应用领域key</Abstract></ReturnValue>
+			<Anchor>//api/name/IFLY_DOMAIN</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/DATA_TYPE</TokenIdentifier>
+			<Abstract type="html">个性化数据上传类型</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)DATA_TYPE</Declaration>
+			
+			<ReturnValue><Abstract type="html">个性化数据上传类型key</Abstract></ReturnValue>
+			<Anchor>//api/name/DATA_TYPE</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/SPEECH_TIMEOUT</TokenIdentifier>
+			<Abstract type="html">语音输入超时时间&lt;br&gt;
+单位：ms，默认30000</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)SPEECH_TIMEOUT</Declaration>
+			
+			<ReturnValue><Abstract type="html">语音输入超时时间key</Abstract></ReturnValue>
+			<Anchor>//api/name/SPEECH_TIMEOUT</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/NET_TIMEOUT</TokenIdentifier>
+			<Abstract type="html">网络连接超时时间&lt;br&gt;
+单位：ms，默认20000</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)NET_TIMEOUT</Declaration>
+			
+			<ReturnValue><Abstract type="html">网络连接超时时间key</Abstract></ReturnValue>
+			<Anchor>//api/name/NET_TIMEOUT</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/SUBJECT</TokenIdentifier>
+			<Abstract type="html">业务类型。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)SUBJECT</Declaration>
+			
+			<ReturnValue><Abstract type="html">业务类型key。</Abstract></ReturnValue>
+			<Anchor>//api/name/SUBJECT</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/PARAMS</TokenIdentifier>
+			<Abstract type="html">扩展参数。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)PARAMS</Declaration>
+			
+			<ReturnValue><Abstract type="html">扩展参数key。</Abstract></ReturnValue>
+			<Anchor>//api/name/PARAMS</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/PROT_TYPE</TokenIdentifier>
+			<Abstract type="html">加密参数</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)PROT_TYPE</Declaration>
+			
+			<ReturnValue><Abstract type="html">加密参数key</Abstract></ReturnValue>
+			<Anchor>//api/name/PROT_TYPE</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/SSL_CERT</TokenIdentifier>
+			<Abstract type="html">ssl证书内容</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)SSL_CERT</Declaration>
+			
+			<ReturnValue><Abstract type="html">ssl证书内容key</Abstract></ReturnValue>
+			<Anchor>//api/name/SSL_CERT</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/POWER_CYCLE</TokenIdentifier>
+			<Abstract type="html">录音音量返回时间间隔。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)POWER_CYCLE</Declaration>
+			
+			<ReturnValue><Abstract type="html">间隔key。</Abstract></ReturnValue>
+			<Anchor>//api/name/POWER_CYCLE</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/SAMPLE_RATE</TokenIdentifier>
+			<Abstract type="html">合成、识别、唤醒、评测、声纹等业务采样率。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)SAMPLE_RATE</Declaration>
+			
+			<ReturnValue><Abstract type="html">合成及识别采样率key。</Abstract></ReturnValue>
+			<Anchor>//api/name/SAMPLE_RATE</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/SAMPLE_RATE_8K</TokenIdentifier>
+			<Abstract type="html">合成、识别、唤醒、评测、声纹等业务采样率。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)SAMPLE_RATE_8K</Declaration>
+			
+			<ReturnValue><Abstract type="html">合成及识别采样率8K Value。</Abstract></ReturnValue>
+			<Anchor>//api/name/SAMPLE_RATE_8K</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/SAMPLE_RATE_16K</TokenIdentifier>
+			<Abstract type="html">合成、识别、唤醒、评测、声纹等业务采样率。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)SAMPLE_RATE_16K</Declaration>
+			
+			<ReturnValue><Abstract type="html">合成及识别采样率16K Value。</Abstract></ReturnValue>
+			<Anchor>//api/name/SAMPLE_RATE_16K</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/ENGINE_TYPE</TokenIdentifier>
+			<Abstract type="html">引擎类型。&lt;br&gt;
+可选：local，cloud，auto&lt;br&gt;
+默认：auto</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)ENGINE_TYPE</Declaration>
+			
+			<ReturnValue><Abstract type="html">引擎类型key。</Abstract></ReturnValue>
+			<Anchor>//api/name/ENGINE_TYPE</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/TYPE_LOCAL</TokenIdentifier>
+			<Abstract type="html">本地识别引擎。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)TYPE_LOCAL</Declaration>
+			
+			<ReturnValue><Abstract type="html">本地识别引擎value。</Abstract></ReturnValue>
+			<Anchor>//api/name/TYPE_LOCAL</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/TYPE_CLOUD</TokenIdentifier>
+			<Abstract type="html">云端识别引擎。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)TYPE_CLOUD</Declaration>
+			
+			<ReturnValue><Abstract type="html">云端识别引擎value。</Abstract></ReturnValue>
+			<Anchor>//api/name/TYPE_CLOUD</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/TYPE_MIX</TokenIdentifier>
+			<Abstract type="html">混合识别引擎。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)TYPE_MIX</Declaration>
+			
+			<ReturnValue><Abstract type="html">混合识别引擎value。</Abstract></ReturnValue>
+			<Anchor>//api/name/TYPE_MIX</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/TYPE_AUTO</TokenIdentifier>
+			<Abstract type="html">引擎根据当前配置进行选择。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)TYPE_AUTO</Declaration>
+			
+			<ReturnValue><Abstract type="html">引擎根据当前配置进行选择value。</Abstract></ReturnValue>
+			<Anchor>//api/name/TYPE_AUTO</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/TEXT_ENCODING</TokenIdentifier>
+			<Abstract type="html">输入文本编码格式。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)TEXT_ENCODING</Declaration>
+			
+			<ReturnValue><Abstract type="html">编码格式key。</Abstract></ReturnValue>
+			<Anchor>//api/name/TEXT_ENCODING</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/RESULT_ENCODING</TokenIdentifier>
+			<Abstract type="html">结果编码格式。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)RESULT_ENCODING</Declaration>
+			
+			<ReturnValue><Abstract type="html">结果编码格式key。</Abstract></ReturnValue>
+			<Anchor>//api/name/RESULT_ENCODING</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/PLAYER_INIT</TokenIdentifier>
+			<Abstract type="html">是否初始化播放器&lt;br&gt;
+SDK内部播放器采用音频队列实现，有部分外部需求需要自定义音频队列，可以通过此开关控制&lt;br&gt;
+0:不初始化，非0或者参数为空:初始化，默认初始化</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)PLAYER_INIT</Declaration>
+			
+			<ReturnValue><Abstract type="html">是否初始化播放器参数key</Abstract></ReturnValue>
+			<Anchor>//api/name/PLAYER_INIT</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/PLAYER_DEACTIVE</TokenIdentifier>
+			<Abstract type="html">是否播放器结束后发送deactive系统通知&lt;br&gt;
+SDK内部播放器结束后可通过此开关发送deactive系统通知，使其他被中断的音频应用解除中断&lt;br&gt;
+0:不发送，非0或者参数为空:发送，默认发送</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)PLAYER_DEACTIVE</Declaration>
+			
+			<ReturnValue><Abstract type="html">是否播放器结束后发送deactive系统通知参数key</Abstract></ReturnValue>
+			<Anchor>//api/name/PLAYER_DEACTIVE</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/RECORDER_INIT</TokenIdentifier>
+			<Abstract type="html">是否初始化录音器&lt;br&gt;
+SDK内部录音器采用音频队列实现，有部分外部需求需要自定义音频队列，可以通过此开关控制&lt;br&gt;
+0:不初始化，非0或者参数为空:初始化，默认初始化</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)RECORDER_INIT</Declaration>
+			
+			<ReturnValue><Abstract type="html">是否初始化录音器参数key</Abstract></ReturnValue>
+			<Anchor>//api/name/RECORDER_INIT</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/RECORDER_DEACTIVE</TokenIdentifier>
+			<Abstract type="html">是否录音器结束后发送deactive系统通知&lt;br&gt;
+SDK内部录音器结束后可通过此开关发送deactive系统通知，使其他被中断的音频应用解除中断&lt;br&gt;
+0:不发送，非0或者参数为空:发送，默认发送</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)RECORDER_DEACTIVE</Declaration>
+			
+			<ReturnValue><Abstract type="html">是否录音器结束后发送deactive系统通知参数key</Abstract></ReturnValue>
+			<Anchor>//api/name/RECORDER_DEACTIVE</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/SPEED</TokenIdentifier>
+			<Abstract type="html">语速&lt;br&gt;
+范围 （0~100） 默认值:50</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)SPEED</Declaration>
+			
+			<ReturnValue><Abstract type="html">语速key</Abstract></ReturnValue>
+			<Anchor>//api/name/SPEED</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/PITCH</TokenIdentifier>
+			<Abstract type="html">音调&lt;br&gt;
+范围（0~100）默认值:50</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)PITCH</Declaration>
+			
+			<ReturnValue><Abstract type="html">音调key</Abstract></ReturnValue>
+			<Anchor>//api/name/PITCH</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/TTS_AUDIO_PATH</TokenIdentifier>
+			<Abstract type="html">合成录音保存路径</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)TTS_AUDIO_PATH</Declaration>
+			
+			<ReturnValue><Abstract type="html">合成录音保存路径key</Abstract></ReturnValue>
+			<Anchor>//api/name/TTS_AUDIO_PATH</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/VAD_ENABLE</TokenIdentifier>
+			<Abstract type="html">启用VAD功能</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)VAD_ENABLE</Declaration>
+			
+			<ReturnValue><Abstract type="html">启用VAD功能key</Abstract></ReturnValue>
+			<Anchor>//api/name/VAD_ENABLE</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/VAD_BOS</TokenIdentifier>
+			<Abstract type="html">VAD前端点超时&lt;br&gt;
+范围：0-10000(单位ms)</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)VAD_BOS</Declaration>
+			
+			<ReturnValue><Abstract type="html">VAD前端点超时key</Abstract></ReturnValue>
+			<Anchor>//api/name/VAD_BOS</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/VAD_EOS</TokenIdentifier>
+			<Abstract type="html">VAD后端点超时。&lt;br&gt;
+可选范围：0-10000(单位ms)</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)VAD_EOS</Declaration>
+			
+			<ReturnValue><Abstract type="html">VAD后端点超时key</Abstract></ReturnValue>
+			<Anchor>//api/name/VAD_EOS</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/VOICE_NAME</TokenIdentifier>
+			<Abstract type="html">发音人</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)VOICE_NAME</Declaration>
+			
+			<ReturnValue><Abstract type="html">发音人key</Abstract></ReturnValue>
+			<Anchor>//api/name/VOICE_NAME</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/VOICE_ID</TokenIdentifier>
+			<Abstract type="html">发音人ID key。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)VOICE_ID</Declaration>
+			
+			<ReturnValue><Abstract type="html">发音人ID key</Abstract></ReturnValue>
+			<Anchor>//api/name/VOICE_ID</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/VOICE_LANG</TokenIdentifier>
+			<Abstract type="html">发音人语种 key。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)VOICE_LANG</Declaration>
+			
+			<ReturnValue><Abstract type="html">发音人ID key</Abstract></ReturnValue>
+			<Anchor>//api/name/VOICE_LANG</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/VOLUME</TokenIdentifier>
+			<Abstract type="html">音量&lt;br&gt;
+范围（0~100） 默认值:50</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)VOLUME</Declaration>
+			
+			<ReturnValue><Abstract type="html">音量key</Abstract></ReturnValue>
+			<Anchor>//api/name/VOLUME</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/TTS_BUFFER_TIME</TokenIdentifier>
+			<Abstract type="html">合成音频播放缓冲时间&lt;br&gt;
+即缓冲多少秒音频后开始播放，如ttsbuffertime=1000;&lt;br&gt;
+默认缓冲1000ms毫秒后播放。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)TTS_BUFFER_TIME</Declaration>
+			
+			<ReturnValue><Abstract type="html">合成音频播放缓冲时间缓冲时间key</Abstract></ReturnValue>
+			<Anchor>//api/name/TTS_BUFFER_TIME</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/TTS_DATA_NOTIFY</TokenIdentifier>
+			<Abstract type="html">合成数据是否即时返回</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)TTS_DATA_NOTIFY</Declaration>
+			
+			<ReturnValue><Abstract type="html">合成数据即时返回key</Abstract></ReturnValue>
+			<Anchor>//api/name/TTS_DATA_NOTIFY</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/NEXT_TEXT</TokenIdentifier>
+			<Abstract type="html">预合成文本</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)NEXT_TEXT</Declaration>
+			
+			<ReturnValue><Abstract type="html">预合成文本参数key</Abstract></ReturnValue>
+			<Anchor>//api/name/NEXT_TEXT</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/MPPLAYINGINFOCENTER</TokenIdentifier>
+			<Abstract type="html">是否需要打开MPPlayingInfocenter&lt;br&gt;
+是否需要初始化MPPlayerCenter的属性;0:需要初始化，1:不初始化</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)MPPLAYINGINFOCENTER</Declaration>
+			
+			<ReturnValue><Abstract type="html">是否需要打开MPPlayingInfocenter 参数key</Abstract></ReturnValue>
+			<Anchor>//api/name/MPPLAYINGINFOCENTER</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/AUDIO_SOURCE</TokenIdentifier>
+			<Abstract type="html">录音源&lt;br&gt;
+录音时的录音方式，默认为麦克风，设置为1；&lt;br&gt;
+如果需要外部送入音频，设置为-1，通过WriteAudio接口送入音频。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)AUDIO_SOURCE</Declaration>
+			
+			<ReturnValue><Abstract type="html">录音源key</Abstract></ReturnValue>
+			<Anchor>//api/name/AUDIO_SOURCE</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/ASR_AUDIO_PATH</TokenIdentifier>
+			<Abstract type="html">识别录音保存路径</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)ASR_AUDIO_PATH</Declaration>
+			
+			<ReturnValue><Abstract type="html">识别录音保存路径key</Abstract></ReturnValue>
+			<Anchor>//api/name/ASR_AUDIO_PATH</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/ASR_SCH</TokenIdentifier>
+			<Abstract type="html">设置是否开启语义</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)ASR_SCH</Declaration>
+			
+			<ReturnValue><Abstract type="html">设置是否开启语义key</Abstract></ReturnValue>
+			<Anchor>//api/name/ASR_SCH</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/ASR_PTT</TokenIdentifier>
+			<Abstract type="html">设置是否有标点符号</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)ASR_PTT</Declaration>
+			
+			<ReturnValue><Abstract type="html">设置是否有标点符号key</Abstract></ReturnValue>
+			<Anchor>//api/name/ASR_PTT</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/ASR_PTT_HAVEDOT</TokenIdentifier>
+			<Abstract type="html">ASR_PTT 参数值：设置带标点符号</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)ASR_PTT_HAVEDOT</Declaration>
+			
+			<ReturnValue><Abstract type="html">设置是有标点符号Value</Abstract></ReturnValue>
+			<Anchor>//api/name/ASR_PTT_HAVEDOT</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/ASR_PTT_NODOT</TokenIdentifier>
+			<Abstract type="html">ASR_PTT 参数值：设置不带标点符号</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)ASR_PTT_NODOT</Declaration>
+			
+			<ReturnValue><Abstract type="html">设置是无标点符号Value</Abstract></ReturnValue>
+			<Anchor>//api/name/ASR_PTT_NODOT</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/LOCAL_GRAMMAR</TokenIdentifier>
+			<Abstract type="html">本地语法名称。&lt;br&gt;
+本地语法名称，对应云端的有CLOUD_GRAMMAR</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)LOCAL_GRAMMAR</Declaration>
+			
+			<ReturnValue><Abstract type="html">本地语法名称key。</Abstract></ReturnValue>
+			<Anchor>//api/name/LOCAL_GRAMMAR</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/CLOUD_GRAMMAR</TokenIdentifier>
+			<Abstract type="html">云端语法ID。&lt;br&gt;
+云端编译语法返回的表示，早期版本使用GRAMMAR_ID，仍然兼容，但建议使用新的。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)CLOUD_GRAMMAR</Declaration>
+			
+			<ReturnValue><Abstract type="html">云端语法ID key。</Abstract></ReturnValue>
+			<Anchor>//api/name/CLOUD_GRAMMAR</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/GRAMMAR_TYPE</TokenIdentifier>
+			<Abstract type="html">语法类型</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)GRAMMAR_TYPE</Declaration>
+			
+			<ReturnValue><Abstract type="html">语法类型key</Abstract></ReturnValue>
+			<Anchor>//api/name/GRAMMAR_TYPE</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/GRAMMAR_CONTENT</TokenIdentifier>
+			<Abstract type="html">语法内容。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)GRAMMAR_CONTENT</Declaration>
+			
+			<ReturnValue><Abstract type="html">语法内容key。</Abstract></ReturnValue>
+			<Anchor>//api/name/GRAMMAR_CONTENT</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/LEXICON_CONTENT</TokenIdentifier>
+			<Abstract type="html">字典内容。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)LEXICON_CONTENT</Declaration>
+			
+			<ReturnValue><Abstract type="html">字典内容key。</Abstract></ReturnValue>
+			<Anchor>//api/name/LEXICON_CONTENT</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/LEXICON_NAME</TokenIdentifier>
+			<Abstract type="html">字典名字。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)LEXICON_NAME</Declaration>
+			
+			<ReturnValue><Abstract type="html">字典名字key。</Abstract></ReturnValue>
+			<Anchor>//api/name/LEXICON_NAME</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/GRAMMAR_LIST</TokenIdentifier>
+			<Abstract type="html">语法名称列表。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)GRAMMAR_LIST</Declaration>
+			
+			<ReturnValue><Abstract type="html">语法名称列表key。</Abstract></ReturnValue>
+			<Anchor>//api/name/GRAMMAR_LIST</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/NLP_VERSION</TokenIdentifier>
+			<Abstract type="html">开放语义协议版本号。&lt;br&gt;
+如需使用请在http://osp.voicecloud.cn/上进行业务配置</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)NLP_VERSION</Declaration>
+			
+			<ReturnValue><Abstract type="html">开放语义协议版本号key。</Abstract></ReturnValue>
+			<Anchor>//api/name/NLP_VERSION</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/IVW_THRESHOLD</TokenIdentifier>
+			<Abstract type="html">唤醒门限值。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)IVW_THRESHOLD</Declaration>
+			
+			<ReturnValue><Abstract type="html">唤醒门限值key。</Abstract></ReturnValue>
+			<Anchor>//api/name/IVW_THRESHOLD</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/IVW_SST</TokenIdentifier>
+			<Abstract type="html">唤醒服务类型。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)IVW_SST</Declaration>
+			
+			<ReturnValue><Abstract type="html">唤醒服务类型key。</Abstract></ReturnValue>
+			<Anchor>//api/name/IVW_SST</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/IVW_ONESHOT</TokenIdentifier>
+			<Abstract type="html">唤醒+识别。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)IVW_ONESHOT</Declaration>
+			
+			<ReturnValue><Abstract type="html">唤醒+识别key。</Abstract></ReturnValue>
+			<Anchor>//api/name/IVW_ONESHOT</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/KEEP_ALIVE</TokenIdentifier>
+			<Abstract type="html">唤醒工作方式&lt;br&gt;
+1：表示唤醒成功后继续录音，0：表示唤醒成功后停止录音。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)KEEP_ALIVE</Declaration>
+			
+			<ReturnValue><Abstract type="html">唤醒工作方式key</Abstract></ReturnValue>
+			<Anchor>//api/name/KEEP_ALIVE</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/ISE_CATEGORY</TokenIdentifier>
+			<Abstract type="html">评测类型&lt;br&gt;
+可选值：readsyllable(英文评测不支持):单字;readword:词语;readsentence:句子;readchapter(待开放):篇章。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)ISE_CATEGORY</Declaration>
+			
+			<ReturnValue><Abstract type="html">评测类型 key</Abstract></ReturnValue>
+			<Anchor>//api/name/ISE_CATEGORY</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/ISE_RESULT_LEVEL</TokenIdentifier>
+			<Abstract type="html">评测结果等级&lt;br&gt;
+可选值：complete：完整 ；plain：简单</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)ISE_RESULT_LEVEL</Declaration>
+			
+			<ReturnValue><Abstract type="html">评测结果等级 key</Abstract></ReturnValue>
+			<Anchor>//api/name/ISE_RESULT_LEVEL</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/ISE_RESULT_TYPE</TokenIdentifier>
+			<Abstract type="html">评测结果格式&lt;br&gt;
+可选值：xml;plain</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)ISE_RESULT_TYPE</Declaration>
+			
+			<ReturnValue><Abstract type="html">评测结果格式 key</Abstract></ReturnValue>
+			<Anchor>//api/name/ISE_RESULT_TYPE</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/ISE_AUDIO_PATH</TokenIdentifier>
+			<Abstract type="html">评测录音保存路径</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)ISE_AUDIO_PATH</Declaration>
+			
+			<ReturnValue><Abstract type="html">评测录音保存路径key</Abstract></ReturnValue>
+			<Anchor>//api/name/ISE_AUDIO_PATH</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/ISE_AUTO_TRACKING</TokenIdentifier>
+			<Abstract type="html">朗读跟踪，只对句子和篇章有效&lt;br&gt;
+可选值：enable:开启;disable:关闭。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)ISE_AUTO_TRACKING</Declaration>
+			
+			<ReturnValue><Abstract type="html">朗读跟踪 key</Abstract></ReturnValue>
+			<Anchor>//api/name/ISE_AUTO_TRACKING</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/ISE_TRACK_TYPE</TokenIdentifier>
+			<Abstract type="html">跟踪模式&lt;br&gt;
+可选值：easy:简单;hard:复杂。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)ISE_TRACK_TYPE</Declaration>
+			
+			<ReturnValue><Abstract type="html">跟踪模式 key</Abstract></ReturnValue>
+			<Anchor>//api/name/ISE_TRACK_TYPE</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/PLUS_LOCAL_ALL</TokenIdentifier>
+			<Abstract type="html">本地所有资源</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)PLUS_LOCAL_ALL</Declaration>
+			
+			<ReturnValue><Abstract type="html">本地所有资源key</Abstract></ReturnValue>
+			<Anchor>//api/name/PLUS_LOCAL_ALL</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/PLUS_LOCAL_TTS</TokenIdentifier>
+			<Abstract type="html">本地合成资源</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)PLUS_LOCAL_TTS</Declaration>
+			
+			<ReturnValue><Abstract type="html">本地合成资源key</Abstract></ReturnValue>
+			<Anchor>//api/name/PLUS_LOCAL_TTS</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/PLUS_LOCAL_ASR</TokenIdentifier>
+			<Abstract type="html">本地识别资源</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)PLUS_LOCAL_ASR</Declaration>
+			
+			<ReturnValue><Abstract type="html">本地识别资源key</Abstract></ReturnValue>
+			<Anchor>//api/name/PLUS_LOCAL_ASR</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/PLUS_LOCAL_IVW</TokenIdentifier>
+			<Abstract type="html">本地唤醒资源</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)PLUS_LOCAL_IVW</Declaration>
+			
+			<ReturnValue><Abstract type="html">本地唤醒资源key</Abstract></ReturnValue>
+			<Anchor>//api/name/PLUS_LOCAL_IVW</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/MFV_AUTH_ID</TokenIdentifier>
+			<Abstract type="html">auth_id&lt;br&gt;
+用于用户注册和登录、查询、删除等业务时标识用户身份</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)MFV_AUTH_ID</Declaration>
+			
+			<ReturnValue><Abstract type="html">用户标识</Abstract></ReturnValue>
+			<Anchor>//api/name/MFV_AUTH_ID</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/MFV_SUB</TokenIdentifier>
+			<Abstract type="html">请求业务类型，可选值：mfv（默认，融合验证），ivp（声纹），ifr（人脸）</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)MFV_SUB</Declaration>
+			
+			<ReturnValue><Abstract type="html">请求业务类型key</Abstract></ReturnValue>
+			<Anchor>//api/name/MFV_SUB</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/MFV_SST</TokenIdentifier>
+			<Abstract type="html">会话类型，不同sub有不同的sst取值。&lt;br&gt;
+ifr：enroll，verify，identify，reenroll，query，delete&lt;br&gt;
+ivp：enroll（train），verify，reenroll，query，delete，download</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)MFV_SST</Declaration>
+			
+			<ReturnValue><Abstract type="html">会话类型key</Abstract></ReturnValue>
+			<Anchor>//api/name/MFV_SST</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/MFV_VCM</TokenIdentifier>
+			<Abstract type="html">融合验证模式，仅在融合验证场景下使用。可选值：sin（单一生物特征数据验证），mix（混合生物特征数据验证），agi（灵活生物特征数据验证）</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)MFV_VCM</Declaration>
+			
+			<ReturnValue><Abstract type="html">融合验证模式key</Abstract></ReturnValue>
+			<Anchor>//api/name/MFV_VCM</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/MFV_SCENES</TokenIdentifier>
+			<Abstract type="html">特征场景，用来说明本次验证将涉及的业务。可选值：ivp，ifr，ivp|ifr</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)MFV_SCENES</Declaration>
+			
+			<ReturnValue><Abstract type="html">特征场景 key</Abstract></ReturnValue>
+			<Anchor>//api/name/MFV_SCENES</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/MFV_AFC</TokenIdentifier>
+			<Abstract type="html">确认周期(affirmance cycle，单位：s)，用户设置的确认超时时间（生命周期），仅在灵活融合验证场景下使用</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)MFV_AFC</Declaration>
+			
+			<ReturnValue><Abstract type="html">确认周期key</Abstract></ReturnValue>
+			<Anchor>//api/name/MFV_AFC</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/MFV_DATA_PATH</TokenIdentifier>
+			<Abstract type="html">数据保存路径</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)MFV_DATA_PATH</Declaration>
+			
+			<ReturnValue><Abstract type="html">数据保存路径key</Abstract></ReturnValue>
+			<Anchor>//api/name/MFV_DATA_PATH</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/MFV_RGN</TokenIdentifier>
+			<Abstract type="html">训练次数：取值2~9.无默认值，必须明确指定。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)MFV_RGN</Declaration>
+			
+			<ReturnValue><Abstract type="html">训练次数key</Abstract></ReturnValue>
+			<Anchor>//api/name/MFV_RGN</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/MFV_TSD</TokenIdentifier>
+			<Abstract type="html">声纹确认门限值，验证得分&gt;=tsd验证通过，否则验证失败（该参数目前不支持,作为保留参数。）却只范围：0~100.</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)MFV_TSD</Declaration>
+			
+			<ReturnValue><Abstract type="html">声纹确认门限值key</Abstract></ReturnValue>
+			<Anchor>//api/name/MFV_TSD</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/MFV_PTXT</TokenIdentifier>
+			<Abstract type="html">密码文本。从服务端下载，比如数字密码所需要的数字串。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)MFV_PTXT</Declaration>
+			
+			<ReturnValue><Abstract type="html">密码文本key</Abstract></ReturnValue>
+			<Anchor>//api/name/MFV_PTXT</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/MFV_PWDT</TokenIdentifier>
+			<Abstract type="html">密码类型。取值：1(文本密码),2(自由说),3(数字密码).</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)MFV_PWDT</Declaration>
+			
+			<ReturnValue><Abstract type="html">密码类型key</Abstract></ReturnValue>
+			<Anchor>//api/name/MFV_PWDT</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/MFV_FIN</TokenIdentifier>
+			<Abstract type="html">取消注册。取值：0(不取消，即不生效),1(取消本次注册).</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)MFV_FIN</Declaration>
+			
+			<ReturnValue><Abstract type="html">取消注册key</Abstract></ReturnValue>
+			<Anchor>//api/name/MFV_FIN</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/MFV_WTT</TokenIdentifier>
+			<Abstract type="html">等待超时时间:描述客户端等待结果的超时时间</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)MFV_WTT</Declaration>
+			
+			<ReturnValue><Abstract type="html">等待超时时间:key</Abstract></ReturnValue>
+			<Anchor>//api/name/MFV_WTT</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/MFV_DATA_FORMAT</TokenIdentifier>
+			<Abstract type="html">数据格式&lt;br&gt;
+声纹为音频采样率支持：16000和8000;人脸为图片格式，支持jpg和gif</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)MFV_DATA_FORMAT</Declaration>
+			
+			<ReturnValue><Abstract type="html">数据格式key</Abstract></ReturnValue>
+			<Anchor>//api/name/MFV_DATA_FORMAT</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/MFV_DATA_ENCODING</TokenIdentifier>
+			<Abstract type="html">数据压缩编码&lt;br&gt;
+声纹为;人脸支持raw，不对图片压缩</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)MFV_DATA_ENCODING</Declaration>
+			
+			<ReturnValue><Abstract type="html">数据压缩编码key</Abstract></ReturnValue>
+			<Anchor>//api/name/MFV_DATA_ENCODING</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/FACE_SUB</TokenIdentifier>
+			<Abstract type="html">sub 默认值:wfr&lt;br&gt;
+用于区分业务类型,web访问方式中，nginx配置不用使用，但是在结构化日志和染色日志记录中使用。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)FACE_SUB</Declaration>
+			
+			
+			<Anchor>//api/name/FACE_SUB</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/FACE_WFR</TokenIdentifier>
+			<Abstract type="html">WFR&lt;br&gt;
+sub参数的默认值</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)FACE_WFR</Declaration>
+			
+			
+			<Anchor>//api/name/FACE_WFR</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/FACE_SST</TokenIdentifier>
+			<Abstract type="html">sst&lt;br&gt;
+指定本路会话是属于何种性质</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)FACE_SST</Declaration>
+			
+			
+			<Anchor>//api/name/FACE_SST</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/FACE_REG</TokenIdentifier>
+			<Abstract type="html">REG&lt;br&gt;
+人脸图像注册(reg)：上传图像，验证图像的有效性，然后存储起来，作为数据源。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)FACE_REG</Declaration>
+			
+			
+			<Anchor>//api/name/FACE_REG</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/FACE_VERIFY</TokenIdentifier>
+			<Abstract type="html">VERIFY&lt;br&gt;
+人脸图像验证(verify)：通过与指定源图像比较，验证人脸相似性。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)FACE_VERIFY</Declaration>
+			
+			
+			<Anchor>//api/name/FACE_VERIFY</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/FACE_DETECT</TokenIdentifier>
+			<Abstract type="html">DETECT&lt;br&gt;
+人脸图像检测(detect)：能够检测出不同姿态方位的人脸在图中的位置。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)FACE_DETECT</Declaration>
+			
+			
+			<Anchor>//api/name/FACE_DETECT</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/FACE_ALIGN</TokenIdentifier>
+			<Abstract type="html">ALIGN&lt;br&gt;
+人脸图像聚焦(align)：在给定人脸框下自动标定出两眼、鼻尖、嘴角的坐标。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)FACE_ALIGN</Declaration>
+			
+			
+			<Anchor>//api/name/FACE_ALIGN</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/FACE_ATTR</TokenIdentifier>
+			<Abstract type="html">ATTR&lt;br&gt;
+面部属性识别(attr)：对面部属性进行识别：例如秃顶、刘海、大嘴、模糊、眼镜等。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)FACE_ATTR</Declaration>
+			
+			
+			<Anchor>//api/name/FACE_ATTR</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/FACE_AUE</TokenIdentifier>
+			<Abstract type="html">AUE&lt;br&gt;
+图像压缩格式，现在引擎不支持图像压缩，aue只能取值raw</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)FACE_AUE</Declaration>
+			
+			
+			<Anchor>//api/name/FACE_AUE</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/FACE_RAW</TokenIdentifier>
+			<Abstract type="html">RAW&lt;br&gt;
+AUE参数的值</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)FACE_RAW</Declaration>
+			
+			
+			<Anchor>//api/name/FACE_RAW</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/FACE_PSET</TokenIdentifier>
+			<Abstract type="html">PSET&lt;br&gt;
+人脸识别验证阈值，取值可以是负数也可以是整数。</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)FACE_PSET</Declaration>
+			
+			
+			<Anchor>//api/name/FACE_PSET</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/FACE_SKIP</TokenIdentifier>
+			<Abstract type="html">SKIP&lt;br&gt;
+后台图片处理是否进行过滤。true表示不过滤，false表示过滤，传入字符串@“true”或@“false”</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)FACE_SKIP</Declaration>
+			
+			
+			<Anchor>//api/name/FACE_SKIP</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/FACE_GID</TokenIdentifier>
+			<Abstract type="html">GID&lt;br&gt;
+图像模型id，如：4a6c124ed6b78436ee5aac4563f13eb5</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)FACE_GID</Declaration>
+			
+			
+			<Anchor>//api/name/FACE_GID</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/FACE_AUTH_ID</TokenIdentifier>
+			<Abstract type="html">auth_id&lt;br&gt;
+用于用户注册和登录、查询、删除等业务时标识用户身份</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)FACE_AUTH_ID</Declaration>
+			
+			<ReturnValue><Abstract type="html">用户标识</Abstract></ReturnValue>
+			<Anchor>//api/name/FACE_AUTH_ID</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechConstant/FACE_DVC</TokenIdentifier>
+			<Abstract type="html">DVC&lt;br&gt;
+用户设备编号,用于验证用户</Abstract>
+			<DeclaredIn>IFlySpeechConstant.h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)FACE_DVC</Declaration>
+			
+			
+			<Anchor>//api/name/FACE_DVC</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

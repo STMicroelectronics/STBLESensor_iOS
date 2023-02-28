@@ -1,0 +1,53 @@
+PODS:
+  - AssetTrackingCloudDashboard (0.1.0):
+    - AssetTrackingDataModel
+    - AWSCognitoIdentityProvider
+    - AWSCognitoIdentityProviderASF
+    - AWSCore
+    - SmarTagLib
+    - SwiftyJSON
+    - Toast-Swift
+  - AssetTrackingDataModel (0.1.0)
+  - AWSCognitoIdentityProvider (2.16.0):
+    - AWSCognitoIdentityProviderASF (= 1.0.2)
+    - AWSCore (= 2.16.0)
+  - AWSCognitoIdentityProviderASF (1.0.2)
+  - AWSCore (2.16.0)
+  - SmarTagLib (0.1.0)
+  - SwiftyJSON (5.0.0)
+  - Toast-Swift (5.0.1)
+
+DEPENDENCIES:
+  - AssetTrackingCloudDashboard (from `../`)
+  - AssetTrackingDataModel (from `../../AssetTrackingDataModel`)
+  - SmarTagLib (from `../../SmarTagLib`)
+
+SPEC REPOS:
+  trunk:
+    - AWSCognitoIdentityProvider
+    - AWSCognitoIdentityProviderASF
+    - AWSCore
+    - SwiftyJSON
+    - Toast-Swift
+
+EXTERNAL SOURCES:
+  AssetTrackingCloudDashboard:
+    :path: "../"
+  AssetTrackingDataModel:
+    :path: "../../AssetTrackingDataModel"
+  SmarTagLib:
+    :path: "../../SmarTagLib"
+
+SPEC CHECKSUMS:
+  AssetTrackingCloudDashboard: a5f09f06a5f647ea293b626082d1ec515b01f949
+  AssetTrackingDataModel: 2fe4f1528cce699d492371c7400e9053a361c129
+  AWSCognitoIdentityProvider: 8d77fd2adf666b58b4826b12f78c9202295bb0ca
+  AWSCognitoIdentityProviderASF: 0fb6ea671c05a63276e320726f680cd880522442
+  AWSCore: 439de29e3423c637a0c475f9ea329262fd2acc67
+  SmarTagLib: 73d45d58e489e214d5c32088f44bdc0770dc6a53
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
+
+PODFILE CHECKSUM: 20c4b32211ab399342d5843f93ae012c4982991b
+
+COCOAPODS: 1.9.3

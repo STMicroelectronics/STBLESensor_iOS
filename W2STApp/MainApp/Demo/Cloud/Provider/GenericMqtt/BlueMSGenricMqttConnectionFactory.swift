@@ -35,7 +35,7 @@
  * OF SUCH DAMAGE.
  */
 
-import MQTTFramework
+import MQTTClient
 
 public class BlueMSGenericMqttConnectionFactory : BlueMSCloudIotConnectionFactory{
        
@@ -57,12 +57,12 @@ public class BlueMSGenericMqttConnectionFactory : BlueMSCloudIotConnectionFactor
     
 
     public func getSession() -> BlueMSCloudIotClient {
-        let transport = MCMQTTCFSocketTransport();
+        let transport = MQTTCFSocketTransport();
         transport.host = mBrocker
         transport.port = mPort
         transport.tls = mUseTls
         
-        let session = MCMQTTSession(clientId: mClientId,
+        let session = MQTTSession(clientId: mClientId,
                                     userName: mUser,
                                     password: mPassword)
         session?.transport = transport;

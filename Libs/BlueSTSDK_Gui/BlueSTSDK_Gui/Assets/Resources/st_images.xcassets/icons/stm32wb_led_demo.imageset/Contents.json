@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "stm32wb_led_demo.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

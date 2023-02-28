@@ -134,8 +134,8 @@ extension BlueSTSDKFeatureActivity.ActivityType : CustomStringConvertible{
             return BlueSTSDKFeatureActivity.ActivityType.ACTIVITY_ADULT_IN_CAR
         case .error:
             return BlueSTSDKFeatureActivity.ActivityType.ACTIVITY_UNKNOWN
-        @unknown default:
-            return BlueSTSDKFeatureActivity.ActivityType.ACTIVITY_UNKNOWN
+//        @unknown default:
+//            return BlueSTSDKFeatureActivity.ActivityType.ACTIVITY_UNKNOWN
         }
     }
 }

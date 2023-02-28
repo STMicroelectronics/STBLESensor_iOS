@@ -59,14 +59,14 @@ public class BlueVoiceIBMWatsonASRKeyViewController : UIViewController,UITextFie
     public var delegate:IBMWatsonKeyDelegate?;
     
     @IBOutlet weak var apiKeyTextField: UITextField!
-
+    
     @IBOutlet weak var endpointTextField: UITextField!
     public override func viewDidLoad() {
         super.viewDidLoad()
         apiKeyTextField.delegate=self;
     }
     
-
+    
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         let currentKey = delegate?.loadAsrKey()
@@ -81,7 +81,7 @@ public class BlueVoiceIBMWatsonASRKeyViewController : UIViewController,UITextFie
     @IBAction func onSaveButtonClick(_ sender: UIButton) {
         let apiKey = apiKeyTextField.text;
         let newEndpoint = endpointTextField.text;
-
+        
         if let endpoint = newEndpoint{
             let key = BlueVoiceIBMWatsonASRKey(endpoint:endpoint, apiKey:apiKey)
             delegate?.storeAsrKey(key)

@@ -1,0 +1,6 @@
+framework module BlueMSFwUpgradeChecker {
+  umbrella header "BlueMSFwUpgradeChecker-umbrella.h"
+
+  export *
+  module * { export * }
+}

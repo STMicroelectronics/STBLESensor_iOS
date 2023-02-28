@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AddFunctionButtonView" customModule="trilobyte_lib_ios" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="335" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AmM-z1-e6X" userLabel="Content">
+                    <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kM6-Kf-aVX">
+                            <rect key="frame" x="67.5" y="0.0" width="200" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="aHv-GR-ImG"/>
+                                <constraint firstAttribute="width" constant="200" id="hbD-XS-VXt"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="addButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="OXv-qi-tIa"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="kM6-Kf-aVX" firstAttribute="centerX" secondItem="AmM-z1-e6X" secondAttribute="centerX" id="PhI-5Z-VEo"/>
+                        <constraint firstItem="kM6-Kf-aVX" firstAttribute="top" secondItem="AmM-z1-e6X" secondAttribute="top" id="XRx-sb-9NO"/>
+                        <constraint firstAttribute="bottom" secondItem="kM6-Kf-aVX" secondAttribute="bottom" id="zwg-Yg-bYX"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mxn-43-LBW">
+                    <rect key="frame" x="167" y="50" width="1" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="eA7-vo-kPU"/>
+                        <constraint firstAttribute="width" constant="1" id="zwL-jv-Ad9"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Mxn-43-LBW" firstAttribute="top" secondItem="AmM-z1-e6X" secondAttribute="bottom" id="5jb-hg-h9W"/>
+                <constraint firstAttribute="trailing" secondItem="AmM-z1-e6X" secondAttribute="trailing" id="DND-Xd-gMO"/>
+                <constraint firstAttribute="bottom" secondItem="Mxn-43-LBW" secondAttribute="bottom" id="XC4-n1-hVV"/>
+                <constraint firstItem="AmM-z1-e6X" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Yx3-zw-rIs"/>
+                <constraint firstItem="AmM-z1-e6X" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="o5D-qy-EOY"/>
+                <constraint firstItem="Mxn-43-LBW" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="tc3-Uh-rlC"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="addButton" destination="kM6-Kf-aVX" id="Mdi-wh-0XS"/>
+                <outlet property="bottomView" destination="Mxn-43-LBW" id="1Cg-Rn-r7S"/>
+                <outlet property="contentView" destination="AmM-z1-e6X" id="RsR-V1-W9o"/>
+            </connections>
+            <point key="canvasLocation" x="80.434782608695656" y="410.49107142857139"/>
+        </view>
+    </objects>
+</document>

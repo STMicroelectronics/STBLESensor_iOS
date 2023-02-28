@@ -28,7 +28,7 @@ public class BlueVoiceWebSocketASREngine : BlueVoiceASREngine{
     private var mRequestCallback:BlueVoiceAsrRequestCallback?;
     
     func getAuthKeyDialog() -> UIViewController? {
-        let storyBoard = UIStoryboard(name: "SpeechToText", bundle:nil )
+        let storyBoard = UIStoryboard(name: "SpeechToText", bundle: Bundle(for: Self.self))
         let viewController = storyBoard.instantiateViewController(withIdentifier: "WebSocketParamViewController") as! BlueVoiceWebSocketParamViewController;
         viewController.delegate=self;
         return viewController;

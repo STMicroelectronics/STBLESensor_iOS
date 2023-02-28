@@ -38,8 +38,7 @@ import Foundation
 import BlueSTSDK
 import BlueSTSDK_Gui
 /// class that contains a demo inside a NavigationView controller
-public class BlueSTDemoNestedNavigationViewController:
-        BlueSTNestedNavigationViewController,BlueSTSDKDemoViewProtocol {
+public class BlueSTDemoNestedNavigationViewController: BlueSTNestedNavigationViewController, BlueSTSDKDemoViewProtocol {
     
     /// set the class property
     ///
@@ -59,7 +58,7 @@ public class BlueSTDemoNestedNavigationViewController:
                                                                 node: node,
                                                                 menuDelegate: menuDelegate)
             }
-
+            
         }
     }
     

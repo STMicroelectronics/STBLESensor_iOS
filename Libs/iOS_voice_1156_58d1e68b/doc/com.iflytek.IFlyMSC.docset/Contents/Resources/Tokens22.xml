@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/IFlyRecognizerViewDelegate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/IFlyRecognizerViewDelegate</TokenIdentifier>
+			<Abstract type="html">识别回调委托</Abstract>
+			<DeclaredIn>IFlyRecognizerViewDelegate.h</DeclaredIn>
+            
+			
+			<NodeRef refid="22"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlyRecognizerViewDelegate/onResult:isLast:</TokenIdentifier>
+			<Abstract type="html">回调返回识别结果</Abstract>
+			<DeclaredIn>IFlyRecognizerViewDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onResult:(NSArray *)resultArray isLast:(BOOL)isLast</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>resultArray</Name>
+					<Abstract type="html">识别结果，NSArray的第一个元素为NSDictionary，NSDictionary的key为识别结果，sc为识别结果的置信度</Abstract>
+				</Parameter><Parameter>
+					<Name>isLast</Name>
+					<Abstract type="html">-[out] 是否最后一个结果</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/onResult:isLast:</Anchor>
+            <NodeRef refid="22"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlyRecognizerViewDelegate/onError:</TokenIdentifier>
+			<Abstract type="html">识别结束回调</Abstract>
+			<DeclaredIn>IFlyRecognizerViewDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onError:(IFlySpeechError *)error</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>error</Name>
+					<Abstract type="html">识别结束错误码</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/onError:</Anchor>
+            <NodeRef refid="22"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

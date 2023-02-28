@@ -1,43 +1,41 @@
 /*
- * Copyright (c) 2017  STMicroelectronics – All rights reserved
- * The STMicroelectronics corporate logo is a trademark of STMicroelectronics
+ * BlueMSMainViewController.swift
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Copyright (c) 2022 STMicroelectronics.
+ * All rights reserved.
  *
- * - Redistributions of source code must retain the above copyright notice, this list of conditions
- *   and the following disclaimer.
- *
- * - Redistributions in binary form must reproduce the above copyright notice, this list of
- *   conditions and the following disclaimer in the documentation and/or other materials provided
- *   with the distribution.
- *
- * - Neither the name nor trademarks of STMicroelectronics International N.V. nor any other
- *   STMicroelectronics company nor the names of its contributors may be used to endorse or
- *   promote products derived from this software without specific prior written permission.
- *
- * - All of the icons, pictures, logos and other images that are provided with the source code
- *   in a directory whose title begins with st_images may only be used for internal purposes and
- *   shall not be redistributed to any third party or modified in any way.
- *
- * - Any redistributions in binary form shall not include the capability to display any of the
- *   icons, pictures, logos and other images that are provided with the source code in a directory
- *   whose title begins with st_images.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
- * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
- * AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER
- * OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
- * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
- * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
- * OF SUCH DAMAGE.
+ * This software is licensed under terms that can be found in the LICENSE file in
+ * the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
  */
+
 import Foundation
 import BlueSTSDK_Gui
+import BlueMSFwUpgradeChecker
+import STTrilobyte
+import Alamofire
+import UIKit
 
 public class BlueMSMainViewController : BlueSTSDKMainViewController {
+    
+    /** Checksum Structure Response */
+    public struct ChecksumResponse: Codable {
+        public let checksum: String
+        public let date: String
+        public let version: String
+
+        enum CodingKeys: String, CodingKey {
+            case checksum = "checksum"
+            case date = "date"
+            case version = "version"
+        }
+
+        public init(checksum: String, date: String, version: String) {
+            self.checksum = checksum
+            self.date = date
+            self.version = version
+        }
+    }
     
     /**
      *  laod the BlueSTSDKMainView and set the delegate for it
@@ -46,22 +44,161 @@ public class BlueMSMainViewController : BlueSTSDKMainViewController {
         super.viewDidLoad()
         self.delegateAbout = self
         self.delegateNodeList = self
+        
+        
+        let defaults = UserDefaults.standard
+        
+        UIApplication.shared.isIdleTimerDisabled = true
+        
+        /**Load LOCAL CHECKSUM Field for comparing to REMOTE DB Firmwares CHECKSUM*/
+        let checksum = defaults.string(forKey: "Checksum")
+        
+        /** Check if the checksum field is changed */
+        let checkSumUrl = URL(string: "https://raw.githubusercontent.com/STMicroelectronics/appconfig/blesensor_4.18/bluestsdkv2/chksum.json")!
+        AF.request(checkSumUrl).responseDecodable(of: ChecksumResponse.self) { response in
+            switch response.result {
+                case .success(let response):
+                    if(checksum != response.checksum){
+                        let c = response.checksum
+                        self.saveFirmwareInformations(checksum: c, defaults: defaults)
+                    } else if (CatalogService().currentCatalog() == nil){
+                        self.saveFirmwareInformations(checksum: response.checksum, defaults: defaults)
+                    }
+                case .failure(_):
+                    let alert = UIAlertController(title: "Offline", message: "Please check your connectivity.", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+            }
+        }
+
+    }
+    
+    private func saveFirmwareInformations(checksum: String, defaults: UserDefaults){
+        /**1. Store REMOTE Checksum Information*/
+        defaults.set(checksum, forKey: "Checksum")
+        
+        /**2. Make REMOTE DB Firmware request and save to LOCAL DB Firmware*/
+        CatalogService().requestDBFirmware()
     }
     
     @IBAction func onCreateAppButtonClick(_ sender: UIButton) {
+        let sensorTile101vc = SensorTile101ViewController()
+        sensorTile101vc.sensorTile101Delegate = self
+        changeViewController(sensorTile101vc)
     }
     
     private func getDemoViewController(with node: BlueSTSDKNode, menuManager: BlueSTSDKViewControllerMenuDelegate)
         -> UIViewController{
-            let storyBoard = UIStoryboard(name: "BlueMS", bundle: nil);
+            let storyBoard = UIStoryboard(name: "BlueMS", bundle: Bundle(for: Self.self));
             let mainView = storyBoard.instantiateInitialViewController() as? BlueMSDemosViewController
             mainView?.node=node;
             mainView?.menuDelegate = menuManager;
-            return mainView!;
+            return mainView!
     }
     
+    private func logNodeConnection(node: BlueSTSDKNode, currentVersion:BlueSTSDKFwVersion?){
+        
+        let fwVersion = STM32WBPeer2PeerDemoConfiguration.isValidNode(node) ?
+            BlueSTSDKFwVersion(name: "STM32Cube_FW_WB", mcuType: "STM32WBxx", major: 0, minor: 0, patch: 0) :
+            currentVersion
+    }
     
-    @IBAction func onBLEToolboxButtonPressed(_ sender: UIButton) {
+    private func checkFw(node:BlueSTSDKNode, currentVersion:BlueSTSDKFwVersion?){
+        guard let currentVersion = currentVersion else{
+            return
+        }
+        let checker = BlueMSFwUpgradeChecker()
+        checker.checkNewFirmwareAvailabitity(boardType: node.typeId, board: currentVersion){ newFwUrl in
+            guard let fwUrl = newFwUrl else{
+                return
+            }
+            DispatchQueue.main.async {
+                BlueSTSDKAskFwUpgradeDialog.askToUpgrade(node: node,file: fwUrl,vc: self)
+            }
+        }
+    }
+    
+    private func retrieveRunningFw(node: BlueSTSDKNode) -> Firmware? {
+        let optBytes = withUnsafeBytes(of: node.advertiseInfo.featureMap.bigEndian, Array.init)
+        let optBytesData = NSData(bytes: optBytes, length: optBytes.count)
+        
+        let result0 = (optBytesData as NSData).extractUInt8(fromOffset: UInt(0))
+        let result1 = (optBytesData as NSData).extractUInt8(fromOffset: UInt(1))
+
+        let catalogService = CatalogService()
+        let catalog = catalogService.currentCatalog()
+        
+        guard let catalog = catalog else { return nil }
+
+        return catalogService.getFwDetailsNode(catalog: catalog, device_id: Int(node.typeId & 0xFF), opt_byte_0: Int(result0), opt_byte_1: Int(result1))
+    }
+    
+    private func checkCatalogFwUpdate(node: BlueSTSDKNode) -> UIViewController? {
+        let catalogService = CatalogService()
+        let catalog = catalogService.currentCatalog()
+        guard let catalog = catalog else { return nil }
+        
+        var availableFwsUpdate: Firmware? = nil
+        
+        let runningFw = retrieveRunningFw(node: node)
+        guard let runningFw = runningFw else { return nil }
+        if(runningFw.fota.type == .wbReady){ return nil }
+
+        let compatibleFws = catalogService.getCompatibleFirmwaressNode(catalog: catalog, device_id: Int(node.typeId & 0xFF), bleFwId: Int((runningFw.bleVersionIdHex.dropFirst(2)), radix: 16)!)
+        
+        guard let compatibleFws = compatibleFws else { return nil }
+
+        compatibleFws.forEach{ compatibleFw in
+            if(compatibleFw.name == runningFw.name){
+                if(compatibleFw.version > runningFw.version){
+                    if(compatibleFw.fota.url != nil && compatibleFw.fota.url != ""){
+                        availableFwsUpdate = compatibleFw
+                    }
+                }
+            }
+        }
+        
+        guard let availableFwsUpdate = availableFwsUpdate else { return nil }
+
+        /** Check if user selected Dont Ask Again CheckBox */
+        let fullCurrentFwInfo = "\(runningFw.name) v\(runningFw.version)"
+        let DONT_ASK_AGAIN_FW_UPDATE = "propose_fw_update_for_\(fullCurrentFwInfo)_\(node.tag)"
+        let preference = UserDefaults.standard
+        
+        if !preference.bool(forKey: DONT_ASK_AGAIN_FW_UPDATE) {
+            let controller: FwCatalogAutoUpdate = FwCatalogAutoUpdate(node: node, fwCurrent: runningFw, fwAvailable: availableFwsUpdate)
+            return controller
+        }
+        
+        return nil
+    }
+
+    private func retrieveDtmiUri(fw: Firmware) -> String? {
+        guard let dtmi = fw.dtmi else { return nil }
+        if(dtmi == "") { return nil }
+        
+        var dtmiUri = dtmi
+        dtmiUri = dtmiUri.replacingOccurrences(of: ":", with: "/")
+        dtmiUri = dtmiUri.replacingOccurrences(of: ";", with: "-")
+        
+        if(dtmi.contains("dtmi:stmicroelectronics")) {
+            return "https://devicemodels.azure.com/" + dtmiUri + ".expanded.json"
+        } else {
+            return "https://raw.githubusercontent.com/STMicroelectronics/appconfig/blesensor_4.18/" + dtmiUri + ".expanded.json"
+        }
+    }
+    
+    private func retrieveDtmi(_ dtmiUri: String){
+        AF.request(URL(string: dtmiUri)!).responseDecodable(of: PnPLikeDtmiCommands.self) { response in
+            switch response.result {
+                case .success(let response):
+                    if(response.count != 0){
+                        PnPLikeService().storePnPLDtmi(response, type: .standard)
+                    }
+                case .failure(let error):
+                    print(error)
+            }
+        }
     }
     
     /**
@@ -71,9 +208,31 @@ public class BlueMSMainViewController : BlueSTSDKMainViewController {
      *
      *  @return controller with the demo to show
      */
-    public func demoViewController(with node: BlueSTSDKNode, menuManager: BlueSTSDKViewControllerMenuDelegate)
-            -> UIViewController? {
+    public func demoViewController(with node: BlueSTSDKNode, menuManager: BlueSTSDKViewControllerMenuDelegate) -> UIViewController? {
+        let runningFw = retrieveRunningFw(node: node)
+        if(runningFw != nil){
+            let dtmiUri = retrieveDtmiUri(fw: runningFw!)
+            if(dtmiUri != nil){
+                retrieveDtmi(dtmiUri!)
+            } else if(dtmiUri == nil) {
+                let dtmi = PnPLikeService().currentPnPLDtmi()
+                if(dtmi == nil){
+                    PnPLikeService().storePnPLDtmi(nil, type: .standard)
+                }
+            }
+        } else {
+            PnPLikeService().storePnPLDtmi(nil, type: .standard)
+        }
                 
+        let catalogFwUpgrade = checkCatalogFwUpdate(node: node)
+        if(catalogFwUpgrade != nil){
+            return catalogFwUpgrade
+        }
+                
+        readNodeFwVersion(node: node){ [weak self] version in
+            self?.logNodeConnection(node: node, currentVersion: version)
+            self?.checkFw(node: node, currentVersion: version)
+        }
         if(BlueSTSDKSTM32WBOTAUtils.isOTANode(node)){
             return BlueSTSDKFwUpgradeManagerViewController.instaziate(forNode: node,
                                                                       requireAddress: true,
@@ -88,6 +247,21 @@ public class BlueMSMainViewController : BlueSTSDKMainViewController {
         }
         
     }
+
+    private func readNodeFwVersion( node:BlueSTSDKNode, onRead:@escaping (BlueSTSDKFwVersion?)->()){
+        let readVersionConsole = BlueSTSDKFwConsoleUtil.getFwReadVersionConsoleForNode(node: node)
+        if let console = readVersionConsole{
+            let sendCmd = console.readFwVersion{ version in
+                onRead(version)
+            }
+            if(!sendCmd){ // if we can't send the command log whotut the fw info
+                onRead(nil)
+            }
+        }else{
+            onRead(nil)
+        }
+    }
+
 }
 
 
@@ -183,5 +357,12 @@ extension BlueMSMainViewController : BlueSTSDKNodeListViewControllerDelegate{
             //if a board is compatible with multiple advertise, give the precedence to the sdk format
             return  BlueSTSDKManager.DEFAULT_ADVERTISE_FILTER + [ BlueNRGOtaAdvertiseParser() ]
         }
+    }
+}
+
+extension BlueMSMainViewController : SensorTile101Delegate{
+    
+    public func didUploadFlowsWithBleStreamOutput(controller: SensorTile101ViewController) {
+        //self.onStartDiscoveryClick(self.mNodeListButton)
     }
 }

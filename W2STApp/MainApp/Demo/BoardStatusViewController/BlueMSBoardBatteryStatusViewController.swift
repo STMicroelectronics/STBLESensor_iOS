@@ -82,6 +82,7 @@ public class BlueMSBoardBatteryStatusViewController: BlueMSDemoTabViewController
     @IBOutlet weak var currentLabel:UILabel!;
     @IBOutlet weak var remainingTimeLabel:UILabel!;
     
+    private var featureWasEnabled = false
     
     private var mBatteryCapacity = Float.nan;
     private var mBatteryFeature:BlueSTSDKFeatureBattery?;
@@ -90,6 +91,15 @@ public class BlueMSBoardBatteryStatusViewController: BlueMSDemoTabViewController
     
     public override func viewDidLoad() {
         super.viewDidLoad();
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground),
+                                               name: UIApplication.didEnterBackgroundNotification,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActivity),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
+        
         mShowBatteryInfo = UIAlertAction(title: "Battery Info", style: .default, handler: { (menuItem) in
             self.performSegue(withIdentifier:
                 BlueMSBoardBatteryStatusViewController.BATTERY_INFO_SEGUE,
@@ -97,6 +107,23 @@ public class BlueMSBoardBatteryStatusViewController: BlueMSDemoTabViewController
         })
     }
     
+    @objc func didEnterForeground() {
+        mBatteryFeature = self.node.getFeatureOfType(BlueSTSDKFeatureBattery.self) as? BlueSTSDKFeatureBattery;
+        
+        if !(mBatteryFeature==nil) && node.isEnableNotification(mBatteryFeature!)  {
+            featureWasEnabled = true
+            stopNotification()
+        }else {
+            featureWasEnabled = false;
+        }
+        
+    }
+    
+    @objc func didBecomeActivity() {
+        if(featureWasEnabled) {
+            startNotification()
+        }
+    }
     
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         BlueSTSDKDemoViewProtocolUtil.setupDemoProtocol(demo: segue.destination,
@@ -116,6 +143,15 @@ public class BlueMSBoardBatteryStatusViewController: BlueMSDemoTabViewController
     
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
+        startNotification()
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated);
+        stopNotification()
+    }
+    
+    public func startNotification(){
         mBatteryFeature = self.node.getFeatureOfType(BlueSTSDKFeatureBattery.self) as? BlueSTSDKFeatureBattery;
         if let feature = mBatteryFeature{
             feature.add(self);
@@ -126,14 +162,14 @@ public class BlueMSBoardBatteryStatusViewController: BlueMSDemoTabViewController
             loadMaxAssorbedCurrent();
         }
     }
-    
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated);
+
+    public func stopNotification(){
         if let feature = mBatteryFeature{
             feature.remove(self);
             feature.addBatteryDelegate(self)
             self.menuDelegate?.removeMenuAction(mShowBatteryInfo);
             self.node.disableNotification(feature);
+            Thread.sleep(forTimeInterval: 0.1)
         }
     }
     

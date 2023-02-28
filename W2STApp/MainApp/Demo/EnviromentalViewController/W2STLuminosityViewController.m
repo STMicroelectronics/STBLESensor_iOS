@@ -45,11 +45,25 @@
 
 @implementation W2STLuminosityViewController{
     NSArray *mLuminosityFeatures;
+    bool featureWasEnabled;
 }
 
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    
+    featureWasEnabled = false;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+            selector:@selector(applicationDidEnterBackground:)
+            name:UIApplicationDidEnterBackgroundNotification
+            object:nil];
+        
+    [[NSNotificationCenter defaultCenter] addObserver:self
+        selector:@selector(applicationDidBecomeActive:)
+        name:UIApplicationDidBecomeActiveNotification
+        object:nil];
+    
     mLuminosityFeatures = [self.node getFeaturesOfType:BlueSTSDKFeatureLuminosity.class];
     
     if(mLuminosityFeatures.count != 0){
@@ -57,7 +71,11 @@
             [f addFeatureDelegate:self];
             [self.node enableNotification:f];
         }//for
-        _luminosityImage.image=[UIImage imageNamed:@"luminosity"];
+        if (@available(iOS 13.0, *)) {
+            _luminosityImage.image = [UIImage imageNamed: @"luminosity" inBundle: [NSBundle bundleForClass:[W2STLuminosityViewController class]] withConfiguration: nil];
+        } else {
+            _luminosityImage.image = [UIImage imageNamed:@"luminosity"];
+        }
     }//if
 
 }
@@ -68,6 +86,7 @@
         for (BlueSTSDKFeature *f in mLuminosityFeatures){
             [f removeFeatureDelegate:self];
             [self.node disableNotification:f];
+            [NSThread sleepForTimeInterval:0.1];
         }//for
     }//if
 }
@@ -90,6 +109,44 @@
     dispatch_sync(dispatch_get_main_queue(),^{
         self->_luminosityLabel.text=luminosityLabel;
     });
+}
+
+#pragma mark - Handling BLE Notification
+
+/** Disabling Notification */
+-(void)applicationDidEnterBackground:(NSNotification *)notification {
+    if(mLuminosityFeatures.count != 0){
+        for (BlueSTSDKFeature *f in mLuminosityFeatures){
+            if([self.node isEnableNotification: f]){
+                if(featureWasEnabled == false){
+                    featureWasEnabled = true;
+                }
+                [f removeFeatureDelegate:self];
+                [self.node disableNotification:f];
+                [NSThread sleepForTimeInterval:0.1];
+            }else {
+                featureWasEnabled = false;
+            }
+        }
+    }
+}
+
+/** Enabling Notification */
+-(void)applicationDidBecomeActive:(NSNotification *)notification {
+    if(mLuminosityFeatures.count != 0){
+        if(featureWasEnabled) {
+            featureWasEnabled = false;
+            for (BlueSTSDKFeature *f in mLuminosityFeatures){
+                [f addFeatureDelegate:self];
+                [self.node enableNotification:f];
+            }//for
+            if (@available(iOS 13.0, *)) {
+                _luminosityImage.image = [UIImage imageNamed: @"luminosity" inBundle: [NSBundle bundleForClass:[W2STLuminosityViewController class]] withConfiguration: nil];
+            } else {
+                _luminosityImage.image = [UIImage imageNamed:@"luminosity"];
+            }
+        }
+    }//if
 }
 
 @end

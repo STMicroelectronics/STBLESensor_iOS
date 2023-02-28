@@ -64,6 +64,8 @@ public class BlueMSBlueVoiceViewController: BlueMSDemoTabViewController,
     private var mAudioFeature : BlueMSAudioFeatures?
     private var mFeatureBeamForming:BlueSTSDKFeatureBeamForming?;
     
+    private var featureWasEnabled = false
+    
     /////////////////// AUDIO //////////////////////////////////////////////////
 
     //variable where store the audio before send to an speech to text service
@@ -77,8 +79,34 @@ public class BlueMSBlueVoiceViewController: BlueMSDemoTabViewController,
     override public func viewDidLoad(){
         super.viewDidLoad()
         mBundle = Bundle(for: type(of: self));
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground),
+                                                           name: UIApplication.didEnterBackgroundNotification,
+                                                           object: nil)
+                    
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActivity),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
     }
 
+    @objc func didEnterForeground() {
+        mAudioFeature = BlueMSAudioFeatures.extractBestFeatures(from: self.node)
+        
+        if !(mAudioFeature==nil) && node.isEnableNotification((mAudioFeature?.controlData)!) {
+            featureWasEnabled = true
+            stopNotification()
+        }else {
+            featureWasEnabled = false;
+        }
+        
+    }
+        
+    @objc func didBecomeActivity() {
+        if(featureWasEnabled) {
+            startNotification()
+        }
+    }
+    
     private func displayCodecSettings(_ settings:BlueSTSDKAudioCodecSettings){
         mCodecLabel.text = mCodecLabel.text!+settings.codecName
         mSampligFreqLabel.text = mSampligFreqLabel.text!+String(settings.samplingFequency/1000)+" kHz"
@@ -96,6 +124,20 @@ public class BlueMSBlueVoiceViewController: BlueMSDemoTabViewController,
 
         mAudioFeature = BlueMSAudioFeatures.extractBestFeatures(from: self.node)
 
+        startNotification()
+        
+    }
+    
+    /**
+     * stop the ble audio streaming and the audio queue
+     */
+    override public func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated);
+        mRecordController?.viewWillDisappear()
+        stopNotification()
+    }
+    
+    public func startNotification(){
         //if both feature are present enable the audio
         if let audioFeature = mAudioFeature{
             mRecordController = W2STAudioDumpController(audioConf: audioFeature.audioStream.codecManager, parentView: self, menuController: self.menuDelegate);
@@ -113,15 +155,9 @@ public class BlueMSBlueVoiceViewController: BlueMSDemoTabViewController,
             mEnableBeamFormingSwitch.isEnabled=true;
             mEnableBeamFormingSwitch.isOn=false;
         }
-        
     }
     
-    /**
-     * stop the ble audio streaming and the audio queue
-     */
-    override public func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated);
-        mRecordController?.viewWillDisappear()
+    public func stopNotification(){
         if let audioFeature = mAudioFeature{
             mAudioPlayBack = nil;
             audioFeature.audioStream.remove(self);
@@ -131,6 +167,7 @@ public class BlueMSBlueVoiceViewController: BlueMSDemoTabViewController,
         }
         if let beamForming = mFeatureBeamForming{
             self.node.disableNotification(beamForming);
+            Thread.sleep(forTimeInterval: 0.1)
             beamForming.enablebeamForming(false);
         }
     }

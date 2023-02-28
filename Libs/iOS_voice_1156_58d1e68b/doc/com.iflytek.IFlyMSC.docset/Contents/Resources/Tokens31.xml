@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/LOG_LEVEL.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/LOG_LEVEL</TokenIdentifier>
+			<Abstract type="html">日志打印等级</Abstract>
+			<DeclaredIn>IFlySetting.h</DeclaredIn>
+            
+			
+			<NodeRef refid="31"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/LVL_ALL</TokenIdentifier>
+            <Abstract type="html">全部打印
+     </Abstract>
+            <Declaration>LVL_ALL</Declaration>
+            
+            <DeclaredIn>IFlySetting.h</DeclaredIn>
+            
+            <NodeRef refid="31"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/LVL_DETAIL</TokenIdentifier>
+            <Abstract type="html">高，异常分析需要的级别
+     </Abstract>
+            <Declaration>LVL_DETAIL</Declaration>
+            
+            <DeclaredIn>IFlySetting.h</DeclaredIn>
+            
+            <NodeRef refid="31"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/LVL_NORMAL</TokenIdentifier>
+            <Abstract type="html">中，打印基本日志信息
+     </Abstract>
+            <Declaration>LVL_NORMAL</Declaration>
+            
+            <DeclaredIn>IFlySetting.h</DeclaredIn>
+            
+            <NodeRef refid="31"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/LVL_LOW</TokenIdentifier>
+            <Abstract type="html">低，只打印主要日志信息
+     </Abstract>
+            <Declaration>LVL_LOW</Declaration>
+            
+            <DeclaredIn>IFlySetting.h</DeclaredIn>
+            
+            <NodeRef refid="31"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/LVL_NONE</TokenIdentifier>
+            <Abstract type="html">不打印
+     </Abstract>
+            <Declaration>LVL_NONE</Declaration>
+            
+            <DeclaredIn>IFlySetting.h</DeclaredIn>
+            
+            <NodeRef refid="31"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

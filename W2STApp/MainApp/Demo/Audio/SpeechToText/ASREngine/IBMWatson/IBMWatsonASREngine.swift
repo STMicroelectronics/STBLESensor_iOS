@@ -104,7 +104,7 @@ class BlueVoiceIBMWatsonASREngine: BlueVoiceASREngine, IBMWatsonKeyDelegate{
     }
     
     public func getAuthKeyDialog()->UIViewController?{
-        let storyBoard = UIStoryboard(name: "SpeechToText", bundle:nil )
+        let storyBoard = UIStoryboard(name: "SpeechToText", bundle: Bundle(for: Self.self) )
         let viewController = storyBoard.instantiateViewController(withIdentifier: "IBMWatsonASRKeyViewController") as! BlueVoiceIBMWatsonASRKeyViewController;
         viewController.delegate=self;
         return viewController;

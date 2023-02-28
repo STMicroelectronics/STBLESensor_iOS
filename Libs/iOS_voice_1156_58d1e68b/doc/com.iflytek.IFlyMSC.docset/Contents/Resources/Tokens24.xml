@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/IFlySpeechRecognizerDelegate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/IFlySpeechRecognizerDelegate</TokenIdentifier>
+			<Abstract type="html">语音识别协议&lt;br&gt;
+在使用语音识别时，需要实现这个协议中的方法.</Abstract>
+			<DeclaredIn>IFlySpeechRecognizerDelegate.h</DeclaredIn>
+            
+			
+			<NodeRef refid="24"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlySpeechRecognizerDelegate/onError:</TokenIdentifier>
+			<Abstract type="html">识别结果回调</Abstract>
+			<DeclaredIn>IFlySpeechRecognizerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onError:(IFlySpeechError *)errorCode</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>errorCode</Name>
+					<Abstract type="html">错误描述</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/onError:</Anchor>
+            <NodeRef refid="24"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlySpeechRecognizerDelegate/onResults:isLast:</TokenIdentifier>
+			<Abstract type="html">识别结果回调</Abstract>
+			<DeclaredIn>IFlySpeechRecognizerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onResults:(NSArray *)results isLast:(BOOL)isLast</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>results</Name>
+					<Abstract type="html">-[out] 识别结果，NSArray的第一个元素为NSDictionary，NSDictionary的key为识别结果，sc为识别结果的置信度。</Abstract>
+				</Parameter><Parameter>
+					<Name>isLast</Name>
+					<Abstract type="html">-[out] 是否最后一个结果</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">appendFormat:@&quot;%@&quot;,key];//合并结果
+}
+}
+&lt;/code&gt;&lt;/pre&gt;</Abstract></ReturnValue>
+			<Anchor>//api/name/onResults:isLast:</Anchor>
+            <NodeRef refid="24"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlySpeechRecognizerDelegate/onVolumeChanged:</TokenIdentifier>
+			<Abstract type="html">音量变化回调&lt;br&gt;
+在录音过程中，回调音频的音量。</Abstract>
+			<DeclaredIn>IFlySpeechRecognizerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onVolumeChanged:(int)volume</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>volume</Name>
+					<Abstract type="html">-[out] 音量，范围从0-30</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/onVolumeChanged:</Anchor>
+            <NodeRef refid="24"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlySpeechRecognizerDelegate/onBeginOfSpeech</TokenIdentifier>
+			<Abstract type="html">开始录音回调&lt;br&gt;
+当调用了startListening函数之后，如果没有发生错误则会回调此函数。&lt;br&gt;
+如果发生错误则回调onError:函数</Abstract>
+			<DeclaredIn>IFlySpeechRecognizerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onBeginOfSpeech</Declaration>
+			
+			
+			<Anchor>//api/name/onBeginOfSpeech</Anchor>
+            <NodeRef refid="24"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlySpeechRecognizerDelegate/onEndOfSpeech</TokenIdentifier>
+			<Abstract type="html">停止录音回调&lt;br&gt;
+当调用了stopListening函数或者引擎内部自动检测到断点，如果没有发生错误则回调此函数。&lt;br&gt;
+如果发生错误则回调onError:函数</Abstract>
+			<DeclaredIn>IFlySpeechRecognizerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onEndOfSpeech</Declaration>
+			
+			
+			<Anchor>//api/name/onEndOfSpeech</Anchor>
+            <NodeRef refid="24"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlySpeechRecognizerDelegate/onCancel</TokenIdentifier>
+			<Abstract type="html">取消识别回调&lt;br&gt;
+当调用了cancel函数之后，会回调此函数，在调用了cancel函数和回调onError之前会有一个&lt;br&gt;
+短暂时间，您可以在此函数中实现对这段时间的界面显示。</Abstract>
+			<DeclaredIn>IFlySpeechRecognizerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onCancel</Declaration>
+			
+			
+			<Anchor>//api/name/onCancel</Anchor>
+            <NodeRef refid="24"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlySpeechRecognizerDelegate/getAudioKey:</TokenIdentifier>
+			<Abstract type="html">返回音频Key</Abstract>
+			<DeclaredIn>IFlySpeechRecognizerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)getAudioKey:(NSString *)key</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>key</Name>
+					<Abstract type="html">音频Key</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/getAudioKey:</Anchor>
+            <NodeRef refid="24"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlySpeechRecognizerDelegate/onEvent:arg0:arg1:data:</TokenIdentifier>
+			<Abstract type="html">扩展事件回调&lt;br&gt;
+根据事件类型返回额外的数据</Abstract>
+			<DeclaredIn>IFlySpeechRecognizerDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onEvent:(int)eventType arg0:(int)arg0 arg1:(int)arg1 data:(NSData *)eventData</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>eventType</Name>
+					<Abstract type="html">事件类型，具体参见IFlySpeechEventType的IFlySpeechEventTypeVoiceChangeResult枚举。</Abstract>
+				</Parameter><Parameter>
+					<Name>arg0</Name>
+					<Abstract type="html">arg0</Abstract>
+				</Parameter><Parameter>
+					<Name>arg1</Name>
+					<Abstract type="html">arg1</Abstract>
+				</Parameter><Parameter>
+					<Name>eventData</Name>
+					<Abstract type="html">事件数据</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/onEvent:arg0:arg1:data:</Anchor>
+            <NodeRef refid="24"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

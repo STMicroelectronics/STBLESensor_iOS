@@ -36,7 +36,7 @@
  */
 
 import Foundation
-import MQTTFramework
+import MQTTClient
 
 public class BlueMSIBMWatsonIOTConnectionFactory : BlueMSCloudIotConnectionFactory{
       
@@ -65,14 +65,14 @@ public class BlueMSIBMWatsonIOTConnectionFactory : BlueMSCloudIotConnectionFacto
     }
     
     public func getSession() -> BlueMSCloudIotClient {
-        let transport = MCMQTTCFSocketTransport();
+        let transport = MQTTCFSocketTransport();
         transport.host = String(format:BlueMSIBMWatsonIOTConnectionFactory.MQTT_BROKER,mOrganization)
         transport.port = BlueMSIBMWatsonIOTConnectionFactory.MQTT_BROKER_PORT;
         transport.tls=true;
         
         let clientId = String(format:BlueMSIBMWatsonIOTConnectionFactory.MQTT_CLIENT_ID_FORMAT,
                               mOrganization,mDeviceType,mDeviceId)
-        let session = MCMQTTSession(clientId: clientId)
+        let session = MQTTSession(clientId: clientId)
         session?.transport = transport
         session?.userName = BlueMSIBMWatsonIOTConnectionFactory.MQTT_USERNAME
         session?.password = mAuth

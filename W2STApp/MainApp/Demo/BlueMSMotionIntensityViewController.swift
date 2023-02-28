@@ -41,7 +41,7 @@ import GLKit
 import BlueSTSDK;
 
 public class BlueMSMotionIntensityViewController:
-BlueMSDemoTabViewController,BlueSTSDKFeatureDelegate{
+    BlueMSDemoTabViewController,BlueSTSDKFeatureDelegate{
     
     private static let ANIMATION_DURATION_S = TimeInterval(0.3);
     
@@ -62,6 +62,8 @@ BlueMSDemoTabViewController,BlueSTSDKFeatureDelegate{
     @IBOutlet weak var mIntensityNeedle: UIImageView!
     @IBOutlet weak var mIntensityLabel: UILabel!
     
+    private var featureWasEnabled = false
+    
     private var mIntensityFeature: BlueSTSDKFeature?;
     private static let INTENSITY_FORMAT:String = {
         let bundle = Bundle(for: BlueMSMotionIntensityViewController.self)
@@ -75,23 +77,58 @@ BlueMSDemoTabViewController,BlueSTSDKFeatureDelegate{
     
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidDisappear(animated);
-        
+        startNotification()
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated);
+        stopNotification()
+    }
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad();
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground),
+                                               name: UIApplication.didEnterBackgroundNotification,
+                                               object: nil)
+                
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActivity),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
+    }
+    
+    
+    public func startNotification(){
         mIntensityFeature = self.node.getFeatureOfType(BlueSTSDKFeatureMotionIntensity.self);
         
         if let feature = mIntensityFeature{
             feature.add(self);
             self.node.enableNotification(feature);
         }
-        
     }
-    
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated);
-        
+
+    public func stopNotification(){
         if let feature = mIntensityFeature{
             feature.remove(self);
             self.node.disableNotification(feature);
+            Thread.sleep(forTimeInterval: 0.1)
             mIntensityFeature=nil;
+        }
+    }
+
+
+    @objc func didEnterForeground() {
+        mIntensityFeature = self.node.getFeatureOfType(BlueSTSDKFeatureMotionIntensity.self);
+        if !(mIntensityFeature==nil) && node.isEnableNotification(mIntensityFeature!) {
+            featureWasEnabled = true
+            stopNotification()
+        }else {
+            featureWasEnabled = false;
+        }
+    }
+        
+    @objc func didBecomeActivity() {
+        if(featureWasEnabled) {
+            startNotification()
         }
     }
     

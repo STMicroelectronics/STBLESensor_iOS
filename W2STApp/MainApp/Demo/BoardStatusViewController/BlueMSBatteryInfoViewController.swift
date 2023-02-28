@@ -38,6 +38,7 @@
 import Foundation
 import BlueSTSDK
 import BlueSTSDK_Gui
+import MBProgressHUD
 
 class BlueMSBatteryInfoViewController: BlueMSDemoTabViewController, UITableViewDataSource  {
     

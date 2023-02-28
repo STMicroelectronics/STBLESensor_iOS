@@ -1,0 +1,6 @@
+framework module Pods_BlueMSFwUpgradeChecker_Example {
+  umbrella header "Pods-BlueMSFwUpgradeChecker_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

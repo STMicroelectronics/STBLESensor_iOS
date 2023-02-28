@@ -41,19 +41,21 @@ import SwiftyJSON
 
 internal class AzureIotCentralClient : BlueMSCloudIotClient{
     
-    private let deviceId:String
-    private let scopeId:String
-    private let symKey:String
+    private let deviceId: String
+    private let scopeId: String
+    private let sasKey: String
+    private let deviceSymmetricKey: String?
     
     private var networkQueue = DispatchQueue(label: "IoTCentral I/O")
-    private var doWork:DispatchWorkItem!
+    private var doWork: DispatchWorkItem!
     
-    private var iotHubClientHandle: IOTHUB_CLIENT_LL_HANDLE?;
+    private var iotHubClientHandle: IOTHUB_CLIENT_LL_HANDLE?
     
-    init( deviceId:String,scopeId:String, symKey:String){
+    init(deviceId: String,scopeId: String, symKey: String, deviceSymmetricKey: String? = nil) {
         self.deviceId = deviceId
         self.scopeId = scopeId
-        self.symKey = symKey;
+        self.sasKey = symKey
+        self.deviceSymmetricKey = deviceSymmetricKey
     }
     
     var isConnected: Bool = false
@@ -71,7 +73,7 @@ internal class AzureIotCentralClient : BlueMSCloudIotClient{
             client.networkQueue.asyncAfter(deadline: .now() + 0.2, execute: client.doWork)
         }
         networkQueue.async(execute: doWork)
-        buildConnectionString{ cs in
+        buildConnectionString { cs in
             guard let connectionString = cs else {
                 let error  = NSError(domain: "Error provisioning the device", code: 0x00, userInfo: nil);
                 onComplete?(error)
@@ -85,7 +87,6 @@ internal class AzureIotCentralClient : BlueMSCloudIotClient{
     }
     
     private let mySendConfirmationCallback: IOTHUB_CLIENT_EVENT_CONFIRMATION_CALLBACK = { result, _ in
-        
         if (result == IOTHUB_CLIENT_CONFIRMATION_OK) {
             print("message Sent")
         } else {
@@ -93,18 +94,28 @@ internal class AzureIotCentralClient : BlueMSCloudIotClient{
         }
     }
     
-    func sendTelemetryData(messageStr:String){
+    func sendTelemetryData(messageStr: String, component: String? = nil) -> Bool {
+        var sendingSuccess = false
+        
         guard isConnected else {
-            return
+            return sendingSuccess
         }
         let messageHandle: IOTHUB_MESSAGE_HANDLE = IoTHubMessage_CreateFromByteArray(messageStr, messageStr.utf8.count)
+        
+        if let component = component {
+            IoTHubMessage_SetProperty(messageHandle, "$.sub", component)
+        }
         
         if (messageHandle != OpaquePointer.init(bitPattern: 0)) {
             
             if (IOTHUB_CLIENT_OK == IoTHubClient_LL_SendEventAsync(iotHubClientHandle, messageHandle, mySendConfirmationCallback, nil)) {
                 print("message Sent async")
+                sendingSuccess = true
+            }else{
+                sendingSuccess = false
             }
         }
+        return sendingSuccess
     }
     
     func disconnect(_ onComplete: OnIotClientActionCallback?) {
@@ -118,10 +129,15 @@ internal class AzureIotCentralClient : BlueMSCloudIotClient{
     
     private static let ENDPOINT =  "global.azure-devices-provisioning.net"
     
-    private func buildConnectionString( onConnectionStringReady:@escaping ((String?)->Void)){
+    private func buildConnectionString(onConnectionStringReady: @escaping ((String?)->Void)) {
         let expireDate:Int64 = Int64(Date().timeIntervalSince1970 + AzureIotCentralClient.DEFAULT_EXPIRATION_S)
         let uri = scopeId+"%2fregistrations%2f"+deviceId
-        let deviceKey = computeKey(masterKey: symKey, registationId: deviceId)
+        let deviceKey: String
+        if let deviceSymmetricKey = deviceSymmetricKey {
+            deviceKey = deviceSymmetricKey
+        } else {
+            deviceKey = computeKey(masterKey: sasKey, registationId: deviceId)
+        }
         let sig = BlueMSAzureIotSignature.signature(forUri: uri, expireTime: expireDate, deviceKey: deviceKey);
         let sasKey = "SharedAccessSignature sr=\(scopeId)%2fregistrations%2f\(deviceId)&sig=\(sig)&skn=registration&se=\(expireDate)"
         requestRegistrationId(sasKey: sasKey){ opId in
@@ -135,7 +151,7 @@ internal class AzureIotCentralClient : BlueMSCloudIotClient{
     
     private func requestRegistrationId(sasKey:String,
                                onOperationIdIsReady:@escaping ((String?)->Void)){
-        let requestUrl = URL(string:String(format: "https://%@/%@/registrations/%@/register?api-version=2018-09-01-preview",
+        let requestUrl = URL(string:String(format: "https://%@/%@/registrations/%@/register?api-version=2021-06-01",
                                            AzureIotCentralClient.ENDPOINT,scopeId,deviceId))
         guard let url = requestUrl else{
             return
@@ -163,7 +179,7 @@ internal class AzureIotCentralClient : BlueMSCloudIotClient{
     }
     
     private func getAssignment(deviceKey:String, sasKey:String, operationId:String,onConnectionStringReady:@escaping ((String?)->Void)){
-        let requestUrl = URL(string:String(format: "https://%@/%@/registrations/%@/operations/%@?api-version=2018-09-01-preview",
+        let requestUrl = URL(string:String(format: "https://%@/%@/registrations/%@/operations/%@?api-version=2021-06-01",
                                            AzureIotCentralClient.ENDPOINT,scopeId,deviceId,operationId))
         guard let url = requestUrl else{
             return

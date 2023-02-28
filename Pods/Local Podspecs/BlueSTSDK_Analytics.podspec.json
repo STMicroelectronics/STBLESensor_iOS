@@ -1,0 +1,33 @@
+{
+  "name": "BlueSTSDK_Analytics",
+  "version": "0.1.0",
+  "summary": "A short description of BlueSTSDK_Analytics.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/klauslanza/BlueSTSDK_Analytics",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "klauslanza": "klauslanza@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/klauslanza/BlueSTSDK_Analytics.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "12.0"
+  },
+  "source_files": "BlueSTSDK_Analytics/Classes/**/*",
+  "dependencies": {
+    "BlueSTSDK": [
+
+    ],
+    "BlueSTSDK_Gui": [
+
+    ],
+    "AWSPinpoint": [
+
+    ]
+  }
+}

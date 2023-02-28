@@ -68,8 +68,8 @@ public class BlueMSBoardStatusViewController: BlueMSDemoTabViewController{
         mBoardName.text = String(format:BlueMSBoardStatusViewController.BOARD_NAME_FORMAT,node.name)
         mBoardAddress.text = String(format:BlueMSBoardStatusViewController.BOARD_ADDRESS_FORMAT,
                                    node.address ?? "Unknown")
-        mBoardType.text = String(format:BlueMSBoardStatusViewController.BOARD_TYPE_FORMAT,
-                                   BlueSTSDKNode.nodeType(toString: node.type ))
+        /*mBoardType.text = String(format:BlueMSBoardStatusViewController.BOARD_TYPE_FORMAT,
+                                   BlueSTSDKNode.nodeType(toString: node.type ))*/
     }
     
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

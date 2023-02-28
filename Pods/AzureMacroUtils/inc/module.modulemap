@@ -1,0 +1,5 @@
+module AzureMacroUtils [system][extern_c] {
+    header "azure_macro_utils/macro_utils.h"
+    header "azure_macro_utils/macro_utils_generated.h"
+    export *
+}

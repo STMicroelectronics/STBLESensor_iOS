@@ -39,7 +39,7 @@ import Foundation
 import UIKit
 import Charts
 
-class FFTAmplitudeViewController : BlueMSDemoTabViewController{
+class FFTAmplitudeViewController : BlueMSDemoTabViewController {
    
     
     
@@ -61,6 +61,8 @@ class FFTAmplitudeViewController : BlueMSDemoTabViewController{
     
     private var maxPoint:[FFTPoint]? = nil
     private var timeDomainStats:TimeDomainStats? = nil
+    
+    private var featureWasEnabled = false
     
     private func setUpCharts(){
         chart.rightAxis.enabled = false
@@ -100,6 +102,25 @@ class FFTAmplitudeViewController : BlueMSDemoTabViewController{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground),
+                                               name: UIApplication.didEnterBackgroundNotification,
+                                               object: nil)
+                    
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActivity),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
+        
+        startNotification()
+        
+        settingsButton.isHidden = (node.type == .sensor_Tile_Box)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopNotification()
+    }
+    
+    public func startNotification(){
         loadProgress.progress=0.0
         fftFeature = node.getFeatureOfType(BlueSTSDKFeatureFFTAmplitude.self) as? BlueSTSDKFeatureFFTAmplitude
         fftFeature?.add(self)
@@ -110,18 +131,32 @@ class FFTAmplitudeViewController : BlueMSDemoTabViewController{
             feature.add(self)
             _ = feature.enableNotification()
         }
-        
-        settingsButton.isHidden = (node.type == .sensor_Tile_Box)
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+
+    public func stopNotification(){
         fftFeature?.remove(self)
         _ = fftFeature?.disableNotification()
         
         if let feature = timeDomainFeature{
             feature.remove(self)
             _ = feature.disableNotification()
+        }
+    }
+
+
+    @objc func didEnterForeground() {
+        fftFeature = node.getFeatureOfType(BlueSTSDKFeatureFFTAmplitude.self) as? BlueSTSDKFeatureFFTAmplitude
+        if !(fftFeature==nil) && node.isEnableNotification(fftFeature!) {
+            featureWasEnabled = true
+            stopNotification()
+        }else {
+            featureWasEnabled = false;
+        }
+    }
+        
+    @objc func didBecomeActivity() {
+        if(featureWasEnabled) {
+            startNotification()
         }
     }
     

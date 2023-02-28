@@ -39,16 +39,63 @@
 import Foundation
 import CoreData
 import STTheme
+import BlueSTSDK_Gui
+import CoreNFC
+import KeychainAccess
 
 
 @UIApplicationMain
 public class BlueMSAppDelegate : UIResponder,UIApplicationDelegate {
     public var window:UIWindow?
+    
+    public func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+
+        //DATA Accepted in this form-> blesensor://connect?Pin=___&Add=___
+        let pin = url.valueOf("Pin")
+        let mac = url.valueOf("Add")
         
+        if !(mac==nil) {
+            if let nav = app.windows[0].rootViewController as? UINavigationController, let delegate = nav.topViewController as? BlueMSMainViewController {
+                let nodeListView = BlueSTSDKNodeListViewController.buildWith(delegate: delegate, mac: mac!)
+                
+                if !(pin==nil) {
+                    let pinDialogAlert = UIAlertController(title: "Board PIN", message: "Board PIN is \(pin!.description).\nCopy and paste when required during Bluetooth Pairing Request.", preferredStyle: .alert)
+                    let confirmButton = UIAlertAction(title: "Copy PIN ⎘", style: .default, handler: { (action) -> Void in
+                        /**Continue only after click Ok button. The user has the time to read the board PIN**/
+                        UIPasteboard.general.string = pin
+                        nav.pushViewController(nodeListView, animated: true)
+                    })
+                    pinDialogAlert.addAction(confirmButton)
+                    nav.present(pinDialogAlert, animated: true, completion: nil)
+                }else{
+                    nav.pushViewController(nodeListView, animated: true)
+                }
+                
+            }
+        }
+        
+        return true
+    }
     
     public func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool{
+        self.clearKeychainIfWillUnistall()
         configureApperance()
         return true
+    }
+    
+    func clearKeychainIfWillUnistall() {
+        let freshInstall = !UserDefaults.standard.bool(forKey: "alreadyInstalled")
+        if freshInstall {
+            do {
+                /** Delete Keychain*/
+                var keychain = Keychain(service: "com.st")
+                keychain = keychain.accessibility(.afterFirstUnlock)
+                try keychain.removeAll()
+            } catch {
+                NSLog("Keychain: saving error", error.localizedDescription)
+            }
+            UserDefaults.standard.set(true, forKey: "alreadyInstalled")
+        }
     }
     
     private func configureApperance(){
@@ -56,6 +103,57 @@ public class BlueMSAppDelegate : UIResponder,UIApplicationDelegate {
      /*  UIImageView.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).tintColor=ThemeService.shared.currentTheme.color.secondary.light    }
     */
     }
+    
+    // MARK: - Core Data stack
+
+    lazy var persistentContainer: NSPersistentContainer = {
+        /*
+         The persistent container for the application. This implementation
+         creates and returns a container, having loaded the store for the
+         application to it. This property is optional since there are legitimate
+         error conditions that could cause the creation of the store to fail.
+        */
+        let container = NSPersistentContainer(name: "STAzureRegisteredDeviceModel")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                 
+                /*
+                 Typical reasons for an error here include:
+                 * The parent directory does not exist, cannot be created, or disallows writing.
+                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
+                 * The device is out of space.
+                 * The store could not be migrated to the current model version.
+                 Check the error message to determine what the actual problem was.
+                 */
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+
+    // MARK: - Core Data Saving support
+
+    func saveContext () {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
+    
 }
 
-
+extension URL {
+    func valueOf(_ queryParamaterName: String) -> String? {
+        guard let url = URLComponents(string: self.absoluteString) else { return nil }
+        return url.queryItems?.first(where: { $0.name == queryParamaterName })?.value
+    }
+}

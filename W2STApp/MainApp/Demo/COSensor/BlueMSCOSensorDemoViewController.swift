@@ -39,7 +39,7 @@ import BlueSTSDK;
 
 /// demo that show the compass data
 public class BlueMSCOSensorDemoViewController:
-    BlueMSDemoTabViewController{
+    BlueMSDemosViewController {
     
     private static let SET_SENSITIVYT_MENU = {
         return  NSLocalizedString("Set Sensitivity",
@@ -54,6 +54,8 @@ public class BlueMSCOSensorDemoViewController:
     private var mCOSensorFeature:BlueSTSDKFeatureCOSensor?;
     private var mSensitivityMenuItem:UIAlertAction?
     private var mSetSensitivytController:BlueMSCOSensorSetSensitivityController?
+    
+    private var featureWasEnabled = false
     
     private func addSensitivytMenuItem(sensor: BlueSTSDKFeatureCOSensor){
         mSetSensitivytController = BlueMSCOSensorSetSensitivityController(sensor: sensor);
@@ -70,6 +72,26 @@ public class BlueMSCOSensorDemoViewController:
     
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        startNotification()
+    }
+
+    public override func viewDidLoad() {
+        super.viewDidLoad();
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground),
+                                                       name: UIApplication.didEnterBackgroundNotification,
+                                                       object: nil)
+                
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActivity),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated);
+        stopNotification()
+    }
+    
+    public func startNotification(){
         mCOSensorFeature = self.node.getFeatureOfType(BlueSTSDKFeatureCOSensor.self) as? BlueSTSDKFeatureCOSensor
         if let feature = mCOSensorFeature{
             feature.add(self)
@@ -77,16 +99,33 @@ public class BlueMSCOSensorDemoViewController:
             addSensitivytMenuItem(sensor: feature)
         }
     }
-    
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated);
-        
+
+    public func stopNotification(){
         if let feature = mCOSensorFeature{
             feature.remove(self)
             self.node.disableNotification(feature)
+            Thread.sleep(forTimeInterval: 0.1)
             removeSensitityMenuItem()
         }
     }
+
+
+    @objc func didEnterForeground() {
+        mCOSensorFeature = self.node.getFeatureOfType(BlueSTSDKFeatureCOSensor.self) as? BlueSTSDKFeatureCOSensor
+        if !(mCOSensorFeature==nil) && node.isEnableNotification(mCOSensorFeature!) {
+            featureWasEnabled = true
+            stopNotification()
+        }else {
+            featureWasEnabled = false;
+        }
+    }
+        
+    @objc func didBecomeActivity() {
+        if(featureWasEnabled) {
+            startNotification()
+        }
+    }
+    
     
     private func showSetSensitivityDialog(){
         if let dialog = mSetSensitivytController?.dialog{

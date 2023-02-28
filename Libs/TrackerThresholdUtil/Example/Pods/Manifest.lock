@@ -1,0 +1,41 @@
+PODS:
+  - AssetTrackingDataModel (0.1.0)
+  - BlueSTSDK (0.1.0):
+    - opus-ios
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
+  - opus-ios (1.1.3)
+  - TrackerThresholdUtil (0.1.0):
+    - AssetTrackingDataModel
+    - BlueSTSDK
+    - Charts
+
+DEPENDENCIES:
+  - AssetTrackingDataModel (from `../../AssetTrackingDataModel`)
+  - BlueSTSDK (from `../../BlueSTSDK`)
+  - TrackerThresholdUtil (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Charts
+    - opus-ios
+
+EXTERNAL SOURCES:
+  AssetTrackingDataModel:
+    :path: "../../AssetTrackingDataModel"
+  BlueSTSDK:
+    :path: "../../BlueSTSDK"
+  TrackerThresholdUtil:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AssetTrackingDataModel: 2fe4f1528cce699d492371c7400e9053a361c129
+  BlueSTSDK: 328cd96420a3ccc17ea0af3f581350ba5d8871b7
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
+  opus-ios: 22c5b7a5d37cdb661e73f6a65932dbf902d4214f
+  TrackerThresholdUtil: 35908e45f6acbb190eb352d2032f5e477ca74024
+
+PODFILE CHECKSUM: 9be9b6d0acec200d5d2921c5c7ac9ae17d120da0
+
+COCOAPODS: 1.9.3

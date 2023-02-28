@@ -37,6 +37,7 @@
 
 import Foundation
 import BlueSTSDK
+import BlueSTSDK_Gui
 
 public extension BlueSTSDKNode {
     
@@ -50,7 +51,7 @@ public extension BlueSTSDKNode {
         switch (self.type){
             case .STEVAL_WESU1:
                 return UIImage(named:"steval_wesu1_reset_position.png" , in: bundle, compatibleWith: nil);
-            case .nucleo:
+            case .nucleo, .NUCLEO_F401RE, .NUCLEO_L053R8, .NUCLEO_L476RG, .NUCLEO_F446RE:
                 return UIImage(named: "board_nucleo", in: bundle, compatibleWith: nil);
             case .sensor_Tile:
                 return UIImage(named: "board_sensorTile", in: bundle, compatibleWith: nil);
@@ -60,8 +61,24 @@ public extension BlueSTSDKNode {
                 return UIImage(named: "board_blueCoin", in: bundle, compatibleWith: nil);
             case .STEVAL_BCN002V1:
                 return UIImage(named: "board_blueNRGTile", in: bundle, compatibleWith: nil);
-            case .STEVAL_IDB008VX, .generic, .discovery_IOT01A:
+            case .STEVAL_STWINKIT1:
+                return UIImage(named: "board_sensorTile_box", in: bundle, compatibleWith: nil);
+            case .STEVAL_STWINKT1B:
+                return UIImage(named: "board_sensorTile_box", in: bundle, compatibleWith: nil);
+            case .PROTEUS:
+                return UIImage(named: "real_board_proteus", in: bundle, compatibleWith: nil);
+            case .STSYS_SBU06:
+                return UIImage(named: "real_board_stysys_sbu06", in: bundle, compatibleWith: nil);
+            case .B_L475E_IOT01A, .discovery_IOT01A:
+                return UIImage(named: "real_board_b_l4s5i_iot01a", in: bundle, compatibleWith: nil);
+            case .POLARIS:
+                return UIImage(named: "real_board_polaris", in: bundle, compatibleWith: nil);
+            case .SENSOR_TILE_BOX_PRO:
+                return UIImage(named: "real_board_sensortilebox_pro", in: bundle, compatibleWith: nil);
+            case .STEVAL_IDB008VX, .generic, .B_U585I_IOT02A, .WB_BOARD, .STWIN_BOX:
                 return nil;
+            @unknown default:
+                return nil
         }
     }
     

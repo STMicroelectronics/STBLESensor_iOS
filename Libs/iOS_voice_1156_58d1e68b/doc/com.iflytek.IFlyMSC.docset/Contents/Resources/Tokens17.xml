@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/IFlyTextUnderstander.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/IFlyTextUnderstander</TokenIdentifier>
+			<Abstract type="html">文本转语义类</Abstract>
+			<DeclaredIn>IFlyTextUnderstander.h</DeclaredIn>
+            
+			
+			<NodeRef refid="17"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyTextUnderstander/setIsUnderstanding:</TokenIdentifier>
+			<Abstract type="html">是否正在文本转语义</Abstract>
+			<DeclaredIn>IFlyTextUnderstander.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, atomic) __block BOOL isUnderstanding</Declaration>
+			
+			
+			<Anchor>//api/name/isUnderstanding</Anchor>
+            <NodeRef refid="17"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyTextUnderstander/isUnderstanding</TokenIdentifier>
+			<Abstract type="html">是否正在文本转语义</Abstract>
+			<DeclaredIn>IFlyTextUnderstander.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, atomic) __block BOOL isUnderstanding</Declaration>
+			
+			
+			<Anchor>//api/name/isUnderstanding</Anchor>
+            <NodeRef refid="17"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/IFlyTextUnderstander/isUnderstanding</TokenIdentifier>
+			<Abstract type="html">是否正在文本转语义</Abstract>
+			<DeclaredIn>IFlyTextUnderstander.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, atomic) __block BOOL isUnderstanding</Declaration>
+			
+			
+			<Anchor>//api/name/isUnderstanding</Anchor>
+            <NodeRef refid="17"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyTextUnderstander/understandText:withCompletionHandler:</TokenIdentifier>
+			<Abstract type="html">文本转语义接口&lt;br&gt;
+输入文本内容，获取语义理解结果</Abstract>
+			<DeclaredIn>IFlyTextUnderstander.h</DeclaredIn>
+			
+			<Declaration>- (int)understandText:(NSString *)text withCompletionHandler:(IFlyUnderstandTextCompletionHandler)completionHandler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>text</Name>
+					<Abstract type="html">输入的文本内容</Abstract>
+				</Parameter><Parameter>
+					<Name>completionHandler</Name>
+					<Abstract type="html">文本转语义完成回调函数</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">错误码</Abstract></ReturnValue>
+			<Anchor>//api/name/understandText:withCompletionHandler:</Anchor>
+            <NodeRef refid="17"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyTextUnderstander/setParameter:forKey:</TokenIdentifier>
+			<Abstract type="html">设置文本转语义参数</Abstract>
+			<DeclaredIn>IFlyTextUnderstander.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)setParameter:(NSString *)value forKey:(NSString *)key</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>value</Name>
+					<Abstract type="html">参数对应的取值</Abstract>
+				</Parameter><Parameter>
+					<Name>key</Name>
+					<Abstract type="html">文本转语义参数参数</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">成功返回YES，失败返回NO</Abstract></ReturnValue>
+			<Anchor>//api/name/setParameter:forKey:</Anchor>
+            <NodeRef refid="17"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlyTextUnderstander/cancel</TokenIdentifier>
+			<Abstract type="html">取消本次会话</Abstract>
+			<DeclaredIn>IFlyTextUnderstander.h</DeclaredIn>
+			
+			<Declaration>- (void)cancel</Declaration>
+			
+			
+			<Anchor>//api/name/cancel</Anchor>
+            <NodeRef refid="17"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

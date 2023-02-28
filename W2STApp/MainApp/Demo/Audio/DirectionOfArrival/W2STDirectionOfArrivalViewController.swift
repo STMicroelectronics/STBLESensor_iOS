@@ -45,6 +45,8 @@ class W2STDirectionOfArrivalViewController: BlueMSDemoTabViewController,BlueSTSD
     @IBOutlet weak var mDirectionLabel: UILabel!
     private var mDirectionFeature:BlueSTSDKFeatureDirectionOfArrival?
 
+    private var featureWasEnabled = false
+    
     @IBAction func onHighSensitivitySwitchChange(_ sender: UISwitch) {
         mDirectionFeature?.enableLowSensitivity(!sender.isOn);
     }
@@ -60,6 +62,26 @@ class W2STDirectionOfArrivalViewController: BlueMSDemoTabViewController,BlueSTSD
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
+        startNotification()
+    }
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad();
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground),
+                                                       name: UIApplication.didEnterBackgroundNotification,
+                                                       object: nil)
+                
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActivity),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopNotification()
+    }
+    
+    public func startNotification(){
         mDirectionFeature = self.node.getFeatureOfType(BlueSTSDKFeatureDirectionOfArrival.self) as! BlueSTSDKFeatureDirectionOfArrival?;
         
         if let feature = mDirectionFeature{
@@ -67,17 +89,33 @@ class W2STDirectionOfArrivalViewController: BlueMSDemoTabViewController,BlueSTSD
             self.node.enableNotification(feature);
             feature.enableLowSensitivity(false);
         }
-
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    public func stopNotification(){
         if let feature = mDirectionFeature {
             feature.remove(self);
             feature.enableLowSensitivity(false);
             node.disableNotification(feature);
+            Thread.sleep(forTimeInterval: 0.1)
         }
     }
+
+    @objc func didEnterForeground() {
+        mDirectionFeature = self.node.getFeatureOfType(BlueSTSDKFeatureDirectionOfArrival.self) as! BlueSTSDKFeatureDirectionOfArrival?;
+        if !(mDirectionFeature==nil) && node.isEnableNotification(mDirectionFeature!) {
+            featureWasEnabled = true
+            stopNotification()
+        }else {
+            featureWasEnabled = false;
+        }
+    }
+        
+    @objc func didBecomeActivity() {
+        if(featureWasEnabled) {
+            startNotification()
+        }
+    }
+    
 
     private static func degreeToRad(_ angle:Float) -> Float{
         return angle * Float.pi/180.0

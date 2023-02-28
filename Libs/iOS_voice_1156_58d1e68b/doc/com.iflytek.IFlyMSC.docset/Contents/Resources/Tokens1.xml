@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/IFlyAudioSession.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/IFlyAudioSession</TokenIdentifier>
+			<Abstract type="html">音频环境初始化，设置AVAudioSession的Category属性。</Abstract>
+			<DeclaredIn>IFlyAudioSession.h</DeclaredIn>
+            
+			
+			<NodeRef refid="1"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlyAudioSession/initPlayingAudioSession:</TokenIdentifier>
+			<Abstract type="html">初始化播音环境，主要用于合成播放器。</Abstract>
+			<DeclaredIn>IFlyAudioSession.h</DeclaredIn>
+			
+			<Declaration>+ (void)initPlayingAudioSession:(BOOL)isMPCenter</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>isMPCenter</Name>
+					<Abstract type="html">是否初始化MPPlayerCenter：0不初始化，1初始化。此参数只在AVAudioSession的Category属性值不为AVAudioSessionCategoryPlayAndRecord时设置有效。</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/initPlayingAudioSession:</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlyAudioSession/initRecordingAudioSession</TokenIdentifier>
+			<Abstract type="html">初始化录音环境,主要用于识别录音器。</Abstract>
+			<DeclaredIn>IFlyAudioSession.h</DeclaredIn>
+			
+			<Declaration>+ (BOOL)initRecordingAudioSession</Declaration>
+			
+			<ReturnValue><Abstract type="html">成功返回YES，失败返回NO</Abstract></ReturnValue>
+			<Anchor>//api/name/initRecordingAudioSession</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

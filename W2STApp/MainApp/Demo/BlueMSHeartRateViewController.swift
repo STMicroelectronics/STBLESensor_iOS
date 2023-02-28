@@ -51,6 +51,8 @@ public class BlueMSHeartRateViewController : BlueMSDemoTabViewController{
     private var mEnergyUnit:String?
     private var mRRIntervalUnit:String?
     
+    private var featureWasEnabled = false
+    
     private let mPulseAnimation:CAKeyframeAnimation = {
         let animation = CAKeyframeAnimation(keyPath: "transform.scale.xy")
         animation.values = [1.0,0.8,1.2,1.0]
@@ -67,6 +69,26 @@ public class BlueMSHeartRateViewController : BlueMSDemoTabViewController{
     
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        startNotification()
+    }
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad();
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground),
+                                               name: UIApplication.didEnterBackgroundNotification,
+                                               object: nil)
+                
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActivity),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopNotification()
+    }
+    
+    public func startNotification(){
         mHeartRateFeature = self.node.getFeatureOfType(BlueSTSDKFeatureHeartRate.self) as? BlueSTSDKFeatureHeartRate
         if let feature = mHeartRateFeature{
             extractUnit(fields: feature.getFieldsDesc())
@@ -74,12 +96,29 @@ public class BlueMSHeartRateViewController : BlueMSDemoTabViewController{
             node.enableNotification(feature)
         }
     }
-    
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+
+    public func stopNotification(){
         if let feature = mHeartRateFeature{
             feature.remove(self)
             node.disableNotification(feature)
+            Thread.sleep(forTimeInterval: 0.1)
+        }
+    }
+
+
+    @objc func didEnterForeground() {
+        mHeartRateFeature = self.node.getFeatureOfType(BlueSTSDKFeatureHeartRate.self) as? BlueSTSDKFeatureHeartRate
+        if !(mHeartRateFeature==nil) &&  node.isEnableNotification(mHeartRateFeature!) {
+            featureWasEnabled = true
+            stopNotification()
+        }else {
+            featureWasEnabled = false;
+        }
+    }
+        
+    @objc func didBecomeActivity() {
+        if(featureWasEnabled) {
+            startNotification()
         }
     }
     

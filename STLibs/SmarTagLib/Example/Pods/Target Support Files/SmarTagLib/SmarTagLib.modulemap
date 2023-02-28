@@ -1,0 +1,6 @@
+framework module SmarTagLib {
+  umbrella header "SmarTagLib-umbrella.h"
+
+  export *
+  module * { export * }
+}

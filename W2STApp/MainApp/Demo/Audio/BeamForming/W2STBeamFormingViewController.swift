@@ -39,7 +39,7 @@ import Foundation
 import CorePlot
 import BlueSTSDK
 
-public class W2STBeamFormingViewController: BlueMSDemoTabViewController,BlueSTSDKFeatureDelegate{
+public class W2STBeamFormingViewController: BlueMSDemoTabViewController, BlueSTSDKFeatureDelegate{
 
     private static let DEFAULT_DIRECTION = BlueSTSDKFeatureBeamFormingDirection.RIGHT;
 
@@ -76,8 +76,18 @@ public class W2STBeamFormingViewController: BlueMSDemoTabViewController,BlueSTSD
     private var mButtonToDirectionMap:[UIButton:BlueSTSDKFeatureBeamFormingDirection]!
     private var mLastSelectedDir:BlueSTSDKFeatureBeamFormingDirection = .UNKNOWN;
 
+    private var featureWasEnabled = false
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground),
+                                                           name: UIApplication.didEnterBackgroundNotification,
+                                                           object: nil)
+                    
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActivity),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
 
         mButtonToDirectionMap = [
                 mTopButton : .TOP,
@@ -120,6 +130,19 @@ public class W2STBeamFormingViewController: BlueMSDemoTabViewController,BlueSTSD
                                                       reDrawAfterSample: 3,
         hasDarkTheme: hasDarkTheme());
 
+        startNotification()
+
+    }
+
+    
+    override public func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        mAudioRecorder.viewWillDisappear();
+        
+        stopNotification()
+    }
+    
+    public func startNotification(){
         mFeatureAudio = BlueMSAudioFeatures.extractBestFeatures(from: self.node)
         //if both feature are present enable the audio
         if let featureAudio = mFeatureAudio{
@@ -138,13 +161,9 @@ public class W2STBeamFormingViewController: BlueMSDemoTabViewController,BlueSTSD
             beamForming.useStrongbeamFormingAlgorithm(true);
             changeDirection(W2STBeamFormingViewController.DEFAULT_DIRECTION);
         }
-
     }
-
     
-    override public func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        mAudioRecorder.viewWillDisappear();
+    public func stopNotification(){
         if let featureAudio = mFeatureAudio{
             mAudioPlayback = nil;
             featureAudio.audioStream.remove(self);
@@ -155,10 +174,10 @@ public class W2STBeamFormingViewController: BlueMSDemoTabViewController,BlueSTSD
 
         if let beamForming = mFeatureBeamForming{
             self.node.disableNotification(beamForming);
+            Thread.sleep(forTimeInterval: 0.1)
             beamForming.enablebeamForming(false);
             
         }
-
     }
 
     @IBAction func onDirectionSelected(_ sender: UIButton) {
@@ -236,6 +255,24 @@ public class W2STBeamFormingViewController: BlueMSDemoTabViewController,BlueSTSD
         }
         if(feature == mFeatureAudio?.controlData){
             self.didAudioSyncUpdate(feature, sample: sample);
+        }
+    }
+    
+    @objc func didEnterForeground() {
+        
+        mFeatureAudio = BlueMSAudioFeatures.extractBestFeatures(from: self.node)
+        
+        if !(mFeatureAudio==nil) && node.isEnableNotification((mFeatureAudio?.controlData)!) {
+            featureWasEnabled = true
+            stopNotification()
+        }else {
+            featureWasEnabled = false;
+        }
+    }
+        
+    @objc func didBecomeActivity() {
+        if(featureWasEnabled) {
+            startNotification()
         }
     }
 

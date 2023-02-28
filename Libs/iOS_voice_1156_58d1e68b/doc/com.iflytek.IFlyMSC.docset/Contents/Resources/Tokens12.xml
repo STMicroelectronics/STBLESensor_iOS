@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/IFlySpeechEvaluator.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/IFlySpeechEvaluator</TokenIdentifier>
+			<Abstract type="html">语音评测类</Abstract>
+			<DeclaredIn>IFlySpeechEvaluator.h</DeclaredIn>
+            
+			
+			<NodeRef refid="12"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlySpeechEvaluator/setDelegate:</TokenIdentifier>
+			<Abstract type="html">设置委托对象</Abstract>
+			<DeclaredIn>IFlySpeechEvaluator.h</DeclaredIn>
+			
+			<Declaration>@property (assign) id&lt;IFlySpeechEvaluatorDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlySpeechEvaluator/delegate</TokenIdentifier>
+			<Abstract type="html">设置委托对象</Abstract>
+			<DeclaredIn>IFlySpeechEvaluator.h</DeclaredIn>
+			
+			<Declaration>@property (assign) id&lt;IFlySpeechEvaluatorDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/IFlySpeechEvaluator/delegate</TokenIdentifier>
+			<Abstract type="html">设置委托对象</Abstract>
+			<DeclaredIn>IFlySpeechEvaluator.h</DeclaredIn>
+			
+			<Declaration>@property (assign) id&lt;IFlySpeechEvaluatorDelegate&gt; delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlySpeechEvaluator/sharedInstance</TokenIdentifier>
+			<Abstract type="html">返回评测对象的单例</Abstract>
+			<DeclaredIn>IFlySpeechEvaluator.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)sharedInstance</Declaration>
+			
+			<ReturnValue><Abstract type="html">别对象的单例</Abstract></ReturnValue>
+			<Anchor>//api/name/sharedInstance</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlySpeechEvaluator/destroy</TokenIdentifier>
+			<Abstract type="html">销毁评测对象。</Abstract>
+			<DeclaredIn>IFlySpeechEvaluator.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)destroy</Declaration>
+			
+			<ReturnValue><Abstract type="html">成功返回YES，失败返回NO。</Abstract></ReturnValue>
+			<Anchor>//api/name/destroy</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlySpeechEvaluator/setParameter:forKey:</TokenIdentifier>
+			<Abstract type="html">设置评测引擎的参数</Abstract>
+			<DeclaredIn>IFlySpeechEvaluator.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)setParameter:(NSString *)value forKey:(NSString *)key</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>value</Name>
+					<Abstract type="html">评测引擎参数值</Abstract>
+				</Parameter><Parameter>
+					<Name>key</Name>
+					<Abstract type="html">评测引擎参数</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">设置的参数和取值正确返回YES,失败返回NO</Abstract></ReturnValue>
+			<Anchor>//api/name/setParameter:forKey:</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlySpeechEvaluator/parameterForKey:</TokenIdentifier>
+			<Abstract type="html">获得评测引擎的参数</Abstract>
+			<DeclaredIn>IFlySpeechEvaluator.h</DeclaredIn>
+			
+			<Declaration>- (NSString *)parameterForKey:(NSString *)key</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>key</Name>
+					<Abstract type="html">评测引擎参数</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">key对应的参数值</Abstract></ReturnValue>
+			<Anchor>//api/name/parameterForKey:</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlySpeechEvaluator/startListening:params:</TokenIdentifier>
+			<Abstract type="html">开始评测&lt;br&gt;
+同时只能进行一路会话,这次会话没有结束不能进行下一路会话，否则会报错</Abstract>
+			<DeclaredIn>IFlySpeechEvaluator.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)startListening:(NSData *)data params:(NSString *)params</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>data</Name>
+					<Abstract type="html">评测的试题</Abstract>
+				</Parameter><Parameter>
+					<Name>params</Name>
+					<Abstract type="html">评测的参数</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">成功返回YES，失败返回NO</Abstract></ReturnValue>
+			<Anchor>//api/name/startListening:params:</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlySpeechEvaluator/stopListening</TokenIdentifier>
+			<Abstract type="html">停止录音&lt;br&gt;
+调用此函数会停止录音，并开始进行语音识别</Abstract>
+			<DeclaredIn>IFlySpeechEvaluator.h</DeclaredIn>
+			
+			<Declaration>- (void)stopListening</Declaration>
+			
+			
+			<Anchor>//api/name/stopListening</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlySpeechEvaluator/cancel</TokenIdentifier>
+			<Abstract type="html">取消本次会话</Abstract>
+			<DeclaredIn>IFlySpeechEvaluator.h</DeclaredIn>
+			
+			<Declaration>- (void)cancel</Declaration>
+			
+			
+			<Anchor>//api/name/cancel</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/IFlySpeechEvaluator/writeAudio:</TokenIdentifier>
+			<Abstract type="html">写入音频流</Abstract>
+			<DeclaredIn>IFlySpeechEvaluator.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)writeAudio:(NSData *)audioData</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>audioData</Name>
+					<Abstract type="html">音频数据</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">写入成功返回YES，写入失败返回NO</Abstract></ReturnValue>
+			<Anchor>//api/name/writeAudio:</Anchor>
+            <NodeRef refid="12"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

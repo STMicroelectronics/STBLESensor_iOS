@@ -1,0 +1,6 @@
+framework module Pods_defaults_AssetTrackingCloudDashboard_Example {
+  umbrella header "Pods-defaults-AssetTrackingCloudDashboard_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

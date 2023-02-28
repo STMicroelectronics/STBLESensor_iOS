@@ -52,6 +52,8 @@ class BlueMSMemsGestureViewController : BlueMSDemoTabViewController{
     private var mCurrenctSlected:BlueSTSDKFeatureMemsGestureType?
     private var mLastUpdate:Date?
     
+    private var featureWasEnabled = false
+    
     private func initGestureImageMap(){
         mGestureToImage = [
             .glance : glanceIcon,
@@ -67,6 +69,13 @@ class BlueMSMemsGestureViewController : BlueMSDemoTabViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground),
+                                               name: UIApplication.didEnterBackgroundNotification,
+                                               object: nil)
+                
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActivity),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
         initGestureImageMap()
     }
     
@@ -77,6 +86,15 @@ class BlueMSMemsGestureViewController : BlueMSDemoTabViewController{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        startNotification()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopNotification()
+    }
+    
+    public func startNotification(){
         mGestureFeature = node.getFeatureOfType(BlueSTSDKFeatureMemsGesture.self)
         if let feature = mGestureFeature {
             feature.add(self)
@@ -84,12 +102,29 @@ class BlueMSMemsGestureViewController : BlueMSDemoTabViewController{
             node.read(feature)
         }
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+
+    public func stopNotification(){
         if let feature = mGestureFeature{
             feature.remove(self)
             node.disableNotification(feature)
+            Thread.sleep(forTimeInterval: 0.1)
+        }
+    }
+
+
+    @objc func didEnterForeground() {
+        mGestureFeature = node.getFeatureOfType(BlueSTSDKFeatureMemsGesture.self)
+        if !(mGestureFeature==nil) && node.isEnableNotification(mGestureFeature!) {
+            featureWasEnabled = true
+            stopNotification()
+        }else {
+            featureWasEnabled = false;
+        }
+    }
+        
+    @objc func didBecomeActivity() {
+        if(featureWasEnabled) {
+            startNotification()
         }
     }
     

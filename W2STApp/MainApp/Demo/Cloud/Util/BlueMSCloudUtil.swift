@@ -1,41 +1,42 @@
-
 import Foundation
 import SwiftyJSON
 
-extension BlueSTSDKFeatureSample{
+extension BlueSTSDKFeatureSample {
     private static let TIMESTAMP_KEY = "timestamp"
     
-    func toDict(description:[BlueSTSDKFeatureField]) -> Dictionary<String,Any>{
+    func toDict(description: [BlueSTSDKFeatureField]) -> Dictionary<String,Any> {
         var sampleDic = Dictionary<String,Any>()
         
-        sampleDic[BlueSTSDKFeatureSample.TIMESTAMP_KEY] = timestamp;
-        description.enumerated().forEach{index,desc in
-            sampleDic[desc.name]=data[index];
+        sampleDic[BlueSTSDKFeatureSample.TIMESTAMP_KEY] = timestamp
+        description.enumerated().forEach { index, desc in
+            if index < data.count {
+                sampleDic[desc.name] = data[index]
+            }
         }
         
-        return sampleDic;
+        return sampleDic
     }
 }
 
-extension BlueSTSDKFeature{
-    
-    var topicName : String{
+extension BlueSTSDKFeature {
+    var topicName: String{
         get {
             return name.replacingOccurrences(of: " ", with: "_")
                         .replacingOccurrences(of: "(", with: "")
-                        .replacingOccurrences(of: ")", with: "") }
+                        .replacingOccurrences(of: ")", with: "")
+        }
     }
-    
 }
 
 /*
  * create a class just becouse some ConnectionFactory are implemented in objc, when all are implemented
  * using swift, use a protocol extension...
  */
-public class BlueMSCloudUtil : NSObject{
-    
-    static public func isCloudSupportedFeature(_ feature: BlueSTSDKFeature) -> Bool{
-        return (feature is BlueSTSDKFeatureAcceleration) ||
+public class BlueMSCloudUtil: NSObject {
+    static public func isCloudSupportedFeature(_ feature: BlueSTSDKFeature) -> Bool {
+        return
+            (feature is BlueSTSDKFeatureAccelerometerEvent) ||
+            (feature is BlueSTSDKFeatureAcceleration) ||
             (feature is BlueSTSDKFeatureActivity) ||
             (feature is BlueSTSDKFeatureBattery) ||
             (feature is BlueSTSDKFeatureCarryPosition) ||
@@ -56,6 +57,14 @@ public class BlueMSCloudUtil : NSObject{
             (feature is BlueSTSDKFeaturePressure) ||
             (feature is BlueSTSDKFeatureCOSensor) ||
             (feature is BlueSTSDKFeatureHeartRate) ||
-            (feature is BlueSTSDKFeatureTemperature);
+            (feature is BlueSTSDKFeatureTemperature)
+    }
+    
+    static public func isCloudSupportedFeatureForSTAT(_ feature: BlueSTSDKFeature) -> Bool {
+        return
+            (feature is BlueSTSDKFeatureAccelerometerEvent) ||
+            (feature is BlueSTSDKFeatureHumidity) ||
+            (feature is BlueSTSDKFeaturePressure) ||
+            (feature is BlueSTSDKFeatureTemperature)
     }
 }

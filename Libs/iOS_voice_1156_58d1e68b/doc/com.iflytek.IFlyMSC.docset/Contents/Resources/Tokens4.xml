@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/IFlyDebugLog.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/IFlyDebugLog</TokenIdentifier>
+			<Abstract type="html">调试信息</Abstract>
+			<DeclaredIn>IFlyDebugLog.h</DeclaredIn>
+            
+			
+			<NodeRef refid="4"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlyDebugLog/showLog:</TokenIdentifier>
+			<Abstract type="html">打印调试信息</Abstract>
+			<DeclaredIn>IFlyDebugLog.h</DeclaredIn>
+			
+			<Declaration>+ (void)showLog:(NSString *)format, ...</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>format</Name>
+					<Abstract type="html">-[in] 要打印的内容格式</Abstract>
+				</Parameter><Parameter>
+					<Name>...</Name>
+					<Abstract type="html">-[in] 要打印的内容</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/showLog:</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlyDebugLog/writeLog</TokenIdentifier>
+			<Abstract type="html">将log写入文件中</Abstract>
+			<DeclaredIn>IFlyDebugLog.h</DeclaredIn>
+			
+			<Declaration>+ (void)writeLog</Declaration>
+			
+			
+			<Anchor>//api/name/writeLog</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/IFlyDebugLog/setShowLog:</TokenIdentifier>
+			<Abstract type="html">设置是否显示log</Abstract>
+			<DeclaredIn>IFlyDebugLog.h</DeclaredIn>
+			
+			<Declaration>+ (void)setShowLog:(BOOL)showLog</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>showLog</Name>
+					<Abstract type="html">YES:显示；NO:不显示</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setShowLog:</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

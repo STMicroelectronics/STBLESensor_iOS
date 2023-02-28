@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/IFlyVoiceWakeuperDelegate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/IFlyVoiceWakeuperDelegate</TokenIdentifier>
+			<Abstract type="html">*  代理返回时序描述</Abstract>
+			<DeclaredIn>IFlyVoiceWakeuperDelegate.h</DeclaredIn>
+            
+			
+			<NodeRef refid="27"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlyVoiceWakeuperDelegate/onBeginOfSpeech</TokenIdentifier>
+			<Abstract type="html">录音开始</Abstract>
+			<DeclaredIn>IFlyVoiceWakeuperDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onBeginOfSpeech</Declaration>
+			
+			
+			<Anchor>//api/name/onBeginOfSpeech</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlyVoiceWakeuperDelegate/onEndOfSpeech</TokenIdentifier>
+			<Abstract type="html">录音结束</Abstract>
+			<DeclaredIn>IFlyVoiceWakeuperDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onEndOfSpeech</Declaration>
+			
+			
+			<Anchor>//api/name/onEndOfSpeech</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlyVoiceWakeuperDelegate/onError:</TokenIdentifier>
+			<Abstract type="html">会话错误</Abstract>
+			<DeclaredIn>IFlyVoiceWakeuperDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onError:(IFlySpeechError *)error</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>errorCode</Name>
+					<Abstract type="html">错误描述类，</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/onError:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlyVoiceWakeuperDelegate/onResult:</TokenIdentifier>
+			<Abstract type="html">唤醒结果</Abstract>
+			<DeclaredIn>IFlyVoiceWakeuperDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onResult:(NSMutableDictionary *)resultDic</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>resultDic</Name>
+					<Abstract type="html">唤醒结果字典</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/onResult:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlyVoiceWakeuperDelegate/onVolumeChanged:</TokenIdentifier>
+			<Abstract type="html">音量反馈，返回频率与录音数据返回回调频率一致</Abstract>
+			<DeclaredIn>IFlyVoiceWakeuperDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onVolumeChanged:(int)volume</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>volume</Name>
+					<Abstract type="html">音量值</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/onVolumeChanged:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/IFlyVoiceWakeuperDelegate/onEvent:isLast:arg1:data:</TokenIdentifier>
+			<Abstract type="html">* 扩展事件回调&lt;br&gt;
+* 根据事件类型返回额外的数据
+*</Abstract>
+			<DeclaredIn>IFlyVoiceWakeuperDelegate.h</DeclaredIn>
+			
+			<Declaration>- (void)onEvent:(int)eventType isLast:(BOOL)isLast arg1:(int)arg1 data:(NSMutableDictionary *)eventData</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>eventType</Name>
+					<Abstract type="html">事件类型，具体参见IFlySpeechEvent枚举。</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/onEvent:isLast:arg1:data:</Anchor>
+            <NodeRef refid="27"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

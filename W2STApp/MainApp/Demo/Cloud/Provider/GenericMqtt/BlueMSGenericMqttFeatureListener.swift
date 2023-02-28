@@ -35,14 +35,14 @@
  * OF SUCH DAMAGE.
  */
 import Foundation
-import MQTTFramework
+import MQTTClient
 
 public class BlueMSGenericMqttFeatureListener : BlueMSSubSampligFeatureDelegate{
     
     private let mClientId:String;
-    private let mCloudConnection:MCMQTTSession;
+    private let mCloudConnection:MQTTSession;
     
-    public init(session:MCMQTTSession,clientId:String, minUpdateInterval:TimeInterval){
+    public init(session:MQTTSession,clientId:String, minUpdateInterval:TimeInterval){
         self.mClientId=clientId;
         self.mCloudConnection = session;
         super.init(minUpdateInterval: minUpdateInterval)

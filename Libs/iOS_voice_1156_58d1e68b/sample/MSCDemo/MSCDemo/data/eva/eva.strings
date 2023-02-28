@@ -1,0 +1,13 @@
+/* 
+  eva.strings
+  MSCDemo_UI
+
+  Created by 张剑 on 15/1/29.
+
+*/
+
+"text_en_word"="[word]\napple\nbanana\norange";
+"text_en_sentence"="The quick brown fox jumps over the lazy dog.";
+"text_cn_syllable"="知，痴，是";
+"text_cn_word"="磁铁，率领，脆弱，动手，古筝";
+"text_cn_sentence"="一座座雪峰插入云霄，峰顶银光闪闪，大大小小的湖泊，像颗颗宝石镶嵌在彩带般的沟谷中。";

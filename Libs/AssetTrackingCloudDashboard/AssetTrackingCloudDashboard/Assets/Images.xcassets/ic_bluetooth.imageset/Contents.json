@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ic_bluetooth.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

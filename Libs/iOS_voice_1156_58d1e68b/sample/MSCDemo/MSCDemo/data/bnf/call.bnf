@@ -1,0 +1,16 @@
+#BNF+IAT 1.0 UTF-8;
+!grammar call;
+!slot <contact>;
+!slot <callPre>;
+!slot <callCmd>;
+!slot <callPhone>;
+!slot <callTo>;
+!slot <callOf>;
+!start <callStart>;
+<callStart>:[<callPre>]<callCmd>|[<callPre>]<callCmd>[<callTo>]<contact>|[<callPre>]<callTo><contact><callCmd>|[<callPre>]<callCmd><contact>[<callOf>]<callPhone>;
+<contact>:张海洋;
+<callPre>:我|我要|我想|我想要;
+<callCmd>:打电话|拨号|拨打|拨|打;
+<callPhone>:电话|手机|号码|电话号码|手机号|手机号码;
+<callTo>:给;
+<callOf>:的;

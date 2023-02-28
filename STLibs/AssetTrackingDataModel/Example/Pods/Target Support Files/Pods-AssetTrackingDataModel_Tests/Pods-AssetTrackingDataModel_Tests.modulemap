@@ -1,0 +1,6 @@
+framework module Pods_AssetTrackingDataModel_Tests {
+  umbrella header "Pods-AssetTrackingDataModel_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

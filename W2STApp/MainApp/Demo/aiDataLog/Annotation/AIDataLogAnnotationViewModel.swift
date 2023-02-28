@@ -67,6 +67,7 @@ class AIDataLogAnnotationViewModel : NSObject{
     func stop(){
         if let feature = mFeature{
             feature.parentNode.disableNotification(feature)
+            Thread.sleep(forTimeInterval: 0.1)
             feature.remove(self)
         }
     }

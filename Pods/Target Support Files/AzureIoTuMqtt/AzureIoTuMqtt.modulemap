@@ -1,0 +1,7 @@
+module AzureIoTuMqtt [system][extern_c] {
+    header "azure_umqtt_c/mqtt_client.h"
+    header "azure_umqtt_c/mqtt_codec.h"
+    header "azure_umqtt_c/mqtt_message.h"
+    header "azure_umqtt_c/mqttconst.h"
+    export *
+}

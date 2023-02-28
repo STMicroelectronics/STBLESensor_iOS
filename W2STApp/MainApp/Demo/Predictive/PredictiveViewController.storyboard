@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="U0Y-1u-Q9x">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="U0Y-1u-Q9x">
     <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Predictive-->
+        <!--Board Pred Maintenance-->
         <scene sceneID="vQa-uX-9ee">
             <objects>
                 <viewController id="U0Y-1u-Q9x" customClass="PredictiveViewController" customModule="ST_BLE_Sensor" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zbh-ev-s93">
-                                <rect key="frame" x="8" y="-8" width="752" height="990"/>
+                                <rect key="frame" x="8" y="12" width="752" height="970"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="cIi-Wb-Stj">
                                         <rect key="frame" x="0.0" y="0.0" width="752" height="1118"/>
@@ -63,6 +63,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="wSw-ef-5wO"/>
                         <constraints>
                             <constraint firstItem="zbh-ev-s93" firstAttribute="centerY" secondItem="wSw-ef-5wO" secondAttribute="centerY" id="Lqj-c5-hRV"/>
                             <constraint firstItem="wSw-ef-5wO" firstAttribute="trailing" secondItem="zbh-ev-s93" secondAttribute="trailing" constant="8" id="PMJ-XG-ICV"/>
@@ -70,9 +71,8 @@
                             <constraint firstItem="zbh-ev-s93" firstAttribute="centerX" secondItem="wSw-ef-5wO" secondAttribute="centerX" id="drd-sD-u5g"/>
                             <constraint firstItem="zbh-ev-s93" firstAttribute="bottom" secondItem="wSw-ef-5wO" secondAttribute="bottom" constant="8" id="svB-cW-wCm"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="wSw-ef-5wO"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Predictive" image="predictive_demo_icon" id="tVT-Ol-BQK"/>
+                    <tabBarItem key="tabBarItem" title="Board Pred Maintenance" image="predictive_demo_icon" id="tVT-Ol-BQK"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="accelerationStatusView" destination="IzE-dn-ktC" id="9XB-kF-AOE"/>

@@ -46,6 +46,8 @@ public class BlueMSPedometerViewController:
     @IBOutlet weak var mNStepsLabel: UILabel!
     @IBOutlet weak var mFrequencyLabel: UILabel!
     
+    private var featureWasEnabled = false
+    
     private var mFrequencyUnit:String?;
     private static let FEQUENCY_FORMAT:String = {
         let bundle = Bundle(for: BlueMSPedometerViewController.self)
@@ -75,6 +77,13 @@ public class BlueMSPedometerViewController:
     
     
     public override func viewDidLoad() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground),
+                                               name: UIApplication.didEnterBackgroundNotification,
+                                               object: nil)
+                
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActivity),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
         self.mNStepsLabel.text =
             String(format: BlueMSPedometerViewController.STEPS_FORMAT,0,"");
 
@@ -82,7 +91,15 @@ public class BlueMSPedometerViewController:
     
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
-        
+        startNotification()
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated);
+        stopNotification()
+    }
+    
+    public func startNotification(){
         mPedometerFeature = self.node.getFeatureOfType(BlueSTSDKFeaturePedometer.self);
         
         if let feature = mPedometerFeature{
@@ -91,16 +108,31 @@ public class BlueMSPedometerViewController:
             self.node.enableNotification(feature);
         }
     }
-    
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated);
-        
+
+    public func stopNotification(){
         if let feature = mPedometerFeature{
             feature.remove(self);
             self.node.disableNotification(feature);
+            Thread.sleep(forTimeInterval: 0.1)
             mPedometerFeature=nil;
         }
+    }
+
+
+    @objc func didEnterForeground() {
+        mPedometerFeature = self.node.getFeatureOfType(BlueSTSDKFeaturePedometer.self);
+        if !(mPedometerFeature==nil) && node.isEnableNotification(mPedometerFeature!) {
+            featureWasEnabled = true
+            stopNotification()
+        }else {
+            featureWasEnabled = false;
+        }
+    }
         
+    @objc func didBecomeActivity() {
+        if(featureWasEnabled) {
+            startNotification()
+        }
     }
     
     public func didUpdate(_ feature: BlueSTSDKFeature, sample: BlueSTSDKFeatureSample) {

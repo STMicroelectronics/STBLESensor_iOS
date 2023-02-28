@@ -1,0 +1,6 @@
+framework module IBMSwiftSDKCore {
+  umbrella header "IBMSwiftSDKCore-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BankStatusViewController" customModule="ST_BLE_Sensor" customModuleProvider="target">
+            <connections>
+                <outlet property="currentFlashMemoryBankDescription" destination="o1W-rY-8uy" id="WUY-gL-hug"/>
+                <outlet property="currentFlashMemoryBankTitle" destination="4H0-pa-c9e" id="Van-SE-soE"/>
+                <outlet property="downloadAndFlashFirmwareBtn" destination="mwB-wC-Eb0" id="xlZ-YE-9uv"/>
+                <outlet property="firmwareCurrentlyRunning" destination="gOg-Qg-mZc" id="70D-vm-lR6"/>
+                <outlet property="firmwareCurrentlyRunningTitle" destination="GE7-6f-csi" id="F5C-vU-g9S"/>
+                <outlet property="firmwareFlashedOnOtherBank" destination="KWD-M2-t4J" id="vGQ-TY-1Tv"/>
+                <outlet property="firmwareFlashedOnOtherBankTitle" destination="hds-xS-RjM" id="WTc-Lc-mRb"/>
+                <outlet property="fwUpdate" destination="V8u-Ka-hKB" id="Eg8-Hp-xTo"/>
+                <outlet property="fwUpdateAvailableSV" destination="LQO-Eg-6TO" id="LIe-pV-9SI"/>
+                <outlet property="fwUpdateChangelog" destination="WU2-Nv-b77" id="fVn-R4-d57"/>
+                <outlet property="listOfCompatibleFirmwareTitle" destination="ubI-yI-eEH" id="kmm-Fv-eSn"/>
+                <outlet property="listOfCompatibleFwSV" destination="nPg-Wz-5Y0" id="yrt-wi-ipc"/>
+                <outlet property="onArrow1Touched" destination="JWH-JP-qKo" id="Mir-gd-lzu"/>
+                <outlet property="onArrow2Touched" destination="cEa-Gx-oDk" id="Kjc-ss-U69"/>
+                <outlet property="otherFlashMemoryBankDescription" destination="XbT-Ud-3BI" id="s1U-SC-4hl"/>
+                <outlet property="otherFlashMemoryBankTitle" destination="cWV-fS-i0q" id="gDY-DW-oN5"/>
+                <outlet property="selectedFwDescription" destination="Gpp-4t-a3Q" id="lhf-iU-xa0"/>
+                <outlet property="selectedFwDescriptionSV" destination="QkO-wL-EZg" id="hWr-d5-at0"/>
+                <outlet property="swapToThisBankBtn" destination="Ejn-rD-icA" id="uiO-MG-5Dm"/>
+                <outlet property="view" destination="iN0-l3-epB" id="Cmt-OM-muj"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yU8-fb-uEg">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SZD-Ac-XM7">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="1229"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3LQ-ly-isW">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="579"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="0EC-UK-LEr">
+                                            <rect key="frame" x="20" y="20" width="374" height="539"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kSw-MZ-P0G">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="23"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cub-SR-R3w">
+                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="23"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Current Bank [2]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4H0-pa-c9e">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="140.5" height="23"/>
+                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" verticalHuggingPriority="251" image="info.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JWH-JP-qKo">
+                                                                    <rect key="frame" x="148.5" y="0.5" width="225.5" height="22"/>
+                                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In this section you can find the firmware information currently running on your board." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1W-rY-8uy">
+                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="KAp-fD-QAa">
+                                                    <rect key="frame" x="0.0" y="39" width="374" height="500"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Running Firmware:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GE7-6f-csi">
+                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="478.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="---" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOg-Qg-mZc">
+                                                            <rect key="frame" x="0.0" y="486.5" width="374" height="13.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" name="primary"/>
+                                    <constraints>
+                                        <constraint firstItem="0EC-UK-LEr" firstAttribute="top" secondItem="3LQ-ly-isW" secondAttribute="top" constant="20" id="MeY-ug-2JY"/>
+                                        <constraint firstItem="0EC-UK-LEr" firstAttribute="leading" secondItem="3LQ-ly-isW" secondAttribute="leading" constant="20" id="NnC-OK-YC9"/>
+                                        <constraint firstAttribute="trailing" secondItem="0EC-UK-LEr" secondAttribute="trailing" constant="20" id="rnR-cg-Baf"/>
+                                        <constraint firstAttribute="bottom" secondItem="0EC-UK-LEr" secondAttribute="bottom" constant="20" id="v7E-5g-lRm"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gJl-Np-x50">
+                                    <rect key="frame" x="0.0" y="579" width="414" height="1"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="0Ro-aI-yib"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FwV-P8-vKL">
+                                    <rect key="frame" x="0.0" y="580" width="414" height="649"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="0QH-fy-R5l">
+                                            <rect key="frame" x="20" y="20" width="374" height="609"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rkb-io-eao">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="23"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YDv-l0-T7z">
+                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="23"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" text="Other Bank" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cWV-fS-i0q">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="95.5" height="23"/>
+                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="cEa-Gx-oDk">
+                                                                    <rect key="frame" x="103.5" y="0.5" width="270.5" height="22"/>
+                                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XbT-Ud-3BI">
+                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
+                                                            <string key="text">In this section you can select a firmware (compatible with your board) that you can install on this memory bank. The selected firmware will be running on your board, only after disconnection and reconnection to the board </string>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="amD-vJ-D9f">
+                                                    <rect key="frame" x="0.0" y="39" width="374" height="38.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Firmware present:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hds-xS-RjM">
+                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="17"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="---" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWD-M2-t4J">
+                                                            <rect key="frame" x="0.0" y="25" width="374" height="13.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LQO-Eg-6TO">
+                                                    <rect key="frame" x="0.0" y="85.5" width="374" height="24"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update Available" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sxy-gg-Usp">
+                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There is an available update for firmware currently running on your board: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPK-jn-f1n">
+                                                            <rect key="frame" x="0.0" y="8" width="374" height="0.0"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="---" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8u-Ka-hKB">
+                                                            <rect key="frame" x="0.0" y="16" width="374" height="0.0"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <color key="textColor" name="accent"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ChangeLog:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WU2-Nv-b77">
+                                                            <rect key="frame" x="0.0" y="24" width="374" height="0.0"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nPg-Wz-5Y0">
+                                                    <rect key="frame" x="0.0" y="93.5" width="374" height="25"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List of Compatible Firmware:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubI-yI-eEH">
+                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="17"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qce-Tz-ajc">
+                                                            <rect key="frame" x="0.0" y="25" width="374" height="0.0"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QkO-wL-EZg">
+                                                    <rect key="frame" x="0.0" y="126.5" width="374" height="0.0"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otJ-7y-ZME">
+                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="---" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gpp-4t-a3Q">
+                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="36k-Mg-3c6">
+                                                    <rect key="frame" x="0.0" y="134.5" width="374" height="474.5"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwB-wC-Eb0">
+                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="435.5"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="tinted" title="Download &amp; Flash Firmware"/>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ejn-rD-icA">
+                                                            <rect key="frame" x="0.0" y="443.5" width="374" height="31"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="gray" title="Swap to this Bank"/>
+                                                        </button>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="0QH-fy-R5l" firstAttribute="top" secondItem="FwV-P8-vKL" secondAttribute="top" constant="20" id="L0I-zn-NRZ"/>
+                                        <constraint firstAttribute="bottom" secondItem="0QH-fy-R5l" secondAttribute="bottom" constant="20" id="MJ5-FQ-3VF"/>
+                                        <constraint firstAttribute="trailing" secondItem="0QH-fy-R5l" secondAttribute="trailing" constant="20" id="Nes-qb-Vus"/>
+                                        <constraint firstItem="0QH-fy-R5l" firstAttribute="leading" secondItem="FwV-P8-vKL" secondAttribute="leading" constant="20" id="eTt-PA-TYE"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="SZD-Ac-XM7" firstAttribute="leading" secondItem="gov-kg-bXF" secondAttribute="leading" id="3BQ-ur-ibK"/>
+                        <constraint firstItem="SZD-Ac-XM7" firstAttribute="width" secondItem="7dn-2M-Hek" secondAttribute="width" id="FhE-2G-5b8"/>
+                        <constraint firstItem="SZD-Ac-XM7" firstAttribute="trailing" secondItem="gov-kg-bXF" secondAttribute="trailing" id="Lib-d6-9DP"/>
+                        <constraint firstItem="SZD-Ac-XM7" firstAttribute="top" secondItem="gov-kg-bXF" secondAttribute="top" id="hcl-N1-mKH"/>
+                        <constraint firstItem="SZD-Ac-XM7" firstAttribute="bottom" secondItem="gov-kg-bXF" secondAttribute="bottom" id="m4T-TZ-lLQ"/>
+                    </constraints>
+                    <viewLayoutGuide key="contentLayoutGuide" id="gov-kg-bXF"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="7dn-2M-Hek"/>
+                </scrollView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="yU8-fb-uEg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8f2-uv-jZv"/>
+                <constraint firstItem="yU8-fb-uEg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9Zx-vr-K0z"/>
+                <constraint firstAttribute="bottom" secondItem="yU8-fb-uEg" secondAttribute="bottom" id="Qfa-hv-6Pz"/>
+                <constraint firstItem="yU8-fb-uEg" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="gz8-ya-CXz"/>
+            </constraints>
+            <point key="canvasLocation" x="131.8840579710145" y="39.508928571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="info.circle.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="accent">
+            <color red="0.90196078431372551" green="0.0" blue="0.49411764705882355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary">
+            <color red="0.23529411764705882" green="0.70588235294117652" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

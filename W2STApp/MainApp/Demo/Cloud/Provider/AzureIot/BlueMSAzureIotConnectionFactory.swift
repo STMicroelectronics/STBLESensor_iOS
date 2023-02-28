@@ -36,7 +36,7 @@
  */
 
 import Foundation
-import MQTTFramework
+import MQTTClient
 
 public class Dummy : NSObject,BlueSTSDKFeatureDelegate{
     public func didUpdate(_ feature: BlueSTSDKFeature, sample: BlueSTSDKFeatureSample) {
@@ -77,12 +77,12 @@ public class BlueMSAzureIotConnectionFactory : BlueMSCloudIotConnectionFactory{
      * @return mqtt object to use for connect and send data to the cloud service
      */   
     public func getSession() -> BlueMSCloudIotClient {
-        let transport = MCMQTTCFSocketTransport();
+        let transport = MQTTCFSocketTransport();
         transport.host = param.hostName;
         transport.port = BlueMSAzureIotConnectionFactory.HUB_PORT;
         transport.tls=true;
         
-        let session = MCMQTTSession(clientId: param.deviceId,
+        let session = MQTTSession(clientId: param.deviceId,
                                   userName: getMqttUser(),
                                   password: getMqttPassowrd())
         session?.transport = transport;

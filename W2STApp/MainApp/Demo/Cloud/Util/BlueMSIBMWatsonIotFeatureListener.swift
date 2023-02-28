@@ -1,13 +1,13 @@
 
 import Foundation
-import MQTTFramework
+import MQTTClient
 
-public class BlueMsIBMWatsonIotFeatureListener : BlueMSSubSampligFeatureDelegate{
+public class BlueMsIBMWatsonIotFeatureListener: BlueMSSubSampligFeatureDelegate {
     
-    let mSession: MCMQTTSession
+    let mSession: MQTTSession
     
-    public init(session:MCMQTTSession, minUpdateInterval:TimeInterval){
-        mSession = session;
+    public init(session: MQTTSession, minUpdateInterval: TimeInterval) {
+        mSession = session
         super.init(minUpdateInterval: minUpdateInterval)
     }
     
@@ -20,6 +20,10 @@ public class BlueMsIBMWatsonIotFeatureListener : BlueMSSubSampligFeatureDelegate
         let dataDescription = feature.getFieldsDesc()
         let dataDict = sample.toDict(description: dataDescription)
         let jsonData = [ "d": dataDict ]
+        
+        if (dataDict["Event"] as? Int == 256) {
+            debugPrint("Event 256")
+        }
         
         let data = try? JSONSerialization.data(withJSONObject: jsonData, options: .prettyPrinted)
         if let messageData = data {

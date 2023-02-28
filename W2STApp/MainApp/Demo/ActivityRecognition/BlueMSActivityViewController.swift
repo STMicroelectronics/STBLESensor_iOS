@@ -38,10 +38,11 @@
 import Foundation
 import CoreGraphics
 import BlueSTSDK_Gui
-import BlueSTSDK;
+import BlueSTSDK
+import MBProgressHUD
 
 public class BlueMSActivityViewController:
-    BlueMSDemoTabViewController,BlueSTSDKFeatureDelegate{
+    BlueMSDemoTabViewController, BlueSTSDKFeatureDelegate{
     
     private static let START_MESSAGE:String = {
         return NSLocalizedString("Activity detection started",
@@ -69,6 +70,8 @@ public class BlueMSActivityViewController:
     private var mCurrentActivity:BlueSTSDKFeatureActivity.ActivityType?;
     private var mFeature:BlueSTSDKFeature?;
     
+    private var featureWasEnabled = false
+    
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         deselectAllImages()
@@ -88,27 +91,25 @@ public class BlueMSActivityViewController:
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
         
-        mFeature = self.node.getFeatureOfType(BlueSTSDKFeatureActivity.self);
-        if let feature = mFeature{
-            feature.add(self)
-            self.node.enableNotification(feature);
-            self.node.read(feature);
-            displayStartMessage();
-            //if wesu check if the license is present
-            if(node.type == .STEVAL_WESU1){
-                self.checkLicense(fromRegister: .REGISTER_NAME_MOTION_AR_VALUE_LIC_STATUS,
-                                  errorString: BlueMSActivityViewController.CHECK_LICENSE)
-            }
-        }
+        startNotification()
     }
     
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad();
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground),
+                                                       name: UIApplication.didEnterBackgroundNotification,
+                                                       object: nil)
+                
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActivity),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
+    }
+    
+
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated);
-        if let feature = mFeature{
-            feature.remove(self);
-            self.node.disableNotification(feature);
-            mFeature=nil;
-        }
+        stopNotification()
     }
     
     private func deselectAllImages(){
@@ -156,4 +157,45 @@ public class BlueMSActivityViewController:
         }
     
     }
+    
+    @objc func didEnterForeground() {
+        mFeature = self.node.getFeatureOfType(BlueSTSDKFeatureActivity.self);
+        if !(mFeature==nil) && node.isEnableNotification(mFeature!) {
+            featureWasEnabled = true
+            stopNotification()
+        }else {
+            featureWasEnabled = false;
+        }
+    }
+        
+    @objc func didBecomeActivity() {
+        if(featureWasEnabled) {
+            startNotification()
+        }
+    }
+    
+    public func startNotification(){
+        mFeature = self.node.getFeatureOfType(BlueSTSDKFeatureActivity.self);
+        if let feature = mFeature{
+            feature.add(self)
+            self.node.enableNotification(feature);
+            self.node.read(feature);
+            displayStartMessage();
+            //if wesu check if the license is present
+            if(node.type == .STEVAL_WESU1){
+                self.checkLicense(fromRegister: .REGISTER_NAME_MOTION_AR_VALUE_LIC_STATUS,
+                                  errorString: BlueMSActivityViewController.CHECK_LICENSE)
+            }
+        }
+    }
+    
+    public func stopNotification(){
+        if let feature = mFeature{
+            feature.remove(self);
+            self.node.disableNotification(feature);
+            Thread.sleep(forTimeInterval: 0.1)
+            mFeature=nil;
+        }
+    }
+    
 }

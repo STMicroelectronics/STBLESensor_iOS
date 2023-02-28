@@ -91,6 +91,10 @@ extension BlueSTSDKFeatureAudioCalssification.AudioClass : CustomStringConvertib
             return Self.SCENE_BABY_IS_CRYING
         case .Unknown:
             return Self.SCENE_UNKNOWN
+        case .ON:
+            return "Running"
+        case .OFF:
+            return "Paused"
         }
     }
 }

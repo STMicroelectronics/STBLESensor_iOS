@@ -37,16 +37,16 @@
 
 
 import Foundation
-import MQTTFramework
+import MQTTClient
 
 public class BlueMSCloudIotMQTTClient:BlueMSCloudIotClient{
     public var isConnected: Bool {
         return connection.status == .connected
     }
     
-    public let connection:MCMQTTSession;
+    public let connection:MQTTSession;
     
-    public init(_ session:MCMQTTSession){
+    public init(_ session:MQTTSession){
         connection = session;
     }
     

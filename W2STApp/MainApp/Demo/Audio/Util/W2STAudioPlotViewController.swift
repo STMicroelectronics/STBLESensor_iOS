@@ -146,6 +146,8 @@ public class W2STAudioPlotViewController: NSObject, CPTPlotDataSource{
                 return Double(mDataToPlot[Int(idx)]);
             case CPTScatterPlotField.X:
                 return Double(idx);
+            @unknown default:
+                return 0
         }
     }
 

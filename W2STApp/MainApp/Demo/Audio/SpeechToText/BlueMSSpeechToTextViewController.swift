@@ -38,6 +38,7 @@
 import Foundation
 import BlueSTSDK
 import BlueSTSDK_Gui
+import MBProgressHUD
 
 public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
     BlueVoiceSelectEngineDelegate, BlueSTSDKFeatureDelegate,
@@ -56,7 +57,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
                                  value: "Disabled",
                                  comment: "Disabled");
     }();
-
+    
     private static let CONNECTED = {
         return  NSLocalizedString("Connected",
                                   tableName: nil,
@@ -64,7 +65,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
                                   value: "Connected",
                                   comment: "Connected");
     }();
-
+    
     private static let CONNECTING = {
         return  NSLocalizedString("Connecting",
                                   tableName: nil,
@@ -72,7 +73,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
                                   value: "Connecting",
                                   comment: "Connecting");
     }();
-
+    
     private static let DISCONNECTED = {
         return  NSLocalizedString("Disconnected",
                                   tableName: nil,
@@ -80,7 +81,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
                                   value: "Disconnected",
                                   comment: "Disconnected");
     }();
-
+    
     private static let SENDING_DATA = {
         return  NSLocalizedString("Sending data",
                                   tableName: nil,
@@ -88,7 +89,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
                                   value: "Sending data",
                                   comment: "Sending data");
     }();
-
+    
     private static let RECORDING = {
         return  NSLocalizedString("Recording",
                                   tableName: nil,
@@ -96,7 +97,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
                                   value: "Recording",
                                   comment: "Recording");
     }();
-
+    
     private static let ENGINE_FAIL_DIALOG_TITLE = {
        return NSLocalizedString("Engine Fail",
                           tableName: nil,
@@ -104,7 +105,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
                           value: "Engine Fail",
                           comment: "Engine Fail");
     }()
-
+    
     private static let ENGINE_KEY_REQUIRED = {
         return NSLocalizedString("Please add the engine key",
                           tableName: nil,
@@ -112,7 +113,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
                           value: "Please add the engine key",
                           comment: "Please add the engine key");
     }()
-
+    
     private static let STOP_RECOGNITION = {
         return NSLocalizedString("Stop recongition",
                           tableName: nil,
@@ -136,7 +137,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
                           value: "Keep press to record",
                           comment: "Keep press to record");
     }()
-
+    
     private static let CHANGE_SERVICE_KEY = {
         return NSLocalizedString("Change Key",
                           tableName: nil,
@@ -144,7 +145,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
                           value: "Change Key",
                           comment: "Change Key");
     }()
-
+    
     private static let ADD_SERVICE_KEY = {
         return NSLocalizedString("Add Key",
                                  tableName: nil,
@@ -152,7 +153,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
                                  value: "Add Key",
                                  comment: "Add Key");
     }()
-
+    
     private static let ERRROR_NO_ERROR = {
         return NSLocalizedString("Success",
                                  tableName: nil,
@@ -168,7 +169,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
                                  value: "I/O Error",
                                  comment: "I/O Error");
     }()
-
+    
     private static let ERRROR_RESPONSE_ERROR = {
         return  NSLocalizedString("Invalid Response",
                                   tableName: nil,
@@ -176,7 +177,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
                                   value: "Invalid Response",
                                   comment: "Invalid Response");
     }()
-
+    
     private static let ERRROR_REQUEST_FAILED = {
         return  NSLocalizedString("Invalid Request",
                                   tableName: nil,
@@ -184,7 +185,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
                                   value: "Invalid Request",
                                   comment: "Invalid Request");
     }()
-
+    
     private static let ERRROR_LOW_CONFIDENCE = {
         return  NSLocalizedString("Low Confidence Response",
                                   tableName: nil,
@@ -192,7 +193,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
                                   value: "Low Confidence Response",
                                   comment: "Low Confidence Response");
     }()
-
+    
     private static let ERRROR_NOT_RECOGNIZED = {
         return  NSLocalizedString("Not Recognizer",
                                   tableName: nil,
@@ -200,7 +201,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
                                   value: "Not Recognizer",
                                   comment: "Not Recognizer");
     }()
-
+    
     private static let ERRROR_NETWORK_PROBLEM = {
         return  NSLocalizedString("Network Error",
                                   tableName: nil,
@@ -216,8 +217,9 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
                                   value: "Engine Error",
                                   comment: "Engine Error");
     }();
-
+    
     private static let AVAILABLE_ENGINE_DESC = [
+        BlueVoiceIFlyTekEngine.engineDescription,
         BlueVoiceGoogleASREngine.engineDescription,
         BlueVoiceIBMWatsonASREngine.engineDescription,
         BlueVoiceWebSocketASREngine.engineDescription
@@ -225,9 +227,9 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
     
     /** object used to check if the use has an internet connection */
     private var mInternetReachability: Reachability?;
-
+    
     //////////////////// GUI reference ////////////////////////////////////////
-
+    
     @IBOutlet weak var mAddAsrKeyButton: UIButton!
     
     @IBOutlet weak var mAsrEngineName: UILabel!
@@ -245,11 +247,12 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
     private var mFeatureAudio:BlueMSAudioFeatures?
     private var mFeatureBeamForming:BlueSTSDKFeatureBeamForming?;
     private var mFeatureAccEvents:BlueSTSDKFeatureAccelerometerEvent?;
-
+    
     private var mAsrResults:[String] = [];
     
     private var waitingDialog:MBProgressHUD?;
 
+    private var featureWasEnabled = false
     
     /////////////////// AUDIO //////////////////////////////////////////////////
 
@@ -263,12 +266,19 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
     
     override public func viewDidLoad(){
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground),
+                                                       name: UIApplication.didEnterBackgroundNotification,
+                                                       object: nil)
+                
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActivity),
+                                               name: UIApplication.didBecomeActiveNotification,
+                                               object: nil)
         mAsrResultsTableView.dataSource=self;
         onEngineSelected(engine: getDefaultEngine(), language: getDefaultLanguage())
     }
-
+    
     private func enableAudioStream(){
-
+    
         //if both feature are present enable the audio
         if let audioFeature = mFeatureAudio,
             !self.node.isEnableNotification(audioFeature.audioStream),
@@ -279,17 +289,17 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
             audioFeature.audioStream.enableNotification()
             mRecordController = W2STAudioDumpController(audioConf: audioFeature.audioStream.codecManager, parentView: self, menuController: self.menuDelegate);
         }
-
+    
         mFeatureBeamForming = self.node.getFeatureOfType(BlueSTSDKFeatureBeamForming.self) as? BlueSTSDKFeatureBeamForming
         if let beamForming = mFeatureBeamForming,
             !self.node.isEnableNotification(beamForming){
             self.node.enableNotification(beamForming)
             beamForming.enablebeamForming(mEnableBeamFormingSwitch.isOn)
-
+            
         }
-
+    
     }
-
+    
     private func disableAudioStream(){
         if let audioFeature = mFeatureAudio ,
             self.node.isEnableNotification(audioFeature.audioStream),
@@ -302,28 +312,29 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
         if let beamForming = mFeatureBeamForming,
             self.node.isEnableNotification(beamForming){
             self.node.disableNotification(beamForming);
+            Thread.sleep(forTimeInterval: 0.1)
             beamForming.enablebeamForming(false);
         }
     }
-
+    
     private func initBeamformingGui(){
         if(node.getFeatureOfType(BlueSTSDKFeatureBeamForming.self) != nil){
             mEnableBeamFormingSwitch.isEnabled=true;
             mEnableBeamFormingSwitch.isOn=false;
         }
     }
-
+    
     /*
      * enable the ble audio stremaing and initialize the audio queue
      */
     override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
-
+        
         initRecability();
         initBeamformingGui();
-
+        
         mFeatureAudio = BlueMSAudioFeatures.extractBestFeatures(from: self.node)
-
+        
         mFeatureAccEvents = node.getFeatureOfType(BlueSTSDKFeatureAccelerometerEvent.self) as? BlueSTSDKFeatureAccelerometerEvent
         if let accEvent = mFeatureAccEvents{
             accEvent.add(self)
@@ -334,6 +345,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
         
     }
     
+    
     /**
      * stop the ble audio streaming and the audio queue
      */
@@ -342,18 +354,35 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
         mRecordController?.viewWillDisappear();
         disableAudioStream()
         deInitRecability()
-
+        
         if let accEvent = mFeatureAccEvents{
             accEvent.remove(self)
             node.disableNotification(accEvent)
+            Thread.sleep(forTimeInterval: 0.1)
         }
-
+        
     }
     
     
     override public func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated);
         engine?.destroyListener();
+    }
+    
+    @objc func didEnterForeground() {
+        mFeatureAudio = BlueMSAudioFeatures.extractBestFeatures(from: self.node)
+        
+        if !(mFeatureAudio==nil) && node.isEnableNotification((mFeatureAudio?.controlData)!) {
+            featureWasEnabled = true
+            disableAudioStream()
+        }else {
+            featureWasEnabled = false;
+        }
+    }
+        
+    @objc func didBecomeActivity() {
+        if(featureWasEnabled) {
+            enableAudioStream()        }
     }
 
     /// function called when the net state change
@@ -399,7 +428,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
     private func deInitRecability(){
         mInternetReachability?.stopNotifier();
     }
-
+    
     /// get the selected language for the asr engine
     ///
     /// - Returns:
@@ -407,7 +436,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
         let lang = loadAsrLanguage();
         return lang ?? BlueMSSpeechToTextViewController.DEFAULT_ASR_LANG;
     }
-
+    
     private func loadAsrEngineDesc()->BlueVoiceASRDescription?{
         let userPref = UserDefaults.standard;
         let engineName = userPref.string(forKey: BlueMSSpeechToTextViewController.ASR_ENGINE_PREF);
@@ -421,7 +450,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
         let userPref = UserDefaults.standard;
         userPref.setValue(engineDesc.name,forKey:BlueMSSpeechToTextViewController.ASR_ENGINE_PREF);
     }
-
+    
     private func getDefaultEngine()->BlueVoiceASRDescription{
         let desc = loadAsrEngineDesc();
         return desc ?? BlueMSSpeechToTextViewController.DEFAULT_ASR_ENGINE;
@@ -462,7 +491,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
         }
     }
     
-
+    
     @IBAction func onBeamFormingStateChange(_ sender: UISwitch) {
         if let feature = mFeatureBeamForming{
             feature.enablebeamForming(sender.isOn);
@@ -497,7 +526,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
         guard checkAsrKey() else{
             return;
         }
-
+    
         waitingDialog = MBProgressHUD.showAdded(to: self.view, animated: false)
         self.mAsrEngineStatusLabel.text = BlueMSSpeechToTextViewController.CONNECTING;
         engine?.startListener(onConnect: self.onConnectionDone);
@@ -524,7 +553,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
             self.setRecordButtonTitle(self.engine); //reset the button name
         }
     }
-
+    
     /// Stop a continuos recognition
     private func onContinuousRecognizerStop(){
         mIsRecording=false;
@@ -559,7 +588,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
                 self.mAsrEngineStatusLabel.text = BlueMSSpeechToTextViewController.DISCONNECTED;
             }
             engine.stopListener();
-
+            
             setRecordButtonTitle(engine);
         }
     }
@@ -659,15 +688,15 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
         storeAsrEngine(engineDesc: engine);
         loadAsrEngine(engine, language);
     }
-
+    
     private func displayEngineName(_ name:String,language:String){
         mAsrEngineName.text = String(format:"%@ - %@",name,language)
     }
-
+    
     func getAvailableEngine() -> [BlueVoiceASRDescription] {
         return BlueMSSpeechToTextViewController.AVAILABLE_ENGINE_DESC;
     }
-
+    
     /////////////////////// BlueSTSDKFeatureDelegate ///////////////////////////
     
     
@@ -691,7 +720,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
                     }// mRecordData!=null
                 }
             }//if is Recording
-
+            
         }//if data!=null
     }
 
@@ -706,10 +735,10 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
         mFeatureAudio?.audioStream.codecManager.updateParameters(from: sample)
     }
     private static let IGNORE_DOUBLE_TAP_INTERVAL:TimeInterval=1.0
-
+    
     private var mLastEvent:TimeInterval=0.0;
     private func didAccEventUpdate(_ feature:BlueSTSDKFeature, sample:BlueSTSDKFeatureSample){
-
+        
         if(BlueSTSDKFeatureAccelerometerEvent.getAccelerationEvent(sample) == .doubleTap){
             let now = Date.timeIntervalSinceReferenceDate
             //ignore events to close
@@ -719,7 +748,7 @@ public class BlueMSSpeechToTextViewController: BlueMSDemoTabViewController,
                     self.onRecordButtonPressed(self.mRecordButton)
                 }
             }
-
+            
         }
     }
     

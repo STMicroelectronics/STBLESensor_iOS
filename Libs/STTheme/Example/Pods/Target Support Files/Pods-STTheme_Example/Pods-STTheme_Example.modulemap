@@ -1,6 +1,0 @@
-framework module Pods_STTheme_Example {
-  umbrella header "Pods-STTheme_Example-umbrella.h"
-
-  export *
-  module * { export * }
-}

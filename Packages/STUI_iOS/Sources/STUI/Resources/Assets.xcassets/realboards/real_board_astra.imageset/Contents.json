@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "real_board_astra.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

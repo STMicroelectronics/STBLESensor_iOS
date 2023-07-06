@@ -1,0 +1,15 @@
+"st_catalogDetail_action_datasheets" = "DOCUMENTATION";
+"st_catalogDetail_action_firmware" = "FIRMWARE";
+"st_catalogDetail_action_showDetail" = "READ MORE & ORDER";
+"st_catalogDetail_text_availableDemos" = "Available demos:";
+"st_catalogDetail_text_exampleVideo" = "Example Video:";
+"st_catalogDetail_text_title" = "Board Detail";
+"st_catalogFirmware_text_title" = "Firmware";
+"st_catalog_text_filters" = "Filters";
+"st_catalog_text_title" = "Discover ST Boards";
+"st_common_cancel" = "Cancel";
+"st_common_edit" = "Edit";
+"st_common_ok" = "Ok";
+"st_common_settings" = "Settings";
+"st_common_stopEditing" = "Stop editing";
+"st_common_warning" = "Warning";

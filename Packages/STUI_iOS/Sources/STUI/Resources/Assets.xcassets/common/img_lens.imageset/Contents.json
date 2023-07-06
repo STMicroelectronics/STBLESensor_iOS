@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "img_lens.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

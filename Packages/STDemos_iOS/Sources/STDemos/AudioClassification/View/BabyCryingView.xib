@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="qCR-TY-0i5" customClass="BabyCryingView" customModule="STDemos">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="uQ5-tx-wWk">
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mfk-Yr-8Vv">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="379.66666666666669"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="audioScene_babyCrying" translatesAutoresizingMaskIntoConstraints="NO" id="8lk-sk-opi">
+                                    <rect key="frame" x="16" y="16" width="361" height="327.33333333333331"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crying" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GnV-7g-WVM">
+                                    <rect key="frame" x="16" y="351.33333333333331" width="361" height="20.333333333333314"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="GnV-7g-WVM" firstAttribute="leading" secondItem="8lk-sk-opi" secondAttribute="leading" id="4UF-b4-hlZ"/>
+                                <constraint firstItem="GnV-7g-WVM" firstAttribute="trailing" secondItem="8lk-sk-opi" secondAttribute="trailing" id="KKJ-84-vc8"/>
+                                <constraint firstAttribute="trailing" secondItem="8lk-sk-opi" secondAttribute="trailing" constant="16" id="Szs-eM-gfD"/>
+                                <constraint firstItem="8lk-sk-opi" firstAttribute="top" secondItem="mfk-Yr-8Vv" secondAttribute="top" constant="16" id="dPV-Wh-KKP"/>
+                                <constraint firstAttribute="bottom" secondItem="GnV-7g-WVM" secondAttribute="bottom" constant="8" id="mhR-8j-X2x"/>
+                                <constraint firstItem="GnV-7g-WVM" firstAttribute="top" secondItem="8lk-sk-opi" secondAttribute="bottom" constant="8" id="v5m-2J-1db"/>
+                                <constraint firstItem="8lk-sk-opi" firstAttribute="leading" secondItem="mfk-Yr-8Vv" secondAttribute="leading" constant="16" id="xsz-Y0-cOM"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fAS-FK-hDM">
+                            <rect key="frame" x="0.0" y="379.66666666666674" width="393" height="379.33333333333326"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="audioScene_babyNotCrying" translatesAutoresizingMaskIntoConstraints="NO" id="w9U-0J-nyd">
+                                    <rect key="frame" x="16" y="16" width="361" height="327"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not crying" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Fv-5n-vkY">
+                                    <rect key="frame" x="16" y="350.99999999999994" width="361" height="20.333333333333314"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="w9U-0J-nyd" firstAttribute="top" secondItem="fAS-FK-hDM" secondAttribute="top" constant="16" id="FfA-3p-u0h"/>
+                                <constraint firstItem="0Fv-5n-vkY" firstAttribute="leading" secondItem="w9U-0J-nyd" secondAttribute="leading" id="GBk-HK-2l8"/>
+                                <constraint firstItem="0Fv-5n-vkY" firstAttribute="trailing" secondItem="w9U-0J-nyd" secondAttribute="trailing" id="IIj-ny-wuR"/>
+                                <constraint firstAttribute="bottom" secondItem="0Fv-5n-vkY" secondAttribute="bottom" constant="8" id="Khu-57-NzS"/>
+                                <constraint firstAttribute="trailing" secondItem="w9U-0J-nyd" secondAttribute="trailing" constant="16" id="TB4-0D-GEW"/>
+                                <constraint firstItem="0Fv-5n-vkY" firstAttribute="top" secondItem="w9U-0J-nyd" secondAttribute="bottom" constant="8" id="dhH-zc-A1B"/>
+                                <constraint firstItem="w9U-0J-nyd" firstAttribute="leading" secondItem="fAS-FK-hDM" secondAttribute="leading" constant="16" id="k03-of-6fn"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="spH-Na-C6f"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="uQ5-tx-wWk" firstAttribute="leading" secondItem="spH-Na-C6f" secondAttribute="leading" id="3s4-mu-bQK"/>
+                <constraint firstItem="uQ5-tx-wWk" firstAttribute="top" secondItem="spH-Na-C6f" secondAttribute="top" id="5SI-04-Tfz"/>
+                <constraint firstItem="spH-Na-C6f" firstAttribute="trailing" secondItem="uQ5-tx-wWk" secondAttribute="trailing" id="7lX-Pv-a4l"/>
+                <constraint firstItem="spH-Na-C6f" firstAttribute="bottom" secondItem="uQ5-tx-wWk" secondAttribute="bottom" id="Kbr-sr-4gm"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="cryingImage" destination="8lk-sk-opi" id="B8k-yT-qy1"/>
+                <outlet property="notCryingImage" destination="w9U-0J-nyd" id="sGD-cu-I8m"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="153.34821428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="audioScene_babyCrying" width="300" height="300"/>
+        <image name="audioScene_babyNotCrying" width="300" height="300"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

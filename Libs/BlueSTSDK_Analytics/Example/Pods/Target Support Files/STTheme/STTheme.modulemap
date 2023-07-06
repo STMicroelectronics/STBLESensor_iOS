@@ -1,6 +1,0 @@
-framework module STTheme {
-  umbrella header "STTheme-umbrella.h"
-
-  export *
-  module * { export * }
-}

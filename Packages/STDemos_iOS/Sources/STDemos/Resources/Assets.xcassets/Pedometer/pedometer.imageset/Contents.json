@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "pedometer.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

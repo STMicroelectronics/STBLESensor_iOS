@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "switch_led_off.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

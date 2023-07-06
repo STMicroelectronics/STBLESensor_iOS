@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "real_board_proteus.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

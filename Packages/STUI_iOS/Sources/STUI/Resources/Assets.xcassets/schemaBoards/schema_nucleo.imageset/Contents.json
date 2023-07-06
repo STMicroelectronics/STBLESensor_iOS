@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "schema_nucleo.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -1,5 +1,0 @@
-#import <Foundation/Foundation.h>
-@interface PodsDummy_Pods_defaults_AssetTrackingCloudDashboard_Example : NSObject
-@end
-@implementation PodsDummy_Pods_defaults_AssetTrackingCloudDashboard_Example
-@end

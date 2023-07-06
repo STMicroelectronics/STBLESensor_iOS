@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "board_blueCoin.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

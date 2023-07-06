@@ -1,6 +1,0 @@
-framework module AssetTrackingCloudDashboard {
-  umbrella header "AssetTrackingCloudDashboard-umbrella.h"
-
-  export *
-  module * { export * }
-}

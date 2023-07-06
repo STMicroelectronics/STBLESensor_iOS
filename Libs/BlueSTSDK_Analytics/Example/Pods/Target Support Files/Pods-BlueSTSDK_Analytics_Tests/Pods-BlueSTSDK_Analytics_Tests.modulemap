@@ -1,6 +1,0 @@
-framework module Pods_BlueSTSDK_Analytics_Tests {
-  umbrella header "Pods-BlueSTSDK_Analytics_Tests-umbrella.h"
-
-  export *
-  module * { export * }
-}

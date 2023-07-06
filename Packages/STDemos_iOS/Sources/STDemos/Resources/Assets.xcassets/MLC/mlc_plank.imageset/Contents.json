@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "mlc_plank.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

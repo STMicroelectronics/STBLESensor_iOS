@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "real_board_smartag2.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

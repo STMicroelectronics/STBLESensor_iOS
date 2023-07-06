@@ -1,4 +1,0 @@
-module AzureuMockC [system][extern_c] {
-    header "umock_c/umock_c_prod.h"
-    export *
-}

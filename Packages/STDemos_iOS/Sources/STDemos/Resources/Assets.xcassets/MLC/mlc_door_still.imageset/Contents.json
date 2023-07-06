@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "mlc_door_still.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

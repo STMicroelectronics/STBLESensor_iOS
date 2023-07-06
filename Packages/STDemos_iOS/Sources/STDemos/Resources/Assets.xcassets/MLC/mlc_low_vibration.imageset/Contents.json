@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "mlc_low_vibration.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

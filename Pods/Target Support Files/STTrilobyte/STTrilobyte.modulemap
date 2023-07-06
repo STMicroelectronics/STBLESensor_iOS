@@ -1,6 +1,0 @@
-framework module STTrilobyte {
-  umbrella header "STTrilobyte-umbrella.h"
-
-  export *
-  module * { export * }
-}

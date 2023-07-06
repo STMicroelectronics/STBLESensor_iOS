@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "mlc_driving.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

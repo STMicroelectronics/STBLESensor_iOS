@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "demo_pedometer.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

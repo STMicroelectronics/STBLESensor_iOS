@@ -1,6 +1,0 @@
-framework module SpeechToText {
-  umbrella header "IBMWatsonSpeechToTextV1-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "real_board_usb_dongle_wb55.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

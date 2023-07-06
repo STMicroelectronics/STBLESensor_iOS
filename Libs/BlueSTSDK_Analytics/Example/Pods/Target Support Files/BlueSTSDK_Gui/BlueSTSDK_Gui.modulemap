@@ -1,6 +1,0 @@
-framework module BlueSTSDK_Gui {
-  umbrella header "BlueSTSDK_Gui-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="9Yl-Eg-qvW" customClass="BeamFormingView" customModule="STDemos">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wy4-wE-bjL">
+                    <rect key="frame" x="28" y="423" width="49" height="50"/>
+                    <state key="normal" image="Beamforming_radioButton_off"/>
+                    <state key="selected" image="radioButton_on"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wJC-AA-dHx">
+                    <rect key="frame" x="337" y="423" width="49" height="50"/>
+                    <state key="normal" image="Beamforming_radioButton_off"/>
+                    <state key="selected" image="radioButton_on"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Arp-98-vaK">
+                    <rect key="frame" x="182.5" y="268" width="49" height="50"/>
+                    <state key="normal" image="Beamforming_radioButton_off"/>
+                    <state key="selected" image="radioButton_on"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcs-hz-JtD">
+                    <rect key="frame" x="182.5" y="578" width="49" height="50"/>
+                    <state key="normal" image="Beamforming_radioButton_off"/>
+                    <state key="selected" image="radioButton_on"/>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="XW6-OB-7E7">
+                    <rect key="frame" x="85" y="326" width="244" height="244"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="XW6-OB-7E7" secondAttribute="height" multiplier="1:1" id="MBR-nm-2C5"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zj-iK-URy">
+                    <rect key="frame" x="85" y="520" width="49" height="50"/>
+                    <state key="normal" image="Beamforming_radioButton_off"/>
+                    <state key="selected" image="radioButton_on"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erZ-b8-2fd">
+                    <rect key="frame" x="280" y="520" width="49" height="50"/>
+                    <state key="normal" image="Beamforming_radioButton_off"/>
+                    <state key="selected" image="radioButton_on"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H04-ZN-SQ7">
+                    <rect key="frame" x="280" y="326" width="49" height="50"/>
+                    <state key="normal" image="Beamforming_radioButton_off"/>
+                    <state key="selected" image="radioButton_on"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4u4-Qv-ahG">
+                    <rect key="frame" x="85" y="326" width="49" height="50"/>
+                    <state key="normal" image="Beamforming_radioButton_off"/>
+                    <state key="selected" image="radioButton_on"/>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z8J-f9-LcG" customClass="CPTGraphHostingView">
+                    <rect key="frame" x="28" y="760" width="358" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="m8v-Hu-gji"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="XW6-OB-7E7" firstAttribute="top" secondItem="Arp-98-vaK" secondAttribute="bottom" constant="8" id="2nv-lL-rwc"/>
+                <constraint firstAttribute="bottom" secondItem="z8J-f9-LcG" secondAttribute="bottom" constant="8" id="7dC-ms-y3u"/>
+                <constraint firstItem="dcs-hz-JtD" firstAttribute="top" secondItem="XW6-OB-7E7" secondAttribute="bottom" constant="8" id="8WY-VC-gGk"/>
+                <constraint firstItem="4u4-Qv-ahG" firstAttribute="leading" secondItem="XW6-OB-7E7" secondAttribute="leading" id="8m0-Uv-aIX"/>
+                <constraint firstItem="XW6-OB-7E7" firstAttribute="centerX" secondItem="9Yl-Eg-qvW" secondAttribute="centerX" id="DxM-JK-V5s"/>
+                <constraint firstItem="dcs-hz-JtD" firstAttribute="centerX" secondItem="9Yl-Eg-qvW" secondAttribute="centerX" id="F5M-K5-Sah"/>
+                <constraint firstItem="8zj-iK-URy" firstAttribute="leading" secondItem="XW6-OB-7E7" secondAttribute="leading" id="Gi8-x0-JhF"/>
+                <constraint firstItem="Arp-98-vaK" firstAttribute="centerX" secondItem="9Yl-Eg-qvW" secondAttribute="centerX" id="Gqd-xc-8ie"/>
+                <constraint firstItem="wJC-AA-dHx" firstAttribute="centerY" secondItem="9Yl-Eg-qvW" secondAttribute="centerY" id="IHE-79-tdB"/>
+                <constraint firstItem="z8J-f9-LcG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="dcs-hz-JtD" secondAttribute="bottom" constant="8" id="Mtc-3M-l2c"/>
+                <constraint firstItem="H04-ZN-SQ7" firstAttribute="trailing" secondItem="XW6-OB-7E7" secondAttribute="trailing" id="Rwb-iw-T6j"/>
+                <constraint firstItem="H04-ZN-SQ7" firstAttribute="top" secondItem="XW6-OB-7E7" secondAttribute="top" id="Wld-jd-Xmp"/>
+                <constraint firstAttribute="trailingMargin" secondItem="z8J-f9-LcG" secondAttribute="trailing" constant="8" id="XUD-Uq-IRy"/>
+                <constraint firstItem="8zj-iK-URy" firstAttribute="bottom" secondItem="XW6-OB-7E7" secondAttribute="bottom" id="Xds-KQ-H5x"/>
+                <constraint firstAttribute="trailingMargin" secondItem="wJC-AA-dHx" secondAttribute="trailing" constant="8" id="Zn5-mx-cku"/>
+                <constraint firstItem="XW6-OB-7E7" firstAttribute="centerY" secondItem="9Yl-Eg-qvW" secondAttribute="centerY" id="aXd-hg-teW"/>
+                <constraint firstItem="erZ-b8-2fd" firstAttribute="bottom" secondItem="XW6-OB-7E7" secondAttribute="bottom" id="d5l-GI-zEL"/>
+                <constraint firstItem="4u4-Qv-ahG" firstAttribute="top" secondItem="XW6-OB-7E7" secondAttribute="top" id="kJZ-qW-qkM"/>
+                <constraint firstItem="XW6-OB-7E7" firstAttribute="leading" secondItem="wy4-wE-bjL" secondAttribute="trailing" constant="8" id="l6I-CP-mua"/>
+                <constraint firstItem="wJC-AA-dHx" firstAttribute="leading" secondItem="XW6-OB-7E7" secondAttribute="trailing" constant="8" id="lYa-X3-p8Q"/>
+                <constraint firstItem="erZ-b8-2fd" firstAttribute="trailing" secondItem="XW6-OB-7E7" secondAttribute="trailing" id="mgz-gh-fa2"/>
+                <constraint firstItem="wy4-wE-bjL" firstAttribute="centerY" secondItem="9Yl-Eg-qvW" secondAttribute="centerY" id="nRv-Vb-MXb"/>
+                <constraint firstItem="z8J-f9-LcG" firstAttribute="leading" secondItem="9Yl-Eg-qvW" secondAttribute="leadingMargin" constant="8" id="szm-vd-oRI"/>
+                <constraint firstItem="wy4-wE-bjL" firstAttribute="leading" secondItem="9Yl-Eg-qvW" secondAttribute="leadingMargin" constant="8" id="v1i-Ae-KZW"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="mBoardImage" destination="XW6-OB-7E7" id="C5b-tu-Rhy"/>
+                <outlet property="mBottomButton" destination="dcs-hz-JtD" id="ghK-Xs-O37"/>
+                <outlet property="mBottomLeftButton" destination="8zj-iK-URy" id="zL0-td-8Tu"/>
+                <outlet property="mBottomRightButton" destination="erZ-b8-2fd" id="z1H-ym-VJJ"/>
+                <outlet property="mGraphView" destination="z8J-f9-LcG" id="g1q-2z-O1f"/>
+                <outlet property="mLeftButton" destination="wy4-wE-bjL" id="UqC-lx-gVV"/>
+                <outlet property="mRightButton" destination="wJC-AA-dHx" id="VOZ-yy-UDs"/>
+                <outlet property="mTopButton" destination="Arp-98-vaK" id="8zF-l0-gtR"/>
+                <outlet property="mTopLeftButton" destination="4u4-Qv-ahG" id="QdA-f8-CsO"/>
+                <outlet property="mTopRightButton" destination="H04-ZN-SQ7" id="xM1-QV-2Xi"/>
+            </connections>
+            <point key="canvasLocation" x="-57" y="-608"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Beamforming_radioButton_off" width="49.214000701904297" height="50.314998626708984"/>
+        <image name="radioButton_on" width="24" height="24"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

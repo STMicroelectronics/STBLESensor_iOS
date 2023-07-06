@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "level_half_circle.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

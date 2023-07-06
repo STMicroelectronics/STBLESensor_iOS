@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1qY-t5-ml3" customClass="AdultPresenceMLCView" customModule="STDemos">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bzk-xm-sHY">
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="activity_adult_in_car" translatesAutoresizingMaskIntoConstraints="NO" id="ERX-n7-PnA">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="189.66666666666666"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adult in the Car" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRA-KP-oPE">
+                            <rect key="frame" x="0.0" y="189.66666666666663" width="393" height="190"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="activity_adult_not_in_car" translatesAutoresizingMaskIntoConstraints="NO" id="8VA-KC-uqb">
+                            <rect key="frame" x="0.0" y="379.66666666666669" width="393" height="189.66666666666669"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adult Not in the Car" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJj-j2-jIn">
+                            <rect key="frame" x="0.0" y="569.33333333333337" width="393" height="189.66666666666663"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="p6E-nY-F2i"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="p6E-nY-F2i" firstAttribute="bottom" secondItem="bzk-xm-sHY" secondAttribute="bottom" id="5rk-K6-HRX"/>
+                <constraint firstItem="p6E-nY-F2i" firstAttribute="trailing" secondItem="bzk-xm-sHY" secondAttribute="trailing" id="BeQ-hj-a1f"/>
+                <constraint firstItem="bzk-xm-sHY" firstAttribute="leading" secondItem="p6E-nY-F2i" secondAttribute="leading" id="eVE-G9-hWv"/>
+                <constraint firstItem="bzk-xm-sHY" firstAttribute="top" secondItem="p6E-nY-F2i" secondAttribute="top" id="ghM-9C-yZw"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="adultInCarImage" destination="ERX-n7-PnA" id="NQX-50-NwI"/>
+                <outlet property="adultNotInCarImage" destination="8VA-KC-uqb" id="Ani-yU-cLV"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="153.34821428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="activity_adult_in_car" width="300" height="300"/>
+        <image name="activity_adult_not_in_car" width="300" height="300"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

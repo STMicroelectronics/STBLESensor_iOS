@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "mlc_cobra.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

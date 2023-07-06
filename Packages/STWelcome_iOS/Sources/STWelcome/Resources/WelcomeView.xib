@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="WelcomeView" customModule="STWelcome">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cfy-Z1-YcG">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qYs-pX-rew">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="796"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dh7-Hc-UPe">
+                            <rect key="frame" x="0.0" y="796" width="414" height="100"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d0B-Eo-een">
+                                    <rect key="frame" x="294" y="28" width="100" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="0Xx-k4-D25"/>
+                                        <constraint firstAttribute="width" constant="100" id="XVv-9F-QQ0"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                </button>
+                                <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="v8R-OE-ujd">
+                                    <rect key="frame" x="20" y="5" width="374" height="26"/>
+                                </pageControl>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="d0B-Eo-een" firstAttribute="centerY" secondItem="Dh7-Hc-UPe" secondAttribute="centerY" id="7UM-27-lFF"/>
+                                <constraint firstAttribute="trailing" secondItem="d0B-Eo-een" secondAttribute="trailing" constant="20" id="WzU-c2-1So"/>
+                                <constraint firstAttribute="height" constant="100" id="bcd-R6-EkK"/>
+                                <constraint firstItem="v8R-OE-ujd" firstAttribute="leading" secondItem="Dh7-Hc-UPe" secondAttribute="leading" constant="20" id="f2O-I0-ahJ"/>
+                                <constraint firstAttribute="trailing" secondItem="v8R-OE-ujd" secondAttribute="trailing" constant="20" id="n6o-M6-coD"/>
+                                <constraint firstItem="v8R-OE-ujd" firstAttribute="top" secondItem="Dh7-Hc-UPe" secondAttribute="top" constant="5" id="nlC-5C-prA"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="cfy-Z1-YcG" secondAttribute="trailing" id="OJr-5v-hJc"/>
+                <constraint firstItem="cfy-Z1-YcG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cPM-ju-BV2"/>
+                <constraint firstItem="cfy-Z1-YcG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="cxB-xR-bE5"/>
+                <constraint firstAttribute="bottom" secondItem="cfy-Z1-YcG" secondAttribute="bottom" id="g8p-Jv-k6a"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bottomView" destination="Dh7-Hc-UPe" id="Fq2-5r-sFr"/>
+                <outlet property="nextButton" destination="d0B-Eo-een" id="0RV-MC-QN0"/>
+                <outlet property="pageControl" destination="v8R-OE-ujd" id="qhC-kp-oq3"/>
+                <outlet property="topView" destination="qYs-pX-rew" id="S15-mh-nds"/>
+            </connections>
+            <point key="canvasLocation" x="-348" y="55"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

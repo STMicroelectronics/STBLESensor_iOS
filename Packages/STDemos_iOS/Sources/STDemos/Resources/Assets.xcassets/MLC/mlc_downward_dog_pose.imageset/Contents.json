@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "mlc_downward_dog_pose.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

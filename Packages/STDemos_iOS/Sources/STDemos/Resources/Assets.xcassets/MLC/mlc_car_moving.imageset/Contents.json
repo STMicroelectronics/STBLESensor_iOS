@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "mlc_car_moving.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

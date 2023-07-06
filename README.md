@@ -13,7 +13,7 @@ The application is built on top of BlueST SDK, a library that provides an implem
 To clone the repository:
 
 ```Shell
-git clone https://github.com/STMicroelectronics/STBlueMS_iOS
+git clone https://github.com/STMicroelectronics/STBLESensor_iOS.git
 ```
 
 ## License

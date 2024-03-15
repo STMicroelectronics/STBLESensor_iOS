@@ -24,6 +24,9 @@ final class PlotViewController: DemoNodeNoViewController<PlotDelegate> {
     let chart = LineChartView()
     let plotDescription = UILabel()
     
+    let yAxisTitleLabel = UILabel()
+    let xAxisTitleLabel = UILabel()
+    
     let playImg = UIImage(named: "ic_play_arrow_24", in: STUI.bundle, compatibleWith: nil)?.maskWithColor(color: ColorLayout.systemWhite.light)
     
     let stopImg = UIImage(named: "ic_stop_24", in: STUI.bundle, compatibleWith: nil)?.maskWithColor(color: ColorLayout.systemWhite.light)
@@ -65,9 +68,26 @@ final class PlotViewController: DemoNodeNoViewController<PlotDelegate> {
         ])
         horizontalSV.distribution = .fill
         
+        TextLayout.info.apply(to: yAxisTitleLabel)
+        TextLayout.info.apply(to: xAxisTitleLabel)
+        
+        let yAxisTitleLabelSV = UIStackView.getHorizontalStackView(withSpacing: 8, views: [
+            yAxisTitleLabel,
+            UIView()
+        ])
+        yAxisTitleLabelSV.distribution = .fill
+        
+        let xAxisTitleLabelSV = UIStackView.getHorizontalStackView(withSpacing: 8, views: [
+            UIView(),
+            xAxisTitleLabel
+        ])
+        xAxisTitleLabelSV.distribution = .fill
+        
         let mainStackView = UIStackView.getVerticalStackView(withSpacing: 8, views: [
             horizontalSV,
+            yAxisTitleLabelSV,
             chart,
+            xAxisTitleLabelSV,
             plotDescription
         ])
         mainStackView.distribution = .fill

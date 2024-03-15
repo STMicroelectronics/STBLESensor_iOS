@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "motor_info_running.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

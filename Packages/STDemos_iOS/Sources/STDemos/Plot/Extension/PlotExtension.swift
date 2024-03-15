@@ -80,6 +80,16 @@ extension AnyFeatureSample {
                 x: Int(sample.timestamp),
                 y: [qi, qj, qs, qk]
             )
+        } else if let sample = sample as? FeatureSample<SensorFusionCompactData>,
+                  let data = sample.data,
+                  let qi = data.samples[0].quaternionI.value,
+                  let qj = data.samples[0].quaternionJ.value,
+                  let qs = data.samples[0].quaternionS.value,
+                  let qk = data.samples[0].quaternionK.value {
+            return PlotEntry(
+                x: Int(sample.timestamp),
+                y: [qi, qj, qs, qk]
+            )
         } else if let sample = sample as? FeatureSample<MicLevelsData>,
                   let data = sample.data {
             var micLevels: [Float] = []
@@ -208,6 +218,13 @@ extension AnyFeatureSample {
                   let qs = data.quaternionS.value,
                   let qk = data.quaternionK.value {
             return "TS:\(sample.timestamp) qi:\(qi) qj:\(qj) qs:\(qs), qk:\(qk)"
+        } else if let sample = sample as? FeatureSample<SensorFusionCompactData>,
+                  let data = sample.data,
+                  let qi = data.samples[0].quaternionI.value,
+                  let qj = data.samples[0].quaternionJ.value,
+                  let qs = data.samples[0].quaternionS.value,
+                  let qk = data.samples[0].quaternionK.value {
+            return "TS:\(sample.timestamp) qi:\(qi) qj:\(qj) qs:\(qs), qk:\(qk)"
         } else if let sample = sample as? FeatureSample<MicLevelsData>,
                   let data = sample.data {
             var micLevels: [Float] = []
@@ -300,6 +317,11 @@ extension AnyFeatureSample {
                     LineConfig(name: "qj", color: ColorLayout.red.light),
                     LineConfig(name: "qk", color: ColorLayout.green.light),
                     LineConfig(name: "qs", color: ColorLayout.ochre.light)]
+        } else if sample is FeatureSample<SensorFusionCompactData> {
+            return [LineConfig(name: "qi", color: ColorLayout.blue.light),
+                    LineConfig(name: "qj", color: ColorLayout.red.light),
+                    LineConfig(name: "qk", color: ColorLayout.green.light),
+                    LineConfig(name: "qs", color: ColorLayout.ochre.light)]
         } else if sample is FeatureSample<MicLevelsData> {
             var lineConfigs: [LineConfig] = []
             let micLevelsPlotEntry = toPlotEntry(sample: sample)
@@ -333,6 +355,87 @@ extension AnyFeatureSample {
 //        }
         else if sample is FeatureSample<EventCounterData> {
             return [LineConfig(name: "Counter #", color: ColorLayout.blue.light)]
+        }
+        return nil
+    }
+    
+    func toPlotAxisLabel(sample: AnyFeatureSample?) -> String? {
+        if let sample = sample as? FeatureSample<AccelerationData>,
+           let data = sample.data,
+           let uom = data.accelerationX.uom {
+            return uom
+        } else if let sample = sample as? FeatureSample<CompassData> {
+            return "Degree"
+        } else if let sample = sample as? FeatureSample<DirectionOfArrivalData>,
+                  let data = sample.data,
+                  let uom = data.angle.uom {
+            return uom
+        } else if let sample = sample as? FeatureSample<GyroscopeData>,
+                  let data = sample.data,
+                  let uom = data.gyroX.uom {
+            return uom
+        } else if let sample = sample as? FeatureSample<HumidityData>,
+                  let data = sample.data,
+                  let uom = data.humidity.uom {
+            return uom
+        } else if let sample = sample as? FeatureSample<LuminosityData>,
+                  let data = sample.data,
+                  let uom = data.luminosity.uom {
+            return uom
+        } else if let sample = sample as? FeatureSample<MagnetometerData>,
+                  let data = sample.data,
+                  let uom = data.magX.uom {
+            return uom
+        } else if let sample = sample as? FeatureSample<SensorFusionData>,
+                  let data = sample.data,
+                  let uom = data.quaternionI.uom {
+            return uom
+        } else if let sample = sample as? FeatureSample<SensorFusionCompactData>,
+                  let data = sample.data,
+                  let uom = data.samples[0].quaternionI.uom {
+            return uom
+        } else if let sample = sample as? FeatureSample<MicLevelsData>,
+                  let data = sample.data {
+            return data.micLevels.first?.uom
+        } else if let sample = sample as? FeatureSample<MotionIntensityData>,
+                  let data = sample.data,
+                  let uom = data.motionIntensity.uom {
+            return uom
+        } else if let sample = sample as? FeatureSample<ProximityData>,
+                  let data = sample.data,
+                  let uom = data.distance.uom {
+            return uom
+        } else if let sample = sample as? FeatureSample<PressureData>,
+                  let data = sample.data,
+                  let uom = data.pressure.uom {
+            return uom
+        } else if let sample = sample as? FeatureSample<TemperatureData>,
+                  let data = sample.data,
+                  let uom = data.temperature.uom {
+            return uom
+        } else if let sample = sample as? FeatureSample<EulerAngleData>,
+                  let data = sample.data,
+                  let uom = data.pitch.uom {
+            return uom
+        } else if let sample = sample as? FeatureSample<MemsNormData>,
+                  let data = sample.data,
+                  let uom = data.norm.uom {
+            return uom
+        }
+//        else if let sample = sample as? FeatureSample<QvarData>,
+//                  let data = sample.data,
+//                  let uom = data.qvar.uom {
+//            return uom
+//        }
+//        else if let sample = sample as? FeatureSample<ToFMultiObjectDelegate>,
+//                  let data = sample.data,
+//                  let uom = data.distances.uom {
+//            return uom
+//        }
+        else if let sample = sample as? FeatureSample<EventCounterData>,
+                let data = sample.data,
+                let uom = data.counter.uom {
+            return uom
         }
         return nil
     }

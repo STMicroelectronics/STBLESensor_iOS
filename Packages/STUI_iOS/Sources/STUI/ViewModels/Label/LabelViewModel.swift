@@ -110,3 +110,50 @@ public class LabelViewModel: BaseViewModel<CodeValue<String>, LabelView> {
     }
 
 }
+
+public class ImageLabelViewModel: BaseViewModel<CodeValue<String>, ImageLabelView> {
+
+    private var image: UIImage?
+    private var handleTap: ((CodeValue<String>) -> Void)?
+
+    public init(param: CodeValue<String>?,
+                layout: Layout? = nil,
+                image: UIImage? = nil,
+                handleTap: ((CodeValue<String>) -> Void)? = nil) {
+        self.image = image
+        self.handleTap = handleTap
+        super.init(param: param, layout: layout)
+    }
+
+    required public init() {
+        fatalError("init() has not been implemented")
+    }
+
+    public override func configure(view: ImageLabelView) {
+        view.textLabel.text = param?.value
+        view.actionImageView.isHidden = image == nil
+        view.actionImageView.contentMode = .center
+
+        view.actionImageView.image = image
+
+        if let layout = layout {
+            layout.textLayout?.apply(to: view.textLabel)
+        }
+
+        if let handleTap = handleTap, let param = param {
+            view.actionButton.addAction(for: .touchUpInside) { _ in
+                handleTap(param)
+            }
+        }
+    }
+
+    public override func update(view: ImageLabelView, values: [any KeyValue]) {
+
+        guard let values = values.filter({ $0 is CodeValue<String> }) as? [CodeValue<String>],
+            let value = values.first(where: { $0 == param}) else { return }
+
+        param?.value = value.value
+        view.textLabel.text = param?.value
+    }
+
+}

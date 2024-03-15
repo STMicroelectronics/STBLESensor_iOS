@@ -13,7 +13,7 @@ import UIKit
 import STUI
 import STBlueSDK
 
-final class MachineLearningCorePresenter: DemoPresenter<MachineLearningCoreViewController> {
+public final class MachineLearningCorePresenter: DemoBasePresenter<MachineLearningCoreViewController, String> {
 
     var firstMLCSampleDelegate: MachineLearningFirstSampleDelegate?
     public typealias FirstMLCSampleCompletion = (_ sample: MachineLearningCoreData?) -> Void
@@ -50,7 +50,7 @@ final class MachineLearningCorePresenter: DemoPresenter<MachineLearningCoreViewC
 // MARK: - MachineLearningCoreViewControllerDelegate
 extension MachineLearningCorePresenter: MachineLearningCoreDelegate {
 
-    func load() {
+    public func load() {
         
         demo = .machineLearningCore
         
@@ -71,23 +71,25 @@ extension MachineLearningCorePresenter: MachineLearningCoreDelegate {
         view.configureView()
     }
     
-    func update(with feature: STBlueSDK.MachineLearningCoreFeature) {
+    public func updateMlcDemo(with feature: STBlueSDK.MachineLearningCoreFeature) {
         if let sample = feature.sample,
            let data = sample.data {
             
             let numRegisters = 0..<data.registerStatus.count
             
             for num in numRegisters {
-                if let algoName = mapper?.algorithmName(register: ValueLabelMapper.RegisterIndex(num)){
-                    if let rawValue = data.registerStatus[num].value {
-                        if let valueName = mapper?.valueName(register: ValueLabelMapper.RegisterIndex(num), value: rawValue) {
-                            let registerAiData = RegisterAiData(
-                                title: "Decision Tree: \(num)",
-                                algorithm: algoName,
-                                labelledValue: valueName,
-                                rawValue: "\(rawValue)"
-                            )
-                            director?.elements[num] = RegisterAiViewModel(param: registerAiData)
+                if let rawValue = data.registerStatus[num].value {
+                    let algoName = mapper?.algorithmName(register: ValueLabelMapper.RegisterIndex(num)) ?? nil
+                    let valueName = mapper?.valueName(register: ValueLabelMapper.RegisterIndex(num), value: rawValue) ?? nil
+                    let registerAiData = RegisterAiData(
+                        title: "Decision Tree: \(num)",
+                        algorithm: algoName,
+                        labelledValue: valueName,
+                        rawValue: "\(rawValue)"
+                    )
+                    if let director = director {
+                        if !(director.elements.isEmpty){
+                            director.elements[num] = RegisterAiViewModel(param: registerAiData)
                         }
                     }
                 }
@@ -96,23 +98,31 @@ extension MachineLearningCorePresenter: MachineLearningCoreDelegate {
         }
     }
     
-    func retrieveLabelData() {
-        BlueManager.shared.sendMessage(
-            "getMLCLabels\n",
-            to: param.node,
-            completion:  DebugConsoleCallback(
-                timeOut: 2.0,
-                onCommandResponds: { text in
-                    self.valueConsole = ValueLabelConsole()
-                    self.mapper = self.valueConsole?.buildRegisterMapperFromString(text)
-                    self.readInitialSample { mlcFirstSample in
-                        self.initializeUI(withSampleData: mlcFirstSample)
+    public func retrieveLabelData() {
+        if let ucfHeaderStringLabels = param.param {
+            self.valueConsole = ValueLabelConsole()
+            self.mapper = self.valueConsole?.buildRegisterMapperFromString(ucfHeaderStringLabels)
+            self.readInitialSample { mlcFirstSample in
+                self.initializeUI(withSampleData: mlcFirstSample)
+            }
+        } else {
+            BlueManager.shared.sendMessage(
+                "getMLCLabels\n",
+                to: param.node,
+                completion:  DebugConsoleCallback(
+                    timeOut: 2.0,
+                    onCommandResponds: { text in
+                        self.valueConsole = ValueLabelConsole()
+                        self.mapper = self.valueConsole?.buildRegisterMapperFromString(text)
+                        self.readInitialSample { mlcFirstSample in
+                            self.initializeUI(withSampleData: mlcFirstSample)
+                        }
+                    }, onCommandError: {
+                        print("ERROR")
                     }
-                }, onCommandError: {
-                    print("ERROR")
-                }
+                )
             )
-        )
+        }
     }
     
     private func readInitialSample(_ completion: @escaping FirstMLCSampleCompletion) {
@@ -133,9 +143,9 @@ extension MachineLearningCorePresenter: MachineLearningCoreDelegate {
             for num in numRegisters {
                 let registerAiData = RegisterAiData(
                     title: "Decision Tree: \(num)",
-                    algorithm: mapper?.algorithmName(register: ValueLabelMapper.RegisterIndex(num)) ?? "---",
-                    labelledValue: "",
-                    rawValue: "0"
+                    algorithm: mapper?.algorithmName(register: ValueLabelMapper.RegisterIndex(num)) ?? nil,
+                    labelledValue: nil,
+                    rawValue: "0x0"
                 )
                 director?.elements.append(RegisterAiViewModel(param: registerAiData))
             }

@@ -23,7 +23,9 @@ public struct Buttonlayout {
     let borderColor: UIColor?
     let borderWith: CGFloat?
     let font: UIFont?
-    
+    let useDefaultLargeConfiguration: Bool
+    let underlineText: Bool
+
     public init(color: UIColor,
                 selectedColor: UIColor?,
                 backgroundColor: UIColor?,
@@ -33,7 +35,9 @@ public struct Buttonlayout {
                 cornerRadius: CGFloat?,
                 borderColor: UIColor?,
                 borderWith: CGFloat?,
-                font: UIFont?) {
+                font: UIFont?,
+                useDefaultLargeConfiguration: Bool = true,
+                underlineText: Bool = false) {
         self.color = color
         self.selectedColor = selectedColor
         self.backgroundColor = backgroundColor
@@ -44,6 +48,8 @@ public struct Buttonlayout {
         self.borderColor = borderColor
         self.borderWith = borderWith
         self.font = font
+        self.useDefaultLargeConfiguration = useDefaultLargeConfiguration
+        self.underlineText = underlineText
     }
     
 }
@@ -51,7 +57,24 @@ public struct Buttonlayout {
 public extension Buttonlayout {
     
     func apply(to button: UIButton, text: String? = nil) {
-        
+
+        if let text = text {
+            if underlineText {
+                let attrs: [NSAttributedString.Key: Any] = [
+                      .font: font as Any,
+                      .underlineStyle: NSUnderlineStyle.single.rawValue
+                  ]
+
+                let attributeString = NSMutableAttributedString(
+                        string: text,
+                        attributes: attrs
+                     )
+                button.setAttributedTitle(attributeString, for: .normal)
+            } else {
+                button.setTitle(text, for: .normal)
+            }
+        }
+
         if #available(iOS 15, *) {
             var configuration = backgroundColor != nil ? UIButton.Configuration.filled() : UIButton.Configuration.plain()
             configuration.baseForegroundColor = color
@@ -68,12 +91,27 @@ public extension Buttonlayout {
                 configuration.baseBackgroundColor = backgroundColor
             }
             
-            configuration.buttonSize = .large
-            
-            var attText = AttributedString(text ?? "")
-            attText.font = font
-            configuration.attributedTitle = attText
-        
+            if useDefaultLargeConfiguration {
+                configuration.buttonSize = .large
+            }
+
+            if underlineText {
+                let attrs: [NSAttributedString.Key: Any] = [
+                      .font: font as Any,
+                      .underlineStyle: NSUnderlineStyle.single.rawValue
+                  ]
+
+                let attributeString = NSMutableAttributedString(
+                        string: text ?? "",
+                        attributes: attrs
+                     )
+                button.setAttributedTitle(attributeString, for: .normal)
+            } else {
+                var attText = AttributedString(text ?? "")
+                attText.font = font
+                configuration.attributedTitle = attText
+            }
+
             configuration.image = image
             
             let handler: UIButton.ConfigurationUpdateHandler = { button in
@@ -130,10 +168,23 @@ public extension Buttonlayout {
         if let font = font {
             button.titleLabel?.font = font
         }
-        
+
         button.setImage(selectedImage, for: .selected)
         button.setImage(image, for: .normal)
         
+    }
+
+    func changeBackgroudColor(backgroundColor: UIColor?) -> Buttonlayout {
+        return Buttonlayout(color: self.color,
+                            selectedColor: selectedColor,
+                            backgroundColor: backgroundColor,
+                            selectedBackgroundColor: selectedBackgroundColor,
+                            selectedImage: selectedImage,
+                            image: image,
+                            cornerRadius: cornerRadius,
+                            borderColor: borderColor,
+                            borderWith: borderWith,
+                            font: font)
     }
     
 }

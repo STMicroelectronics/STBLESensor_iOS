@@ -23,12 +23,12 @@ open class GroupTableViewCell: BaseTableViewCell {
 
     open override func configureView() {
         stackView.axis = .vertical
-        stackView.spacing = 5.0
+        stackView.spacing = 10.0
         stackView.clipsToBounds = true
 
         clear()
 
-        self.containerView.addSubview(stackView, margin: .zero)
+        self.containerView.addSubview(stackView, margin: Margin(top: 10, bottom: 10, left: 10, right: 10))
         self.contentView.addSubview(containerView, margin: .zero)
     }
 
@@ -49,8 +49,8 @@ open class GroupTableViewCell: BaseTableViewCell {
     }
 
     open override func update(_ margin: Margin) {
-        stackView.change(margin)
-        containerView.change(margin)
+//        stackView.change(margin)
+//        containerView.change(margin)
         contentView.change(margin)
     }
     

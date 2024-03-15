@@ -12,17 +12,23 @@
 import UIKit
 
 public enum TabBarSide {
-    case left
-    case right
+    case first
+    case second
+    case third
+    case fourth
 }
 
 public class TabBarView: UIView {
 
     let stackView = UIStackView()
     public let actionButton = UIButton(type: .custom)
+    public var showArcActionButton: Bool = true
+    public var showFourthTab: Bool = true
 
-    let leftStackView = UIStackView()
-    let rightStackView = UIStackView()
+    let firstStackView = UIStackView()
+    let secondStackView = UIStackView()
+    let thirdStackView = UIStackView()
+    let fourthStackView = UIStackView()
 
     let stackContainerView = UIView()
 
@@ -32,23 +38,35 @@ public class TabBarView: UIView {
 
         clipsToBounds = false
         
+        self.showArcActionButton = showArcActionButton
+        
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.spacing = 60.0
 
-        leftStackView.axis = .horizontal
-        rightStackView.axis = .horizontal
+        firstStackView.axis = .horizontal
+        secondStackView.axis = .horizontal
+        thirdStackView.axis = .horizontal
+        fourthStackView.axis = .horizontal
 
-        leftStackView.distribution = .fillEqually
-        leftStackView.spacing = 10.0
+        firstStackView.distribution = .fillEqually
+        firstStackView.spacing = 10.0
+        
+        let emptyView = UIView()
+        emptyView.backgroundColor = .white
 
-        leftStackView.distribution = .fillEqually
-        leftStackView.spacing = 10.0
+        addSubview(emptyView,
+                   constraints: [
+                    equal(\.bottomAnchor),
+                    equal(\.leadingAnchor),
+                    equal(\.trailingAnchor),
+                    equalDimension(\.heightAnchor, to: 50.0)
+                   ])
 
         stackContainerView.addSubview(stackView)
         stackView.addFitToSuperviewConstraints()
 
-        stackContainerView.backgroundColor = .white
+//        stackContainerView.backgroundColor = .white
 
         addSubview(stackContainerView,
                    constraints: [
@@ -62,9 +80,11 @@ public class TabBarView: UIView {
             equalDimension(\.heightAnchor, to: 75.0)
         ])
 
-        stackView.addArrangedSubview(leftStackView)
-        stackView.addArrangedSubview(rightStackView)
-
+        stackView.addArrangedSubview(firstStackView)
+        stackView.addArrangedSubview(secondStackView)
+        stackView.removeArrangedSubview(thirdStackView)
+        stackView.removeArrangedSubview(fourthStackView)
+        
         actionButton.tintColor = ColorLayout.primary.auto
         actionButton.setImage(ImageLayout.Common.refresh?.template, for: .normal)
         actionButton.translatesAutoresizingMaskIntoConstraints = false
@@ -89,9 +109,20 @@ public class TabBarView: UIView {
 
         path.move(to: CGPoint(x: 0.0, y: 0.0))
         path.addLine(to: CGPoint(x: stackContainerView.frame.width / 2.0 - 30.0, y: 0.0))
-        path.addArc(withCenter: CGPoint(x: stackContainerView.frame.width / 2.0,
-                                        y: 0.0),
-                    radius: 30.0,
+        
+        var arcRadius = 30.0
+        if !showArcActionButton {
+            arcRadius = 0.0
+            stackView.addArrangedSubview(thirdStackView)
+            if showFourthTab{
+                stackView.addArrangedSubview(fourthStackView)
+            }
+            actionButton.removeFromSuperview()
+            willRemoveSubview(actionButton)
+        }
+        
+        path.addArc(withCenter: CGPoint(x: stackContainerView.frame.width / 2.0, y: 0.0),
+                    radius: arcRadius,
                     startAngle: CGFloat(Double.pi),
                     endAngle: 0.0,
                     clockwise: false)
@@ -115,22 +146,36 @@ public class TabBarView: UIView {
 public extension TabBarView {
 
     func removeAllTabs() {
-        for view in leftStackView.arrangedSubviews {
+        for view in firstStackView.arrangedSubviews {
             view.removeFromSuperview()
-            leftStackView.removeArrangedSubview(view)
+            firstStackView.removeArrangedSubview(view)
         }
 
-        for view in rightStackView.arrangedSubviews {
+        for view in secondStackView.arrangedSubviews {
             view.removeFromSuperview()
-            rightStackView.removeArrangedSubview(view)
+            secondStackView.removeArrangedSubview(view)
+        }
+
+        for view in thirdStackView.arrangedSubviews {
+            view.removeFromSuperview()
+            thirdStackView.removeArrangedSubview(view)
+        }
+        
+        for view in fourthStackView.arrangedSubviews {
+            view.removeFromSuperview()
+            fourthStackView.removeArrangedSubview(view)
         }
     }
 
     func add(_ item: TabBarItem, side: TabBarSide) {
-        if side == .left {
-            leftStackView.addArrangedSubview(item)
+        if side == .first {
+            firstStackView.addArrangedSubview(item)
+        } else if side == .second {
+            secondStackView.addArrangedSubview(item)
+        } else if side == .third {
+            thirdStackView.addArrangedSubview(item)
         } else {
-            rightStackView.addArrangedSubview(item)
+            fourthStackView.addArrangedSubview(item)
         }
     }
 

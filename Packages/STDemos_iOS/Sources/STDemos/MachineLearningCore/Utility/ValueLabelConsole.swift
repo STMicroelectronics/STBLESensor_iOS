@@ -11,7 +11,7 @@
 
 import Foundation
 
-class ValueLabelConsole {
+public class ValueLabelConsole {
     private static let REGISTER_INFO =  try! NSRegularExpression(pattern:"<(MLC|FSM_OUTS|STREDL)(\\d+)(_SRC)?>(.*)")
     private static let VALUE_INFO =  try! NSRegularExpression(pattern:"(\\d+)='(.*)'")
 

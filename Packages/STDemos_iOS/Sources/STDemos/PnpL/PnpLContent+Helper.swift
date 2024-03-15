@@ -91,7 +91,12 @@ public extension Array where Element == PnpLContent {
                                      .plain(filter: "description") ]),
 
             ContentFilter(component: "tags_info",
-                          filters: [ .object(name: "sw_tag0", filters: [ "label", "enabled" ])
+                          filters: [
+                            .object(name: "sw_tag0", filters: [ "label", "enabled" ]),
+                            .object(name: "sw_tag1", filters: [ "label", "enabled" ]),
+                            .object(name: "sw_tag2", filters: [ "label", "enabled" ]),
+                            .object(name: "sw_tag3", filters: [ "label", "enabled" ]),
+                            .object(name: "sw_tag4", filters: [ "label", "enabled" ])
                                    ])
         ], filter: .notSensors) ?? []
     }
@@ -103,7 +108,12 @@ public extension Array where Element == PnpLContent {
                                      .plain(filter: "description") ]),
 
             ContentFilter(component: "tags_info",
-                          filters: [ .object(name: "sw_tag0", filters: [ "label", "status" ])
+                          filters: [
+                            .object(name: "sw_tag0", filters: [ "label", "status" ]),
+                            .object(name: "sw_tag1", filters: [ "label", "status" ]),
+                            .object(name: "sw_tag2", filters: [ "label", "status" ]),
+                            .object(name: "sw_tag3", filters: [ "label", "status" ]),
+                            .object(name: "sw_tag4", filters: [ "label", "status" ])
                                    ])
         ], filter: .notSensors) ?? []
     }

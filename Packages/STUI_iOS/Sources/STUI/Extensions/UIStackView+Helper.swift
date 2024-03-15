@@ -29,4 +29,11 @@ public extension UIStackView {
         view.spacing = spacing
         return view
     }
+
+    func removeAllArrangedSubviews() {
+        arrangedSubviews.forEach { view in
+            removeArrangedSubview(view)
+            view.removeFromSuperview()
+        }
+    }
 }

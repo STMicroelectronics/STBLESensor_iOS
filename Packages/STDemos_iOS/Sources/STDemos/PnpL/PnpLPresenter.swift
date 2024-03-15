@@ -25,6 +25,12 @@ open class PnpLPresenter: DemoBasePresenter<PnpLViewController, [PnpLContent]> {
         self.type = type
     }
 
+    open override func viewWillAppear() {
+        super.viewWillAppear()
+
+        requestStatusUpdate()
+    }
+
     open func requestStatusUpdate() {
         BlueManager.shared.sendPnpLCommand(PnpLCommand.status,
                                            to: self.param.node)
@@ -45,7 +51,6 @@ open class PnpLPresenter: DemoBasePresenter<PnpLViewController, [PnpLContent]> {
     open func afterUpdate(from feature: PnPLFeature) {
     }
 
-    @objc
     open func load() {
         demo = .pnpLike
 
@@ -95,7 +100,9 @@ open class PnpLPresenter: DemoBasePresenter<PnpLViewController, [PnpLContent]> {
             if case let .interface(interfaceContent) = dtmi.first(where: { $0.identifier == component.componentSchema }) {
                 var componentViewModels = [any ViewViewModel]()
                 for content in interfaceContent.contents {
-                    if let models = content.viewModels(with: [ component.componentName ?? "n/a" ], name: component.componentDisplayName ?? "n/a", action: { action in
+                    if let models = content.viewModels(with: [ component.componentName ?? "n/a" ], name: component.componentDisplayName ?? "n/a", action: { [weak self] action in
+
+                        guard let self else { return }
 
                         self.handleAction(action: action,
                                           component: component,
@@ -124,7 +131,8 @@ open class PnpLPresenter: DemoBasePresenter<PnpLViewController, [PnpLContent]> {
                                                                                            value: SwitchInput(title: nil,
                                                                                                               value: false,
                                                                                                               isEnabled: true,
-                                                                                                              handleValueChanged: { value in
+                                                                                                              handleValueChanged: { [weak self] value in
+                        guard let self else { return }
                         self.valueChanged(with: value)
                     })), layout: PnpLContent.layout)
 
@@ -134,12 +142,12 @@ open class PnpLPresenter: DemoBasePresenter<PnpLViewController, [PnpLContent]> {
 
             }
 
-            return GroupCellViewModel(childViewModels: viewModels)
+            return GroupCellViewModel(childViewModels: viewModels, isChildrenIndented: true)
         })
 
         director?.reloadData()
 
-        requestStatusUpdate()
+//        requestStatusUpdate()
     }
 
     open func handleAction(action: PnpLContentAction,
@@ -157,7 +165,7 @@ open class PnpLPresenter: DemoBasePresenter<PnpLViewController, [PnpLContent]> {
         case .emptyAction(let codeValue):
             self.sendEmptyAction(with: codeValue)
         case .textAction(let codeValue):
-            self.sendStringAction(with: codeValue)
+            self.sendStringAction(with: codeValue, content: content)
         case .loadFile(let codeValue):
             if case let .command(commandContent) = content {
                 self.loadFile(with: codeValue,
@@ -176,7 +184,7 @@ extension PnpLPresenter: PnpLDelegate {
     }
 }
 
-extension CodeValue {
+public extension CodeValue {
     func jsonCommand(with value: Encodable) -> PnpLCommand? {
 
         if keys.count == 2 {
@@ -216,13 +224,19 @@ extension CodeValue {
 
             let jsonElement = keys[0]
             let jsonParam = keys[1]
-//            let jsonObject = keys[2]
+            let jsonObject = keys[2]
 
             if let value = value {
-                return PnpLCommand.command(element: jsonElement,
-                                           param: jsonParam,
+//                return PnpLCommand.command(element: jsonElement,
+//                                           param: jsonParam,
 //                                           request: jsonObject,
-                                           value: value)
+//                                           value: value)
+                return PnpLCommand.commandWithRequest(
+                    element: jsonElement,
+                    param: jsonParam,
+                    request: jsonObject,
+                    value: value
+                )
             }
         }
 
@@ -265,13 +279,20 @@ private extension PnpLPresenter {
         requestStatusUpdate()
     }
 
-    func sendStringAction(with codeValue: CodeValue<ActionTextInput>) {
+    func sendStringAction(with codeValue: CodeValue<ActionTextInput>, content: PnpLContent) {
 
-        guard let value = codeValue.value.value,
-              let command = codeValue.command(with: PnpLCommandValue.plain(value: value)) else { return }
+        guard let value = codeValue.value.value else { return }
 
-        BlueManager.shared.sendPnpLCommand(command,
-                                           to: self.param.node)
+        if case .command(let pnpLCommandContent) = content,
+           let request = pnpLCommandContent.request,
+           let command = codeValue.command(with: PnpLCommandValue.object(name: request.name, value: AnyEncodable(value)))  {
+
+            BlueManager.shared.sendPnpLCommand(command,
+                                               to: self.param.node)
+        } else if let command = codeValue.command(with: PnpLCommandValue.plain(value: value)) {
+            BlueManager.shared.sendPnpLCommand(command,
+                                               to: self.param.node)
+        }
 
         requestStatusUpdate()
     }
@@ -285,7 +306,9 @@ private extension PnpLPresenter {
 
         for element in options {
             optionMenu.addAction(UIAlertAction(title: element.description,
-                                               style: .default) { _ in
+                                               style: .default) { [weak self] _ in
+
+                guard let self else { return }
 
                 guard case let .object(object) = element,
                       let object = object as? PnpLEnumerativeValue,
@@ -316,7 +339,9 @@ private extension PnpLPresenter {
 
         for (index, element) in options.enumerated() {
             optionMenu.addAction(UIAlertAction(title: element.description,
-                                               style: .default) { _ in
+                                               style: .default) { [weak self] _ in
+
+                guard let self else { return }
 
                 self.director?.updateVisibleCells(with: [CodeValue<Int>(keys: codeValue.keys, value: index)])
                 //                self.requestStatusUpdate()
@@ -358,9 +383,16 @@ private extension PnpLPresenter {
 
                 StandardHUD.shared.show(with: "Loading file...")
                 BlueManager.shared.sendPnpLCommand(command,
-                                                   to: self.param.node)
+                                                   to: self.param.node, progress: { index, parts in
 
-                self.requestStatusUpdate()
+                    Logger.debug(text: "\(index)/\(parts)")
+
+                }) { [weak self] in
+
+                    StandardHUD.shared.dismiss()
+                    self?.requestStatusUpdate()
+
+                }
             }
         }
     }

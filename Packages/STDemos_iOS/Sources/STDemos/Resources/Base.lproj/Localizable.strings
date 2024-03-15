@@ -157,7 +157,7 @@
 "st_neaiAnomalyDetection_aiengine_state_ok" = "OK";
 "st_neaiAnomalyDetection_aiengine_state_unknownError" = "UNKNOWN ERROR";
 "st_neaiAnomalyDetection_results_status_anomaly" = "ANOMALY";
-"st_neaiAnomalyDetection_results_status_normal" = "ANOMALY";
+"st_neaiAnomalyDetection_results_status_normal" = "NORMAL";
 "st_neaiAnomalyDetection_results_status_null" = "NULL";
 "st_neaiAnomalyDetection_text_aiengineTitle" = "AI Engine";
 "st_neaiAnomalyDetection_text_commands" = "NEAI Commands";

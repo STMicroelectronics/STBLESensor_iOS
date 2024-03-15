@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "slow_telemetry_bus_voltage.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -57,10 +57,12 @@ final class BoardViewController: TableNoViewController<BoardDelegate> {
         buttonStackView.backgroundColor = .white
         bottomStackView.backgroundColor = .white
 
-        emptyView.activate(constraints: [
-            equal(\.widthAnchor, toView: secondEmptyView, withAnchor: \.widthAnchor)
-        ])
-
+//        emptyView.activate(constraints: [
+//            equal(\.widthAnchor, toView: secondEmptyView, withAnchor: \.widthAnchor)
+//        ])
+        emptyView.setDimensionContraints(width: 10)
+        secondEmptyView.setDimensionContraints(width: 10)
+        
         view.addSubview(bottomStackView)
         bottomStackView.activate(constraints: [
             equal(\.leadingAnchor),

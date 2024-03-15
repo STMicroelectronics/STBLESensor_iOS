@@ -28,16 +28,35 @@ open class PickerView: UIView {
 
         addSubviewAndFit(stackView)
 
-        stackView.addArrangedSubview(titleLabel)
-        stackView.addArrangedSubview(valueLabel)
-        stackView.addArrangedSubview(actionButton)
+        let horizzontalStackview = UIStackView.getHorizontalStackView(withSpacing: 4.0,
+                                                                 views: [
+                                                                    UIView.empty(width: 4.0),
+                                                                    valueLabel,
+                                                                    actionButton,
+                                                                    UIView.empty(width: 4.0)
+                                                                 ])
+
+        horizzontalStackview.layer.borderColor = ColorLayout.gray.dark.withAlphaComponent(0.6).cgColor
+        horizzontalStackview.layer.borderWidth = 1.0
+        horizzontalStackview.layer.cornerRadius = 8.0
+
+        let verticalStackview = UIStackView.getVerticalStackView(withSpacing: 4.0,
+                                                                 views: [
+                                                                    titleLabel,
+                                                                    horizzontalStackview.embedInView(with: UIEdgeInsets(top: 2.0, left: 2.0, bottom: 2.0, right: 2.0))
+                                                                 ])
+
+//        stackView.addArrangedSubview(titleLabel)
+//        stackView.addArrangedSubview(valueLabel)
+        stackView.addArrangedSubview(verticalStackview)
 
         stackView.activate(constraints: [
-            equalDimension(\.heightAnchor, to: 40.0)
+            equalDimension(\.heightAnchor, to: 60.0)
         ])
 
         actionButton.activate(constraints: [
-            equalDimension(\.widthAnchor, to: 40.0)
+            equalDimension(\.widthAnchor, to: 30.0),
+            equalDimension(\.heightAnchor, to: 30.0)
         ])
     }
 

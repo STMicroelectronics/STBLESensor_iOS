@@ -83,7 +83,7 @@ extension HSDPresenter: TabBarDelegate {
                         self.view.add(leftController)
                     }
 
-                }), side: .left)
+                }), side: .first)
 
                 leftController.stTabBarView?.add(TabBarItem(with: "Tags",
                                              image: ImageLayout.Common.info?.template,
@@ -100,7 +100,7 @@ extension HSDPresenter: TabBarDelegate {
                         self.view.title = "Tags"
                         self.view.add(rightController)
                     }
-                }), side: .right)
+                }), side: .second)
 
                 leftController.stTabBarView?.setMainAction { _ in
                     leftPresenter.logStartStop()

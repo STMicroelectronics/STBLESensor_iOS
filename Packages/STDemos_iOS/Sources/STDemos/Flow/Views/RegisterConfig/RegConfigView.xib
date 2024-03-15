@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="RegConfigView" customModule="STDemos">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="MFz-Cd-FoN">
+                    <rect key="frame" x="24" y="83" width="345" height="107"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Configuration File" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dO-jp-H7D">
+                            <rect key="frame" x="0.0" y="0.0" width="345" height="20.333333333333332"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwM-EG-SxU">
+                            <rect key="frame" x="0.0" y="36.333333333333329" width="345" height="34.333333333333329"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Select a .UCF File" titleAlignment="automatic"/>
+                            <connections>
+                                <action selector="ucfFileButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="Xkh-fY-znh"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Labels" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2J-l7-Y1e">
+                            <rect key="frame" x="0.0" y="86.666666666666657" width="345" height="20.333333333333329"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hGA-wT-LH5">
+                    <rect key="frame" x="24" y="214" width="345" height="540"/>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="MFz-Cd-FoN" secondAttribute="trailing" constant="24" id="20C-40-Pt3"/>
+                <constraint firstItem="MFz-Cd-FoN" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="24" id="4HF-Sg-kMT"/>
+                <constraint firstItem="hGA-wT-LH5" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="UfV-dl-1Sh"/>
+                <constraint firstItem="MFz-Cd-FoN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="ZZr-Ek-41b"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="hGA-wT-LH5" secondAttribute="bottom" constant="64" id="lAB-bf-tY8"/>
+                <constraint firstItem="hGA-wT-LH5" firstAttribute="top" secondItem="MFz-Cd-FoN" secondAttribute="bottom" constant="24" id="syu-fo-bBU"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hGA-wT-LH5" secondAttribute="trailing" constant="24" id="wiq-JJ-Fwp"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="configFileTitle" destination="4dO-jp-H7D" id="IkL-2z-6BT"/>
+                <outlet property="labelStackView" destination="hGA-wT-LH5" id="QOs-MI-UkT"/>
+                <outlet property="labelsTitle" destination="r2J-l7-Y1e" id="OgL-q8-MCh"/>
+                <outlet property="ucfFileButton" destination="mwM-EG-SxU" id="6cZ-bP-YQc"/>
+            </connections>
+            <point key="canvasLocation" x="59" y="-11"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

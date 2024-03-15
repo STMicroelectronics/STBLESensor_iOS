@@ -12,11 +12,11 @@
 import UIKit
 import STBlueSDK
 
-protocol MachineLearningCoreDelegate: AnyObject {
+public protocol MachineLearningCoreDelegate: AnyObject {
 
     func load()
     
-    func update(with feature: MachineLearningCoreFeature)
+    func updateMlcDemo(with feature: MachineLearningCoreFeature)
     
     func retrieveLabelData()
 

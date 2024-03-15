@@ -65,6 +65,9 @@ public enum Demo: String, CaseIterable, Codable {
     case coSensor
     case sdLogging
     case aiLogging
+//    case rawPnPL
+//    case smartMotorControl
+//    case wbsOtaFuota
 }
 
 public extension Demo {
@@ -170,6 +173,12 @@ public extension Demo {
             return "SD Logging"
         case .aiLogging:
             return "AI Logging"
+//        case .rawPnPL:
+//            return "Raw PnPL Controlled"
+//        case .smartMotorControl:
+//            return "Smart Motor Control"
+//        case .wbsOtaFuota:
+//            return "FUOTA"
         }
     }
 
@@ -275,6 +284,12 @@ public extension Demo {
             return "Configure and control a simple sensors data log"
         case .aiLogging:
             return "Configure, control and tag a simple sensors data log"
+//        case .rawPnPL:
+//            return "Raw Feature controlled using PnP-Like messages defined by a DTDL-Model"
+//        case .smartMotorControl:
+//            return "Motor Control Integration with high speed sensors data log configuration, control and tagging"
+//        case .wbsOtaFuota:
+//            return "Firmware Update Over the Air for WB/WBA boards"
         }
     }
 
@@ -380,6 +395,12 @@ public extension Demo {
             return ImageLayout.image(with: "demo_multiple_log", in: STUI.bundle)
         case .aiLogging:
             return ImageLayout.image(with: "demo_multiple_log", in: STUI.bundle)
+//        case .rawPnPL:
+//            return ImageLayout.image(with: "demo_raw_pnpl", in: STUI.bundle)
+//        case .smartMotorControl:
+//            return ImageLayout.image(with: "demo_smart_motor_control", in: STUI.bundle)
+//        case .wbsOtaFuota:
+//            return ImageLayout.image(with: "demo_raw_pnpl", in: STUI.bundle)
         default:
             return ImageLayout.image(with: "img_question_mark", in: STUI.bundle)
         }
@@ -390,19 +411,19 @@ public extension Demo {
         case .environmental:
             return [ .environmental ]
         case .plot:
-            return [ .environmental ]
+            return [ .graphs, .log ]
         case .fft:
-            return [ .environmental ]
+            return [ .predictiveMaintenance, .graphs ]
         case .neaiAnomalyDetection:
             return [ .ai, .predictiveMaintenance ]
         case .neaiClassification:
-            return [ .ai, .predictiveMaintenance ]
+            return [ .ai ]
         case .predictiveMaintenance:
             return [ .predictiveMaintenance, .status ]
         case .highSpeedDataLog:
             return [ .dataLog, .ai ]
         case .highSpeedDataLog2:
-            return [ .environmental ]
+            return [ .dataLog, .ai ]
         case .pnpLike:
             return [ .control, .configuration ]
         case .extendedConfiguration:
@@ -410,7 +431,7 @@ public extension Demo {
         case .switchDemo:
             return [ .control ]
         case .ledControl:
-            return [ .environmental ]
+            return [ .control ]
         case .heartRate:
             return [ .health ]
         case .blueVoice:
@@ -420,7 +441,7 @@ public extension Demo {
         case .audioSourceLocalization:
             return [ .audio ]
         case .speechToText:
-            return [ .environmental ]
+            return [ .audio, .cloud ]
         case .audioClassification:
             return [ .ai, .audio ]
         case .activityRecognition:
@@ -442,9 +463,9 @@ public extension Demo {
         case .jsonNfc:
             return [ .configuration ]
 //        case .binaryContent:
-//            return [ .environmental ]
+//            return [ .binaryContent ]
 //        case .piano:
-//            return [ .environmental ]
+//            return [ .audio ]
         case .pedometer:
             return [ .inertialSensors ]
         case .level:
@@ -486,7 +507,13 @@ public extension Demo {
         case .sdLogging:
             return [ .log ]
         case .aiLogging:
-            return [ .log ]
+            return [ .log, .ai ]
+//        case .rawPnPL:
+//            return [ .control ]
+//        case .smartMotorControl:
+//            return [ .control, .dataLog ]
+//        case .wbsOtaFuota:
+//            return [ .fota ]
         }
     }
 
@@ -510,9 +537,11 @@ public extension Demo {
                 SensorFusionFeature.self,
                 SensorFusionCompactFeature.self,
                 MicLevelFeature.self,
+                MotionIntensityFeature.self,
                 ProximityFeature.self,
                 PressureFeature.self,
                 TemperatureFeature.self,
+                COSensorFeature.self,
                 EulerAngleFeature.self,
                 MemsNormFeature.self,
 //                QVARFeature.self,
@@ -520,10 +549,7 @@ public extension Demo {
                 EventCounterFeature.self
             ]
         case .fft:
-            return [
-                FFTAmplitudeFeature.self,
-                MotorTimeParametersFeature.self
-            ]
+            return [ FFTAmplitudeFeature.self ] /// MotorTimeParametersFeature.self
         case .neaiAnomalyDetection:
             return [ NEAIAnomalyDetectionFeature.self ]
         case .neaiClassification:
@@ -612,18 +638,12 @@ public extension Demo {
         case .level:
             return [ EulerAngleFeature.self ]
         case .compass:
-            return [
-                CompassFeature.self,
-                EulerAngleFeature.self
-            ]
+            return [ CompassFeature.self ] /// EulerAngleFeature.self
         case .memsSensorFusion:
             return [
                 SensorFusionCompactFeature.self,
-                SensorFusionFeature.self,
-                ProximityFeature.self,
-                AccelerationEventFeature.self,
-                
-            ]
+                SensorFusionFeature.self
+            ] /// ProximityFeature.self, AccelerationEventFeature.self,
         case .memsGesture:
             return [ MemsGestureFeature.self ]
         case .motionAlgorithm:
@@ -652,10 +672,24 @@ public extension Demo {
             return []
         case .battery:
             return [ BatteryFeature.self ]
-        case .coSensor:
-            return [ COSensorFeature.self ]
+//        case .rawPnPL:
+//            return [
+//                PnPLFeature.self,
+//                RawPnPLFeature.self
+//            ]
+//        case .smartMotorControl:
+//            return [
+//                HSDFeature.self,
+//                PnPLFeature.self
+//            ]
+//        case .wbsOtaFuota:
+//            return [ FirmwareUpgradeWB.self ]
+//        case .cloudAzureIoTCentral:
+//            return []
         case .sdLogging:
             return [ SDLoggingFeature.self ]
+        case .coSensor:
+            return [ COSensorFeature.self ]
         case .aiLogging:
             return [ AILoggingFeature.self ]
         }
@@ -674,6 +708,7 @@ public extension Demo {
     
     var couldBeEnableOutside: Bool {
         switch self {
+//        case .cloud, .flow, .textual, .smartMotorControl:
         case .cloud, .flow, .textual:
             return true
         default:
@@ -727,13 +762,14 @@ public extension Demo {
         case .multiNN:
             return MultiNeuralNetworkPresenter(param: DemoParam<Void>(node:node))
         case .machineLearningCore:
-            return MachineLearningCorePresenter(param: DemoParam<Void>(node: node))
+            return MachineLearningCorePresenter(param: DemoParam<String>(node: node, param: nil))
         case .finiteStateMachine:
             return FiniteStateMachinePresenter(param: DemoParam<Void>(node: node))
         case .stredl:
             return STREDLPresenter(param: DemoParam<Void>(node: node))
         case .flow:
-            return LegacyPresenter(param: DemoParam<String>(node: node, param: "Flow"))
+//            return LegacyPresenter(param: DemoParam<String>(node: node, param: "Flow"))
+            return FlowMainPresenter(param: DemoParam<Void>(node: node))
         case .eventCounter:
             return EventCounterPresenter(param: DemoParam<Void>(node: node))
         case .gestureNavigation:
@@ -788,6 +824,12 @@ public extension Demo {
             return LegacyPresenter(param: DemoParam<String>(node: node, param: "AI Logging"))
         case .speechToText:
             return LegacyPresenter(param: DemoParam<String>(node: node, param: "Speech To Text"))
+//        case .rawPnPL:
+//            return LegacyPresenter(param: DemoParam<String>(node: node, param: "RawPnPL"))
+//        case .smartMotorControl:
+//            return SmartMotorControlPresenter(param: DemoParam<Void>(node: node))
+//        case .wbsOtaFuota:
+//            return LegacyPresenter(param: DemoParam<String>(node: node, param: "FOTA"))
         }
     }
 
@@ -881,6 +923,7 @@ public enum DemoGroup: String, CaseIterable {
     case predictiveMaintenance = "Predictive Maintenance"
     case graphs = "Graphs"
     case status = "Status"
+    case fota = "FOTA"
 }
 
 public struct PnplDemoConfiguration {

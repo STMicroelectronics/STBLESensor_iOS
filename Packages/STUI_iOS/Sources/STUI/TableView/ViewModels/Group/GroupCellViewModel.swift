@@ -21,13 +21,15 @@ public class GroupCellViewModel<ChildViews>: BaseCellViewModel<Void, GroupTableV
     var isOpen: Bool = false
     var isCard: Bool = false
     var isExpandEnabled: Bool = true
+    var isChildrenIndented: Bool = false
 
-    public init(childViewModels: ChildViewModels, layout: Layout? = nil, isOpen: Bool = false, isCard: Bool = true, isExpandEnabled: Bool = true) {
+    public init(childViewModels: ChildViewModels, layout: Layout? = nil, isOpen: Bool = false, isCard: Bool = true, isExpandEnabled: Bool = true, isChildrenIndented: Bool = false) {
         self.childViewModels = childViewModels
         self.layout = layout
         self.isOpen = isOpen
         self.isCard = isCard
         self.isExpandEnabled = isExpandEnabled
+        self.isChildrenIndented = isChildrenIndented
         super.init(param: Void())
     }
 
@@ -58,14 +60,48 @@ public class GroupCellViewModel<ChildViews>: BaseCellViewModel<Void, GroupTableV
             currentView.removeFromSuperview()
         }
 
+
+        let childrenStackView = UIStackView()
+
+        childrenStackView.spacing = 2.0
+        childrenStackView.axis = .vertical
+
         for (index, currentViewModel) in childViewModels.enumerated() {
+
+            guard (currentViewModel as? ImageDetailViewModel != nil) || (currentViewModel as? SimpleImageDetailViewModel != nil) else {
+                continue;
+            }
 
             let currentView = currentViewModel.make()
             view.stackView.addArrangedSubview(currentView)
 
             currentViewModel.configure(view: currentView)
 
-            currentView.isHidden = index == 0 ? false : !self.isOpen
+            currentView.isHidden = false
+        }
+
+        let horizzontalStackView = UIStackView.getHorizontalStackView(withSpacing: 0.0,
+                                                                      views: [
+                                                                        UIView.empty(width: isChildrenIndented ? 30.0 : 0.0),
+                                                                        childrenStackView,
+                                                                        UIView.empty(width: isChildrenIndented ? 5.0 : 0.0)
+                                                                      ])
+
+        horizzontalStackView.isHidden = !self.isOpen
+        view.stackView.addArrangedSubview(horizzontalStackView)
+
+        for (index, currentViewModel) in childViewModels.enumerated() {
+
+            guard (currentViewModel as? ImageDetailViewModel == nil) && (currentViewModel as? SimpleImageDetailViewModel == nil) else {
+                continue;
+            }
+
+            let currentView = currentViewModel.make()
+            childrenStackView.addArrangedSubview(currentView)
+
+            currentViewModel.configure(view: currentView)
+
+            currentView.isHidden = false
         }
 
         self.tapGesture = UITapGestureRecognizerWithClosure(closure: {  [weak self] tap in
@@ -106,9 +142,23 @@ public class GroupCellViewModel<ChildViews>: BaseCellViewModel<Void, GroupTableV
     public override func update(view: GroupTableViewCell, values: [any KeyValue]) {
 
         let views = view.stackView.arrangedSubviews
+        guard let childrenContainerStackView = view.stackView.arrangedSubviews.last as? UIStackView,
+              let childrenStackView = childrenContainerStackView.arrangedSubviews[1] as? UIStackView else {
+            return
+        }
+
         for (index, view) in views.enumerated() {
-            let viewModel = childViewModels[index]
-            viewModel.update(view: view, values: values)
+            if index == 0 {
+                let viewModel = childViewModels[index]
+                viewModel.update(view: view, values: values)
+            }
+        }
+
+        for (index, view) in childrenStackView.arrangedSubviews.enumerated() {
+            if childViewModels.count > index + 1 {
+                let viewModel = childViewModels[index + 1]
+                viewModel.update(view: view, values: values)
+            }
         }
     }
 

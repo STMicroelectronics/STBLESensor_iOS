@@ -50,14 +50,23 @@ extension StandardNavigator: Navigator {
     }
 
     // MARK: Presentation & navigation
+
     public func present(presenter: Presenter, embeddedNav: Bool = false) {
+        self.present(presenter: presenter, embeddedNav: embeddedNav, modalPresentationStyle: .automatic, animated: false)
+    }
+
+    public func present(presenter: Presenter, embeddedNav: Bool = false, modalPresentationStyle: UIModalPresentationStyle = .automatic, animated: Bool = true) {
 
         if embeddedNav {
-            window.rootViewController?.topMostViewController?.present(presenter.start().embeddedInNav(),
-                                                                      animated: true)
+            let controller = presenter.start().embeddedInNav()
+            controller.modalPresentationStyle = modalPresentationStyle
+            window.rootViewController?.topMostViewController?.present(controller,
+                                                                      animated: animated)
         } else {
-            window.rootViewController?.topMostViewController?.present(presenter.start(),
-                                                                      animated: true)
+            let controller = presenter.start().embeddedInNav()
+            controller.modalPresentationStyle = modalPresentationStyle
+            window.rootViewController?.topMostViewController?.present(controller,
+                                                                      animated: animated)
         }
     }
 
@@ -100,19 +109,23 @@ extension StandardNavigator: Navigator {
         dismiss(animated: true)
     }
 
+    public func dismiss(to: Swift.AnyClass) {
+        dismiss(toRoot: false, to: to, animated: true) {}
+    }
+
     public func dismiss(animated: Bool) {
         dismiss(animated: animated) {}
     }
 
     public func dismissToRoot(animated: Bool, completion: @escaping () -> Void) {
-        dismiss(toRoot: true, animated: animated, completion: completion)
+        dismiss(toRoot: true, to: nil, animated: animated, completion: completion)
     }
 
     public func dismiss(animated: Bool, completion: @escaping () -> Void) {
-        dismiss(toRoot: false, animated: animated, completion: completion)
+        dismiss(toRoot: false, to: nil, animated: animated, completion: completion)
     }
 
-    public func dismiss(toRoot: Bool = false, animated: Bool, completion: @escaping () -> Void) {
+    public func dismiss(toRoot: Bool = false, to: Swift.AnyClass? = nil, animated: Bool, completion: @escaping () -> Void) {
         guard Thread.isMainThread else {
             DispatchQueue.main.async {
                 self.dismiss(toRoot: toRoot, animated: true, completion: completion)
@@ -123,10 +136,11 @@ extension StandardNavigator: Navigator {
 
         guard let viewController = currentRootViewController else { return }
 
-        if viewController.presentedViewController != nil {
-            viewController.presentedViewController?.dismiss(animated: animated, completion: completion)
-            return
-        }
+
+//        if let controller = viewController.topMostViewController {
+//            controller.dismiss(animated: animated, completion: completion)
+//            return
+//        }
 
         let children = viewController.leafViewController?.children
             .map { $0 as? Childable }
@@ -140,8 +154,9 @@ extension StandardNavigator: Navigator {
             }
         }
 
-        if viewController.presentingViewController != nil {
-            viewController.dismiss(animated: animated, completion: completion)
+        if viewController.presentingViewController != nil,
+           let controller = viewController.topMostViewController {
+            controller.dismiss(animated: animated, completion: completion)
             return
         }
 
@@ -156,6 +171,8 @@ extension StandardNavigator: Navigator {
                         nvc.popToRootViewController(animated: animated)
                         CATransaction.commit()
 
+                    } else if let to = to {
+                        nvc.backToViewController(viewController: to)
                     } else {
                         nvc.popViewController(animated: animated, completion: completion)
                     }
@@ -165,6 +182,8 @@ extension StandardNavigator: Navigator {
                 completion()
                 return
             }
+
+            return
         }
     }
 
@@ -240,4 +259,17 @@ extension StandardNavigator: UINavigationControllerDelegate {
                                      to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return currentTransition
     }
+}
+
+extension UINavigationController {
+
+    func backToViewController(viewController: Swift.AnyClass) {
+        for element in viewControllers as Array {
+            if element.isKind(of: viewController) {
+                self.popToViewController(element, animated: true)
+                break
+            }
+        }
+    }
+
 }

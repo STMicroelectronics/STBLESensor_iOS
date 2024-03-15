@@ -47,7 +47,7 @@ public class PickerViewViewModel: BaseViewModel<CodeValue<PickerInput>, PickerVi
     public override func configure(view: PickerView) {
 
         if let layout = layout {
-            layout.textLayout?.apply(to: view.titleLabel)
+            layout.textLayout?.weight(.bold).apply(to: view.titleLabel)
         }
 
         view.titleLabel.text = param?.value.title
@@ -63,7 +63,7 @@ public class PickerViewViewModel: BaseViewModel<CodeValue<PickerInput>, PickerVi
 
         guard let index = param?.value.selection else { return }
 
-        if case let .int(indexValue) = index {
+        if case let .int(indexValue) = index, let options = param?.value.options, options.count > indexValue {
             view.valueLabel.text = param?.value.options?[indexValue].description
         }
     }
@@ -74,7 +74,7 @@ public class PickerViewViewModel: BaseViewModel<CodeValue<PickerInput>, PickerVi
 
         param?.value.selection = index
 
-        if case let .int(indexValue) = index {
+        if case let .int(indexValue) = index, let options = param?.value.options, options.count > indexValue {
             view.valueLabel.text = param?.value.options?[indexValue].description
         }
     }

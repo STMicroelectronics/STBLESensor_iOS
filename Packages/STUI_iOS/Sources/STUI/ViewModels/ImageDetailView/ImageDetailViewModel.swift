@@ -34,11 +34,14 @@ public class ImageDetailViewModel: BaseViewModel<CodeValue<ImageDetail>, ImageDe
             layout.textLayout?.apply(to: view.subtitleLabel)
         }
 
-        view.imageView.contentMode = .scaleAspectFit
+        view.imageView.contentMode = .center
+        view.disclosureImageView.contentMode = .center
 
         view.titleLabel.text = param?.value.title
         view.subtitleLabel.text = param?.value.subtitle
-        view.imageView.image = param?.value.image
+        view.imageView.image = param?.value.image?.withTintColor(ColorLayout.primary.light)
+            .scalePreservingAspectRatio(targetSize: ImageSize.medium).original
+        view.disclosureImageView.image = ImageLayout.Common.arrowDown?.scalePreservingAspectRatio(targetSize: ImageSize.extraSmall)
 
         if let chilView = view.childView {
             view.horizzontalStackView.removeArrangedSubview(chilView)

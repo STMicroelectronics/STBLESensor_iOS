@@ -17,20 +17,23 @@ public protocol HUD {
     func configure()
 
     func show(with text: String?)
+    func show(with text: String?, notDismissable: Bool)
     func dismiss()
+    func dismiss(force: Bool)
     func showProgress(with text: String?, progress: Float)
 }
 
-public struct StandardHUD: HUD {
+public class StandardHUD: HUD {
 
     public static let shared = StandardHUD()
+    private(set) var isNotDismissable: Bool = false
 
     public func configure() {
         ProgressHUD.animationType = .circleStrokeSpin
         ProgressHUD.colorHUD = .systemGray
         ProgressHUD.colorBackground = .clear
-        ProgressHUD.colorAnimation = ColorLayout.secondary.light
-        ProgressHUD.colorProgress = ColorLayout.secondary.light
+        ProgressHUD.colorAnimation = ColorLayout.primary.light
+        ProgressHUD.colorProgress = ColorLayout.primary.light
         ProgressHUD.colorStatus = .label
         ProgressHUD.fontStatus = .boldSystemFont(ofSize: 24)
 //        ProgressHUD.imageSuccess = UIImage(named: "success.png")
@@ -38,10 +41,31 @@ public struct StandardHUD: HUD {
     }
 
     public func show(with text: String? = nil) {
+        show(with: text, notDismissable: false)
+    }
+
+    public func show(with text: String? = nil, notDismissable: Bool) {
+        if isNotDismissable {
+            return
+        }
+
+        isNotDismissable = notDismissable
         ProgressHUD.show(text, interaction: false)
     }
 
+    public func dismiss(force: Bool) {
+        if force {
+            isNotDismissable = false
+        }
+
+        dismiss()
+    }
+
     public func dismiss() {
+        if isNotDismissable {
+            return
+        }
+
         ProgressHUD.dismiss()
     }
 

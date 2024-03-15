@@ -15,11 +15,12 @@ import STBlueSDK
 import STDemos
 import TagListView
 
-final class DemoGroupFilterPresenter: BasePresenter<DemoGroupFilterViewController, [DemoGroup]> {
+final class DemoGroupFilterPresenter: BasePresenter<DemoGroupFilterViewController, FilterParameters> {
     var tempFilter: [DemoGroup] = [DemoGroup]()
-    var completion: (([DemoGroup]) -> Void)?
+    var tempOrderFilter: OrderByGroup = OrderByGroup.none
+    var completion: ((FilterParameters) -> Void)?
 
-    convenience init(param: [DemoGroup], completion: (([DemoGroup]) -> Void)?) {
+    convenience init(param: FilterParameters, completion: ((FilterParameters) -> Void)?) {
         self.init(param: param)
         self.completion = completion
     }
@@ -31,7 +32,7 @@ extension DemoGroupFilterPresenter: DemoGroupFilterDelegate {
     func load() {
         view.configureView()
 
-        tempFilter.append(contentsOf: param)
+        tempFilter.append(contentsOf: param.demosGroup)
 
         DemoGroup.allCases.forEach { [weak self] demoGroup in
 
@@ -47,7 +48,36 @@ extension DemoGroupFilterPresenter: DemoGroupFilterDelegate {
                 }
             })
         }
+        
+        tempOrderFilter = param.orderingBy
+        
+        OrderByGroup.allCases.forEach { [weak self] orderGroup in
+            
+            let orderTagView = self?.view.orderListView.addTag(orderGroup.rawValue)
+            
+            if self?.tempOrderFilter.rawValue == orderGroup.rawValue {
+                orderTagView?.isSelected = true
+            } else {
+                orderTagView?.isSelected = false
+            }
 
+            orderTagView?.onTap({ orderTagView in
+                self?.resetOrderByFilter()
+                orderTagView.isSelected = !orderTagView.isSelected
+                if orderTagView.isSelected {
+                    self?.tempOrderFilter = orderGroup
+                } else {
+                    self?.tempOrderFilter = .none
+                }
+            })
+        }
+    }
+    
+    func resetOrderByFilter() {
+        self.view.orderListView.tagViews.forEach{ tv in
+            tv.isSelected = false
+        }
+        self.tempOrderFilter = .none
     }
 
     func cancel() {
@@ -56,7 +86,7 @@ extension DemoGroupFilterPresenter: DemoGroupFilterDelegate {
 
     func done() {
         guard let completion = completion else { return }
-        completion(tempFilter)
+        completion(FilterParameters(orderingBy: tempOrderFilter, demosGroup: tempFilter))
         
         self.view.dismiss(animated: true)
     }

@@ -11,9 +11,9 @@
 
 import Foundation
 
-class ValueLabelMapper{
+public class ValueLabelMapper{
     
-    typealias RegisterIndex=UInt8
+    public typealias RegisterIndex=UInt8
     
     public var registerName:[RegisterIndex:String] = [:]
     public var labelValue:[RegisterIndex:[UInt8:String]] = [:]
@@ -34,6 +34,10 @@ class ValueLabelMapper{
     
     func algorithmName(register:RegisterIndex) -> String?{
         return registerName[register]
+    }
+    
+    func getLabelValues(index: RegisterIndex) -> [UInt8:String]? {
+        return labelValue[index]
     }
     
 }

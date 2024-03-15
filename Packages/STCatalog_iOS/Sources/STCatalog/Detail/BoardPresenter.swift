@@ -16,10 +16,12 @@ import STDemos
 
 public struct BoardConf {
     let board: Board
+    let firmwareTypesFilter: [String]?
     let isDemoListVisible: Bool
 
-    public init(board: Board, isDemoListVisible: Bool) {
+    public init(board: Board, firmwareTypesFilter: [String]?, isDemoListVisible: Bool) {
         self.board = board
+        self.firmwareTypesFilter = firmwareTypesFilter
         self.isDemoListVisible = isDemoListVisible
     }
 }
@@ -53,7 +55,8 @@ extension BoardPresenter: BoardDelegate {
 
         director?.elements.append(BoardHeaderViewModel(param: param.board, firmwareHandler: { [weak self] in
             guard let self else { return }
-            self.view.navigationController?.show(FirmwareListPresenter(param: self.param.board).start(), sender: nil)
+            self.view.navigationController?.show(FirmwareListPresenter(param: FirmwareFilter(board: self.param.board,
+                                                                                             firmwareTypesFilter: self.param.firmwareTypesFilter)).start(), sender: nil)
         }, datasheetsHandler: { [weak self] in
             guard let self else { return }
             self.view.open(url: self.param.board.datasheetsUrl ?? "https://www.st.com/")

@@ -62,21 +62,29 @@ public class BoardHeaderCell: BaseTableViewCell {
         divisor.backgroundColor = ColorLayout.stGray5.light
         divisor.setDimensionContraints(height: 1)
 
+        if #available(iOS 15.0, *) { firmwareButton.configuration?.buttonSize = .large }
         Buttonlayout.textSecondaryColor.apply(to: firmwareButton, text: Localizer.CatalogDetail.Action.firmware.localized)
         Buttonlayout.textSecondaryColor.apply(to: datasheetButton, text: Localizer.CatalogDetail.Action.datasheets.localized)
 
-        let actionStackView = UIStackView.getHorizontalStackView(withSpacing: 20.0,
+        let actionStackView = UIStackView.getHorizontalStackView(withSpacing: 0.0,
                                                                  views: [
                                                                     firmwareButton,
-                                                                    datasheetButton,
-                                                                    UIView()
+//                                                                    UIView(),
+                                                                    datasheetButton
                                                                  ])
+        actionStackView.setDimensionContraints(height: 60)
+        actionStackView.distribution = .fillProportionally
 
-        let stackView = UIStackView.getVerticalStackView(withSpacing: 10,
+        let boardStackView = UIStackView.getVerticalStackView(withSpacing: 10,
                                                          views: [
                                                             titleStackView,
                                                             imageContainerView,
-                                                            descriptionLabel.embedInView(with: .standardEmbed),
+                                                            descriptionLabel.embedInView(with: .standardEmbed)
+                                                         ])
+        
+        let stackView = UIStackView.getVerticalStackView(withSpacing: 0,
+                                                         views: [
+                                                            boardStackView,
                                                             divisor,
                                                             actionStackView
                                                          ])

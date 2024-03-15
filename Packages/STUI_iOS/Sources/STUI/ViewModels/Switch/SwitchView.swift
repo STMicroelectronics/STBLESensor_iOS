@@ -25,9 +25,17 @@ open class SwitchView: UIView {
 
         addSubviewAndFit(stackView)
 
+        let embeddedView = UIView()
+        embeddedView.addSubview(enableSwitch,
+                                constraints: [
+                                    equal(\.leadingAnchor, constant: 5.0),
+                                    equal(\.trailingAnchor, constant: -5.0),
+                                    equal(\.centerYAnchor)
+                                ])
+
         stackView.addArrangedSubview(titleLabel)
-        stackView.addArrangedSubview(enableSwitch)
         stackView.addArrangedSubview(emptyView)
+        stackView.addArrangedSubview(embeddedView)
 
         stackView.activate(constraints: [
             equalDimension(\.heightAnchor, to: 40.0)

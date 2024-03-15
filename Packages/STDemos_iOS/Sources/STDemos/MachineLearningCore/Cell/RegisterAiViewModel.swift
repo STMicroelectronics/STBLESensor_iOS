@@ -15,29 +15,34 @@ import STCore
 import UIKit
 
 public class RegisterAiViewModel: BaseCellViewModel<RegisterAiData, RegisterAiCell> {
-
-//    override init(param: RegisterAiData, slideActions: ) {
-//        super.init(param: param, slideActions: nil)
-//    }
-
-//    required init() {
-//        fatalError("init() has not been implemented")
-//    }
     
     public override func configure(view: RegisterAiCell) {
         TextLayout.title2.apply(to: view.registerTitleTextLabel)
         TextLayout.title.size(16.0).apply(to: view.registerAlgorithmTextLabel)
         TextLayout.title.size(14.0).apply(to: view.registerValueTextLabel)
 
-        if let labelledValue = param?.labelledValue {
-            view.registerImageView.image = getAiValueImage(labelledValue)
-        } else {
-            view.registerImageView.image = ImageLayout.image(with: "MLC_icon", in: .module)?.maskWithColor(color: ColorLayout.primary.auto)
+        if let param = param {
+            
+            view.registerTitleTextLabel.text = param.title
+            
+            if let labelledValue = param.labelledValue {
+                view.registerImageView.image = getAiValueImage(labelledValue)
+                if let intRawValue = Int(param.rawValue) {
+                    view.registerValueTextLabel.text = "Value: \(labelledValue) - 0x\(String(intRawValue, radix: 16))"
+                }
+            } else {
+                view.registerImageView.image = ImageLayout.image(with: "mlc_new_icon", in: .module)?.maskWithColor(color: ColorLayout.primary.auto)
+                if let intRawValue = Int(param.rawValue) {
+                    view.registerValueTextLabel.text = "Value: 0x\(String(intRawValue, radix: 16))"
+                }
+            }
+            
+            if param.algorithm != nil {
+                view.registerAlgorithmTextLabel.text = param.algorithm
+            } else {
+                view.registerAlgorithmTextLabel.isHidden = true
+            }
         }
-        
-        view.registerTitleTextLabel.text = param?.title
-        view.registerAlgorithmTextLabel.text = param?.algorithm
-        view.registerValueTextLabel.text = "Value: \(param?.labelledValue ?? "") (\(param?.rawValue ?? "0"))"
 
         view.registerImageView.contentMode = .scaleAspectFill
     }
@@ -133,9 +138,8 @@ public class RegisterAiViewModel: BaseCellViewModel<RegisterAiData, RegisterAiCe
             return ImageLayout.image(with: "mlc_seated_forward", in: .module)
         case "Bridge":
             return ImageLayout.image(with: "mlc_bridge", in: .module)
-            
         default:
-            return ImageLayout.image(with: "MLC_icon", in: .module)?.maskWithColor(color: ColorLayout.primary.auto)
+            return ImageLayout.image(with: "mlc_new_icon", in: .module)?.maskWithColor(color: ColorLayout.primary.auto)
         }
     }
 }

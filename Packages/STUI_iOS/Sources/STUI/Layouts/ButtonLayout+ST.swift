@@ -78,6 +78,45 @@ public extension Buttonlayout {
                             font: FontLayout.regular.withSize(14.0))
     }()
     
+    static var standardRed: Buttonlayout = {
+        return Buttonlayout(color: .white,
+                            selectedColor: nil,
+                            backgroundColor: ColorLayout.red.auto,
+                            selectedBackgroundColor: nil,
+                            selectedImage: nil,
+                            image: nil,
+                            cornerRadius: 4.0,
+                            borderColor: nil,
+                            borderWith: nil,
+                            font: FontLayout.regular.withSize(14.0))
+    }()
+    
+    static var standardGreen: Buttonlayout = {
+        return Buttonlayout(color: .white,
+                            selectedColor: nil,
+                            backgroundColor: ColorLayout.green.auto,
+                            selectedBackgroundColor: nil,
+                            selectedImage: nil,
+                            image: nil,
+                            cornerRadius: 4.0,
+                            borderColor: nil,
+                            borderWith: nil,
+                            font: FontLayout.regular.withSize(14.0))
+    }()
+    
+    static var standardYellow: Buttonlayout = {
+        return Buttonlayout(color: .white,
+                            selectedColor: nil,
+                            backgroundColor: ColorLayout.yellow.auto,
+                            selectedBackgroundColor: nil,
+                            selectedImage: nil,
+                            image: nil,
+                            cornerRadius: 4.0,
+                            borderColor: nil,
+                            borderWith: nil,
+                            font: FontLayout.regular.withSize(14.0))
+    }()
+    
     static var lightBlueSecondary: Buttonlayout = {
         return Buttonlayout(color: ColorLayout.primary.auto,
                             selectedColor: nil,
@@ -129,7 +168,21 @@ public extension Buttonlayout {
                             borderWith: nil,
                             font: FontLayout.regular.withSize(12.0))
     }()
-    
+
+    static var link: Buttonlayout = {
+        return Buttonlayout(color: ColorLayout.primary.auto,
+                            selectedColor: .clear,
+                            backgroundColor: .clear,
+                            selectedBackgroundColor: .clear,
+                            selectedImage: nil,
+                            image: nil,
+                            cornerRadius: nil,
+                            borderColor: .clear,
+                            borderWith: nil,
+                            font: FontLayout.bold.withSize(20.0),
+                            underlineText: true)
+    }()
+
     static var textPrimaryColor: Buttonlayout = {
         return Buttonlayout(color: ColorLayout.primary.auto,
                             selectedColor: .clear,
@@ -153,7 +206,8 @@ public extension Buttonlayout {
                             cornerRadius: nil,
                             borderColor: .clear,
                             borderWith: nil,
-                            font: FontLayout.regular.withSize(12.0))
+                            font: FontLayout.regular.withSize(12.0),
+                            useDefaultLargeConfiguration: false)
     }()
 
     static func imageLayout(image: UIImage?, selectedImage: UIImage?, color: UIColor) -> Buttonlayout {
@@ -162,6 +216,45 @@ public extension Buttonlayout {
                             backgroundColor: .clear,
                             selectedBackgroundColor: .clear,
                             selectedImage: selectedImage,
+                            image: image,
+                            cornerRadius: nil,
+                            borderColor: .clear,
+                            borderWith: nil,
+                            font: FontLayout.regular)
+    }
+    
+    static func standardWithImage(image: UIImage?) -> Buttonlayout {
+        return Buttonlayout(color: .white,
+                            selectedColor: nil,
+                            backgroundColor: ColorLayout.primary.auto,
+                            selectedBackgroundColor: nil,
+                            selectedImage: nil,
+                            image: image,
+                            cornerRadius: 4.0,
+                            borderColor: nil,
+                            borderWith: nil,
+                            font: FontLayout.regular)
+    }
+    
+    static func imageCleared(image: UIImage?) -> Buttonlayout {
+        return Buttonlayout(color: .clear,
+                            selectedColor: .clear,
+                            backgroundColor: .clear,
+                            selectedBackgroundColor: .clear,
+                            selectedImage: nil,
+                            image: image,
+                            cornerRadius: nil,
+                            borderColor: .clear,
+                            borderWith: nil,
+                            font: FontLayout.regular)
+    }
+    
+    static func textColorWithIamge(color: UIColor?, image: UIImage?) -> Buttonlayout {
+        return Buttonlayout(color: color ?? ColorLayout.primary.auto,
+                            selectedColor: .clear,
+                            backgroundColor: .clear,
+                            selectedBackgroundColor: .clear,
+                            selectedImage: nil,
                             image: image,
                             cornerRadius: nil,
                             borderColor: .clear,

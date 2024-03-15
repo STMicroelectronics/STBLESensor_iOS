@@ -17,7 +17,7 @@ public extension FontLayout {
     }()
     
     static var bold: UIFont = {
-        return UIFont.boldSystemFont(ofSize: 20.0)
+        return UIFont.boldSystemFont(ofSize: 19.0)
     }()
 
     static var title: UIFont = {

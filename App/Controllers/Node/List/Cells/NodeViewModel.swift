@@ -41,6 +41,7 @@ class NodeViewModel: BaseCellViewModel<Node, NodeCell> {
         TextLayout.info.apply(to: view.firmwareLabel)
         TextLayout.info.apply(to: view.rssiLabel)
         TextLayout.info.apply(to: view.addressLabel)
+        TextLayout.accentBold.apply(to: view.maturityLabel)
 
         view.actionButton.setTitle(nil, for: .normal)
         Buttonlayout.imageLayout(image: ImageLayout.Common.pin?.maskWithColor(color: .lightGray),
@@ -83,6 +84,11 @@ class NodeViewModel: BaseCellViewModel<Node, NodeCell> {
 
             if firmware.bleVersionId == 255 {
                 view.customModelLabel.isHidden = false
+            }
+
+            if firmware.maturity != Maturity.release {
+                view.maturityLabel.isHidden = false
+                view.maturityLabel.text = firmware.maturity?.description
             }
 
             view.firmwareLabel.isHidden = false

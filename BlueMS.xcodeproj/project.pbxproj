@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -261,8 +261,8 @@
 				93031AE7232FBA1C6284E32C /* STUserProfiling_iOS */,
 				F5855355CB176F25B89C8024 /* STWelcome_iOS */,
 			);
-			name = Packages;
-			sourceTree = SOURCE_ROOT;
+			path = Packages;
+			sourceTree = "<group>";
 		};
 		D6532471FD14F956C558D3EA /* Application */ = {
 			isa = PBXGroup;
@@ -344,7 +344,8 @@
 		E194C3FD12C59AC20AC8B4AC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1200;
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
 				ORGANIZATIONNAME = STMicroelectronics;
 				TargetAttributes = {
 					87318E3C85263708A2939843 = {
@@ -353,7 +354,7 @@
 				};
 			};
 			buildConfigurationList = 06BD24E391F1AFBDBF6B65BD /* Build configuration list for PBXProject "BlueMS" */;
-			compatibilityVersion = "Xcode 11.0";
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (

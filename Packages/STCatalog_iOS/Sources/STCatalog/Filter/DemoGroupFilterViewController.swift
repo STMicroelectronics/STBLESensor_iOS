@@ -16,6 +16,7 @@ import TagListView
 
 final class DemoGroupFilterViewController: BaseNoViewController<DemoGroupFilterDelegate> {
 
+    let orderListView = TagListView()
     let tagListView = TagListView()
 
     override func configure() {
@@ -50,6 +51,23 @@ final class DemoGroupFilterViewController: BaseNoViewController<DemoGroupFilterD
         tagListView.marginX = 10.0
         tagListView.marginY = 10.0
 
+        orderListView.alignment = .left
+
+        orderListView.textFont = FontLayout.regular
+        orderListView.tagSelectedBackgroundColor = ColorLayout.secondary.light
+        orderListView.selectedBorderColor = ColorLayout.primary.light
+        orderListView.selectedTextColor = ColorLayout.primary.light
+
+        orderListView.tagBackgroundColor = .lightGray
+        orderListView.borderColor = .darkGray.withAlphaComponent(0.5)
+        orderListView.textColor = ColorLayout.primary.light
+
+        orderListView.cornerRadius = 8.0
+        orderListView.paddingX = 10.0
+        orderListView.paddingY = 10.0
+        orderListView.marginX = 10.0
+        orderListView.marginY = 10.0
+        
         let cancelButton = UIButton(type: .custom)
         Buttonlayout.text.apply(to: cancelButton, text: Localizer.Common.cancel.localized)
         cancelButton.on(.touchUpInside) { [weak self] _ in
@@ -69,12 +87,18 @@ final class DemoGroupFilterViewController: BaseNoViewController<DemoGroupFilterD
                                                                   ])
         buttonsStackView.distribution = .fillEqually
 
+        let orderingLabel = UILabel()
+        TextLayout.title.apply(to: orderingLabel)
+        orderingLabel.text =  "Ordering by"
+        
         let filterLabel = UILabel()
         TextLayout.title.apply(to: filterLabel)
         filterLabel.text = Localizer.Catalog.Text.filters.localized
 
         let stackView = UIStackView.getVerticalStackView(withSpacing: 10.0,
                                                          views: [
+                                                            orderingLabel,
+                                                            orderListView,
                                                             filterLabel,
                                                             tagListView,
                                                             UIView(),

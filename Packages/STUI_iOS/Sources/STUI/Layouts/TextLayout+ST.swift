@@ -111,6 +111,17 @@ public extension TextLayout {
                           font: FontLayout.bold).size(17.0)
     }()
     
+    static let accent: TextLayout = {
+        return TextLayout(color: ColorLayout.accent.auto,
+                          backgroundColor: nil,
+                          cornerRadius: nil,
+                          borderColor: nil,
+                          borderWith: nil,
+                          alignment: .left,
+                          numberOfLines: 0,
+                          font: FontLayout.regular)
+    }()
+    
     static let accentBold: TextLayout = {
         return TextLayout(color: ColorLayout.accent.auto,
                           backgroundColor: nil,

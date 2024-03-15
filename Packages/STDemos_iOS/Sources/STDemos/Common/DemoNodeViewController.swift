@@ -14,9 +14,9 @@ import STUI
 import STBlueSDK
 import STCore
 
-class DemoNodeViewController<Presenter, View: UIView>: BaseViewController<Presenter, View>, BlueDelegate {
+open class DemoNodeViewController<Presenter, View: UIView>: BaseViewController<Presenter, View>, BlueDelegate {
 
-    override func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         BlueManager.shared.addDelegate(self)
 
@@ -27,7 +27,7 @@ class DemoNodeViewController<Presenter, View: UIView>: BaseViewController<Presen
         presenter.viewWillAppear()
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
+    override open func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
         BlueManager.shared.removeDelegate(self)
@@ -51,19 +51,19 @@ class DemoNodeViewController<Presenter, View: UIView>: BaseViewController<Presen
 
     }
 
-    func manager(_ manager: BlueManager, discoveringStatus isDiscovering: Bool) {
+    public func manager(_ manager: BlueManager, discoveringStatus isDiscovering: Bool) {
 
     }
 
-    func manager(_ manager: BlueManager, didDiscover node: Node) {
+    public func manager(_ manager: BlueManager, didDiscover node: Node) {
 
     }
 
-    func manager(_ manager: BlueManager, didRemoveDiscovered nodes: [Node]) {
+    public func manager(_ manager: BlueManager, didRemoveDiscovered nodes: [Node]) {
 
     }
 
-    func manager(_ manager: BlueManager, didChangeStateFor node: Node) {
+    public func manager(_ manager: BlueManager, didChangeStateFor node: Node) {
         DispatchQueue.main.async { [weak self] in
             if !node.isConnected {
                 self?.navigationController?.popToRootViewController(animated: true)
@@ -72,24 +72,25 @@ class DemoNodeViewController<Presenter, View: UIView>: BaseViewController<Presen
         }
     }
 
-    func manager(_ manager: BlueManager, didUpdateValueFor node: Node, feature: Feature, sample: AnyFeatureSample?) {
+    open func manager(_ manager: BlueManager, didUpdateValueFor node: Node, feature: Feature, sample: AnyFeatureSample?) {
 
         guard let sample = sample else { return }
 
         Logger.debug(text: "\(sample.description)")
     }
 
-    func manager(_ manager: BlueManager, didReceiveCommandResponseFor node: Node, feature: Feature, response: FeatureCommandResponse) {
+    public func manager(_ manager: BlueManager, didReceiveCommandResponseFor node: Node, feature: Feature, response: FeatureCommandResponse) {
         Logger.debug(text: "\(response.description)")
     }
 }
 
 
-class DemoNodeNoViewController<Presenter>: BaseNoViewController<Presenter>, BlueDelegate {
+open class DemoNodeNoViewController<Presenter>: BaseNoViewController<Presenter>, BlueDelegate {
 
-    override func viewWillAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         BlueManager.shared.addDelegate(self)
+        Logger.debug(text: "BLUE DELEGATE - ADD - \(String(describing: self))")
 
         hideTabBar()
 
@@ -98,10 +99,11 @@ class DemoNodeNoViewController<Presenter>: BaseNoViewController<Presenter>, Blue
         presenter.viewWillAppear()
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
+    open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
         BlueManager.shared.removeDelegate(self)
+        Logger.debug(text: "BLUE DELEGATE - REMOVE - \(String(describing: self))")
 
         guard let presenter = presenter as? DemoDelegate else { return }
 
@@ -114,23 +116,23 @@ class DemoNodeNoViewController<Presenter>: BaseNoViewController<Presenter>, Blue
         deinitController()
     }
 
-    public func deinitController() {
+    open func deinitController() {
 
     }
 
-    func manager(_ manager: BlueManager, discoveringStatus isDiscovering: Bool) {
+    open func manager(_ manager: BlueManager, discoveringStatus isDiscovering: Bool) {
 
     }
 
-    func manager(_ manager: BlueManager, didDiscover node: Node) {
+    open func manager(_ manager: BlueManager, didDiscover node: Node) {
 
     }
 
-    func manager(_ manager: BlueManager, didRemoveDiscovered nodes: [Node]) {
+    open func manager(_ manager: BlueManager, didRemoveDiscovered nodes: [Node]) {
 
     }
 
-    func manager(_ manager: BlueManager, didChangeStateFor node: Node) {
+    open func manager(_ manager: BlueManager, didChangeStateFor node: Node) {
         DispatchQueue.main.async { [weak self] in
             if !node.isConnected {
                 self?.navigationController?.popToRootViewController(animated: true)
@@ -139,14 +141,14 @@ class DemoNodeNoViewController<Presenter>: BaseNoViewController<Presenter>, Blue
         }
     }
 
-    func manager(_ manager: BlueManager, didUpdateValueFor node: Node, feature: Feature, sample: AnyFeatureSample?) {
+    open func manager(_ manager: BlueManager, didUpdateValueFor node: Node, feature: Feature, sample: AnyFeatureSample?) {
 
         guard let sample = sample else { return }
 
         Logger.debug(text: "\(sample.description)")
     }
 
-    func manager(_ manager: BlueManager, didReceiveCommandResponseFor node: Node, feature: Feature, response: FeatureCommandResponse) {
+    open func manager(_ manager: BlueManager, didReceiveCommandResponseFor node: Node, feature: Feature, response: FeatureCommandResponse) {
         Logger.debug(text: "\(response.description)")
     }
 }

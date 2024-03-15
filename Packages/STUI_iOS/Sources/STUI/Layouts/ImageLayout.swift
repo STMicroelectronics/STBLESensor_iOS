@@ -14,7 +14,8 @@ import UIKit
 public struct ImageSize {
     public static var extraSmall: CGSize = CGSize(width: 20, height: 20)
     public static var small: CGSize = CGSize(width: 24, height: 24)
-    public static var medium: CGSize = CGSize(width: 100, height: 100)
+    public static var medium: CGSize = CGSize(width: 40, height: 40)
+    public static var big: CGSize = CGSize(width: 100, height: 100)
 }
 
 public struct ImageLayout {
@@ -30,7 +31,10 @@ public struct ImageLayout {
         public static var sleep: UIImage? { ImageLayout.image(with: "sleepIcon") }
         public static var squareChecked: UIImage? { ImageLayout.image(with: "img_square_checked") }
         public static var squareUnchecked: UIImage? { ImageLayout.image(with: "img_square_unchecked") }
+        public static var radioChecked: UIImage? { ImageLayout.image(with: "img_radio_checked") }
+        public static var radioUnchecked: UIImage? { ImageLayout.image(with: "img_radio_unchecked") }
         public static var arrowDown: UIImage? { ImageLayout.image(with: "img_arrow_down") }
+        public static var arrowUp: UIImage? { ImageLayout.image(with: "img_arrow_up") }
         public static var signal: UIImage? { ImageLayout.image(with: "img_signal") }
         public static var folder: UIImage? { ImageLayout.image(with: "img_folder") }
         public static var lock: UIImage? { ImageLayout.image(with: "ic_lock_24") }
@@ -46,8 +50,16 @@ public struct ImageLayout {
         public static var pause: UIImage? { ImageLayout.image(with: "ic_pause_24") }
         public static var lens: UIImage? { ImageLayout.image(with: "img_lens") }
         public static var tagOutline: UIImage? { ImageLayout.image(with: "img_tag_outline") }
+        public static var tagFilled: UIImage? { ImageLayout.image(with: "img_tag_filled") }
         public static var sensors: UIImage? { ImageLayout.image(with: "img_sensors") }
         public static var upload: UIImage? { ImageLayout.image(with: "img_upload") }
+        public static var heartUnchecked: UIImage? { ImageLayout.image(with: "img_heart_unchecked") }
+        public static var heartChecked: UIImage? { ImageLayout.image(with: "img_heart") }
+        public static var delete: UIImage? { ImageLayout.image(with: "img_delete") }
+        public static var close: UIImage? { ImageLayout.image(with: "img_close") }
+        public static var save: UIImage? { ImageLayout.image(with: "img_save") }
+        public static var add: UIImage? { ImageLayout.image(with: "img_add") }
+        public static var addRow: UIImage? { ImageLayout.image(with: "img_add_row") }
     }
 
     public struct SDKV2 {

@@ -15,6 +15,7 @@ open class ImageDetailView: UIView {
     let horizzontalStackView = UIStackView()
 
     var imageView = UIImageView()
+    var disclosureImageView = UIImageView()
     var titleLabel = UILabel()
     var subtitleLabel = UILabel()
 
@@ -23,32 +24,38 @@ open class ImageDetailView: UIView {
     public override init(frame: CGRect) {
         super.init(frame: frame)
 
-        horizzontalStackView.axis = .horizontal
-        horizzontalStackView.spacing = 10.0
-
-        horizzontalStackView.activate(constraints: [
-            equalDimension(\.heightAnchor, to: 60.0)
-        ])
-
-        let verticalStackView = UIStackView()
-        verticalStackView.axis = .vertical
-
-        verticalStackView.addArrangedSubview(titleLabel)
-        verticalStackView.addArrangedSubview(subtitleLabel)
-
-        titleLabel.activate(constraints: [
-            equal(\.heightAnchor, toView: subtitleLabel, withAnchor: \.heightAnchor)
-        ])
-
-        addSubviewAndFit(horizzontalStackView, trailing: 20.0, leading: 20.0)
-
-        horizzontalStackView.addArrangedSubview(imageView)
-
         imageView.activate(constraints: [
-            equalDimension(\.widthAnchor, to: 60.0)
+            equalDimension(\.heightAnchor, to: 40.0),
+            equalDimension(\.widthAnchor, to: 40.0)
         ])
 
-        horizzontalStackView.addArrangedSubview(verticalStackView)
+        disclosureImageView.activate(constraints: [
+            equalDimension(\.widthAnchor, to: 40.0)
+        ])
+
+        let textStackView = UIStackView.getVerticalStackView(withSpacing: 5.0,
+                                                             views: [
+                                                                titleLabel,
+                                                                subtitleLabel
+                                                             ])
+
+        let headerStackView = UIStackView.getHorizontalStackView(withSpacing: 10.0,
+                                                                 views: [
+                                                                    imageView,
+                                                                    UIView.empty(),
+                                                                    disclosureImageView
+                                                                 ])
+
+        horizzontalStackView.addArrangedSubview(textStackView)
+        horizzontalStackView.addArrangedSubview(UIView.empty())
+
+        let verticalStackView = UIStackView.getVerticalStackView(withSpacing: 10.0,
+                                                                 views: [
+                                                                    headerStackView,
+                                                                    horizzontalStackView
+                                                                 ])
+
+        addSubviewAndFit(verticalStackView, trailing: 5.0, leading: 5.0)
 
     }
 

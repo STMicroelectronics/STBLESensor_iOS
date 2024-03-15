@@ -24,7 +24,8 @@ class NodeCell: BaseTableViewCell {
     @IBOutlet weak var firmwareLabel: UILabel!
 
     @IBOutlet weak var customModelLabel: UILabel!
-
+    @IBOutlet weak var maturityLabel: UILabel!
+    
     @IBOutlet weak var nodeRunningSecondLabel: UILabel!
     @IBOutlet weak var nodeRunningThirdInfoLabel: UILabel!
 

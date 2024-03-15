@@ -30,6 +30,7 @@ final class AccelerationEventPresenter: DemoPresenter<AccelerationEventViewContr
     
     private static let SENSORTILEBOX_SUPPORTED_EVENT : [AccelerationEventCommand] = [
         AccelerationEventCommand.none,
+        AccelerationEventCommand.multiple(enabled: true),
         AccelerationEventCommand.orientation(enabled: true),
         AccelerationEventCommand.doubleTap(enabled: true),
         AccelerationEventCommand.freeFall(enabled: true),
@@ -206,11 +207,13 @@ extension AccelerationEventPresenter: AccelerationEventDelegate {
 
         if let accEventFeature = param.node.characteristics.first(with: AccelerationEventFeature.self) {
             
-            if let command = accEventCommand.command{
-                BlueManager.shared.sendCommand(FeatureCommand(type: command, data: command.payload),
-                                               to: param.node,
-                                               feature: accEventFeature)
+            if let accEventFeature = accEventFeature as? AccelerationEventFeature {
+                accEventFeature.setPedometerStatus(accEventCommand.isPedometer)
             }
+            
+            BlueManager.shared.sendCommand(FeatureCommand(type: accEventCommand, data: accEventCommand.payload),
+                                           to: param.node,
+                                           feature: accEventFeature)
             
             Logger.debug(text: accEventCommand.description)
         }

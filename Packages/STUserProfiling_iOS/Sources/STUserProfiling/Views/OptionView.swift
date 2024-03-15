@@ -28,7 +28,7 @@ class OptionView: UIView {
         
         TextLayout.title2.apply(to: titleLabel)
         TextLayout.subtitle.apply(to: subtitleLabel)
-        
+
         checkButton.setTitle("", for: .normal)
         
         Buttonlayout.clear.apply(to: checkButton)

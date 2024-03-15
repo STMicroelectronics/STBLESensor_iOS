@@ -72,15 +72,20 @@ final class NodeListViewController: BaseViewController<NodeListDelegate, NodeLis
 //                return
 //            }
 
-            self?.navigationController?.pushViewController(BoardListPresenter(param: BoardListConf(nodeTypesFilter: nil, isDemoListVisible: true)).start(), animated: true)
-
-        }), side: .left)
+            self?.navigationController?.pushViewController(
+                BoardListPresenter(param: BoardListConf(
+                    nodeTypesFilter: nil, 
+                    firmwareTypesFilter: nil,
+                    isDemoListVisible: true)
+                ).start(),
+                animated: true)
+        }), side: .first)
 
         stTabBarView?.add(TabBarItem(with: Localizer.Home.Text.filter.localized,
                                      image: ImageLayout.Common.filter?.template,
                                      callback: { [weak self] _ in
             self?.presenter.showFilters()
-        }), side: .right)
+        }), side: .second)
 
         stTabBarView?.actionButton.setImage(ImageLayout.Common.refresh?.template, for: .normal)
         stTabBarView?.setMainAction { _ in

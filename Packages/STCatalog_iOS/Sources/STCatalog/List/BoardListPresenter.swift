@@ -17,10 +17,12 @@ import STDemos
 
 public struct BoardListConf {
     let nodeTypesFilter: [NodeType]?
+    let firmwareTypesFilter: [String]?
     let isDemoListVisible: Bool
 
-    public init(nodeTypesFilter: [NodeType]?, isDemoListVisible: Bool) {
+    public init(nodeTypesFilter: [NodeType]?, firmwareTypesFilter: [String]? = nil, isDemoListVisible: Bool) {
         self.nodeTypesFilter = nodeTypesFilter
+        self.firmwareTypesFilter = firmwareTypesFilter
         self.isDemoListVisible = isDemoListVisible
     }
 }
@@ -28,6 +30,7 @@ public struct BoardListConf {
 public final class BoardListPresenter: BasePresenter<BoardListViewController, BoardListConf> {
     var director: TableDirector?
     var currentFilter: [DemoGroup] = [DemoGroup]()
+    var currentOrderFilter: OrderByGroup = OrderByGroup.none
 }
 
 // MARK: - CatalogDelegate
@@ -123,12 +126,25 @@ extension BoardListPresenter: BoardListDelegate {
                         board.param?.url = catalogBoard.orderUrl
                         board.param?.datasheetsUrl = catalogBoard.documentationUrl
                         board.param?.videoId = catalogBoard.videoUrl
+                        board.param?.variant = catalogBoard.variant
+                        board.param?.releaseDate = catalogBoard.releaseDate
                     }
                 }
             }
 
             director?.elements.removeAll()
 //            director?.elements.append(contentsOf: boards)
+            
+            let originalBoardOrderList = boardMerged
+            
+            if currentOrderFilter == .alphabetical {
+                boardMerged = boardMerged.sorted { $0.param?.name.lowercased() ?? "" < $1.param?.name.lowercased() ?? "" }
+            } else if currentOrderFilter == .releaseDate {
+                boardMerged = boardMerged.sorted { $0.param?.releaseDate ?? "" < $1.param?.releaseDate ?? "" }
+            } else {
+                boardMerged = originalBoardOrderList
+            }
+            
             director?.elements.append(contentsOf: boardMerged)
         }
 
@@ -136,18 +152,21 @@ extension BoardListPresenter: BoardListDelegate {
             guard let self, let viewModel = self.director?.elements[indexpath.row] as? BoardViewModel,
             let board = viewModel.param else { return }
 
-            self.view.navigationController?.show(BoardPresenter(param: BoardConf(board: board,
-                                                                                  isDemoListVisible: self.param.isDemoListVisible)).start(), sender: nil)
+            self.view.navigationController?.show(BoardPresenter(param: BoardConf(board: board, 
+                                                                                 firmwareTypesFilter: self.param.firmwareTypesFilter,
+                                                                                 isDemoListVisible: self.param.isDemoListVisible)).start(), sender: nil)
 
         })
 
+        
         director?.reloadData()
     }
 
     public func showFilters() {
-        view.present(DemoGroupFilterPresenter(param: currentFilter, completion: { [weak self] groups in
+        view.present(DemoGroupFilterPresenter(param: FilterParameters(orderingBy: currentOrderFilter, demosGroup: currentFilter), completion: { [weak self] groups in
             self?.currentFilter.removeAll()
-            self?.currentFilter.append(contentsOf: groups)
+            self?.currentFilter.append(contentsOf: groups.demosGroup)
+            self?.currentOrderFilter = groups.orderingBy
             self?.refresh()
         }).start(), animated: true)
     }

@@ -12,13 +12,17 @@
 import Foundation
 
 public struct StringValue {
+    public let type: String?
     public let displayName: String?
+    public let comment: String?
     public let value: Int?
 }
 
 extension StringValue: Codable {
     enum CodingKeys: String, CodingKey {
+        case type
         case displayName = "display_name"
+        case comment
         case value
     }
 }

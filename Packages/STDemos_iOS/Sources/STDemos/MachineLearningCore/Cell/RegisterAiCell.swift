@@ -26,6 +26,7 @@ public class RegisterAiCell: BaseTableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         let labelsStackView = UIStackView.getVerticalStackView(withSpacing: 8, views: [
+            registerTitleTextLabel,
             registerAlgorithmTextLabel,
             registerValueTextLabel
         ])
@@ -36,7 +37,6 @@ public class RegisterAiCell: BaseTableViewCell {
         ])
         
         mainStackView = UIStackView.getVerticalStackView(withSpacing: 8, views: [
-            registerTitleTextLabel,
             horizontalStackView
         ])
         mainStackView.distribution = .fill

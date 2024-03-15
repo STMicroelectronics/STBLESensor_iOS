@@ -16,18 +16,23 @@ import STCore
 
 public class DemoNodeTableViewController<TablePresenter, View: UIView>: TableViewController<TablePresenter, View>, BlueDelegate {
 
-    var removeDelegateWhenDisappear: Bool = true
+    public var removeDelegateWhenDisappear: Bool = true
 
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         BlueManager.shared.addDelegate(self)
-
-        hideTabBar()
+        Logger.debug(text: "BLUE DELEGATE - ADD - \(String(describing: self))")
 
         guard let presenter = presenter as? DemoDelegate else { return }
 
         presenter.viewWillAppear()
+    }
+
+    public override func configureView() {
+        super.configureView()
+
+//        hideTabBar()
     }
 
     public override func viewWillDisappear(_ animated: Bool) {
@@ -35,6 +40,7 @@ public class DemoNodeTableViewController<TablePresenter, View: UIView>: TableVie
 
         if removeDelegateWhenDisappear {
             BlueManager.shared.removeDelegate(self)
+            Logger.debug(text: "BLUE DELEGATE - REMOVE - \(String(describing: self))")
         }
 
         guard let presenter = presenter as? DemoDelegate else { return }

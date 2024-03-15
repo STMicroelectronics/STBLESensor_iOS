@@ -30,11 +30,47 @@ public extension Layout {
                                          titleLayout: TextLayout.subtitle.weight(.bold),
                                          buttonLayout: Buttonlayout.text,
                                          margin: .standard)
+    
+    static var standardCenterSecondary: Layout = Layout(mainColor: ColorLayout.accent,
+                                        textLayout: TextLayout.text.weight(.medium).size(18.0).alignment(.center).color(ColorLayout.secondary.auto),
+                                        titleLayout: TextLayout.subtitle.weight(.bold),
+                                        buttonLayout: Buttonlayout.text,
+                                        margin: .standard)
 
     static var disabled: Layout = Layout(mainColor: ColorLayout.accent,
                                          textLayout: TextLayout.text.color(.lightGray).weight(.light).size(16.0),
                                          titleLayout: TextLayout.subtitle.weight(.bold),
                                          buttonLayout: Buttonlayout.text)
+    
+    static var title: Layout = Layout(mainColor: ColorLayout.accent,
+                                         textLayout: TextLayout.title,
+                                         titleLayout: TextLayout.subtitle.weight(.bold),
+                                         buttonLayout: Buttonlayout.text,
+                                         margin: .standard)
+    
+    static var title2: Layout = Layout(mainColor: ColorLayout.accent,
+                                         textLayout: TextLayout.title2,
+                                         titleLayout: TextLayout.subtitle.weight(.bold),
+                                         buttonLayout: Buttonlayout.text,
+                                         margin: .standard)
+    
+    static var infoBold: Layout = Layout(mainColor: ColorLayout.accent,
+                                         textLayout: TextLayout.infoBold,
+                                         titleLayout: TextLayout.subtitle.weight(.bold),
+                                         buttonLayout: Buttonlayout.text,
+                                         margin: .standard)
+    
+    static var info: Layout = Layout(mainColor: ColorLayout.accent,
+                                         textLayout: TextLayout.info,
+                                         titleLayout: TextLayout.subtitle.weight(.bold),
+                                         buttonLayout: Buttonlayout.text,
+                                         margin: .standard)
+    
+    static var standardButton: Layout = Layout(textLayout: TextLayout.text.size(16.0),
+                                               titleLayout: TextLayout.subtitle.weight(.bold),
+                                               buttonLayout: Buttonlayout.standard,
+                                               margin: .standard)
+    
     
 //    static var blue: Layout = Layout(mainColor: ColorLayout.accent,
 //                                     backgroundColor: ColorLayout.secondary,
@@ -73,8 +109,8 @@ public extension Layout {
 
 extension PnpLContent {
 
-    public static var layout: Layout = Layout(mainColor: ColorLayout.accent,
-                                       textLayout: TextLayout.text.weight(.light).size(16.0),
+    public static var layout: Layout = Layout(mainColor: ColorLayout.primary,
+                                       textLayout: TextLayout.text.weight(.light).size(14.0),
                                        titleLayout: TextLayout.subtitle.weight(.bold),
                                        buttonLayout: Buttonlayout.text)
 

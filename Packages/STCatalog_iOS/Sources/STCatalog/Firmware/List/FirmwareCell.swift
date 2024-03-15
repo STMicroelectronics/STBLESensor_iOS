@@ -18,7 +18,9 @@ public class FirmwareCell: BaseTableViewCell {
 
     let titleLabel = UILabel()
     let versionLabel = UILabel()
+    let maturityLabel = UILabel()
     let changelogLabel = UILabel()
+    let availableDemosLabel = UILabel()
 
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -26,11 +28,26 @@ public class FirmwareCell: BaseTableViewCell {
         contentView.addSubview(containerView)
         containerView.addFitToSuperviewConstraints(top: 10.0, leading: 20.0, bottom: 10.0, trailing: 20.0)
 
+        maturityLabel.isHidden = true
+        TextLayout.accentBold.apply(to: maturityLabel)
+        
+        let divisor = UIView()
+        divisor.backgroundColor = ColorLayout.stGray5.light
+        divisor.setDimensionContraints(height: 1)
+        
+        let availableDemosTitleLabel = UILabel()
+        availableDemosTitleLabel.text = "Available Demos"
+        TextLayout.infoBold.apply(to: availableDemosTitleLabel)
+        
         let stackView = UIStackView.getVerticalStackView(withSpacing: 10,
                                                          views: [
                                                             titleLabel,
                                                             versionLabel,
-                                                            changelogLabel
+                                                            maturityLabel,
+                                                            changelogLabel,
+                                                            divisor,
+                                                            availableDemosTitleLabel,
+                                                            availableDemosLabel
                                                          ])
 
         containerView.addSubview(stackView)

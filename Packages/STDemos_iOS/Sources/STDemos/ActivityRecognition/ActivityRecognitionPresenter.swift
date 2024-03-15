@@ -55,31 +55,67 @@ extension ActivityRecognitionPresenter: ActivityRecognitionDelegate {
             if let motionView = view.motionView {
                 view.mainView.mainStackView.addArrangedSubview(motionView as! UIView)
                 displayActivityType(on: motionView, type)
+                
+                view.motionView?.setVisible()
+                view.gpmView?.setHidden()
+                view.ignView?.setHidden()
+                view.mlcView?.setHidden()
+                view.adultPresenceView?.setHidden()
             }
         case 1:
             if let gpmView = view.gpmView {
                 view.mainView.mainStackView.addArrangedSubview(gpmView as! UIView)
                 displayActivityType(on: gpmView, type)
+                
+                view.motionView?.setHidden()
+                view.gpmView?.setVisible()
+                view.ignView?.setHidden()
+                view.mlcView?.setHidden()
+                view.adultPresenceView?.setHidden()
             }
         case 2:
             if let ignView = view.ignView {
                 view.mainView.mainStackView.addArrangedSubview(ignView as! UIView)
                 displayActivityType(on: ignView, type)
+                
+                view.motionView?.setHidden()
+                view.gpmView?.setHidden()
+                view.ignView?.setVisible()
+                view.mlcView?.setHidden()
+                view.adultPresenceView?.setHidden()
             }
         case 3:
             if let mlcView = view.mlcView {
                 view.mainView.mainStackView.addArrangedSubview(mlcView as! UIView)
                 displayActivityType(on: mlcView, type)
+                
+                view.motionView?.setHidden()
+                view.gpmView?.setHidden()
+                view.ignView?.setHidden()
+                view.mlcView?.setVisible()
+                view.adultPresenceView?.setHidden()
             }
         case 4:
             if let adultPresenceView = view.adultPresenceView {
                 view.mainView.mainStackView.addArrangedSubview(adultPresenceView as! UIView)
                 displayActivityType(on: adultPresenceView, type)
+                
+                view.motionView?.setHidden()
+                view.gpmView?.setHidden()
+                view.ignView?.setHidden()
+                view.mlcView?.setHidden()
+                view.adultPresenceView?.setVisible()
             }
         default:
             if let motionView = view.motionView {
                 view.mainView.mainStackView.addSubview(motionView as! UIView)
                 displayActivityType(on: motionView, type)
+                
+                view.motionView?.setVisible()
+                view.gpmView?.setHidden()
+                view.ignView?.setHidden()
+                view.mlcView?.setHidden()
+                view.adultPresenceView?.setHidden()
             }
         }
     }

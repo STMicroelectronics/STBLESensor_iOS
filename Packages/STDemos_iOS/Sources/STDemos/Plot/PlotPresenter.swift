@@ -36,6 +36,12 @@ extension PlotPresenter: PlotDelegate {
            let plotDesc = sample?.toPlotDescription(sample: sample),
            let plotConf = sample?.toPlotConfiguration(sample: sample) {
             
+            if let plotAxisTitle = sample?.toPlotAxisLabel(sample: sample) {
+                view.yAxisTitleLabel.text = "[Y] \(plotAxisTitle)"
+            }
+            
+            view.xAxisTitleLabel.text = "[X] Time"
+            
             view.plotDescription.text = plotDesc
             
             if plotEntries.count > 99 {
@@ -110,6 +116,8 @@ extension PlotPresenter: PlotDelegate {
         self.view.chart.lineData?.dataSets.removeAll()
         self.view.chart.notifyDataSetChanged()
         self.view.plotDescription.text = ""
+        self.view.xAxisTitleLabel.text = ""
+        self.view.yAxisTitleLabel.text = ""
     }
     
     private func disableFeatureSelectionInteraction() {

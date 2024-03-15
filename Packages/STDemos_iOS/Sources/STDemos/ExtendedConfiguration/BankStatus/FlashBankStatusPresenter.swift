@@ -23,6 +23,7 @@ final class FlashBankStatusPresenter: BasePresenter<FlashBankStatusViewControlle
 
     internal static let selectedFirmwareKey = "selectedFirmwareKey"
     internal static let installFirmwareKey = "installFirmwareKey"
+    internal static let descriptionFirmwareKey = "descriptionFirmwareKey"
 
     var director: TableDirector?
     var selectedFirmware: Firmware?
@@ -44,7 +45,7 @@ extension FlashBankStatusPresenter: FlashBankStatusDelegate {
         director?.elements.removeAll()
 
         configureHeaderViewmodels()
-        configureAvailableUpdateViewmodels()
+//        configureAvailableUpdateViewmodels()
         configureAvailableFirmwareListViewModels()
 
         director?.onSelect({ indexPath in

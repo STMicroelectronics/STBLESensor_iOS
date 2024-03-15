@@ -51,7 +51,7 @@ public final class TabBarViewController: BaseViewController<TabBarDelegate, Main
     }
 }
 
-public extension BaseViewController {
+public extension UIViewController {
     func showTabBar() {
         guard let controller = parent?.parent as? TabBarViewController else { return }
 

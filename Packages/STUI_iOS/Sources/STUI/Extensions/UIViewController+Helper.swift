@@ -51,13 +51,13 @@ public extension UIViewController {
         self.present(safariViewController, animated: true)
     }
 
-    static func findFinalPresented(from viewController: UIViewController) -> UIViewController {
-        if let presented = viewController.presentedViewController, !(presented is SFSafariViewController) {
-            return findFinalPresented(from: presented)
-        }
-
-        return viewController
-    }
+//    static func findFinalPresented(from viewController: UIViewController) -> UIViewController {
+//        if let presented = viewController.presentedViewController, !(presented is SFSafariViewController) {
+//            return findFinalPresented(from: presented)
+//        }
+//
+//        return viewController
+//    }
 
     static func findLastViewController(from viewController: UIViewController) -> UIViewController {
         if let nvc = viewController as? UINavigationController {
@@ -80,14 +80,21 @@ public extension UIViewController {
     }
 
     var topMostViewController: UIViewController? {
+
+        if let tbc = self as? TabBarViewController {
+            if let selected = tbc.children.first {
+                return selected.topMostViewController
+            }
+        }
+
         if let tbc = self as? UITabBarController {
             if let selected = tbc.selectedViewController {
-                return UIViewController.findFinalPresented(from: selected)
+                return selected.topMostViewController
             }
         }
 
         if let nvc = self as? UINavigationController {
-            return UIViewController.findFinalPresented(from: nvc)
+            return nvc.lastViewController
         }
 
         return self

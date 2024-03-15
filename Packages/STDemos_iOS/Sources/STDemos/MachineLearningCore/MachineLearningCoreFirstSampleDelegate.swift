@@ -12,7 +12,7 @@
 import Foundation
 import STBlueSDK
 
-class MachineLearningFirstSampleDelegate: BlueDelegate {
+public class MachineLearningFirstSampleDelegate: BlueDelegate {
     
     public typealias FirstMLCSampleCompletion = (_ sample: MachineLearningCoreData?) -> Void
     private let completion: FirstMLCSampleCompletion
@@ -21,17 +21,17 @@ class MachineLearningFirstSampleDelegate: BlueDelegate {
         self.completion = completion
     }
 
-    func manager(_ manager: BlueManager, discoveringStatus isDiscovering: Bool) {}
+    public func manager(_ manager: BlueManager, discoveringStatus isDiscovering: Bool) {}
     
-    func manager(_ manager: BlueManager, didDiscover node: Node) {}
+    public func manager(_ manager: BlueManager, didDiscover node: Node) {}
     
-    func manager(_ manager: BlueManager, didRemoveDiscovered nodes: [Node]) {}
+    public func manager(_ manager: BlueManager, didRemoveDiscovered nodes: [Node]) {}
     
-    func manager(_ manager: BlueManager, didChangeStateFor node: Node) {}
+    public func manager(_ manager: BlueManager, didChangeStateFor node: Node) {}
     
-    func manager(_ manager: BlueManager, didReceiveCommandResponseFor node: Node, feature: Feature, response: FeatureCommandResponse) {}
+    public func manager(_ manager: BlueManager, didReceiveCommandResponseFor node: Node, feature: Feature, response: FeatureCommandResponse) {}
     
-    func manager(_ manager: BlueManager, didUpdateValueFor node: Node, feature: Feature, sample: AnyFeatureSample?) {
+    public func manager(_ manager: BlueManager, didUpdateValueFor node: Node, feature: Feature, sample: AnyFeatureSample?) {
         if let mlcFeature = feature as? MachineLearningCoreFeature {
             manager.removeDelegate(self)
             

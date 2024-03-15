@@ -29,8 +29,8 @@ private extension UserProfilingPresenter {
             
             optionView.imageView.image = option.image
             
-            Buttonlayout.checkLayout(checkedImage: option.checkedImage,
-                                     uncheckedImage: option.uncheckedImage)
+            Buttonlayout.checkLayout(checkedImage: option.checkedImage?.withTintColor(ColorLayout.primary.dark).original,
+                                     uncheckedImage: option.uncheckedImage?.withTintColor(ColorLayout.gray.dark).original)
             .apply(to: optionView.checkButton)
             
             optionView.checkButton.addAction(for: .touchUpInside) { [weak self] _ in

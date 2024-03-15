@@ -11,6 +11,6 @@
 
 import UIKit
 
-final class MachineLearningCoreView: UIView {
+public final class MachineLearningCoreView: UIView {
 
 }

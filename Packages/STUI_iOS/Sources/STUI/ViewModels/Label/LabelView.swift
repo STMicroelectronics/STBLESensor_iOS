@@ -40,3 +40,36 @@ open class LabelView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+open class ImageLabelView: UIView {
+    let textLabel = UILabel()
+    let actionImageView = UIImageView()
+    let actionButton = UIButton(type: .custom)
+
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+
+        let stackView = UIStackView()
+        stackView.spacing = 5.0
+        stackView.axis = .horizontal
+
+        stackView.addArrangedSubview(actionImageView)
+        stackView.addArrangedSubview(textLabel)
+        stackView.addArrangedSubview(UIView())
+        
+        addSubviewAndFit(stackView)
+        addSubviewAndFit(actionButton)
+
+        actionImageView.activate(constraints: [
+            equalDimension(\.widthAnchor, to: 30.0)
+        ])
+        
+        actionImageView.contentMode = .scaleAspectFit
+
+        textLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
+    }
+
+    required public init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}

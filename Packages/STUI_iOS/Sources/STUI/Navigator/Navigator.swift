@@ -12,6 +12,7 @@ public protocol Navigator {
     @discardableResult
     func start(presenter: Presenter, embeddedNav: Bool) -> UIWindow
 
+    func present(presenter: Presenter, embeddedNav: Bool, modalPresentationStyle: UIModalPresentationStyle, animated: Bool)
     func present(presenter: Presenter, embeddedNav: Bool)
     func present(viewController: UIViewController, animated: Bool)
     func navigate(to presenter: Presenter)
@@ -19,6 +20,7 @@ public protocol Navigator {
     func replace(with presenter: Presenter, animated: Bool)
 
     func dismiss()
+    func dismiss(to: Swift.AnyClass)
     func dismiss(animated: Bool)
     func dismissToRoot(animated: Bool, completion: @escaping () -> Void)
     func dismiss(animated: Bool, completion: @escaping () -> Void)

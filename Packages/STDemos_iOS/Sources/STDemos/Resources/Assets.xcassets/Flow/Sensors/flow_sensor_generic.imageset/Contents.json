@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "flow_sensor_generic.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

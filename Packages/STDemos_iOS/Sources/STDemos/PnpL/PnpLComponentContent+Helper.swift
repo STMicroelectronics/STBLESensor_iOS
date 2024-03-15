@@ -35,7 +35,7 @@ public extension PnpLComponentContent {
         if schema.contains("sensors") {
             return ImageLayout
                 .image(with: PnPLType.type(with: name).iconName, in: STDemos.bundle)?
-                .maskWithColor(color: ColorLayout.secondary.light)
+                .maskWithColor(color: ColorLayout.primary.light)
         } else {
             return ImageLayout
                 .image(with: "ic_info", in: STDemos.bundle)?

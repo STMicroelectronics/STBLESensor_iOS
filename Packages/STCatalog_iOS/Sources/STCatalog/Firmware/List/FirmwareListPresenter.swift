@@ -14,7 +14,12 @@ import STUI
 import STBlueSDK
 import STCore
 
-final class FirmwareListPresenter: BasePresenter<FirmwareListViewController, Board> {
+struct FirmwareFilter {
+    let board: Board
+    let firmwareTypesFilter: [String]?
+}
+
+final class FirmwareListPresenter: BasePresenter<FirmwareListViewController, FirmwareFilter> {
     var director: TableDirector?
 }
 
@@ -35,7 +40,7 @@ extension FirmwareListPresenter: FirmwareListDelegate {
 
         guard let catalogService: CatalogService = Resolver.shared.resolve() else { return }
 
-        let firmwares = catalogService.catalog?.availableV2Firmwares(with: param.deviceId, currentFirmware: nil)
+        let firmwares = catalogService.catalog?.availableV2Firmwares(with: param.board.deviceId, currentFirmware: nil, enabledFirmwares: param.firmwareTypesFilter)
 
         firmwares?.map { FirmwareViewModel(param: $0) }.forEach { element in
             director?.elements.append(element)

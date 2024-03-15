@@ -77,7 +77,7 @@ public class ActionPickerViewModel: BaseViewModel<CodeValue<ActionPickerInput>, 
 
         param?.value.selection = index
 
-        if case let .int(indexValue) = index {
+        if case let .int(indexValue) = index, let options = param?.value.options, options.count > indexValue {
             view.pickerLabel.text = param?.value.options?[indexValue].description
         }
     }

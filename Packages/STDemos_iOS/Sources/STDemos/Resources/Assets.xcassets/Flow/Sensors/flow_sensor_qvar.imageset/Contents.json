@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "flow_sensor_qvar.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

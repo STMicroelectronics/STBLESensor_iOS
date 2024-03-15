@@ -17,17 +17,19 @@ import Toast
 
 open class HSDPnpLPresenter: PnpLPresenter {
 
-    var logControllerResponse: LogControllerResponse?
+    public private(set) var logControllerResponse: LogControllerResponse?
     let waitingView = HSDWaitingView(text: "Check logging status")
 
-    public override func load() {
+    open override func load() {
         waitingView.isVisible = true
         super.load()
         view.view.addSubview(waitingView)
         waitingView.addFitToSuperviewConstraints()
+
+        prepareSettingsMenu()
     }
 
-    public func logStartStop() {
+    open func logStartStop() {
         guard let logControllerResponse = logControllerResponse else { return }
 
         if !(logControllerResponse.sdMounted ?? false) {
@@ -38,15 +40,29 @@ open class HSDPnpLPresenter: PnpLPresenter {
         if let status = logControllerResponse.status, status {
             stopLog()
         } else {
-            setTime()
+            prepareLog()
             startLog()
         }
         
         requestStatusUpdate()
     }
 
+    open override func requestStatusUpdate() {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            BlueManager.shared.sendPnpLCommand(PnpLCommand.simpleJson(element: "get_status",
+                                                                      value: .plain(value: "log_controller")),
+                                               to: self.param.node)
+        }
+    }
+
+    open func prepareLog() {
+        setTime()
+    }
+
     func startLog() {
 //        {"log_controller*start_log":{"interface":0}}
+        StandardHUD.shared.show()
         BlueManager.shared.sendPnpLCommand(PnpLCommand.command(element: "log_controller",
                                                                param: "start_log",
                                                                value: .object(name: "interface",
@@ -54,8 +70,10 @@ open class HSDPnpLPresenter: PnpLPresenter {
                                            to: self.param.node)
     }
 
-    func setTime() {
+    @discardableResult
+    open func setTime() -> Date {
 
+        let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyyMMdd_HH_mm_ss"
 //        formatter.timeZone = TimeZone(secondsFromGMT: 0)
@@ -64,27 +82,22 @@ open class HSDPnpLPresenter: PnpLPresenter {
         BlueManager.shared.sendPnpLCommand(PnpLCommand.command(element: "log_controller",
                                                                param: "set_time",
                                                                value: .object(name: "datetime",
-                                                                              value: AnyEncodable(formatter.string(from: Date())))),
+                                                                              value: AnyEncodable(formatter.string(from: date)))),
                                            to: self.param.node)
+
+        return date
     }
 
     func stopLog() {
 //        {"log_controller*stop_log":{}}
+        StandardHUD.shared.show()
         BlueManager.shared.sendPnpLCommand(PnpLCommand.emptyCommand(element: "log_controller",
                                                                     param: "stop_log"),
                                            to: self.param.node)
     }
 
-    public override func requestStatusUpdate() {
-        BlueManager.shared.sendPnpLCommand(PnpLCommand.simpleJson(element: "get_status",
-                                                                  value: .plain(value: "log_controller")),
-                                           to: self.param.node)
-    }
-
-    public override func handleUpdate(from feature: PnPLFeature) {
-        if feature.sample?.data?.response != nil {
-            super.handleUpdate(from: feature)
-        } else if let data = feature.sample?.data?.rawData {
+    open override func handleUpdate(from feature: PnPLFeature) {
+        if let data = feature.sample?.data?.rawData {
             if let logControllerResponse = try? JSONDecoder().decode(LogControllerResponse.self,
                                                                      from: data,
                                                                      keyedBy: "log_controller") {
@@ -108,6 +121,8 @@ open class HSDPnpLPresenter: PnpLPresenter {
 
             }
         }
+
+        super.handleUpdate(from: feature)
     }
 }
 

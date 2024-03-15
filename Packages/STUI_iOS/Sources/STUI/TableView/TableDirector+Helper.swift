@@ -39,6 +39,7 @@ public extension TableDirector {
 
         return GroupCellViewModel<[any ViewViewModel]>(childViewModels: [ viewModel ],
                                                        layout: layout,
+                                                       isOpen: true,
                                                        isCard: false)
     }
 

@@ -27,8 +27,8 @@ extension WelcomePresenter: WelcomeDelegate {
     public func load() {
         view.configureView()
         
-        view.mainView.pageControl.pageIndicatorTintColor = ColorLayout.primary.light
-        view.mainView.pageControl.currentPageIndicatorTintColor = ColorLayout.primary.dark
+        view.mainView.pageControl.pageIndicatorTintColor = ColorLayout.gray.light
+        view.mainView.pageControl.currentPageIndicatorTintColor = ColorLayout.secondary.dark
         view.mainView.pageControl.numberOfPages = param.pages.count
         
         view.mainView.nextButton.setTitle(param.pages[currentPageIndex].next, for: .normal)

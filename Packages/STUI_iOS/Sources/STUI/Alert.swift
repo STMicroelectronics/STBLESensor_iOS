@@ -16,10 +16,12 @@ import UIKit
 
 public struct AlertActionClosure {
     public let title: String
+    public let color: UIColor?
     public let completion: AlertCompletion?
     
-    public init(title: String, completion: AlertCompletion? = nil) {
+    public init(title: String, color: UIColor? = nil, completion: AlertCompletion? = nil) {
         self.title = title
+        self.color = color
         self.completion = completion
     }
 }

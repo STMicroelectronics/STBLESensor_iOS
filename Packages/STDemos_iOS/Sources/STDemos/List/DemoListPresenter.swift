@@ -142,6 +142,20 @@ private extension DemoListPresenter {
         
         if !(param.type == .sensorTileBox || param.type == .sensorTileBoxPro || param.type == .sensorTileBoxProB) {
             demos.removeAll(where: { $0 == .flow })
+        } else {
+            DispatchQueue.main.async {
+                if let dtmi = BlueManager.shared.dtmi(for: self.param) {
+                    if let demoDecorator = dtmi.firmware.demoDecorator {
+                        if !demoDecorator.add.contains("Flow") {
+                            self.demos.removeAll(where: { $0 == .flow })
+                        }
+                    } else {
+                        self.demos.removeAll(where: { $0 == .flow })
+                    }
+                } else {
+                    self.demos.removeAll(where: { $0 == .flow })
+                }
+            }
         }
 
         view.tableView.separatorStyle = .singleLine

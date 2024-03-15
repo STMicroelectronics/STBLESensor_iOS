@@ -17,10 +17,12 @@ import MessageUI
 
 public class DemoParam<T> {
     public var node: Node
+    public var showTabBar: Bool
     public var param: T?
 
-    public init(node: Node, param: T? = nil) {
+    public init(node: Node, showTabBar: Bool = false, param: T? = nil) {
         self.node = node
+        self.showTabBar = showTabBar
         self.param = param
     }
 }
@@ -58,14 +60,20 @@ open class DemoBasePresenter<T: Presentable, M>: BasePresenter<T, DemoParam<M>>,
 
     open func viewWillAppear() {
 
+        BlueManager.shared.enableNotifications(for: param.node, features: demoFeatures)
+
+        if param.showTabBar {
+            view.showTabBar()
+        } else {
+            view.hideTabBar()
+        }
+
         prepareSettingsMenu()
 
         if let analytics: AnalyticsService = Resolver.shared.resolve(),
            let demo = demo {
             analytics.startDemo(withName: demo.title)
         }
-
-        BlueManager.shared.enableNotifications(for: param.node, features: demoFeatures)
 
         view.handleAppStateForeground { [weak self] in
             guard let self = self else { return }
@@ -78,19 +86,19 @@ open class DemoBasePresenter<T: Presentable, M>: BasePresenter<T, DemoParam<M>>,
 
     open func viewWillDisappear() {
 
+        if disableNotificationOnDisappear {
+            BlueManager.shared.disableNotifications(for: param.node, features: demoFeatures)
+        }
+
         if let analytics: AnalyticsService = Resolver.shared.resolve(),
            let demo = demo {
             analytics.stopDemo(withName: demo.title)
         }
 
         view.cancelAppStateHandlers()
-
-        if disableNotificationOnDisappear {
-            BlueManager.shared.disableNotifications(for: param.node, features: demoFeatures)
-        }
     }
 
-    public override func prepareSettingsMenu() {
+    open override func prepareSettingsMenu() {
         
         settingsButton.image = ImageLayout.Common.gear?.template
 

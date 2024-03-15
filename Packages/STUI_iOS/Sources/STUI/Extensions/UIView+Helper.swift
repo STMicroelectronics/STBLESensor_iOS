@@ -57,6 +57,19 @@ public extension UIView {
         return container
     }
 
+    func embedVerticalCenteredInView() -> UIView {
+        translatesAutoresizingMaskIntoConstraints = false
+
+        let container = UIView()
+        container.addSubview(self, constraints: [
+            equal(\.leftAnchor),
+            equal(\.rightAnchor),
+            equal(\.centerYAnchor)
+        ])
+
+        return container
+    }
+
     class func empty(with color: UIColor = .white, width: CGFloat? = nil, height: CGFloat? = nil) -> UIView {
         let view = UIView()
         view.backgroundColor = color

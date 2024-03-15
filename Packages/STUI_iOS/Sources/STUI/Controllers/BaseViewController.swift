@@ -200,26 +200,26 @@ open class BaseNoViewController<Presenter>: UIViewController, Presentable {
 
 }
 
-public extension BaseNoViewController {
-    func showTabBar() {
-        guard let controller = parent?.parent as? TabBarViewController else { return }
-
-        controller.mainView.tabBarViewBottomConstraint.constant = 0.0
-        controller.mainView.mainViewOffsetConstraint.constant = -TabBarViewController.mainViewOffset
-
-        UIView.animate(withDuration: 0.3) {
-            controller.view.layoutIfNeeded()
-        }
-    }
-
-    func hideTabBar() {
-        guard let controller = parent?.parent as? TabBarViewController else { return }
-
-        controller.mainView.tabBarViewBottomConstraint.constant = -(controller.mainView.tabBarViewHeighConstraint.constant + UIDevice.current.safeAreaEdgeInsets.bottom)
-        controller.mainView.mainViewOffsetConstraint.constant = 0.0
-
-        UIView.animate(withDuration: 0.3) {
-            controller.view.layoutIfNeeded()
-        }
-    }
-}
+//public extension BaseNoViewController {
+//    func showTabBar() {
+//        guard let controller = parent?.parent as? TabBarViewController else { return }
+//
+//        controller.mainView.tabBarViewBottomConstraint.constant = 0.0
+//        controller.mainView.mainViewOffsetConstraint.constant = -TabBarViewController.mainViewOffset
+//
+//        UIView.animate(withDuration: 0.3) {
+//            controller.view.layoutIfNeeded()
+//        }
+//    }
+//
+//    func hideTabBar() {
+//        guard let controller = parent?.parent as? TabBarViewController else { return }
+//
+//        controller.mainView.tabBarViewBottomConstraint.constant = -(controller.mainView.tabBarViewHeighConstraint.constant + UIDevice.current.safeAreaEdgeInsets.bottom)
+//        controller.mainView.mainViewOffsetConstraint.constant = 0.0
+//
+//        UIView.animate(withDuration: 0.3) {
+//            controller.view.layoutIfNeeded()
+//        }
+//    }
+//}

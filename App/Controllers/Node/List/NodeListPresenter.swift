@@ -209,8 +209,15 @@ extension NodeListPresenter: NodeListDelegate {
 
         view.mainView.noResultView.imageView.image = ImageLayout.image(with: "img_discover_no_result")
         view.mainView.noResultView.actionButton.on(.touchUpInside) { [weak self] _ in
-            self?.view.navigationController?.pushViewController(BoardListPresenter(param: BoardListConf(nodeTypesFilter: nil, isDemoListVisible: true)).start(),
-                                                                animated: true)
+            self?.view.navigationController?.pushViewController(
+                BoardListPresenter(
+                    param: BoardListConf(
+                        nodeTypesFilter: nil,
+                        firmwareTypesFilter: nil,
+                        isDemoListVisible: true)
+                ).start(),
+                animated: true
+            )
         }
 
         if director == nil {

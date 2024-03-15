@@ -11,7 +11,7 @@
 
 import Foundation
 
-struct RegisterStatus {
+public struct RegisterStatus {
     let registerId:UInt8
     let value: UInt8
     let algorithmName:String?

@@ -14,17 +14,17 @@ import STUI
 import STBlueSDK
 import STCore
 
-final class MachineLearningCoreViewController: DemoNodeTableViewController<MachineLearningCoreDelegate, MachineLearningCoreView> {
+public final class MachineLearningCoreViewController: DemoNodeTableViewController<MachineLearningCoreDelegate, MachineLearningCoreView> {
 
     override public func makeView() -> MachineLearningCoreView {
         MachineLearningCoreView.make(with: STDemos.bundle) as? MachineLearningCoreView ?? MachineLearningCoreView()
     }
     
-    override func configure() {
+    override public func configure() {
         super.configure()
     }
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         title = Demo.machineLearningCore.title
@@ -34,16 +34,16 @@ final class MachineLearningCoreViewController: DemoNodeTableViewController<Machi
         presenter.retrieveLabelData()
     }
 
-    override func configureView() {
+    override public func configureView() {
         super.configureView()
     }
     
-    override func manager(_ manager: BlueManager, didUpdateValueFor node: Node, feature: Feature, sample: AnyFeatureSample?) {
+    override public func manager(_ manager: BlueManager, didUpdateValueFor node: Node, feature: Feature, sample: AnyFeatureSample?) {
         DispatchQueue.main.async { [weak self] in
             
             guard let feature = feature as? MachineLearningCoreFeature else { return }
 
-            self?.presenter.update(with: feature)
+            self?.presenter.updateMlcDemo(with: feature)
 
             Logger.debug(text: feature.description(with: sample))
         }

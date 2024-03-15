@@ -15,6 +15,7 @@ import STUI
 import STCore
 
 public enum Demo: String, CaseIterable, Codable {
+    case academy
     case environmental
     case plot
     case fft
@@ -173,6 +174,8 @@ public extension Demo {
             return "SD Logging"
         case .aiLogging:
             return "AI Logging"
+        case .academy:
+            return "Academy DEMO"
 //        case .rawPnPL:
 //            return "Raw PnPL Controlled"
 //        case .smartMotorControl:
@@ -284,6 +287,8 @@ public extension Demo {
             return "Configure and control a simple sensors data log"
         case .aiLogging:
             return "Configure, control and tag a simple sensors data log"
+        case .academy:
+            return "Academy Demo Page"
 //        case .rawPnPL:
 //            return "Raw Feature controlled using PnP-Like messages defined by a DTDL-Model"
 //        case .smartMotorControl:
@@ -395,6 +400,8 @@ public extension Demo {
             return ImageLayout.image(with: "demo_multiple_log", in: STUI.bundle)
         case .aiLogging:
             return ImageLayout.image(with: "demo_multiple_log", in: STUI.bundle)
+        case .academy:
+            return ImageLayout.image(with: "demo_academy", in: STUI.bundle)
 //        case .rawPnPL:
 //            return ImageLayout.image(with: "demo_raw_pnpl", in: STUI.bundle)
 //        case .smartMotorControl:
@@ -508,6 +515,8 @@ public extension Demo {
             return [ .log ]
         case .aiLogging:
             return [ .log, .ai ]
+        case .academy:
+            return []
 //        case .rawPnPL:
 //            return [ .control ]
 //        case .smartMotorControl:
@@ -692,6 +701,8 @@ public extension Demo {
             return [ COSensorFeature.self ]
         case .aiLogging:
             return [ AILoggingFeature.self ]
+        case .academy:
+            return []
         }
     }
 
@@ -709,7 +720,7 @@ public extension Demo {
     var couldBeEnableOutside: Bool {
         switch self {
 //        case .cloud, .flow, .textual, .smartMotorControl:
-        case .cloud, .flow, .textual:
+        case .cloud, .flow, .textual, .academy:
             return true
         default:
             return false
@@ -824,6 +835,8 @@ public extension Demo {
             return LegacyPresenter(param: DemoParam<String>(node: node, param: "AI Logging"))
         case .speechToText:
             return LegacyPresenter(param: DemoParam<String>(node: node, param: "Speech To Text"))
+        case .academy:
+            return AcademyPresenter(param: DemoParam<Void>(node: node))
 //        case .rawPnPL:
 //            return LegacyPresenter(param: DemoParam<String>(node: node, param: "RawPnPL"))
 //        case .smartMotorControl:

@@ -30,7 +30,7 @@ public struct AccelerationData {
                                                  max: 2000,
                                                  value: accX)
         
-        self.accelerationY = FeatureField<Float>(name: "X",
+        self.accelerationY = FeatureField<Float>(name: "Y",
                                                  uom: "mg",
                                                  min: -2000,
                                                  max: 2000,

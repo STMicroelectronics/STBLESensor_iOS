@@ -16,4 +16,10 @@ protocol AcademyDelegate: AnyObject {
     
     func load()
     
+    func enableNotification()
+    
+    func disableNotification()
+    
+    func newAccSample(with sample: AnyFeatureSample?)
+    
 }

@@ -12,14 +12,21 @@
 import UIKit
 import STUI
 import STBlueSDK
+import STCore
 
-final class MotorControlViewController: BaseNoViewController<MotorControlDelegate> {
+final class MotorControlViewController: DemoNodeNoViewController<MotorControlDelegate> {
 
+    weak var motorDelegate: MotorControlIsRunningDelegate?
+    
     var containerMotorInformationView = UIView()
     let motorInformationView = MotorInformationView()
     
     var containerSlowTelemetriesView = UIView()
     let slowTelemetriesView = SlowMotorTelemetriesView()
+    
+    var motorFault: MotorControlFault = MotorControlFault.none
+    var motorIsRunning = false
+    var motorSpeed = 0
     
     override func configure() {
         super.configure()
@@ -27,7 +34,7 @@ final class MotorControlViewController: BaseNoViewController<MotorControlDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        presenter.sendGetStatusMotorControllerCommand()
         presenter.load()
     }
 
@@ -36,6 +43,30 @@ final class MotorControlViewController: BaseNoViewController<MotorControlDelegat
         
         containerMotorInformationView = motorInformationView.embedInView(with: .standard)
         containerSlowTelemetriesView = slowTelemetriesView.embedInView(with: .standard)
+        
+        motorInformationView.motorSpeedSlider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
+        motorInformationView.motorSpeedSlider.addTarget(self, action: #selector(sliderTouchEnded(_:)), for: [.touchUpInside, .touchUpOutside])
+        
+        self.setMotorStatus(motorIsRunning: self.motorIsRunning)
+        self.setMotorSpeed(motorSpeed: self.motorSpeed)
+        
+        motorInformationView.motorButton.onTap { _ in
+            if self.motorFault != .none {
+                self.presenter.sendMotorAckFault()
+                self.resetViewAfterFault()
+            } else {
+                if self.motorIsRunning {
+                    self.presenter.sendStopMotorCommand()
+                    self.presenter.sendGetStatusMotorControllerCommand()
+                    self.setMotorStatus(motorIsRunning: false)
+                } else {
+                    self.presenter.sendStartMotorCommand()
+                    self.presenter.sendGetStatusMotorControllerCommand()
+                    self.setMotorStatus(motorIsRunning: true)
+                    self.setMotorSpeed(motorSpeed: self.motorSpeed)
+                }
+            }
+        }
         
         view.backgroundColor = .systemBackground
         let scrollView = UIScrollView()
@@ -73,5 +104,69 @@ final class MotorControlViewController: BaseNoViewController<MotorControlDelegat
         containerSlowTelemetriesView.layer.cornerRadius = 8.0
         containerSlowTelemetriesView.applyShadow()
     }
+    
+    override func manager(_ manager: BlueManager, didUpdateValueFor node: Node, feature: Feature, sample: AnyFeatureSample?) {
+        super.manager(manager, didUpdateValueFor: node, feature: feature, sample: sample)
+        if feature is PnPLFeature {
+            presenter.newPnPLSample(with: sample, and: feature)
+        } else if feature is RawPnPLControlledFeature {
+            presenter.newRawPnPLControlledSample(with: sample, and: feature)
+        }
+    }
+    
+    func setMotorStatus(motorIsRunning: Bool) {
+        self.motorIsRunning = motorIsRunning
+        motorDelegate?.isMotorRunning(isRunning: self.motorIsRunning)
+        
+        if motorIsRunning{
+            motorInformationView.motorStatusImage.image = ImageLayout.image(with: "motor_info_running", in: .module)
+            
+            motorInformationView.motorStatusLabel.text = "RUNNING"
+            motorInformationView.motorStatusLabel.textColor = ColorLayout.greenDark.auto
+            
+            motorInformationView.motorSpeedStackView.isHidden = false
+            
+            motorInformationView.motorButton.setTitle("STOP", for: .normal)
+            Buttonlayout.standardRed.apply(to: motorInformationView.motorButton)
+            
+            slowTelemetriesView.userDescription.text = "To stop acquisition you must stop before the motor via the 'STOP' button and stop the acquisition with the STOP button"
+        } else {
+            motorInformationView.motorStatusImage.image = ImageLayout.image(with: "motor_info_stopped", in: .module)
+            
+            motorInformationView.motorStatusLabel.text = "STOPPED"
+            motorInformationView.motorStatusLabel.textColor = ColorLayout.redDark.auto
+            
+            motorInformationView.motorSpeedStackView.isHidden = true
+            
+            motorInformationView.motorButton.setTitle("START", for: .normal)
+            Buttonlayout.standardGreen.apply(to: motorInformationView.motorButton)
+            
+            slowTelemetriesView.userDescription.text = "To view the data given by the motor, you must start the acquisition via the PLAY button and enable the motor via the START button"
+        }
+    }
+    
+    func setMotorSpeed(motorSpeed: Int) {
+        self.motorSpeed = motorSpeed
+        motorInformationView.motorSpeedSlider.setValue(Float(motorSpeed), animated: true)
+        motorInformationView.motorSpeedLabel.text = "Motor Speed: \(motorSpeed)"
+    }
+    
+    @objc func sliderValueChanged(_ sender: UISlider) {
+        motorInformationView.motorSpeedSlider.setValue(Float(sender.value), animated: true)
+        self.motorSpeed = Int(sender.value)
+        motorInformationView.motorSpeedLabel.text = "Motor Speed: \(motorSpeed)"
+    }
 
+    @objc func sliderTouchEnded(_ sender: UISlider) {
+        self.presenter.sendMotorSpeedValue(speed: Int(sender.value))
+        self.presenter.sendGetStatusMotorControllerCommand()
+    }
+    
+    func resetViewAfterFault() {
+        self.motorFault = .none
+        TextLayout.info.apply(to: motorInformationView.motorStatusMessage)
+        motorInformationView.motorStatusMessage.text = "No fault message"
+        self.presenter.sendGetStatusMotorControllerCommand()
+        
+    }
 }

@@ -28,6 +28,8 @@ public struct ImageLayout {
         public static var refresh: UIImage? { ImageLayout.image(with: "img_refresh") }
         public static var chevronDown: UIImage? { ImageLayout.image(with: "img_chevron_down") }
         public static var info: UIImage? { ImageLayout.image(with: "img_info") }
+        public static var infoFilled: UIImage? { ImageLayout.image(with: "img_info_filled") }
+        public static var warningFilled: UIImage? { ImageLayout.image(with: "img_warning_filled") }
         public static var sleep: UIImage? { ImageLayout.image(with: "sleepIcon") }
         public static var squareChecked: UIImage? { ImageLayout.image(with: "img_square_checked") }
         public static var squareUnchecked: UIImage? { ImageLayout.image(with: "img_square_unchecked") }
@@ -42,17 +44,26 @@ public struct ImageLayout {
         public static var edit: UIImage? { ImageLayout.image(with: "img_edit") }
         public static var editStop: UIImage? { ImageLayout.image(with: "img_edit_stop") }
         public static var gear: UIImage? { ImageLayout.image(with: "img_gear") }
+        public static var gearFilled: UIImage? { ImageLayout.image(with: "img_gear_filled") }
         public static var accountGear: UIImage? { ImageLayout.image(with: "img_account_gear") }
+        public static var moreVertical: UIImage? { ImageLayout.image(with: "img_more_vertical") }
         public static var star: UIImage? { ImageLayout.image(with: "img_star") }
         public static var starFill: UIImage? { ImageLayout.image(with: "img_star_fill") }
         public static var pin: UIImage? { ImageLayout.image(with: "img_pin") }
+        public static var filterOn: UIImage? { ImageLayout.image(with: "filter_alt_on") }
+        public static var filterOff: UIImage? { ImageLayout.image(with: "filter_alt_off") }
         public static var play: UIImage? { ImageLayout.image(with: "ic_play_arrow_24") }
+        public static var playFilled: UIImage? { ImageLayout.image(with: "ic_play_arrow_24_filled") }
         public static var pause: UIImage? { ImageLayout.image(with: "ic_pause_24") }
+        public static var stopFilled: UIImage? { ImageLayout.image(with: "ic_stop_24_filled") }
+        public static var stop: UIImage? { ImageLayout.image(with: "ic_stop_24") }
         public static var lens: UIImage? { ImageLayout.image(with: "img_lens") }
+        public static var zoom_out: UIImage? { ImageLayout.image(with: "ic_zoom_out") }
         public static var tagOutline: UIImage? { ImageLayout.image(with: "img_tag_outline") }
         public static var tagFilled: UIImage? { ImageLayout.image(with: "img_tag_filled") }
         public static var sensors: UIImage? { ImageLayout.image(with: "img_sensors") }
         public static var upload: UIImage? { ImageLayout.image(with: "img_upload") }
+        public static var logs: UIImage? { ImageLayout.image(with: "img_logs") }
         public static var heartUnchecked: UIImage? { ImageLayout.image(with: "img_heart_unchecked") }
         public static var heartChecked: UIImage? { ImageLayout.image(with: "img_heart") }
         public static var delete: UIImage? { ImageLayout.image(with: "img_delete") }

@@ -110,6 +110,7 @@ extension JsonNfcPresenter: JsonNfcDelegate {
         guard let feature = demoFeatures.first else { return }
 
         BlueManager.shared.sendJsonCommand(StandardJsonCommand(value: jsonWriteCmd),
+                                           maxWriteLength: 20,
                                            to: param.node,
                                            feature: feature)
         sendJsonCommand(jsonWriteCmd, "WiFi NDEF Record Written on NFC")
@@ -128,6 +129,7 @@ extension JsonNfcPresenter: JsonNfcDelegate {
             
             BlueManager.shared.sendJsonCommand(
                 StandardJsonCommand(value: command),
+                maxWriteLength: 20,
                 to: param.node,
                 feature: jsonNFCFeature
             )

@@ -29,14 +29,6 @@ final class FlashBankStatusViewController: TableViewController<FlashBankStatusDe
 
         title = Localizer.Firmware.Text.title.localized
 
-        let closeButton = UIBarButtonItem(image: ImageLayout.Common.chevronDown,
-                                          style: .plain,
-                                          closure: { [weak self] _ in
-            self?.dismiss(animated: true)
-        })
-
-        navigationItem.rightBarButtonItems = [ closeButton ]
-
         presenter.load()
     }
 

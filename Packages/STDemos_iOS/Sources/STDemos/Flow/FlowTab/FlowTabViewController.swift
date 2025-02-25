@@ -13,7 +13,7 @@ import UIKit
 import STUI
 import STBlueSDK
 
-final class FlowTabViewController: TableNodeNoViewController<FlowTabDelegate> {
+final class FlowTabViewController: DemoNodeTableNoViewController<FlowTabDelegate> {
 
     override func configure() {
         super.configure()

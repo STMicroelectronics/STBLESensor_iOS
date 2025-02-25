@@ -12,8 +12,9 @@
 import UIKit
 import STUI
 import STBlueSDK
+import STCore
 
-final class SensorsTabPresenter: BasePresenter<SensorsTabViewController, Node> {
+final class SensorsTabPresenter: DemoBasePresenter<SensorsTabViewController, Void> {
     var director: TableDirector?
 }
 
@@ -29,7 +30,16 @@ extension SensorsTabPresenter: SensorsTabDelegate {
                            type: .fromClass,
                            bundle: .module)
         
-        let sensors = PersistanceService.shared.getAllSensors(runningNode: param)
+        let sensors = PersistanceService.shared.getAllSensors(runningNode: param.node)
+        
+//        if let catalogService: CatalogService = Resolver.shared.resolve(),
+//           let runningFirmware = catalogService.catalog?.v2Firmware(with: param.node.deviceId.longHex,
+//                                                                    firmwareId: UInt32(param.node.bleFirmwareVersion).longHex) {
+//            
+//            print("RUNNING FW SENSOR ADAPTERS\n\(catalogService.catalog?.sensorAdapters)")
+//            print("RUNNING FW SENSOR ADAPTERS\n\(runningFirmware.compatibleSensorAdapters)")
+//            
+//        }
         
         sensors.forEach { flowSensorItem in
             director?.elements.append(FlowSensorItemViewModel(param: flowSensorItem, onFlowSensorClicked: { item in

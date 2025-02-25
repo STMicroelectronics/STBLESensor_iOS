@@ -103,8 +103,15 @@ extension MEMSSensorFusionPresenter: MEMSSensorFusionDelegate {
             updateCubeRotation(with: data)
         } else if let sample = sample as? FeatureSample<SensorFusionCompactData>,
                   let data = sample.data {
-            data.samples.forEach { sample in
-                updateCubeRotation(with: sample)
+            for i in 0..<data.samples.endIndex {
+                let deltaTimeForSample = 0.03/Double(data.samples.count)
+                if i != 0 {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + deltaTimeForSample) {
+                        self.updateCubeRotation(with: data.samples[i])
+                    }
+                } else {
+                    updateCubeRotation(with: data.samples[i])
+                }
             }
         } else if let sample = sample as? FeatureSample<AccelerationEventData>,
                   let data = sample.data {
@@ -136,7 +143,7 @@ extension MEMSSensorFusionPresenter: MEMSSensorFusionDelegate {
             if let quaternionJ = sample.quaternionJ.value {
                 if let quaternionK = sample.quaternionK.value {
                     if let quaternionS = sample.quaternionS.value {
-                        glkQuaternion.z = quaternionI
+                        glkQuaternion.z = -quaternionI
                         glkQuaternion.y = quaternionJ
                         glkQuaternion.x = quaternionK
                         glkQuaternion.w = quaternionS

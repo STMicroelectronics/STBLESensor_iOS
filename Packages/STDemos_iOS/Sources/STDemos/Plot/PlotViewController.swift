@@ -12,7 +12,7 @@
 import UIKit
 import STUI
 import STBlueSDK
-import Charts
+import DGCharts
 
 final class PlotViewController: DemoNodeNoViewController<PlotDelegate> {
     
@@ -26,6 +26,8 @@ final class PlotViewController: DemoNodeNoViewController<PlotDelegate> {
     
     let yAxisTitleLabel = UILabel()
     let xAxisTitleLabel = UILabel()
+    
+    var selectFeatureSV = UIStackView()
     
     let playImg = UIImage(named: "ic_play_arrow_24", in: STUI.bundle, compatibleWith: nil)?.maskWithColor(color: ColorLayout.systemWhite.light)
     
@@ -60,13 +62,20 @@ final class PlotViewController: DemoNodeNoViewController<PlotDelegate> {
         
         TextLayout.info.apply(to: plotDescription)
         
-        let horizontalSV = UIStackView.getHorizontalStackView(withSpacing: 8, views: [
+        selectFeatureSV =  UIStackView.getHorizontalStackView(withSpacing: 8, views: [
             plotFeatureLabel,
-            plotFeatureButton,
+            plotFeatureButton
+        ])
+        selectFeatureSV.distribution = .fill
+        
+        let horizontalSV = UIStackView.getHorizontalStackView(withSpacing: 8, views: [
+            selectFeatureSV,
             UIView(),
             plotStartStopButton
         ])
         horizontalSV.distribution = .fill
+        
+    
         
         TextLayout.info.apply(to: yAxisTitleLabel)
         TextLayout.info.apply(to: xAxisTitleLabel)
@@ -100,7 +109,8 @@ final class PlotViewController: DemoNodeNoViewController<PlotDelegate> {
         ])
         
         let featureSelectorTap = UITapGestureRecognizer(target: self, action: #selector(featureSelectorTapped(_:)))
-        plotFeatureButton.addGestureRecognizer(featureSelectorTap)
+        //plotFeatureButton.addGestureRecognizer(featureSelectorTap)
+        selectFeatureSV.addGestureRecognizer(featureSelectorTap)
         
         let startStopTap = UITapGestureRecognizer(target: self, action: #selector(startStopTapped(_:)))
         plotStartStopButton.addGestureRecognizer(startStopTap)

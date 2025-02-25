@@ -22,6 +22,11 @@ public protocol Presenter: AnyObject {
     func start() -> UIViewController
 }
 
+public protocol NavigatorPresenter: AnyObject {
+
+    func back()
+}
+
 public protocol Presentable: UIViewController {
     associatedtype Presenter
 
@@ -42,10 +47,10 @@ public struct SettingsAction {
     }
 }
 
-open class BasePresenter<View: Presentable, Param>: Presenter {
+open class BasePresenter<View: Presentable, Param>: Presenter, NavigatorPresenter {
     
-    public var settingsButton = UIBarButtonItem(
-        image: ImageLayout.Common.accountGear?.template,
+    public var moreButton = UIBarButtonItem(
+        image: ImageLayout.Common.moreVertical?.template,
         style: .plain,
         target: nil,
         action: nil
@@ -86,10 +91,7 @@ open class BasePresenter<View: Presentable, Param>: Presenter {
                                              handler: {
         }))
 
-//        let settingsButton = UIBarButtonItem(image: ImageLayout.Common.accountGear?.template,
-//                                             style: .plain, target: nil, action: nil)
-
-        settingsButton.onTap { [weak self] item in
+        moreButton.onTap { [weak self] item in
             guard let self = self else { return }
 
             let actions = self.settingActions.map { action in
@@ -100,12 +102,12 @@ open class BasePresenter<View: Presentable, Param>: Presenter {
             }
 
             UIAlertController.presentAlert(from: self.view,
-                                           title: "SETTINGS",
+                                           title: "OPTIONS",
                                            style: .actionSheet,
                                            actions: actions)
         }
 
-        view.navigationItem.rightBarButtonItems = [settingsButton]
+        view.navigationItem.rightBarButtonItems = [moreButton]
     }
 
     open func addNavigationButton(with image: UIImage?,
@@ -127,7 +129,7 @@ open class BasePresenter<View: Presentable, Param>: Presenter {
                 settingsButton.image = image
             }
         }
-
+        
         var items: [UIBarButtonItem] = (group == .left ?
                                         view.navigationItem.leftBarButtonItems :
                                             view.navigationItem.rightBarButtonItems) ?? [UIBarButtonItem]()
@@ -139,6 +141,10 @@ open class BasePresenter<View: Presentable, Param>: Presenter {
         } else {
             view.navigationItem.rightBarButtonItems = items
         }
+    }
+
+    open func back() {
+        view.navigationController?.popViewController(animated: true)
     }
 
     private func create() -> View {

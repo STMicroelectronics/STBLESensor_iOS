@@ -16,10 +16,12 @@ import STBlueSDK
 public struct Firmwares {
     public let current: Firmware
     public let availables: [Firmware]
+    public let isMandatory: Bool
 
-    public init(current: Firmware, availables: [Firmware]) {
+    public init(current: Firmware, availables: [Firmware], isMandatory: Bool = false) {
         self.current = current
         self.availables = availables
+        self.isMandatory = isMandatory
     }
 }
 
@@ -55,8 +57,8 @@ public class FirmwareCheckerViewModel: BaseCellViewModel<Firmwares, FirmwareChec
         view.updateFirmwareLabel.text = param?.availables.first?.fullName
         view.changeLogLabel.text = param?.availables.first?.changelog
 
-        Buttonlayout.standard.apply(to: view.installButton)
-        Buttonlayout.text.apply(to: view.cancelButton)
+        Buttonlayout.standard.apply(to: view.installButton, text: "INSTALL")
+        Buttonlayout.standardGray.apply(to: view.cancelButton, text: "CANCEL")
         
         Buttonlayout.imageLayout(image: ImageLayout.Common.squareUnchecked?
             .scalePreservingAspectRatio(targetSize: ImageSize.small)
@@ -65,6 +67,14 @@ public class FirmwareCheckerViewModel: BaseCellViewModel<Firmwares, FirmwareChec
             .scalePreservingAspectRatio(targetSize: ImageSize.small)
             .maskWithColor(color: ColorLayout.primary.light),
                                  color: ColorLayout.primary.light).apply(to: view.dontAskAgainButton)
+
+
+        view.updateFirmwareDescLabel.text = param?.isMandatory ?? false ? "Suggested firmware" : "Update Available"
+
+        view.dontAskAgainButton.isHidden = param?.isMandatory ?? false
+        view.dontAskAgainDescLabel.isHidden = param?.isMandatory ?? false
+
+        view.infoInstallLabel.text = param?.isMandatory ?? false ? "PLEASE NOTE: the current firmware is not supported. You need to install the suggested firmware in order to use the app": "PLEASE NOTE: Firmware update always available under Board Configuration → Firmware Download"
 
         view.dontAskAgainButton.onTap { _ in
             view.dontAskAgainButton.isSelected = !view.dontAskAgainButton.isSelected

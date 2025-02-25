@@ -70,18 +70,32 @@ internal class STM32WBFirmwareService: BaseFirmwareService {
     }
 
     override func currentVersion(_ completion: @escaping FirmwareVersionCompletion) {
-        let version = (nodeService.node.type == NodeType.wbaBoard) ?
-                        FirmwareVersion(name: "STM32Cube_FW_WBA-OTA",
-                                        mcuType: "STM32WBA",
-                                        major: 1,
-                                        minor: 0,
-                                        patch: 0)
-                        :
-                      FirmwareVersion(name: "STM32Cube_FW_WB-OTA",
-                                      mcuType: "STM32WBXX",
-                                      major: 1,
-                                      minor: 0,
-                                      patch: 0)
+        let version = if nodeService.node.type == NodeType.nucleoWB0X {
+            FirmwareVersion(name: "STM32Cube_FW_WB0X-OTA",
+                            mcuType: "STM32WB0X",
+                            major: 1,
+                            minor: 0,
+                            patch: 0)
+        } else if nodeService.node.type == NodeType.wba6NucleoBoard {
+            FirmwareVersion(name: "STM32Cube_FW_WBA6-OTA",
+                            mcuType: "STM32WBA6",
+                            major: 1,
+                            minor: 0,
+                            patch: 0)
+        } else if nodeService.node.type.family == NodeFamily.wbaFamily {
+            FirmwareVersion(name: "STM32Cube_FW_WBA-OTA",
+                            mcuType: "STM32WBA",
+                            major: 1,
+                            minor: 0,
+                            patch: 0)
+        } else {
+            FirmwareVersion(name: "STM32Cube_FW_WB-OTA",
+                            mcuType: "STM32WBXX",
+                            major: 1,
+                            minor: 0,
+                            patch: 0)
+        }
+        
         completion(version)
     }
 
@@ -91,7 +105,7 @@ internal class STM32WBFirmwareService: BaseFirmwareService {
 
         // STEP 1.: REBOOT IN OTA MODE
 
-        if nodeService.node.isOTA() {
+        if nodeService.node.isOTA() || nodeService.node.type.family == .wbaFamily || nodeService.node.type == .nucleoWB0X || nodeService.node.type == .wba6NucleoBoard {
             DispatchQueue.global(qos: .background).async { [weak self] in
                 guard let self = self else { return }
                 self.sendFirmware(to: self.nodeService.node)
@@ -222,7 +236,7 @@ extension STM32WBFirmwareService: BlueDelegate {
                     switch(value![0]) {
                     case 0x02:
                         Thread.sleep(forTimeInterval: STM32WBFirmwareService.writeDelay)
-                        self.sendFirmware(data: self.firmwareData!, isWBA: true)
+                        self.sendFirmware(data: self.firmwareData!, isWBA: (node.type.family == NodeFamily.wbaFamily || node.type == .nucleoWB0X || node.type == .wba6NucleoBoard))
                         let finishCommand = Data.uploadFinished()
                         self.nodeService.bleService.write(data: finishCommand,
                                                           characteristic: self.control!.characteristic)

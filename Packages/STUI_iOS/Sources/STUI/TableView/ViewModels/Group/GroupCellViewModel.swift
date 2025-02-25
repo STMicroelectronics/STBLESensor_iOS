@@ -15,7 +15,7 @@ public typealias ChildViewModels = [any ViewViewModel]
 
 public class GroupCellViewModel<ChildViews>: BaseCellViewModel<Void, GroupTableViewCell> where ChildViews == ChildViewModels {
 
-    var childViewModels: ChildViews
+    public var childViewModels: ChildViews
     var layout: Layout? = nil
     var tapGesture: UITapGestureRecognizerWithClosure?
     var isOpen: Bool = false
@@ -102,6 +102,16 @@ public class GroupCellViewModel<ChildViews>: BaseCellViewModel<Void, GroupTableV
             currentViewModel.configure(view: currentView)
 
             currentView.isHidden = false
+        }
+
+        for (index, currentView) in view.stackView.arrangedSubviews.enumerated() {
+            if index == 0, let headerView = currentView as? ImageDetailView {
+                headerView.isHidden = false
+                headerView.childView?.alpha = self.isOpen ? 0.0 : 1.0
+                headerView.childView?.isUserInteractionEnabled = !self.isOpen
+            } else {
+                currentView.isHidden = !self.isOpen
+            }
         }
 
         self.tapGesture = UITapGestureRecognizerWithClosure(closure: {  [weak self] tap in

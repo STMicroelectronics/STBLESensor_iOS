@@ -28,7 +28,11 @@ final class NodeListPresenter: VoidPresenter<NodeListViewController> {
 
         settingActions.removeAll()
 
-        if let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String {
+        if var appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String {
+            
+            if UserDefaults.standard.bool(forKey: "isBetaCatalogActivated") {
+                appName += " (Beta)"
+            }
             settingActions.append(SettingsAction(name: "\(appName) v\(STCore.appShortVersion)",
                                                  style: .default,
                                                  handler: { [weak self] in
@@ -205,7 +209,7 @@ extension NodeListPresenter: NodeListDelegate {
         view.mainView.noResultView.descriptionLabel.text = Localizer.Home.NoResultView.Text.description.localized
 
         Buttonlayout.standard.apply(to: view.mainView.noResultView.actionButton,
-                                    text: Localizer.Home.NoResultView.Action.discoverProduct.localized)
+                                    text: "DISCOVER OUR PRODUCTS")
 
         view.mainView.noResultView.imageView.image = ImageLayout.image(with: "img_discover_no_result")
         view.mainView.noResultView.actionButton.on(.touchUpInside) { [weak self] _ in
@@ -213,7 +217,7 @@ extension NodeListPresenter: NodeListDelegate {
                 BoardListPresenter(
                     param: BoardListConf(
                         nodeTypesFilter: nil,
-                        firmwareTypesFilter: nil,
+                        firmwareNamesFilter: nil,
                         isDemoListVisible: true)
                 ).start(),
                 animated: true

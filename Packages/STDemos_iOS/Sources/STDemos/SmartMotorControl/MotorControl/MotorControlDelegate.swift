@@ -10,9 +10,24 @@
 //
 
 import UIKit
+import STBlueSDK
 
-protocol MotorControlDelegate: AnyObject {
+public protocol MotorControlDelegate: AnyObject {
 
     func load()
+    
+    func sendGetStatusMotorControllerCommand()
+    
+    func sendStartMotorCommand()
+    
+    func sendStopMotorCommand()
+    
+    func sendMotorAckFault()
+    
+    func sendMotorSpeedValue(speed: Int)
+    
+    func newPnPLSample(with sample: AnyFeatureSample?, and feature: Feature)
+    
+    func newRawPnPLControlledSample(with sample: AnyFeatureSample?, and feature: Feature)
 
 }

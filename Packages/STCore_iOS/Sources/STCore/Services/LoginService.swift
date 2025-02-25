@@ -16,6 +16,7 @@ public typealias AuthCompletion = (Error?) -> Void
 
 public protocol LoginService {
     var isAuthenticated: Bool { get }
+    var isTemporaryAuthenticated: Bool { get }
     var authData: Data? { get set }
 
     func resetAuthentication(from controller: UIViewController, completion: LogoutCallback?)

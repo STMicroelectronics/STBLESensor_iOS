@@ -82,7 +82,7 @@ class NodeViewModel: BaseCellViewModel<Node, NodeCell> {
         if let firmware = catalog.v2Firmware(with: param.deviceId.longHex,
                                           firmwareId: UInt32(param.bleFirmwareVersion).longHex) {
 
-            if firmware.bleVersionId == 255 {
+            if firmware.bleVersionId == 0xff {
                 view.customModelLabel.isHidden = false
             }
 

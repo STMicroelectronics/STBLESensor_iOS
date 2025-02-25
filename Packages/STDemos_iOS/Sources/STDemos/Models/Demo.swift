@@ -20,6 +20,7 @@ public enum Demo: String, CaseIterable, Codable {
     case fft
     case neaiAnomalyDetection
     case neaiClassification
+    case neaiExtrapolation
     case predictiveMaintenance
     case highSpeedDataLog
     case highSpeedDataLog2
@@ -42,8 +43,7 @@ public enum Demo: String, CaseIterable, Codable {
     case eventCounter
     case gestureNavigation
     case jsonNfc
-//    case binaryContent
-//    case piano
+    case piano
     case pedometer
     case level
     case compass
@@ -60,128 +60,89 @@ public enum Demo: String, CaseIterable, Codable {
     case proximity
 //    case qvar
     case textual
-    case cloud
+    case cloudAzureIotCentral
+    case cloudMqtt
     case battery
     case coSensor
     case sdLogging
     case aiLogging
-//    case rawPnPL
-//    case smartMotorControl
-//    case wbsOtaFuota
+    case rawPnPLControlled
+    case smartMotorControl
+    case medicalSignal
+    case binaryContent
+    case wbsOtaFuota
 }
 
+private var pnplDemoTitle: String = "PnpLike"
+
 public extension Demo {
+    static var titles: [Demo: String] = [
+        .environmental: "Environmental",
+        .plot: "Plot Data",
+        .fft: "FFT",
+        .neaiAnomalyDetection: "NEAI Anomaly Detection",
+        .neaiClassification: "NEAI Classification",
+        .neaiExtrapolation: "NEAI Extrapolation",
+        .predictiveMaintenance: "Predictive Maintenance",
+        .highSpeedDataLog: "HighSpeed DataLog",
+        .highSpeedDataLog2: "HighSpeed DataLog2",
+        .pnpLike: "PnpLike",
+        .extendedConfiguration: "Board Configuration",
+        .switchDemo: "Switch",
+        .ledControl: "Led Control",
+        .heartRate: "Heart Rate",
+        .blueVoice: "Blue Voice",
+        .beamforming: "BeamForming",
+        .audioSourceLocalization: "Audio Source Localization",
+        .speechToText: "Speech to Text",
+        .audioClassification: "Audio Classification",
+        .activityRecognition: "Activity Recognition",
+        .multiNN: "Multi Neural Network",
+        .machineLearningCore: "Machine Learning Core",
+        .finiteStateMachine: "Finite State Machine",
+        .stredl: "STREDL",
+        .flow: "Flow",
+        .eventCounter: "Event Counter",
+        .gestureNavigation: "Gesture Navigation",
+        .jsonNfc: "JSON NFC Writing",
+        .piano: "Piano",
+        .pedometer: "Pedometer",
+        .level: "Level",
+        .compass: "Compass",
+        .memsSensorFusion: "MEMS Sensor Fusion",
+        .memsGesture: "Mems Gesture",
+        .motionAlgorithm: "Motion Algorithm",
+        .carryPosition: "Carry Position",
+        .motionIntensity: "Motion Intensity",
+        .fitnessActivity: "Fitness Activity",
+        .accelerationEvent: "Acceleration Event",
+        .gnss: "GNSS",
+        .colorAmbientLight: "Color Ambient Light",
+        .tofMultiObject: "ToF Multi Object",
+        .proximity: "Proximity Gesture",
+//        .qvar: "Electric Charge Variation",
+        .textual: "Textual Monitor",
+        .cloudAzureIotCentral: "Cloud Azure IoT Central",
+        .cloudMqtt: "Cloud MQTT",
+        .battery: "Battery",
+        .coSensor: "CO Sensor",
+        .sdLogging: "SD Logging",
+        .aiLogging: "AI Logging",
+        .rawPnPLControlled: "Raw PnPL Controlled",
+        .smartMotorControl: "Smart Motor Control",
+        .medicalSignal: "Medical Signals",
+        .binaryContent: "Binary Content",
+        .wbsOtaFuota: "FUOTA"
+    ]
+
     var title: String {
-        switch self {
-        case .environmental:
-            return "Enviromental"
-        case .plot:
-            return "Plot Data"
-        case .fft:
-            return "FFT"
-        case .neaiAnomalyDetection:
-            return "NEAI Anomaly Detection"
-        case .neaiClassification:
-            return "NEAI Classification"
-        case .predictiveMaintenance:
-            return "Predictive Maintenance"
-        case .highSpeedDataLog:
-            return "High Speed Data Log"
-        case .highSpeedDataLog2:
-            return "High Speed Data Log 2"
-        case .pnpLike:
-            return "PnpLike"
-        case .extendedConfiguration:
-            return "Board Configuration"
-        case .switchDemo:
-            return "Switch"
-        case .ledControl:
-            return "Led Control"
-        case .heartRate:
-            return "Heart Rate"
-        case .blueVoice:
-            return "Blue Voice"
-        case .beamforming:
-            return "BeamForming"
-        case .audioSourceLocalization:
-            return "Audio Source Localization"
-        case .speechToText:
-            return "Speech to Text"
-        case .audioClassification:
-            return "Audio Classification"
-        case .activityRecognition:
-            return "Activity Recognition"
-        case .multiNN:
-            return "Multi Neural Network"
-        case .machineLearningCore:
-            return "Machine Learning Core"
-        case .finiteStateMachine:
-            return "Finite State Machine"
-        case .stredl:
-            return "STREDL"
-        case .flow:
-            return "Flow"
-        case .eventCounter:
-            return "Event Counter"
-        case .gestureNavigation:
-            return "Gesture Navigation"
-        case .jsonNfc:
-            return "JSON NFC Writing"
-//        case .binaryContent:
-//            return "Binary Content"
-//        case .piano:
-//            return "Piano"
-        case .pedometer:
-            return "Pedometer"
-        case .level:
-            return "Level"
-        case .compass:
-            return "Compass"
-        case .memsSensorFusion:
-            return "MEMS Sensor Fusion"
-        case .memsGesture:
-            return "Mems Gesture"
-        case .motionAlgorithm:
-            return "Motion Algorithm"
-        case .carryPosition:
-            return "Carry Position"
-        case .motionIntensity:
-            return "Motion Intensity"
-        case .fitnessActivity:
-            return "Fitness Activity"
-        case .accelerationEvent:
-            return "Acceleration Event"
-        case .gnss:
-            return "GNSS"
-        case .colorAmbientLight:
-            return "Color Ambient Light"
-        case .tofMultiObject:
-            return "ToF Multi Object"
-        case .proximity:
-            return "Proximity Gesture"
-//        case .qvar:
-//            return "Electric Charge Variation"
-        case .textual:
-            return "Textual Monitor"
-        case .cloud:
-            return "Cloud Logging"
-        case .battery:
-            return "Battery"
-        case .coSensor:
-            return "CO Sensor"
-        case .sdLogging:
-            return "SD Logging"
-        case .aiLogging:
-            return "AI Logging"
-//        case .rawPnPL:
-//            return "Raw PnPL Controlled"
-//        case .smartMotorControl:
-//            return "Smart Motor Control"
-//        case .wbsOtaFuota:
-//            return "FUOTA"
-        }
+        return Demo.titles[self] ?? "Unknown"
     }
 
+    mutating func setTitle(_ newTitle: String) {
+        Demo.titles[self] = newTitle
+    }
+    
     var description: String {
         switch self {
         case .environmental:
@@ -194,6 +155,8 @@ public extension Demo {
             return "AI library (generated using NanoEdgeAIStudio) for predictive maintenance solution"
         case .neaiClassification:
             return "AI library (generated using NanoEdgeAIStudio) for classification"
+        case .neaiExtrapolation:
+            return "AI library (generated using NanoEdgeAIStudio) for extrapolation"
         case .predictiveMaintenance:
             return "Display sensor data values acquired and processed with dedicated predictive maintenance algorithm"
         case .highSpeedDataLog:
@@ -238,10 +201,10 @@ public extension Demo {
             return "Recognition of gesture navigation using sensor"
         case .jsonNfc:
             return "Write NDEF records (Text/Wi-Fi/Business Card and URL) to the board"
-//        case .binaryContent:
-//            return "Receive or Send to the board a Binary content"
-//        case .piano:
-//            return "Display a Piano keyboard for playing audio notes on the board"
+        case .binaryContent:
+            return "Receive or Send to the board a Binary content"
+        case .piano:
+            return "Display a Piano keyboard for playing audio notes on the board"
         case .pedometer:
             return "Calculate number of steps and its frequency"
         case .level:
@@ -274,8 +237,10 @@ public extension Demo {
 //            return "Display Raw data coming from electric charge variation (QVAR) sensor"
         case .textual:
             return "Show in a textual way the values received and parsed from any bluetooth characteristics"
-        case .cloud:
-            return "Connect the board to different cloud providers"
+        case .cloudAzureIotCentral:
+            return "Connect the board to one Azure IoT Central Dashboard"
+        case .cloudMqtt:
+            return "Connect the board to one MQTT Server"
         case .battery:
             return "Display board RSSI and Battery information if available"
         case .coSensor:
@@ -284,15 +249,17 @@ public extension Demo {
             return "Configure and control a simple sensors data log"
         case .aiLogging:
             return "Configure, control and tag a simple sensors data log"
-//        case .rawPnPL:
-//            return "Raw Feature controlled using PnP-Like messages defined by a DTDL-Model"
-//        case .smartMotorControl:
-//            return "Motor Control Integration with high speed sensors data log configuration, control and tagging"
-//        case .wbsOtaFuota:
-//            return "Firmware Update Over the Air for WB/WBA boards"
+        case .rawPnPLControlled:
+            return "Raw Feature controlled using PnP-Like messages defined by a DTDL-Model"
+        case .medicalSignal:
+            return "Display Medical Signals"
+        case .smartMotorControl:
+            return "Motor Control Integration with high speed sensors data log configuration, control and tagging"
+        case .wbsOtaFuota:
+            return "Firmware Update Over the Air for WB/WBA boards"
         }
     }
-
+    
     var image: UIImage? {
         switch self {
         case .environmental:
@@ -304,6 +271,8 @@ public extension Demo {
         case .neaiAnomalyDetection:
             return ImageLayout.image(with: "demo_neai", in: STUI.bundle)
         case .neaiClassification:
+            return ImageLayout.image(with: "demo_neai", in: STUI.bundle)
+        case .neaiExtrapolation:
             return ImageLayout.image(with: "demo_neai", in: STUI.bundle)
         case .predictiveMaintenance:
             return ImageLayout.image(with: "demo_predictive", in: STUI.bundle)
@@ -349,10 +318,8 @@ public extension Demo {
             return ImageLayout.image(with: "demo_gesture_navigation", in: STUI.bundle)
         case .jsonNfc:
             return ImageLayout.image(with: "demo_nfc", in: STUI.bundle)
-//        case .binaryContent:
-//            return ImageLayout.image(with: "demo_binary_content", in: STUI.bundle)
-//        case .piano:
-//            return ImageLayout.image(with: "demo_piano", in: STUI.bundle)
+        case .piano:
+            return ImageLayout.image(with: "demo_piano", in: STUI.bundle)
         case .pedometer:
             return ImageLayout.image(with: "demo_pedometer", in: STUI.bundle)
         case .level:
@@ -385,8 +352,10 @@ public extension Demo {
 //            return ImageLayout.image(with: "demo_qvar", in: STUI.bundle)
         case .textual:
             return ImageLayout.image(with: "demo_textual", in: STUI.bundle)
-        case .cloud:
-            return ImageLayout.image(with: "demo_cloud", in: STUI.bundle)
+        case .cloudAzureIotCentral:
+            return ImageLayout.image(with: "demo_cloud_azure_iot_central", in: STUI.bundle)
+        case .cloudMqtt:
+            return ImageLayout.image(with: "demo_cloud_mqtt", in: STUI.bundle)
         case .battery:
             return ImageLayout.image(with: "demo_battery", in: STUI.bundle)
         case .coSensor:
@@ -395,17 +364,19 @@ public extension Demo {
             return ImageLayout.image(with: "demo_multiple_log", in: STUI.bundle)
         case .aiLogging:
             return ImageLayout.image(with: "demo_multiple_log", in: STUI.bundle)
-//        case .rawPnPL:
-//            return ImageLayout.image(with: "demo_raw_pnpl", in: STUI.bundle)
-//        case .smartMotorControl:
-//            return ImageLayout.image(with: "demo_smart_motor_control", in: STUI.bundle)
-//        case .wbsOtaFuota:
-//            return ImageLayout.image(with: "demo_raw_pnpl", in: STUI.bundle)
-        default:
-            return ImageLayout.image(with: "img_question_mark", in: STUI.bundle)
+        case .rawPnPLControlled:
+            return ImageLayout.image(with: "demo_raw_pnpl", in: STUI.bundle)
+        case .medicalSignal:
+            return  ImageLayout.image(with: "demo_medical_signal", in: STUI.bundle)
+        case .smartMotorControl:
+            return ImageLayout.image(with: "demo_smart_motor_control", in: STUI.bundle)
+        case .binaryContent:
+            return ImageLayout.image(with: "demo_binary_content", in: STUI.bundle)
+        case .wbsOtaFuota:
+            return ImageLayout.image(with: "demo_wb_fuota", in: STUI.bundle)
         }
     }
-
+    
     var groups: [DemoGroup] {
         switch self {
         case .environmental:
@@ -418,6 +389,8 @@ public extension Demo {
             return [ .ai, .predictiveMaintenance ]
         case .neaiClassification:
             return [ .ai ]
+        case .neaiExtrapolation:
+            return [.ai]
         case .predictiveMaintenance:
             return [ .predictiveMaintenance, .status ]
         case .highSpeedDataLog:
@@ -462,10 +435,8 @@ public extension Demo {
             return [ .environmental, .control ]
         case .jsonNfc:
             return [ .configuration ]
-//        case .binaryContent:
-//            return [ .binaryContent ]
-//        case .piano:
-//            return [ .audio ]
+        case .piano:
+            return [ .audio ]
         case .pedometer:
             return [ .inertialSensors ]
         case .level:
@@ -498,7 +469,9 @@ public extension Demo {
 //            return [ .environmental ]
         case .textual:
             return [ .debug ]
-        case .cloud:
+        case .cloudAzureIotCentral:
+            return [ .cloud ]
+        case .cloudMqtt:
             return [ .cloud ]
         case .battery:
             return [ .status ]
@@ -508,15 +481,19 @@ public extension Demo {
             return [ .log ]
         case .aiLogging:
             return [ .log, .ai ]
-//        case .rawPnPL:
-//            return [ .control ]
-//        case .smartMotorControl:
-//            return [ .control, .dataLog ]
-//        case .wbsOtaFuota:
-//            return [ .fota ]
+        case .rawPnPLControlled:
+            return [ .control ]
+        case .medicalSignal:
+            return [ .health, .graphs]
+        case .smartMotorControl:
+            return [ .control, .dataLog ]
+        case .binaryContent:
+            return [.binaryContent]
+        case .wbsOtaFuota:
+            return [ .fota ]
         }
     }
-
+    
     var features: [Feature.Type] {
         switch self {
         case .environmental:
@@ -546,7 +523,8 @@ public extension Demo {
                 MemsNormFeature.self,
 //                QVARFeature.self,
 //                ToFMultiObjectFeature.self,
-                EventCounterFeature.self
+                EventCounterFeature.self,
+                NEAIExtrapolationFeature.self
             ]
         case .fft:
             return [ FFTAmplitudeFeature.self ] /// MotorTimeParametersFeature.self
@@ -554,6 +532,8 @@ public extension Demo {
             return [ NEAIAnomalyDetectionFeature.self ]
         case .neaiClassification:
             return [ NEAIClassificationFeature.self ]
+        case .neaiExtrapolation:
+            return [ NEAIExtrapolationFeature.self ]
         case .predictiveMaintenance:
             return [
                 PredictiveAccelerationStatusFeature.self,
@@ -592,7 +572,7 @@ public extension Demo {
             return [
                 ADPCMAudioSyncFeature.self,
                 ADPCMAudioFeature.self,
-                //OpusAudioConfFeature.self,
+//                OpusAudioConfFeature.self,
                 OpusAudioFeature.self,
                 BeamFormingFeature.self
             ]
@@ -616,7 +596,10 @@ public extension Demo {
                 AudioClassificationFeature.self
             ]
         case .machineLearningCore:
-            return [ MachineLearningCoreFeature.self ]
+            return [ 
+                MachineLearningCoreFeature.self
+//                RawPnPLControlledFeature.self
+            ]
         case .finiteStateMachine:
             return [ FiniteStateMachineFeature.self ]
         case .stredl:
@@ -629,10 +612,8 @@ public extension Demo {
             return [ GestureNavigationFeature.self ]
         case .jsonNfc:
             return [ JsonNFCFeature.self ]
-//        case .binaryContent:
-//            return [ HSDFeature.self ]
-//        case .piano:
-//            return [ HSDFeature.self ]
+        case .piano:
+            return [ PianoFeature.self ]
         case .pedometer:
             return [ PedometerFeature.self ]
         case .level:
@@ -665,42 +646,48 @@ public extension Demo {
         case .proximity:
             return [ ProximityGestureFeature.self ]
 //        case .qvar:
-//            return [ HSDFeature.self ]
+//            return [ QVarFeature.self ]
         case .textual:
             return []
-        case .cloud:
+        case .cloudAzureIotCentral, .cloudMqtt:
             return []
         case .battery:
             return [ BatteryFeature.self ]
-//        case .rawPnPL:
-//            return [
-//                PnPLFeature.self,
-//                RawPnPLFeature.self
-//            ]
-//        case .smartMotorControl:
-//            return [
-//                HSDFeature.self,
-//                PnPLFeature.self
-//            ]
-//        case .wbsOtaFuota:
-//            return [ FirmwareUpgradeWB.self ]
+        case .rawPnPLControlled:
+            return [
+                PnPLFeature.self,
+                RawPnPLControlledFeature.self
+            ]
+        case .smartMotorControl:
+            return [
+                RawPnPLControlledFeature.self,
+                PnPLFeature.self
+            ]
+        case .wbsOtaFuota:
+            return []
 //        case .cloudAzureIoTCentral:
 //            return []
+        case .binaryContent:
+            return [
+                BinaryContentFeature.self,
+                PnPLFeature.self
+            ]
         case .sdLogging:
             return [ SDLoggingFeature.self ]
         case .coSensor:
             return [ COSensorFeature.self ]
         case .aiLogging:
             return [ AILoggingFeature.self ]
+        case .medicalSignal:
+            return [ MedicalSignal16BitFeature.self,
+                     MedicalSignal24BitFeature.self]
         }
     }
-
+    
     var allFeaturesMandatory: Bool {
         switch self {
-        case .highSpeedDataLog2, .blueVoice, .extendedConfiguration, .ledControl, .multiNN, .beamforming:
+        case .highSpeedDataLog2, .blueVoice, .extendedConfiguration, .ledControl, .multiNN, .beamforming, .rawPnPLControlled, .smartMotorControl, .binaryContent:
             return true
-//        case .binaryContent:
-//            return true
         default:
             return false
         }
@@ -708,8 +695,7 @@ public extension Demo {
     
     var couldBeEnableOutside: Bool {
         switch self {
-//        case .cloud, .flow, .textual, .smartMotorControl:
-        case .cloud, .flow, .textual:
+        case .cloudAzureIotCentral, .cloudMqtt, .flow, .textual, .wbsOtaFuota:
             return true
         default:
             return false
@@ -721,7 +707,6 @@ public extension Demo {
         case .environmental:
             return EnviromentalPresenter(param: DemoParam<Void>(node: node))
         case .plot:
-//            return WorkInProgressPresenter(param: DemoParam<String>(node: node, param: "PlotData"))
             return PlotPresenter(param: DemoParam<Void>(node:node))
         case .fft:
             return FFTPresenter(param: DemoParam<Void>(node: node))
@@ -729,13 +714,14 @@ public extension Demo {
             return NEAIAnomalyDetectionPresenter(param: DemoParam<Void>(node: node))
         case .neaiClassification:
             return NEAIClassificationPresenter(param: DemoParam<Void>(node: node))
+        case .neaiExtrapolation:
+            return NEAIExtrapolationPresenter(param: DemoParam<Void>(node: node))
         case .predictiveMaintenance:
             return PredictiveMaintenancePresenter(param: DemoParam<Void>(node: node))
         case .highSpeedDataLog:
             return LegacyPresenter(param: DemoParam<String>(node: node, param: "High Speed Datalog"))
         case .highSpeedDataLog2:
-            //return WorkInProgressPresenter(param: DemoParam<String>(node: node, param: "High Speed Datalog 2"))
-            return HSDPresenter(param: DemoParam<Void>(node: node))
+            return HSDPresenter(param: DemoParam<Void>(node: node, showTabBar: true))
         case .pnpLike:
             guard let param = param as? PnplDemoConfiguration else {
                 return PnpLPresenter(param: DemoParam<[PnpLContent]>(node: node, param: nil))
@@ -768,18 +754,15 @@ public extension Demo {
         case .stredl:
             return STREDLPresenter(param: DemoParam<Void>(node: node))
         case .flow:
-//            return LegacyPresenter(param: DemoParam<String>(node: node, param: "Flow"))
-            return FlowMainPresenter(param: DemoParam<Void>(node: node))
+            return FlowMainPresenter(param: DemoParam<Void>(node: node, showTabBar: true))
         case .eventCounter:
             return EventCounterPresenter(param: DemoParam<Void>(node: node))
         case .gestureNavigation:
             return GestureNavigationPresenter(param: DemoParam<Void>(node: node))
         case .jsonNfc:
             return JsonNfcPresenter(param: DemoParam<Void>(node: node))
-//        case .binaryContent:
-//            return LegacyPresenter(param: DemoParam<String>(node: node, param: "Binary Content"))
-//        case .piano:
-//            return LegacyPresenter(param: DemoParam<String>(node: node, param: "Piano"))
+        case .piano:
+           return PianoPresenter(param: DemoParam<Void>(node: node))
         case .pedometer:
             return PedometerPresenter(param: DemoParam<Void>(node: node))
         case .level:
@@ -811,9 +794,11 @@ public extension Demo {
 //        case .qvar:
 //            return LegacyPresenter(param: DemoParam<String>(node: node, param: "Electric Charge Variation"))
         case .textual:
-            return LegacyPresenter(param: DemoParam<String>(node: node, param: "Textual Monitor"))
-        case .cloud:
-            return LegacyPresenter(param: DemoParam<String>(node: node, param: "Cloud"))
+            return TextualMonitorPresenter(param: DemoParam<Void>(node:node))
+        case .cloudAzureIotCentral:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "Cloud Azure IoT Central"))
+        case .cloudMqtt:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "Cloud MQTT"))
         case .battery:
             return BatteryPresenter(rssi: param as? Int ?? 0, param: DemoParam<Void>(node: node))
         case .coSensor:
@@ -824,27 +809,116 @@ public extension Demo {
             return LegacyPresenter(param: DemoParam<String>(node: node, param: "AI Logging"))
         case .speechToText:
             return LegacyPresenter(param: DemoParam<String>(node: node, param: "Speech To Text"))
-//        case .rawPnPL:
-//            return LegacyPresenter(param: DemoParam<String>(node: node, param: "RawPnPL"))
-//        case .smartMotorControl:
-//            return SmartMotorControlPresenter(param: DemoParam<Void>(node: node))
-//        case .wbsOtaFuota:
-//            return LegacyPresenter(param: DemoParam<String>(node: node, param: "FOTA"))
+        case .rawPnPLControlled:
+            return RawPnPLControlledPresenter(param: DemoParam<Void>(node: node))
+        case .smartMotorControl:
+            return SmartMotorControlPresenter(param: DemoParam<Void>(node: node, showTabBar: true))
+        case .medicalSignal:
+            return MedicalSignalPresenter(param: DemoParam<Void>(node: node))
+        case .binaryContent:
+            return  BinaryContentPresent(param: DemoParam<Void>(node: node))
+        case .wbsOtaFuota:
+            return FirmwareSelectPresenter(param: DemoParam<FirmwareSelect>(node: node, param: nil))
         }
     }
-
-    static func demos(with features: [Feature]) -> [Demo] {
-
-        let featureTypes = features.map { type(of: $0) }
-
+    
+    static func demos(with features: [Feature], node: Node, completion: @escaping(([Demo]) -> (Void))) {
+        if node.protocolVersion == UInt8(2) {
+            if let catalogService: CatalogService = Resolver.shared.resolve(),
+               let catalog = catalogService.catalog,
+               let firmware = catalog.v2Firmware(with: node.deviceId.longHex, firmwareId: UInt32(node.bleFirmwareVersion).longHex) {
+                BlueManager.shared.updateDtmi(with: .prod, firmware: firmware) { dtmiElements, error in
+                    if !dtmiElements.isEmpty && error == nil {
+                        let dtmi = FirmwareDtmi(firmware: firmware, contents: dtmiElements)
+                        completion(evaluateAvailableDemos(with: features, node: node, firmware: firmware, dtmi: dtmi))
+                    } else {
+                        BlueManager.shared.updateDtmi(with: .dev, firmware: firmware) { dtmiElements, error in
+                            if !dtmiElements.isEmpty && error == nil {
+                                let dtmi = FirmwareDtmi(firmware: firmware, contents: dtmiElements)
+                                completion(evaluateAvailableDemos(with: features, node: node, firmware: firmware, dtmi: dtmi))
+                            } else {
+                                completion(evaluateAvailableDemos(with: features, node: node, firmware: firmware, dtmi: nil))
+                            }
+                        }
+                    }
+                }
+            } else {
+                completion(evaluateAvailableDemos(with: features, node: node, firmware: nil, dtmi: nil))
+            }
+        } else {
+            completion(evaluateAvailableDemos(with: features, node: node, firmware: nil, dtmi: nil))
+        }
+    }
+    
+    static func demos(withFeatureTypes featureTypes: [Feature.Type]) -> [Demo] {
+        
         var demos = [Demo]()
-
+        
         for demo in Demo.allCases {
-
+            
             var isDemoAvailable = false
-
+            
+            if demo.allFeaturesMandatory {
+                isDemoAvailable = demo.features.allSatisfy { feature in
+                    featureTypes.contains(where: { $0 == feature})
+                }
+            } else {
+                for featureType in featureTypes {
+                    if demo.features.contains(where: { $0 == featureType }) {
+                        isDemoAvailable = true
+                        break
+                    }
+                }
+            }
+            
+            if isDemoAvailable {
+                demos.append(demo)
+            }
+        }
+        
+        if demos.contains(where: { $0 == Demo.highSpeedDataLog2} ) {
+            if let  index = demos.firstIndex(of: Demo.highSpeedDataLog) {
+                demos.remove(at: index)
+            }
+        }
+        
+        return demos
+    }
+    
+    private static func evaluateAvailableDemos(with features: [Feature], node: Node, firmware: Firmware?, dtmi: FirmwareDtmi?) -> [Demo] {
+        var demos = [Demo]()
+        let featureTypes = features.map { type(of: $0) }
+        
+        for demo in Demo.allCases {
+            
+            var isDemoAvailable = false
+            
             if demo.couldBeEnableOutside {
-                isDemoAvailable = true
+                
+                if demo == .wbsOtaFuota {
+                    if node.type.family == .wbFamily || node.type == .nucleoWB0X || node.type == .wba6NucleoBoard {
+                        isDemoAvailable = true
+                    }
+                } 
+                else if demo == .flow {
+                    if let dtmi = dtmi,
+                       let demoDecorator = dtmi.firmware.demoDecorator {
+                        if demoDecorator.add.contains(self.flow.title) {
+                            isDemoAvailable = true
+                        }
+                    }
+                } else if demo == .cloudAzureIotCentral {
+                    if (firmware?.cloudApps?.first(where: { $0.dtmiType == "iotc"})) != nil {
+                        isDemoAvailable = true
+                    }
+                } else if (demo == .textual) || (demo == .cloudMqtt) {
+                    let filteredFeatures = features.filter{$0.isDataNotifyFeature}
+                    if(!filteredFeatures.isEmpty) {
+                        isDemoAvailable = true
+                    }
+                } else {
+                    isDemoAvailable = true
+                }
             } else {
                 if demo.allFeaturesMandatory {
                     isDemoAvailable = demo.features.allSatisfy { feature in
@@ -865,44 +939,46 @@ public extension Demo {
             }
         }
         
-
         let hsd2Set = Set([highSpeedDataLog, pnpLike])
         let demosSet = Set(demos)
         let isHSD2found = hsd2Set.isSubset(of: demosSet)
-
+        
         if isHSD2found == true {
             demos.removeAll(where: { $0 == highSpeedDataLog } )
         }
         
-        return demos
-    }
-    
-    static func demos(withFeatureTypes featureTypes: [Feature.Type]) -> [Demo] {
-
-        var demos = [Demo]()
-
-        for demo in Demo.allCases {
-
-            var isDemoAvailable = false
-
-            if demo.allFeaturesMandatory {
-                isDemoAvailable = demo.features.allSatisfy { feature in
-                    featureTypes.contains(where: { $0 == feature})
+        let pnplSet = Set([pnpLike])
+        let newDemosSet = Set(demos)
+        let isPnPLfound = pnplSet.isSubset(of: newDemosSet)
+        
+        if isPnPLfound,
+           let firmware = firmware {
+            if let demoIndex = demos.firstIndex(where: { $0 == .pnpLike }) {
+                demos[demoIndex].setTitle(firmware.name)
+            }
+        }
+        
+        if let dtmi = dtmi,
+           let demoDecorator = dtmi.firmware.demoDecorator {
+            demoDecorator.rename.forEach { demoToRename in
+                if let demoIndex = demos.firstIndex(where: { $0.title == demoToRename.old }) {
+                    demos[demoIndex].setTitle(demoToRename.new)
                 }
-            } else {
-                for featureType in featureTypes {
-                    if demo.features.contains(where: { $0 == featureType }) {
-                        isDemoAvailable = true
-                        break
+            }
+            demoDecorator.add.forEach { demoToAdd in
+                if demoToAdd != Demo.flow.title {
+                    if let demoToAppend = Demo.allCases.first(where: { $0.title == demoToAdd }) {
+                        demos.append(demoToAppend)
                     }
                 }
             }
-
-            if isDemoAvailable {
-                demos.append(demo)
+            if !UserDefaults.standard.bool(forKey: "isBetaCatalogActivated") {
+                demoDecorator.remove.forEach { demoName in
+                    demos.removeAll(where: {$0.title == demoName })
+                }
             }
         }
-
+        
         return demos
     }
 }
@@ -929,7 +1005,7 @@ public enum DemoGroup: String, CaseIterable {
 public struct PnplDemoConfiguration {
     public var type: PNPLDemoType
     public var contents: [PnpLContent]?
-
+    
     public init(type: PNPLDemoType = .standard, contents: [PnpLContent]? = nil) {
         self.type = type
         self.contents = contents

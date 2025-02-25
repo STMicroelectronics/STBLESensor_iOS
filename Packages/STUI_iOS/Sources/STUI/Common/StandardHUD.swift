@@ -16,14 +16,16 @@ public protocol HUD {
 
     func configure()
 
-    func show(with text: String?)
-    func show(with text: String?, notDismissable: Bool)
+    func show(with text: String?, timeout: TimeInterval?)
+    func show(with text: String?, timeout: TimeInterval?, notDismissable: Bool)
     func dismiss()
     func dismiss(force: Bool)
     func showProgress(with text: String?, progress: Float)
 }
 
 public class StandardHUD: HUD {
+
+    var timeoutTimer: Timer? = nil
 
     public static let shared = StandardHUD()
     private(set) var isNotDismissable: Bool = false
@@ -40,11 +42,20 @@ public class StandardHUD: HUD {
 //        ProgressHUD.imageError = UIImage(named: "error.png")
     }
 
-    public func show(with text: String? = nil) {
-        show(with: text, notDismissable: false)
+    public func show(with text: String? = nil, timeout: TimeInterval? = nil) {
+        show(with: text, timeout: timeout ?? 20, notDismissable: false)
     }
 
-    public func show(with text: String? = nil, notDismissable: Bool) {
+    public func show(with text: String? = nil, timeout: TimeInterval? = nil, notDismissable: Bool) {
+
+        timeoutTimer?.invalidate()
+
+        if let timeout = timeout {
+            timeoutTimer = Timer.scheduledTimer(withTimeInterval: timeout, repeats: false, block: { _ in
+                self.dismiss(force: true)
+            })
+        }
+
         if isNotDismissable {
             return
         }

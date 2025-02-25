@@ -14,32 +14,32 @@ import STUI
 import STBlueSDK
 
 public class BoardHeaderViewModel: BaseCellViewModel<Board, BoardHeaderCell> {
-
+    
     let firmwareHandler: (() -> Void)?
     let datasheetsHandler: (() -> Void)?
-
+    
     public init(param: Board,
                 firmwareHandler: (() -> Void)?,
                 datasheetsHandler: (() -> Void)?) {
         self.firmwareHandler = firmwareHandler
         self.datasheetsHandler = datasheetsHandler
-
+        
         super.init(param: param)
     }
-
+    
     required init() {
         fatalError("init() has not been implemented")
     }
-
+    
     public override func configure(view: BoardHeaderCell) {
-
+        
         TextLayout.title.size(19.0).apply(to: view.titleLabel)
         TextLayout.info.size(16.0).apply(to: view.subtitleLabel)
         TextLayout.infoBold.apply(to: view.statusLabel)
         TextLayout.info.apply(to: view.descriptionLabel)
-
+        
         guard let param = param else { return }
-
+        
         view.titleLabel.text = param.name
         view.subtitleLabel.text = param.friendlyName
         if let status = param.status {
@@ -51,16 +51,21 @@ public class BoardHeaderViewModel: BaseCellViewModel<Board, BoardHeaderCell> {
             view.statusLabel.text = status
         }
         //view.descriptionLabel.text = param.description
-
+        
         view.nodeImageView.contentMode = .scaleAspectFit
         view.nodeImageView.image = param.image
-
+        
         view.iconImageView.contentMode = .scaleAspectFit
         view.iconImageView.image = param.image
-
-        view.firmwareButton.on(.touchUpInside) { [weak self] _ in
-            guard let firmwareHandler = self?.firmwareHandler else { return }
-            firmwareHandler()
+        
+        
+        if param.characteristics?.isEmpty ?? true {
+            view.firmwareButton.isEnabled = false
+        } else {
+            view.firmwareButton.on(.touchUpInside) { [weak self] _ in
+                guard let firmwareHandler = self?.firmwareHandler else { return }
+                firmwareHandler()
+            }
         }
         
         if param.datasheetsUrl != nil {
@@ -69,7 +74,8 @@ public class BoardHeaderViewModel: BaseCellViewModel<Board, BoardHeaderCell> {
                 datasheetsHandler()
             }
         } else {
-            view.datasheetButton.isHidden = true
+            //view.datasheetButton.isHidden = true
+            view.datasheetButton.isEnabled = false
         }
     }
 }

@@ -50,6 +50,19 @@ public extension Int16 {
 
 }
 
+public extension Int32 {
+    var bytes: [UInt8] {
+        let array = Array(withUnsafeBytes(of: self.littleEndian) { Data($0) })
+        return array
+    }
+
+    var reversedBytes: [UInt8] {
+        let array = Array(withUnsafeBytes(of: self.bigEndian) { Data($0) })
+        return array
+    }
+
+}
+
 public extension Int64 {
     var bytes: [UInt8] {
         let array = Array(withUnsafeBytes(of: self.littleEndian) { Data($0) })

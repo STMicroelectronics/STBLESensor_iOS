@@ -57,6 +57,18 @@ public final class DemoListViewController: TableNodeNoViewController<DemoListDel
         presenter.load()
     }
 
+// NOT NECESSARY showTabBar FUNCTION
+///    public override func viewWillAppear(_ animated: Bool) {
+///        super.viewWillAppear(animated)
+///        showTabBar()
+///    }
+
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        hideTabBar()
+    }
+
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 

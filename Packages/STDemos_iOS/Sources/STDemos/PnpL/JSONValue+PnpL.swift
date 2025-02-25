@@ -12,7 +12,7 @@
 import STBlueSDK
 import STUI
 
-extension JSONValue {
+public extension JSONValue {
     func codeValues(with key: [String]) -> [any KeyValue] {
 
         var codeValues = [any KeyValue]()

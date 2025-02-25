@@ -101,6 +101,8 @@ internal extension URLSession {
                             completion(.failure(STError.server(error: error)))
                         }
                     }
+                } else {
+                    completion(.failure(STError.generic(text: "Corrupted file")))
                 }
             }
             dataTask.resume()

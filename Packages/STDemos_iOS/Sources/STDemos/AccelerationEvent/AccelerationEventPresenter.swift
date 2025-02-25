@@ -130,7 +130,7 @@ extension AccelerationEventPresenter: AccelerationEventDelegate {
             return AccelerationEventPresenter.STWIN_SUPPORTED_EVENT
         case .proteus:
             return AccelerationEventPresenter.PROTEUS_SUPPORTED_EVENT
-        case .sensorTile, .blueCoin, .wbBoard, .wbaBoard, .nucleo, .nucleoF401RE, .nucleoL476RG, .nucleoL053R8, .nucleoF446RE:
+        case .sensorTile, .blueCoin, .wb55NucleoBoard, .wba5xNucleoBoard, .nucleo, .nucleoF401RE, .nucleoL476RG, .nucleoL053R8, .nucleoF446RE:
             return AccelerationEventPresenter.NUCLEO_SUPPORTED_EVENT
         default:
             return nil
@@ -141,7 +141,7 @@ extension AccelerationEventPresenter: AccelerationEventDelegate {
         switch param.node.type {
         case .stEvalIDB008VX:
             return AccelerationEventCommand.freeFall(enabled: true)
-        case .sensorTile, .blueCoin, .wbBoard, .wbaBoard, .nucleo, .nucleoF401RE, .nucleoF446RE, .nucleoL053R8, .nucleoL476RG, .sensorTileBox, .sensorTileBoxPro, .sensorTileBoxProB, .stEvalSTWINKIT1, .stEvalSTWINKT1B, .stWinBox, .stWinBoxB:
+        case .sensorTile, .blueCoin, .wb55NucleoBoard, .wba5xNucleoBoard, .nucleo, .nucleoF401RE, .nucleoF446RE, .nucleoL053R8, .nucleoL476RG, .sensorTileBox, .sensorTileBoxPro, .sensorTileBoxProB, .stEvalSTWINKIT1, .stEvalSTWINKT1B, .stWinBox, .stWinBoxB:
             return AccelerationEventCommand.orientation(enabled: true)
         case .stEvalBCN002V1, .proteus:
             return AccelerationEventCommand.wakeUp(enabled: true)

@@ -38,18 +38,24 @@ extension FlowMainPresenter: TabBarDelegate {
         
         view.configureView()
         
-        var controllerTabSide: [TabBarSide] = [.first, .second, .third, .fourth]
-        
-        let flowPresenter: FlowTabPresenter = FlowTabPresenter(param: param.node)
+        let flowPresenter = FlowTabPresenter(param: DemoParam<Void>(node: param.node,
+                                                                    showTabBar: true,
+                                                                    param: Void()))
         flowController = flowPresenter.start()
         
-        let sensorPresenter: SensorsTabPresenter = SensorsTabPresenter(param: param.node)
+        let sensorPresenter = SensorsTabPresenter(param: DemoParam<Void>(node: param.node,
+                                                                         showTabBar: true,
+                                                                         param: Void()))
         sensorsController = sensorPresenter.start()
         
-        let morePresenter: FlowMoreTabPresenter = FlowMoreTabPresenter(param: param.node)
+        let morePresenter = FlowMoreTabPresenter(param: DemoParam<Void>(node: param.node,
+                                                                        showTabBar: true,
+                                                                        param: Void()))
         moreController = morePresenter.start()
         
         currentController = flowController
+        
+        var hasControlTab = false
 
         if let flowController = flowController {
             flowController.view.translatesAutoresizingMaskIntoConstraints = false
@@ -60,110 +66,92 @@ extension FlowMainPresenter: TabBarDelegate {
             flowController.didMove(toParent: view)
 
             flowController.stTabBarView?.showArcActionButton = false
-            flowController.stTabBarView?.showFourthTab = false
             flowController.stTabBarView?.layoutSubviews()
             
-            flowController.stTabBarView?.add(
-                TabBarItem(
-                    with: "Flow",
-                    image: ImageLayout.image(with: "flow_tab_icon", in: .module),
-                    callback: { [weak self]_ in
-                        
-                        guard let self else { return }
-                        
-                        if self.currentController === self.flowController {
-                            return
-                        } else {
-                            self.sensorsController?.remove()
-                            self.moreController?.remove()
-                            
-                            self.currentController = flowController
-                            self.view.title = "Flow"
-                            self.view.add(flowController)
-                        }
-                    }
-                ), side: controllerTabSide[0]
-            )
+            flowController.stTabBarView?.add(TabBarItem(with: "Flow",
+                                                        image: ImageLayout.image(with: "flow_tab_icon", in: .module),
+                                                        callback: { [weak self]_ in
+                guard let self else { return }
+                
+                if self.currentController === self.flowController {
+                    return
+                } else {
+                    self.controlController?.remove()
+                    self.sensorsController?.remove()
+                    self.moreController?.remove()
+                    
+                    self.currentController = flowController
+                    self.view.title = "Flow"
+                    self.view.add(flowController)
+                }
+            }), side: .first)
             
             if let dtmi = BlueManager.shared.dtmi(for: param.node) {
-                let controlTabPresenter = FlowControlTabPresenter(
-                    type: .standard,
-                    param: DemoParam<[PnpLContent]>(
-                        node: param.node,
-                        param: dtmi.contents)
-                )
-                controlController = controlTabPresenter.start()
-                
-                flowController.stTabBarView?.showFourthTab = true
-                
-                flowController.stTabBarView?.add(
-                    TabBarItem(
-                        with: "Control",
-                        image: ImageLayout.image(with: "demo_pnpl", in: STUI.bundle)?.maskWithColor(color: ColorLayout.systemWhite.light),
-                        callback: { [weak self] _ in
-                            
-                            guard let self else { return }
-                            
-                            if self.currentController === self.sensorsController {
-                                return
-                            } else if let controlController = self.controlController {
-                                self.controlController?.remove()
-                                self.controlController?.remove()
-                                
-                                self.currentController = controlController
-                                self.view.title = "Control"
-                                self.view.add(controlController)
-                            }
-                        }
-                    ), side: controllerTabSide[1]
-                )
-            } else {
-                controllerTabSide = [.first, .first, .second, .third]
-            }
-            
-            flowController.stTabBarView?.add(
-                TabBarItem(
-                    with: "Sensors",
-                    image: ImageLayout.image(with: "flow_sensor_tab_icon", in: .module),
-                    callback: { [weak self] _ in
-                        
+                if param.node.hasPnPL {
+                    let controlTabPresenter = FlowControlTabPresenter(
+                        type: .standard,
+                        param: DemoParam<[PnpLContent]>(
+                            node: param.node,
+                            param: dtmi.contents)
+                    )
+                    controlController = controlTabPresenter.start()
+                    
+                    flowController.stTabBarView?.add(TabBarItem(with: "Control",
+                                                                image: ImageLayout.image(with: "demo_pnpl", in: STUI.bundle)?.maskWithColor(color: ColorLayout.systemWhite.light),
+                                                                callback: { [weak self] _ in
                         guard let self else { return }
                         
-                        if self.currentController === self.sensorsController {
+                        hasControlTab = true
+                        
+                        if self.currentController === self.controlController {
                             return
-                        } else if let sensorsController = self.sensorsController {
+                        } else if let controlController = self.controlController {
                             self.flowController?.remove()
+                            self.controlController?.remove()
                             self.moreController?.remove()
                             
-                            self.currentController = sensorsController
-                            self.view.title = "Sensors"
-                            self.view.add(sensorsController)
+                            self.currentController = controlController
+                            self.view.title = "Control"
+                            self.view.add(controlController)
                         }
-                    }
-                ), side: controllerTabSide[2]
-            )
+                    }), side: .second)
+                }
+            }
+            
+            flowController.stTabBarView?.add(TabBarItem(with: "Sensors",
+                                                        image: ImageLayout.image(with: "flow_sensor_tab_icon", in: .module),
+                                                        callback: { [weak self] _ in
+                guard let self else { return }
+                
+                if self.currentController === self.sensorsController {
+                    return
+                } else if let sensorsController = self.sensorsController {
+                    self.flowController?.remove()
+                    self.controlController?.remove()
+                    self.moreController?.remove()
+                    
+                    self.currentController = sensorsController
+                    self.view.title = "Sensors"
+                    self.view.add(sensorsController)
+                }
+            }), side: hasControlTab ? .third : .second)
 
-            flowController.stTabBarView?.add(
-                TabBarItem(
-                    with: "More",
-                    image: ImageLayout.image(with: "flow_more_icon", in: .module),
-                    callback: { [weak self] _ in
-                        
-                        guard let self else { return }
-                        
-                        if self.currentController === self.moreController {
-                            return
-                        } else if let moreController = self.moreController {
-                            self.flowController?.remove()
-                            self.sensorsController?.remove()
-                            
-                            self.currentController = moreController
-                            self.view.title = "More"
-                            self.view.add(moreController)
-                        }
-                    }
-                ), side: controllerTabSide[3]
-            )
+            flowController.stTabBarView?.add(TabBarItem(with: "More",
+                                                        image: ImageLayout.image(with: "flow_more_icon", in: .module),
+                                                        callback: { [weak self] _ in
+                guard let self else { return }
+                if self.currentController === self.moreController {
+                    return
+                } else if let moreController = self.moreController {
+                    self.flowController?.remove()
+                    self.controlController?.remove()
+                    self.sensorsController?.remove()
+                    
+                    self.currentController = moreController
+                    self.view.title = "More"
+                    self.view.add(moreController)
+                }
+            }), side: hasControlTab ? .fourth : .third)
         }
     }
 }

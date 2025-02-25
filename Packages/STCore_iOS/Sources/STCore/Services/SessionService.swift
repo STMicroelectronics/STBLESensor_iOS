@@ -10,13 +10,18 @@
 //
 
 import Foundation
+import JWTDecode
 
 public protocol NetworkSession {
     var username: String? { get }
     var password: String? { get }
     var accessToken: String? { get }
+    var temporaryToken: String? { get set }
+    var idToken: String? { get }
+    var temporaryIdToken: String? { get set }
     var refreshToken: String? { get }
     var auth: Auth? { get set }
+    var isTemporaryAuthenticated: Bool { get }
 }
 
 public protocol SessionService {
@@ -33,8 +38,22 @@ public class SessionServiceCore: SessionService, NetworkSession {
 
     public var password: String?
 
+    @JsonKeychain(key: "temporaryToken", defaultValue: nil)
+    public var temporaryToken: String?
+
+    @JsonKeychain(key: "temporaryIdToken", defaultValue: nil)
+    public var temporaryIdToken: String?
+
+    public var isTemporaryAuthenticated: Bool {
+        return temporaryToken != nil && temporaryIdToken != nil
+    }
+
     public var accessToken: String? {
         return auth?.accessToken
+    }
+
+    public var idToken: String? {
+        return auth?.idToken
     }
 
     public var refreshToken: String? {
@@ -46,6 +65,8 @@ public class SessionServiceCore: SessionService, NetworkSession {
 
     @JsonKeychain(key: "auth", defaultValue: nil)
     public var auth: Auth?
+
+
 
     public var permissions: [Permission] {
         guard let app = app else { return [] }

@@ -33,6 +33,12 @@ public class FirmwareViewModel: BaseCellViewModel<Firmware, FirmwareCell> {
                 view.maturityLabel.text = param.maturity?.description
             }
         }
+        
+        if(param.bleVersionId==0xFF) {
+            view.maturityLabel.isHidden = false
+            view.maturityLabel.text = Maturity.custom.description
+        }
+        
         view.changelogLabel.text = param.description ?? "--"
         view.availableDemosLabel.text = param.availableDemosString
     }

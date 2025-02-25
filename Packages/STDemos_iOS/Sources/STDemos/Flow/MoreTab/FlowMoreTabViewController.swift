@@ -13,7 +13,7 @@ import UIKit
 import STUI
 import STBlueSDK
 
-class FlowMoreTabViewController: TableNodeNoViewController<FlowMoreTabDelegate> {
+class FlowMoreTabViewController: DemoNodeTableNoViewController<FlowMoreTabDelegate> {
 
     var topView: UIStackView?
     

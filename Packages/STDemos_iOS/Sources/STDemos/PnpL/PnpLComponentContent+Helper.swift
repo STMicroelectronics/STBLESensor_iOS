@@ -36,7 +36,16 @@ public extension PnpLComponentContent {
             return ImageLayout
                 .image(with: PnPLType.type(with: name).iconName, in: STDemos.bundle)?
                 .maskWithColor(color: ColorLayout.primary.light)
-        } else {
+        } else if schema.contains("actuators") {
+            return ImageLayout
+                .image(with: "pnpl_actuators", in: STDemos.bundle)?
+                .maskWithColor(color: ColorLayout.primary.light)
+        } else if schema.contains("algorithms") {
+            return ImageLayout
+                .image(with: "pnpl_algorithms", in: STDemos.bundle)?
+                .maskWithColor(color: ColorLayout.primary.light)
+        }
+        else {
             return ImageLayout
                 .image(with: "ic_info", in: STDemos.bundle)?
                 .maskWithColor(color: ColorLayout.secondary.light)

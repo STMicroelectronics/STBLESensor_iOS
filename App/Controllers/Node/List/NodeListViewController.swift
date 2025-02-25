@@ -75,7 +75,7 @@ final class NodeListViewController: BaseViewController<NodeListDelegate, NodeLis
             self?.navigationController?.pushViewController(
                 BoardListPresenter(param: BoardListConf(
                     nodeTypesFilter: nil, 
-                    firmwareTypesFilter: nil,
+                    firmwareNamesFilter: nil,
                     isDemoListVisible: true)
                 ).start(),
                 animated: true)

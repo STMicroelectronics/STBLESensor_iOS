@@ -1,8 +1,12 @@
 //
-//  File 2.swift
-//  
+//  Navigator.swift
 //
-//  Created by Stefano Zanetti on 12/06/23.
+//  Copyright (c) 2024 STMicroelectronics.
+//  All rights reserved.
+//
+//  This software is licensed under terms that can be found in the LICENSE file in
+//  the root directory of this software component.
+//  If no LICENSE file comes with this software, it is provided AS-IS.
 //
 
 import UIKit
@@ -21,9 +25,16 @@ public protocol Navigator {
 
     func dismiss()
     func dismiss(to: Swift.AnyClass)
+    
+    func dismiss(to: Swift.AnyClass, completion: @escaping () -> Void)
+    func dismiss(to: Swift.AnyClass, completion: @escaping (UIViewController?) -> Void)
     func dismiss(animated: Bool)
+    
     func dismissToRoot(animated: Bool, completion: @escaping () -> Void)
+    func dismissToRoot(animated: Bool, completion: @escaping (UIViewController?) -> Void)
+
     func dismiss(animated: Bool, completion: @escaping () -> Void)
+    func dismiss(animated: Bool, completion: @escaping (UIViewController?) -> Void)
 
     func open(url: String, presentationStyle: UIModalPresentationStyle)
     func safari(url: String)

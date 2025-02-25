@@ -21,21 +21,21 @@ extension AnyFeatureSample {
             let accY = data.accelerationY.value,
             let accZ = data.accelerationZ.value {
             return PlotEntry(
-                x: Int(sample.timestamp),
+                x: UInt64(sample.notificationTime.timeIntervalSince1970 * 1000),
                 y: [accX, accY, accZ]
             )
         } else if let sample = sample as? FeatureSample<CompassData>,
                   let data = sample.data,
                   let angleValue = data.angle.value {
             return PlotEntry(
-                x: Int(sample.timestamp),
+                x: UInt64(sample.notificationTime.timeIntervalSince1970 * 1000),
                 y: [angleValue]
             )
         } else if let sample = sample as? FeatureSample<DirectionOfArrivalData>,
                   let data = sample.data,
                   let angleValue = data.angle.value {
             return PlotEntry(
-                x: Int(sample.timestamp),
+                x: UInt64(sample.notificationTime.timeIntervalSince1970 * 1000),
                 y: [Float(angleValue)]
             )
         } else if let sample = sample as? FeatureSample<GyroscopeData>,
@@ -44,21 +44,21 @@ extension AnyFeatureSample {
                   let gyroY = data.gyroY.value,
                   let gyroZ = data.gyroZ.value {
             return PlotEntry(
-                x: Int(sample.timestamp),
+                x: UInt64(sample.notificationTime.timeIntervalSince1970 * 1000),
                 y: [gyroX, gyroY, gyroZ]
             )
         } else if let sample = sample as? FeatureSample<HumidityData>,
                   let data = sample.data,
                   let humidityValue = data.humidity.value {
             return PlotEntry(
-                x: Int(sample.timestamp),
+                x: UInt64(sample.notificationTime.timeIntervalSince1970 * 1000),
                 y: [humidityValue]
             )
         } else if let sample = sample as? FeatureSample<LuminosityData>,
                   let data = sample.data,
                   let luminosityValue = data.luminosity.value {
             return PlotEntry(
-                x: Int(sample.timestamp),
+                x: UInt64(sample.notificationTime.timeIntervalSince1970 * 1000),
                 y: [Float(luminosityValue)]
             )
         } else if let sample = sample as? FeatureSample<MagnetometerData>,
@@ -67,7 +67,7 @@ extension AnyFeatureSample {
                   let magY = data.magY.value,
                   let magZ = data.magZ.value {
             return PlotEntry(
-                x: Int(sample.timestamp),
+                x: UInt64(sample.notificationTime.timeIntervalSince1970 * 1000),
                 y: [magX, magY, magZ]
             )
         } else if let sample = sample as? FeatureSample<SensorFusionData>,
@@ -77,7 +77,7 @@ extension AnyFeatureSample {
                   let qs = data.quaternionS.value,
                   let qk = data.quaternionK.value {
             return PlotEntry(
-                x: Int(sample.timestamp),
+                x: UInt64(sample.notificationTime.timeIntervalSince1970 * 1000),
                 y: [qi, qj, qs, qk]
             )
         } else if let sample = sample as? FeatureSample<SensorFusionCompactData>,
@@ -87,7 +87,7 @@ extension AnyFeatureSample {
                   let qs = data.samples[0].quaternionS.value,
                   let qk = data.samples[0].quaternionK.value {
             return PlotEntry(
-                x: Int(sample.timestamp),
+                x: UInt64(sample.notificationTime.timeIntervalSince1970 * 1000),
                 y: [qi, qj, qs, qk]
             )
         } else if let sample = sample as? FeatureSample<MicLevelsData>,
@@ -99,35 +99,35 @@ extension AnyFeatureSample {
                 }
             }
            return PlotEntry(
-               x: Int(sample.timestamp),
+               x: UInt64(sample.notificationTime.timeIntervalSince1970 * 1000),
                y: micLevels
            )
         } else if let sample = sample as? FeatureSample<MotionIntensityData>,
                   let data = sample.data,
                   let intensityValue = data.motionIntensity.value {
            return PlotEntry(
-               x: Int(sample.timestamp),
+               x: UInt64(sample.notificationTime.timeIntervalSince1970 * 1000),
                y: [Float(intensityValue)]
            )
         } else if let sample = sample as? FeatureSample<ProximityData>,
                   let data = sample.data,
                   let distanceValue = data.distance.value {
            return PlotEntry(
-               x: Int(sample.timestamp),
+               x: UInt64(sample.notificationTime.timeIntervalSince1970 * 1000),
                y: [Float(distanceValue)]
            )
         } else if let sample = sample as? FeatureSample<PressureData>,
                   let data = sample.data,
                   let pressure = data.pressure.value {
             return PlotEntry(
-                x: Int(sample.timestamp),
+                x: UInt64(sample.notificationTime.timeIntervalSince1970 * 1000),
                 y: [pressure]
             )
         } else if let sample = sample as? FeatureSample<TemperatureData>,
                   let data = sample.data,
                   let temperatureValue = data.temperature.value {
             return PlotEntry(
-                x: Int(sample.timestamp),
+                x: UInt64(sample.notificationTime.timeIntervalSince1970 * 1000),
                 y: [temperatureValue]
             )
         } else if let sample = sample as? FeatureSample<EulerAngleData>,
@@ -136,14 +136,14 @@ extension AnyFeatureSample {
                   let pitch = data.pitch.value,
                   let roll = data.roll.value {
             return PlotEntry(
-                x: Int(sample.timestamp),
+                x: UInt64(sample.notificationTime.timeIntervalSince1970 * 1000),
                 y: [yaw, pitch, roll]
             )
         } else if let sample = sample as? FeatureSample<MemsNormData>,
                   let data = sample.data,
                   let norm = data.norm.value {
             return PlotEntry(
-                x: Int(sample.timestamp),
+                x: UInt64(sample.notificationTime.timeIntervalSince1970 * 1000),
                 y: [norm]
             )
         }
@@ -169,8 +169,15 @@ extension AnyFeatureSample {
                 let data = sample.data,
                 let counter = data.counter.value {
             return PlotEntry(
-                x: Int(sample.timestamp),
+                x: UInt64(sample.notificationTime.timeIntervalSince1970 * 1000),
                 y: [Float(counter)]
+            )
+        } else if let sample = sample as? FeatureSample<NEAIExtrapolationData>,
+                  let data = sample.data,
+                  let neaiExtrapolationValue = data.neaiExtrapolation.value?.target {
+            return PlotEntry(
+                x: UInt64(sample.notificationTime.timeIntervalSince1970 * 1000),
+                y: [Float(neaiExtrapolationValue)]
             )
         }
         return nil
@@ -287,6 +294,10 @@ extension AnyFeatureSample {
                 let data = sample.data,
                 let counter = data.counter.value {
             return "TS:\(sample.timestamp) #:\(counter)"
+        } else if let sample = sample as? FeatureSample<NEAIExtrapolationData>,
+                  let data = sample.data,
+                  let target = data.neaiExtrapolation.value?.target {
+            return "TS:\(sample.timestamp) Target:\(target) mm"
         }
         return nil
     }
@@ -355,6 +366,8 @@ extension AnyFeatureSample {
 //        }
         else if sample is FeatureSample<EventCounterData> {
             return [LineConfig(name: "Counter #", color: ColorLayout.blue.light)]
+        } else if sample is FeatureSample<NEAIExtrapolationData> {
+            return [LineConfig(name: "Target (mm)", color: ColorLayout.blue.light)]
         }
         return nil
     }
@@ -435,6 +448,10 @@ extension AnyFeatureSample {
         else if let sample = sample as? FeatureSample<EventCounterData>,
                 let data = sample.data,
                 let uom = data.counter.uom {
+            return uom
+        } else if let sample = sample as? FeatureSample<NEAIExtrapolationData>,
+                  let data = sample.data,
+                  let uom = data.neaiExtrapolation.uom {
             return uom
         }
         return nil

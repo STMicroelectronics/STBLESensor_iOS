@@ -17,6 +17,7 @@ open class ImageDetailView: UIView {
     var imageView = UIImageView()
     var disclosureImageView = UIImageView()
     var titleLabel = UILabel()
+    var statusLabel = UILabel()
     var subtitleLabel = UILabel()
 
     var childView: UIView?
@@ -33,6 +34,8 @@ open class ImageDetailView: UIView {
             equalDimension(\.widthAnchor, to: 40.0)
         ])
 
+        TextLayout.infoBoldColored(ColorLayout.redDark.auto).apply(to: statusLabel)
+        
         let textStackView = UIStackView.getVerticalStackView(withSpacing: 5.0,
                                                              views: [
                                                                 titleLabel,
@@ -43,8 +46,11 @@ open class ImageDetailView: UIView {
                                                                  views: [
                                                                     imageView,
                                                                     UIView.empty(),
+                                                                    statusLabel,
+                                                                    UIView.empty(),
                                                                     disclosureImageView
                                                                  ])
+        headerStackView.distribution = .equalCentering
 
         horizzontalStackView.addArrangedSubview(textStackView)
         horizzontalStackView.addArrangedSubview(UIView.empty())

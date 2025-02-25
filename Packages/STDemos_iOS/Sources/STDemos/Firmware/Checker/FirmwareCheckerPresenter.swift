@@ -17,10 +17,12 @@ import STBlueSDK
 public struct FirmwareChecker {
     public let node: Node
     public let firmwares: Firmwares
+    public let completion: ((Bool) -> ())?
 
-    public init(node: Node, firmwares: Firmwares) {
+    public init(node: Node, firmwares: Firmwares, completion: ((Bool) -> ())? = nil) {
         self.node = node
         self.firmwares = firmwares
+        self.completion = completion
     }
 }
 
@@ -55,7 +57,24 @@ extension FirmwareCheckerPresenter: FirmwareCheckerDelegate {
                 if dontAskAgain, let tag = self.param.node.tag {
                     self.param.firmwares.availables.forEach { BlueManager.shared.ignoreFirmwareUpdate($0, deviceTag: tag) }
                 }
-                self.view.dismiss(animated: true)
+
+                if self.view.presentingViewController != nil {
+                    if let completion = self.param.completion { // }, self?.param.firmwares.isMandatory ?? false {
+                        completion(false)
+                    }
+                    self.view.dismiss(animated: true) { [weak self] in
+
+                    }
+                } else {
+                    if let completion = self.param.completion { // }, self?.param.firmwares.isMandatory ?? false {
+                        completion(false)
+                    }
+                    self.view.navigationController?.popViewController(animated: true,
+                                                                      completion: { [weak self] in
+
+                    })
+                }
+
             case .install(let firmware, let dontAskAgain):
                 if dontAskAgain, let tag = self.param.node.tag {
                     self.param.firmwares.availables.forEach { BlueManager.shared.ignoreFirmwareUpdate($0, deviceTag: tag) }
@@ -69,7 +88,9 @@ extension FirmwareCheckerPresenter: FirmwareCheckerDelegate {
     }
 
     func installSelectedFirmware(_ selectedFirmware: Firmware) {
-        let viewModel = FirmwareSelectPresenter(param: DemoParam(node: param.node, param: selectedFirmware))
+        let viewModel = FirmwareSelectPresenter(param: DemoParam(node: param.node, param: FirmwareSelect(firmware: selectedFirmware, 
+                                                                                                         isMandatory: param.firmwares.isMandatory,
+                                                                                                         completion: param.completion)))
         view.navigationController?.pushViewController(viewModel.start(), animated: true)
     }
     

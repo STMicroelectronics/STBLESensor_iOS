@@ -17,10 +17,10 @@ class UcfParser {
     
     var algoNumbers = [String]()
     var algoNames = [String]()
-    private (set) var type: VirtualSensorType = .Unknown
-    private (set) var regConfig: String = ""
-    private (set) var labels: String = ""
-    private (set) var ucfFilename: String = ""
+    private(set) var type: VirtualSensorType = .Unknown
+    private(set) var regConfig: String = ""
+    private(set) var labels: String = ""
+    private(set) var ucfFilename: String = ""
     
     init(type: VirtualSensorType, regConfig: String, ucfFilename: String, labels: String) {
         self.type = type

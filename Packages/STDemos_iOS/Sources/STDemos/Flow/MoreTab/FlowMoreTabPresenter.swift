@@ -13,7 +13,7 @@ import UIKit
 import STUI
 import STBlueSDK
 
-final class FlowMoreTabPresenter: BasePresenter<FlowMoreTabViewController, Node> {
+final class FlowMoreTabPresenter: DemoBasePresenter<FlowMoreTabViewController, Void> {
     var director: TableDirector?
 }
 
@@ -33,7 +33,7 @@ extension FlowMoreTabPresenter: FlowMoreTabDelegate {
                            type: .fromClass,
                            bundle: .module)
         
-        director?.elements.append(FlowMoreBoardViewModel(param: param))
+        director?.elements.append(FlowMoreBoardViewModel(param: param.node))
         
         loadMoreItems().forEach { flowMoreItem in
             director?.elements.append(FlowMoreItemViewModel(param: flowMoreItem, urlHandler: {
@@ -46,7 +46,7 @@ extension FlowMoreTabPresenter: FlowMoreTabDelegate {
     }
 
     private func loadMoreItems() -> [FlowMoreItem] {
-        if(param.type == .sensorTileBoxPro || param.type == .sensorTileBoxProB) {
+        if(param.node.type == .sensorTileBoxPro || param.node.type == .sensorTileBoxProB) {
             return sensorTileBoxProFlowMoreItems
         } else {
             return sensorTileBoxFlowMoreItems

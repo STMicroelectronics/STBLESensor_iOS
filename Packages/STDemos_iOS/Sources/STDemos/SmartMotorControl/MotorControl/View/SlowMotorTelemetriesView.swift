@@ -15,10 +15,34 @@ import STUI
 
 class SlowMotorTelemetriesView: UIView {
     
+    let userDescription = UILabel()
+    
+    var tempRowStackView = UIStackView()
+    let tempRowLabel = UILabel()
     let tempValueLabel = UILabel()
+    let tempUnitLabel = UILabel()
+    
+    var speedRefStackView = UIStackView()
+    let speedRefRowLabel = UILabel()
     let speedRefValueLabel = UILabel()
+    let speedRefUnitLabel = UILabel()
+    
+    var speedMesaureStackView = UIStackView()
+    let speedMeasureRowLabel = UILabel()
     let speedMeasureValueLabel = UILabel()
+    let speedMeasureUnitLabel = UILabel()
+    
+    var busVoltageStackView = UIStackView()
+    let busVoltageRowLabel = UILabel()
     let busVoltageValueLabel = UILabel()
+    let busVoltageUnitLabel = UILabel()
+    
+    var neaiStackView = UIStackView()
+    let neaiRowLabel = UILabel()
+    let neaiClassValueLabel = UILabel()
+    let neaiClassUnitLabel = UILabel()
+    
+    var slowTelemetriesStackView = UIStackView()
     
     let stackView = UIStackView()
 
@@ -29,29 +53,44 @@ class SlowMotorTelemetriesView: UIView {
         title.text = "Slow Motor Telemetries"
         TextLayout.title2.apply(to: title)
         
-        let description = UILabel()
-        description.text = "To view the data given by the motor, you must start the acquisition via the PLAY button and enable the motor via the START button"
-        TextLayout.info.apply(to: description)
-        description.numberOfLines = 0
+        userDescription.text = "To view the data given by the motor, you must start the acquisition via the PLAY button and enable the motor via the START button"
+        TextLayout.info.apply(to: userDescription)
+        userDescription.numberOfLines = 0
         
-        let tempRow = buildSlowTelemetriesRow("slow_telemetry_temperature", "Temperature", tempValueLabel, "63", "°C")
+        tempRowStackView = buildSlowTelemetriesRow("slow_telemetry_temperature", tempRowLabel, "Temperature", tempValueLabel, "", tempUnitLabel, "")
+        tempRowStackView.isHidden = true
        
-        let speedRefRow = buildSlowTelemetriesRow("slow_telemetry_speed", "Speed Ref.", speedRefValueLabel, "20.2", "krpm")
+        speedRefStackView = buildSlowTelemetriesRow("slow_telemetry_speed", speedRefRowLabel, "Speed Ref.", speedRefValueLabel, "", speedRefUnitLabel, "")
+        speedRefStackView.isHidden = true
         
-        let speedMeasRow = buildSlowTelemetriesRow("slow_telemetry_speed", "Speed Meas.", speedMeasureValueLabel, "20.0", "krpm")
+        speedMesaureStackView = buildSlowTelemetriesRow("slow_telemetry_speed", speedMeasureRowLabel, "Speed Meas.", speedMeasureValueLabel, "", speedMeasureUnitLabel, "")
+        speedMesaureStackView.isHidden = true
         
-        let busVoltageRow = buildSlowTelemetriesRow("slow_telemetry_bus_voltage", "Bus Voltage", busVoltageValueLabel, "47.3", "V")
+        busVoltageStackView = buildSlowTelemetriesRow("slow_telemetry_bus_voltage", busVoltageRowLabel, "Bus Voltage", busVoltageValueLabel, "", busVoltageUnitLabel, "")
+        busVoltageStackView.isHidden = true
+        
+        neaiStackView = buildSlowTelemetriesRow("NEAI_logo", neaiRowLabel, "Class:", neaiClassValueLabel, "", neaiClassUnitLabel, "")
+        neaiStackView.isHidden = true
+        
+        slowTelemetriesStackView = UIStackView.getVerticalStackView(withSpacing: 8, views: [
+            tempRowStackView,
+            buildDivisor(),
+            speedRefStackView,
+            buildDivisor(),
+            speedMesaureStackView,
+            buildDivisor(),
+            busVoltageStackView,
+            buildDivisor(),
+            neaiStackView
+        ])
+        slowTelemetriesStackView.distribution = .fill
+        
+        slowTelemetriesStackView.isHidden = true
         
         let slowMotorTelemetriesSV = UIStackView.getVerticalStackView(withSpacing: 16, views: [
             title,
-            description,
-            tempRow,
-            buildDivisor(),
-            speedRefRow,
-            buildDivisor(),
-            speedMeasRow,
-            buildDivisor(),
-            busVoltageRow
+            userDescription,
+            slowTelemetriesStackView
         ])
         slowMotorTelemetriesSV.distribution = .fill
         
@@ -69,34 +108,31 @@ class SlowMotorTelemetriesView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func buildSlowTelemetriesRow(_ icon: String, _ label: String, _ valueLabel: UILabel, _ defaultValue: String, _ unit: String) -> UIStackView {
+    private func buildSlowTelemetriesRow(_ icon: String, _ telemetryTitleRow: UILabel, _ rowTitlelabel: String, _ valueLabel: UILabel, _ defaultValue: String, _ unitLabel: UILabel, _ unit: String) -> UIStackView {
         let telemetryImage = UIImageView()
         telemetryImage.image = ImageLayout.image(with: icon, in: .module)
         telemetryImage.contentMode = .scaleAspectFit
         telemetryImage.setDimensionContraints(width: 24, height: 24)
         
-        let telemetryLabel = UILabel()
-        telemetryLabel.text = label
-        TextLayout.infoBold.apply(to: telemetryLabel)
+        telemetryTitleRow.text = rowTitlelabel
+        TextLayout.infoBold.apply(to: telemetryTitleRow)
         
         valueLabel.text = defaultValue
         TextLayout.info.apply(to: valueLabel)
         valueLabel.backgroundColor = .systemGray6
         valueLabel.textAlignment = .center
         
-        let telemetryUnit = UILabel()
-        telemetryUnit.text = unit
-        TextLayout.info.apply(to: telemetryUnit)
+        unitLabel.text = unit
+        TextLayout.info.apply(to: unitLabel)
         
         let leftSV = UIStackView.getHorizontalStackView(withSpacing: 8, views: [
             telemetryImage,
-            telemetryLabel,
-            
+            telemetryTitleRow
         ])
         
         let rightSV = UIStackView.getHorizontalStackView(withSpacing: 8, views: [
             valueLabel,
-            telemetryUnit
+            unitLabel
         ])
         
         let sv = UIStackView.getHorizontalStackView(withSpacing: 8, views: [

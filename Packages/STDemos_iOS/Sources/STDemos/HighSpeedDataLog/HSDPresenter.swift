@@ -34,6 +34,10 @@ extension HSDPresenter: TabBarDelegate {
 
     func load() {
 
+        demo = .highSpeedDataLog2
+        
+        prepareSettingsMenu()
+        
         view.configureView()
 
         view.title = Demo.highSpeedDataLog.title
@@ -43,19 +47,21 @@ extension HSDPresenter: TabBarDelegate {
 
             let leftPresenter = HSDPnpLPresenter(type: .highSpeedDataLog,
                                                  param: DemoParam<[PnpLContent]>(node: param.node,
+                                                                                 showTabBar: true,
                                                                                  param: dtmi.contents.sensors))
             leftController = leftPresenter.start()
 
             let rightPresenter: HSDPnpLTagPresenter = HSDPnpLTagPresenter(type: .highSpeedDataLog,
                                                                           param: DemoParam<[PnpLContent]>(node: param.node,
+                                                                                                          showTabBar: true,
                                                                                                           param: dtmi.contents.settingsNotLogging))
             rightController = rightPresenter.start()
 
             rightPresenter.viewWillAppear()
 
-            if let rightController = rightController as? BlueDelegate {
-                BlueManager.shared.addDelegate(rightController)
-            }
+//            if let rightController = rightController as? BlueDelegate {
+//                BlueManager.shared.addDelegate(rightController)
+//            }
 
             currentController = leftController
 
@@ -68,7 +74,7 @@ extension HSDPresenter: TabBarDelegate {
                 leftController.didMove(toParent: view)
 
                 leftController.stTabBarView?.add(TabBarItem(with: "Sensors",
-                                             image: ImageLayout.Common.gear?.template,
+                                             image: ImageLayout.Common.sensors?.template,
                                              callback: { [weak self]_ in
 
                     guard let self else { return }
@@ -86,7 +92,7 @@ extension HSDPresenter: TabBarDelegate {
                 }), side: .first)
 
                 leftController.stTabBarView?.add(TabBarItem(with: "Tags",
-                                             image: ImageLayout.Common.info?.template,
+                                             image: ImageLayout.Common.tagOutline?.template,
                                              callback: { [weak self] _ in
                     guard let self else { return }
 
@@ -105,6 +111,10 @@ extension HSDPresenter: TabBarDelegate {
                 leftController.stTabBarView?.setMainAction { _ in
                     leftPresenter.logStartStop()
                 }
+                
+//                rightController?.stTabBarView?.setMainAction { _ in
+//                    rightPresenter.logStartStop()
+//                }
             }
         }
     }
@@ -120,6 +130,19 @@ public extension TabBarViewController {
 }
 
 public extension UIViewController {
+
+    func addChildController(_ child: UIViewController) {
+        addChild(child)
+        view.addSubview(child.view, constraints: UIView.fitToSuperViewConstraints)
+        child.didMove(toParent: self)
+    }
+
+    func removeChildController() {
+        willMove(toParent: nil)
+        view.removeFromSuperview()
+        removeFromParent()
+    }
+
     func remove() {
         willMove(toParent: nil)
         view.removeFromSuperview()

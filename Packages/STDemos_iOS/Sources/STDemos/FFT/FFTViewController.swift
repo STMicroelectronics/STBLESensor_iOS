@@ -12,7 +12,7 @@
 import UIKit
 import STUI
 import STBlueSDK
-import Charts
+import DGCharts
 
 final class FFTViewController: DemoNodeNoViewController<FFTDelegate> {
 

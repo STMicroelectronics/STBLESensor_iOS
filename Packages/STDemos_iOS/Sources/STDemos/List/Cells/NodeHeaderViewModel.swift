@@ -44,21 +44,22 @@ public class NodeHeaderViewModel: BaseCellViewModel<Node, NodeHeaderCell> {
             }
 
             if firmware.bleVersionId == 255 {
-                let demos = Demo.demos(with: param.characteristics.allFeatures())
-                let pnpLSet = Set([Demo.pnpLike])
-                let demosSet = Set(demos)
-                let hasPnPL = pnpLSet.isSubset(of: demosSet)
-                
-                if hasPnPL {
-                    if catalogService.customDtmi == nil {
-                        view.customDtmiLabel.text = "Custom DTMI not present"
-                        TextLayout.infoBold.color(ColorLayout.accent.light).apply(to: view.customDtmiLabel)
-                    } else {
-                        view.customDtmiLabel.text = "Custom DTMI"
-                        TextLayout.infoBold.color(ColorLayout.green.light).apply(to: view.customDtmiLabel)
+                Demo.demos(with: param.characteristics.allFeatures(), node: param, completion: { demos in
+                    let pnpLSet = Set([Demo.pnpLike])
+                    let demosSet = Set(demos)
+                    let hasPnPL = pnpLSet.isSubset(of: demosSet)
+                    
+                    if hasPnPL {
+                        if catalogService.customDtmi == nil {
+                            view.customDtmiLabel.text = "Custom DTMI not present"
+                            TextLayout.infoBold.color(ColorLayout.accent.light).apply(to: view.customDtmiLabel)
+                        } else {
+                            view.customDtmiLabel.text = "Custom DTMI"
+                            TextLayout.infoBold.color(ColorLayout.green.light).apply(to: view.customDtmiLabel)
+                        }
+                        view.customDtmiLabel.isHidden = false
                     }
-                    view.customDtmiLabel.isHidden = false
-                }
+                })
             }
         }
     }

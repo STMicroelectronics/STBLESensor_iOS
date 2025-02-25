@@ -22,8 +22,13 @@ public class TabBarView: UIView {
 
     let stackView = UIStackView()
     public let actionButton = UIButton(type: .custom)
-    public var showArcActionButton: Bool = true
-    public var showFourthTab: Bool = true
+
+    public var showArcActionButton: Bool = true {
+        didSet {
+            layoutSubviews()
+            actionButton.isHidden = !showArcActionButton
+        }
+    }
 
     let firstStackView = UIStackView()
     let secondStackView = UIStackView()
@@ -38,11 +43,9 @@ public class TabBarView: UIView {
 
         clipsToBounds = false
         
-        self.showArcActionButton = showArcActionButton
-        
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
-        stackView.spacing = 60.0
+        stackView.spacing = 40.0
 
         firstStackView.axis = .horizontal
         secondStackView.axis = .horizontal
@@ -111,14 +114,17 @@ public class TabBarView: UIView {
         path.addLine(to: CGPoint(x: stackContainerView.frame.width / 2.0 - 30.0, y: 0.0))
         
         var arcRadius = 30.0
+
         if !showArcActionButton {
             arcRadius = 0.0
-            stackView.addArrangedSubview(thirdStackView)
-            if showFourthTab{
-                stackView.addArrangedSubview(fourthStackView)
-            }
-            actionButton.removeFromSuperview()
-            willRemoveSubview(actionButton)
+//            actionButton.removeFromSuperview()
+//
+//            stackView.addArrangedSubview(thirdStackView)
+//            if showFourthTab{
+//                stackView.addArrangedSubview(fourthStackView)
+//            }
+//            actionButton.removeFromSuperview()
+//            willRemoveSubview(actionButton)
         }
         
         path.addArc(withCenter: CGPoint(x: stackContainerView.frame.width / 2.0, y: 0.0),
@@ -133,12 +139,17 @@ public class TabBarView: UIView {
 
         let shapeLayer = CAShapeLayer()
 
+        shapeLayer.name = "arc_layer"
         shapeLayer.path = path.cgPath
         shapeLayer.strokeColor = ColorLayout.primary.auto.cgColor
         shapeLayer.fillColor = ColorLayout.primary.auto.cgColor
         shapeLayer.lineWidth = 1.0
         shapeLayer.position = CGPoint(x: 0, y: 0)
 
+        if let layer = stackContainerView.layer.sublayers?.first(where: { $0.name == "arc_layer"}) {
+            layer.removeFromSuperlayer()
+        }
+        
         stackContainerView.layer.insertSublayer(shapeLayer, at: 0)
     }
 }
@@ -165,22 +176,50 @@ public extension TabBarView {
             view.removeFromSuperview()
             fourthStackView.removeArrangedSubview(view)
         }
+
+        stackView.removeArrangedSubview(firstStackView)
+        stackView.removeArrangedSubview(secondStackView)
+        stackView.removeArrangedSubview(thirdStackView)
+        stackView.removeArrangedSubview(fourthStackView)
+
+        firstStackView.removeFromSuperview()
+        secondStackView.removeFromSuperview()
+        thirdStackView.removeFromSuperview()
+        fourthStackView.removeFromSuperview()
     }
 
     func add(_ item: TabBarItem, side: TabBarSide) {
         if side == .first {
+            stackView.addArrangedSubview(firstStackView)
             firstStackView.addArrangedSubview(item)
         } else if side == .second {
+            stackView.addArrangedSubview(secondStackView)
             secondStackView.addArrangedSubview(item)
         } else if side == .third {
+            stackView.addArrangedSubview(thirdStackView)
             thirdStackView.addArrangedSubview(item)
         } else {
+            stackView.addArrangedSubview(fourthStackView)
             fourthStackView.addArrangedSubview(item)
+        }
+    }
+
+    func selectTabItem(for side: TabBarSide) {
+        if side == .first {
+            (firstStackView.arrangedSubviews.first as? TabBarItem)?.select()
+        } else if side == .second {
+            (secondStackView.arrangedSubviews.first as? TabBarItem)?.select()
+        } else if side == .third {
+            (thirdStackView.arrangedSubviews.first as? TabBarItem)?.select()
+        } else {
+            (fourthStackView.arrangedSubviews.first as? TabBarItem)?.select()
         }
     }
 
     func setMainAction(_ callback: @escaping UIControl.UIControlTargetClosure) {
         actionButton.addAction(for: .touchUpInside,
                                closure: callback)
+
+        showArcActionButton = true
     }
 }

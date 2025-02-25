@@ -12,14 +12,19 @@
 import Foundation
 import STUI
 
-func currentTimeInMilliSeconds()-> Int {
+func currentTimeInMilliSeconds() -> UInt64 {
     let since1970 = Date().timeIntervalSince1970
-    return Int(since1970 * 1000)
+    return UInt64(since1970 * 1000)
 }
 
 public struct PlotEntry {
-    let x: Int
-    let y: [Float]
+    public let x: UInt64
+    public let y: [Float]
+
+    public init(x: UInt64, y: [Float]) {
+        self.x = x
+        self.y = y
+    }
 }
 
 enum PlotStatus {

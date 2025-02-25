@@ -92,6 +92,16 @@ final class NEAIClassificationViewController: DemoNodeNoViewController<NEAIClass
 
         presenter.load()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.enableNotification()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        presenter.disableNotification()
+    }
 
     override func configureView() {
         super.configureView()

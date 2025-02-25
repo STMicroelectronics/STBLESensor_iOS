@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  FlowItemCell.swift
 //
 //  Copyright (c) 2024 STMicroelectronics.
 //  All rights reserved.

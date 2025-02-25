@@ -19,11 +19,13 @@ public class DemoParam<T> {
     public var node: Node
     public var showTabBar: Bool
     public var param: T?
+    public var customTitle: String?
 
-    public init(node: Node, showTabBar: Bool = false, param: T? = nil) {
+    public init(node: Node, showTabBar: Bool = false, param: T? = nil, customTitle: String? = nil) {
         self.node = node
         self.showTabBar = showTabBar
         self.param = param
+        self.customTitle = customTitle
     }
 }
 
@@ -42,6 +44,8 @@ public protocol DemoDelegate: AnyObject {
 
     func viewWillDisappear()
 
+    func viewDidDisappear()
+
 }
 
 open class DemoPresenter<T: Presentable>: DemoBasePresenter<T, Void> {
@@ -50,7 +54,7 @@ open class DemoPresenter<T: Presentable>: DemoBasePresenter<T, Void> {
 open class DemoBasePresenter<T: Presentable, M>: BasePresenter<T, DemoParam<M>>, DemoDelegate {
 
     public var demo: Demo?
-    public var disableNotificationOnDisappear : Bool = true
+//    public var disableNotificationOnDisappear : Bool = true
 
     public var demoFeatures: [Feature] = [Feature]()
 
@@ -84,11 +88,14 @@ open class DemoBasePresenter<T: Presentable, M>: BasePresenter<T, DemoParam<M>>,
         }
     }
 
-    open func viewWillDisappear() {
-
-        if disableNotificationOnDisappear {
+    open func viewDidDisappear() {
+        view.hideTabBar()
+//        if disableNotificationOnDisappear {
             BlueManager.shared.disableNotifications(for: param.node, features: demoFeatures)
         }
+//    }
+
+    open func viewWillDisappear() {
 
         if let analytics: AnalyticsService = Resolver.shared.resolve(),
            let demo = demo {
@@ -100,18 +107,17 @@ open class DemoBasePresenter<T: Presentable, M>: BasePresenter<T, DemoParam<M>>,
 
     open override func prepareSettingsMenu() {
         
-        settingsButton.image = ImageLayout.Common.gear?.template
+        moreButton.image = ImageLayout.Common.gear?.template
 
         settingActions.removeAll()
 
         if let demo = demo,
            let contents = BlueManager.shared.dtmi(for: param.node)?.contents.contents(with: demo) {
 
-            self.disableNotificationOnDisappear = false
-
             self.settingActions.append(SettingsAction(name: "Demo Configuration",
                                                     handler: { [weak self] in
                 guard let self else { return }
+//                self.disableNotificationOnDisappear = false
                 self.view.navigationController?.show(Demo.pnpLike.presenter(with: self.param.node,
                                                                             param: PnplDemoConfiguration(contents: contents)).start(), sender: nil)
             }))
@@ -143,6 +149,14 @@ open class DemoBasePresenter<T: Presentable, M>: BasePresenter<T, DemoParam<M>>,
 //        }))
 
        super.prepareSettingsMenu()
+    }
+
+    deinit {
+        deinitPresenter()
+    }
+
+    open func deinitPresenter() {
+
     }
 
 }

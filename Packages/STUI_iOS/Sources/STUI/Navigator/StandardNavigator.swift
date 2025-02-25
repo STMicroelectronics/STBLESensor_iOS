@@ -1,8 +1,12 @@
 //
-//  File.swift
-//  
+//  StandardNavigator.swift
 //
-//  Created by Stefano Zanetti on 12/06/23.
+//  Copyright (c) 2024 STMicroelectronics.
+//  All rights reserved.
+//
+//  This software is licensed under terms that can be found in the LICENSE file in
+//  the root directory of this software component.
+//  If no LICENSE file comes with this software, it is provided AS-IS.
 //
 
 import UIKit
@@ -110,22 +114,48 @@ extension StandardNavigator: Navigator {
     }
 
     public func dismiss(to: Swift.AnyClass) {
-        dismiss(toRoot: false, to: to, animated: true) {}
+        dismiss(toRoot: false, to: to, animated: true) { _ in
+
+        }
+    }
+
+    public func dismiss(to: Swift.AnyClass, completion: @escaping (UIViewController?) -> Void) {
+        dismiss(toRoot: false, to: to, animated: true, completion: completion)
+    }
+
+    public func dismiss(to: Swift.AnyClass, completion: @escaping () -> Void) {
+        dismiss(to: to) { _ in
+            completion()
+        }
     }
 
     public func dismiss(animated: Bool) {
-        dismiss(animated: animated) {}
+        dismiss(animated: animated) { _ in
+
+        }
     }
 
-    public func dismissToRoot(animated: Bool, completion: @escaping () -> Void) {
+    public func dismissToRoot(animated: Bool, completion: @escaping (UIViewController?) -> Void) {
         dismiss(toRoot: true, to: nil, animated: animated, completion: completion)
     }
 
-    public func dismiss(animated: Bool, completion: @escaping () -> Void) {
+    public func dismissToRoot(animated: Bool, completion: @escaping () -> Void) {
+        dismissToRoot(animated: animated) { _ in
+            completion()
+        }
+    }
+
+    public func dismiss(animated: Bool, completion: @escaping (UIViewController?) -> Void) {
         dismiss(toRoot: false, to: nil, animated: animated, completion: completion)
     }
 
-    public func dismiss(toRoot: Bool = false, to: Swift.AnyClass? = nil, animated: Bool, completion: @escaping () -> Void) {
+    public func dismiss(animated: Bool, completion: @escaping () -> Void) {
+        dismiss(animated: animated) { _ in
+            completion()
+        }
+    }
+
+    public func dismiss(toRoot: Bool = false, to: Swift.AnyClass? = nil, animated: Bool, completion: @escaping (UIViewController?) -> Void) {
         guard Thread.isMainThread else {
             DispatchQueue.main.async {
                 self.dismiss(toRoot: toRoot, animated: true, completion: completion)
@@ -149,14 +179,16 @@ extension StandardNavigator: Navigator {
         if let children = children {
             if let child = children.last as? UIViewController {
                 removeChild(viewController: child)
-                completion()
+                completion(nil)
                 return
             }
         }
 
         if viewController.presentingViewController != nil,
            let controller = viewController.topMostViewController {
-            controller.dismiss(animated: animated, completion: completion)
+            controller.dismiss(animated: animated) {
+                completion(nil)
+            }
             return
         }
 
@@ -166,20 +198,22 @@ extension StandardNavigator: Navigator {
                     if toRoot {
                         CATransaction.begin()
                         CATransaction.setCompletionBlock {
-                            completion()
+                            completion(nil)
                         }
                         nvc.popToRootViewController(animated: animated)
                         CATransaction.commit()
 
                     } else if let to = to {
-                        nvc.backToViewController(viewController: to)
+                        nvc.backToViewController(viewController: to, completion: completion)
                     } else {
-                        nvc.popViewController(animated: animated, completion: completion)
+                        nvc.popViewController(animated: animated) {
+                            completion(nil)
+                        }
                     }
                     return
                 }
             } else {
-                completion()
+                completion(nil)
                 return
             }
 
@@ -263,11 +297,16 @@ extension StandardNavigator: UINavigationControllerDelegate {
 
 extension UINavigationController {
 
-    func backToViewController(viewController: Swift.AnyClass) {
+    func backToViewController(viewController: Swift.AnyClass, completion: ((UIViewController) -> Void)? = nil) {
         for element in viewControllers as Array {
             if element.isKind(of: viewController) {
+                guard let completion = completion else {
+                    self.popToViewController(element, animated: true)
+                    return
+                }
+                completion(element)
                 self.popToViewController(element, animated: true)
-                break
+                return
             }
         }
     }

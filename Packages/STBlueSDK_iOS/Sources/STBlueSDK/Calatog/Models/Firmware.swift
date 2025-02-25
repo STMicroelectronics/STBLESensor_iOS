@@ -51,6 +51,12 @@ extension Firmware: Codable {
 }
 
 public extension Firmware {
+
+    static let stAIotCraftName = "FP-SNS-DATALOG2_Datalog2"
+    static let stAIotCraftSupportedVersions = [
+        "3.0.0"
+    ]
+
     var boardType: NodeType? {
         guard let deviceId = UInt8(deviceId.dropFirst(2), radix: 16) else { return nil }
         return NodeType(rawValue: deviceId)
@@ -102,6 +108,12 @@ public extension Array where Element == Firmware {
     }
 }
 
+public extension Array where Element == CatalogBoard {
+    var toBoard: [Board] {
+        map { Board(deviceId: $0.bleDeviceId, name: $0.name, characteristics: nil) }.unique()
+    }
+}
+
 public extension Sequence where Iterator.Element: Hashable {
     func unique() -> [Iterator.Element] {
         var seen: Set<Iterator.Element> = []
@@ -124,6 +136,7 @@ public struct Board {
 
     public var type: NodeType? {
         guard let boardId = UInt8(deviceId.dropFirst(2), radix: 16) else { return nil }
+        print("boardId=\(boardId)")
         return NodeType(rawValue: boardId)
     }
 }
@@ -176,5 +189,12 @@ extension CatalogBoard: Codable {
         case orderUrl = "order_url"
         case videoUrl = "video_url"
         case releaseDate = "release_date"
+    }
+}
+
+extension String {
+    var nodeType: NodeType? {
+        guard let boardId = UInt8(dropFirst(2), radix: 16) else { return nil }
+        return NodeType(rawValue: boardId)
     }
 }

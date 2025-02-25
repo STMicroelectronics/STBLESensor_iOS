@@ -11,19 +11,19 @@
 
 import UIKit
 
-public final class TabBarViewController: BaseViewController<TabBarDelegate, MainView> {
+open class TabBarViewController: BaseViewController<TabBarDelegate, MainView> {
 
     public static let mainViewOffset = 25.0
 
-    public override func makeView() -> MainView {
+    open override func makeView() -> MainView {
         MainView.make(with: Bundle.module) as? MainView ?? MainView()
     }
 
-    public override func configure() {
+    open override func configure() {
         super.configure()
     }
 
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
 
         super.viewDidLoad()
 
@@ -31,11 +31,11 @@ public final class TabBarViewController: BaseViewController<TabBarDelegate, Main
 
     }
 
-    public override func viewWillAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
 
-    public override func configureView() {
+    open override func configureView() {
         let mainView = makeView()
         view.addSubview(mainView,
                         constraints: [
@@ -52,8 +52,24 @@ public final class TabBarViewController: BaseViewController<TabBarDelegate, Main
 }
 
 public extension UIViewController {
+
+    func selectTabItem(for side: TabBarSide) {
+        guard let controller = self as? TabBarViewController else {
+            guard let parent = parent else { return }
+            parent.selectTabItem(for: side)
+            return
+        }
+
+        controller.mainView.tabBarView.selectTabItem(for: side)
+    }
+
     func showTabBar() {
-        guard let controller = parent?.parent as? TabBarViewController else { return }
+
+        guard let controller = self as? TabBarViewController else {
+            guard let parent = parent else { return }
+            parent.showTabBar()
+            return
+        }
 
         controller.mainView.tabBarViewBottomConstraint.constant = 0
         controller.mainView.mainViewOffsetConstraint.constant = -TabBarViewController.mainViewOffset
@@ -64,10 +80,14 @@ public extension UIViewController {
     }
 
     func hideTabBar() {
-        guard let controller = parent?.parent as? TabBarViewController else { return }
+
+        guard let controller = self as? TabBarViewController else {
+            guard let parent = parent else { return }
+            parent.hideTabBar()
+            return
+        }
 
         controller.mainView.tabBarViewBottomConstraint.constant = -(controller.mainView.tabBarViewHeighConstraint.constant + UIDevice.current.safeAreaEdgeInsets.bottom)
-
         controller.mainView.mainViewOffsetConstraint.constant = 0.0
 
         UIView.animate(withDuration: 0.3) {

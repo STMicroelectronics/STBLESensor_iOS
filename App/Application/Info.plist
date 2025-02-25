@@ -21,7 +21,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>5.2.0</string>
 	<key>CFBundleVersion</key>
-	<string>176</string>
+	<string>187</string>
 	<key>ENVIRONMENT</key>
 	<string>$(APP_ENVIRONMENT)</string>
 	<key>ITSAppUsesNonExemptEncryption</key>

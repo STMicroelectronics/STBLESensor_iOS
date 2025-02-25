@@ -16,8 +16,8 @@ public extension UIView {
 
     func rotate(duration: CFTimeInterval = 1, repeatCount: Float = .infinity) {
         let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
-        rotateAnimation.fromValue = 0.0
-        rotateAnimation.toValue = CGFloat(Double.pi * 2)
+        rotateAnimation.fromValue = CGFloat(Double.pi * 2)
+        rotateAnimation.toValue = 0.0
         rotateAnimation.isRemovedOnCompletion = false
         rotateAnimation.duration = duration
         rotateAnimation.repeatCount = repeatCount

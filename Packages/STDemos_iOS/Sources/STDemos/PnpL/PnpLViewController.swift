@@ -16,6 +16,8 @@ import STCore
 
 final public class PnpLViewController: DemoNodeTableViewController<PnpLDelegate, PnpLView> {
 
+    public var pnplCommandQueue: [PnPLCommandInQueue] = []
+    
     public override func configure() {
         super.configure()
     }
@@ -34,7 +36,7 @@ final public class PnpLViewController: DemoNodeTableViewController<PnpLDelegate,
     }
 
     public override func viewWillDisappear(_ animated: Bool) {
-        self.presenter.disableNotificationOnDisappear = false
+        //self.presenter.disableNotificationOnDisappear = false
         super.viewWillDisappear(animated)
     }
 
@@ -43,20 +45,45 @@ final public class PnpLViewController: DemoNodeTableViewController<PnpLDelegate,
     }
 
     public override func manager(_ manager: BlueManager, didUpdateValueFor node: Node, feature: Feature, sample: AnyFeatureSample?) {
-        DispatchQueue.main.async { [weak self] in
-
 //            guard let self = self else { return }
 //            if type(of: self.feature) != type(of: feature) ||
 //                feature.type.mask != self.feature.type.mask {
 //                return
 //            }
 //
-            guard let feature = feature as? PnPLFeature else { return }
+        guard let feature = feature as? PnPLFeature else { return }
 
-            Logger.debug(text: feature.description(with: sample))
+        self.presenter.update(with: feature)
 
-            self?.presenter.update(with: feature)
+    }
+}
+
+public extension UIViewController {
+    func makePnPLSpontaneousMessaggeAlertView(_ type: PnPLSpontaneousMessageType, _ description: String) {
+        DispatchQueue.main.async {
+
+            Logger.debug(text: "ERRRRRROR: \(description)")
+
+            let extra = "It seems the issue may be related to your SD card. Please ensure it is properly inserted and compatible with the FP-SNS-DATALOG2. Please remember to click the RESTART button on your board to restore it. For a list of recommended and compatible SD cards, click on \'Read More\' button."
+            let url = "https://github.com/STMicroelectronics/fp-sns-datalog2?tab=readme-ov-file#known-limitations"
+            let actionTitle = "Read More..."
+
+            guard let navigator: Navigator = Resolver.shared.resolve() else { return }
+
+            if description.lowercased().contains("sd") || description.lowercased().contains("log") {
+                let presenter = PnPLSpontaneousMessageAlertPresenter(param: PnPLSpontaneousMessageTypeAndDescription(type: type,
+                                                                                                                     description: description,
+                                                                                                                     extra: extra,
+                                                                                                                     actionTitle: actionTitle,
+                                                                                                                     url: url))
+
+                navigator.present(presenter: presenter, embeddedNav: false)
+            } else {
+                let presenter = PnPLSpontaneousMessageAlertPresenter(param: PnPLSpontaneousMessageTypeAndDescription(type: type,
+                                                                                                                     description: description))
+                navigator.present(presenter: presenter, embeddedNav: false)
+            }
         }
     }
-
 }
+

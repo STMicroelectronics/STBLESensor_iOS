@@ -16,6 +16,10 @@ protocol NEAIAnomalyDetectionDelegate: AnyObject {
 
     func load()
     
+    func enableNotification()
+    
+    func disableNotification()
+    
     func expandOrHideNEAICommands()
     
     func startStop()

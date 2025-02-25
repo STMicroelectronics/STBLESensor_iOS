@@ -244,3 +244,60 @@ struct FakeCheckable: Checkable {
     var identifier = ""
     var descr = ""
 }
+//
+//
+//// MARK: - SensorAdapterElement
+//public struct Sensor: Codable {
+//    let uniqueID: Int
+//    let id, description, icon, model: String
+//    let boardCompatibility: [BoardCompatibility]
+//    let output: String
+//    let outputs: [Output]
+//    let um: String
+//    let datasheetLink: String
+//    let notes: String?
+//    let dataType: String
+//    let powerModes: [PowerModeElement]?
+//    let acquisitionTime: Int?
+//    let configuration: Configuration?
+//    let fullScaleUm: String?
+//    let fullScales: [Int]?
+//    let bleMaxOdr: Int?
+//
+//    enum CodingKeys: String, CodingKey {
+//        case uniqueID = "unique_id"
+//        case id, description, icon, model
+//        case boardCompatibility = "board_compatibility"
+//        case output, outputs, um, datasheetLink, notes, dataType, powerModes, acquisitionTime, configuration, fullScaleUm, fullScales, bleMaxOdr
+//    }
+//}
+//
+//enum BoardCompatibility: String, Codable {
+//    case sensorTileBoxPro = "SENSOR_TILE_BOX_PRO"
+//    case sensorTileBoxProb = "SENSOR_TILE_BOX_PROB"
+//}
+//
+//// MARK: - Configuration
+//struct Configuration: Codable {
+//    let powerMode: PowerModeEnum?
+//    let odr, acquisitionTime, fullScale: Int?
+//    let regConfig, mlcLabels, ucfFilename: String?
+//}
+//
+//enum PowerModeEnum: String, Codable {
+//    case lowPower = "LOW_POWER"
+//    case none = "NONE"
+//}
+//
+//enum Output: String, Codable {
+//    case o1 = "O1"
+//    case o2 = "O2"
+//    case o3 = "O3"
+//}
+//
+//// MARK: - PowerModeElement
+//struct PowerModeElement: Codable {
+//    let mode, label: String
+//    let odrs: [Double]
+//    let minCustomOdr: Double?
+//}

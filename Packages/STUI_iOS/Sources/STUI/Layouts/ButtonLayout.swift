@@ -71,7 +71,15 @@ public extension Buttonlayout {
                      )
                 button.setAttributedTitle(attributeString, for: .normal)
             } else {
-                button.setTitle(text, for: .normal)
+                let attrs: [NSAttributedString.Key: Any] = [
+                      .font: font as Any,
+                  ]
+
+                let attributeString = NSMutableAttributedString(
+                        string: text,
+                        attributes: attrs
+                     )
+                button.setAttributedTitle(attributeString, for: .normal)
             }
         }
 

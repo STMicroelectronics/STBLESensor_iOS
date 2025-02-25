@@ -88,8 +88,10 @@ public protocol BlueSTManager {
     func sendHSDSetCommand(_ command: HSDSetCmd, to node: Node, completion: @escaping () -> Void)  -> Bool
     func sendHSDControlCommand(_ command: HSDControlCmd, to node: Node)  -> Bool
     func sendHSDCommand(_ command: String?, to node: Node, completion: @escaping () -> Void)  -> Bool
+    
+    func sendBinaryCommand(_ data: Data?, to node: Node, feature: Feature, writeSize: Int, progress: @escaping (Int, Int) -> Void,completion: @escaping () -> Void)  -> Bool
 
-    func sendPnpLCommand(_ command: PnpLCommand, to node: Node, feature: Feature)  -> Bool
+    func sendPnpLCommand(_ command: PnpLCommand, maxWriteLength: Int, to node: Node, feature: Feature)  -> Bool
 
     func firmwareUpgrade(for node: Node, type: FirmwareType, url: URL, catalog: Catalog, callback: FirmwareUpgradeCallback)
     

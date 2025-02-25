@@ -7,7 +7,7 @@ let package = Package(
     name: "STCatalog",
     defaultLocalization: "en",
     platforms: [
-        .iOS(.v13),
+        .iOS(.v15),
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
@@ -21,7 +21,8 @@ let package = Package(
         .package(path: "../STUI_iOS"),
         .package(path: "../STDemos_iOS"),
         .package(url: "https://github.com/youtube/youtube-ios-player-helper.git", from: Version(1, 0, 0)),
-        .package(url: "https://github.com/ElaWorkshop/TagListView.git", from: Version(1, 4, 1))
+        .package(url: "https://github.com/ElaWorkshop/TagListView.git", from: Version(1, 4, 1)),
+        .package(url: "https://github.com/apple/swift-algorithms", from: Version(1, 0, 0))
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -34,7 +35,8 @@ let package = Package(
                 .product(name: "STBlueSDK", package: "STBlueSDK_iOS"),
                 .product(name: "STDemos", package: "STDemos_iOS"),
                 .product(name: "YouTubeiOSPlayerHelper", package: "youtube-ios-player-helper"),
-                .product(name: "TagListView", package: "TagListView")
+                .product(name: "TagListView", package: "TagListView"),
+                .product(name: "Algorithms", package: "swift-algorithms")
             ]),
         .testTarget(
             name: "STCatalogTests",

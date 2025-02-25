@@ -12,7 +12,7 @@
 import UIKit
 import STUI
 import STBlueSDK
-import Charts
+import DGCharts
 
 final class FFTPresenter: DemoPresenter<FFTViewController> {
     var fftDetails: FFTDetails = FFTDetails(fftPoint: nil, fftTimeDataInfo: nil)
@@ -131,11 +131,6 @@ extension FFTPresenter: FFTDelegate {
         fftDetails.fftTimeDataInfo = timeDomainStats
     }
 
-}
-
-struct LineConfig{
-    let name:String
-    let color:UIColor
 }
 
 let LINE_CONFIG = [

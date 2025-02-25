@@ -67,6 +67,7 @@ extension Flows: Uploadable where Element: Flow {
 public final class Flow: Checkable {
     var identifier: String = UUID().uuidString
     var category: String?
+    var exApp: Int?
     var boardCompatibility: [String]?
     var name: String = flowDefaultName
     var descr: String {
@@ -318,6 +319,7 @@ extension Flow {
         var dictionary: [String: Any] = [String: Any]()
         
         dictionary["version"] = version
+        dictionary["ex_app"] = self.exApp ?? 0
         dictionary["sensors"] = sensors
         dictionary["flows"] = flows
         
@@ -444,6 +446,7 @@ extension Flow: Codable {
     enum CodingKeys: String, CodingKey {
         case identifier = "id"
         case boardCompatibility = "board_compatibility"
+        case exApp = "ex_app"
         case category
         case name = "description"
         case functions
@@ -462,6 +465,7 @@ extension Flow: NSCopying {
         let copy = Flow()
         
         copy.identifier = self.identifier
+        copy.exApp = self.exApp
         copy.boardCompatibility = self.boardCompatibility
         copy.category = self.category
         copy.name = self.name

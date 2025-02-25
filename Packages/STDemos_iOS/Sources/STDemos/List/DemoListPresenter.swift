@@ -22,14 +22,14 @@ public final class DemoListPresenter: BasePresenter<DemoListViewController, Node
 
     public override func prepareSettingsMenu() {
 
-        settingsButton.image = ImageLayout.Common.gear?.template
+        moreButton.image = ImageLayout.Common.gear?.template
         
         settingActions.removeAll()
 
         settingActions.append(SettingsAction(name: Localizer.Firmware.Text.upgrade.localized,
                                              handler: { [weak self] in
             guard let self else { return }
-            self.view.navigationController?.show(FirmwareSelectPresenter(param: DemoParam<Firmware>(node: self.param)).start(), sender: nil)
+            self.view.navigationController?.show(FirmwareSelectPresenter(param: DemoParam<FirmwareSelect>(node: self.param)).start(), sender: nil)
         }))
         
         if let sessionService: SessionService = Resolver.shared.resolve(),
@@ -79,180 +79,164 @@ private extension DemoListPresenter {
 
     func refresh() {
         prepareSettingsMenu()
+        
+        Demo.demos(with: param.characteristics.allFeatures(), node: param, completion: { allDemos in
+            
+            //Check node ble protocol version v2/v1
+            if let catalogService: CatalogService = Resolver.shared.resolve(),
+               let catalog = catalogService.catalog,
+               let firmware = catalog.v2Firmware(with: self.param.deviceId.longHex, firmwareId: UInt32(self.param.bleFirmwareVersion).longHex) {
+                let defaults = UserDefaults.standard
+                self.demosKey = "demos_\(firmware.uniqueIdentifier)"
+                if let data = defaults.data(forKey: "demos_\(firmware.uniqueIdentifier)"),
+                   let demos = try? JSONDecoder().decode([Demo].self, from: data) {
+                    if demos.satisfy(array: allDemos) {
+                        self.demos = demos
+                    } else {
+                        self.demos = allDemos
+                    }
+                } else {
+                    self.demos = allDemos
+                }
 
-        //Check node ble protocol version v2/v1
-        if let catalogService: CatalogService = Resolver.shared.resolve(),
-           let catalog = catalogService.catalog,
-           let firmware = catalog.v2Firmware(with: param.deviceId.longHex,
-                                             firmwareId: UInt32(param.bleFirmwareVersion).longHex) {
+                Logger.debug(text: "CURRENT FIRMWARE: \(firmware.fullName)")
 
-            let defaults = UserDefaults.standard
-            demosKey = "demos_\(firmware.uniqueIdentifier)"
-            if let data = defaults.data(forKey: "demos_\(firmware.uniqueIdentifier)"),
-               let demos = try? JSONDecoder().decode([Demo].self, from: data) {
-                let allDemos = Demo.demos(with: param.characteristics.allFeatures())
-                if demos.satisfy(array: allDemos) {
+                if let availableFirmware = catalog.mostRecentAvailableNewV2Firmware(with: self.param.deviceId.longHex,
+                                                                            currentFirmware: firmware),
+    //               availableFirmware.fota?.type == .wbReady,
+                   self.param.protocolVersion ==  0x02,
+                   let tag = self.param.tag,
+                   !BlueManager.shared.isFirmwareUpdateIgnored(availableFirmware, deviceTag: tag) {
+                    Logger.debug(text: "AVAILABLE FIRMWARE: \(availableFirmware.fullName)")
+                    self.view.navigationController?.pushViewController(
+                        FirmwareCheckerPresenter(
+                            param: FirmwareChecker(
+                                node: self.param,
+                                firmwares: Firmwares(current: firmware, availables: [ availableFirmware ])
+                            ) { [weak self] _ in
+                                self?.view.navigationController?.popViewController(animated: true)
+                            }
+                        ).start(),
+                        animated: true
+                    )
+    //                view.present(FirmwareCheckerPresenter(param: FirmwareChecker(node: param,
+    //                                                                         firmwares: Firmwares(current: firmware,
+    //                                                                                              availables: [ availableFirmware ]))).start(),
+    //                         animated: true)
+                }
+                BlueManager.shared.updateDtmi(with: .prod, firmware: firmware) { dtmiElements, error in
+                    if dtmiElements.isEmpty || error != nil {
+                        BlueManager.shared.updateDtmi(with: .dev, firmware: firmware) { dtmiElements, error in }
+                    }
+                }
+            } else if let address = self.param.address {
+                let defaults = UserDefaults.standard
+                self.demosKey = "demos_\(address)"
+                if let data = defaults.data(forKey: "demos_\(address)"),
+                   let demos = try? JSONDecoder().decode([Demo].self, from: data) {
                     self.demos = demos
                 } else {
                     self.demos = allDemos
                 }
-            } else {
-                demos = Demo.demos(with: param.characteristics.allFeatures())
+            }
+            
+            self.view.tableView.separatorStyle = .singleLine
+
+            if self.director == nil {
+                self.director = TableDirector(with: self.view.tableView)
+                self.director?.register(viewModel: GroupCellViewModel<[any ViewViewModel]>.self,
+                                   type: .fromClass,
+                                   bundle: STDemos.bundle)
+                self.director?.register(viewModel: DemoViewModel.self,
+                                   type: .fromClass,
+                                   bundle: .module)
+                self.director?.register(viewModel: NodeHeaderViewModel.self,
+                                   type: .fromClass,
+                                   bundle: .module)
+
+                self.director?.isFirstCellLocked = true
             }
 
-            Logger.debug(text: "CURRENT FIRMWARE: \(firmware.fullName)")
+            self.director?.elements.append(NodeHeaderViewModel(param: self.param))
 
-            if let availableFirmware = catalog.mostRecentAvailableNewV2Firmware(with: param.deviceId.longHex,
-                                                                        currentFirmware: firmware),
-//               availableFirmware.fota?.type == .wbReady,
-               param.protocolVersion ==  0x02,
-               let tag = param.tag,
-               !BlueManager.shared.isFirmwareUpdateIgnored(availableFirmware, deviceTag: tag) {
-                Logger.debug(text: "AVAILABLE FIRMWARE: \(availableFirmware.fullName)")
-                
-                view.present(
-                    UINavigationController(
-                        rootViewController: FirmwareCheckerPresenter(
-                            param: FirmwareChecker(
-                                node: param,
-                                firmwares: Firmwares(current: firmware, availables: [ availableFirmware ])
-                            )
-                        ).start()
-                    ),
-                    animated: true)
-//                view.present(FirmwareCheckerPresenter(param: FirmwareChecker(node: param,
-//                                                                         firmwares: Firmwares(current: firmware,
-//                                                                                              availables: [ availableFirmware ]))).start(),
-//                         animated: true)
-            }
+            self.director?.elements.append(contentsOf: self.demos.enumerated().map({
+                DemoViewModel(param: $1, index: $0, isLockedCheckEnabled: true)
+            }))
 
-            BlueManager.shared.updateDtmi(with: .prod, firmware: firmware) { dtmiElements, error in
+            self.director?.onSelect({ [weak self] indexPath in
+                guard indexPath.row > 0,
+                      let self,
+                      let viewModel = self.director?.elements[indexPath.row] as? DemoViewModel,
+                      let demo = viewModel.param else { return }
 
-            }
-        } else if let address = param.address {
-            let defaults = UserDefaults.standard
-            demosKey = "demos_\(address)"
-            if let data = defaults.data(forKey: "demos_\(address)"),
-               let demos = try? JSONDecoder().decode([Demo].self, from: data) {
-                self.demos = demos
-            } else {
-                demos = Demo.demos(with: param.characteristics.allFeatures())
-            }
-        }
-        
-        if !(param.type == .sensorTileBox || param.type == .sensorTileBoxPro || param.type == .sensorTileBoxProB) {
-            demos.removeAll(where: { $0 == .flow })
-        } else {
-            DispatchQueue.main.async {
-                if let dtmi = BlueManager.shared.dtmi(for: self.param) {
-                    if let demoDecorator = dtmi.firmware.demoDecorator {
-                        if !demoDecorator.add.contains("Flow") {
-                            self.demos.removeAll(where: { $0 == .flow })
-                        }
-                    } else {
-                        self.demos.removeAll(where: { $0 == .flow })
-                    }
+                if demo.isLockedForNotExpert && demo.isLocked {
+                    UIAlertController.presentAlert(
+                        from: self.view,
+                        title: "Unavailable content",
+                        message: "The selected content is unavailable for your proficiency level. Finally, you need to be authenticated to use it.",
+                        actions: [
+                            UIAlertAction.genericButton(Localizer.Common.ok.localized) { _ in }
+                        ]
+                    )
+                } else if demo.isLockedForNotExpert {
+                    UIAlertController.presentAlert(
+                        from: self.view,
+                        title: "Unavailable content",
+                        message: "The selected content is unavailable for your proficiency level.",
+                        actions: [
+                            UIAlertAction.genericButton(Localizer.Common.ok.localized) { _ in }
+                        ]
+                    )
+                } else if demo.isLocked {
+                    UIAlertController.presentAlert(
+                        from: self.view,
+                        title: Localizer.Common.warning.localized,
+                        message: Localizer.DemoList.Text.loginNeeded.localized,
+                        actions: [
+                            UIAlertAction.genericButton(Localizer.Common.ok.localized) { [weak self] _ in
+                                self?.login()
+                            },
+                            UIAlertAction.genericButton(Localizer.Common.cancel.localized) { _ in }
+                        ])
                 } else {
-                    self.demos.removeAll(where: { $0 == .flow })
+                    self.view.navigationController?.show(demo.presenter(with: self.param).start(), sender: nil)
                 }
-            }
-        }
+            })
 
-        view.tableView.separatorStyle = .singleLine
+            self.director?.onMove({ [weak self] sourceIndexPath, destinationIndexPath in
+                guard let self else { return }
 
-        if director == nil {
-            director = TableDirector(with: view.tableView)
-            director?.register(viewModel: GroupCellViewModel<[any ViewViewModel]>.self,
-                               type: .fromClass,
-                               bundle: STDemos.bundle)
-            director?.register(viewModel: DemoViewModel.self,
-                               type: .fromClass,
-                               bundle: .module)
-            director?.register(viewModel: NodeHeaderViewModel.self,
-                               type: .fromClass,
-                               bundle: .module)
+                guard let elements = self.director?.elements else { return }
 
-            director?.isFirstCellLocked = true
-        }
+                var index = 0
+                for element in elements where element is DemoViewModel {
+                    guard let element = element as? DemoViewModel else { return }
+                    element.index = index
+                    index += 1
+                }
 
-        director?.elements.append(NodeHeaderViewModel(param: param))
+                DispatchQueue.main.async {
+                    guard let visibleIndexPaths = self.view.tableView.indexPathsForVisibleRows else { return }
+                    self.view.tableView.reloadRows(at: visibleIndexPaths, with: .none)
+                }
 
-        director?.elements.append(contentsOf: demos.enumerated().map({
-            DemoViewModel(param: $1, index: $0, isLockedCheckEnabled: true)
-        }))
+                let offset = self.director?.isFirstCellLocked ?? false ? 1 : 0
 
-        director?.onSelect({ [weak self] indexPath in
-            guard indexPath.row > 0,
-                  let self,
-                  let viewModel = self.director?.elements[indexPath.row] as? DemoViewModel,
-                  let demo = viewModel.param else { return }
+                let demo = self.demos[sourceIndexPath.row - offset]
+                self.demos.remove(at: sourceIndexPath.row - offset)
+                self.demos.insert(demo, at: destinationIndexPath.row - offset)
 
-            if demo.isLockedForNotExpert && demo.isLocked {
-                UIAlertController.presentAlert(
-                    from: self.view,
-                    title: "Unavailable content",
-                    message: "The selected content is unavailable for your proficiency level. Finally, you need to be authenticated to use it.",
-                    actions: [
-                        UIAlertAction.genericButton(Localizer.Common.ok.localized) { _ in }
-                    ]
-                )
-            } else if demo.isLockedForNotExpert {
-                UIAlertController.presentAlert(
-                    from: self.view,
-                    title: "Unavailable content",
-                    message: "The selected content is unavailable for your proficiency level.",
-                    actions: [
-                        UIAlertAction.genericButton(Localizer.Common.ok.localized) { _ in }
-                    ]
-                )
-            } else if demo.isLocked {
-                UIAlertController.presentAlert(
-                    from: self.view,
-                    title: Localizer.Common.warning.localized,
-                    message: Localizer.DemoList.Text.loginNeeded.localized,
-                    actions: [
-                        UIAlertAction.genericButton(Localizer.Common.ok.localized) { [weak self] _ in
-                            self?.login()
-                        },
-                        UIAlertAction.genericButton(Localizer.Common.cancel.localized) { _ in }
-                    ])
-            } else {
-                self.view.navigationController?.show(demo.presenter(with: self.param).start(), sender: nil)
-            }
+                guard let demosKey = self.demosKey,
+                let data = try? JSONEncoder().encode(self.demos) else { return }
+                let defaults = UserDefaults.standard
+
+                defaults.set(data, forKey: demosKey)
+
+            })
+
+            self.director?.reloadData()
+            
         })
-
-        director?.onMove({ [weak self] sourceIndexPath, destinationIndexPath in
-            guard let self else { return }
-
-            guard let elements = self.director?.elements else { return }
-
-            var index = 0
-            for element in elements where element is DemoViewModel {
-                guard let element = element as? DemoViewModel else { return }
-                element.index = index
-                index += 1
-            }
-
-            DispatchQueue.main.async {
-                guard let visibleIndexPaths = self.view.tableView.indexPathsForVisibleRows else { return }
-                self.view.tableView.reloadRows(at: visibleIndexPaths, with: .none)
-            }
-
-            let offset = self.director?.isFirstCellLocked ?? false ? 1 : 0
-
-            let demo = self.demos[sourceIndexPath.row - offset]
-            self.demos.remove(at: sourceIndexPath.row - offset)
-            self.demos.insert(demo, at: destinationIndexPath.row - offset)
-
-            guard let demosKey = self.demosKey,
-            let data = try? JSONEncoder().encode(self.demos) else { return }
-            let defaults = UserDefaults.standard
-
-            defaults.set(data, forKey: demosKey)
-
-        })
-
-        director?.reloadData()
     }
 }
 

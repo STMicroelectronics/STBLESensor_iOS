@@ -14,6 +14,9 @@ import UIKit
 public class TabBarItem: UIView {
 
     let stackView = UIStackView()
+    let actionButton = UIButton(type: .custom)
+
+    var callback: UIControl.UIControlTargetClosure?
 
     public convenience init(with title: String?, image: UIImage? = nil, callback: @escaping UIControl.UIControlTargetClosure) {
         self.init(frame: .zero)
@@ -24,7 +27,8 @@ public class TabBarItem: UIView {
 
         addSubviewAndFit(stackView)
 
-        let actionButton = UIButton(type: .custom)
+        self.callback = callback
+
         actionButton.addAction(for: .touchUpInside,
                                closure: callback)
 
@@ -54,6 +58,11 @@ public class TabBarItem: UIView {
             stackView.addArrangedSubview(label)
         }
 
+    }
+
+    func select() {
+        guard let callback = callback else { return }
+        callback(actionButton)
     }
 
 }

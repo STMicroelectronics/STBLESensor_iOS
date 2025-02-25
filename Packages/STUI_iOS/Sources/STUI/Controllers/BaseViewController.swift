@@ -104,9 +104,11 @@ open class BaseViewController<Presenter, View: UIView>: UIViewController, Childa
     }
     
     @objc
-        open func backButtonTouched() {
-            self.navigationController?.popViewController(animated: true)
-        }
+    open func backButtonTouched() {
+        guard let presenter = self.presenter as? NavigatorPresenter else { return }
+
+        presenter.back()
+    }
     
     deinit {
         debugPrint("DEINIT CONTROLLER: \(String(describing: self))")
@@ -190,36 +192,14 @@ open class BaseNoViewController<Presenter>: UIViewController, Presentable {
     }
 
     @objc
-        open func backButtonTouched() {
-            self.navigationController?.popViewController(animated: true)
-        }
+    open func backButtonTouched() {
+        guard let presenter = self.presenter as? NavigatorPresenter else { return }
+
+        presenter.back()
+    }
 
     deinit {
         debugPrint("DEINIT CONTROLLER: \(String(describing: self))")
     }
 
 }
-
-//public extension BaseNoViewController {
-//    func showTabBar() {
-//        guard let controller = parent?.parent as? TabBarViewController else { return }
-//
-//        controller.mainView.tabBarViewBottomConstraint.constant = 0.0
-//        controller.mainView.mainViewOffsetConstraint.constant = -TabBarViewController.mainViewOffset
-//
-//        UIView.animate(withDuration: 0.3) {
-//            controller.view.layoutIfNeeded()
-//        }
-//    }
-//
-//    func hideTabBar() {
-//        guard let controller = parent?.parent as? TabBarViewController else { return }
-//
-//        controller.mainView.tabBarViewBottomConstraint.constant = -(controller.mainView.tabBarViewHeighConstraint.constant + UIDevice.current.safeAreaEdgeInsets.bottom)
-//        controller.mainView.mainViewOffsetConstraint.constant = 0.0
-//
-//        UIView.animate(withDuration: 0.3) {
-//            controller.view.layoutIfNeeded()
-//        }
-//    }
-//}

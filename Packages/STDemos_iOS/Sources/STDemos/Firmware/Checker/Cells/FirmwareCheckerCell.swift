@@ -27,6 +27,8 @@ public class FirmwareCheckerCell: BaseTableViewCell {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var installButton: UIButton!
 
+    @IBOutlet weak var infoInstallLabel: UILabel!
+    @IBOutlet weak var infoInstallStackView: UIStackView!
     public override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

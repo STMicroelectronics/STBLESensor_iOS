@@ -19,7 +19,7 @@ public extension NavigationLayout {
                                        titleTextFont: .systemFont(ofSize: 18.0),
                                        isTranslucent: false,
                                        backgroundImage: UIImage(color: ColorLayout.primary.auto),
-                                       shadowImage: UIImage(color: UIColor.lightGray.withAlphaComponent(0.2)),
+                                       shadowImage: UIImage(color: .clear),
                                        navigationBarHidden: false,
                                        statusBarStyle: .lightContent,
                                        statusBarHidden: false)

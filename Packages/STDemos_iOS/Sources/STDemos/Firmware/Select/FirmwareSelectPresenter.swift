@@ -14,7 +14,19 @@ import STUI
 import STBlueSDK
 import STCore
 
-final class FirmwareSelectPresenter: DemoBasePresenter<FirmwareSelectViewController, Firmware> {
+struct FirmwareSelect {
+    let firmware: Firmware
+    let isMandatory: Bool
+    public let completion: ((Bool) -> ())?
+
+    init(firmware: Firmware, isMandatory: Bool = false, completion: ((Bool) -> ())? = nil) {
+        self.firmware = firmware
+        self.isMandatory = isMandatory
+        self.completion = completion
+    }
+}
+
+final class FirmwareSelectPresenter: DemoBasePresenter<FirmwareSelectViewController, FirmwareSelect> {
     var customUrl: URL?
 }
 
@@ -36,7 +48,18 @@ extension FirmwareSelectPresenter: FirmwareSelectDelegate {
 
         if view.firmwareSelectType == .stm32 {
             if let typeView = STM32FirmwareTypeView.make(with: STDemos.bundle) as? STM32FirmwareTypeView {
-                typeView.configure(with: .application(board: (param.node.type == .wbaBoard) ? .wba : .wb55))
+                let type: BoardFamily = if param.node.type == .nucleoWB0X {
+                    .wb09
+                } else if param.node.type == .wba6NucleoBoard {
+                    .wb6a
+                }  else if param.node.type.family == .wbaFamily {
+                    .wba
+                } else {
+                    .wb55
+                }
+                
+                //typeView.configure(with: .application(board: (param.node.type == .wbaBoard) ? .wba : .wb55))
+                typeView.configure(with: .application(board:type))
                 typeView.translatesAutoresizingMaskIntoConstraints = false
 
                 view.stackView.addArrangedSubview(typeView)
@@ -50,9 +73,10 @@ extension FirmwareSelectPresenter: FirmwareSelectDelegate {
         let firmwareLabel = UILabel()
         TextLayout.info.apply(to: firmwareLabel)
 
-        firmwareLabel.text = param.param?.compoundName ?? Localizer.Firmware.Action.select.localized
+        firmwareLabel.text = param.param?.firmware.compoundName ?? Localizer.Firmware.Action.select.localized
 
         let firmwareSelectButton = UIButton(frame: .zero)
+        firmwareSelectButton.isHidden = param.param?.isMandatory ?? false
         let image = ImageLayout.Common.folder?
             .scalePreservingAspectRatio(targetSize: ImageSize.small)
             .maskWithColor(color: ColorLayout.secondary.light)
@@ -119,7 +143,7 @@ extension FirmwareSelectPresenter: FirmwareSelectDelegate {
 private extension FirmwareSelectPresenter {
     func firmwareUpgrade(with type: FirmwareType) {
 
-        guard let firmware = param.param else { return }
+        guard let firmware = param.param?.firmware else { return }
 
         URLSession.shared.downloadFirmware(firmware) { [weak self] result in
 
@@ -128,7 +152,17 @@ private extension FirmwareSelectPresenter {
                 Logger.debug(text: url.absoluteString)
                 self?.installFirmware(at: url, type: type)
             case .failure(let error):
-                Logger.debug(text: error.localizedDescription)
+
+                guard let view = self?.view else { return }
+
+                DispatchQueue.main.async {
+                    UIAlertController.presentAlert(from: view,
+                                                   title: Localizer.Common.warning.localized,
+                                                   message: "Corrupted file",
+                                                   actions: [ UIAlertAction.genericButton() ])
+
+                    Logger.debug(text: error.localizedDescription)
+                }
             }
         }
 
@@ -161,18 +195,32 @@ private extension FirmwareSelectPresenter {
 
                         self.view.hud.indicatorView = nil
                         self.view.hud.textLabel.text = "Firmware upgrade success"
+                        self.view.hud.detailTextLabel.text = nil
                         self.view.hud.show(in: self.view.view)
-                        self.view.hud.dismiss(afterDelay: 2.0)
-                    }
+                        self.view.hud.dismiss(afterDelay: 2.0, animated: true) { [weak self] in
 
-                    if let error = error {
-                        Logger.debug(text: "[Firmware upgrade] Fail with error: \(error.localizedDescription)")
-                        self.view.navigationController?.popToRootViewController(animated: true)
-                        return
-                    }
+                            if let completion = self?.param.param?.completion {
+                                completion(true)
+                            }
 
-                    Logger.debug(text: "[Firmware upgrade] Complete with success")
-                    self.view.navigationController?.popToRootViewController(animated: true)
+                            if let error = error {
+                                Logger.debug(text: "[Firmware upgrade] Fail with error: \(error.localizedDescription)")
+                                if self?.view.presentingViewController != nil {
+                                    self?.view.dismiss(animated: true)
+                                } else {
+                                    self?.view.navigationController?.popToRootViewController(animated: true)
+                                }
+                                return
+                            }
+
+                            Logger.debug(text: "[Firmware upgrade] Complete with success")
+                            if self?.view.presentingViewController != nil {
+                                self?.view.dismiss(animated: true)
+                            } else {
+                                self?.view.navigationController?.popToRootViewController(animated: true)
+                            }
+                        }
+                    }
                 }
 
             }, progress: { [weak self] url, bytes, totalBytes in

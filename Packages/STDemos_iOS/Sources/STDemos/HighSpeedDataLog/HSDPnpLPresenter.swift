@@ -9,7 +9,7 @@
 //  If no LICENSE file comes with this software, it is provided AS-IS.
 //
 
-import Foundation
+import UIKit
 import STBlueSDK
 import STCore
 import STUI
@@ -18,27 +18,67 @@ import Toast
 open class HSDPnpLPresenter: PnpLPresenter {
 
     public private(set) var logControllerResponse: LogControllerResponse?
-    let waitingView = HSDWaitingView(text: "Check logging status")
+    let statusView = HSDWaitingView(text: "Check logging status")
+
+    var waitingView: UIView?
+
+    let waitingContainerViewView = UIView()
+
+    open func configureWaitingView() {
+
+        waitingView = getWaitingView()
+
+        guard let waitingView = waitingView else { return }
+
+        waitingContainerViewView.add(waitingView)
+        waitingContainerViewView.isHidden = true
+        waitingView.addFitToSuperviewConstraints()
+    }
 
     open override func load() {
-        waitingView.isVisible = true
+        statusView.isVisible = true
         super.load()
-        view.view.addSubview(waitingView)
-        waitingView.addFitToSuperviewConstraints()
+        view.view.add(statusView)
+        statusView.addFitToSuperviewConstraints()
+
+        view.view.add(waitingContainerViewView)
+        waitingContainerViewView.addFitToSafeAreaLayoutGuideConstraints()
+
+        configureWaitingView()
 
         prepareSettingsMenu()
     }
 
+    open func getWaitingView() -> UIView {
+        HSDWaitingView(text: "Device is logging")
+    }
+
+    open func resetWaitingView() {
+
+    }
+
+    open func showEndLogMessage() {
+        Alert.show(title: "DataLogging completed",
+                   message: "You can start another acquisition using the Play button or upload the collected data to your dataset by using the Storage button.",
+                   from: self.view)
+    }
+
     open func logStartStop() {
+
+        if !isLogStartStopAvailable() {
+            return
+        }
+
         guard let logControllerResponse = logControllerResponse else { return }
 
         if !(logControllerResponse.sdMounted ?? false) {
-            view.view.makeToast("Missing SD Card", position: .center)
+            view.navigationController?.viewControllers.last?.view.makeToast("Missing SD Card", position: .center)
             return
         }
 
         if let status = logControllerResponse.status, status {
             stopLog()
+            showEndLogMessage()
         } else {
             prepareLog()
             startLog()
@@ -47,11 +87,15 @@ open class HSDPnpLPresenter: PnpLPresenter {
         requestStatusUpdate()
     }
 
+    open func isLogStartStopAvailable() -> Bool {
+        return true
+    }
+
     open override func requestStatusUpdate() {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            BlueManager.shared.sendPnpLCommand(PnpLCommand.simpleJson(element: "get_status",
-                                                                      value: .plain(value: "log_controller")),
+            BlueManager.shared.sendPnpLCommand(PnpLCommand.logControllerStatus,
+                                               maxWriteLength: self.pnpLMaxWriteLength,
                                                to: self.param.node)
         }
     }
@@ -63,11 +107,19 @@ open class HSDPnpLPresenter: PnpLPresenter {
     func startLog() {
 //        {"log_controller*start_log":{"interface":0}}
         StandardHUD.shared.show()
-        BlueManager.shared.sendPnpLCommand(PnpLCommand.command(element: "log_controller",
-                                                               param: "start_log",
-                                                               value: .object(name: "interface",
-                                                                              value: AnyEncodable(0))),
-                                           to: self.param.node)
+        let command = PnpLCommand.command(element: "log_controller",
+                                          param: "start_log",
+                                          value: .object(name: "interface",
+                                                         value: AnyEncodable(0)))
+        
+        evaluateSendPnPLCommand(command, withProgress: false)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+            BlueManager.shared.sendPnpLCommand(PnpLCommand.simpleJson(element: "get_status",
+                                                                      value: .plain(value: "tags_info")),
+                                               to: self.param.node)
+        }
+        
     }
 
     @discardableResult
@@ -79,21 +131,24 @@ open class HSDPnpLPresenter: PnpLPresenter {
 //        formatter.timeZone = TimeZone(secondsFromGMT: 0)
 //        formatter.calendar = Calendar(identifier: .iso8601)
 //        {"log_controller*set_time":{"datetime":"20230519_09_33_20"}}
-        BlueManager.shared.sendPnpLCommand(PnpLCommand.command(element: "log_controller",
-                                                               param: "set_time",
-                                                               value: .object(name: "datetime",
-                                                                              value: AnyEncodable(formatter.string(from: date)))),
-                                           to: self.param.node)
-
+        let command = PnpLCommand.command(element: "log_controller",
+                                         param: "set_time",
+                                         value: .object(name: "datetime",
+                                                        value: AnyEncodable(formatter.string(from: date))))
+        
+        evaluateSendPnPLCommand(command, withProgress: false)
+        
         return date
     }
 
     func stopLog() {
 //        {"log_controller*stop_log":{}}
         StandardHUD.shared.show()
-        BlueManager.shared.sendPnpLCommand(PnpLCommand.emptyCommand(element: "log_controller",
-                                                                    param: "stop_log"),
-                                           to: self.param.node)
+        let command = PnpLCommand.emptyCommand(element: "log_controller",
+                                               param: "stop_log")
+        
+        evaluateSendPnPLCommand(command, withProgress: false)
+        
     }
 
     open override func handleUpdate(from feature: PnPLFeature) {
@@ -104,25 +159,32 @@ open class HSDPnpLPresenter: PnpLPresenter {
                 self.logControllerResponse = logControllerResponse
 
                 if let status = logControllerResponse.status, !status {
-                    waitingView.isVisible = false
-                    waitingView.update(text: "Check logging status")
-                    view.stTabBarView?.actionButton.setImage(ImageLayout.Common.play?.template, for: .normal)
+                    statusView.isVisible = false
+                    waitingContainerViewView.isHidden = true
+                    resetWaitingView()
+
+                    view.stTabBarView?.actionButton.setImage(ImageLayout.Common.playFilled?.template, for: .normal)
 
                     afterUpdate(from: feature)
 
                     BlueManager.shared.sendPnpLCommand(PnpLCommand.status,
+                                                       maxWriteLength: self.pnpLMaxWriteLength,
                                                        to: self.param.node)
                 } else {
-                    waitingView.isVisible = true
-                    waitingView.update(text: "Device is logging")
-                    waitingView.isUserInteractionEnabled = !waitingView.isHidden
-                    view.stTabBarView?.actionButton.setImage(ImageLayout.Common.pause?.template, for: .normal)
+                    waitingContainerViewView.isHidden = false
+                    waitingContainerViewView.isUserInteractionEnabled = !waitingContainerViewView.isHidden
+                    view.stTabBarView?.actionButton.setImage(ImageLayout.Common.stopFilled?.template, for: .normal)
                 }
-
             }
         }
 
         super.handleUpdate(from: feature)
+        
+        inactiveSensors.forEach { element in
+            director?.elements.removeAll { $0 as? GroupCellViewModel === element as? GroupCellViewModel }
+        }
+
+        director?.reloadData()
     }
 }
 

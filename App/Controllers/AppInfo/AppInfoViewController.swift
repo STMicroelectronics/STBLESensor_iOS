@@ -18,9 +18,9 @@ final class AppInfoViewController: BaseNoViewController<AppInfoDelegate> {
 
     var betaTapCounter = 0
 
-    override func configure() {
-        super.configure()
-    }
+//    override func configure() {
+//        super.configure()
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +39,13 @@ final class AppInfoViewController: BaseNoViewController<AppInfoDelegate> {
         let appBuildLabel = UILabel()
 
         appNameLabel.text = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String
+
+        if let text =  appNameLabel.text {
+            if UserDefaults.standard.bool(forKey: "isBetaCatalogActivated") {
+                appNameLabel.text = text + " (Beta)"
+            }
+        }
+
         TextLayout.largetitle.apply(to: appNameLabel)
         appNameLabel.textAlignment = .center
 

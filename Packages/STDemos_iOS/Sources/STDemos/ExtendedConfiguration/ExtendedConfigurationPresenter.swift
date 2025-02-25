@@ -77,7 +77,7 @@ private extension ExtendedConfigurationPresenter {
             let headerViewModel = [
                 ImageDetailViewModel(param: CodeValue<ImageDetail>(keys: [ UUID().uuidString ],
                                                                value: ImageDetail(title: $0.title.localized,
-                                                                                  subtitle: $0.title.localized,
+                                                                                  subtitle: nil,
                                                                                   image: image)),
                                      layout: Layout.standard)
                 ]

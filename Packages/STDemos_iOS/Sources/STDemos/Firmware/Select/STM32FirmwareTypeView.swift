@@ -34,31 +34,38 @@ class STM32FirmwareTypeView: UIView {
             let sectorSize:UInt16
             
             switch boardTypeSegmentedControl.selectedSegmentIndex {
-                case 0: boardFamily = BoardFamily.wba ; sectorSize = 0x2000 ; sectorSegmentedControl.setTitle("User conf", forSegmentAt: 1)
-                case 1: boardFamily = BoardFamily.wb55 ; sectorSize = 0x1000 ; sectorSegmentedControl.setTitle("Radio", forSegmentAt: 1)
-                default: boardFamily = BoardFamily.wb15 ; sectorSize = 0x800 ; sectorSegmentedControl.setTitle("Radio", forSegmentAt: 1)
+            case 0: boardFamily = BoardFamily.wba ; sectorSize = 0x2000 ; sectorSegmentedControl.setTitle("User conf", forSegmentAt: 1)
+            case 1: boardFamily = BoardFamily.wb55 ; sectorSize = 0x1000 ; sectorSegmentedControl.setTitle("Radio", forSegmentAt: 1)
+            case 2: boardFamily = BoardFamily.wb09 ; sectorSize = 0x800 ; sectorSegmentedControl.setTitle("User conf", forSegmentAt: 1)
+            case 4: boardFamily = BoardFamily.wb6a ; sectorSize = 0x2000; sectorSegmentedControl.setTitle("User conf", forSegmentAt: 1)
+            default: boardFamily = BoardFamily.wb15 ; sectorSize = 0x800 ; sectorSegmentedControl.setTitle("Radio", forSegmentAt: 1)
             }
-
+            
             guard let startSectorText = firstSectorToDeleteTextField.text,
                   let startSector = UInt8(startSectorText),
                   let numberOfSectorsText = numberOfSectorToDeleteTextField.text,
-                  let numberOfSectors = UInt8(numberOfSectorsText) else {
+                  let numberOfSectors = UInt16(numberOfSectorsText) else {
                 return nil
             }
-
+            
             if sectorSegmentedControl.selectedSegmentIndex == 0 {
                 return .application(board: boardFamily)
             } else if sectorSegmentedControl.selectedSegmentIndex == 1 {
                 return .radio(board: boardFamily)
             } else {
-                return .custom(startSector: startSector,
-                               numberOfSectors: numberOfSectors,
-                               sectorSize: sectorSize)
+                if  boardFamily == BoardFamily.wb09 {
+                    //The .custom is not allowed for WB09 board
+                    return .application(board: boardFamily)
+                } else {
+                    return .custom(startSector: startSector,
+                                   numberOfSectors: numberOfSectors,
+                                   sectorSize: sectorSize)
+                }
             }
         }
         
         set {
-         
+            
         }
         
     }
@@ -69,15 +76,63 @@ class STM32FirmwareTypeView: UIView {
         
         switch firmwareType {
         case .application(let board):
+            
+            let selectedSegmentIndex = switch board {
+            case .wba:
+                0
+            case .wb55:
+                1
+            case .wb09:
+                2
+            case .wb6a:
+                4
+            default:
+                3
+            }
+            
+            if selectedSegmentIndex==2  {
+                if sectorSegmentedControl.numberOfSegments == 3 {
+                    sectorSegmentedControl.removeSegment(at: 2, animated: true)
+                }
+            } else {
+                if sectorSegmentedControl.numberOfSegments<3 {
+                    sectorSegmentedControl.insertSegment(withTitle: "Custom", at: 2, animated: true)
+                }
+            }
+            
             sectorSegmentedControl.selectedSegmentIndex = 0
-            boardTypeSegmentedControl.selectedSegmentIndex = board == .wba ? 0 : (board == .wb55 ? 1 : 2)
+            boardTypeSegmentedControl.selectedSegmentIndex = selectedSegmentIndex
             hideCustom(true)
         case .radio(let board):
+            
+            let selectedSegmentIndex = switch board {
+            case .wba:
+                0
+            case .wb55:
+                1
+            case .wb09:
+                2
+            case .wb6a:
+                4
+            default:
+                3
+            }
+            
+            if selectedSegmentIndex==2  {
+                if sectorSegmentedControl.numberOfSegments == 3 {
+                    sectorSegmentedControl.removeSegment(at: 2, animated: true)
+                }
+            } else {
+                if sectorSegmentedControl.numberOfSegments<3 {
+                    sectorSegmentedControl.insertSegment(withTitle: "Custom", at: 2, animated: true)
+                }
+            }
+            
             sectorSegmentedControl.selectedSegmentIndex = 1
-            boardTypeSegmentedControl.selectedSegmentIndex = board == .wba ? 0 : (board == .wb55 ? 1 : 2)
+            boardTypeSegmentedControl.selectedSegmentIndex = selectedSegmentIndex
             hideCustom(true)
         case .custom:
-            sectorSegmentedControl.selectedSegmentIndex = 2
+            sectorSegmentedControl.selectedSegmentIndex = 3
             firstSectorToDeleteTextField.isEnabled = true
             numberOfSectorToDeleteTextField.isEnabled = true
             hideCustom(false)
@@ -87,7 +142,6 @@ class STM32FirmwareTypeView: UIView {
         
         firstSectorToDeleteTextField.text = "\(firmwareType.firstSector ?? 0)"
         numberOfSectorToDeleteTextField.text = "\(firmwareType.layout.numberOfSectors)"
-
     }
     
     private func hideCustom(_ isHidden: Bool) {

@@ -13,7 +13,7 @@ import UIKit
 import STUI
 import STBlueSDK
 
-final class FlowTabPresenter: BasePresenter<FlowTabViewController, Node> {
+final class FlowTabPresenter: DemoBasePresenter<FlowTabViewController, Void> {
     var director: TableDirector?
 }
 
@@ -40,7 +40,7 @@ extension FlowTabPresenter: FlowTabDelegate {
                     FlowAppCategoryDetailPresenter(
                         param: FlowsAndNodeParam(
                             flows: flowAppCategoryItem.items,
-                            node: self.param
+                            node: self.param.node
                         )
                     ).start(),
                     animated: true
@@ -52,7 +52,7 @@ extension FlowTabPresenter: FlowTabDelegate {
             param: CodeValue(value: ButtonInput(title: "EXPERT VIEW", alignment: .right)),
             layout: Layout.standardButton) { _ in
                 self.view.navigationController?.pushViewController(
-                    FlowExpertPresenter(param: self.param).start(),
+                    FlowExpertPresenter(param: self.param.node).start(),
                     animated: true
                 )
             }
@@ -79,7 +79,7 @@ extension FlowTabPresenter: FlowTabDelegate {
         var filteredStoredFlows: [Flow] = []
         storedFlows.forEach { flow in
             flow.boardCompatibility?.forEach { board in
-                if board == param.type.stringValue {
+                if board == param.node.type.stringValue {
                     filteredStoredFlows.append(flow)
                 }
             }

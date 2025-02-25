@@ -31,6 +31,15 @@ public extension UIView {
         ]
     }
 
+    static var fitToSafeAreaLayoutGuideConstraints: [Constraint] {
+        [
+            equal(\.safeAreaLayoutGuide.topAnchor),
+            equal(\.safeAreaLayoutGuide.trailingAnchor),
+            equal(\.safeAreaLayoutGuide.bottomAnchor),
+            equal(\.safeAreaLayoutGuide.leadingAnchor)
+        ]
+    }
+
     func debugBorder(_ borderColor: UIColor = .red) {
         layer.borderWidth = 1
         layer.borderColor = borderColor.cgColor
@@ -89,6 +98,49 @@ public extension UIView {
             equal(\.centerXAnchor),
             equal(\.centerYAnchor)
         ])
+    }
+
+    func addFitToSafeAreaLayoutGuideConstraints(top: CGFloat = 0, leading: CGFloat = 0, bottom: CGFloat = 0, trailing: CGFloat = 0) {
+        guard let superview = superview else {
+            return assertionFailure("The view must have a superview!")
+        }
+
+        translatesAutoresizingMaskIntoConstraints = false
+
+        superview.addConstraint(NSLayoutConstraint(item: self,
+                                                   attribute: .top,
+                                                   relatedBy: .equal,
+                                                   toItem: superview.safeAreaLayoutGuide,
+                                                   attribute: .top,
+                                                   multiplier: 1.0,
+                                                   constant: top))
+        superview.addConstraint(NSLayoutConstraint(item: self,
+                                                   attribute: .leading,
+                                                   relatedBy: .equal,
+                                                   toItem: superview.safeAreaLayoutGuide,
+                                                   attribute: .leading,
+                                                   multiplier: 1.0,
+                                                   constant: leading))
+
+        let bottom = NSLayoutConstraint(item: superview.safeAreaLayoutGuide,
+                                        attribute: .bottom,
+                                        relatedBy: .equal,
+                                        toItem: self,
+                                        attribute: .bottom,
+                                        multiplier: 1.0,
+                                        constant: bottom)
+        bottom.priority = UILayoutPriority(999)
+        superview.addConstraint(bottom)
+
+        superview.addConstraint(NSLayoutConstraint(item: superview.safeAreaLayoutGuide,
+                                                   attribute: .trailing,
+                                                   relatedBy: .equal,
+                                                   toItem: self,
+                                                   attribute: .trailing,
+                                                   multiplier: 1.0,
+                                                   constant: trailing))
+
+        updateConstraints()
     }
 
     func addFitToSuperviewConstraints(top: CGFloat = 0, leading: CGFloat = 0, bottom: CGFloat = 0, trailing: CGFloat = 0) {

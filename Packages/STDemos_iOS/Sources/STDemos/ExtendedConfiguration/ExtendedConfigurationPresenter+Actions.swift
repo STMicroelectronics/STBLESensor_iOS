@@ -150,7 +150,7 @@ extension ExtendedConfigurationPresenter {
 
     internal func showFlashBankStatus(_ status: BankStatusResponse?) {
         guard let status = status else { return }
-        view.present(FlashBankStatusPresenter(param: FlashBank(bankStatus: status, node: param.node)).start().embeddedInNav(),
+        view.navigationController?.pushViewController(FlashBankStatusPresenter(param: FlashBank(bankStatus: status, node: param.node)).start(),
                      animated: true)
     }
 

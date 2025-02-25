@@ -62,7 +62,7 @@ extension STM32WBLedButtonControlPresenter: STM32WBLedButtonControlDelegate {
         
         view.configureView()
         
-        if param.node.type == .wbaBoard {
+        if param.node.type.family == .wbaFamily {
             showLedController(1)
         }
     }

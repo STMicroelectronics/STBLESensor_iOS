@@ -9,7 +9,7 @@
 //  If no LICENSE file comes with this software, it is provided AS-IS.
 //
 
-import Foundation
+import UIKit
 
 public extension TextLayout {
     static let title: TextLayout = {
@@ -132,4 +132,26 @@ public extension TextLayout {
                           numberOfLines: 0,
                           font: FontLayout.bold).size(17.0)
     }()
+    
+    static func title2Colored(_ definedColor: UIColor) -> TextLayout {
+        return TextLayout(color: definedColor,
+                          backgroundColor: nil,
+                          cornerRadius: nil,
+                          borderColor: nil,
+                          borderWith: nil,
+                          alignment: .left,
+                          numberOfLines: 0,
+                          font: FontLayout.bold).size(20.0)
+    }
+    
+    static func infoBoldColored(_ definedColor: UIColor) -> TextLayout {
+        return TextLayout(color: definedColor,
+                          backgroundColor: nil,
+                          cornerRadius: nil,
+                          borderColor: nil,
+                          borderWith: nil,
+                          alignment: .left,
+                          numberOfLines: 0,
+                          font: FontLayout.bold).size(13.0).weight(.bold)
+    }
 }

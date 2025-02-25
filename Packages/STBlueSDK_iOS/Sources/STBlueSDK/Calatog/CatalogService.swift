@@ -10,6 +10,7 @@
 //
 
 import Foundation
+import STCore
 
 public enum CatalogType {
     case standard
@@ -64,6 +65,9 @@ public protocol CatalogService {
     func ignoreFirmwareUpdate(_ firmware: Firmware, deviceTag: String)
     func isFirmwareUpdateIgnored(_ firmware: Firmware, deviceTag: String) -> Bool
     func clear()
+
+    func board(with type: NodeType, variant: String) -> CatalogBoard?
+    func board(with name: String) -> CatalogBoard?
 
 }
 
@@ -232,6 +236,19 @@ extension CatalogServiceCore: CatalogService {
         dtmi = nil
 
         save()
+    }
+
+    public func board(with type: NodeType, variant: String) -> CatalogBoard? {
+        catalog?.boards?.first { board in
+            board.bleDeviceId.nodeType == type &&
+            board.name.lowercased() == variant.lowercased()
+        }
+    }
+
+    public func board(with name: String) -> CatalogBoard? {
+        catalog?.boards?.first { board in
+            board.name.lowercased() == name.lowercased()
+        }
     }
 }
 

@@ -24,7 +24,7 @@ public enum NodeType: UInt8 {
     case stEvalSTWINKT1B = 0x09
     case bL475eIot01A = 0x0A
     case bU585iIot02A = 0x0B
-    case polaris = 0x0C
+    case astra = 0x0C
     case sensorTileBoxPro = 0x0D
     case stWinBox = 0x0E
     case proteus = 0x0F
@@ -35,11 +35,24 @@ public enum NodeType: UInt8 {
     case nucleoL476RG = 0x7E
     case nucleoL053R8 = 0x7D
     case nucleoF446RE = 0x7C
-    case wbBoard = 0x81
+    case nucleoU575ZIQ = 0x7B
+    case nucleoU5A5ZJQ = 0x7A
+    
+    //WB boards ex range 0x81->0x86
+    case wb55NucleoBoard = 0x81
+    case WB5mDiscoveryBoard = 0x82
+    case wb55UsbDoungleBoard = 0x83
+    case wb15NucleoBoard = 0x84
+    case wb1mDiscoveryBoard = 0x85
     case wbOtaBoard = 0x86
-    case nuceloWB09KE = 0x8D
+    
+    //WBA boards ex range 0x8B -> 0x8C
+    case wba5xNucleoBoard = 0x8B
+    case wbaDiscoveryBoard = 0x8C
+    
+    case nucleoWB0X = 0x8D
+    case wba6NucleoBoard = 0x8E
     case nucleo = 0x80
-    case wbaBoard = 0x8B
 }
 
 public extension NodeType {
@@ -66,11 +79,11 @@ public extension NodeType {
         case .stEvalSTWINKT1B:
             return "STEVAL_STWINKT1B"
         case .bL475eIot01A:
-            return "DISCOVERY_IOT01A" // TODO: not defined in old Objective-C code
+            return "DISCOVERY_IOT01A"
         case .bU585iIot02A:
             return "DISCOVERY_IOT02A"
-        case .polaris:
-            return "POLARIS"
+        case .astra:
+            return "ASTRA"
         case .sensorTileBoxPro:
             return "SENSOR_TILE_BOX_PRO"
         case .stWinBox:
@@ -91,16 +104,109 @@ public extension NodeType {
             return "NUCLEO_L053R8"
         case .nucleoF446RE:
             return "NUCLEO_F446RE"
-        case .wbBoard:
-            return "WB_BOARD"
-        case .wbaBoard:
-            return "WBA_BOARD"
+        case .wb55NucleoBoard:
+            return "WB55_NUCLEO_BOARD"
+        case .wba5xNucleoBoard:
+            return "WBA5X_NUCLEO_BOARD"
         case .wbOtaBoard:
             return "WB_OTA_BOARD"
-        case .nuceloWB09KE:
+        case .nucleoWB0X:
             return "STM32WB09"
         case .nucleo:
             return "Nucleo"
+        case .nucleoU575ZIQ:
+            return "NUCLEO_U575ZIQ"
+        case .nucleoU5A5ZJQ:
+            return "NUCLEO_U5A5ZJQ"
+        case .WB5mDiscoveryBoard:
+            return "WB5M_DISCOVERY_BOARD"
+        case .wb55UsbDoungleBoard:
+            return "WB55_USB_DONGLE_BOARD"
+        case .wb15NucleoBoard:
+            return "WB15_NUCLEO_BOARD"
+        case .wb1mDiscoveryBoard:
+            return "WB1M_DISCOVERY_BOARD"
+        case .wbaDiscoveryBoard:
+            return "WBA_DISCOVERY_BOARD"
+        case .wba6NucleoBoard:
+            return "WBA6_NUCLEO_BOARD"
+        }
+    }
+    
+    var friendlyName: String {
+        switch self {
+        case .generic:
+            return "Generic"
+        case .stevalWesu1:
+            return "WESU"
+        case .sensorTile:
+            return "SensorTile"
+        case .blueCoin:
+            return "BlueCoin"
+        case .stEvalIDB008VX:
+            return "Steval IDB008VX"
+        case .stEvalBCN002V1:
+            return "Steval BCN002V1"
+        case .sensorTileBox:
+            return "SensorTile.box"
+        case .discoveryIOT01A:
+            return "Discovery-IOT01A"
+        case .stEvalSTWINKIT1:
+            return "STWIN kit"
+        case .stEvalSTWINKT1B:
+            return "STWIN kit"
+        case .bL475eIot01A:
+            return "Discovery IoT01A"
+        case .bU585iIot02A:
+            return "Discovery IoT02A"
+        case .astra:
+            return "Astra"
+        case .sensorTileBoxPro:
+            return "SensorTile.box PRO"
+        case .stWinBox:
+            return "STWIN.box"
+        case .proteus:
+            return "Proteus"
+        case .stdesCBMLoRaBLE:
+            return "CBMLoRaBLE"
+        case .sensorTileBoxProB:
+            return "SensorTile.box PRO"
+        case .stWinBoxB:
+            return "STWIN.box"
+        case .nucleoF401RE:
+            return "Nucleo F401RE"
+        case .nucleoL476RG:
+            return "Nucleo L476RG"
+        case .nucleoL053R8:
+            return "Nucleo L053R8"
+        case .nucleoF446RE:
+            return "Nucleo F446RE"
+        case .wb55NucleoBoard:
+            return "Nucleo-WB55"
+        case .wba5xNucleoBoard:
+            return "Nucleo-WBA5x"
+        case .wbOtaBoard:
+            return "WB Ota Board"
+        case .nucleoWB0X:
+            return "NUCLEO-WB0X Ultra-Low-Power"
+        case .nucleo:
+            return "Nucleo"
+        case .nucleoU575ZIQ:
+            return "Nucleo U575ZI-Q"
+        case .nucleoU5A5ZJQ:
+            return "Nucleo U5A5ZJ-Q"
+        case .WB5mDiscoveryBoard:
+            return "WB5M"
+        case .wb55UsbDoungleBoard:
+            return "USB-Dongle-WB55"
+        case .wb15NucleoBoard:
+            return "Nucleo-WB15"
+        case .wb1mDiscoveryBoard:
+            return "WB1M"
+        case .wbaDiscoveryBoard:
+            return "WBA"
+        case .wba6NucleoBoard:
+            return "Nucleo-WBA6"
         }
     }
 
@@ -132,7 +238,7 @@ public extension NodeType {
             return "real_board_b_l4s5i_iot01a"
         case .bU585iIot02A:
             return "real_board_b_l475e_iot01bx"
-        case .polaris:
+        case .astra:
             return "real_board_astra"
         case .sensorTileBoxPro:
             return "real_board_sensortilebox_pro"
@@ -146,20 +252,56 @@ public extension NodeType {
             return "real_board_sensortilebox_pro"
         case .stWinBoxB:
             return "real_board_stwinbx1"
-        case .wbaBoard:
+        case .wba5xNucleoBoard:
             return "real_board_wba"
         case .nucleoF401RE, .nucleoL476RG, .nucleoL053R8, .nucleoF446RE:
             return "real_board_nucleo"
-        case .wbBoard:
+        case .wb55NucleoBoard:
             return "real_board_pnucleo_wb55"
-        default:
+        case .nucleoWB0X:
+            return "real_board_nucleo_wb0x"
+        case .nucleoU575ZIQ,
+                .nucleoU5A5ZJQ:
+            return "real_board_nucleo_u5"
+        case .WB5mDiscoveryBoard:
+           return "real_board_discovery_kit_wb5m"
+        case .wb55UsbDoungleBoard:
+            return "real_board_usb_dongle_wb55"
+        case .wb15NucleoBoard:
+            return "real_board_nucleo_wb15"
+        case .wb1mDiscoveryBoard:
+            return "real_board_discovery_kit_wb1m"
+        case .wbOtaBoard:
             return "generic_board"
+        case .wbaDiscoveryBoard:
+            return "real_board_discovery_kit_wba"
+        case .wba6NucleoBoard:
+            return "real_board_nucleo_wba6"
+        }
+    }
+    
+    var sdCardImageName: String? {
+        switch self {
+        case .sensorTileBoxPro:
+            return "img_sd_sensortileboxpro"
+        case .sensorTileBoxProB:
+            return "img_sd_sensortileboxpro"
+        case .stWinBox:
+            return "img_sd_stwinbx1"
+        case .stWinBoxB:
+            return "img_sd_stwinbx1"
+        case .stEvalSTWINKIT1:
+            return "img_sd_stwinkt1"
+        case .stEvalSTWINKT1B:
+            return "img_sd_stwinkt1"
+        default:
+            return nil
         }
     }
     
     var schemaImageName: String? {
         switch self {
-        case .nucleo, .nucleoF401RE, .nucleoL053R8, .nucleoL476RG, .nucleoF446RE:
+        case .nucleo, .nucleoF401RE, .nucleoL053R8, .nucleoL476RG, .nucleoF446RE, .nucleoU575ZIQ, .nucleoU5A5ZJQ:
             return "schema_nucleo"
         case .sensorTile:
             return "schema_sensorTile"
@@ -177,4 +319,70 @@ public extension NodeType {
             return "schema_blueCoin"
         }
     }
+    
+    var family: NodeFamily {
+        switch self {
+        case .sensorTile,
+                .blueCoin,
+                .sensorTileBox,
+                .stEvalSTWINKIT1,
+                .stEvalSTWINKT1B,
+                .sensorTileBoxPro,
+                .sensorTileBoxProB,
+                .stWinBox,
+                .stWinBoxB:
+            return NodeFamily.blueNRGFamily
+            
+        case .discoveryIOT01A,
+                .bL475eIot01A,
+                .bU585iIot02A:
+            return NodeFamily.iotFamily
+            
+        case .astra,
+                .stdesCBMLoRaBLE,
+                .proteus:
+            return NodeFamily.wbBasedFamily
+            
+        case .nucleo,
+                .nucleoF401RE,
+                .nucleoL476RG,
+                .nucleoL053R8,
+                .nucleoF446RE,
+                .nucleoU575ZIQ,
+                .nucleoU5A5ZJQ:
+            return NodeFamily.nucleoFamily
+            
+        case .wb55NucleoBoard,
+                .WB5mDiscoveryBoard,
+                .wb55UsbDoungleBoard,
+                .wb15NucleoBoard,
+                .wb1mDiscoveryBoard,
+                .wbOtaBoard:
+            return NodeFamily.wbFamily
+            
+        case .wba5xNucleoBoard,
+                .wbaDiscoveryBoard:
+            return NodeFamily.wbaFamily
+            
+        case .generic,
+                .nucleoWB0X,
+                .wba6NucleoBoard,
+                .stevalWesu1,
+                .stEvalIDB008VX,
+                .stEvalBCN002V1:
+            return NodeFamily.otherFamily
+        }
+    }
+
+    var isWifiPresent: Bool {
+        switch self {
+            case .sensorTileBoxPro,
+                .sensorTileBoxProB,
+                .stEvalSTWINKIT1,
+                .stEvalSTWINKT1B:
+            return false
+        default:
+            return true
+		}
+	}
 }

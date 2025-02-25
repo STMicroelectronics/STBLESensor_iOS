@@ -135,5 +135,20 @@ public extension ColorLayout {
     static let gray: Colorable = {
         return ColorLayout(light: "#FFF7F8FA", dark: "#FF525A63")
     }()
-
+    
+    static let yellowWarning: Colorable = {
+        return ColorLayout(light: "#FF926C20", dark: "#FF926C20")
+    }()
+    
+    static let successGreen: Colorable = {
+        return ColorLayout(light: "#FF1E8537", dark: "#FF1E8537")
+    }()
+    
+    static let errorRed: Colorable = {
+        return ColorLayout(light: "#FFA8251B", dark: "#FFA8251B")
+    }()
+    
+    static let infoBlue: Colorable = {
+        return ColorLayout(light: "#FF1B3AA8", dark: "#FF1B3AA8")
+    }()
 }

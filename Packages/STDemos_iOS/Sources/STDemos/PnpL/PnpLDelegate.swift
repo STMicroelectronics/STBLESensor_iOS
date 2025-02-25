@@ -14,10 +14,12 @@ import STBlueSDK
 import STUI
 
 public protocol PnpLDelegate: DemoDelegate {
-
+    
+    func removeFirstQueueAndEventuallySend()
+    
     func load()
 
-    var disableNotificationOnDisappear: Bool { get set }
+    //var disableNotificationOnDisappear: Bool { get set }
 
     func update(with feature: PnPLFeature)
 

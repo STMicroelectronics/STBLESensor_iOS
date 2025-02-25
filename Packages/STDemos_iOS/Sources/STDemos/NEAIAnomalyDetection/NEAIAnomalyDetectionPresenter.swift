@@ -31,6 +31,19 @@ extension NEAIAnomalyDetectionPresenter: NEAIAnomalyDetectionDelegate {
         view.configureView()
     }
     
+    func enableNotification() {
+        if let feature = param.node.characteristics.allFeatures().first(where: {feature in feature is NEAIAnomalyDetectionFeature}) {
+            BlueManager.shared.enableNotifications(for: param.node, feature: feature)
+        }
+    }
+    
+    func disableNotification() {
+        if let feature = param.node.characteristics.allFeatures().first(where: {feature in feature is NEAIAnomalyDetectionFeature}) {
+            BlueManager.shared.disableNotifications(for: param.node, feature: feature)
+        }
+    }
+
+    
     /** Open / Close NEAI Commands menú */
     func expandOrHideNEAICommands() {
         if(view.neaiCommandArrowBtn.currentImage == UIImage(systemName: "chevron.up")){
@@ -61,7 +74,7 @@ extension NEAIAnomalyDetectionPresenter: NEAIAnomalyDetectionDelegate {
     
     /** Handle Reset Knowledge Button  */
     func resetKnowledge() {
-        sendNEAICommand(NEAIAnomalyDetectionCommand.stop)
+        sendNEAICommand(NEAIAnomalyDetectionCommand.resetKnowledge)
         self.view.view.makeToast("Reset DONE.", duration: 1.0)
     }
     

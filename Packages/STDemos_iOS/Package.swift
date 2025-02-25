@@ -7,7 +7,7 @@ let package = Package(
     name: "STDemos",
     defaultLocalization: "en",
     platforms: [
-        .iOS(.v13)
+        .iOS(.v15)
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
@@ -23,7 +23,7 @@ let package = Package(
          .package(url: "https://github.com/core-plot/core-plot", branch: "release-2.4"),
          .package(url: "https://github.com/scalessec/Toast-Swift", branch: "master"),
          .package(url: "https://github.com/JonasGessner/JGProgressHUD.git", from: Version(2, 2, 0)),
-         .package(url: "https://github.com/danielgindi/Charts.git", .upToNextMajor(from: "4.1.0"))
+         .package(url: "https://github.com/danielgindi/Charts.git", from: Version(5, 1, 0))
          
     ],
     targets: [
@@ -38,7 +38,7 @@ let package = Package(
                 .product(name: "CorePlot", package: "core-plot"),
                 .product(name: "Toast", package: "Toast-Swift"),
                 .product(name: "JGProgressHUD", package: "JGProgressHUD"),
-                .product(name: "Charts", package: "Charts"),
+                .product(name: "DGCharts", package: "Charts")
             ],
             resources: [
                 .copy("Resources/Assets.xcassets"),

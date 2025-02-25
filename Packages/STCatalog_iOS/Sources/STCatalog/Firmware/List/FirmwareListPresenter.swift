@@ -16,7 +16,8 @@ import STCore
 
 struct FirmwareFilter {
     let board: Board
-    let firmwareTypesFilter: [String]?
+    let firmwareNamesFilter: [String]?
+    let firmwareSupportedVersions: [String]?
 }
 
 final class FirmwareListPresenter: BasePresenter<FirmwareListViewController, FirmwareFilter> {
@@ -40,7 +41,9 @@ extension FirmwareListPresenter: FirmwareListDelegate {
 
         guard let catalogService: CatalogService = Resolver.shared.resolve() else { return }
 
-        let firmwares = catalogService.catalog?.availableV2Firmwares(with: param.board.deviceId, currentFirmware: nil, enabledFirmwares: param.firmwareTypesFilter)
+        let firmwares = catalogService.catalog?.availableV2Firmwares(with: param.board.deviceId,
+                                                                     names: param.firmwareNamesFilter,
+                                                                     supportedVersions: param.firmwareSupportedVersions)
 
         firmwares?.map { FirmwareViewModel(param: $0) }.forEach { element in
             director?.elements.append(element)

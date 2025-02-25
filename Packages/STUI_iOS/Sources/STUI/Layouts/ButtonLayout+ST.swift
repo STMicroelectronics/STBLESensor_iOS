@@ -66,7 +66,7 @@ public extension Buttonlayout {
     }()
 
     static var standardGray: Buttonlayout = {
-        return Buttonlayout(color: ColorLayout.accent.auto,
+        return Buttonlayout(color: ColorLayout.primary.auto,
                             selectedColor: nil,
                             backgroundColor: .systemGray6,
                             selectedBackgroundColor: nil,
@@ -183,6 +183,20 @@ public extension Buttonlayout {
                             underlineText: true)
     }()
 
+    static var smallLink: Buttonlayout = {
+        return Buttonlayout(color: ColorLayout.secondary.light,
+                            selectedColor: .clear,
+                            backgroundColor: .clear,
+                            selectedBackgroundColor: .clear,
+                            selectedImage: nil,
+                            image: nil,
+                            cornerRadius: nil,
+                            borderColor: .clear,
+                            borderWith: nil,
+                            font: FontLayout.bold.withSize(12.0),
+                            underlineText: true)
+    }()
+
     static var textPrimaryColor: Buttonlayout = {
         return Buttonlayout(color: ColorLayout.primary.auto,
                             selectedColor: .clear,
@@ -260,5 +274,45 @@ public extension Buttonlayout {
                             borderColor: .clear,
                             borderWith: nil,
                             font: FontLayout.regular)
+    }
+    
+    static func standardColored(_ definedColor: UIColor?) -> Buttonlayout {
+        return Buttonlayout(color: .white,
+                            selectedColor: nil,
+                            backgroundColor: definedColor,
+                            selectedBackgroundColor: nil,
+                            selectedImage: nil,
+                            image: nil,
+                            cornerRadius: 4.0,
+                            borderColor: nil,
+                            borderWith: nil,
+                            font: FontLayout.regular.withSize(14.0))
+    }
+
+    static var smallSelected: Buttonlayout = {
+        return Buttonlayout(color: .white,
+                            selectedColor: nil,
+                            backgroundColor: ColorLayout.secondary.light,
+                            selectedBackgroundColor: ColorLayout.primary.auto,
+                            selectedImage: nil,
+                            image: nil,
+                            cornerRadius: 4.0,
+                            borderColor: nil,
+                            borderWith: nil,
+                            font: UIFont.systemFont(ofSize: 12.0))
+    }()
+
+    func color(_ color: UIColor) -> Buttonlayout {
+
+        return Buttonlayout(color: color,
+                            selectedColor: selectedColor,
+                            backgroundColor: backgroundColor,
+                            selectedBackgroundColor: selectedBackgroundColor,
+                            selectedImage: selectedImage,
+                            image: image,
+                            cornerRadius: cornerRadius,
+                            borderColor: borderColor,
+                            borderWith: borderWith,
+                            font: font)
     }
 }

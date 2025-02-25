@@ -12,16 +12,19 @@
 import UIKit
 import STUI
 import STBlueSDK
-import Charts
+import DGCharts
 
 final class PlotPresenter: DemoPresenter<PlotViewController> {
     var plotEntries: [PlotEntry] = []
     var supportedDemoFeature: [Feature] = []
     var plotStatus: PlotStatus = .idle
+    
+    let DefaultDisplayWindowTimeSecond = UInt64(5)
 }
 
 // MARK: - PlotViewControllerDelegate
 extension PlotPresenter: PlotDelegate {
+    
 
     func load() {
         demo = .plot
@@ -44,9 +47,18 @@ extension PlotPresenter: PlotDelegate {
             
             view.plotDescription.text = plotDesc
             
-            if plotEntries.count > 99 {
-                plotEntries.removeFirst()
+//            if plotEntries.count > 99 {
+//                plotEntries.removeFirst()
+//            }
+            
+            
+            if let lastElementTime = plotEntries.max(by: { $0.x < $1.x })?.x,  let firstElementTime = plotEntries.min(by: { $0.x < $1.x })?.x {
+                if((lastElementTime - firstElementTime) > DefaultDisplayWindowTimeSecond*1000) {
+                    let timeLastElementToVisualize = lastElementTime - (DefaultDisplayWindowTimeSecond*1000)
+                    plotEntries.removeAll(where: {$0.x < timeLastElementToVisualize})
+                }
             }
+            
             
             plotEntries.append(plotEntry)
             
@@ -121,15 +133,17 @@ extension PlotPresenter: PlotDelegate {
     }
     
     private func disableFeatureSelectionInteraction() {
-        self.view.plotFeatureLabel.isUserInteractionEnabled = false
-        self.view.plotFeatureButton.isUserInteractionEnabled = false
+        //self.view.plotFeatureLabel.isUserInteractionEnabled = false
+       // self.view.plotFeatureButton.isUserInteractionEnabled = false
+        self.view.selectFeatureSV.isUserInteractionEnabled = false
         self.view.plotFeatureLabel.layer.opacity = 0.4
         self.view.plotFeatureButton.layer.opacity = 0.4
     }
     
     private func enableFeatureSelectionInteraction() {
-        self.view.plotFeatureLabel.isUserInteractionEnabled = true
-        self.view.plotFeatureButton.isUserInteractionEnabled = true
+        //self.view.plotFeatureLabel.isUserInteractionEnabled = true
+        //self.view.plotFeatureButton.isUserInteractionEnabled = true
+        self.view.selectFeatureSV.isUserInteractionEnabled = true
         self.view.plotFeatureLabel.layer.opacity = 1.0
         self.view.plotFeatureButton.layer.opacity = 1.0
     }

@@ -15,7 +15,8 @@ public extension UIEdgeInsets {
 
     static var standard = UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0)
     static var standardEmbed = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
-    static var smallEmbed = UIEdgeInsets(top: 3.0, left: 3.0, bottom: 3.0, right: 3.0)
+    static var horizontalEmbed = UIEdgeInsets(top: 0.0, left: 5.0, bottom: 0.0, right: 5.0)
+    static var smallEmbed = UIEdgeInsets(top: 1.0, left: 1.0, bottom: 1.0, right: 1.0)
     static var standardTopBottom = UIEdgeInsets(top: 10.0, left: 0.0, bottom: 10.0, right: 0.0)
 
     func top(_ top: CGFloat) -> UIEdgeInsets {

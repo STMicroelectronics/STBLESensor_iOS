@@ -13,7 +13,7 @@ import UIKit
 import STUI
 import STBlueSDK
 
-final class SensorsTabViewController: TableNodeNoViewController<SensorsTabDelegate> {
+final class SensorsTabViewController: DemoNodeTableNoViewController<SensorsTabDelegate> {
 
     override func configure() {
         super.configure()

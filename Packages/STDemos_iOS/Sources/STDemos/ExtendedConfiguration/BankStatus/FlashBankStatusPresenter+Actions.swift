@@ -23,7 +23,7 @@ extension FlashBankStatusPresenter {
     func installSelectedFirmware() {
         guard let selectedFirmware = selectedFirmware else { return }
 
-        let viewModel = FirmwareSelectPresenter(param: DemoParam(node: param.node, param: selectedFirmware))
+        let viewModel = FirmwareSelectPresenter(param: DemoParam(node: param.node, param: FirmwareSelect(firmware: selectedFirmware)))
 
         view.navigationController?.pushViewController(viewModel.start(), animated: true)
     }

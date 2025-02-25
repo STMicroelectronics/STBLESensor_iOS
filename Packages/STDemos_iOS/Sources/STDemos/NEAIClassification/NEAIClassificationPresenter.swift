@@ -31,6 +31,18 @@ extension NEAIClassificationPresenter: NEAIClassificationDelegate {
         view.configureView()
     }
     
+    func enableNotification() {
+        if let feature = param.node.characteristics.allFeatures().first(where: {feature in feature is NEAIClassificationFeature}) {
+            BlueManager.shared.enableNotifications(for: param.node, feature: feature)
+        }
+    }
+    
+    func disableNotification() {
+        if let feature = param.node.characteristics.allFeatures().first(where: {feature in feature is NEAIClassificationFeature}) {
+            BlueManager.shared.disableNotifications(for: param.node, feature: feature)
+        }
+    }
+    
     func expandOrHideNEAICommands() {
         if(view.neaiCommandArrowBtn.currentImage == UIImage(systemName: "chevron.up")){
             view.neaiCommandArrowBtn.setImage(UIImage(systemName: "chevron.down"), for: .normal)
@@ -154,7 +166,7 @@ extension NEAIClassificationPresenter: NEAIClassificationDelegate {
             if let prob3Value = prob3Value {
                 self.view.prob3SV.isHidden = false
                 self.view.probability3Label.text = "CL 3 (\(prob3Value)%): "
-                self.view.probability3Progress.setProgress(Float(prob3Value/100), animated: true)
+                self.view.probability3Progress.setProgress(Float(Float(prob3Value)/100), animated: true)
                 if mostProbableClassValue == 3 {
                     self.view.probability3Label.textColor = ColorLayout.red.light
                 } else {
@@ -167,7 +179,7 @@ extension NEAIClassificationPresenter: NEAIClassificationDelegate {
             if let prob4Value = prob4Value {
                 self.view.prob4SV.isHidden = false
                 self.view.probability4Label.text = "CL 4 (\(prob4Value)%): "
-                self.view.probability4Progress.setProgress(Float(prob4Value/100), animated: true)
+                self.view.probability4Progress.setProgress(Float(Float(prob4Value)/100), animated: true)
                 if mostProbableClassValue == 4 {
                     self.view.probability4Label.textColor = ColorLayout.red.light
                 } else {
@@ -180,7 +192,7 @@ extension NEAIClassificationPresenter: NEAIClassificationDelegate {
             if let prob5Value = prob5Value {
                 self.view.prob5SV.isHidden = false
                 self.view.probability5Label.text = "CL 5 (\(prob5Value)%): "
-                self.view.probability5Progress.setProgress(Float(prob5Value/100), animated: true)
+                self.view.probability5Progress.setProgress(Float(Float(prob5Value)/100), animated: true)
                 if mostProbableClassValue == 5 {
                     self.view.probability5Label.textColor = ColorLayout.red.light
                 } else {
@@ -193,7 +205,7 @@ extension NEAIClassificationPresenter: NEAIClassificationDelegate {
             if let prob6Value = prob6Value {
                 self.view.prob6SV.isHidden = false
                 self.view.probability6Label.text = "CL 6 (\(prob6Value)%): "
-                self.view.probability6Progress.setProgress(Float(prob6Value/100), animated: true)
+                self.view.probability6Progress.setProgress(Float(Float(prob6Value)/100), animated: true)
                 if mostProbableClassValue == 6 {
                     self.view.probability6Label.textColor = ColorLayout.red.light
                 } else {
@@ -206,7 +218,7 @@ extension NEAIClassificationPresenter: NEAIClassificationDelegate {
             if let prob7Value = prob7Value {
                 self.view.prob7SV.isHidden = false
                 self.view.probability7Label.text = "CL 7 (\(prob7Value)%): "
-                self.view.probability7Progress.setProgress(Float(prob7Value/100), animated: true)
+                self.view.probability7Progress.setProgress(Float(Float(prob7Value)/100), animated: true)
                 if mostProbableClassValue == 7 {
                     self.view.probability7Label.textColor = ColorLayout.red.light
                 } else {
@@ -219,7 +231,7 @@ extension NEAIClassificationPresenter: NEAIClassificationDelegate {
             if let prob8Value = prob8Value {
                 self.view.prob8SV.isHidden = false
                 self.view.probability8Label.text = "CL 8 (\(prob8Value)%): "
-                self.view.probability8Progress.setProgress(Float(prob8Value/100), animated: true)
+                self.view.probability8Progress.setProgress(Float(Float(prob8Value)/100), animated: true)
                 if mostProbableClassValue == 8 {
                     self.view.probability8Label.textColor = ColorLayout.red.light
                 } else {

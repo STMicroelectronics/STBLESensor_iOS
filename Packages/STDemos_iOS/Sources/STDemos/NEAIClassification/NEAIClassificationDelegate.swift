@@ -16,6 +16,10 @@ protocol NEAIClassificationDelegate: AnyObject {
 
     func load()
     
+    func enableNotification()
+    
+    func disableNotification()
+    
     func expandOrHideNEAICommands()
 
     func startClassification()

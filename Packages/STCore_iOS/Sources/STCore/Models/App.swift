@@ -18,7 +18,8 @@ public enum AppMode: Codable {
 }
 
 public enum UserType: Int, Codable {
-    case developer = 0
+    case aiDeveloper = 0
+    case developer
     case studentOrResearcher
     case engineerOrSale
     case other
@@ -53,6 +54,8 @@ extension AppMode: CustomStringConvertible {
 extension UserType: CustomStringConvertible {
     public var description: String {
         switch self {
+        case .aiDeveloper:
+            return "AI Developer"
         case .developer:
             return "Developer"
         case .studentOrResearcher:

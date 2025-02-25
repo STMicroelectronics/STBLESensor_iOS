@@ -116,6 +116,7 @@ extension PnpLContent {
 
     public func viewModels(with key: [String],
                            name: String?,
+                           descr: String? = nil,
                            writable: Bool? = nil,
                            action: @escaping (PnpLContentAction) -> Void ) -> [any ViewModel] {
 
@@ -132,16 +133,22 @@ extension PnpLContent {
                 ]
         case .property(let pnpLPropertyContent):
             keys.append(pnpLPropertyContent.name)
+
+            let descr = pnpLPropertyContent.displayUnit?.en.toShortUom() ?? pnpLPropertyContent.unit?.toShortUom()
+
             return pnpLPropertyContent.schema.viewModels(with: keys,
                                                          name: pnpLPropertyContent.displayName?.en,
+                                                         descr: descr,
                                                          writable: pnpLPropertyContent.writable,
                                                          action: action)
         case .primitiveProperty(let pnpLPrimitiveContent):
 
-            keys.append(pnpLPrimitiveContent.name)
-            if case .boolean = pnpLPrimitiveContent.schema {
+            var primitiveKeys = keys
+            primitiveKeys.append(pnpLPrimitiveContent.name)
+            
+            if case .string(.boolean) = pnpLPrimitiveContent.schema {
 
-                return [ SwitchViewModel(param: CodeValue<SwitchInput>(keys: keys,
+                return [ SwitchViewModel(param: CodeValue<SwitchInput>(keys: primitiveKeys,
                                                                        value: SwitchInput(title: pnpLPrimitiveContent.displayName?.en,
                                                                                            value: false,
                                                                                          isEnabled: pnpLPrimitiveContent.writable ?? false,
@@ -149,20 +156,35 @@ extension PnpLContent {
                     action(.valueChanged(value))
                 })), layout: PnpLContent.layout) ]
             }
+            
+            if case .obj(let objContent) = pnpLPrimitiveContent.schema, case .object(let pnpLObjectContent) = objContent {
+                return buildSchemaObject(name: pnpLObjectContent.name ?? "", writable: pnpLObjectContent.writable ?? true, keys: &primitiveKeys, action: action, pnpLObjectContent: pnpLObjectContent)
+            }
 
-            return [ TextInputViewModel(param: CodeValue<TextInput>(keys: keys,
+            return [ TextInputViewModel(param: CodeValue<TextInput>(keys: primitiveKeys,
                                                                     value: TextInput(title: pnpLPrimitiveContent.displayName?.en,
                                                                                      isEnabled: pnpLPrimitiveContent.writable ?? false,
                                                                                      handleChangeText: { value in
                 action(.updateValue(value))
             })), layout: PnpLContent.layout) ]
+
         case .enumerative(let pnpLEnumerativeContent):
             let values = pnpLEnumerativeContent.values.compactMap { value in
                 return BoxedValue.object(value)
             }
 
+            var title: String = ""
+
+            if let name = name {
+                title = name
+            }
+
+            if let descr = descr {
+                title = title + " [\(descr)]"
+            }
+
             return [ PickerViewViewModel(param: CodeValue<PickerInput>(keys: keys,
-                                                                       value: PickerInput(title: name,
+                                                                       value: PickerInput(title: title,
                                                                                           selection: nil,
                                                                                           options: values,
                                                                                           isEnabled: true)),
@@ -171,35 +193,8 @@ extension PnpLContent {
                 action(.showCommandPicker(value))
             }) ]
         case .object(let pnpLObjectContent):
-            return [ ObjectViewModel(param: name,
-                                     layout: PnpLContent.layout,
-                                     childrenViewModels: pnpLObjectContent.fields.compactMap { field in
-
-                let overrideWriteble = field.name.lowercased() == "min" || field.name.lowercased() == "max"
-                let isEnabled = overrideWriteble ? false : ((pnpLObjectContent.writable != nil ? pnpLObjectContent.writable : writable) ?? false)
-
-                var fieldKeys = keys
-                fieldKeys.append(field.name)
-
-                if case .boolean = field.schema {
-
-                    return  SwitchViewModel(param: CodeValue<SwitchInput>(keys: fieldKeys,
-                                                                          value: SwitchInput(title: field.displayName?.en,
-                                                                                               value: false,
-                                                                                               isEnabled: isEnabled,
-                                                                                               handleValueChanged: { value in
-                        action(.valueChanged(value))
-                    })), layout: PnpLContent.layout)
-                }
-
-                return  TextInputViewModel(param: CodeValue<TextInput>(keys: fieldKeys,
-                                                                        value: TextInput(title: field.displayName?.en,
-                                                                                         isEnabled: isEnabled,
-                                                                                         handleChangeText: { value in
-                    action(.updateValue(value))
-
-                })), layout: PnpLContent.layout)
-            }) ]
+            return buildSchemaObject(name: pnpLObjectContent.name ?? "", writable: pnpLObjectContent.writable ?? true, keys: &keys, action: action, pnpLObjectContent: pnpLObjectContent)
+            
         case .command(let pnpLCommandContent):
 
             var commandKeys = keys
@@ -270,5 +265,39 @@ extension PnpLContent {
             return [ LabelViewModel(param: CodeValue<String>(keys: keys, value: "unknown"), layout: PnpLContent.layout) ]
 
         }
+    }
+    
+    private func buildSchemaObject (name: String, writable: Bool, keys: inout [String], action: @escaping (PnpLContentAction) -> Void, pnpLObjectContent: (PnpLObjectContent)) -> [any ViewViewModel] {
+        return [ObjectViewModel(param: name,
+                                 layout: PnpLContent.layout,
+                                 childrenViewModels: pnpLObjectContent.fields.compactMap { field in
+
+            let overrideWriteble = field.name.lowercased() == "min" || field.name.lowercased() == "max"
+            let isEnabled = overrideWriteble ? false : ((pnpLObjectContent.writable != nil ? pnpLObjectContent.writable : writable) ?? false)
+
+            var fieldKeys = keys
+            fieldKeys.append(field.name)
+
+            if case .string(.boolean) = field.schema {
+
+                return  SwitchViewModel(param: CodeValue<SwitchInput>(keys: fieldKeys,
+                                                                      value: SwitchInput(title: field.displayName?.en,
+                                                                                           value: false,
+                                                                                           isEnabled: field.writable ?? isEnabled,
+                                                                                           handleValueChanged: { value in
+                    action(.valueChanged(value))
+                })), layout: PnpLContent.layout)
+            } else if case .obj(let objContent) = field.schema, case .object(let pnpLObjectContent) = objContent {
+                return buildSchemaObject(name: field.displayName?.en ?? field.name, writable: pnpLObjectContent.writable ?? true, keys: &fieldKeys, action: action, pnpLObjectContent: pnpLObjectContent).first
+            }
+
+            return  TextInputViewModel(param: CodeValue<TextInput>(keys: fieldKeys,
+                                                                    value: TextInput(title: field.displayName?.en,
+                                                                                     isEnabled: isEnabled,
+                                                                                     handleChangeText: { value in
+                action(.updateValue(value))
+
+            })), layout: PnpLContent.layout)
+        })]
     }
 }

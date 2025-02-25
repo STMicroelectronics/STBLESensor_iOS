@@ -39,6 +39,7 @@ extension SaveFlowPresenter: SaveFlowDelegate {
         
         param.flow.name = name
         param.flow.notes = view.descriptionTextField.text ?? ""
+        param.flow.exApp = 0 ///Custom Flow
         
         if currentName != flowDefaultName, currentName != view.nameTextField.text {
             param.flow.identifier = UUID().uuidString

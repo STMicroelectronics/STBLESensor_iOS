@@ -14,11 +14,15 @@ import UIKit
 public class ImageDetail {
     public var title: String?
     public var subtitle: String?
+    public var mounted: String?
+    public var status: String?
     public var image: UIImage?
 
-    public init(title: String? = nil, subtitle: String? = nil, image: UIImage? = nil) {
+    public init(title: String? = nil, subtitle: String? = nil, mounted: String? = nil, status: String? = nil, image: UIImage? = nil) {
         self.title = title
         self.subtitle = subtitle
+        self.mounted = mounted
+        self.status = status
         self.image = image
     }
 }
@@ -39,6 +43,14 @@ public class ImageDetailViewModel: BaseViewModel<CodeValue<ImageDetail>, ImageDe
 
         view.titleLabel.text = param?.value.title
         view.subtitleLabel.text = param?.value.subtitle
+        
+        if let isNotMounted = param?.value.mounted {
+            TextLayout.infoBoldColored(ColorLayout.yellowWarning.auto).apply(to: view.statusLabel)
+            view.statusLabel.text = isNotMounted
+        } else {
+            view.statusLabel.text = param?.value.status
+        }
+
         view.imageView.image = param?.value.image?.withTintColor(ColorLayout.primary.light)
             .scalePreservingAspectRatio(targetSize: ImageSize.medium).original
         view.disclosureImageView.image = ImageLayout.Common.arrowDown?.scalePreservingAspectRatio(targetSize: ImageSize.extraSmall)

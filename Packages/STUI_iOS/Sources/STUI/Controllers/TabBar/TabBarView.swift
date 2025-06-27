@@ -201,6 +201,7 @@ public extension TabBarView {
         } else {
             stackView.addArrangedSubview(fourthStackView)
             fourthStackView.addArrangedSubview(item)
+            stackView.spacing = 0.0
         }
     }
 

@@ -151,4 +151,8 @@ public extension ColorLayout {
     static let infoBlue: Colorable = {
         return ColorLayout(light: "#FF1B3AA8", dark: "#FF1B3AA8")
     }()
+    
+    static let notActiveColor: Colorable = {
+        return ColorLayout(light: "#FFE6EBFE", dark: "#FFE6EBFE")
+    }()
 }

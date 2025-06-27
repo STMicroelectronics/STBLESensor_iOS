@@ -102,10 +102,10 @@ extension BoardListPresenter: BoardListDelegate {
             if currentFilter.isEmpty {
                 if let catalogBoard = catalog.boards?.toBoard {
                     boards.append(contentsOf: catalogBoard.compactMap { board in
-                        if let type = board.type, let nodeTypesFilter = self.param.nodeTypesFilter, nodeTypesFilter.contains(type) {
+//                        if let type = board.type, let nodeTypesFilter = self.param.nodeTypesFilter, nodeTypesFilter.contains(type) {
                             return BoardViewModel(param: board)
-                        }
-                        return nil
+//                        }
+//                        return nil
                     })
                 }
             }
@@ -143,7 +143,9 @@ extension BoardListPresenter: BoardListDelegate {
                         board.param?.url = catalogBoard.orderUrl
                         board.param?.datasheetsUrl = catalogBoard.documentationUrl
                         board.param?.videoId = catalogBoard.videoUrl
+                        board.param?.wikiUrl = catalogBoard.wikiUrl
                         board.param?.variant = catalogBoard.variant
+                        board.param?.boardPart = catalogBoard.boardPart
                         board.param?.releaseDate = catalogBoard.releaseDate
                     }
                 }
@@ -165,6 +167,8 @@ extension BoardListPresenter: BoardListDelegate {
             } else {
                 boardMerged = originalBoardOrderList
             }
+            
+            boardMerged = boardMerged.uniqued(on: { $0.param?.boardPart })
             
             director?.elements.append(contentsOf: boardMerged)
         }

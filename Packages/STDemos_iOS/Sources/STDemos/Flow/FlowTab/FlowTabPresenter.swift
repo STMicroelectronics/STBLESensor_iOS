@@ -12,9 +12,11 @@
 import UIKit
 import STUI
 import STBlueSDK
+import STCore
 
 final class FlowTabPresenter: DemoBasePresenter<FlowTabViewController, Void> {
     var director: TableDirector?
+    var flowCategories: [FlowCategory] = []
 }
 
 // MARK: - FlowTabViewControllerDelegate
@@ -32,8 +34,14 @@ extension FlowTabPresenter: FlowTabDelegate {
                            type: .fromClass,
                            bundle: STUI.bundle)
         
-        let flowCategories = getCategories()
+        flowCategories = getCategories()
         
+        searchForCatalogExtraFlow()
+        
+        setupView()
+    }
+    
+    func setupView(){
         flowCategories.forEach { flowAppCategoryItem in
             director?.elements.append(FlowAppsCatagoriesViewModel(param: flowAppCategoryItem, onFlowAppCategoryClicked: { item in
                 self.view.navigationController?.pushViewController(
@@ -92,4 +100,44 @@ extension FlowTabPresenter: FlowTabDelegate {
 public struct FlowCategory {
     let name: String
     let items: [Flow]
+}
+
+
+extension FlowTabPresenter {
+    func searchForCatalogExtraFlow() {
+        
+        guard let extraExamplesFlow = searchForExtraExamplesFlow(node: param.node) else { return }
+        guard let sensorsMountedList = searchForMountedDIL24(node: param.node) else { return }
+        
+        sensorsMountedList.forEach { sensor in
+            if let extraFlow = extraExamplesFlow.first(where: { $0.model == sensor }) {
+                extraFlow.examplesFlow.forEach { flowUrl in
+                    requestCatalogFlow(flowUrl, completion: { flow in
+                        if let flow {
+                            let flowAppCategoryItem = FlowCategory(name: flow.name, items: [flow])
+                            self.flowCategories.append(flowAppCategoryItem)
+                            DispatchQueue.main.async {
+                                self.director?.elements.removeAll()
+                                self.setupView()
+                            }
+                        }
+                    })
+                }
+            }
+        }
+    }
+    
+    func requestCatalogFlow(_ url: String, completion: @escaping (Flow?) -> Void) {
+        guard let url = URL(string: url) else { completion(nil); return }
+
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data else { completion(nil); return }
+            do {
+                let flow = try JSONDecoder().decode(Flow.self, from: data)
+                completion(flow)
+            } catch {
+                completion(nil)
+            }
+        }.resume()
+    }
 }

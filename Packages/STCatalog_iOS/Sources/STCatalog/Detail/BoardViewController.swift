@@ -16,6 +16,9 @@ import STBlueSDK
 final class BoardViewController: TableNoViewController<BoardDelegate> {
 
     var bottomView: UIStackView?
+    
+    var orderBuyButton: UIButton?
+    var wikiDocButton: UIButton?
 
     override func configure() {
         super.configure()
@@ -30,19 +33,45 @@ final class BoardViewController: TableNoViewController<BoardDelegate> {
 
         let emptyView = UIView()
         let secondEmptyView = UIView()
-
-        let actionButton = UIButton(type: .custom)
-        Buttonlayout.standard.apply(to: actionButton, text: "     ORDER & BUY     ")
-        actionButton.on(.touchUpInside) { [weak self] _ in
-            self?.presenter.showDetail()
+        
+        var views: [UIView] = [emptyView]
+        
+        var buttonStackView = UIStackView()
+        
+        if let presenter = presenter as? BoardPresenter {
+            if presenter.param.board.url != nil {
+                orderBuyButton = UIButton(type: .custom)
+                Buttonlayout.standardWithColorAndImage(textColor: .white, buttonColor: ColorLayout.primary.auto, image: ImageLayout.Common.shopping).apply(to: orderBuyButton!, text: " ORDER & BUY ")
+                orderBuyButton?.on(.touchUpInside) { [weak self] _ in
+                    self?.presenter.showDetail()
+                }
+            }
+            if presenter.param.board.wikiUrl != nil {
+                wikiDocButton = UIButton(type: .custom)
+                Buttonlayout.standardWithColorAndImage(textColor: ColorLayout.primary.auto, buttonColor: ColorLayout.yellow.auto, image: ImageLayout.Common.wiki).apply(to: wikiDocButton!, text: " WIKI DOCUMENTATION ")
+                wikiDocButton?.on(.touchUpInside) { [weak self] _ in
+                    self?.presenter.showWiki()
+                }
+            }
+            if orderBuyButton != nil {
+                views.append(orderBuyButton?.embedInView(with: .standardTopBottom) ?? UIView())
+            }
+            if wikiDocButton != nil {
+                views.append(wikiDocButton?.embedInView(with: .standardTopBottom) ?? UIView())
+            }
+            if orderBuyButton != nil && wikiDocButton != nil {
+                Buttonlayout.standardWithColorAndImage(textColor: .white, buttonColor: ColorLayout.primary.auto, image: ImageLayout.Common.shopping).apply(to: orderBuyButton!, text: "BUY")
+                Buttonlayout.standardWithColorAndImage(textColor: ColorLayout.primary.auto, buttonColor: ColorLayout.yellow.auto, image: ImageLayout.Common.wiki).apply(to: wikiDocButton!, text: "WIKI")
+            }
         }
-
-        let buttonStackView = UIStackView.getHorizontalStackView(withSpacing: 10.0,
-                                                           views: [
-                                                            emptyView,
-                                                            actionButton.embedInView(with: .standardTopBottom),
-                                                            secondEmptyView
-                                                           ])
+        
+        views.append(secondEmptyView)
+        
+        if orderBuyButton != nil || wikiDocButton != nil {
+            buttonStackView = UIStackView.getHorizontalStackView(withSpacing: 10.0,
+                                                                 views: views)
+            buttonStackView.distribution = .fillProportionally
+        }
 
         var bottomViews = [UIView]()
         bottomViews.append(buttonStackView)

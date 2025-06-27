@@ -362,17 +362,19 @@
 				en,
 			);
 			mainGroup = 093BE552FB3077807C470129;
+			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				9EF66E610B578C6EA52A4CDD /* XCRemoteSwiftPackageReference "TagListView" */,
 				51CCB763AF8CB7952F570E7B /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
-				7862688FF26013C68857B49D /* XCLocalSwiftPackageReference "./Packages/STBlueSDK_iOS" */,
-				6F7C4AF6FB23FB8D6D29F2D5 /* XCLocalSwiftPackageReference "./Packages/STCatalog_iOS" */,
-				9ACC6E9DDD9EC3894BF3F1A4 /* XCLocalSwiftPackageReference "./Packages/STCore_iOS" */,
-				10FE6CBA0574C040030F6008 /* XCLocalSwiftPackageReference "./Packages/STDemos_iOS" */,
-				690EF6C5F6B390F0A10208DB /* XCLocalSwiftPackageReference "./Packages/STUI_iOS" */,
-				08705F6633C55E723FDE59B6 /* XCLocalSwiftPackageReference "./Packages/STUserProfiling_iOS" */,
-				6151626B0F1D73960F445385 /* XCLocalSwiftPackageReference "./Packages/STWelcome_iOS" */,
+				46B5E08C2813715ACA8D0022 /* XCLocalSwiftPackageReference "Packages/STBlueSDK_iOS" */,
+				A28AC6BC24804370B643BE69 /* XCLocalSwiftPackageReference "Packages/STCatalog_iOS" */,
+				4FB6A002362D9E4B0CA184E1 /* XCLocalSwiftPackageReference "Packages/STCore_iOS" */,
+				A1939041ABF32152E82FF191 /* XCLocalSwiftPackageReference "Packages/STDemos_iOS" */,
+				6C095A337DD5FA51C983B702 /* XCLocalSwiftPackageReference "Packages/STUI_iOS" */,
+				BBE68871B275F8DB25D16E52 /* XCLocalSwiftPackageReference "Packages/STUserProfiling_iOS" */,
+				BEC3400CD5A8D47AA97649C6 /* XCLocalSwiftPackageReference "Packages/STWelcome_iOS" */,
 			);
+			preferredProjectObjectVersion = 54;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -646,6 +648,37 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		46B5E08C2813715ACA8D0022 /* XCLocalSwiftPackageReference "Packages/STBlueSDK_iOS" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/STBlueSDK_iOS;
+		};
+		4FB6A002362D9E4B0CA184E1 /* XCLocalSwiftPackageReference "Packages/STCore_iOS" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/STCore_iOS;
+		};
+		6C095A337DD5FA51C983B702 /* XCLocalSwiftPackageReference "Packages/STUI_iOS" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/STUI_iOS;
+		};
+		A1939041ABF32152E82FF191 /* XCLocalSwiftPackageReference "Packages/STDemos_iOS" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/STDemos_iOS;
+		};
+		A28AC6BC24804370B643BE69 /* XCLocalSwiftPackageReference "Packages/STCatalog_iOS" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/STCatalog_iOS;
+		};
+		BBE68871B275F8DB25D16E52 /* XCLocalSwiftPackageReference "Packages/STUserProfiling_iOS" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/STUserProfiling_iOS;
+		};
+		BEC3400CD5A8D47AA97649C6 /* XCLocalSwiftPackageReference "Packages/STWelcome_iOS" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/STWelcome_iOS;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		51CCB763AF8CB7952F570E7B /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -664,37 +697,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCLocalSwiftPackageReference section */
-		08705F6633C55E723FDE59B6 /* XCLocalSwiftPackageReference "./Packages/STUserProfiling_iOS" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ./Packages/STUserProfiling_iOS;
-		};
-		10FE6CBA0574C040030F6008 /* XCLocalSwiftPackageReference "./Packages/STDemos_iOS" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ./Packages/STDemos_iOS;
-		};
-		6151626B0F1D73960F445385 /* XCLocalSwiftPackageReference "./Packages/STWelcome_iOS" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ./Packages/STWelcome_iOS;
-		};
-		690EF6C5F6B390F0A10208DB /* XCLocalSwiftPackageReference "./Packages/STUI_iOS" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ./Packages/STUI_iOS;
-		};
-		6F7C4AF6FB23FB8D6D29F2D5 /* XCLocalSwiftPackageReference "./Packages/STCatalog_iOS" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ./Packages/STCatalog_iOS;
-		};
-		7862688FF26013C68857B49D /* XCLocalSwiftPackageReference "./Packages/STBlueSDK_iOS" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ./Packages/STBlueSDK_iOS;
-		};
-		9ACC6E9DDD9EC3894BF3F1A4 /* XCLocalSwiftPackageReference "./Packages/STCore_iOS" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ./Packages/STCore_iOS;
-		};
-/* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		0858F20C2501C10C304B764A /* YouTubeiOSPlayerHelper */ = {

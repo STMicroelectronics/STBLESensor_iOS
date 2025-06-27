@@ -133,7 +133,7 @@ class Uploader: NSObject {
         self.toUpload = toUpload
         self.completion = completion
         
-        if !(node.type == .sensorTileBox || node.type == .sensorTileBoxPro || node.type == .sensorTileBoxProB) {
+        if !(node.type == .sensorTileBox || node.type == .sensorTileBoxPro || node.type == .sensorTileBoxProB || node.type == .sensorTileBoxProC) {
             complete(with: .deviceNotValid)
             return
         }

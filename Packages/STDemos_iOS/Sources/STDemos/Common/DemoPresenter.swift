@@ -49,6 +49,10 @@ public protocol DemoDelegate: AnyObject {
 }
 
 open class DemoPresenter<T: Presentable>: DemoBasePresenter<T, Void> {
+    override open func viewWillDisappear() {
+        super.viewWillDisappear()
+        BlueManager.shared.disableNotifications(for: param.node, features: demoFeatures)
+    }
 }
 
 open class DemoBasePresenter<T: Presentable, M>: BasePresenter<T, DemoParam<M>>, DemoDelegate {

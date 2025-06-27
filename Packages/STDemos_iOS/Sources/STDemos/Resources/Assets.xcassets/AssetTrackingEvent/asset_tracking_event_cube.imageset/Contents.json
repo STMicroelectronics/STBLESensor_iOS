@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "asset_tracking_event_cube.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -22,6 +22,14 @@ public extension BlueManager {
 
     func updateCustomCatalog(with url: URL, completion: @escaping (Catalog?, STError?) -> Void) {
 
+        let isAccessing = url.startAccessingSecurityScopedResource()
+
+        defer {
+            if isAccessing {
+                url.stopAccessingSecurityScopedResource()
+            }
+        }
+        
         guard let data = try? Data(contentsOf: url) else {
             completion(nil, .dataNotValid)
             return

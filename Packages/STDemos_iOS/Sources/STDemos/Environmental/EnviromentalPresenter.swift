@@ -19,7 +19,7 @@ final class EnviromentalPresenter: DemoPresenter<EnviromentalViewController> {
 
 // MARK: - EnviromentalDelegate
 extension EnviromentalPresenter: EnviromentalDelegate {
-
+    
     func load() {
 
         demo = .environmental

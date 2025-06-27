@@ -10,59 +10,45 @@
 //
 
 import Foundation
-import UIKit
+import SwiftUI
 import STUI
 
-public class LegacyView: UIView {
-    
-    public var title = UILabel()
-    public var legacyDescription = UILabel()
-    
-    public let badge = UIImageView()
-    let stackView = UIStackView()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+public struct LegacyView: View {
+    public var body: some View {
         
-        title.text = "Demo is NOT Supported"
-        TextLayout.title.apply(to: title)
-        
-        let appLogo = UIImageView()
-        appLogo.image = ImageLayout.image(with: "stblesensorclassicicon", in: .module)
-        appLogo.setDimensionContraints(width: 100, height: 100)
-        
-        let appName = UILabel()
-        appName.text = "ST BLE Sensor Classic"
-        TextLayout.title2.apply(to: appName)
-        
-        legacyDescription.text = "This demo is not supported. Please download and use the ST BLE Sensor Classic version.\nClick on the badge below."
-        TextLayout.info.apply(to: legacyDescription)
-        legacyDescription.numberOfLines = 0
-        legacyDescription.textAlignment = .center
-        
-        badge.image = ImageLayout.image(with: "appstorebadge", in: .module)
-        badge.contentMode = .center
-        
-        let verticalStackView = UIStackView.getVerticalStackView(withSpacing: 16, views: [
-            title,
-            appLogo,
-            appName,
-            legacyDescription,
-            badge
-        ])
-        verticalStackView.alignment = .center
-        
-        addSubview(stackView, constraints: [
-            equal(\.leadingAnchor, constant: 8),
-            equal(\.trailingAnchor, constant: 8),
-            equal(\.topAnchor, constant: 16),
-            equal(\.bottomAnchor, constant: -16)
-        ])
-        
-        stackView.addArrangedSubview(verticalStackView)
+        VStack(spacing: 16) {
+            Text("Demo is NOT Supported")
+                .font(.stTitle)
+                .foregroundColor(ColorLayout.text.auto.swiftUIColor)
+            
+            Image(.stblesensorclassicicon)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 100, height: 100)
+            
+            Text("ST BLE Sensor Classic")
+                .font(.stTitle2)
+                .foregroundColor(ColorLayout.text.auto.swiftUIColor)
+            
+            Text("This demo is not supported. Please download and use the ST BLE Sensor Classic version.\nClick on the badge below.")
+                .font(.stInfo)
+                .foregroundColor(ColorLayout.text.auto.swiftUIColor)
+                .multilineTextAlignment(.center)
+            
+            Image(.appstorebadge)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 120)
+                .onTapGesture {
+                    if let url = URL(string: "https://apps.apple.com/it/app/st-ble-sensor-classic/id6447749695") {
+                        UIApplication.shared.open(url)
+                    }
+                }
+        }
+        .padding()
     }
+}
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+#Preview {
+    LegacyView()
 }

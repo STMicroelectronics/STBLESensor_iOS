@@ -10,6 +10,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 public struct ImageSize {
     public static var extraSmall: CGSize = CGSize(width: 20, height: 20)
@@ -71,6 +72,17 @@ public struct ImageLayout {
         public static var save: UIImage? { ImageLayout.image(with: "img_save") }
         public static var add: UIImage? { ImageLayout.image(with: "img_add") }
         public static var addRow: UIImage? { ImageLayout.image(with: "img_add_row") }
+        public static var shopping: UIImage? { ImageLayout.image(with: "img_shopping") }
+        public static var wiki: UIImage? { ImageLayout.image(with: "img_wiki") }
+    }
+    
+    public struct SUICommon {
+        public static var delete: Image? { ImageLayout.SUIimage(with: "img_delete") }
+        public static var filter: Image? { ImageLayout.SUIimage(with: "img_filter") }
+        public static var cloudUpload: Image? { ImageLayout.SUIimage(with: "img_cloud_upload") }
+        public static var builcConfig: Image? { ImageLayout.SUIimage(with: "img_build_config") }
+        public static var info: Image? { ImageLayout.SUIimage(with: "img_info") }
+        public static var infoFilled: Image? { ImageLayout.SUIimage(with: "img_info_filled") }
     }
 
     public struct SDKV2 {
@@ -194,4 +206,10 @@ public struct ImageLayout {
         guard let name = name else { return nil }
         return UIImage(named: name, in: bundle, compatibleWith: nil)
     }
+    
+    public static func SUIimage(with name: String?, in bundle: Bundle? = STUI.bundle) -> Image? {
+        guard let name = name else { return nil }
+        return Image(name, bundle: bundle)
+    }
+    
 }

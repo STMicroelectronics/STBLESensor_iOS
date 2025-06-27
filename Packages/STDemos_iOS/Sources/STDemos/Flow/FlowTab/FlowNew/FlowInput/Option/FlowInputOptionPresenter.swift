@@ -224,7 +224,7 @@ extension FlowInputOptionPresenter {
             view.customOdrTextField.keyboardType = .decimalPad
             view.customOdrTextField.addDoneButtonToKeyboard()
             view.customOdrTextField.validators = [
-                MinValueValidator(with: minCustomOdr, errorMessage: "This value is too low")
+                MinValueValidator(with: Int(minCustomOdr), errorMessage: "This value is too low")
             ]
             view.customOdrMinLabel.text = "min value \(minCustomOdr) s"
         } else {

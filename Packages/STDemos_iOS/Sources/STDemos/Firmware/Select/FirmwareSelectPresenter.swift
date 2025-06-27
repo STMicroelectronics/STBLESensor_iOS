@@ -50,7 +50,7 @@ extension FirmwareSelectPresenter: FirmwareSelectDelegate {
             if let typeView = STM32FirmwareTypeView.make(with: STDemos.bundle) as? STM32FirmwareTypeView {
                 let type: BoardFamily = if param.node.type == .nucleoWB0X {
                     .wb09
-                } else if param.node.type == .wba6NucleoBoard {
+                } else if param.node.type == .wba65RiNucleoBoard {
                     .wb6a
                 }  else if param.node.type.family == .wbaFamily {
                     .wba
@@ -145,7 +145,7 @@ private extension FirmwareSelectPresenter {
 
         guard let firmware = param.param?.firmware else { return }
 
-        URLSession.shared.downloadFirmware(firmware) { [weak self] result in
+        URLSession.shared.directDownloadFirmware(firmware) { [weak self] result in
 
             switch result {
             case .success(let url):
@@ -207,6 +207,9 @@ private extension FirmwareSelectPresenter {
                                 Logger.debug(text: "[Firmware upgrade] Fail with error: \(error.localizedDescription)")
                                 if self?.view.presentingViewController != nil {
                                     self?.view.dismiss(animated: true)
+                                    if let node = self?.param.node {
+                                        BlueManager.shared.disconnect(node)
+                                    }
                                 } else {
                                     self?.view.navigationController?.popToRootViewController(animated: true)
                                 }
@@ -216,6 +219,9 @@ private extension FirmwareSelectPresenter {
                             Logger.debug(text: "[Firmware upgrade] Complete with success")
                             if self?.view.presentingViewController != nil {
                                 self?.view.dismiss(animated: true)
+                                if let node = self?.param.node {
+                                    BlueManager.shared.disconnect(node)
+                                }
                             } else {
                                 self?.view.navigationController?.popToRootViewController(animated: true)
                             }

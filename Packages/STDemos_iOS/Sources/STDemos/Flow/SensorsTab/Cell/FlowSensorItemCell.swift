@@ -16,6 +16,7 @@ public class FlowSensorItemCell: BaseTableViewCell {
     let containerView = UIView()
 
     let flowSensorIcon = UIImageView()
+    let flowNotMountedLabel = UILabel()
     let flowSensorName = UILabel()
     let flowSensorDetailedName = UILabel()
     let flowSensorDisclosureIcon = UIImageView()
@@ -26,9 +27,14 @@ public class FlowSensorItemCell: BaseTableViewCell {
         contentView.addSubview(containerView)
         containerView.addFitToSuperviewConstraints(top: 10.0, leading: 20.0, bottom: 10.0, trailing: 20.0)
 
-        flowSensorIcon.setDimensionContraints(width: 40.0, height: 40.0)
-        flowSensorDisclosureIcon.setDimensionContraints(width: 40.0, height: 40.0)
+        flowSensorIcon.setDimensionContraints(width: 40.0, height: 100.0)
+        flowSensorDisclosureIcon.setDimensionContraints(width: 40.0, height: 100.0)
 
+        flowNotMountedLabel.text = "Not Mounted"
+        TextLayout.infoColored(ColorLayout.ochreAccent.auto).apply(to: flowNotMountedLabel)
+        flowNotMountedLabel.isHidden = true
+        
+        flowNotMountedLabel.numberOfLines = 0
         flowSensorName.numberOfLines = 0
         flowSensorDetailedName.numberOfLines = 0
         
@@ -36,6 +42,7 @@ public class FlowSensorItemCell: BaseTableViewCell {
             withSpacing: 4.0,
             views: [
                 UIView(),
+                flowNotMountedLabel,
                 flowSensorName,
                 flowSensorDetailedName,
                 UIView()
@@ -65,6 +72,11 @@ public class FlowSensorItemCell: BaseTableViewCell {
             self.containerView.layer.cornerRadius = 8.0
             self.containerView.backgroundColor = .white
             containerView.applyShadow()
+    }
+    
+    override public func prepareForReuse() {
+        super.prepareForReuse()
+        self.flowNotMountedLabel.isHidden = true
     }
     
     required init?(coder: NSCoder) {

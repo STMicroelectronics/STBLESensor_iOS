@@ -20,11 +20,17 @@ final class PlotPresenter: DemoPresenter<PlotViewController> {
     var plotStatus: PlotStatus = .idle
     
     let DefaultDisplayWindowTimeSecond = UInt64(5)
+    
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
+        if let feature = view.selectedFeature {
+            BlueManager.shared.disableNotifications(for: param.node, feature: feature)
+        }
+    }
 }
 
 // MARK: - PlotViewControllerDelegate
 extension PlotPresenter: PlotDelegate {
-    
 
     func load() {
         demo = .plot

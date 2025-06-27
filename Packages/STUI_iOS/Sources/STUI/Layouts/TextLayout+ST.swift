@@ -154,4 +154,15 @@ public extension TextLayout {
                           numberOfLines: 0,
                           font: FontLayout.bold).size(13.0).weight(.bold)
     }
+    
+    static func infoColored(_ definedColor: UIColor) -> TextLayout {
+        return TextLayout(color: definedColor,
+                          backgroundColor: nil,
+                          cornerRadius: nil,
+                          borderColor: nil,
+                          borderWith: nil,
+                          alignment: .left,
+                          numberOfLines: 0,
+                          font: FontLayout.regular).size(13.0).weight(.light)
+    }
 }

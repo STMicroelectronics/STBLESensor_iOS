@@ -102,8 +102,9 @@ public enum FeatureType: Equatable {
             // the 0x25 is reserved for ISPUControlFeature
             static let medicalSignal16Bit: UInt32 = 0x00000026
             static let medicalSignal24Bit: UInt32 = 0x00000027
-            static let navigationControl: UInt32 = 0x00000028
+            static let RoboticsMovement: UInt32 = 0x00000028
             static let sceneDescription: UInt32 = 0x00000029
+            static let assetTrackingEvent: UInt32 = 0x00000030
         }
         
         internal struct External {
@@ -239,8 +240,9 @@ public enum FeatureType: Equatable {
         //ISPU
         .extended(identifier: Mask.Extended.medicalSignal16Bit),
         .extended(identifier: Mask.Extended.medicalSignal24Bit),
-        extended(identifier: Mask.Extended.navigationControl),
-        extended(identifier: Mask.Extended.sceneDescription)
+        extended(identifier: Mask.Extended.RoboticsMovement),
+        extended(identifier: Mask.Extended.sceneDescription),
+        extended(identifier: Mask.Extended.assetTrackingEvent)
     ]
     
     internal static let externalTypes: [FeatureType] = [
@@ -405,8 +407,9 @@ public extension FeatureType {
             //ISPU
             case Mask.Extended.medicalSignal16Bit: return (identifier, MedicalSignal16BitFeature.self)
             case Mask.Extended.medicalSignal24Bit: return (identifier, MedicalSignal24BitFeature.self)
-            case Mask.Extended.navigationControl: return (identifier, NavigationControlFeature.self)
+            case Mask.Extended.RoboticsMovement: return (identifier, RoboticsMovementFeature.self)
             case Mask.Extended.sceneDescription: return (identifier, SceneDescriptionFeature.self)
+            case Mask.Extended.assetTrackingEvent: return (identifier, AssetTrackingEventFeature.self)
             default:
                 return (identifier, UnkownFeature.self)
             }

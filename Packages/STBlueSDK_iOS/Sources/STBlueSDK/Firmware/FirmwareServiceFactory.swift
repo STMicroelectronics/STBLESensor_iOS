@@ -124,6 +124,7 @@ public struct FirmwareServiceFactory {
                 .stEvalSTWINKT1B,
                 .sensorTileBoxPro,
                 .sensorTileBoxProB,
+                .sensorTileBoxProC,
                 .bL475eIot01A:
                 //.proteus:
             return DebugConsoleFirmwareService(nodeService: nodeService,

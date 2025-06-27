@@ -20,8 +20,8 @@ public class BoardViewModel: BaseCellViewModel<Board, BoardCell> {
         TextLayout.title.size(19.0).apply(to: view.nodeTextLabel)
         TextLayout.info.size(16.0).apply(to: view.nodeDetailTextLabel)
         TextLayout.infoBold.apply(to: view.nodeStatusLabel)
-        TextLayout.infoBold.apply(to: view.nodeVariantLabel)
-        TextLayout.info.apply(to: view.nodeReleaseDateLabel)
+//        TextLayout.infoBold.apply(to: view.nodeVariantLabel)
+//        TextLayout.info.apply(to: view.nodeReleaseDateLabel)
         TextLayout.info.apply(to: view.nodeExtraTextLabel)
 
         guard let param = param else { return }
@@ -40,18 +40,18 @@ public class BoardViewModel: BaseCellViewModel<Board, BoardCell> {
             view.nodeStatusLabel.textAlignment = .right
         }
         
-        view.nodeReleaseDateLabel.isHidden = true
-        view.nodeVariantView.isHidden = true
+//        view.nodeReleaseDateLabel.isHidden = true
+//        view.nodeVariantView.isHidden = true
         
-        if let variant = param.variant {
-            view.nodeVariantView.isHidden = false
-            view.nodeVariantLabel.text = variant
-        }
+//        if let variant = param.variant {
+//            view.nodeVariantView.isHidden = false
+//            view.nodeVariantLabel.text = variant
+//        }
         
-        if let releaseDate = param.releaseDate {
-            view.nodeReleaseDateLabel.isHidden = false
-            view.nodeReleaseDateLabel.text = releaseDate.replacingOccurrences(of: "_", with: "/")
-        }
+//        if let releaseDate = param.releaseDate {
+//            view.nodeReleaseDateLabel.isHidden = false
+//            view.nodeReleaseDateLabel.text = releaseDate.replacingOccurrences(of: "_", with: "/")
+//        }
 
         view.nodeImageView.contentMode = .scaleAspectFit
         view.nodeImageView.image = param.image

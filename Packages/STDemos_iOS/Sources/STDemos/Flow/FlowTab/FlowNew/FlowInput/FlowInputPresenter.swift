@@ -13,6 +13,7 @@ import UIKit
 import STUI
 import STBlueSDK
 import Toast
+import STCore
 
 final class FlowInputPresenter: BasePresenter<FlowInputViewController, FlowAndNodeParam> {
     var director: TableDirector?
@@ -33,6 +34,7 @@ extension FlowInputPresenter: FlowInputDelegate {
         view.configureView()
         
         loadAvailableInputs()
+        let externalSensors = loadMountedExternalSensors()
         
         if director == nil {
             director = TableDirector(with: view.tableView)
@@ -54,6 +56,34 @@ extension FlowInputPresenter: FlowInputDelegate {
                 director?.elements.append(ContainerCellViewModel(childViewModel: inputSensorsLabelViewModel, layout: Layout.standard))
                 
                 director?.elements.append(contentsOf: sensors.map({ sensor in
+                    FlowInputViewModel(param: sensor, isSelected: checkedElements.contains(sensor), completionHandler: { element in
+                        if element.isChedked {
+                            self.selectedItems.append(element.checkable)
+                        } else {
+                            self.selectedItems.removeAll {
+                                if let selectedItem = $0 as? Sensor,
+                                   let currentItem = element.checkable as? Sensor {
+                                    return selectedItem == currentItem
+                                }else{
+                                    return $0.identifier == element.checkable.identifier
+                                }
+                            }
+                        }
+                    })
+                }))
+            }
+            
+            let inputExternalSensorsLabelViewModel = LabelViewModel(
+                param: CodeValue<String>(value: externalSensors.isEmpty ? "No supported adapter detected." : "Expansion DIL24"),
+                layout: Layout.title2
+            )
+            director?.elements.append(ContainerCellViewModel(childViewModel: inputExternalSensorsLabelViewModel, layout: Layout.standard))
+            
+            if !externalSensors.isEmpty {
+                let checkedElements = Array(Set(externalSensors).intersection(param.flow.sensors))
+                selectedItems.append(contentsOf: checkedElements)
+                
+                director?.elements.append(contentsOf: externalSensors.map({ sensor in
                     FlowInputViewModel(param: sensor, isSelected: checkedElements.contains(sensor), completionHandler: { element in
                         if element.isChedked {
                             self.selectedItems.append(element.checkable)
@@ -172,5 +202,20 @@ extension FlowInputPresenter: FlowInputDelegate {
         }
 
         logicFlows = PersistanceService.shared.getLogicAsInputFlows(runningNode: param.node)
+    }
+    
+    private func loadMountedExternalSensors() -> [Sensor] {
+        var mountedExpansionSensors: [Sensor] = []
+        
+        if let catalogService: CatalogService = Resolver.shared.resolve() {
+            catalogService.catalog?.sensorAdapters?.forEach { adapter in
+                let flowSensorItem = fromSensorAdapterToSensor(adapter)
+                if isDIL24Mounted(searchForMountedDIL24(node: param.node), flowSensorItem) {
+                    mountedExpansionSensors.append(flowSensorItem)
+                }
+            }
+        }
+        
+        return mountedExpansionSensors
     }
 }

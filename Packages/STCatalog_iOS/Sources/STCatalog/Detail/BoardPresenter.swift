@@ -94,16 +94,21 @@ extension BoardPresenter: BoardDelegate {
             director?.elements.append(YoutubeViewModel(param: param.board))
         }
         
-        if param.board.url == nil {
-            view.bottomView?.isUserInteractionEnabled = false
-            view.bottomView?.layer.opacity = 0.4
-        }
+//        if param.board.url == nil {
+//            view.
+//            view.bottomView?.isUserInteractionEnabled = false
+//            view.bottomView?.layer.opacity = 0.4
+//        }
         
         director?.reloadData()
     }
     
     func showDetail() {
         view.open(url: param.board.url ?? "https://www.st.com/")
+    }
+    
+    func showWiki() {
+        view.open(url: param.board.wikiUrl ?? "https://www.st.com/")
     }
     
 }

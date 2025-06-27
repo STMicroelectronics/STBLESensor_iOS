@@ -250,6 +250,19 @@ public extension Buttonlayout {
                             font: FontLayout.regular)
     }
     
+    static func standardWithColorAndImage(textColor: UIColor?, buttonColor: UIColor?, image: UIImage?) -> Buttonlayout {
+        return Buttonlayout(color: textColor ?? ColorLayout.primary.auto,
+                            selectedColor: nil,
+                            backgroundColor: buttonColor ?? ColorLayout.primary.auto,
+                            selectedBackgroundColor: nil,
+                            selectedImage: nil,
+                            image: image,
+                            cornerRadius: 4.0,
+                            borderColor: nil,
+                            borderWith: nil,
+                            font: FontLayout.regular)
+    }
+    
     static func imageCleared(image: UIImage?) -> Buttonlayout {
         return Buttonlayout(color: .clear,
                             selectedColor: .clear,

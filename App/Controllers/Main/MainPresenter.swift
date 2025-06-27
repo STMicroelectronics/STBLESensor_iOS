@@ -32,6 +32,8 @@ extension MainPresenter: TabBarDelegate {
         view.mainView.childContainerView.addSubview(controller.view, constraints: UIView.fitToSuperViewConstraints)
 
         requestAppTrackingTransparencyPermission()
+        
+        showPinForNode()
     }
 
     func requestAppTrackingTransparencyPermission() {
@@ -55,6 +57,27 @@ extension MainPresenter: TabBarDelegate {
                     print("Unknown")
                 }
             }
+        }
+    }
+
+    func showPinForNode() {
+        guard let store: GenericBleNodePinService = Resolver.shared.resolve() else { return }
+
+        let dialogTitle = "DEFAULT PIN"
+        let dialogMessage =
+        """
+        The default PIN to establish a Bluetooth connection with the STMicroelectronics evaluation board is 123456.
+
+        By clicking the 'OK' button, you confirm that you have read and understood this information.
+        """
+
+        if !store.isDialogShowed() {
+            Alert.show(title: dialogTitle,
+                       message: dialogMessage,
+                       from: self.view, completion: { _ in
+                store.setDialogShowed()
+                print("CLICCATO OK")
+            })
         }
     }
 }

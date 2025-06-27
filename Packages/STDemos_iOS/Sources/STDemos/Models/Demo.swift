@@ -15,61 +15,62 @@ import STUI
 import STCore
 
 public enum Demo: String, CaseIterable, Codable {
+    case flow
+    case beamforming
     case environmental
-    case plot
-    case fft
+    case level
+    case fitnessActivity
+    case compass
+    case highSpeedDataLog2
+    case blueVoice
+    case gestureNavigation
     case neaiAnomalyDetection
     case neaiClassification
     case neaiExtrapolation
-    case predictiveMaintenance
-    case highSpeedDataLog
-    case highSpeedDataLog2
-    case pnpLike
-    case extendedConfiguration
-    case switchDemo
-    case ledControl
-    case heartRate
-    case blueVoice
-    case beamforming
-    case audioSourceLocalization
-    case speechToText
-    case audioClassification
-    case activityRecognition
-    case multiNN
-    case machineLearningCore
-    case finiteStateMachine
-    case stredl
-    case flow
     case eventCounter
-    case gestureNavigation
-    case jsonNfc
     case piano
-    case pedometer
-    case level
-    case compass
-    case memsSensorFusion
+    case pnpLike
+    case plot
+    case jsonNfc
+    case binaryContent
+    case extendedConfiguration
+    case tofMultiObject
+    case colorAmbientLight
+    case gnss
+//    case qvar
+    case motionIntensity
+    case activityRecognition
+    case carryPosition
     case memsGesture
     case motionAlgorithm
-    case carryPosition
-    case motionIntensity
-    case fitnessActivity
-    case accelerationEvent
-    case gnss
-    case colorAmbientLight
-    case tofMultiObject
+    case pedometer
     case proximity
-//    case qvar
-    case textual
-    case cloudAzureIotCentral
-    case cloudMqtt
+    case switchDemo
+    case finiteStateMachine
+    case machineLearningCore
+    case stredl
+    case accelerationEvent
+    case audioSourceLocalization
+    case audioClassification
+    case ledControl
     case battery
-    case coSensor
+    case textual
+    case heartRate
+    case memsSensorFusion
+    case predictiveMaintenance
+    case fft
+    case multiNN
+    case highSpeedDataLog
     case sdLogging
+    case coSensor
     case aiLogging
+    case assetTrackingEvent
+    case speechToText
     case rawPnPLControlled
     case smartMotorControl
+    case cloudAzureIotCentral
+    case cloudMqtt
     case medicalSignal
-    case binaryContent
     case wbsOtaFuota
 }
 
@@ -128,6 +129,7 @@ public extension Demo {
         .coSensor: "CO Sensor",
         .sdLogging: "SD Logging",
         .aiLogging: "AI Logging",
+        .assetTrackingEvent: "Asset Tracking Event",
         .rawPnPLControlled: "Raw PnPL Controlled",
         .smartMotorControl: "Smart Motor Control",
         .medicalSignal: "Medical Signals",
@@ -249,6 +251,8 @@ public extension Demo {
             return "Configure and control a simple sensors data log"
         case .aiLogging:
             return "Configure, control and tag a simple sensors data log"
+        case .assetTrackingEvent:
+            return "Show asset tracking detected events, such as Fall or Shock Events"
         case .rawPnPLControlled:
             return "Raw Feature controlled using PnP-Like messages defined by a DTDL-Model"
         case .medicalSignal:
@@ -364,6 +368,8 @@ public extension Demo {
             return ImageLayout.image(with: "demo_multiple_log", in: STUI.bundle)
         case .aiLogging:
             return ImageLayout.image(with: "demo_multiple_log", in: STUI.bundle)
+        case .assetTrackingEvent:
+            return ImageLayout.image(with: "demo_asset_tracking_event", in: STUI.bundle)
         case .rawPnPLControlled:
             return ImageLayout.image(with: "demo_raw_pnpl", in: STUI.bundle)
         case .medicalSignal:
@@ -481,6 +487,8 @@ public extension Demo {
             return [ .log ]
         case .aiLogging:
             return [ .log, .ai ]
+        case .assetTrackingEvent:
+            return [ .inertialSensors ]
         case .rawPnPLControlled:
             return [ .control ]
         case .medicalSignal:
@@ -678,6 +686,8 @@ public extension Demo {
             return [ COSensorFeature.self ]
         case .aiLogging:
             return [ AILoggingFeature.self ]
+        case .assetTrackingEvent:
+            return [ AssetTrackingEventFeature.self ]
         case .medicalSignal:
             return [ MedicalSignal16BitFeature.self,
                      MedicalSignal24BitFeature.self]
@@ -798,6 +808,7 @@ public extension Demo {
         case .cloudAzureIotCentral:
             return LegacyPresenter(param: DemoParam<String>(node: node, param: "Cloud Azure IoT Central"))
         case .cloudMqtt:
+//            return LegacyPresenter(param: DemoParam<String>(node: node, param: "Cloud MQTT"))
             return LegacyPresenter(param: DemoParam<String>(node: node, param: "Cloud MQTT"))
         case .battery:
             return BatteryPresenter(rssi: param as? Int ?? 0, param: DemoParam<Void>(node: node))
@@ -807,6 +818,8 @@ public extension Demo {
             return LegacyPresenter(param: DemoParam<String>(node: node, param: "SD Logging"))
         case .aiLogging:
             return LegacyPresenter(param: DemoParam<String>(node: node, param: "AI Logging"))
+        case .assetTrackingEvent:
+            return AssetTrackingEventPresenter(param: DemoParam<Void>(node: node, showTabBar: false))
         case .speechToText:
             return LegacyPresenter(param: DemoParam<String>(node: node, param: "Speech To Text"))
         case .rawPnPLControlled:
@@ -896,7 +909,7 @@ public extension Demo {
             if demo.couldBeEnableOutside {
                 
                 if demo == .wbsOtaFuota {
-                    if node.type.family == .wbFamily || node.type == .nucleoWB0X || node.type == .wba6NucleoBoard {
+                    if node.type.family == .wbFamily || node.type == .nucleoWB0X || node.type == .wba65RiNucleoBoard || node.type.family == .wbaFamily {
                         isDemoAvailable = true
                     }
                 } 

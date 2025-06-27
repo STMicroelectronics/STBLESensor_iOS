@@ -20,7 +20,7 @@ final class ActivityRecognitionPresenter: DemoPresenter<ActivityRecognitionViewC
 
 // MARK: - ActivityRecognitionViewControllerDelegate
 extension ActivityRecognitionPresenter: ActivityRecognitionDelegate {
-
+    
     func load() {
         
         demo = .activityRecognition

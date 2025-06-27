@@ -11,8 +11,8 @@
 
 import Foundation
 
-struct PowerMode {
-    enum Mode: String, Codable {
+public struct PowerMode {
+    public enum Mode: String, Codable {
         case none = "NONE"
         case lowNoise = "LOW_NOISE"
         case lowCurrent = "LOW_CURRENT"
@@ -53,7 +53,7 @@ struct PowerMode {
     let mode: Mode
     let label: String
     let odrs: [Double]
-    let minCustomOdr: Int?
+    let minCustomOdr: Double?
 }
 
 extension PowerMode: Codable {

@@ -92,16 +92,17 @@ extension FlowMainPresenter: TabBarDelegate {
                         type: .standard,
                         param: DemoParam<[PnpLContent]>(
                             node: param.node,
+                            showTabBar: true,
                             param: dtmi.contents)
                     )
                     controlController = controlTabPresenter.start()
                     
-                    flowController.stTabBarView?.add(TabBarItem(with: "Control",
+                    hasControlTab = true
+                    
+                    flowController.stTabBarView?.add(TabBarItem(with: searchForLoadedApp(node: param.node) ?? "Control",
                                                                 image: ImageLayout.image(with: "demo_pnpl", in: STUI.bundle)?.maskWithColor(color: ColorLayout.systemWhite.light),
                                                                 callback: { [weak self] _ in
                         guard let self else { return }
-                        
-                        hasControlTab = true
                         
                         if self.currentController === self.controlController {
                             return

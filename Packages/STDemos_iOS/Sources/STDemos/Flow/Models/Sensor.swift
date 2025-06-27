@@ -11,25 +11,26 @@
 
 import UIKit
 import STUI
+import STBlueSDK
 
 public final class Sensor: Checkable {
-    var identifier: String
-    var boardCompatibility: [String]?
-    var descr: String
-    var icon: String
-    var model: String
-    var output: String
-    var outputs: [String]?
-    var uom: String?
-    var datasheetLink: String?
-    var notes: String?
-    var dataType: String
-    var powerMode: [PowerMode]?
-    var configuration: Configuration?
-    var acquisitionTime: Int?
-    var fullScales: [Int]?
-    var fullScaleUm:String?
-    var bleMaxOdr: Double?
+    public var identifier: String
+    public var boardCompatibility: [String]?
+    public var descr: String
+    public var icon: String
+    public var model: String
+    public var output: String
+    public var outputs: [String]?
+    public var uom: String?
+    public var datasheetLink: String?
+    public var notes: String?
+    public var dataType: String
+    public var powerMode: [PowerMode]?
+    public var configuration: Configuration?
+    public var acquisitionTime: Int?
+    public var fullScales: [Int]?
+    public var fullScaleUm:String?
+    public var bleMaxOdr: Double?
 
     public init(with identifier: String, descr: String, icon: String, model: String, output: String, dataType: String) {
         self.identifier = identifier
@@ -244,60 +245,40 @@ struct FakeCheckable: Checkable {
     var identifier = ""
     var descr = ""
 }
-//
-//
-//// MARK: - SensorAdapterElement
-//public struct Sensor: Codable {
-//    let uniqueID: Int
-//    let id, description, icon, model: String
-//    let boardCompatibility: [BoardCompatibility]
-//    let output: String
-//    let outputs: [Output]
-//    let um: String
-//    let datasheetLink: String
-//    let notes: String?
-//    let dataType: String
-//    let powerModes: [PowerModeElement]?
-//    let acquisitionTime: Int?
-//    let configuration: Configuration?
-//    let fullScaleUm: String?
-//    let fullScales: [Int]?
-//    let bleMaxOdr: Int?
-//
-//    enum CodingKeys: String, CodingKey {
-//        case uniqueID = "unique_id"
-//        case id, description, icon, model
-//        case boardCompatibility = "board_compatibility"
-//        case output, outputs, um, datasheetLink, notes, dataType, powerModes, acquisitionTime, configuration, fullScaleUm, fullScales, bleMaxOdr
-//    }
-//}
-//
-//enum BoardCompatibility: String, Codable {
-//    case sensorTileBoxPro = "SENSOR_TILE_BOX_PRO"
-//    case sensorTileBoxProb = "SENSOR_TILE_BOX_PROB"
-//}
-//
-//// MARK: - Configuration
-//struct Configuration: Codable {
-//    let powerMode: PowerModeEnum?
-//    let odr, acquisitionTime, fullScale: Int?
-//    let regConfig, mlcLabels, ucfFilename: String?
-//}
-//
-//enum PowerModeEnum: String, Codable {
-//    case lowPower = "LOW_POWER"
-//    case none = "NONE"
-//}
-//
-//enum Output: String, Codable {
-//    case o1 = "O1"
-//    case o2 = "O2"
-//    case o3 = "O3"
-//}
-//
-//// MARK: - PowerModeElement
-//struct PowerModeElement: Codable {
-//    let mode, label: String
-//    let odrs: [Double]
-//    let minCustomOdr: Double?
-//}
+
+public func fromSensorAdapterToSensor(_ adapter: SensorAdapterElement) -> Sensor {
+    var powerModes: [PowerMode] = []
+
+    adapter.powerModes?.forEach { adapterPowerMode in
+        powerModes.append(fromSensorAdapterPowerModeToPowerMode(adapterPowerMode))
+    }
+ 
+    let sensor = Sensor(with: adapter.id, descr: adapter.description, icon: adapter.icon, model: adapter.model, output: adapter.output, dataType: adapter.dataType)
+    
+    sensor.boardCompatibility = adapter.boardCompatibility
+    sensor.outputs = adapter.outputs
+    sensor.uom = adapter.um
+    sensor.datasheetLink = adapter.datasheetLink
+    sensor.notes = adapter.notes
+    sensor.powerMode = powerModes
+    sensor.configuration = fromSensorAdapterConfigurationToConfiguration(adapter.configuration)
+    sensor.acquisitionTime = adapter.acquisitionTime
+    sensor.fullScales = adapter.fullScales
+    sensor.fullScaleUm = adapter.fullScaleUm
+    sensor.bleMaxOdr = adapter.bleMaxOdr
+    
+    return sensor
+}
+
+public func fromSensorAdapterPowerModeToPowerMode(_ adapter: SensorAdapterPowerMode) -> PowerMode {
+    return PowerMode(mode: PowerMode.Mode(rawValue: adapter.mode) ?? PowerMode.Mode.none, label: adapter.label, odrs: adapter.odrs, minCustomOdr: adapter.minCustomOdr)
+}
+
+public func fromSensorAdapterConfigurationToConfiguration(_ adapter: SensorAdapterConfiguration?) -> Configuration? {
+    if let adapter = adapter {
+        return Configuration(time: adapter.acquisitionTime, powerMode: PowerMode.Mode(rawValue: adapter.powerMode ?? PowerMode.Mode.none.rawValue), odr: adapter.odr, fullScale: adapter.fullScale, regConfig: adapter.regConfig, ucfFilename: adapter.ucfFilename, mlcLabels: adapter.mlcLabels)
+    } else {
+        return nil
+    }
+    
+}

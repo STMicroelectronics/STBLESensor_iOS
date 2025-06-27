@@ -119,6 +119,10 @@ extension AdvertiseParser {
                 return .sensorTileBoxProB
             case 0x12:
                 return .stWinBoxB
+            case 0x13:
+                return .sensorTileBoxProC
+            case 0xC3:
+                return .robKit1
             case 0x80:
                 return .nucleo
             case 0x7F:
@@ -136,13 +140,23 @@ extension AdvertiseParser {
             case 0x8D:
                 return .nucleoWB0X
             case 0x8E:
-                return .wba6NucleoBoard
+                return .wba65RiNucleoBoard
+            case 0x8F:
+                return .wb05NucleoBoard
+            case 0x90:
+                return .wba2NucleoBoard
+            case 0x91:
+                return .wba5mWpanBoard
+            case 0x92:
+                return .stm32wba65iDk1Board
+            case 0x9A:
+                return .stm67w61MNucleoBoard
             case 0x86:
                 return .wbOtaBoard
             case 0x81...0x8A:
                 return .wb55NucleoBoard
             case 0x8B...0x8C:
-                return .wba5xNucleoBoard
+                return .wba55CGNucleoBoard
             default:
                 return .generic
             }
@@ -187,6 +201,10 @@ extension AdvertiseParser {
                 return .sensorTileBoxProB
             case 0x12:
                 return .stWinBoxB
+            case 0x13:
+                return .sensorTileBoxProC
+            case 0xC3:
+                return .robKit1
             case 0x80:
                 return .nucleo
             case 0x7F:
@@ -201,30 +219,42 @@ extension AdvertiseParser {
                 return .nucleoU575ZIQ
             case 0x7A:
                 return .nucleoU5A5ZJQ
-            case 0x8D:
-                return .nucleoWB0X
-            case 0x8E:
-                return .wba6NucleoBoard
                 
             //WB boards range 0x81->0x86
             case 0x81:
                 return .wb55NucleoBoard
             case 0x82:
-                return .WB5mDiscoveryBoard
+                return .stm32wb5mmDkBoard
             case 0x83:
                 return .wb55UsbDoungleBoard
             case 0x84:
-                return .wb15NucleoBoard
+                return .wb15CCNucleoBoard
             case 0x85:
-                return .wb1mDiscoveryBoard
+                return .wb1mWpan1Board
             case 0x86:
                 return .wbOtaBoard
                 
            //WBA boards  range 0x8B -> 0x8C
             case 0x8B:
-                return .wba5xNucleoBoard
+                return .wba55CGNucleoBoard
             case 0x8C:
-                return .wbaDiscoveryBoard
+                return .stm32Wba55gDk1Board
+            case 0x8D:
+                return .nucleoWB0X
+            case 0x8E:
+                return .wba65RiNucleoBoard
+            case 0x8F:
+                return .wb05NucleoBoard
+                
+            case 0x90:
+                return .wba2NucleoBoard
+            case 0x91:
+                return .wba5mWpanBoard
+            case 0x92:
+                return .stm32wba65iDk1Board
+            case 0x9A:
+                return .stm67w61MNucleoBoard
+                
             default:
                 return .generic
             }

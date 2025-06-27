@@ -92,4 +92,38 @@ public extension Node {
 
         return enumMessages.joined(separator: " ")
     }
+    
+    func getOptionBytesMessagesForBoxProFlow(with firmware: Firmware) -> [String]? {
+
+        var enumMessages = [String]()
+
+        let optBytesUnsigned = withUnsafeBytes(of: advertiseInfo.featureMap.bigEndian, Array.init)
+        let offsetForFirstOptByte: Int = advertiseInfo.offsetForFirstOptByte
+
+        guard let optionBytes = firmware.optionBytes else { return nil }
+
+        for i in 0..<optionBytes.count {
+
+            let currentOptionByte = optionBytes[i]
+
+            if currentOptionByte.format == "enum_string",
+                      let optByteStringValues = currentOptionByte.stringValues {
+
+                if let element = optByteStringValues.first(where: { current in
+                    if let value = current.value {
+                        return value == optBytesUnsigned[i + 1 + offsetForFirstOptByte]
+                    }
+
+                    return false
+                }),
+                   let displayName = element.displayName {
+                    enumMessages.append(displayName)
+                } else {
+                    enumMessages.append("")
+                }
+            }
+        }
+
+        return enumMessages
+    }
 }

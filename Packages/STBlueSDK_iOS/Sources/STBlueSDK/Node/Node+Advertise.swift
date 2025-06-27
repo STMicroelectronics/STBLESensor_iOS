@@ -62,11 +62,11 @@ public extension Node {
     }
 
     var isMLCSupportedKey: String {
-        return type == NodeType.sensorTileBoxPro || type == NodeType.sensorTileBoxProB ? "lsm6dsv16x_mlc" : "ism330dhcx_mlc"
+        return type == NodeType.sensorTileBoxPro || type == NodeType.sensorTileBoxProB || type == NodeType.sensorTileBoxProC ? "lsm6dsv16x_mlc" : "ism330dhcx_mlc"
     }
 
     var mlcSensorName: String {
-        return type == NodeType.sensorTileBoxPro || type == NodeType.sensorTileBoxProB ? "lsm6dsv16x" : "ism330dhcx"
+        return type == NodeType.sensorTileBoxPro || type == NodeType.sensorTileBoxProB || type == NodeType.sensorTileBoxPro ? "lsm6dsv16x" : "ism330dhcx"
     }
 
     var maxPnplMtu: Int {

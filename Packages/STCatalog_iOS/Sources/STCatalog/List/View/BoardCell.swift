@@ -18,10 +18,10 @@ public class BoardCell: BaseTableViewCell {
 
     let nodeImageView = UIImageView()
     let nodeTextLabel = UILabel()
-    var nodeVariantView = UIView()
-    let nodeVariantLabel = UILabel()
+//    var nodeVariantView = UIView()
+//    let nodeVariantLabel = UILabel()
     let nodeDetailTextLabel = UILabel()
-    let nodeReleaseDateLabel = UILabel()
+//    let nodeReleaseDateLabel = UILabel()
     let nodeExtraTextLabel = UILabel()
     let nodeStatusLabel = UILabel()
 
@@ -33,14 +33,14 @@ public class BoardCell: BaseTableViewCell {
 
         nodeImageView.setDimensionContraints(width: 80.0, height: 220.0)
         
-        nodeVariantView = nodeVariantLabel.embedInView(with: .standard)
+//        nodeVariantView = nodeVariantLabel.embedInView(with: .standard)
 
         let stackView = UIStackView.getVerticalStackView(withSpacing: 8,
                                                          views: [
                                                             nodeTextLabel.embedInView(with: .standard.top(10.0)),
-                                                            nodeVariantView,
+//                                                            nodeVariantView,
                                                             nodeDetailTextLabel.embedInView(with: .standard),
-                                                            nodeReleaseDateLabel.embedInView(with: .standard),
+//                                                            nodeReleaseDateLabel.embedInView(with: .standard),
                                                             nodeExtraTextLabel.embedInView(with: .standard),
                                                             UIView(),
                                                             nodeStatusLabel.embedInView(with: .standard)

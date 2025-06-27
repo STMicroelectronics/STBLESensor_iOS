@@ -16,5 +16,7 @@ protocol BoardDelegate: AnyObject {
     func load()
 
     func showDetail()
+    
+    func showWiki()
 
 }

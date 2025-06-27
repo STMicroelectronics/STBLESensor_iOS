@@ -35,7 +35,7 @@ final class MEMSSensorFusionPresenter: DemoPresenter<MEMSSensorFusionViewControl
 
 // MARK: - MEMSSensorFusionViewControllerDelegate
 extension MEMSSensorFusionPresenter: MEMSSensorFusionDelegate {
-
+    
     func load() {
         demo = .memsSensorFusion
 
@@ -59,8 +59,7 @@ extension MEMSSensorFusionPresenter: MEMSSensorFusionDelegate {
     
     func startCalibration() {
         if let feature = param.node.characteristics.features(with: Demo.memsSensorFusion.features).first {
-            demoFeatures.append(feature)
-
+//            demoFeatures.append(feature)
             BlueManager.shared.sendCommand(
                 FeatureCommand(
                     type: AutoConfigurationCommand.start,

@@ -34,7 +34,7 @@ final class ActivityRecognitionViewController: DemoNodeViewController<ActivityRe
 
         presenter.load()
     }
-
+    
     override func configureView() {
         super.configureView()
         

@@ -10,6 +10,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 public protocol Colorable {
     
@@ -57,4 +58,10 @@ public struct ColorLayout: Colorable {
         self.dark = UIColor(hex: dark)
     }
     
+}
+
+extension UIColor {
+    public var swiftUIColor: Color {
+        Color(uiColor: self)
+    }
 }

@@ -191,7 +191,7 @@ extension MEMSSensorFusionViewController {
 extension MEMSSensorFusionViewController {
     private func getDialogMessage(baseOnNode node: NodeType) -> String {
         switch node {
-        case .nucleo,.blueCoin,.sensorTile,.sensorTileBox, .sensorTileBoxPro, .sensorTileBoxProB:
+        case .nucleo,.blueCoin,.sensorTile,.sensorTileBox, .sensorTileBoxPro, .sensorTileBoxProB, .sensorTileBoxProC:
             return "Keep the board as shown in the image"
         default:
             return "Keep the board horizontaly"

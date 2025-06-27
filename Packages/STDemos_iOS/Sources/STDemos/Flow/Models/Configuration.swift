@@ -42,9 +42,9 @@ extension FilterConfiguration {
     }
 }
 
-struct Configuration {
+public struct Configuration {
     
-    private var time: Int?
+    public var time: Int?
     
     var acquisitionTime: Int? {
         get {
@@ -54,14 +54,14 @@ struct Configuration {
             time = (newValue ?? 0) * 60
         }
     }
-    var powerMode: PowerMode.Mode?
-    var odr: Double?
+    public var powerMode: PowerMode.Mode?
+    public var odr: Double?
     var filters: FilterConfiguration?
-    var fullScale: Int?
+    public var fullScale: Int?
     var oneShotTime: Int?
-    var regConfig: String?
-    var ucfFilename: String?
-    var mlcLabels: String?
+    public var regConfig: String?
+    public var ucfFilename: String?
+    public var mlcLabels: String?
     var fsmLabels: String?
 }
 
@@ -81,7 +81,7 @@ extension Configuration: Codable {
 }
 
 extension Configuration: Equatable {
-    static func == (lhs: Configuration, rhs: Configuration) -> Bool {
+    public static func == (lhs: Configuration, rhs: Configuration) -> Bool {
         return lhs.acquisitionTime == rhs.acquisitionTime &&
             lhs.regConfig == rhs.regConfig &&
             lhs.ucfFilename == rhs.ucfFilename &&

@@ -1,6 +1,6 @@
 //
 //  Catalog.swift
-//
+//  
 //  Copyright (c) 2022 STMicroelectronics.
 //  All rights reserved.
 //
@@ -17,7 +17,7 @@ public struct Catalog {
     public let blueStSdkV1: [Firmware]?
     public let characteristics: [BleCharacteristic]?
     public let boards: [CatalogBoard]?
-//    public let sensorAdapters: [Sensor]?
+    public let sensorAdapters: [SensorAdapterElement]?
     public let checksum: String?
     public let date: String?
     public let version: String?
@@ -29,7 +29,7 @@ extension Catalog: Codable {
         case blueStSdkV1 = "bluestsdk_v1"
         case characteristics
         case boards
-//        case sensorAdapters = "sensor_adapters"
+        case sensorAdapters = "sensor_adapters"
         case checksum
         case date
         case version
@@ -82,7 +82,7 @@ public extension Catalog {
     func v2Firmware(with deviceId: String, names: [String], checkCustomFirmware: Bool = true) -> Firmware? {
 
         blueStSdkV2.first(where: { firmware in
-            firmware.deviceId.lowercased() == deviceId.lowercased() &&
+            firmware.deviceId.lowercased() == deviceId.lowercased() && 
             names.compactMap { firmware.name.lowercased().starts(with: $0.lowercased()) ? true : nil }.count != 0 &&
             firmware.bleVersionId != 0xff
         })

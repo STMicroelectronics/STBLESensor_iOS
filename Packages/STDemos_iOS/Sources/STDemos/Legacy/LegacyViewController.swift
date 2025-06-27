@@ -32,35 +32,8 @@ final class LegacyViewController: DemoNodeNoViewController<LegacyDelegate> {
 
     override func configureView() {
         super.configureView()
-        
-        containerLegacyView = legacyView.embedInView(with: .standard)
-        
-        let mainStackView = UIStackView.getVerticalStackView(withSpacing: 16, views: [
-            UIView(),
-            containerLegacyView,
-            UIView()
-        ])
-        mainStackView.distribution = .equalSpacing
-        
-        view.addSubview(mainStackView, constraints: [
-            equal(\.leadingAnchor, constant: 16),
-            equal(\.trailingAnchor, constant: -16),
-            equal(\.safeAreaLayoutGuide.topAnchor, constant: 16),
-            equal(\.safeAreaLayoutGuide.bottomAnchor, constant: -16)
-        ])
-        
-        let badgeTap = UITapGestureRecognizer(target: self, action: #selector(badgeTapped(_:)))
-        legacyView.badge.addGestureRecognizer(badgeTap)
-        legacyView.badge.isUserInteractionEnabled = true
+
+        presentSwiftUIView(LegacyView())
     }
 
-}
-
-extension LegacyViewController {
-    @objc
-    func badgeTapped(_ sender: UITapGestureRecognizer) {
-        if let url = URL(string: "https://apps.apple.com/it/app/st-ble-sensor-classic/id6447749695") {
-            UIApplication.shared.open(url)
-        }
-    }
 }

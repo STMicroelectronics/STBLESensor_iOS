@@ -18,6 +18,7 @@ public enum NodeFamily: UInt8 {
     case wbBasedFamily
     case wbFamily
     case wbaFamily
+    case wbNotYetSupported
     case otherFamily
 }
 

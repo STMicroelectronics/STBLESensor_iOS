@@ -46,7 +46,7 @@ extension FlowMoreTabPresenter: FlowMoreTabDelegate {
     }
 
     private func loadMoreItems() -> [FlowMoreItem] {
-        if(param.node.type == .sensorTileBoxPro || param.node.type == .sensorTileBoxProB) {
+        if(param.node.type == .sensorTileBoxPro || param.node.type == .sensorTileBoxProB || param.node.type == .sensorTileBoxProC) {
             return sensorTileBoxProFlowMoreItems
         } else {
             return sensorTileBoxFlowMoreItems

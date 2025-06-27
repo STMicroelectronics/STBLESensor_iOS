@@ -39,7 +39,7 @@ final class AccelerationEventViewController: DemoNodeNoViewController<Accelerati
 
         presenter.load()
     }
-
+    
     override func configureView() {
         super.configureView()
         

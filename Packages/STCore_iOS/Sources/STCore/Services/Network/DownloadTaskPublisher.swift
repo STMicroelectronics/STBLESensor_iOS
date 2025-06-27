@@ -56,8 +56,23 @@ extension DownloadTaskPublisher {
                 }
 
                 if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
-                    subscriber.receive(completion: .failure(STError.notAuthorized))
-                    return
+                    switch httpResponse.statusCode {
+                    case 400:
+                        subscriber.receive(completion: .failure(STError.generic(text: "There was a problem with the request's data or format.")))
+                        return
+                    case 401:
+                        subscriber.receive(completion: .failure(STError.generic(text: "Access is denied due to invalid credentials.")))
+                        return
+                    case 404:
+                        subscriber.receive(completion: .failure(STError.generic(text: "The requested resource was not found.")))
+                        return
+                    case 500:
+                        subscriber.receive(completion: .failure(STError.generic(text: "An unexpected server error occurred.")))
+                        return
+                    default:
+                        subscriber.receive(completion: .failure(STError.generic(text: "Login is required to access this Project")))
+                        return
+                    }
                 }
 
                 _ = subscriber.receive((url, response))

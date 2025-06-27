@@ -35,8 +35,7 @@ extension CompassPresenter: CompassDelegate {
 
     func startCalibration() {
         if let feature = param.node.characteristics.features(with: Demo.compass.features).first {
-            demoFeatures.append(feature)
-
+//            demoFeatures.append(feature)
             BlueManager.shared.sendCommand(FeatureCommand(type: AutoConfigurationCommand.start,
                                                           data: AutoConfigurationCommand.start.payload),
                                            to: param.node,

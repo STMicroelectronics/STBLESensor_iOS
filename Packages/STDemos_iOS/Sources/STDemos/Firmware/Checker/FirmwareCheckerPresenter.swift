@@ -63,15 +63,16 @@ extension FirmwareCheckerPresenter: FirmwareCheckerDelegate {
                         completion(false)
                     }
                     self.view.dismiss(animated: true) { [weak self] in
-
+                        if let node = self?.param.node {
+                            BlueManager.shared.disconnect(node)
+                        }
                     }
                 } else {
                     if let completion = self.param.completion { // }, self?.param.firmwares.isMandatory ?? false {
                         completion(false)
                     }
                     self.view.navigationController?.popViewController(animated: true,
-                                                                      completion: { [weak self] in
-
+                                                                      completion: { [] in
                     })
                 }
 

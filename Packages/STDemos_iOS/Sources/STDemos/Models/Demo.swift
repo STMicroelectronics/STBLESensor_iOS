@@ -809,7 +809,7 @@ public extension Demo {
             return LegacyPresenter(param: DemoParam<String>(node: node, param: "Cloud Azure IoT Central"))
         case .cloudMqtt:
 //            return LegacyPresenter(param: DemoParam<String>(node: node, param: "Cloud MQTT"))
-            return LegacyPresenter(param: DemoParam<String>(node: node, param: "Cloud MQTT"))
+            return CloudMQTTPresenter(param: DemoParam<Void>(node: node))
         case .battery:
             return BatteryPresenter(rssi: param as? Int ?? 0, param: DemoParam<Void>(node: node))
         case .coSensor:

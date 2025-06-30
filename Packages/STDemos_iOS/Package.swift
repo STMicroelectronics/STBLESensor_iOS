@@ -23,7 +23,8 @@ let package = Package(
          .package(url: "https://github.com/core-plot/core-plot", branch: "release-2.4"),
          .package(url: "https://github.com/scalessec/Toast-Swift", branch: "master"),
          .package(url: "https://github.com/JonasGessner/JGProgressHUD.git", from: Version(2, 2, 0)),
-         .package(url: "https://github.com/danielgindi/Charts.git", from: Version(5, 1, 0))
+         .package(url: "https://github.com/danielgindi/Charts.git", from: Version(5, 1, 0)),
+         .package(url: "https://github.com/emqx/CocoaMQTT.git", branch: "master")
          
     ],
     targets: [
@@ -38,7 +39,8 @@ let package = Package(
                 .product(name: "CorePlot", package: "core-plot"),
                 .product(name: "Toast", package: "Toast-Swift"),
                 .product(name: "JGProgressHUD", package: "JGProgressHUD"),
-                .product(name: "DGCharts", package: "Charts")
+                .product(name: "DGCharts", package: "Charts"),
+                .product(name: "CocoaMQTT", package: "CocoaMQTT")
             ],
             resources: [
                 .copy("Resources/Assets.xcassets"),

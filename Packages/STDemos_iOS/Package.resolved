@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "cocoamqtt",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/emqx/CocoaMQTT.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "f183e8d03eb4f8c050d6b698417fa815012b8746"
+      }
+    },
+    {
       "identity" : "core-plot",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/core-plot/core-plot",
@@ -55,6 +64,15 @@
       }
     },
     {
+      "identity" : "mqttcocoaasyncsocket",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/leeway1208/MqttCocoaAsyncSocket",
+      "state" : {
+        "revision" : "ce3e18607fd01079495f86ff6195d8a3ca469f73",
+        "version" : "1.0.8"
+      }
+    },
+    {
       "identity" : "opus-swift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ybrid/opus-swift.git",
@@ -70,6 +88,15 @@
       "state" : {
         "revision" : "46792db49f80454879a939f9b2be31bb61c37b0c",
         "version" : "13.8.6"
+      }
+    },
+    {
+      "identity" : "starscream",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/daltoniam/Starscream.git",
+      "state" : {
+        "revision" : "c6bfd1af48efcc9a9ad203665db12375ba6b145a",
+        "version" : "4.0.8"
       }
     },
     {

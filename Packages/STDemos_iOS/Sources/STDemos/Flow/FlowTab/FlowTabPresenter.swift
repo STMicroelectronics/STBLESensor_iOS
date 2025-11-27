@@ -87,7 +87,7 @@ extension FlowTabPresenter: FlowTabDelegate {
         var filteredStoredFlows: [Flow] = []
         storedFlows.forEach { flow in
             flow.boardCompatibility?.forEach { board in
-                if board == param.node.type.stringValue {
+                if board.replacingOccurrences(of: "_", with: "").lowercased() == param.node.type.stringValue.replacingOccurrences(of: "_", with: "").lowercased() {
                     filteredStoredFlows.append(flow)
                 }
             }

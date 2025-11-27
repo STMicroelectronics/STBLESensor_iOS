@@ -33,6 +33,7 @@ public enum RawPnPLFormat: String, Codable {
     case uint32_t
     case int32_t
     case float
+    case float_t
     case char
     case enumerative = "enum"
 }

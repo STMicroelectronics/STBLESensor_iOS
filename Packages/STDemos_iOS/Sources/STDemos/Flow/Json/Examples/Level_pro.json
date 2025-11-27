@@ -3,7 +3,9 @@
   "category": "Motion",
   "ex_app" : 3,
   "board_compatibility": [
-    "SENSOR_TILE_BOX_PRO"
+    "SENSOR_TILE_BOX_PRO",
+    "SENSOR_TILE_BOX_PROB",
+    "SENSOR_TILE_BOX_PROC"
   ],
   "flows": [],
   "functions": [
@@ -54,7 +56,9 @@
       ],
       "model": "LSM6DSV16X",
       "board_compatibility": [
-        "SENSOR_TILE_BOX_PRO"
+        "SENSOR_TILE_BOX_PRO",
+        "SENSOR_TILE_BOX_PROB",
+        "SENSOR_TILE_BOX_PROC"
       ],
       "um": "mg",
       "fullScaleUm": "g",

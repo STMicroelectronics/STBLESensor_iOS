@@ -25,7 +25,7 @@ class NodeCell: BaseTableViewCell {
 
     @IBOutlet weak var customModelLabel: UILabel!
     @IBOutlet weak var maturityLabel: UILabel!
-    
+
     @IBOutlet weak var nodeRunningSecondLabel: UILabel!
     @IBOutlet weak var nodeRunningThirdInfoLabel: UILabel!
 
@@ -50,5 +50,10 @@ class NodeCell: BaseTableViewCell {
         containerView.layer.cornerRadius = 8.0
         containerView.backgroundColor = .white
         containerView.applyShadow()
+    }
+
+    override public func prepareForReuse() {
+        super.prepareForReuse()
+        self.maturityLabel.isHidden = true
     }
 }

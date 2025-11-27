@@ -3,7 +3,9 @@
   "category": "AI & MLC",
   "ex_app" : 10,
   "board_compatibility": [
-    "SENSOR_TILE_BOX_PRO"
+    "SENSOR_TILE_BOX_PRO",
+    "SENSOR_TILE_BOX_PROB",
+    "SENSOR_TILE_BOX_PROC"
   ],
   "flows": [
   ],
@@ -57,7 +59,9 @@
       ],
       "model": "LSM6DSV16X",
       "board_compatibility": [
-        "SENSOR_TILE_BOX_PRO"
+        "SENSOR_TILE_BOX_PRO",
+        "SENSOR_TILE_BOX_PROB",
+        "SENSOR_TILE_BOX_PROC"
       ],
       "um": "mg",
       "fullScaleUm": "g",
@@ -131,7 +135,9 @@
       "icon": "ic_inemo",
       "model": "LSM6DSV16X",
       "board_compatibility": [
-        "SENSOR_TILE_BOX_PRO"
+        "SENSOR_TILE_BOX_PRO",
+        "SENSOR_TILE_BOX_PROB",
+        "SENSOR_TILE_BOX_PROC"
       ],
       "um": "mdps",
       "fullScaleUm": "dps",
@@ -201,7 +207,7 @@
       "icon": "ic_microphone",
       "id": "S9",
       "model": "MP23ABS1",
-      "notes": "n depends on the sampling freq: we are used to send a data every 1 msec",
+      "notes": "n depends on the sampling freq: we are used to send a data every 1 ms",
       "output": "Sound",
       "outputs": [
         "O1",

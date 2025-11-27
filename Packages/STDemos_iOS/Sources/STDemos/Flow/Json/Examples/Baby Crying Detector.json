@@ -4,7 +4,9 @@
   "ex_app" : 8,
   "board_compatibility": [
     "SENSOR_TILE_BOX",
-    "SENSOR_TILE_BOX_PRO"
+    "SENSOR_TILE_BOX_PRO",
+    "SENSOR_TILE_BOX_PROB",
+    "SENSOR_TILE_BOX_PROC"
   ],
   "flows": [],
   "functions": [
@@ -55,7 +57,7 @@
       "icon": "ic_microphone",
       "id": "S9",
       "model": "MP23ABS1",
-      "notes": "n depends on the sampling freq: we are used to send a data every 1 msec",
+      "notes": "n depends on the sampling freq: we are used to send a data every 1 ms",
       "output": "Sound",
       "outputs": [
         "O1",

@@ -126,9 +126,11 @@ extension FlashBankStatusPresenter {
         
         guard let current = catalogService.catalog?.v2Firmware(with: self.param.node) else { return }
         
-        guard let availableFirmwaresBackup = catalogService.catalog?.availableV2Firmwares(with: self.param.node.deviceId.longHex,
+        guard var availableFirmwaresBackup = catalogService.catalog?.availableV2Firmwares(with: self.param.node.deviceId.longHex,
                                                                                           currentFirmware: current,
                                                                                           enabledFirmwares: nil) else { return }
+        
+        availableFirmwaresBackup = availableFirmwaresBackup.filter { $0.maturity == .release }
         
         var availableFirmwares = availableFirmwaresBackup
         

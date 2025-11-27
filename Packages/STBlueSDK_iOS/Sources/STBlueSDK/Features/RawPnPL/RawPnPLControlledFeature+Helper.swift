@@ -206,7 +206,7 @@ public extension RawPnPLControlledFeature {
                 value.append(tmpValue)
                 valueFloat.append(Float(tmpValue) * Float((multFactor ?? 1.0)))
                 offset += 4
-            case .float:
+            case .float, .float_t:
                 let tmpValue = rawData.extractFloat(fromOffset: offset)
                 value.append(tmpValue)
                 valueFloat.append(tmpValue * Float((multFactor ?? 1.0)))

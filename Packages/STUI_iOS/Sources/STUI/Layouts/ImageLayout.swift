@@ -74,6 +74,7 @@ public struct ImageLayout {
         public static var addRow: UIImage? { ImageLayout.image(with: "img_add_row") }
         public static var shopping: UIImage? { ImageLayout.image(with: "img_shopping") }
         public static var wiki: UIImage? { ImageLayout.image(with: "img_wiki") }
+        public static var products: UIImage? { ImageLayout.image(with: "img_products") }
     }
     
     public struct SUICommon {

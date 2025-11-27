@@ -3,7 +3,9 @@
   "category": "Environmental",
   "ex_app" : 6,
   "board_compatibility": [
-    "SENSOR_TILE_BOX_PRO"
+    "SENSOR_TILE_BOX_PRO",
+    "SENSOR_TILE_BOX_PROB",
+    "SENSOR_TILE_BOX_PROC"
   ],
   "flows": [],
   "functions": [],

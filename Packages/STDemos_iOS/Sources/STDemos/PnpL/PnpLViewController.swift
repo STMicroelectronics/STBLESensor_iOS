@@ -59,7 +59,7 @@ final public class PnpLViewController: DemoNodeTableViewController<PnpLDelegate,
 }
 
 public extension UIViewController {
-    func makePnPLSpontaneousMessaggeAlertView(_ type: PnPLSpontaneousMessageType, _ description: String) {
+    func makePnPLSpontaneousMessaggeAlertView(_ view: UIViewController, _ type: PnPLSpontaneousMessageType, _ description: String) {
         DispatchQueue.main.async {
 
             Logger.debug(text: "ERRRRRROR: \(description)")
@@ -68,7 +68,7 @@ public extension UIViewController {
             let url = "https://github.com/STMicroelectronics/fp-sns-datalog2?tab=readme-ov-file#known-limitations"
             let actionTitle = "Read More..."
 
-            guard let navigator: Navigator = Resolver.shared.resolve() else { return }
+//            guard let navigator: Navigator = Resolver.shared.resolve() else { return }
 
             if description.lowercased().contains("sd") || description.lowercased().contains("log") {
                 let presenter = PnPLSpontaneousMessageAlertPresenter(param: PnPLSpontaneousMessageTypeAndDescription(type: type,
@@ -77,13 +77,12 @@ public extension UIViewController {
                                                                                                                      actionTitle: actionTitle,
                                                                                                                      url: url))
 
-                navigator.present(presenter: presenter, embeddedNav: false)
+                view.present(presenter.start(), animated: true)
             } else {
                 let presenter = PnPLSpontaneousMessageAlertPresenter(param: PnPLSpontaneousMessageTypeAndDescription(type: type,
                                                                                                                      description: description))
-                navigator.present(presenter: presenter, embeddedNav: false)
+                view.present(presenter.start(), animated: true)
             }
         }
     }
 }
-

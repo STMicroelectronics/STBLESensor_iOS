@@ -3,7 +3,9 @@
   "category": "Motion",
   "ex_app" : 1,
   "board_compatibility": [
-    "SENSOR_TILE_BOX_PRO"
+    "SENSOR_TILE_BOX_PRO",
+    "SENSOR_TILE_BOX_PROB",
+    "SENSOR_TILE_BOX_PROC"
   ],
   "notes": "This app uses the LSM6DSV16X iNemo 6-axis inertial measurement unit and the LIS2MDL 3-axis compensated magnetometer to show the orientation estimation of Sensor Tile.boxPRO related to the Earth-North or level indication.\n\nThe algorithm used is the sensor fusion algorithm (MotionFX library) embedded in the Sensor Tile.box MCU which uses the sensors data as inputs (9-axis) and calculates the quaternion coefficient and the Euler angles describing the orientation of the Sensor Tile.box represented by a compass rotation or level indication.\n\nThe sensor fusion algorithm is basically an Kalman filter that minimizes the sensors' inaccuracies based on peculiarities of other sensors; it includes gyroscope calibration and magnetometer calibration (to compensate the magnetometer offset).",
   "flows": [
@@ -179,7 +181,9 @@
       ],
       "model": "LSM6DSV16X",
       "board_compatibility": [
-        "SENSOR_TILE_BOX_PRO"
+        "SENSOR_TILE_BOX_PRO",
+        "SENSOR_TILE_BOX_PROB",
+        "SENSOR_TILE_BOX_PROC"
       ],
       "um": "mg",
       "fullScaleUm": "g",
@@ -248,7 +252,9 @@
       "icon": "ic_inemo",
       "model": "LSM6DSV16X",
       "board_compatibility": [
-        "SENSOR_TILE_BOX_PRO"
+        "SENSOR_TILE_BOX_PRO",
+        "SENSOR_TILE_BOX_PROB",
+        "SENSOR_TILE_BOX_PROC"
       ],
       "um": "mdps",
       "fullScaleUm": "dps",

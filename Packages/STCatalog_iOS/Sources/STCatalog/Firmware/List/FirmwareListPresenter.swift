@@ -41,9 +41,11 @@ extension FirmwareListPresenter: FirmwareListDelegate {
 
         guard let catalogService: CatalogService = Resolver.shared.resolve() else { return }
 
-        let firmwares = catalogService.catalog?.availableV2Firmwares(with: param.board.deviceId,
-                                                                     names: param.firmwareNamesFilter,
-                                                                     supportedVersions: param.firmwareSupportedVersions)
+        let firmwares = catalogService.catalog?.availableV2Firmwares(
+            with: param.board.deviceId,
+            names: param.firmwareNamesFilter,
+            supportedVersions: param.firmwareSupportedVersions
+        )?.filter { $0.maturity == .release }
 
         firmwares?.map { FirmwareViewModel(param: $0) }.forEach { element in
             director?.elements.append(element)

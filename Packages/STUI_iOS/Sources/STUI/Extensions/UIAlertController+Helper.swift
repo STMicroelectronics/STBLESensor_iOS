@@ -20,7 +20,9 @@ public extension UIAlertController {
                              actions: [UIAlertAction]) {
         let controller = UIAlertController(title: title, message: message, preferredStyle: style)
         actions.forEach { controller.addAction($0) }
-
+        
+        UILabel.appearance(whenContainedInInstancesOf: [UIAlertController.self]).numberOfLines = 0
+        
         if let ppc = controller.popoverPresentationController {
             ppc.sourceView = viewController.view
             ppc.sourceRect = CGRect(x: viewController.view.bounds.midX, y: viewController.view.bounds.midY, width: 0, height: 0)

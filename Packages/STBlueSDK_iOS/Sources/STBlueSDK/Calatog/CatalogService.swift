@@ -113,10 +113,10 @@ extension CatalogServiceCore: CatalogService {
     
     @discardableResult
     public func storeCatalog(_ catalog: Catalog?) -> Catalog? {
-
-        if let internalCatalog = internalCatalog, internalCatalog.checksum == catalog?.checksum {
-            return self.catalog
-        }
+//        IGNORE CHECKSUM otherwise the new catalog is not saved when chesksum is equal - BETA Catalog issue
+//        if let internalCatalog = internalCatalog, internalCatalog.checksum == catalog?.checksum {
+//            return self.catalog
+//        }
 
         let userDefaults = UserDefaults.standard
         

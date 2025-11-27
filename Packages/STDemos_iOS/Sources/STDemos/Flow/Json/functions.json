@@ -884,7 +884,9 @@
     "id": "L4",
     "board_compatibility": [
       "SENSOR_TILE_BOX",
-      "SENSOR_TILE_BOX_PRO"
+      "SENSOR_TILE_BOX_PRO",
+      "SENSOR_TILE_BOX_PROB",
+      "SENSOR_TILE_BOX_PROC"
     ],
     "description": "Bluetooth Connected",
     "inputs": [],
@@ -900,7 +902,9 @@
     "id": "L5",
     "board_compatibility": [
       "SENSOR_TILE_BOX",
-      "SENSOR_TILE_BOX_PRO"
+      "SENSOR_TILE_BOX_PRO",
+      "SENSOR_TILE_BOX_PROB",
+      "SENSOR_TILE_BOX_PROC"
     ],
     "description": "Logic AND",
     "inputs": [
@@ -927,7 +931,9 @@
     "id": "L6",
     "board_compatibility": [
       "SENSOR_TILE_BOX",
-      "SENSOR_TILE_BOX_PRO"
+      "SENSOR_TILE_BOX_PRO",
+      "SENSOR_TILE_BOX_PROB",
+      "SENSOR_TILE_BOX_PROC"
     ],
     "description": "Logic OR",
     "inputs": [
@@ -954,7 +960,9 @@
     "id": "L7",
     "board_compatibility": [
       "SENSOR_TILE_BOX",
-      "SENSOR_TILE_BOX_PRO"
+      "SENSOR_TILE_BOX_PRO",
+      "SENSOR_TILE_BOX_PROB",
+      "SENSOR_TILE_BOX_PROC"
     ],
     "description": "Logic XOR",
     "inputs": [
@@ -981,7 +989,9 @@
     "id": "L8",
     "board_compatibility": [
       "SENSOR_TILE_BOX",
-      "SENSOR_TILE_BOX_PRO"
+      "SENSOR_TILE_BOX_PRO",
+      "SENSOR_TILE_BOX_PROB",
+      "SENSOR_TILE_BOX_PROC"
     ],
     "description": "Logic NOT",
     "inputs": [
@@ -1008,7 +1018,9 @@
     "id": "L9",
     "board_compatibility": [
       "SENSOR_TILE_BOX",
-      "SENSOR_TILE_BOX_PRO"
+      "SENSOR_TILE_BOX_PRO",
+      "SENSOR_TILE_BOX_PROB",
+      "SENSOR_TILE_BOX_PROC"
     ],
     "description": "Logic TRUE",
     "inputs": [],
@@ -1024,7 +1036,9 @@
     "id": "L10",
     "board_compatibility": [
       "SENSOR_TILE_BOX",
-      "SENSOR_TILE_BOX_PRO"
+      "SENSOR_TILE_BOX_PRO",
+      "SENSOR_TILE_BOX_PROB",
+      "SENSOR_TILE_BOX_PROC"
     ],
     "description": "Logic FALSE",
     "inputs": [],
@@ -1040,7 +1054,9 @@
     "id": "L11",
     "board_compatibility": [
       "SENSOR_TILE_BOX",
-      "SENSOR_TILE_BOX_PRO"
+      "SENSOR_TILE_BOX_PRO",
+      "SENSOR_TILE_BOX_PROB",
+      "SENSOR_TILE_BOX_PROC"
     ],
     "description": "Counter",
     "inputs": [],

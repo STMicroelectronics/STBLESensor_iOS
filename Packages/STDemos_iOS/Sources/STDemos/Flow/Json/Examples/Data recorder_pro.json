@@ -3,7 +3,9 @@
   "category": "Log",
   "ex_app" : 7,
   "board_compatibility": [
-    "SENSOR_TILE_BOX_PRO"
+    "SENSOR_TILE_BOX_PRO",
+    "SENSOR_TILE_BOX_PROB",
+    "SENSOR_TILE_BOX_PROC"
   ],
   "flows": [],
   "functions": [],
@@ -67,7 +69,7 @@
         "O2",
         "O3"
       ],
-      "um": "msec"
+      "um": "ms"
     },
     {
       "id": "S5",
@@ -81,7 +83,9 @@
       ],
       "model": "LSM6DSV16X",
       "board_compatibility": [
-        "SENSOR_TILE_BOX_PRO"
+        "SENSOR_TILE_BOX_PRO",
+        "SENSOR_TILE_BOX_PROB",
+        "SENSOR_TILE_BOX_PROC"
       ],
       "um": "mg",
       "fullScaleUm": "g",
@@ -150,7 +154,9 @@
       "icon": "ic_inemo",
       "model": "LSM6DSV16X",
       "board_compatibility": [
-        "SENSOR_TILE_BOX_PRO"
+        "SENSOR_TILE_BOX_PRO",
+        "SENSOR_TILE_BOX_PROB",
+        "SENSOR_TILE_BOX_PROC"
       ],
       "um": "mdps",
       "fullScaleUm": "dps",
@@ -297,7 +303,9 @@
       "icon": "ic_pressure",
       "model": "LPS22DF",
       "board_compatibility": [
-        "SENSOR_TILE_BOX_PRO"
+        "SENSOR_TILE_BOX_PRO",
+        "SENSOR_TILE_BOX_PROB",
+        "SENSOR_TILE_BOX_PROC"
       ],
       "output": "Pressure",
       "outputs": [

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -374,7 +374,7 @@
 				BBE68871B275F8DB25D16E52 /* XCLocalSwiftPackageReference "Packages/STUserProfiling_iOS" */,
 				BEC3400CD5A8D47AA97649C6 /* XCLocalSwiftPackageReference "Packages/STWelcome_iOS" */,
 			);
-			preferredProjectObjectVersion = 54;
+			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (

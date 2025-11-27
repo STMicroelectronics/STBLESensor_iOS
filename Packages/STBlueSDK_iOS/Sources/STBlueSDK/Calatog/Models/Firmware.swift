@@ -54,9 +54,14 @@ extension Firmware: Codable {
 
 public extension Firmware {
 
+    static let stAIotCraftIoTSystemsName = "AI-SSM"
+    static let stAIotCraftIoTSystemsSupportedVersions = [
+        "1.0.0"
+    ]
+    
     static let stAIotCraftName = "FP-SNS-DATALOG2_Datalog2"
     static let stAIotCraftSupportedVersions = [
-        "3.0.0"
+        "3.1.0"
     ]
 
     var boardType: NodeType? {
@@ -140,7 +145,7 @@ public struct Board {
 
     public var type: NodeType? {
         guard let boardId = UInt8(deviceId.dropFirst(2), radix: 16) else { return nil }
-        print("boardId=\(boardId)")
+        //print("boardId=\(boardId)")
         return NodeType(rawValue: boardId)
     }
 }

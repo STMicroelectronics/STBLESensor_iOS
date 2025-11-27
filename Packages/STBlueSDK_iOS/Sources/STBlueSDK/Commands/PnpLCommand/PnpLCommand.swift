@@ -12,6 +12,7 @@
 import Foundation
 
 public enum PnpLCommandValue {
+    case anyPlain(value: AnyEncodable)
     case plain(value: Encodable)
     case object(name: String, value: AnyEncodable)
     case objects(name: String, values: [AnyEncodable])
@@ -25,6 +26,8 @@ public enum PnpLCommandElement {
 public extension PnpLCommandValue {
     var value: AnyEncodable {
         switch self {
+        case .anyPlain(value: let value):
+            return AnyEncodable(value)
         case .plain(let value):
             return AnyEncodable(value)
         case .object(let name, let value):

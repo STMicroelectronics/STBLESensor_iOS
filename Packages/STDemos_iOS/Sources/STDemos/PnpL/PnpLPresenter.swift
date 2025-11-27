@@ -26,6 +26,9 @@ open class PnpLPresenter: DemoBasePresenter<PnpLViewController, [PnpLContent]> {
     var pnpLResponse: Bool? = nil
     var showContentNotMounted: Bool
     
+    public var sensors80xOr320x: [String? : [PnpLContent]] = [:]
+    public var onFinishCheck80x320xAreMounted: (() -> Void)?
+    
     var inactiveSensors: [(any CellViewModel)] = []
 
     public init(type: PNPLDemoType = .standard, showContentNotMounted: Bool = true, param: DemoParam<[PnpLContent]>) {
@@ -72,19 +75,23 @@ open class PnpLPresenter: DemoBasePresenter<PnpLViewController, [PnpLContent]> {
                     guard let navigator: Navigator = Resolver.shared.resolve() else { return }
                     navigator.dismiss()
 
-                    self.view.makePnPLSpontaneousMessaggeAlertView(PnPLSpontaneousMessageType.error, errorMessage)
-
+                    self.view.makePnPLSpontaneousMessaggeAlertView(view, PnPLSpontaneousMessageType.error, errorMessage)
+                    self.view.pnplCommandQueue.removeAll()
                 case .warning(let warningMessage):
-                    self.view.makePnPLSpontaneousMessaggeAlertView(PnPLSpontaneousMessageType.warning, warningMessage)
+                    self.view.makePnPLSpontaneousMessaggeAlertView(view, PnPLSpontaneousMessageType.warning, warningMessage)
+                    self.view.pnplCommandQueue.removeAll()
                 case .info(let infoMessage):
-                    self.view.makePnPLSpontaneousMessaggeAlertView(PnPLSpontaneousMessageType.info, infoMessage)
+                    self.view.makePnPLSpontaneousMessaggeAlertView(view, PnPLSpontaneousMessageType.info, infoMessage)
+                    self.view.pnplCommandQueue.removeAll()
                 case .ok(let okMessage):
-                    self.view.makePnPLSpontaneousMessaggeAlertView(PnPLSpontaneousMessageType.ok, okMessage)
+                    self.view.makePnPLSpontaneousMessaggeAlertView(view, PnPLSpontaneousMessageType.ok, okMessage)
+                    self.view.pnplCommandQueue.removeAll()
                 }
             }
             if let spontaneousResponseMessage = sample.data?.spontaneousResponseMessage {
                 if spontaneousResponseMessage.response.status == false {
-                    self.view.makePnPLSpontaneousMessaggeAlertView(PnPLSpontaneousMessageType.error, spontaneousResponseMessage.response.message)
+                    self.view.makePnPLSpontaneousMessaggeAlertView(view, PnPLSpontaneousMessageType.error, spontaneousResponseMessage.response.message)
+                    self.view.pnplCommandQueue.removeAll()
                 } else {
                     self.view.presenter.removeFirstQueueAndEventuallySend()
                 }
@@ -95,6 +102,8 @@ open class PnpLPresenter: DemoBasePresenter<PnpLViewController, [PnpLContent]> {
     open func handleUpdate(from feature: PnPLFeature) {
         StandardHUD.shared.dismiss()
 
+        Logger.debug(text: feature.description(with: feature.sample))
+        
         handleSpontaneousMessage(from: feature)
 
         guard let sample = feature.sample else { return }
@@ -120,11 +129,12 @@ open class PnpLPresenter: DemoBasePresenter<PnpLViewController, [PnpLContent]> {
             director?.updateVisibleCells(with: codevalues)
         }
         
-        guard let sample = feature.sample else { return }
+//        guard let sample = feature.sample else { return }
         if let response = sample.data?.response,
            let device = response.devices.first  {
             let codevalues = device.components.codeValues(with: [])
             searchForForNotResponsiveSensors(codevalues)
+            searchFor80xOr320xMountedStatus()
             searchForNotMountedSensors()
             director?.reloadData()
         }
@@ -214,10 +224,33 @@ open class PnpLPresenter: DemoBasePresenter<PnpLViewController, [PnpLContent]> {
 
         let components = interface.contents
 
-        let filteredComponents = components.filter { component in
+        var filteredComponents = components.filter { component in
             dtmi.contains { $0.identifier == component.componentSchema }
         }
+
+        let groupedSensors = Dictionary(grouping: filteredComponents) { sensor in
+            sensor.componentName?.components(separatedBy: "_").first ?? sensor.componentName
+        }
+        let filteredGroupedSensors = groupedSensors.filter { (_, sensors) in
+            sensors.count >= 2
+        }
         
+        sensors80xOr320x = filteredGroupedSensors.filter { key, _ in
+            guard let k = key?.lowercased() else { return false }
+            return k.contains("lsm6dsv80x") || k.contains("lsm6dsv320x")
+        }
+        
+        // MARK: If COMBO COMPONENTS are present, filter the filtered list of sensors
+        let prefixes = filteredGroupedSensors.keys.compactMap { $0 }
+
+        filteredComponents.removeAll { component in
+            guard let name = component.componentName else {
+                return false
+            }
+            return prefixes.contains { name.hasPrefix($0) }
+        }
+        
+        // MARK: Add SINGLE Sensors COMPONENTS
         director?.elements.removeAll()
         director?.elements.append(contentsOf: filteredComponents.compactMap { component in
 
@@ -276,6 +309,53 @@ open class PnpLPresenter: DemoBasePresenter<PnpLViewController, [PnpLContent]> {
 
             return GroupCellViewModel(childViewModels: viewModels, isChildrenIndented: true)
         })
+        
+        // MARK: Add COMBO COMPONENTS
+        director?.elements.append(contentsOf: filteredGroupedSensors.compactMap { groupedComponent in
+
+            var viewModels = [any ViewViewModel]()
+           
+            let headerViewModel = ImageDetailViewModel(param: CodeValue<ImageDetail>(keys: [groupedComponent.key?.localized ?? ""],
+                                                                                     value: ImageDetail(title: groupedComponent.key?.localized.uppercased(),
+                                                                                                        subtitle: groupedComponent.key?.localized,
+                                                                                                        image: ImageLayout.Common.products?.maskWithColor(color: ColorLayout.primary.auto))),
+                                                       layout: PnpLContent.layout)
+            
+            viewModels.append(headerViewModel)
+            
+            groupedComponent.value.forEach { component in
+                
+                let innerHeaderViewModel = HeaderLabelViewModel(param: CodeValue<String>(value: "\(evalutateComboComponentDisplayName(component) ?? "n/a")"),
+                                                                layout: Layout.infoBold,
+                                                                image: ImageLayout.image(with: PnPLType.type(with: component.componentName ?? "").iconName, in: STDemos.bundle)?.maskWithColor(color: ColorLayout.primary.auto))
+                                                                
+                
+                viewModels.append(innerHeaderViewModel)
+                
+                if case let .interface(interfaceContent) = dtmi.first(where: { $0.identifier == component.componentSchema }) {
+                    var componentViewModels = [any ViewViewModel]()
+                    for content in interfaceContent.contents {
+                        if let models = content.viewModels(with: [ component.componentName ?? "n/a" ], name: component.componentDisplayName ?? "n/a", action: { [weak self] action in
+                            
+                            guard let self else { return }
+                            
+                            self.handleAction(action: action,
+                                              component: component,
+                                              content: content)
+                            
+                        }) as? [any ViewViewModel] {
+                            componentViewModels.append(contentsOf: models)
+                        }
+                    }
+                    viewModels.append(contentsOf: componentViewModels)
+                }
+                
+                viewModels.append(LineDivisorViewModel())
+            }
+            
+            return GroupCellViewModel(childViewModels: viewModels, isChildrenIndented: false)
+        })
+        
 
         director?.reloadData()
 
@@ -368,6 +448,31 @@ public extension CodeValue {
             return PnpLCommand.emptyCommand(element: jsonElement, param: jsonParam)
 
         } else if keys.count == 3 {
+
+            let jsonElement = keys[0]
+            let jsonParam = keys[1]
+
+            if let value = value {
+//                return PnpLCommand.command(element: jsonElement,
+//                                           param: jsonParam,
+//                                           request: jsonObject,
+//                                           value: value)
+//                OLD METHOD:
+//                return PnpLCommand.commandWithRequest(
+//                    element: jsonElement,
+//                    param: jsonParam,
+//                    request: jsonObject,
+//                    value: value
+//                )
+                return PnpLCommand.command(
+                    element: jsonElement,
+                    param: jsonParam,
+                    value: .anyPlain(value: value.value)
+                )
+            }
+        }
+        
+        else if keys.count == 4 {
 
             let jsonElement = keys[0]
             let jsonParam = keys[1]
@@ -482,6 +587,38 @@ public extension PnpLPresenter {
                 }
             }
         }
+    }
+    
+    private func searchFor80xOr320xMountedStatus() {
+        guard let director = director else { return }
+
+        director.elements.forEach { element in
+            if let groupCellViewModel = element as? GroupCellViewModel {
+                groupCellViewModel.childViewModels.forEach { cellViewModel in
+                    if cellViewModel is SwitchViewModel {
+                        if let switchViewModel = cellViewModel as? SwitchViewModel {
+                            let currentSwitch = switchViewModel.param
+                            if let currentSwitchTitle = currentSwitch?.value.title {
+                                if currentSwitchTitle.lowercased().contains("mounted") {
+                                    if let currentSwitchTitleValue = currentSwitch?.value {
+                                        if let switchValue = currentSwitchTitleValue.value {
+                                            if !switchValue {
+                                                if let key = currentSwitch?.keys.first {
+                                                    if (key.contains("lsm6dsv80x") || key.contains("lsm6dsv320x")) {
+                                                        sensors80xOr320x.removeAll()
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        self.onFinishCheck80x320xAreMounted?()
     }
 }
 
@@ -656,6 +793,12 @@ public extension PnpLPresenter {
             if let currentCommand = view.pnplCommandQueue.first {
                 sendPnPLCommand(currentCommand.command, currentCommand.withProgress)
             }
+        } else {
+            if let pnplResponse = pnpLResponse {
+                if pnplResponse {
+                    removeFirstQueueAndEventuallySend()
+                }
+            }
         }
     }
     
@@ -718,5 +861,22 @@ extension Substring {
     func deletingPrefix(_ prefix: Substring) -> Substring {
         guard self.hasPrefix(prefix) else { return self }
         return Substring(String(self.dropFirst(prefix.count)))
+    }
+}
+
+
+public extension PnpLPresenter {
+    func evalutateComboComponentDisplayName(_ component: PnpLContent) -> String? {
+        
+        guard let componentName = component.componentName else { return nil }
+        guard let componentDisplayName = component.componentDisplayName else { return nil }
+    
+        if componentName.hasSuffix("l_acc") {
+            return componentDisplayName + " low-g"
+        } else if componentName.hasSuffix("h_acc") {
+            return componentDisplayName + " high-g"
+        } else {
+            return componentDisplayName
+        }
     }
 }

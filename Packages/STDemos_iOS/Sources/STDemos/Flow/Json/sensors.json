@@ -832,7 +832,7 @@
     ],
     "datasheetLink": "https://www.st.com/resource/en/datasheet/mp23abs1.pdf",
     "dataType": "int16_t vector x n",
-    "notes": "n depends on the sampling freq: we are used to send a data every 1 msec",
+    "notes": "n depends on the sampling freq: we are used to send a data every 1 ms",
     "um": "dBV",
     "powerModes": [
       {
@@ -867,7 +867,7 @@
     ],
     "datasheetLink": "https://www.st.com/resource/en/datasheet/mp23db01hp.pdf",
     "dataType": "int16_t vector x n",
-    "notes": "n depends on the sampling freq: we are used to send a data every 1 msec",
+    "notes": "n depends on the sampling freq: we are used to send a data every 1 ms",
     "um": "dBV",
     "powerModes": [
       {
@@ -901,7 +901,7 @@
       "O3"
     ],
     "datasheetLink": "https://www.st.com/en/microcontrollers/stm32l4r9zi.html",
-    "um": "msec",
+    "um": "ms",
     "configuration": {
       "acquisitionTime": 0
     }
@@ -924,7 +924,7 @@
       "O3"
     ],
     "datasheetLink": "https://www.st.com/en/microcontrollers/stm32u5585ai.html",
-    "um": "msec",
+    "um": "ms",
     "configuration": {
       "acquisitionTime": 0
     }
@@ -1104,11 +1104,27 @@
     "dataType": "uint8_t scalar",
     "model": "ST25DV04K",
     "board_compatibility": [
-      "SENSOR_TILE_BOX_PRO",
+      "SENSOR_TILE_BOX_PRO"
+    ],
+    "datasheetLink": "https://www.st.com/resource/en/datasheet/st25dv04k.pdf",
+    "um": ""
+  },
+  {
+    "id": "S15",
+    "description": "NFC",
+    "output": "NFC Output",
+    "outputs": [
+      "O3"
+    ],
+    "configuration": {},
+    "icon": "ic_nfc_sensor",
+    "dataType": "uint8_t scalar",
+    "model": "ST25DV04KC",
+    "board_compatibility": [
       "SENSOR_TILE_BOX_PROB",
       "SENSOR_TILE_BOX_PROC"
     ],
-    "datasheetLink": "https://www.st.com/resource/en/datasheet/st25dv04k.pdf",
+    "datasheetLink": "https://www.st.com/resource/en/datasheet/st25dv04kc.pdf",
     "um": ""
   }
 ]

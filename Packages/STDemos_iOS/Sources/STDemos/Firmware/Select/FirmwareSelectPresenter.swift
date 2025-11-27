@@ -48,17 +48,21 @@ extension FirmwareSelectPresenter: FirmwareSelectDelegate {
 
         if view.firmwareSelectType == .stm32 {
             if let typeView = STM32FirmwareTypeView.make(with: STDemos.bundle) as? STM32FirmwareTypeView {
-                let type: BoardFamily = if param.node.type == .nucleoWB0X {
+                let type: WbBoardType = if param.node.type == .nucleoWB0X {
                     .wb09
-                } else if param.node.type == .wba65RiNucleoBoard {
-                    .wb6a
+                } else if (param.node.type == .wba65RiNucleoBoard) || (param.node.type == .stm32wba65iDk1Board) {
+                    .wba6
+                } else if (param.node.type == .st67w6x) {
+                    .st67w6x
+                } else if (param.node.type == .wba2NucleoBoard) {
+                    .wba2
                 }  else if param.node.type.family == .wbaFamily {
-                    .wba
+                    .wba5
                 } else {
                     .wb55
                 }
                 
-                //typeView.configure(with: .application(board: (param.node.type == .wbaBoard) ? .wba : .wb55))
+                //typeView.configure(with: .application(board: (param.node.type == .wbaBoard) ? .wba5 : .wb55))
                 typeView.configure(with: .application(board:type))
                 typeView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -66,8 +70,8 @@ extension FirmwareSelectPresenter: FirmwareSelectDelegate {
                 typeView.heightAnchor.constraint(equalToConstant: 320.0).isActive = true
                 view.typeView = typeView
             }
-        } else if view.firmwareSelectType == .blueNrg {
-            view.firmwareType = .custom(startSector: nil, numberOfSectors: 0, sectorSize: 0)
+//        } else if view.firmwareSelectType == .blueNrg {
+//            view.firmwareType = .custom(startSector: nil, numberOfSectors: 0, sectorSize: 0)
         }
 
         let firmwareLabel = UILabel()

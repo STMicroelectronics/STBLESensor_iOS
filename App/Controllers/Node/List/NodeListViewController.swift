@@ -109,13 +109,13 @@ final class NodeListViewController: BaseViewController<NodeListDelegate, NodeLis
         BlueManager.shared.discoveryStop()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-
-    override func configureView() {
-        super.configureView()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//    }
+//
+//    override func configureView() {
+//        super.configureView()
+//    }
 
     deinit {
         BlueManager.shared.removeDelegate(self)

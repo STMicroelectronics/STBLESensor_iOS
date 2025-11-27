@@ -50,13 +50,13 @@ public struct JsonMLCSensors: Codable {
     public let name: [String]
     public let configuration: [JsonMLCConfiguration]
     public let outputs: [JsonMLCOutputs]
-    let fifoEncodings: [JsonMLCFifoEncodings]
+    let fifoEncodings: [JsonMLCFifoEncodings]?
     
     enum CodingKeys: String, CodingKey {
         case name
         case configuration
         case outputs
-        case fifoEncodings = "fifo_encodings"
+        case fifoEncodings = "mlc_identifiers"
     }
     
     public var toPnPLOutputString: String? {
@@ -121,7 +121,7 @@ public struct JsonMLCConfiguration: Codable {
 public struct JsonMLCOutputs: Codable {
     let name: String?
     let core: String?
-    let type: String?
+    public let type: String?
     let len: String?
     let regAddr: String?
     let regName: String?

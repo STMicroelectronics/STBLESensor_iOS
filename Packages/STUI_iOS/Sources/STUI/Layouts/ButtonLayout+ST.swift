@@ -26,6 +26,19 @@ public extension Buttonlayout {
                             font: FontLayout.regular)
     }()
     
+    static var stGray7: Buttonlayout = {
+        return Buttonlayout(color: ColorLayout.primary.auto,
+                            selectedColor: nil,
+                            backgroundColor: ColorLayout.stGray7.auto,
+                            selectedBackgroundColor: nil,
+                            selectedImage: nil,
+                            image: nil,
+                            cornerRadius: 4.0,
+                            borderColor: nil,
+                            borderWith: nil,
+                            font: FontLayout.regular)
+    }()
+    
     static var standardWithSmallFont: Buttonlayout = {
         return Buttonlayout(color: .white,
                             selectedColor: nil,

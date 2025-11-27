@@ -21,6 +21,16 @@ public extension UInt8 {
     }
 }
 
+public extension UInt16 {
+    var hex: String {
+        String(format: "%02x", self).lowercased()
+    }
+
+    var longHex: String {
+        String(format: "0x%02x", self).lowercased()
+    }
+}
+
 public extension UInt32 {
     var hex: String {
         String(format: "%02x", self).lowercased()

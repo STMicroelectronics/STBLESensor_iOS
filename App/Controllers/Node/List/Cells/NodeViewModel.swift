@@ -89,6 +89,8 @@ class NodeViewModel: BaseCellViewModel<Node, NodeCell> {
             if firmware.maturity != Maturity.release {
                 view.maturityLabel.isHidden = false
                 view.maturityLabel.text = firmware.maturity?.description
+            } else {
+                view.maturityLabel.isHidden = true
             }
 
             view.firmwareLabel.isHidden = false

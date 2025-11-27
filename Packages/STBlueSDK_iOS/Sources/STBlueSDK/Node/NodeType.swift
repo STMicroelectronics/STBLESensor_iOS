@@ -58,11 +58,11 @@ public enum NodeType: UInt8 {
     case nucleoWB0X = 0x8D
     case wba65RiNucleoBoard = 0x8E
     case wb05NucleoBoard = 0x8F
-    
     case wba2NucleoBoard = 0x90
+    
     case wba5mWpanBoard = 0x91
     case stm32wba65iDk1Board = 0x92
-    case stm67w61MNucleoBoard = 0x9A
+    case st67w6x = 0x9A
 }
 
 public extension NodeType {
@@ -152,8 +152,8 @@ public extension NodeType {
             return "B_WBA5M_WPAN"
         case .stm32wba65iDk1Board:
             return "STM32WBA65I_DK1"
-        case .stm67w61MNucleoBoard:
-            return "ST67W611"
+        case .st67w6x:
+            return "ST67W6x"
         }
     }
     
@@ -243,8 +243,8 @@ public extension NodeType {
             return "Nucleo-WBA5M"
         case .stm32wba65iDk1Board:
             return "Nucleo-WBA65I"
-        case .stm67w61MNucleoBoard:
-            return "ST67W611"
+        case .st67w6x:
+            return "ST67W6x"
         }
     }
 
@@ -319,7 +319,7 @@ public extension NodeType {
             return "real_board_wba5m_wpan"
         case .stm32wba65iDk1Board:
             return "real_board_wba651_dk1"
-        case .stm67w61MNucleoBoard:
+        case .st67w6x:
             return "real_board_nucleo_67w61m1"
         }
     }
@@ -414,7 +414,9 @@ public extension NodeType {
         case .wba55CGNucleoBoard,
              .stm32Wba55gDk1Board,
              .stm32wba65iDk1Board,
-             .wba65RiNucleoBoard:
+             .wba65RiNucleoBoard,
+             .wba2NucleoBoard,
+             .st67w6x:
             return NodeFamily.wbaFamily
             
         case .generic,
@@ -424,9 +426,7 @@ public extension NodeType {
              .stEvalBCN002V1:
             return NodeFamily.otherFamily
             
-        case .wba2NucleoBoard,
-             .wba5mWpanBoard,
-             .stm67w61MNucleoBoard:
+        case .wba5mWpanBoard:
             return NodeFamily.wbNotYetSupported
         }
     }
@@ -443,4 +443,19 @@ public extension NodeType {
             return true
 		}
 	}
+}
+
+public struct NodeMapper {
+    private static let apiNameToNodeType: [String: NodeType] = [
+        "steval-stwinkt1b": .stEvalSTWINKT1B,
+        "steval-stwinbx1": .stWinBox,
+        "steval-mkboxpro": .sensorTileBoxPro
+    ]
+    
+    public static func nodeType(fromApiNodeName apiNodeName: String) -> NodeType? {
+        guard let nodeType = apiNameToNodeType[apiNodeName] else {
+            return nil
+        }
+        return nodeType
+    }
 }

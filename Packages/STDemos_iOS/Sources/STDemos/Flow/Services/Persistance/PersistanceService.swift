@@ -72,7 +72,7 @@ struct PersistanceService {
         
         guard let flows: [Flow] = load(from: url) else { return [] }
         
-        return flows.filter{ $0.boardCompatibility?.contains { $0 == node.type.stringValue } ?? false }
+        return flows.filter{ $0.boardCompatibility?.contains { $0.replacingOccurrences(of: "_", with: "").lowercased() == node.type.stringValue.replacingOccurrences(of: "_", with: "").lowercased() } ?? false }
     }
 
     func getCounterFlows(runningNode node: Node) -> [Flow] {
@@ -83,7 +83,7 @@ struct PersistanceService {
 
         guard let flows: [Flow] = load(from: url) else { return [] }
         
-        return flows.filter{ $0.boardCompatibility?.contains { $0 == node.type.stringValue } ?? false }
+        return flows.filter{ $0.boardCompatibility?.contains { $0.replacingOccurrences(of: "_", with: "").lowercased() == node.type.stringValue.replacingOccurrences(of: "_", with: "").lowercased() } ?? false }
     }
 
     func getAllFlows() -> [Flow] {
@@ -140,7 +140,7 @@ struct PersistanceService {
         guard let url = bundle.url(forResource: "functions", withExtension: "json") else { return [] }
         guard let functions: [Function] = load(from: url) else { return [] }
 
-        return functions.filter{ $0.boardCompatibility?.contains { $0 == node.type.stringValue } ?? false }
+        return functions.filter{ $0.boardCompatibility?.contains { $0.replacingOccurrences(of: "_", with: "").lowercased() == node.type.stringValue.replacingOccurrences(of: "_", with: "").lowercased() } ?? false }
     }
     
     // MARK: - SENSORS
@@ -152,7 +152,7 @@ struct PersistanceService {
         
         guard let sensors: [Sensor] = load(from: url) else { return [] }
 
-        return sensors.filter{ $0.boardCompatibility?.contains { $0 == node.type.stringValue } ?? false }
+        return sensors.filter{ $0.boardCompatibility?.contains { $0.replacingOccurrences(of: "_", with: "").lowercased() == node.type.stringValue.replacingOccurrences(of: "_", with: "").lowercased() } ?? false }
     }
     
     // MARK: - OUTPUTS
@@ -164,7 +164,7 @@ struct PersistanceService {
         
         guard let outputs: [Output] = load(from: url) else { return [] }
 
-        return outputs.filter{ $0.boardCompatibility?.contains { $0 == node.type.stringValue } ?? false }
+        return outputs.filter{ $0.boardCompatibility?.contains { $0.replacingOccurrences(of: "_", with: "").lowercased() == node.type.stringValue.replacingOccurrences(of: "_", with: "").lowercased() } ?? false }
     }
 
     // MARK: - FILTERS
@@ -176,7 +176,7 @@ struct PersistanceService {
 
         guard let filters: [Filter] = load(from: url) else { return [] }
 
-        return filters.filter{ $0.boardCompatibility?.contains { $0 == node.type.stringValue } ?? false }
+        return filters.filter{ $0.boardCompatibility?.contains { $0.replacingOccurrences(of: "_", with: "").lowercased() == node.type.stringValue.replacingOccurrences(of: "_", with: "").lowercased() } ?? false }
     }
 
     func getFiltersBy(runningNode node: Node, _ sensorId: String, powerMode: PowerMode.Mode, odr: Double) -> FilterElement? {

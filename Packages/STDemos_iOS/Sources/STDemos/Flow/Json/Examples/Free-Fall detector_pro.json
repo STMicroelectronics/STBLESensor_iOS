@@ -94,7 +94,6 @@
             "id": "L1",
             "description": "Threshold Comparison",
             "board_compatibility": [
-              "SENSOR_TILE_BOX",
               "SENSOR_TILE_BOX_PRO",
               "SENSOR_TILE_BOX_PROB",
               "SENSOR_TILE_BOX_PROC"
@@ -208,7 +207,6 @@
             {
               "id": "L11",
               "board_compatibility": [
-                "SENSOR_TILE_BOX",
                 "SENSOR_TILE_BOX_PRO",
                 "SENSOR_TILE_BOX_PROB",
                 "SENSOR_TILE_BOX_PROC"
@@ -227,7 +225,6 @@
             {
               "id": "O3",
               "board_compatibility": [
-                "SENSOR_TILE_BOX",
                 "SENSOR_TILE_BOX_PRO",
                 "SENSOR_TILE_BOX_PROB",
                 "SENSOR_TILE_BOX_PROC"
@@ -250,7 +247,6 @@
     {
       "id": "L11",
       "board_compatibility": [
-        "SENSOR_TILE_BOX",
         "SENSOR_TILE_BOX_PRO",
         "SENSOR_TILE_BOX_PROB",
         "SENSOR_TILE_BOX_PROC"

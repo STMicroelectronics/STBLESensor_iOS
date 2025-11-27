@@ -55,6 +55,8 @@ class FirmwareSelectViewController: BaseNoViewController<FirmwareSelectDelegate>
         
         presenter.load()
         
+        typeView?.configureButton()
+        
     }
     
 }

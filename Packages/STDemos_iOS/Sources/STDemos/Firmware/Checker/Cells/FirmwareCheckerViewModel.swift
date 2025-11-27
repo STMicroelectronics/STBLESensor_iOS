@@ -57,6 +57,11 @@ public class FirmwareCheckerViewModel: BaseCellViewModel<Firmwares, FirmwareChec
         view.updateFirmwareLabel.text = param?.availables.first?.fullName
         view.changeLogLabel.text = param?.availables.first?.changelog
 
+        if param?.availables.first?.changelog == "" {
+            view.changeLogDescLabel.isHidden = true
+            view.changeLogLabel.isHidden = true
+        }
+        
         Buttonlayout.standard.apply(to: view.installButton, text: "INSTALL")
         Buttonlayout.standardGray.apply(to: view.cancelButton, text: "CANCEL")
         

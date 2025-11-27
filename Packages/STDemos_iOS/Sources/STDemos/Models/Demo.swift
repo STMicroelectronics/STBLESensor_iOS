@@ -72,6 +72,7 @@ public enum Demo: String, CaseIterable, Codable {
     case cloudMqtt
     case medicalSignal
     case wbsOtaFuota
+    case robotics
 }
 
 private var pnplDemoTitle: String = "PnpLike"
@@ -134,7 +135,8 @@ public extension Demo {
         .smartMotorControl: "Smart Motor Control",
         .medicalSignal: "Medical Signals",
         .binaryContent: "Binary Content",
-        .wbsOtaFuota: "FUOTA"
+        .wbsOtaFuota: "FUOTA",
+        .robotics: "Robotics"
     ]
 
     var title: String {
@@ -261,6 +263,8 @@ public extension Demo {
             return "Motor Control Integration with high speed sensors data log configuration, control and tagging"
         case .wbsOtaFuota:
             return "Firmware Update Over the Air for WB/WBA boards"
+        case .robotics:
+            return "Application for scanning and controlling robotics kits"
         }
     }
     
@@ -380,6 +384,8 @@ public extension Demo {
             return ImageLayout.image(with: "demo_binary_content", in: STUI.bundle)
         case .wbsOtaFuota:
             return ImageLayout.image(with: "demo_wb_fuota", in: STUI.bundle)
+        case .robotics:
+            return ImageLayout.image(with: "demo_robotics", in: STUI.bundle)
         }
     }
     
@@ -499,6 +505,8 @@ public extension Demo {
             return [.binaryContent]
         case .wbsOtaFuota:
             return [ .fota ]
+        case .robotics:
+            return [ ]
         }
     }
     
@@ -691,6 +699,9 @@ public extension Demo {
         case .medicalSignal:
             return [ MedicalSignal16BitFeature.self,
                      MedicalSignal24BitFeature.self]
+        case .robotics:
+            return [ RoboticsMovementFeature.self,
+                     SceneDescriptionFeature.self]
         }
     }
     
@@ -832,6 +843,13 @@ public extension Demo {
             return  BinaryContentPresent(param: DemoParam<Void>(node: node))
         case .wbsOtaFuota:
             return FirmwareSelectPresenter(param: DemoParam<FirmwareSelect>(node: node, param: nil))
+        case .robotics:
+            return DedicatedAppPresenter(param: DemoParam<DedicatedAppInfo>(node: node,
+                                                                  param: DedicatedAppInfo(name: "ST Robotics",
+                                                                                          shortDescription: "Application for scanning and controlling robotics kits",
+                                                                                          imageName: "strobotics",
+                                                                                          description: "The ST Robotics Application for Android enables users to configure and operate various robotic kits and boards, such as the Robotics Evaluation Kit. This application facilitates the discovery, connection, and control of these robotic kits.",
+                                                                                          url: "https://apps.apple.com/us/app/st-robotics/id6739212512")))
         }
     }
     

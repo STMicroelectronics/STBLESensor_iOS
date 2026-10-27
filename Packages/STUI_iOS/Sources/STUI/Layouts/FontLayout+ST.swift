@@ -34,30 +34,30 @@ public extension FontLayout {
     }()
 }
 
-public extension Font {
-    
-    static var stTitle: Font {
-        return .system(size: 30.0)
-    }
-    
-    static var stRegular: Font {
-        return .system(size: 18.0, weight: .regular)
-    }
-    
-    static var stBold: Font {
-        return .system(size: 19.0, weight: .bold)
-    }
-    
-    static var stTitle2: Font {
-        return .system(size: 19.0, weight: .bold)
-    }
-    
-    static var stInfo: Font {
-        return .system(size: 13.0, weight: .light)
-    }
-    
-    static var stInfoBold: Font {
-        return .system(size: 13.0, weight: .bold)
-    }
-    
-}
+//public extension Font {
+//    
+//    static var stTitle: Font {
+//        return .system(size: 30.0)
+//    }
+//    
+//    static var stRegular: Font {
+//        return .system(size: 18.0, weight: .regular)
+//    }
+//    
+//    static var stBold: Font {
+//        return .system(size: 19.0, weight: .bold)
+//    }
+//    
+//    static var stTitle2: Font {
+//        return .system(size: 19.0, weight: .bold)
+//    }
+//    
+//    static var stInfo: Font {
+//        return .system(size: 13.0, weight: .light)
+//    }
+//    
+//    static var stInfoBold: Font {
+//        return .system(size: 13.0, weight: .bold)
+//    }
+//    
+//}

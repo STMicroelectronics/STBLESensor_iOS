@@ -12,16 +12,16 @@
 import Foundation
 import STCore
 
-public enum Environment: String {
+public enum CatalogEnvironment: String {
     case prod = "STMicroelectronics"
     case dev = "SW-Platforms"
 }
 
 internal enum EndPoint {
 
-    case catalogChecksum(env: Environment)
-    case catalog(env: Environment)
-    case dtmi(env: Environment, firmware: Firmware)
+    case catalogChecksum(env: CatalogEnvironment)
+    case catalog(env: CatalogEnvironment)
+    case dtmi(env: CatalogEnvironment, firmware: Firmware)
 
     var url: URL? {
         switch self {
@@ -55,15 +55,15 @@ internal enum EndPoint {
 
 internal extension URLSession {
 
-    func getCatalog(with env: Environment, completion: @escaping (Result<Catalog, STError>) -> Void) {
+    func getCatalog(with env: CatalogEnvironment, completion: @escaping (Result<Catalog, STError>) -> Void) {
         performRequest(on: .catalog(env: env), completion: completion)
     }
 
-    func getDtmi(with env: Environment, firmware: Firmware, completion: @escaping (Result<[PnpLContent], STError>) -> Void) {
+    func getDtmi(with env: CatalogEnvironment, firmware: Firmware, completion: @escaping (Result<[PnpLContent], STError>) -> Void) {
         performRequest(on: .dtmi(env: env, firmware: firmware), completion: completion)
     }
 
-    func getCatalogChecksum(with env: Environment, completion: @escaping (Result<Checksum, STError>) -> Void) {
+    func getCatalogChecksum(with env: CatalogEnvironment, completion: @escaping (Result<Checksum, STError>) -> Void) {
         performRequest(on: .catalogChecksum(env: env), completion: completion)
     }
 

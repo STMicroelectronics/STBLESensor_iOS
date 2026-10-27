@@ -75,6 +75,7 @@ public struct ImageLayout {
         public static var shopping: UIImage? { ImageLayout.image(with: "img_shopping") }
         public static var wiki: UIImage? { ImageLayout.image(with: "img_wiki") }
         public static var products: UIImage? { ImageLayout.image(with: "img_products") }
+        public static var editUnderlined: UIImage? { ImageLayout.image(with: "img_node_name_edit") }
     }
     
     public struct SUICommon {
@@ -84,6 +85,9 @@ public struct ImageLayout {
         public static var builcConfig: Image? { ImageLayout.SUIimage(with: "img_build_config") }
         public static var info: Image? { ImageLayout.SUIimage(with: "img_info") }
         public static var infoFilled: Image? { ImageLayout.SUIimage(with: "img_info_filled") }
+        
+        public static var checkedImage: Image? { ImageLayout.SUIimage(with: "img_checkmark_circle_fill") }
+        public static var uncheckedImage: Image? { ImageLayout.SUIimage(with: "img_checkmark_circle") }
     }
 
     public struct SDKV2 {

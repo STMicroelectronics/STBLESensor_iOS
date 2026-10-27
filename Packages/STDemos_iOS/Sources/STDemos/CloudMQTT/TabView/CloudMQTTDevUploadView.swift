@@ -175,6 +175,7 @@ class BlueDelegateHandler: NSObject, BlueDelegate {
     func manager(_ manager: BlueManager, didDiscover node: Node) {}
     func manager(_ manager: BlueManager, didRemoveDiscovered nodes: [Node]) {}
     func manager(_ manager: BlueManager, didChangeStateFor node: Node) {}
+    func manger(_ service: BlueManager, receivedDebugConsoleDataFor node: Node, data: Data) {}
     func manager(_ manager: BlueManager, didUpdateValueFor node: Node, feature: Feature, sample: AnyFeatureSample?) {
         guard let sample = sample else { return }
         Logger.debug(text: "\(sample.description)")

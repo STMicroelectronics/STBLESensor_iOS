@@ -58,4 +58,6 @@ public final class FirmwareCheckerViewController: TableViewController<FirmwareCh
     public func manager(_ manager: STBlueSDK.BlueManager, didReceiveCommandResponseFor node: STBlueSDK.Node, feature: STBlueSDK.Feature, response: STBlueSDK.FeatureCommandResponse) {
         
     }
+    
+    public func manger(_ service: BlueManager, receivedDebugConsoleDataFor node: Node, data: Data) {}
 }

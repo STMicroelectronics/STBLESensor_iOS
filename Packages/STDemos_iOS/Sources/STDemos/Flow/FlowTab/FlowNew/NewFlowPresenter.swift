@@ -1,6 +1,6 @@
 //
 //  NewFlowPresenter.swift
-//  
+//
 //  Copyright (c) 2022 STMicroelectronics.
 //  All rights reserved.
 //
@@ -61,12 +61,8 @@ extension NewFlowPresenter: NewFlowDelegate {
                 onFlowItemSettingsClicked: { sensorItem in
                     if let sensor = sensorItem as? Sensor {
                         let inputOptionController = FlowInputOptionPresenter(param: SensorAndNodeParam(sensor: sensor, node: self.param.node))
-                        let inputOptionVC = inputOptionController.start()
-                        
-                        self.view.present(
-                            inputOptionVC.embeddedInNav(),
-                            animated: true
-                        )
+                        let inputOptionVC = inputOptionController.start().embeddedInNav()
+                        self.presentSheet(inputOptionVC)
                     }
                 },
                 onFlowItemDeleteClicked: { sensorItem in
@@ -111,26 +107,31 @@ extension NewFlowPresenter: NewFlowDelegate {
                                 sensor: self.param.flow.inputSensors().first
                             )
                         )
-                        let functionOptionVC = functionOptionController.start()
-                        
-                        self.view.present(
-                            functionOptionVC.embeddedInNav(),
-                            animated: true
-                        )
+                        let functionOptionVC = functionOptionController.start().embeddedInNav()
+                        self.presentSheet(functionOptionVC)
                     }
                 },
-                onFlowItemDeleteClicked: { functionItem in
+                onFlowItemDeleteClicked: { [weak self] functionItem in
+                    guard let self else { return }
                     print("ITEM TO DELETE \(functionItem.descr)")
-                    ModalService.showConfirm(with: "Are you sure you want to delete the selected function?") { [weak self] success in
-                        if success {
-                            guard let self = self, let index = self.param.flow.functions.firstIndex (where: { $0.identifier == functionItem.identifier }) else { return }
-                            
-                            let functionsToRemove = Array(self.param.flow.functions[index...])
-                            self.param.flow.remove(items: functionsToRemove)
-                            self.param.flow.outputs = [Output]()
-                            self.newFlowParametersSelectionCompleted()
-                        }
-                    }
+                    let alert = UIAlertController(
+                        title: Localizer.Common.warning.localized,
+                        message: "Are you sure you want to delete the selected function?",
+                        preferredStyle: .alert
+                    )
+
+                    alert.addAction(UIAlertAction(title: Localizer.Common.cancel.localized, style: .cancel))
+                    alert.addAction(UIAlertAction(title: Localizer.Common.ok.localized, style: .destructive) { [weak self] _ in
+                        guard let self = self,
+                              let index = self.param.flow.functions.firstIndex(where: { $0.identifier == functionItem.identifier }) else { return }
+
+                        let functionsToRemove = Array(self.param.flow.functions[index...])
+                        self.param.flow.remove(items: functionsToRemove)
+                        self.param.flow.outputs = [Output]()
+                        self.newFlowParametersSelectionCompleted()
+                    })
+
+                    self.view.present(alert, animated: true)
                 }
             )
         }))
@@ -166,16 +167,28 @@ extension NewFlowPresenter: NewFlowDelegate {
                 onFlowItemSettingsClicked: { outputItem in
                     if let output = outputItem as? Output {
                         let outputOptionController = FlowOutputOptionPresenter(param: output)
-                        let outputOptionVC = outputOptionController.start()
-                        
-                        self.view.present(
-                            outputOptionVC.embeddedInNav(),
-                            animated: true
-                        )
+                        let outputOptionVC = outputOptionController.start().embeddedInNav()
+                        self.presentSheet(outputOptionVC)
                     }
                 },
-                onFlowItemDeleteClicked: { outputItem in
-                    print("ITEM TO DELETE \(outputItem.descr)")
+                onFlowItemDeleteClicked: { [weak self] outputItem in
+                    guard let self else { return }
+                    let alert = UIAlertController(
+                        title: Localizer.Common.warning.localized,
+                        message: "Are you sure you want to delete the selected output?",
+                        preferredStyle: .alert
+                    )
+
+                    alert.addAction(UIAlertAction(title: Localizer.Common.cancel.localized, style: .cancel))
+                    alert.addAction(UIAlertAction(title: Localizer.Common.ok.localized, style: .destructive) { [weak self] _ in
+                        guard let self = self,
+                              let index = self.param.flow.outputs.firstIndex(where: { $0.identifier == outputItem.identifier }) else { return }
+
+                        self.param.flow.outputs.remove(at: index)
+                        self.newFlowParametersSelectionCompleted()
+                    })
+
+                    self.view.present(alert, animated: true)
                 }
             )
         }))
@@ -186,12 +199,9 @@ extension NewFlowPresenter: NewFlowDelegate {
             handleButtonTouched: { _ in
                 let outputsFlowController = FlowOutputPresenter(param: self.param)
                 outputsFlowController.delegate = self
-                let outputsFlowVC = outputsFlowController.start()
+                let outputsFlowVC = outputsFlowController.start().embeddedInNav()
                 outputsFlowVC.isModalInPresentation = true
-                self.view.present(
-                    outputsFlowVC.embeddedInNav(),
-                    animated: true
-                )
+                self.presentSheet(outputsFlowVC)
             }
         )
         addOutputViewModel.layout?.buttonLayout = Buttonlayout.standardWithSmallFont
@@ -215,6 +225,27 @@ extension NewFlowPresenter: NewFlowDelegate {
         ModalService.showConfirm(with: "Losing all changes. Do you want to continue?") { (close: Bool) in
             if close {
                 self.view.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+
+    private func presentSheet(_ controller: UIViewController) {
+        controller.modalPresentationStyle = .pageSheet
+
+        if let sheet = controller.sheetPresentationController {
+            sheet.detents = [.large()]
+            sheet.selectedDetentIdentifier = .large
+            sheet.prefersGrabberVisible = true
+        }
+
+        self.view.present(controller, animated: true) {
+            DispatchQueue.main.async {
+                controller.view.setNeedsLayout()
+                controller.view.layoutIfNeeded()
+                controller.navigationController?.view.setNeedsLayout()
+                controller.navigationController?.view.layoutIfNeeded()
+                controller.presentationController?.containerView?.setNeedsLayout()
+                controller.presentationController?.containerView?.layoutIfNeeded()
             }
         }
     }

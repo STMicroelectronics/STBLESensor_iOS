@@ -12,13 +12,17 @@
 import Foundation
 
 public extension BlueManager {
-    func read(feature: Feature, for node: Node, delegate: BlueDelegate) {
+    func read(feature: Feature, for node: Node, delegate: BlueDelegate? = nil) {
         if let nodeService = nodeServices.nodeService(with: node) {
             
-            addDelegate(delegate)
+            if let delegate = delegate {
+                addDelegate(delegate)
+            }
             
             if !nodeService.readFeature(feature) {
-                delegate.manager(self, didUpdateValueFor: node, feature: feature, sample: feature.lastSample)
+                if let delegate = delegate {
+                    delegate.manager(self, didUpdateValueFor: node, feature: feature, sample: feature.lastSample)
+                }
             }
         }
     }

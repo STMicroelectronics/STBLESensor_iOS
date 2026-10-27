@@ -31,16 +31,16 @@ extension AppInfoPresenter: AppInfoDelegate {
             showCatalogAlert(
                 "PROD Catalog",
                 "Do you want to restore PRODUCTION Catalog?.",
-                Environment.prod)
+                CatalogEnvironment.prod)
         } else {
             showCatalogAlert(
                 "BETA Catalog",
                 "Do you want to use BETA Catalog? This may create issues in the application.",
-                Environment.dev)
+                CatalogEnvironment.dev)
         }
     }
 
-    private func showCatalogAlert(_ title: String, _ message: String, _ env: Environment) {
+    private func showCatalogAlert(_ title: String, _ message: String, _ env: CatalogEnvironment) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "ACTIVATE", style: .default, handler: { _ in
             self.updateCatalog(env)
@@ -51,7 +51,7 @@ extension AppInfoPresenter: AppInfoDelegate {
         self.view.present(alert, animated: true, completion: nil)
     }
 
-    private func updateCatalog (_ env: Environment) {
+    private func updateCatalog (_ env: CatalogEnvironment) {
         BlueManager.shared.updateCatalog(with: env) { catalog, error in
             if let error = error {
                 self.showFeedbackAlert("DECODING ERROR", "\(error.localizedDescription)")

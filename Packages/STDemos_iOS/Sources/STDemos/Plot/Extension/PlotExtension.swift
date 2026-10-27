@@ -13,6 +13,17 @@ import Foundation
 import STUI
 import STBlueSDK
 
+
+let lineConfigColors = [
+    ColorLayout.blue.light,
+    ColorLayout.red.light,
+    ColorLayout.green.light,
+    ColorLayout.ochre.light,
+    ColorLayout.yellow.light,
+    ColorLayout.systemBlack.light
+]
+
+
 extension AnyFeatureSample {
     func toPlotEntry(sample: AnyFeatureSample?) -> PlotEntry? {
         if let sample = sample as? FeatureSample<AccelerationData>,

@@ -118,7 +118,7 @@ public extension Buttonlayout {
     }()
     
     static var standardYellow: Buttonlayout = {
-        return Buttonlayout(color: .white,
+        return Buttonlayout(color: ColorLayout.primary.auto,
                             selectedColor: nil,
                             backgroundColor: ColorLayout.yellow.auto,
                             selectedBackgroundColor: nil,
@@ -127,7 +127,7 @@ public extension Buttonlayout {
                             cornerRadius: 4.0,
                             borderColor: nil,
                             borderWith: nil,
-                            font: FontLayout.regular.withSize(14.0))
+                            font: FontLayout.regular)
     }()
     
     static var lightBlueSecondary: Buttonlayout = {

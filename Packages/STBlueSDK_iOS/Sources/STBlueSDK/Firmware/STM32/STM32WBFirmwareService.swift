@@ -11,7 +11,6 @@
 
 import Foundation
 import CoreBluetooth
-import STCore
 
 internal class STM32WBFirmwareService: BaseFirmwareService {
     
@@ -193,6 +192,10 @@ private extension STM32WBFirmwareService {
 }
 
 extension STM32WBFirmwareService: BlueDelegate {
+    
+    func manger(_ service: BlueManager, receivedDebugConsoleDataFor node: Node, data: Data) {
+        
+    }
 
     func manager(_ manager: BlueManager, discoveringStatus isDiscovering: Bool) {
 

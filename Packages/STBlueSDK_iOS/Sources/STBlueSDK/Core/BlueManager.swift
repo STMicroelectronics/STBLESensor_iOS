@@ -1,6 +1,6 @@
 //
 //  BlueManager.swift
-//  
+//
 //  Copyright (c) 2022 STMicroelectronics.
 //  All rights reserved.
 //
@@ -54,10 +54,10 @@ public protocol BlueSTManager {
     func enableNotifications(for node: Node, features: [Feature])
     func disableNotifications(for node: Node, features: [Feature])
     
-    func read(feature: Feature, for node: Node, delegate: BlueDelegate)
+    func read(feature: Feature, for node: Node, delegate: BlueDelegate?)
     
-    func updateCatalog(with environment: Environment, completion: @escaping (Catalog?, STError?) -> Void)
-    func updateDtmi(with environment: Environment, firmware: Firmware, completion: @escaping ([PnpLContent], STError?) -> Void)
+    func updateCatalog(with environment: CatalogEnvironment, completion: @escaping (Catalog?, STError?) -> Void)
+    func updateDtmi(with environment: CatalogEnvironment, firmware: Firmware, completion: @escaping ([PnpLContent], STError?) -> Void)
 
     func add(customFirmwareToCatalog firmware: Firmware) -> Catalog?
     func removeCustomFirmware(for node: Node) -> Catalog?
@@ -178,7 +178,7 @@ public class BlueManager : NSObject, BlueSTManager {
     private override init() {
         super.init()
 
-        centralManager = CBCentralManager(delegate: self, queue: nil)        
+        centralManager = CBCentralManager(delegate: self, queue: nil)
     }
 
     public func addVirtualNode() {
@@ -372,6 +372,13 @@ extension BlueManager: CBCentralManagerDelegate {
 }
 
 extension BlueManager: NodeServiceDelegate {
+    public func service(_ service: NodeService, receivedDebugConsoleDataFor node: Node, data: Data) {
+        delegates.forEach { delegate in
+            guard let weakDelegate = delegate.refItem as? BlueDelegate else { return }
+            weakDelegate.manger(self, receivedDebugConsoleDataFor: node, data: data)
+        }
+    }
+    
 
     public func service(_ service: NodeService, didReadRSSIFor node: Node, error: Error?) {
         delegates.forEach { delegate in

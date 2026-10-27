@@ -191,6 +191,8 @@ extension NodeListViewController: BlueDelegate {
     func manager(_ manager: BlueManager, didUpdateValueFor: Node, feature: Feature, sample: AnyFeatureSample?) {
 
     }
+    
+    func manger(_ service: BlueManager, receivedDebugConsoleDataFor node: Node, data: Data) {}
 
     func manager(_ manager: BlueManager,
                  didReceiveCommandResponseFor node: Node,

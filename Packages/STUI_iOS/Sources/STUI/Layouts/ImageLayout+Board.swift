@@ -23,6 +23,7 @@ public extension ImageLayout {
         public static var proteus: UIImage? = { UIImage(named: "real_board_proteus", in: .module, compatibleWith: nil) } ()
         public static var stSysSBU06: UIImage? = { UIImage(named: "real_board_stysys_sbu06", in: .module, compatibleWith: nil) } ()
         public static var sensorTileBoxPro: UIImage? = { UIImage(named: "real_board_sensortilebox_pro", in: .module, compatibleWith: nil) } ()
+        public static var bcnwbcb: UIImage? = { UIImage(named: "real_board_eval_bcnwbcb", in: .module, compatibleWith: nil) } () //PEZZ
         public static var polaris: UIImage? = { UIImage(named: "real_board_polaris", in: .module, compatibleWith: nil) } ()
         public static var bl4s5iIot01a: UIImage? = { UIImage(named: "real_board_b_l4s5i_iot01a", in: .module, compatibleWith: nil) } ()
     }

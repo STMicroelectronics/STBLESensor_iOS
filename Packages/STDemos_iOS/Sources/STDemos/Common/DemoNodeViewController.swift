@@ -62,6 +62,8 @@ open class DemoNodeViewController<Presenter, View: UIView>: BaseViewController<P
     public func manager(_ manager: BlueManager, didRemoveDiscovered nodes: [Node]) {
 
     }
+    
+    public func manger(_ service: BlueManager, receivedDebugConsoleDataFor node: Node, data: Data) {}
 
     public func manager(_ manager: BlueManager, didChangeStateFor node: Node) {
         DispatchQueue.main.async { [weak self] in
@@ -131,6 +133,8 @@ open class DemoNodeNoViewController<Presenter>: BaseNoViewController<Presenter>,
     open func manager(_ manager: BlueManager, didRemoveDiscovered nodes: [Node]) {
 
     }
+    
+    open func manger(_ service: BlueManager, receivedDebugConsoleDataFor node: Node, data: Data) {}
 
     open func manager(_ manager: BlueManager, didChangeStateFor node: Node) {
         DispatchQueue.main.async { [weak self] in

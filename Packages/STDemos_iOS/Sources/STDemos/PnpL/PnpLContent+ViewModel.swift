@@ -66,11 +66,21 @@ public extension Layout {
                                          buttonLayout: Buttonlayout.text,
                                          margin: .standard)
     
-    static var standardButton: Layout = Layout(textLayout: TextLayout.text.size(16.0),
+    static var textRounded: Layout = Layout(mainColor: ColorLayout.primary,
+                                         textLayout: TextLayout.textRounded,
+                                         titleLayout: TextLayout.textRounded,
+                                         buttonLayout: Buttonlayout.rounded,
+                                         margin: .standard)
+    
+    static var standardButton: Layout = Layout(textLayout: TextLayout.text.size(14.0),
                                                titleLayout: TextLayout.subtitle.weight(.bold),
                                                buttonLayout: Buttonlayout.standard,
                                                margin: .standard)
     
+    static var standardOutlinedButton: Layout = Layout(textLayout: TextLayout.text.size(14.0),
+                                               titleLayout: TextLayout.subtitle,
+                                               buttonLayout: Buttonlayout.rounded,
+                                               margin: .standard)
     
 //    static var blue: Layout = Layout(mainColor: ColorLayout.accent,
 //                                     backgroundColor: ColorLayout.secondary,
@@ -147,14 +157,36 @@ extension PnpLContent {
             primitiveKeys.append(pnpLPrimitiveContent.name)
             
             if case .string(.boolean) = pnpLPrimitiveContent.schema {
+                if pnpLPrimitiveContent.name == "ucf_status" {
 
-                return [ SwitchViewModel(param: CodeValue<SwitchInput>(keys: primitiveKeys,
-                                                                       value: SwitchInput(title: pnpLPrimitiveContent.displayName?.en,
-                                                                                           value: false,
-                                                                                         isEnabled: pnpLPrimitiveContent.writable ?? false,
-                                                                                           handleValueChanged: { value in
-                    action(.valueChanged(value))
-                })), layout: PnpLContent.layout) ]
+                    return [
+                        ObjectViewModel(
+                            param: nil,
+                            axis: .horizontal,
+                            childrenViewModels: [
+
+                                EmptyViewModel(),
+
+                                UCFStatusViewModel(
+                                    param: CodeValue<String>(
+                                        keys: primitiveKeys,
+                                        value: "Checking..."
+                                    ),
+                                    layout: Layout.textRounded
+                                )
+                            ]
+                        )
+                    ]
+                }
+            else {
+                    return [ SwitchViewModel(param: CodeValue<SwitchInput>(keys: primitiveKeys,
+                                                                           value: SwitchInput(title: pnpLPrimitiveContent.displayName?.en,
+                                                                                              value: false,
+                                                                                              isEnabled: pnpLPrimitiveContent.writable ?? false,
+                                                                                              handleValueChanged: { value in
+                        action(.valueChanged(value))
+                    })), layout: PnpLContent.layout) ]
+                }
             }
             
             if case .obj(let objContent) = pnpLPrimitiveContent.schema, case .object(let pnpLObjectContent) = objContent {
@@ -202,13 +234,19 @@ extension PnpLContent {
             commandKeys.append(pnpLCommandContent.name)
 
             if pnpLCommandContent.name == "load_file" {
-                return [ ActionViewModel(param: CodeValue<ActionInput>(keys: commandKeys,
-                                                                       value: ActionInput(title: Localizer.Pnpl.Text.loadConfiguration.localized,
-                                                                                          actionTitle: Localizer.Pnpl.Action.uploadFile.localized)),
-                                         layout: PnpLContent.layout,
-                                         handleButtonTouched: { value in
-                    action(.loadFile(value))
-                }) ]
+                return [
+                    LabelViewModel(param: CodeValue<String>(keys: [ UUID().uuidString ],
+                                                            value: "Load Configuration"),
+                                   layout: Layout.title2.text(textLayout: Layout.standard.titleLayout?.alignment(.left))),
+                    
+                    ActionViewModel(param: CodeValue<ActionInput>(keys: commandKeys,
+                                                                  value: ActionInput(title: "",
+                                                                                     actionTitle: Localizer.Pnpl.Action.uploadFile.localized)),
+                                    layout: .standardButton,
+                                    handleButtonTouched: { value in
+                                        action(.loadFile(value))
+                                    })
+                ]
             }
 
             if let request = pnpLCommandContent.request {

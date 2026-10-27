@@ -56,6 +56,7 @@ public enum HttpMethod: String {
 public enum Authentication {
     case none
     case bearer
+    case idTokenBearer
     case basic
 }
 
@@ -125,15 +126,27 @@ public class NetworkService: NSObject, Network {
 
         guard let session: NetworkSession = Resolver.shared.resolve() else { return nil }
 
-        if authentication == .bearer {
+        if authentication == .idTokenBearer {
+            if let temporaryIdToken = session.temporaryIdToken,
+               let jwt = try? decode(jwt: temporaryIdToken),
+               !jwt.expired {
+                let header = "Bearer \(temporaryIdToken)"
+                defaultHeaders["Authorization"] = header
+            } else if let idToken = session.idToken,
+                      let jwt = try? decode(jwt: idToken),
+               !jwt.expired {
+                let header = "Bearer \(idToken)"
+                defaultHeaders["Authorization"] = header
+            } else {
+                return nil
+            }
+        } else if authentication == .bearer {
             if let temporaryToken = session.temporaryToken,
                let jwt = try? decode(jwt: temporaryToken),
                !jwt.expired {
-                let header = "Bearer \(session.temporaryToken ?? "no_valid_token_found")"
-                defaultHeaders["Authorization"] = header
+                defaultHeaders["Authorization"] = "Bearer \(temporaryToken)"
             } else {
-                let header = "Bearer \(session.accessToken ?? "no_valid_token_found")"
-                defaultHeaders["Authorization"] = header
+                defaultHeaders["Authorization"] = "Bearer \(session.accessToken ?? "no_valid_token_found")"
             }
         } else if let username = session.username,
                   let password = session.password,

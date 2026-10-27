@@ -21,7 +21,10 @@ public protocol NodeServiceDelegate: AnyObject {
     func service(_ service: NodeService, didUpdateValueFor node: Node, feature: Feature, sample: AnyFeatureSample?)
 
     func service(_ service: NodeService, didReceiveCommandResponseFor node: Node, feature: Feature, response: FeatureCommandResponse)
+    
+    func service(_ service: NodeService, receivedDebugConsoleDataFor node: Node, data: Data)
 }
+    
 
 public class NodeService {
     var node: Node
@@ -186,10 +189,14 @@ private extension NodeService {
 
     func updateValueForDebugConsoleCharacteristic(_ characteristic: CBCharacteristic, data: Data) {
         // NOT USED
+       //print("Receive a notification for a debug characteristic: \(characteristic.uuid.uuidString)")
+        delegate?.service(self,
+                          receivedDebugConsoleDataFor: node,
+                          data: data)
     }
 
     func updateValueForStandardFeatureCharacteristic(_ characteristic: CBCharacteristic, data: Data) {
-        guard var blueChar = node.characteristics.first(where: { $0.characteristic.uuid == characteristic.uuid }) else { return }
+        guard let blueChar = node.characteristics.first(where: { $0.characteristic.uuid == characteristic.uuid }) else { return }
 
         if blueChar.features.count == 0 {
             STBlueSDK.log(text: "Receive a notification for a characteristic: \(blueChar.characteristic.uuid.uuidString) that isn't handle by the sdk")

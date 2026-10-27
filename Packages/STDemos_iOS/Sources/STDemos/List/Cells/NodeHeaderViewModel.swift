@@ -64,10 +64,3 @@ public class NodeHeaderViewModel: BaseCellViewModel<Node, NodeHeaderCell> {
         }
     }
 }
-
-extension Node {
-    var image: UIImage? {
-        guard let imageName = type.imageName else { return nil }
-        return UIImage(named: imageName, in: STUI.bundle, compatibleWith: nil)
-    }
-}

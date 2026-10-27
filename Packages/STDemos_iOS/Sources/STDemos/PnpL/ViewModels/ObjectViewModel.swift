@@ -15,9 +15,11 @@ import STUI
 public class ObjectViewModel: BaseViewModel<String, ObjectView> {
 
     var childrenViewModels: [any ViewViewModel]
+    var axis: NSLayoutConstraint.Axis
 
-    init(param: String?, layout: Layout? = nil, childrenViewModels: [any ViewViewModel]) {
+    init(param: String?, layout: Layout? = nil, axis: NSLayoutConstraint.Axis = .vertical, childrenViewModels: [any ViewViewModel]) {
         self.childrenViewModels = childrenViewModels
+        self.axis = axis
 
         super.init(param: param, layout: layout)
     }
@@ -28,6 +30,8 @@ public class ObjectViewModel: BaseViewModel<String, ObjectView> {
     
     public override func configure(view: ObjectView) {
 
+        view.childrenStackView.axis = axis
+        
         if let layout = layout {
             layout.textLayout?.apply(to: view.objectLabel)
         }

@@ -1,4 +1,4 @@
-// swift-tools-version: 5.6
+// swift-tools-version: 5.9
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -7,7 +7,7 @@ let package = Package(
     name: "STDemos",
     defaultLocalization: "en",
     platforms: [
-        .iOS(.v15)
+        .iOS(.v17)
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
@@ -43,38 +43,38 @@ let package = Package(
                 .product(name: "CocoaMQTT", package: "CocoaMQTT")
             ],
             resources: [
-                .copy("Resources/Assets.xcassets"),
-                .copy("Environmental/EnviromentalView.xib"),
-                .copy("Environmental/SensorView.xib"),
-                .copy("PnpL/PnpLView.xib"),
-                .copy("Flow/Json/counter_flows.json"),
-                .copy("Flow/Json/exp_flows.json"),
-                .copy("Flow/Json/filters.json"),
-                .copy("Flow/Json/functions.json"),
-                .copy("Flow/Json/output.json"),
-                .copy("Flow/Json/sensors.json"),
-                .copy("Flow/Json/Examples/Vibration monitor - Training.json"),
-                .copy("Flow/Json/Examples/Vibration monitor - Compare.json"),
-                .copy("Flow/Json/Examples/SensorFusionCube_pro.json"),
-                .copy("Flow/Json/Examples/SensorFusionCube.json"),
-                .copy("Flow/Json/Examples/Q-Touch.json"),
-                .copy("Flow/Json/Examples/Pedometer_pro.json"),
-                .copy("Flow/Json/Examples/Pedometer.json"),
-                .copy("Flow/Json/Examples/NFC Writer.json"),
-                .copy("Flow/Json/Examples/Level_pro.json"),
-                .copy("Flow/Json/Examples/Level.json"),
-                .copy("Flow/Json/Examples/In-Vehicle Baby Alarm_pro.json"),
-                .copy("Flow/Json/Examples/In-Vehicle Baby Alarm.json"),
-                .copy("Flow/Json/Examples/Human Activity recognition_pro.json"),
-                .copy("Flow/Json/Examples/Human Activity recognition.json"),
-                .copy("Flow/Json/Examples/Free-Fall detector_pro.json"),
-                .copy("Flow/Json/Examples/Data recorder_pro.json"),
-                .copy("Flow/Json/Examples/Data recorder.json"),
-                .copy("Flow/Json/Examples/Compass_pro.json"),
-                .copy("Flow/Json/Examples/Compass.json"),
-                .copy("Flow/Json/Examples/Barometer_pro.json"),
-                .copy("Flow/Json/Examples/Barometer.json"),
-                .copy("Flow/Json/Examples/Baby Crying Detector.json")
+                .process("Resources/Assets.xcassets"),
+                .process("Environmental/EnviromentalView.xib"),
+                .process("Environmental/SensorView.xib"),
+                .process("PnpL/PnpLView.xib"),
+                .process("Flow/Json/counter_flows.json"),
+                .process("Flow/Json/exp_flows.json"),
+                .process("Flow/Json/filters.json"),
+                .process("Flow/Json/functions.json"),
+                .process("Flow/Json/output.json"),
+                .process("Flow/Json/sensors.json"),
+                .process("Flow/Json/Examples/Vibration monitor - Training.json"),
+                .process("Flow/Json/Examples/Vibration monitor - Compare.json"),
+                .process("Flow/Json/Examples/SensorFusionCube_pro.json"),
+                .process("Flow/Json/Examples/SensorFusionCube.json"),
+                .process("Flow/Json/Examples/Q-Touch.json"),
+                .process("Flow/Json/Examples/Pedometer_pro.json"),
+                .process("Flow/Json/Examples/Pedometer.json"),
+                .process("Flow/Json/Examples/NFC Writer.json"),
+                .process("Flow/Json/Examples/Level_pro.json"),
+                .process("Flow/Json/Examples/Level.json"),
+                .process("Flow/Json/Examples/In-Vehicle Baby Alarm_pro.json"),
+                .process("Flow/Json/Examples/In-Vehicle Baby Alarm.json"),
+                .process("Flow/Json/Examples/Human Activity recognition_pro.json"),
+                .process("Flow/Json/Examples/Human Activity recognition.json"),
+                .process("Flow/Json/Examples/Free-Fall detector_pro.json"),
+                .process("Flow/Json/Examples/Data recorder_pro.json"),
+                .process("Flow/Json/Examples/Data recorder.json"),
+                .process("Flow/Json/Examples/Compass_pro.json"),
+                .process("Flow/Json/Examples/Compass.json"),
+                .process("Flow/Json/Examples/Barometer_pro.json"),
+                .process("Flow/Json/Examples/Barometer.json"),
+                .process("Flow/Json/Examples/Baby Crying Detector.json")
             ]),
         .testTarget(
             name: "STDemosTests",

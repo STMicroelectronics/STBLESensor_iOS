@@ -10,7 +10,6 @@
 //
 
 import Foundation
-import STCore
 
 public struct Firmware {
     public let deviceId: String
@@ -54,14 +53,14 @@ extension Firmware: Codable {
 
 public extension Firmware {
 
-    static let stAIotCraftIoTSystemsName = "AI-SSM"
+    static let stAIotCraftIoTSystemsName = "STAIOTCRAFT_AI_SSM"
     static let stAIotCraftIoTSystemsSupportedVersions = [
         "1.0.0"
     ]
     
     static let stAIotCraftName = "FP-SNS-DATALOG2_Datalog2"
     static let stAIotCraftSupportedVersions = [
-        "3.1.0"
+        "3.2.0"
     ]
 
     var boardType: NodeType? {

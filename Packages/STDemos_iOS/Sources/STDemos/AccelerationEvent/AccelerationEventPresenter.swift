@@ -28,6 +28,19 @@ final class AccelerationEventPresenter: DemoPresenter<AccelerationEventViewContr
         AccelerationEventCommand.wakeUp(enabled: true)
     ]
     
+    
+    private static let BCNWBCB_SUPPORTED_EVENT : [AccelerationEventCommand] = [
+        AccelerationEventCommand.none,
+        AccelerationEventCommand.multiple(enabled: true),
+        AccelerationEventCommand.orientation(enabled: true),
+        AccelerationEventCommand.doubleTap(enabled: true),
+        AccelerationEventCommand.freeFall(enabled: true),
+        AccelerationEventCommand.pedometer(enabled: true),
+        AccelerationEventCommand.singleTap(enabled: true),
+        AccelerationEventCommand.tilt(enabled: true),
+        AccelerationEventCommand.wakeUp(enabled: true)
+    ]
+    
     private static let SENSORTILEBOX_SUPPORTED_EVENT : [AccelerationEventCommand] = [
         AccelerationEventCommand.none,
         AccelerationEventCommand.multiple(enabled: true),
@@ -126,6 +139,8 @@ extension AccelerationEventPresenter: AccelerationEventDelegate {
             return AccelerationEventPresenter.BCN002V1_SUPPORTED_EVENT
         case .sensorTileBox, .sensorTileBoxPro, .sensorTileBoxProB, .sensorTileBoxProC:
             return AccelerationEventPresenter.SENSORTILEBOX_SUPPORTED_EVENT
+        case .bcnwbcb:
+            return AccelerationEventPresenter.BCNWBCB_SUPPORTED_EVENT
         case .stEvalSTWINKIT1, .stEvalSTWINKT1B, .stWinBox, .stWinBoxB:
             return AccelerationEventPresenter.STWIN_SUPPORTED_EVENT
         case .proteus:
@@ -141,7 +156,7 @@ extension AccelerationEventPresenter: AccelerationEventDelegate {
         switch param.node.type {
         case .stEvalIDB008VX:
             return AccelerationEventCommand.freeFall(enabled: true)
-        case .sensorTile, .blueCoin, .wb55NucleoBoard, .wba55CGNucleoBoard, .nucleo, .nucleoF401RE, .nucleoF446RE, .nucleoL053R8, .nucleoL476RG, .sensorTileBox, .sensorTileBoxPro, .sensorTileBoxProB, .sensorTileBoxProC, .stEvalSTWINKIT1, .stEvalSTWINKT1B, .stWinBox, .stWinBoxB:
+        case .sensorTile, .blueCoin, .wb55NucleoBoard, .wba55CGNucleoBoard, .nucleo, .nucleoF401RE, .nucleoF446RE, .nucleoL053R8, .nucleoL476RG, .sensorTileBox, .sensorTileBoxPro, .sensorTileBoxProB, .sensorTileBoxProC, .stEvalSTWINKIT1, .stEvalSTWINKT1B, .stWinBox, .stWinBoxB, .bcnwbcb:
             return AccelerationEventCommand.orientation(enabled: true)
         case .stEvalBCN002V1, .proteus:
             return AccelerationEventCommand.wakeUp(enabled: true)

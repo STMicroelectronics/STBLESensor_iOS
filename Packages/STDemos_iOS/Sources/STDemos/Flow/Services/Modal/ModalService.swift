@@ -19,9 +19,7 @@ enum ModalService {
                           cancelTitle: String?,
                           completion: ((Bool) -> Void)?) {
         
-        let delegate = UIApplication.shared.delegate
-        
-        guard let controller = delegate?.window??.rootViewController else {
+        guard let controller = UIApplication.shared.visibleTopViewController() else {
             return
         }
         
@@ -84,5 +82,38 @@ enum ModalService {
                   completion: completion)
     }
     
+}
+
+private extension UIApplication {
+    func visibleTopViewController() -> UIViewController? {
+        let keyWindow = connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap(\.windows)
+            .first(where: { $0.isKeyWindow })
+
+        guard let rootViewController = keyWindow?.rootViewController else {
+            return nil
+        }
+
+        return rootViewController.topMostViewController()
+    }
+}
+
+private extension UIViewController {
+    func topMostViewController() -> UIViewController {
+        if let navigationController = self as? UINavigationController {
+            return navigationController.visibleViewController?.topMostViewController() ?? navigationController
+        }
+
+        if let tabBarController = self as? UITabBarController {
+            return tabBarController.selectedViewController?.topMostViewController() ?? tabBarController
+        }
+
+        if let presentedViewController {
+            return presentedViewController.topMostViewController()
+        }
+
+        return self
+    }
 }
 

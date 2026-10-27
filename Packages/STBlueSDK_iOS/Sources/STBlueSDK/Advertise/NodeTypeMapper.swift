@@ -56,6 +56,8 @@ public class NodeTypeMapper {
                 return .stWinBoxB
             case 0x13:
                 return .sensorTileBoxProC
+            case 0x14:
+                return .bcnwbcb
             case 0xC3:
                 return .robKit1
             case 0x80:
@@ -138,6 +140,8 @@ public class NodeTypeMapper {
                 return .stWinBoxB
             case 0x13:
                 return .sensorTileBoxProC
+            case 0x14:
+                return .bcnwbcb
             case 0xC3:
                 return .robKit1
             case 0x80:

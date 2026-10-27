@@ -185,6 +185,7 @@ public struct CloudMQTTConfigurationView: View {
                     }
                 }
                 .padding()
+                .tint(SUIColorLayout.primary.color)
                 .alert(isPresented: $showErrorDialog) {
                     Alert(title: Text("Connection Failed"),
                           message: Text("Unable to connect to the broker. Please check your credentials or network."),

@@ -1,6 +1,6 @@
 //
 //  Feature.swift
-//  
+//
 //  Copyright (c) 2022 STMicroelectronics.
 //  All rights reserved.
 //
@@ -19,6 +19,8 @@ public protocol Loggable {
 public protocol Feature: Loggable {
 
     var name: String { get set }
+    var shortName: String { get }
+    
     var simpleDescription: String { get }
     var isEnabled: Bool { get set }
     var isNotificationsEnabled: Bool { get set }
@@ -35,6 +37,12 @@ public protocol Feature: Loggable {
     func parse(commandResponse response: FeatureCommandResponse) -> FeatureCommandResponse
 
     func description(with sample: AnyFeatureSample?) -> String
+}
+
+public extension Feature {
+    var shortName: String {
+        name.replacingOccurrences(of: "Feature", with: "")
+    }
 }
 
 public protocol Initializable {

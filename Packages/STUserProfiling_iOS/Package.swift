@@ -1,4 +1,4 @@
-// swift-tools-version: 5.6
+// swift-tools-version: 5.9
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "STUserProfiling",
     platforms: [
-        .iOS(.v15)
+        .iOS(.v17)
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
@@ -27,8 +27,8 @@ let package = Package(
                 .product(name: "STUI", package: "STUI_iOS"),
             ],
             resources: [
-                .copy("Resources/OptionView.xib"),
-                .copy("Resources/UserProfilingView.xib")
+                .process("Resources/OptionView.xib"),
+                .process("Resources/UserProfilingView.xib")
             ]),
         .testTarget(
             name: "STUserProfilingTests",

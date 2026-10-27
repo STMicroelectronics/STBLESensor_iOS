@@ -34,6 +34,10 @@ internal class AckUpgradeFirmwareDelegate: BlueDelegate {
         self.initialUpgradeParam = initialUpgradeParam
         self.completion = completion
     }
+    
+    func manger(_ service: BlueManager, receivedDebugConsoleDataFor node: Node, data: Data) {
+        
+    }
 
     func manager(_ manager: BlueManager, discoveringStatus isDiscovering: Bool) {
         

@@ -78,16 +78,10 @@ extension BoardListPresenter: BoardListDelegate {
             var blueStSdkV2Boards = [Firmware]()
             var blueStSdkV1Boards = [Firmware]()
             
-            if let param = param.nodeTypesFilter {
-                blueStSdkV2Boards.append(contentsOf: catalog.blueStSdkV2.filterWithNodeTypes(param))
-                if let blueStSdkV1 = catalog.blueStSdkV1 {
-                    blueStSdkV1Boards.append(contentsOf: blueStSdkV1.filterWithNodeTypes(param))
-                }
-            } else {
-                blueStSdkV2Boards.append(contentsOf: catalog.blueStSdkV2)
-                if let blueStSdkV1 = catalog.blueStSdkV1 {
-                    blueStSdkV1Boards.append(contentsOf: blueStSdkV1)
-                }
+            blueStSdkV2Boards.append(contentsOf: catalog.blueStSdkV2)
+
+            if let blueStSdkV1 = catalog.blueStSdkV1 {
+                blueStSdkV1Boards.append(contentsOf: blueStSdkV1)
             }
             
             boards.append(contentsOf: blueStSdkV2Boards.filterWithDemos(filteredDemo).boardsWithCharacteristic.map { board in
@@ -153,6 +147,18 @@ extension BoardListPresenter: BoardListDelegate {
 
             if param.isGrouped {
                 boardMerged = boardMerged.uniqued(on: { $0.param?.friendlyName })
+            }
+
+            if let nodeTypesFilter = param.nodeTypesFilter,
+               !nodeTypesFilter.isEmpty {
+
+                boardMerged = boardMerged.filter { boardViewModel in
+                    guard let boardType = boardViewModel.param?.type else {
+                        return false
+                    }
+
+                    return nodeTypesFilter.contains(boardType)
+                }
             }
 
             director?.elements.removeAll()

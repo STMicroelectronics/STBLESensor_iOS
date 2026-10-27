@@ -70,5 +70,7 @@ open class BaseNodeNoViewController<Presenter>: BaseNoViewController<Presenter>,
                  response: FeatureCommandResponse) {
         Logger.debug(text: "\(response.description)")
     }
+    
+    open func manger(_ service: BlueManager, receivedDebugConsoleDataFor node: Node, data: Data) {}
 }
 

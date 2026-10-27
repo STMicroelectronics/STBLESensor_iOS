@@ -11,11 +11,10 @@
 
 import Foundation
 import CoreBluetooth
-import STCore
 
 public class LeNode {
 
-    internal let advertiseInfo: LeAdvertiseInfo
+    public let advertiseInfo: LeAdvertiseInfo
     public var peripheral: CBPeripheral
     public var currentPayloadData: Data
 

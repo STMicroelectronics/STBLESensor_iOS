@@ -14,6 +14,10 @@ import Foundation
 typealias FirmwareUpgradeStateCompletion = (_ state: FirmwareUpgradeState) -> Void
 
 internal class CheckMemoryAddressDelegate: BlueDelegate {
+    func manger(_ service: BlueManager, receivedDebugConsoleDataFor node: Node, data: Data) {
+        
+    }
+    
     
     private let param: FirmwareUpgradeParam
     private let completion: FirmwareUpgradeStateCompletion

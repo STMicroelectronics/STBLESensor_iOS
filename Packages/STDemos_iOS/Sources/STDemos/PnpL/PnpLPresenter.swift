@@ -1,7 +1,7 @@
 
 //
 //  PnpLPresenter.swift
-//  
+//
 //  Copyright (c) 2022 STMicroelectronics.
 //  All rights reserved.
 //
@@ -28,6 +28,7 @@ open class PnpLPresenter: DemoBasePresenter<PnpLViewController, [PnpLContent]> {
     
     public var sensors80xOr320x: [String? : [PnpLContent]] = [:]
     public var onFinishCheck80x320xAreMounted: (() -> Void)?
+    public var onFinishFilteringSensors: (() -> Void)?
     
     var inactiveSensors: [(any CellViewModel)] = []
 
@@ -142,26 +143,41 @@ open class PnpLPresenter: DemoBasePresenter<PnpLViewController, [PnpLContent]> {
     }
 
     open func subComponents(for element: String) -> [String] {
-        let dtmi: [PnpLContent] = param.param ?? (BlueManager.shared.dtmi(for: param.node)?.contents ?? []).sensors
 
-        let components = element.lowercased().split(separator: "_")
-        if components.count >= 2 {
+        let dtmi: [PnpLContent] = param.param ??
+            (BlueManager.shared.dtmi(for: param.node)?.contents ?? [])
+
+        guard case let .interface(interface) = dtmi.first else {
             return []
         }
 
-        var subComponents = [String]()
+        let components = interface.contents
 
-        for component in dtmi {
-            if let name = component.componentDisplayName?.lowercased(),
-               let prefix = components.first,
-               let suffix = components.last,
-               name.hasPrefix(prefix),
-               !name.hasSuffix(suffix) {
-                subComponents.append(String(name))
+        let parts = element.components(separatedBy: "_")
+        guard parts.count > 1 else { return [] }
+
+        let comboPrefix = parts.dropLast().joined(separator: "_").lowercased()
+        
+        let comboComponents = components.compactMap { component -> String? in
+
+            guard let componentName = component.componentName?.lowercased() else {
+                return nil
             }
+
+            guard componentName.hasPrefix(comboPrefix) else {
+                return nil
+            }
+
+            guard componentName != element.lowercased() else {
+                return nil
+            }
+
+            return componentName
         }
 
-        return subComponents
+        Logger.debug(text: "COMBO COMPONENTS: \(comboComponents)")
+
+        return comboComponents
     }
 
     open func afterUpdate(from feature: PnPLFeature) {
@@ -213,6 +229,8 @@ open class PnpLPresenter: DemoBasePresenter<PnpLViewController, [PnpLContent]> {
         configureDirector()
     }
 
+    open var requestsStatusWhenConfiguringDirector: Bool { true }
+
     open func configureDirector() {
         director?.onSelect({ indexPath in
             Logger.debug(text: "\(indexPath.section) - \(indexPath.row)")
@@ -250,10 +268,8 @@ open class PnpLPresenter: DemoBasePresenter<PnpLViewController, [PnpLContent]> {
             return prefixes.contains { name.hasPrefix($0) }
         }
         
-        // MARK: Add SINGLE Sensors COMPONENTS
-        director?.elements.removeAll()
-        director?.elements.append(contentsOf: filteredComponents.compactMap { component in
-
+        // MARK: SINGLE Sensors COMPONENTS
+        let singleViewModels: [any CellViewModel] = filteredComponents.compactMap { component in
             var viewModels = [any ViewViewModel]()
             if let headerViewModel = component.viewModels(with: [ interface.displayName?.en ?? "" ],
                                                           name: interface.displayName?.en ?? "", action: { action in
@@ -308,13 +324,12 @@ open class PnpLPresenter: DemoBasePresenter<PnpLViewController, [PnpLContent]> {
             }
 
             return GroupCellViewModel(childViewModels: viewModels, isChildrenIndented: true)
-        })
+        }
         
         // MARK: Add COMBO COMPONENTS
-        director?.elements.append(contentsOf: filteredGroupedSensors.compactMap { groupedComponent in
-
+        let comboViewModels: [any CellViewModel] = filteredGroupedSensors.compactMap { groupedComponent in
             var viewModels = [any ViewViewModel]()
-           
+
             let headerViewModel = ImageDetailViewModel(param: CodeValue<ImageDetail>(keys: [groupedComponent.key?.localized ?? ""],
                                                                                      value: ImageDetail(title: groupedComponent.key?.localized.uppercased(),
                                                                                                         subtitle: groupedComponent.key?.localized,
@@ -354,12 +369,18 @@ open class PnpLPresenter: DemoBasePresenter<PnpLViewController, [PnpLContent]> {
             }
             
             return GroupCellViewModel(childViewModels: viewModels, isChildrenIndented: false)
-        })
+        }
+
+        director?.elements.removeAll()
         
+        director?.elements.append(contentsOf: comboViewModels)
+        director?.elements.append(contentsOf: singleViewModels)
 
         director?.reloadData()
 
-//        requestStatusUpdate()
+        if requestsStatusWhenConfiguringDirector {
+            requestStatusUpdate()
+        }
     }
 
     open func handleAction(action: PnpLContentAction,
@@ -587,6 +608,7 @@ public extension PnpLPresenter {
                 }
             }
         }
+        self.onFinishFilteringSensors?()
     }
     
     private func searchFor80xOr320xMountedStatus() {

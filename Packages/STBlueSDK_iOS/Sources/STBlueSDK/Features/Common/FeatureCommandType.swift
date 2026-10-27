@@ -11,6 +11,15 @@
 
 import Foundation
 
+public struct CommandItem: Identifiable {
+    public let id = UUID()
+    public let command: FeatureCommandType
+    
+    public init(command: FeatureCommandType) {
+        self.command = command
+    }
+}
+
 public protocol FeatureCommandType {
     
     func data(with nodeId: UInt8) -> Data

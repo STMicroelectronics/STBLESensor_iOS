@@ -24,7 +24,7 @@ internal class DebugConsole {
 
     let bleService: BleService
     let termCharacteristic: CBCharacteristic
-    let errorCharacteristic: CBCharacteristic
+    let errorCharacteristic: CBCharacteristic?
 
     var lastSendingFastData: Data?
 
@@ -33,7 +33,7 @@ internal class DebugConsole {
     var delegates: [DebugConsoleDelegate] = [DebugConsoleDelegate]()
 
     init(bleService: BleService, termCharacteristic: CBCharacteristic,
-         errorCharacteristic: CBCharacteristic) {
+         errorCharacteristic: CBCharacteristic?) {
         self.bleService = bleService
         self.termCharacteristic = termCharacteristic
         self.errorCharacteristic = errorCharacteristic
@@ -46,9 +46,14 @@ internal extension DebugConsole {
     static func create(with bleService: BleService, service: CBService) -> DebugConsole? {
 
         guard let characteristics = service.characteristics,
-              let termCharacteristic = characteristics.first(where: { $0.isDebugTermCharacteristic }),
-              let errorCharacteristic = characteristics.first(where: { $0.isDebugErrorCharacteristic }) else { return nil }
+              let termCharacteristic = characteristics.first(where: { $0.isDebugTermCharacteristic }) else { return nil }
+        var errorCharacteristic: CBCharacteristic?
 
+        if let errorChar = characteristics.first(where: { $0.isDebugErrorCharacteristic }) {
+            errorCharacteristic = errorChar
+        } else{
+            errorCharacteristic = nil
+        }
         return DebugConsole(bleService: bleService,
                             termCharacteristic: termCharacteristic,
                             errorCharacteristic: errorCharacteristic)
@@ -61,7 +66,9 @@ internal extension DebugConsole {
 
         if delegates.count == 0 {
             bleService.disableNotifications(for: termCharacteristic)
-            bleService.disableNotifications(for: errorCharacteristic)
+            if let errorCharacteristic {
+                bleService.disableNotifications(for: errorCharacteristic)
+            }
         }
     }
 
@@ -71,7 +78,9 @@ internal extension DebugConsole {
 
         if delegates.count == 1 {
             bleService.enableNotifications(for: termCharacteristic)
-            bleService.enableNotifications(for: errorCharacteristic)
+            if let errorCharacteristic {
+                bleService.enableNotifications(for: errorCharacteristic)
+            }
         }
     }
 
@@ -90,6 +99,18 @@ internal extension DebugConsole {
                     delegate.console(self, didSendMessage: messageToSend, error: nil)
                 }
             }
+            return true
+        }
+
+        return false
+    }
+    
+    @discardableResult
+    func writeFastWithoutQueue(data: Data) -> Bool {
+        if bleService.peripheral.state == .connected {
+            bleService.write(data: data,
+                             characteristic: termCharacteristic,
+                             writeType: .withoutResponse)
             return true
         }
 

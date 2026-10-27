@@ -133,7 +133,7 @@ extension MEMSSensorFusionViewController {
 
         let controller = AlertPresenter(
             param: AlertConfiguration(
-                image: UIImage(named: "img_compass_uncalibrated", in: Bundle.module, compatibleWith: nil),
+                image: UIImage(named: "calibration", in: Bundle.module, compatibleWith: nil),
                 text: Localizer.Compass.Calibration.message.localized,
                 callback: alertAction
             )

@@ -1,4 +1,4 @@
-// swift-tools-version:5.6
+// swift-tools-version:5.9
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "STBlueSDK",
     platforms: [
-           .iOS(.v15),
+           .iOS(.v17),
            .macOS(.v12)
        ],
     products: [
@@ -18,7 +18,6 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // // .package(url: /* package url */, from: "1.0.0")
-        .package(path: "../STUI_iOS"),
         .package(path: "../STCore_iOS"),
         .package(url: "https://github.com/ybrid/opus-swift.git", from: "0.8.0")
     ],
@@ -29,7 +28,6 @@ let package = Package(
             name: "STBlueSDK",
             dependencies: [
                 .product(name: "YbridOpus", package: "opus-swift"),
-                .product(name: "STUI", package: "STUI_iOS"),
                 .product(name: "STCore", package: "STCore_iOS")
             ]),
         .testTarget(

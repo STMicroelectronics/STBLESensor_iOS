@@ -29,7 +29,7 @@ final class NodeListPresenter: VoidPresenter<NodeListViewController> {
         settingActions.removeAll()
 
         if var appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String {
-            
+
             if UserDefaults.standard.bool(forKey: "isBetaCatalogActivated") {
                 appName += " (Beta)"
             }
@@ -153,9 +153,9 @@ private extension NodeListPresenter {
     }
 
     func changeProfile() {
-        let profile = Profile(steps: [
-            Step.stepOne,
-            Step.stepTwo
+        let profile = OldProfile(steps: [
+            OldStep.oldStepOne,
+            OldStep.oldStepTwo
         ]) { [weak self] profile in
             if let sessionService: SessionService = Resolver.shared.resolve() {
 

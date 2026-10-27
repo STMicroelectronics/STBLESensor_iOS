@@ -23,6 +23,8 @@ public enum ChartViewType {
 
 public class ChartView: UIView {
 
+    private static let defaultEmptyStateText = "Device is logging.\nClick on \"Current sensor\" field and select a sensor to view its stream in real time..."
+
     let xAxisLabel = UILabel()
     let yAxisLabel = UILabel()
 
@@ -35,6 +37,10 @@ public class ChartView: UIView {
     private var buttonViews: [UIButton] = []
 
     public let chartView = LineChartView()
+
+    private let emptyStateStackView = UIStackView()
+    private let emptyStateActivityIndicator = UIActivityIndicatorView(style: .medium)
+    private let emptyStateLabel = UILabel()
 
     let buttonsStackView = UIStackView()
 
@@ -115,7 +121,9 @@ private extension ChartView {
 
         chartView.chartDescription.enabled = false
         chartView.isMultipleTouchEnabled = false
-        chartView.noDataText = "Device is logging.\nClick on \"Current sensor\" field and select a sensor to view its stream in real time..."
+        chartView.noDataText = ""
+
+        setupEmptyStateView()
         
         let legend = chartView.legend
         legend.drawInside = false
@@ -123,8 +131,34 @@ private extension ChartView {
         legend.verticalAlignment = .top
     }
 
+    func setupEmptyStateView() {
+        emptyStateActivityIndicator.startAnimating()
+
+        emptyStateLabel.text = Self.defaultEmptyStateText
+        emptyStateLabel.numberOfLines = 0
+        emptyStateLabel.textAlignment = .center
+        TextLayout.info.apply(to: emptyStateLabel)
+
+        emptyStateStackView.axis = .vertical
+        emptyStateStackView.alignment = .center
+        emptyStateStackView.spacing = 12.0
+        emptyStateStackView.isUserInteractionEnabled = false
+        emptyStateStackView.addArrangedSubview(emptyStateActivityIndicator)
+        emptyStateStackView.addArrangedSubview(emptyStateLabel)
+
+        chartView.addSubview(emptyStateStackView)
+        emptyStateStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            emptyStateStackView.centerXAnchor.constraint(equalTo: chartView.centerXAnchor),
+            emptyStateStackView.centerYAnchor.constraint(equalTo: chartView.centerYAnchor),
+            emptyStateStackView.leadingAnchor.constraint(greaterThanOrEqualTo: chartView.leadingAnchor, constant: 24.0),
+            emptyStateStackView.trailingAnchor.constraint(lessThanOrEqualTo: chartView.trailingAnchor, constant: -24.0)
+        ])
+    }
+
     func drawPlot(channels: [RawPnplChannel], type: ChartViewType) {
 
+        emptyStateStackView.isHidden = true
         xAxisLabel.isHidden = false
 
         var dataSets: [LineChartDataSet] = []
@@ -235,6 +269,13 @@ private extension ChartView {
 }
 
 public extension ChartView {
+    func updateEmptyStateText(_ text: String) {
+        chartView.noDataText = ""
+        emptyStateLabel.text = text
+        emptyStateStackView.isHidden = false
+        emptyStateActivityIndicator.startAnimating()
+    }
+
     func reset(all: Bool = true, uom: String) {
         if all {
             buttonViews.removeAll()
@@ -247,6 +288,9 @@ public extension ChartView {
         yAxisLabel.text = ""
 
         xAxisLabel.isHidden = true
+        emptyStateLabel.text = Self.defaultEmptyStateText
+        emptyStateStackView.isHidden = false
+        emptyStateActivityIndicator.startAnimating()
 
         chartView.data = nil
         chartView.resetViewPortOffsets()

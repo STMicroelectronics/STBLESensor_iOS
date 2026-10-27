@@ -55,6 +55,17 @@ public extension TextLayout {
                           numberOfLines: 0,
                           font: FontLayout.regular)
     }()
+    
+    static let textRounded: TextLayout = {
+        return TextLayout(color: ColorLayout.text.auto,
+                          backgroundColor: nil,
+                          cornerRadius: 8.0,
+                          borderColor: ColorLayout.primary.auto,
+                          borderWith: 1.0,
+                          alignment: .center,
+                          numberOfLines: 0,
+                          font: FontLayout.regular)
+    }()
 
     static let info: TextLayout = {
         return TextLayout(color: ColorLayout.text.auto,

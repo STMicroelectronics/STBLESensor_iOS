@@ -39,7 +39,7 @@ extension ActivityType {
         switch self {
         case .noActivity:
             return ImageLayout.image(with: "fitness_unknown", in: .module)
-        case .standing:
+        case .stationary:
             return ImageLayout.image(with: "activity_standing", in: .module)
         case .walking:
             return ImageLayout.image(with: "activity_walking", in: .module)

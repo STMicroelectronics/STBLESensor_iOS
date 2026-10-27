@@ -32,4 +32,6 @@ public protocol BlueDelegate: AnyObject {
 
     func manager(_ manager: BlueManager, didReceiveCommandResponseFor node: Node, feature: Feature, response: FeatureCommandResponse)
     
+    func manger(_ service: BlueManager, receivedDebugConsoleDataFor node: Node, data: Data)
+    
 }

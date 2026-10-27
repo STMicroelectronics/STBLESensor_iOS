@@ -30,7 +30,19 @@ extension DebugConsole {
             }
         }
     }
-
+    
+    func writeWithoutQueue(_ data: Data){
+        var endOffset = min(DebugConsole.dataChunkSize, data.count)
+        var startOffset = 0
+        
+        while (startOffset < endOffset) {
+            //writeFast(data: data[startOffset..<endOffset])
+            writeFastWithoutQueue(data: data[startOffset..<endOffset])
+            startOffset = endOffset
+            endOffset = min(endOffset + DebugConsole.dataChunkSize, data.count)
+        }
+    }
+    
     static func stringToData(_ text: String) -> Data? {
         return text.data(using: .isoLatin1)?.nullTerminated
     }

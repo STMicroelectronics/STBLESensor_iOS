@@ -19,6 +19,8 @@ open class HSDPnpLTagPresenter: PnpLPresenter {
     var logControllerResponse: LogControllerResponse?
     let waitingView = HSDWaitingView(text: "Check logging status")
 
+    public override var requestsStatusWhenConfiguringDirector: Bool { false }
+
     public override func load() {
         waitingView.isVisible = false
         super.load()

@@ -10,6 +10,7 @@
 //
 
 import UIKit
+import SwiftUI
 import STUI
 import STCore
 import STBlueSDK
@@ -79,5 +80,14 @@ extension MainPresenter: TabBarDelegate {
                 print("CLICCATO OK")
             })
         }
+    }
+}
+
+struct MainViewControllerAdapter: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> UIViewController {
+        return MainPresenter().start()
+    }
+
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
     }
 }

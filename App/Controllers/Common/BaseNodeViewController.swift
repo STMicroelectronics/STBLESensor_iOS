@@ -38,7 +38,7 @@ class BaseNodeViewController<Presenter, View: UIView>: BaseViewController<Presen
 
     }
 
-    func manager(_ manager: STBlueSDK.BlueManager, discoveringStatus isDiscovering: Bool) {
+    func manager(_ manager: BlueManager, discoveringStatus isDiscovering: Bool) {
 
     }
 
@@ -53,6 +53,8 @@ class BaseNodeViewController<Presenter, View: UIView>: BaseViewController<Presen
     func manager(_ manager: BlueManager, didChangeStateFor node: Node) {
 
     }
+    
+    func manger(_ service: BlueManager, receivedDebugConsoleDataFor node: Node, data: Data) {}
 
     func manager(_ manager: BlueManager, didUpdateValueFor node: Node, feature: Feature, sample: AnyFeatureSample?) {
 

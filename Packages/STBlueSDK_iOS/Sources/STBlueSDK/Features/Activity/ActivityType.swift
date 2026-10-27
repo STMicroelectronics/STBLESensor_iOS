@@ -17,9 +17,9 @@ public enum ActivityType: UInt8 {
      */
     case noActivity = 0x00
     /**
-     *  the person is standing
+     *  the person is stationary
      */
-    case standing = 0x01
+    case stationary = 0x01
     /**
      *  the person is walking
      */
@@ -59,7 +59,7 @@ extension ActivityType: CustomStringConvertible {
         switch self {
         case .noActivity:
             return "Unknown"
-        case .standing:
+        case .stationary:
             return "Standing"
         case .walking:
             return "Walking"

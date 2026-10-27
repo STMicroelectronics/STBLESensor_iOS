@@ -18,7 +18,7 @@ public protocol WelcomeDelegate: AnyObject {
     var currentPageIndex: Int { get }
     var totalPages: Int { get }
     
-    func page(at index: Int) -> WelcomePage
+    func page(at index: Int) -> OldWelcomePage
     func refreshCurrentPageIndex()
     func didTouchNextButton()
 

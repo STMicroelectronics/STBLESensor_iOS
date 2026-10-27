@@ -93,7 +93,7 @@ public extension BlueManager {
         }
     }
 
-    func updateCatalog(with environment: Environment, completion: @escaping (Catalog?, STError?) -> Void) {
+    func updateCatalog(with environment: CatalogEnvironment, completion: @escaping (Catalog?, STError?) -> Void) {
         
         // TODO: check the version
         
@@ -114,7 +114,7 @@ public extension BlueManager {
         }
     }
 
-    func updateDtmi(with environment: Environment, firmware: Firmware, completion: @escaping ([PnpLContent], STError?) -> Void) {
+    func updateDtmi(with environment: CatalogEnvironment, firmware: Firmware, completion: @escaping ([PnpLContent], STError?) -> Void) {
         URLSession.shared.getDtmi(with: environment, firmware: firmware) { result in
             switch result {
             case .success(let dtmiContents):

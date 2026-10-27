@@ -77,6 +77,8 @@ public class DemoNodeTableViewController<TablePresenter, View: UIView>: TableVie
     public func manager(_ manager: BlueManager, didChangeStateFor node: Node) {
 
     }
+    
+    public func manger(_ service: BlueManager, receivedDebugConsoleDataFor node: Node, data: Data) {}
 
     public func manager(_ manager: BlueManager, didUpdateValueFor node: Node, feature: Feature, sample: AnyFeatureSample?) {
 

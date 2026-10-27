@@ -11,10 +11,11 @@
 
 import Foundation
 import CoreBluetooth
-import STCore
 
-public class Node {
+public class Node: Identifiable {
 
+    public let id: UUID
+    
     internal let advertiseInfo: AdvertiseInfo
     internal var internalPnpMaxMtu: Int?
 
@@ -24,6 +25,7 @@ public class Node {
     public var characteristics: [BlueCharacteristic] = [BlueCharacteristic]()
 
     init(peripheral: CBPeripheral, rssi: Int, advertiseInfo: AdvertiseInfo) {
+        self.id = UUID(uuidString: peripheral.identifier.uuidString) ?? UUID()
         self.peripheral = peripheral
         self.rssi = rssi
         self.advertiseInfo = advertiseInfo
@@ -39,3 +41,9 @@ extension Node: Equatable {
         return lhs.address == rhs.address
     }
 }
+extension Node: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
+

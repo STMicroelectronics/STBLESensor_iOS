@@ -10,6 +10,7 @@
 //
 
 import Foundation
+import CoreBluetooth
 
 public extension BlueManager {
     
@@ -23,6 +24,35 @@ public extension BlueManager {
         debugConsole.write(data: data)
 
         return true
+    }
+    
+    @discardableResult
+    func sendMessageWithoutQueue(_ message: String, to node: Node, completion: DebugConsoleCallback) -> Bool {
+        guard let nodeService = nodeServices.nodeService(with: node),
+              let debugConsole = nodeService.debugConsole,
+              let data = DebugConsole.stringToData(message) else { return false }
+
+        debugConsole.addDelegate(completion)
+        debugConsole.writeWithoutQueue(data)
+
+        return true
+    }
+    
+    @discardableResult
+    func sendMessageWithoutQueueNoCallBack(_ message: String, to node: Node) -> Bool {
+        guard let nodeService = nodeServices.nodeService(with: node),
+              let debugConsole = nodeService.debugConsole,
+              let data = DebugConsole.stringToData(message) else { return false }
+
+        debugConsole.writeWithoutQueue(data)
+
+        return true
+    }
+    
+    func getTermCharacteristic(to node: Node) -> CBCharacteristic? {
+        guard let nodeService = nodeServices.nodeService(with: node),
+              let debugConsole = nodeService.debugConsole  else { return nil }
+        return debugConsole.termCharacteristic
     }
     
     @discardableResult

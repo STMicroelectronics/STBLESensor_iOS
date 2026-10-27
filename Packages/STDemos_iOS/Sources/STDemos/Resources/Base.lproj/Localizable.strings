@@ -75,7 +75,7 @@
 "st_extconf_command_text_commandVersionFwTitle" = "Version Firmware";
 "st_extconf_text_mainAlertTitle" = "In this section it's possible to configure the Firmware running on the board";
 "st_firmware_action_select" = "SELECT FIRMWARE";
-"st_firmware_action_upgrade" = "UPGRADE";
+"st_firmware_action_upgrade" = "INSTALL FIRMWARE";
 "st_firmware_text_availableFirmwareList" = "List of Compatible Firmware:";
 "st_firmware_text_bankStatus" = "Current Bank [%zd]";
 "st_firmware_text_changelog" = "Changelog:";

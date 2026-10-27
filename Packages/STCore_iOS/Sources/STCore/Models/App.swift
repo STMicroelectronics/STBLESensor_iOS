@@ -19,11 +19,11 @@ public enum AppMode: Codable {
 
 public enum UserType: Int, Codable {
     case aiDeveloper = 0
-    case developer
-    case studentOrResearcher
-    case engineerOrSale
-    case other
-    case none
+    case developer = 1
+    case studentOrResearcher = 2
+    case engineerOrSale = 3
+    case other = 4
+    case none = 99
 }
 
 public struct App {

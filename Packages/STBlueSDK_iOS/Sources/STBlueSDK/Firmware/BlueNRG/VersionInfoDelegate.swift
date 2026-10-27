@@ -38,6 +38,10 @@ internal class VersionInfoDelegate: BlueDelegate {
         
     }
     
+    func manger(_ service: BlueManager, receivedDebugConsoleDataFor node: Node, data: Data) {
+        //
+    }
+    
     func manager(_ manager: BlueManager, didUpdateValueFor node: Node, feature: Feature, sample: AnyFeatureSample?) {
         if let memoryInfoFeature = feature as? BlueNRGOtaMemoryInfoFeature {
             manager.removeDelegate(self)

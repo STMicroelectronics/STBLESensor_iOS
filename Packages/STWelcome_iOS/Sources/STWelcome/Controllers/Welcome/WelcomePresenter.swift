@@ -12,7 +12,7 @@
 import UIKit
 import STUI
 
-public final class WelcomePresenter: BasePresenter<WelcomeViewController, Welcome> {
+public final class WelcomePresenter: BasePresenter<WelcomeViewController, OldWelcome> {
     
     public var currentPageIndex: Int = 0
     public var totalPages: Int {
@@ -42,7 +42,7 @@ extension WelcomePresenter: WelcomeDelegate {
         }
     }
     
-    public func page(at index: Int) -> WelcomePage {
+    public func page(at index: Int) -> OldWelcomePage {
         param.pages[index]
     }
     

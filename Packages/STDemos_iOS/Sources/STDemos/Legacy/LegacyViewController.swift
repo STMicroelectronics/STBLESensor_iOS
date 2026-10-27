@@ -33,7 +33,7 @@ final class LegacyViewController: DemoNodeNoViewController<LegacyDelegate> {
     override func configureView() {
         super.configureView()
 
-        presentSwiftUIView(LegacyView())
+//        presentSwiftUIView(LegacyView())
     }
 
 }

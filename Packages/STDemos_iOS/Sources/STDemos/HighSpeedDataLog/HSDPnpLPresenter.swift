@@ -141,7 +141,7 @@ open class HSDPnpLPresenter: PnpLPresenter {
         return date
     }
 
-    func stopLog() {
+    open func stopLog() {
 //        {"log_controller*stop_log":{}}
         StandardHUD.shared.show()
         let command = PnpLCommand.emptyCommand(element: "log_controller",
@@ -156,20 +156,23 @@ open class HSDPnpLPresenter: PnpLPresenter {
             if let logControllerResponse = try? JSONDecoder().decode(LogControllerResponse.self,
                                                                      from: data,
                                                                      keyedBy: "log_controller") {
+                let previousStatus = self.logControllerResponse?.status
                 self.logControllerResponse = logControllerResponse
 
                 if let status = logControllerResponse.status, !status {
-                    statusView.isVisible = false
-                    waitingContainerViewView.isHidden = true
+//                    statusView.isVisible = false
+//                    waitingContainerViewView.isHidden = true
                     resetWaitingView()
 
                     view.stTabBarView?.actionButton.setImage(ImageLayout.Common.playFilled?.template, for: .normal)
 
                     afterUpdate(from: feature)
 
-                    BlueManager.shared.sendPnpLCommand(PnpLCommand.status,
-                                                       maxWriteLength: self.pnpLMaxWriteLength,
-                                                       to: self.param.node)
+                    if previousStatus != false {
+                        BlueManager.shared.sendPnpLCommand(PnpLCommand.status,
+                                                           maxWriteLength: self.pnpLMaxWriteLength,
+                                                           to: self.param.node)
+                    }
                 } else {
                     waitingContainerViewView.isHidden = false
                     waitingContainerViewView.isUserInteractionEnabled = !waitingContainerViewView.isHidden
@@ -185,6 +188,11 @@ open class HSDPnpLPresenter: PnpLPresenter {
         }
 
         director?.reloadData()
+        
+        onFinishFilteringSensors = { [weak self] in
+            self?.statusView.isVisible = false
+            self?.waitingContainerViewView.isHidden = true
+        }
     }
 }
 

@@ -15,7 +15,7 @@ import STCore
 import STBlueSDK
 import IQKeyboardManagerSwift
 
-@main
+// @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = MainPresenter().start()
         }
 
-        var currentEnv = Environment.prod
+        var currentEnv = CatalogEnvironment.prod
         if UserDefaults.standard.bool(forKey: "isBetaCatalogActivated") {
             currentEnv = .dev
         }

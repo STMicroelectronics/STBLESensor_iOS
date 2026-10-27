@@ -10,6 +10,7 @@
 //
 
 import UIKit
+import SwiftUI
 import STBlueSDK
 import STUI
 import STCore
@@ -265,6 +266,125 @@ public extension Demo {
             return "Firmware Update Over the Air for WB/WBA boards"
         case .robotics:
             return "Application for scanning and controlling robotics kits"
+        }
+    }
+    
+    var suiImage: Image {
+        switch self {
+        case .environmental:
+            return SUIImageLayout.image(with: "demo_environmental", in: STUI.bundle)
+        case .plot:
+            return SUIImageLayout.image(with: "demo_charts", in: STUI.bundle)
+        case .fft:
+            return SUIImageLayout.image(with: "demo_charts", in: STUI.bundle)
+        case .neaiAnomalyDetection:
+            return SUIImageLayout.image(with: "demo_neai", in: STUI.bundle)
+        case .neaiClassification:
+            return SUIImageLayout.image(with: "demo_neai", in: STUI.bundle)
+        case .neaiExtrapolation:
+            return SUIImageLayout.image(with: "demo_neai", in: STUI.bundle)
+        case .predictiveMaintenance:
+            return SUIImageLayout.image(with: "demo_predictive", in: STUI.bundle)
+        case .highSpeedDataLog:
+            return SUIImageLayout.image(with: "demo_hsdatalog", in: STUI.bundle)
+        case .highSpeedDataLog2:
+            return SUIImageLayout.image(with: "demo_hsdatalog", in: STUI.bundle)
+        case .pnpLike:
+            return SUIImageLayout.image(with: "demo_pnpl", in: STUI.bundle)
+        case .extendedConfiguration:
+            return SUIImageLayout.image(with: "demo_ext_config", in: STUI.bundle)
+        case .switchDemo:
+            return SUIImageLayout.image(with: "demo_switch", in: STUI.bundle)
+        case .ledControl:
+            return SUIImageLayout.image(with: "demo_ambient_light", in: STUI.bundle)
+        case .heartRate:
+            return SUIImageLayout.image(with: "demo_heart_rate", in: STUI.bundle)
+        case .blueVoice:
+            return SUIImageLayout.image(with: "demo_bluevoice", in: STUI.bundle)
+        case .beamforming:
+            return SUIImageLayout.image(with: "demo_beamforming", in: STUI.bundle)
+        case .audioSourceLocalization:
+            return SUIImageLayout.image(with: "demo_source_localization", in: STUI.bundle)
+        case .speechToText:
+            return SUIImageLayout.image(with: "demo_bluevoice", in: STUI.bundle)
+        case .audioClassification:
+            return SUIImageLayout.image(with: "demo_bluevoice", in: STUI.bundle)
+        case .activityRecognition:
+            return SUIImageLayout.image(with: "demo_activity", in: STUI.bundle)
+        case .multiNN:
+            return SUIImageLayout.image(with: "demo_nn", in: STUI.bundle)
+        case .machineLearningCore:
+            return SUIImageLayout.image(with: "demo_nn", in: STUI.bundle)
+        case .finiteStateMachine:
+            return SUIImageLayout.image(with: "demo_nn", in: STUI.bundle)
+        case .stredl:
+            return SUIImageLayout.image(with: "demo_nn", in: STUI.bundle)
+        case .flow:
+            return SUIImageLayout.image(with: "demo_flow", in: STUI.bundle)
+        case .eventCounter:
+            return SUIImageLayout.image(with: "demo_event_counter", in: STUI.bundle)
+        case .gestureNavigation:
+            return SUIImageLayout.image(with: "demo_gesture_navigation", in: STUI.bundle)
+        case .jsonNfc:
+            return SUIImageLayout.image(with: "demo_nfc", in: STUI.bundle)
+        case .piano:
+            return SUIImageLayout.image(with: "demo_piano", in: STUI.bundle)
+        case .pedometer:
+            return SUIImageLayout.image(with: "demo_pedometer", in: STUI.bundle)
+        case .level:
+            return SUIImageLayout.image(with: "demo_level", in: STUI.bundle)
+        case .compass:
+            return SUIImageLayout.image(with: "demo_compass", in: STUI.bundle)
+        case .memsSensorFusion:
+            return SUIImageLayout.image(with: "demo_sensor_fusion", in: STUI.bundle)
+        case .memsGesture:
+            return SUIImageLayout.image(with: "demo_proximity", in: STUI.bundle)
+        case .motionAlgorithm:
+            return SUIImageLayout.image(with: "demo_activity", in: STUI.bundle)
+        case .carryPosition:
+            return SUIImageLayout.image(with: "demo_carry", in: STUI.bundle)
+        case .motionIntensity:
+            return SUIImageLayout.image(with: "demo_activity", in: STUI.bundle)
+        case .fitnessActivity:
+            return SUIImageLayout.image(with: "demo_fitness", in: STUI.bundle)
+        case .accelerationEvent:
+            return SUIImageLayout.image(with: "demo_acceleration_event", in: STUI.bundle)
+        case .gnss:
+            return SUIImageLayout.image(with: "demo_gnss", in: STUI.bundle)
+        case .colorAmbientLight:
+            return SUIImageLayout.image(with: "demo_ambient_light", in: STUI.bundle)
+        case .tofMultiObject:
+            return SUIImageLayout.image(with: "demo_tof", in: STUI.bundle)
+        case .proximity:
+            return SUIImageLayout.image(with: "demo_proximity", in: STUI.bundle)
+        case .textual:
+            return SUIImageLayout.image(with: "demo_textual", in: STUI.bundle)
+        case .cloudAzureIotCentral:
+            return SUIImageLayout.image(with: "demo_cloud_azure_iot_central", in: STUI.bundle)
+        case .cloudMqtt:
+            return SUIImageLayout.image(with: "demo_cloud_mqtt", in: STUI.bundle)
+        case .battery:
+            return SUIImageLayout.image(with: "demo_battery", in: STUI.bundle)
+        case .coSensor:
+            return SUIImageLayout.image(with: "demo_co_sensor", in: STUI.bundle)
+        case .sdLogging:
+            return SUIImageLayout.image(with: "demo_multiple_log", in: STUI.bundle)
+        case .aiLogging:
+            return SUIImageLayout.image(with: "demo_multiple_log", in: STUI.bundle)
+        case .assetTrackingEvent:
+            return SUIImageLayout.image(with: "demo_asset_tracking_event", in: STUI.bundle)
+        case .rawPnPLControlled:
+            return SUIImageLayout.image(with: "demo_raw_pnpl", in: STUI.bundle)
+        case .medicalSignal:
+            return SUIImageLayout.image(with: "demo_medical_signal", in: STUI.bundle)
+        case .smartMotorControl:
+            return SUIImageLayout.image(with: "demo_smart_motor_control", in: STUI.bundle)
+        case .binaryContent:
+            return SUIImageLayout.image(with: "demo_binary_content", in: STUI.bundle)
+        case .wbsOtaFuota:
+            return SUIImageLayout.image(with: "demo_wb_fuota", in: STUI.bundle)
+        case .robotics:
+            return SUIImageLayout.image(with: "demo_robotics", in: STUI.bundle)
         }
     }
     
@@ -725,10 +845,6 @@ public extension Demo {
     
     func presenter(with node: Node, param: Any? = nil) -> Presenter {
         switch self {
-        case .environmental:
-            return EnviromentalPresenter(param: DemoParam<Void>(node: node))
-        case .plot:
-            return PlotPresenter(param: DemoParam<Void>(node:node))
         case .fft:
             return FFTPresenter(param: DemoParam<Void>(node: node))
         case .neaiAnomalyDetection:
@@ -737,10 +853,6 @@ public extension Demo {
             return NEAIClassificationPresenter(param: DemoParam<Void>(node: node))
         case .neaiExtrapolation:
             return NEAIExtrapolationPresenter(param: DemoParam<Void>(node: node))
-        case .predictiveMaintenance:
-            return PredictiveMaintenancePresenter(param: DemoParam<Void>(node: node))
-        case .highSpeedDataLog:
-            return LegacyPresenter(param: DemoParam<String>(node: node, param: "High Speed Datalog"))
         case .highSpeedDataLog2:
             return HSDPresenter(param: DemoParam<Void>(node: node, showTabBar: true))
         case .pnpLike:
@@ -750,8 +862,6 @@ public extension Demo {
             return PnpLPresenter(type: param.type, param: DemoParam<[PnpLContent]>(node: node, param: param.contents))
         case .extendedConfiguration:
             return ExtendedConfigurationPresenter(param: DemoParam<Void>(node: node))
-        case .switchDemo:
-            return SwitchPresenter(param: DemoParam<Void>(node: node))
         case .ledControl:
             return STM32WBLedButtonControlPresenter(rssi: param as? Int ?? 0, param: DemoParam<Void>(node: node))
         case .heartRate:
@@ -762,44 +872,16 @@ public extension Demo {
             return BeamFormingPresenter(param: DemoParam<Void>(node: node))
         case .audioSourceLocalization:
             return AudioSourceLocalizationPresenter(param: DemoParam<Void>(node: node))
-        case .audioClassification:
-            return AudioClassificationPresenter(param: DemoParam<Void>(node: node))
-        case .activityRecognition:
-            return ActivityRecognitionPresenter(param: DemoParam<Void>(node: node))
         case .multiNN:
             return MultiNeuralNetworkPresenter(param: DemoParam<Void>(node:node))
-        case .machineLearningCore:
-            return MachineLearningCorePresenter(param: DemoParam<String>(node: node, param: nil))
-        case .finiteStateMachine:
-            return FiniteStateMachinePresenter(param: DemoParam<Void>(node: node))
-        case .stredl:
-            return STREDLPresenter(param: DemoParam<Void>(node: node))
         case .flow:
             return FlowMainPresenter(param: DemoParam<Void>(node: node, showTabBar: true))
-        case .eventCounter:
-            return EventCounterPresenter(param: DemoParam<Void>(node: node))
-        case .gestureNavigation:
-            return GestureNavigationPresenter(param: DemoParam<Void>(node: node))
-        case .jsonNfc:
-            return JsonNfcPresenter(param: DemoParam<Void>(node: node))
         case .piano:
            return PianoPresenter(param: DemoParam<Void>(node: node))
-        case .pedometer:
-            return PedometerPresenter(param: DemoParam<Void>(node: node))
-        case .level:
-            return LevelPresenter(param: DemoParam<Void>(node: node))
-        case .compass:
-            return CompassPresenter(param: DemoParam<Void>(node: node))
         case .memsSensorFusion:
             return MEMSSensorFusionPresenter(param: DemoParam<Void>(node: node))
-        case .memsGesture:
-            return MemsGesturePresenter(param: DemoParam<Void>(node: node))
         case .motionAlgorithm:
             return MotionAlgorithmsPresenter(param: DemoParam<Void>(node: node))
-        case .carryPosition:
-            return CarryPositionPresenter(param: DemoParam<Void>(node: node))
-        case .motionIntensity:
-            return MotionIntensityPresenter(param: DemoParam<Void>(node: node))
         case .fitnessActivity:
             return FitnessActivityPresenter(param: DemoParam<Void>(node: node))
         case .accelerationEvent:
@@ -814,25 +896,6 @@ public extension Demo {
             return ProximityGesturePresenter(param: DemoParam<Void>(node: node))
 //        case .qvar:
 //            return LegacyPresenter(param: DemoParam<String>(node: node, param: "Electric Charge Variation"))
-        case .textual:
-            return TextualMonitorPresenter(param: DemoParam<Void>(node:node))
-        case .cloudAzureIotCentral:
-            return LegacyPresenter(param: DemoParam<String>(node: node, param: "Cloud Azure IoT Central"))
-        case .cloudMqtt:
-//            return LegacyPresenter(param: DemoParam<String>(node: node, param: "Cloud MQTT"))
-            return CloudMQTTPresenter(param: DemoParam<Void>(node: node))
-        case .battery:
-            return BatteryPresenter(rssi: param as? Int ?? 0, param: DemoParam<Void>(node: node))
-        case .coSensor:
-            return LegacyPresenter(param: DemoParam<String>(node: node, param: "CO Sensor"))
-        case .sdLogging:
-            return LegacyPresenter(param: DemoParam<String>(node: node, param: "SD Logging"))
-        case .aiLogging:
-            return LegacyPresenter(param: DemoParam<String>(node: node, param: "AI Logging"))
-        case .assetTrackingEvent:
-            return AssetTrackingEventPresenter(param: DemoParam<Void>(node: node, showTabBar: false))
-        case .speechToText:
-            return LegacyPresenter(param: DemoParam<String>(node: node, param: "Speech To Text"))
         case .rawPnPLControlled:
             return RawPnPLControlledPresenter(param: DemoParam<Void>(node: node))
         case .smartMotorControl:
@@ -843,13 +906,66 @@ public extension Demo {
             return  BinaryContentPresent(param: DemoParam<Void>(node: node))
         case .wbsOtaFuota:
             return FirmwareSelectPresenter(param: DemoParam<FirmwareSelect>(node: node, param: nil))
+        ///TO REMOVE
+        case .highSpeedDataLog:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .cloudAzureIotCentral:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .coSensor:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .sdLogging:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .aiLogging:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .speechToText:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        /// MIGRATED to SWIFT UI
+        case .cloudMqtt:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .assetTrackingEvent:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
         case .robotics:
-            return DedicatedAppPresenter(param: DemoParam<DedicatedAppInfo>(node: node,
-                                                                  param: DedicatedAppInfo(name: "ST Robotics",
-                                                                                          shortDescription: "Application for scanning and controlling robotics kits",
-                                                                                          imageName: "strobotics",
-                                                                                          description: "The ST Robotics Application for Android enables users to configure and operate various robotic kits and boards, such as the Robotics Evaluation Kit. This application facilitates the discovery, connection, and control of these robotic kits.",
-                                                                                          url: "https://apps.apple.com/us/app/st-robotics/id6739212512")))
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .environmental:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .compass:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .plot:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .textual:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .level:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .battery:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .eventCounter:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .pedometer:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .motionIntensity:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .carryPosition:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .audioClassification:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .machineLearningCore:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .finiteStateMachine:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .stredl:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .gestureNavigation:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .memsGesture:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .activityRecognition:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .jsonNfc:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .predictiveMaintenance:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
+        case .switchDemo:
+            return LegacyPresenter(param: DemoParam<String>(node: node, param: "---"))
         }
     }
     

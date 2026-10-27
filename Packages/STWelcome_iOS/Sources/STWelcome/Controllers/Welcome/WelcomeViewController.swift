@@ -12,7 +12,7 @@
 import UIKit
 import STUI
 
-public final class WelcomeViewController: WelcomeBaseViewController<WelcomeDelegate, WelcomeView> {
+public final class WelcomeViewController: WelcomeBaseViewController<WelcomeDelegate, WelcomeView2> {
 
     public override func configure() {
         super.configure()
@@ -65,7 +65,7 @@ extension WelcomeViewController: UICollectionViewDataSource {
         
         cell.titleLabel.text = page.title
         cell.contentLabel.text = page.content
-        cell.imageView.image = page.image
+//        cell.imageView.image = page.image
         
         return cell
     }

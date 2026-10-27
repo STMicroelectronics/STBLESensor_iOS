@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "cocoamqtt",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/emqx/CocoaMQTT.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "96da9da61f919946af0d79e82bdd1aeec84a4f86"
+      }
+    },
+    {
       "identity" : "core-plot",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/core-plot/core-plot",
@@ -52,6 +61,15 @@
       "state" : {
         "revision" : "84e546727d66f1adc5439debad16270d0fdd04e7",
         "version" : "4.2.2"
+      }
+    },
+    {
+      "identity" : "mqttcocoaasyncsocket",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/leeway1208/MqttCocoaAsyncSocket",
+      "state" : {
+        "revision" : "ce3e18607fd01079495f86ff6195d8a3ca469f73",
+        "version" : "1.0.8"
       }
     },
     {

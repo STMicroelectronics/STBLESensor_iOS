@@ -11,7 +11,7 @@
 
 import Foundation
 
-public enum CarryPositionType: UInt8 {
+public enum CarryPositionType: UInt8,CaseIterable {
     /**
      *  we don't have enough data for select a position
      */

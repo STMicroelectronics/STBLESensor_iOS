@@ -189,6 +189,12 @@ private extension Uploader {
                 if message == ResponseMessage.flowRequestReceived.rawValue {
                     StandardHUD.shared.show(with: "Request Recived.\n\n... Uploading ...")
                     self.delegate?.requestTransport(to: node, uploader: self, data: uploadData) { error in
+                        if case .none(let uploadMessage) = error,
+                           uploadMessage == ResponseMessage.flowParseOK.rawValue {
+                            DispatchQueue.main.async {
+                                BlueManager.shared.disconnect(node)
+                            }
+                        }
                         self.complete(with: .trasmission(error: error))
                     }
                 } else {

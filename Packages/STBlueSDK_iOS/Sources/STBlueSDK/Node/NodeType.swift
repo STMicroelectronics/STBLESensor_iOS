@@ -32,8 +32,12 @@ public enum NodeType: UInt8 {
     case sensorTileBoxProB = 0x11
     case stWinBoxB = 0x12
     case sensorTileBoxProC = 0x13
+    case bcnwbcb = 0x14
     
     case robKit1 = 0xC3
+    
+    case memstws2v0 = 0xD1
+    case memsndsg = 0xD2
     
     case nucleoF401RE = 0x7F
     case nucleoL476RG = 0x7E
@@ -108,8 +112,14 @@ public extension NodeType {
             return "STWIN_BOX_B"
         case .sensorTileBoxProC:
             return "SENSOR_TILE_BOX_PRO_C"
+        case .bcnwbcb:
+            return "STEVAL_BCNWBCB"
         case .robKit1:
             return "ROBKIT1"
+        case .memstws2v0:
+            return "MEMSTWS2V0"
+        case .memsndsg:
+            return "MEMSNDSG"
         case .nucleoF401RE:
             return "NUCLEO_F401RE"
         case .nucleoL476RG:
@@ -199,8 +209,14 @@ public extension NodeType {
             return "STWIN.box"
         case .sensorTileBoxProC:
             return "SensorTile.box PRO"
+        case .bcnwbcb:
+            return "STEVAL-BCNWBCB"
         case .robKit1:
             return "ROBKIT1"
+        case .memstws2v0:
+            return "DEMO-MEMSTWS2V0"
+        case .memsndsg:
+            return "DEMO-MEMSNDSG"
         case .nucleoF401RE:
             return "Nucleo F401RE"
         case .nucleoL476RG:
@@ -280,6 +296,8 @@ public extension NodeType {
             return "real_board_astra"
         case .sensorTileBoxPro, .sensorTileBoxProB, .sensorTileBoxProC:
             return "real_board_sensortilebox_pro"
+        case .bcnwbcb:
+            return "rreal_board_eval_bcnwbcb"
         case .stWinBox, .stWinBoxB:
             return "real_board_stwinbx1"
         case .proteus:
@@ -288,6 +306,10 @@ public extension NodeType {
             return "real_board_stysys_sbu06"
         case .robKit1:
             return "real_board_robkit1"
+        case .memstws2v0:
+            return "real_board_tws"
+        case .memsndsg:
+            return "real_board_ndsg"
         case .wba55CGNucleoBoard:
             return "real_board_nucleo_wba5x"
         case .nucleoF401RE, .nucleoL476RG, .nucleoL053R8, .nucleoF446RE:
@@ -381,7 +403,9 @@ public extension NodeType {
              .sensorTileBoxProC,
              .stWinBox,
              .stWinBoxB,
-             .robKit1:
+             .robKit1,
+             .memstws2v0,
+             .memsndsg:
             return NodeFamily.blueNRGFamily
             
         case .discoveryIOT01A,
@@ -423,7 +447,8 @@ public extension NodeType {
              .nucleoWB0X,
              .stevalWesu1,
              .stEvalIDB008VX,
-             .stEvalBCN002V1:
+             .stEvalBCN002V1,
+             .bcnwbcb:
             return NodeFamily.otherFamily
             
         case .wba5mWpanBoard:
@@ -446,16 +471,49 @@ public extension NodeType {
 }
 
 public struct NodeMapper {
-    private static let apiNameToNodeType: [String: NodeType] = [
-        "steval-stwinkt1b": .stEvalSTWINKT1B,
-        "steval-stwinbx1": .stWinBox,
-        "steval-mkboxpro": .sensorTileBoxPro
+
+    private static let apiNameToNodeTypes: [String: [NodeType]] = [
+
+        "steval-stwinkt1b": [
+            .stEvalSTWINKT1B,
+            .stEvalSTWINKIT1
+
+        ],
+
+        "steval-stwinbx1": [
+            .stWinBox,
+            .stWinBoxB
+        ],
+
+        "steval-mkboxpro": [
+            .sensorTileBoxPro,
+            .sensorTileBoxProB,
+            .sensorTileBoxProC
+        ]
     ]
-    
-    public static func nodeType(fromApiNodeName apiNodeName: String) -> NodeType? {
-        guard let nodeType = apiNameToNodeType[apiNodeName] else {
-            return nil
-        }
-        return nodeType
+
+    public static func nodeTypes(fromApiNodeName apiNodeName: String) -> [NodeType] {
+        apiNameToNodeTypes[apiNodeName] ?? []
+    }
+
+    public static func isStAIotCraftSupported(apiNodeName: String) -> Bool {
+        !nodeTypes(fromApiNodeName: apiNodeName).isEmpty
+    }
+}
+
+extension NodeType {
+    public var isStAIotCraftSupported: Bool {
+        Self.stAIotCraftSupported.contains(self)
+    }
+
+    public static var stAIotCraftSupported: [NodeType] {
+        [
+            .stWinBox,
+            .stWinBoxB,
+            .sensorTileBoxPro,
+            .sensorTileBoxProB,
+            .sensorTileBoxProC,
+            .stEvalSTWINKT1B
+        ]
     }
 }

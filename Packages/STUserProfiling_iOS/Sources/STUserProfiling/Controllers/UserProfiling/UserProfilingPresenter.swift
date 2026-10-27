@@ -12,12 +12,12 @@
 import UIKit
 import STUI
 
-public final class UserProfilingPresenter: BasePresenter<UserProfilingViewController, Profile> {
+public final class UserProfilingPresenter: BasePresenter<UserProfilingViewController, OldProfile> {
     
 }
 
 private extension UserProfilingPresenter {
-    func configureOptions(with step: Step) {
+    func configureOptions(with step: OldStep) {
         for option in step.options {
             
             guard let optionView: OptionView = OptionView.make(with: .module) as? OptionView else { continue }
@@ -48,7 +48,7 @@ private extension UserProfilingPresenter {
         }
     }
     
-    func refreshUI(with step: Step) {
+    func refreshUI(with step: OldStep) {
         for (index, optionView) in view.mainView.optionsStackView.arrangedSubviews.enumerated() {
             guard let optionView = optionView as? OptionView else { return }
             let currentOption = step.options[index]

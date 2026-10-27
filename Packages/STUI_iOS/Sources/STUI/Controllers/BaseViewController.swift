@@ -97,7 +97,7 @@ open class BaseViewController<Presenter, View: UIView>: UIViewController, Childa
                                              target: self,
                                              action: #selector(backButtonTouched))
             
-            backButton.tintColor = .white
+            backButton.tintColor = SUINavigationStyle.backButtonTintColor
             
             navigationItem.leftBarButtonItems = [backButton]
         }
@@ -183,7 +183,7 @@ open class BaseNoViewController<Presenter>: UIViewController, Presentable {
                                              target: self,
                                              action: #selector(backButtonTouched))
 
-            backButton.tintColor = .white
+            backButton.tintColor = SUINavigationStyle.backButtonTintColor
 
             navigationItem.leftBarButtonItems = [backButton]
         } else {
